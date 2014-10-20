@@ -58,7 +58,7 @@ Client Applications should either:
   * Only WebFinger gateways explicitly chosen by the user. 
      * Client apps can make this easier by using a central "Registry" of gateways and presenting choices to the user. <span class='draft-comment'>No spec for such a registry exists at this time.</span>
      
-Gateway Services providers can recursively WebFinger the **reciever** of a payment based on the **outbound bridges** it trusts that are capable of handing the **destination currency**. Gateways should take responsibility for the outbound bridges that they trust to make the last mile of a payment. This might mean only using outbound bridges that are operated by the same business entity or its partners.
+Gateway Services providers can recursively WebFinger the **receiver** of a payment based on the **outbound bridges** it trusts that are capable of handing the **destination currency**. Gateways should take responsibility for the outbound bridges that they trust to make the last mile of a payment. This might mean only using outbound bridges that are operated by the same business entity or its partners.
 
 As long as the identifier is reasonably likely to *uniquely* refer to a particular account or person, arbitrary identifiers may be used. We recommend specific formats for the following types of identifiers: <span class='draft-comment'>Format and examples are non-final mockups.</span>
 
