@@ -16,13 +16,13 @@ console.log('Condition:', conditionHex)
 console.log('Fulfillment:', myFulfillment.serializeBinary().toString('hex').toUpperCase())
 
 // Construct transaction
-const currentTime = new Date()
+const tenSecondsFromNow = new Date(Date.now() + (10 * 1000))
 const myEscrow = {
   "destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", // Destination can be same as source
   "destinationTag": 2017,
-  "amount": "0.1113", //decimal XRP
+  "amount": "0.1113", // Decimal XRP
   "condition": conditionHex,
-  "allowExecuteAfter": currentTime.toISOString() // can be executed right away if the condition is met
+  "allowExecuteAfter": tenSecondsFromNow.toISOString() // Can be executed right away if the condition is met
 }
 const myInstructions = {
   maxLedgerVersionOffset: 5
@@ -33,10 +33,10 @@ const api = new RippleAPI({server: 'wss://s2.ripple.com'})
 
 function submitTransaction(lastClosedLedgerVersion, prepared, secret) {
   const signedData = api.sign(prepared.txJSON, secret)
-  console.log('Transaction ID: ', signedData.id)
+  console.log('Transaction ID:', signedData.id)
   return api.submit(signedData.signedTransaction).then(data => {
-    console.log('Tentative Result: ', data.resultCode)
-    console.log('Tentative Message: ', data.resultMessage)
+    console.log('Tentative Result:', data.resultCode)
+    console.log('Tentative Message:', data.resultMessage)
   })
 }
 
