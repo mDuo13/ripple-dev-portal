@@ -26,7 +26,7 @@ This tutorial explains how to send a simple XRP Payment using RippleAPI for Java
     </ul><!--/.breadcrumb.prereqs-->
   </div><!--/.breadcrumbs-wrap-->
   <button id="generate-creds-button" class="btn btn-primary">Generate credentials</button>
-  <div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"> Generating Keys...</div>
+  <div id='loader-0' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"> Generating Keys...</div>
   <div id='address'></div>
   <div id='secret'></div>
   <div id='balance'></div>
@@ -139,7 +139,7 @@ For this tutorial, you can connect directly from your browser by pressing the fo
     <div>
       <strong>Connection status:</strong>
       <span id="connection-status">Not connected</span>
-      <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
+      <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
     </div>
   </div>
 </div>
@@ -393,7 +393,7 @@ See the full list of [transaction results](transaction-results.html) for more po
   <button id="submit-button" class="btn btn-primary connection-required"
     title="Connection to Test Net required" disabled>Submit
     example transaction</button>
-    <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/rippleThrobber.png"></div>
+    <div id='loader-{{n.current}}' style="display: none;"><img class='throbber' src="assets/img/xrp-loader-96.png"></div>
     <div id="submit-output"></div>
 </div>
 </div>
