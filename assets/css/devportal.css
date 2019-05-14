@@ -983,11 +983,14 @@ a.current {
 }
 
 .landing .card > .card-img-top {
-  padding: 8px;
   width: 60px;
   height: 60px;
   margin-left: 0;
   margin-right: auto;
+}
+.image-icon {
+  width: 60px;
+  height: 60px;
 }
 
 /* Full-link cards */
