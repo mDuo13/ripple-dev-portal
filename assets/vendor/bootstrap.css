@@ -5459,7 +5459,7 @@ button.bg-dark:focus {
   z-index: 1;
   pointer-events: auto;
   content: "";
-  background-color: rgba(0, 0, 0, 0); }
+  background-color: transparent; }
 
 .m-0 {
   margin: 0 !important; }
@@ -7058,6 +7058,9 @@ h1, h2, h3, h4, h5 {
 #main_content_wrapper {
   border-bottom: 1px solid #1B1818; }
 
+.landing section:last-of-type {
+  border-bottom: none; }
+
 .card-grid {
   display: grid;
   gap: 1px;
@@ -7143,15 +7146,22 @@ h3 a {
 
 h1 a:hover,
 h2 a:hover,
-h3 a:hover {
+h3 a:hover,
+.xrpl-footer h5 a:hover {
+  color: #1B1818; }
+
+.xrpl-footer h5 a {
   color: #1B1818; }
 
 .landing .curated-links a,
-.landing .curated-links a:hover,
 .landing .children-display a,
-.landing .children-display a:hover,
 .landing a.card,
 .xrpl-footer a {
+  color: #676463; }
+
+.landing .curated-links a:hover,
+.landing .children-display a:hover,
+.xrpl-footer a:hover {
   color: #1B1818; }
 
 .navbar .navbar-nav .nav-link {
@@ -7212,6 +7222,9 @@ h3 a:hover {
 
 .xrpl-footer .container-fluid {
   border-bottom: 1px solid #EBE8E7; }
+
+.header-link:hover {
+  color: #1B1818; }
 
 /* Left/right nav color scheme ------------------------------- */
 aside a {
