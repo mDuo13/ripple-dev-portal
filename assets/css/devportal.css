@@ -1,12 +1,13 @@
 /* Generic styles and colors not in the bootstrap files --------------------- */
 
-td {
-  border: 1px solid #dbdde2;
+th, td {
   padding: 0.2em;
   vertical-align: text-top;
+  padding: 12px;
 }
-th {
-  padding: 0.2em;
+
+td:nth-child(1) {
+  font-weight: bold;
 }
 
 /* Reduce external link icon size */
@@ -262,10 +263,6 @@ body {
   margin: 0;
 }
 
-.content td {
-  line-height: 1.65;
-}
-
 /* "Source" links float right */
 .content a[title="Source"] {
   float: right;
@@ -274,8 +271,7 @@ body {
 
 .content table {
   clear: right;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
+  margin-bottom: 48px;
 }
 
 .content table code {
