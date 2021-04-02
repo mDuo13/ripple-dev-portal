@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/the-rippled-server/ledger-history/ledger-history.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/the-rippled-server/ledger-history/ledger-history.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -206,34 +206,34 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="ledger-history">Ledger History</h1>
+        <h1 id="ledger-history">Ledger History<a aria-hidden="true" class="hover_anchor" href="#ledger-history"><i class="fa fa-link"></i></a></h1>
 <p>The <a href="intro-to-consensus.html">consensus process</a> creates a chain of <a href="ledgers.html">validated ledger versions</a>, each derived from the previous one by applying a set of <a href="transaction-basics.html">transactions</a>. Every <a href="the-rippled-server.html"><code>rippled</code> server</a> stores ledger versions and transaction history locally. The amount of transaction history a server stores depends on how long that server has been online and how much history it is configured to fetch and keep.</p>
 <p>Servers in the peer-to-peer XRP Ledger network share transactions and other data with each other as part of the consensus process. Each server independently builds each new ledger version and compares results with its trusted validators to ensure consistency. (If a consensus of trusted validators disagrees with a server's results, that server fetches the necessary data from its peers to achieve consistency.) Servers can download older data from their peers to fill gaps in their available history. The structure of the ledger uses cryptographic <a href="basic-data-types.html#hashes">hashes</a> of the data so that any server can verify the integrity and consistency of the data.</p>
-<h2 id="databases">Databases</h2>
+<h2 id="databases">Databases<a aria-hidden="true" class="hover_anchor" href="#databases"><i class="fa fa-link"></i></a></h2>
 <p>Servers keep ledger state data and transactions in a key-value store called the <em>ledger store</em>. Additionally, <code>rippled</code> maintains a few SQLite database files for more flexible access to things like transaction history, and to track certain settings changes.</p>
 <p>It is generally safe to delete all of a <code>rippled</code> server's database files when that server is not running. (You may want to do this, for example, if you change the server's storage settings or if you are switching from a test net to the production network.)</p>
-<h2 id="available-history">Available History</h2>
+<h2 id="available-history">Available History<a aria-hidden="true" class="hover_anchor" href="#available-history"><i class="fa fa-link"></i></a></h2>
 <p>By design, all data and transactions in the XRP Ledger are public, and anyone can search or query anything. However, your server can only search data that it has available locally. If you try to query for a ledger version or transaction that your server does not have available, your server replies that it cannot find that data. Other servers that have the necessary history can respond successfully to the same query. If you have a business that uses XRP Ledger data, you should be mindful of how much history your server has available.</p>
 <p>The <a href="server_info.html">server_info method</a> reports how many ledger versions your server has available in the <code>complete_ledgers</code> field.</p>
-<h2 id="fetching-history">Fetching History</h2>
+<h2 id="fetching-history">Fetching History<a aria-hidden="true" class="hover_anchor" href="#fetching-history"><i class="fa fa-link"></i></a></h2>
 <p>When an XRP Ledger server starts, its first priority is to get a complete copy of the latest validated ledger. From there, it keeps up with advances in the ledger progress. The server fills in any gaps in its ledger history that occur after syncing, and can backfill history from before it became synced. (Gaps in ledger history can occur if a server temporarily becomes too busy to keep up with the network, loses its network connection, or suffers other temporary issues.) When downloading ledger history, the server requests the missing data from its <a href="peer-protocol.html">peer servers</a>, and verifies the data's integrity using cryptographic <a href="basic-data-types.html#hashes">hashes</a>.</p>
 <p>Backfilling history is one of the server's lowest priorities, so it may take a long time to fill missing history, especially if the server is busy or has less than sufficient hardware and network specs. For recommendations on hardware specs, see <a href="capacity-planning.html">Capacity Planning</a>. Backfilling history also requires that at least one of the server's direct peers has the history in question. For more information on managing your server's peer-to-peer connections, see <a href="configure-peering.html">Configure Peering</a>.</p>
 <p>The XRP Ledger identifies data (on several different levels) by a unique hash of its contents. The XRP Ledger's state data contains a short summary of the ledger's history, in the form of the <a href="ledgerhashes.html">LedgerHashes object type</a>. Servers use the LedgerHashes objects to know which ledger versions to fetch, and to confirm that the ledger data they receive is correct and complete.</p>
 <p><a id="with-advisory-deletion"></a><!-- old anchor to this area --></p>
-<h3 id="backfilling">Backfilling</h3>
+<h3 id="backfilling">Backfilling<a aria-hidden="true" class="hover_anchor" href="#backfilling"><i class="fa fa-link"></i></a></h3>
 <p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.6.0" target="_blank" title="Updated in: rippled 1.6.0"><img alt="Updated in: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The amount of history a server attempts to download depends on its configuration. The server automatically tries to fill gaps by downloading history up to <strong>the oldest ledger it already has available</strong>. You can use the <code>[ledger_history]</code> setting to make the server backfill history beyond that point. However, the server never downloads ledgers that would be scheduled for <a href="online-deletion.html">deletion</a>.</p>
 <p>The <code>[ledger_history]</code> setting defines a minimum number of ledgers to accumulate from before the current validated ledger. Use the special value <code>full</code> to download the <a href="#full-history">full history</a> of the network. If you specify a number of ledgers, it must be equal to or more than the <code>online_deletion</code> setting; you cannot use <code>[ledger_history]</code> to make the server download <em>less</em> history. To reduce the amount of history a server stores, change the <a href="online-deletion.html">online deletion</a> settings instead.</p>
-<h2 id="full-history">Full History</h2>
+<h2 id="full-history">Full History<a aria-hidden="true" class="hover_anchor" href="#full-history"><i class="fa fa-link"></i></a></h2>
 <p>Some servers in the XRP Ledger network are configured as "full-history" servers. These servers, which require significantly more disk space than other tracking servers, collect all available XRP Ledger history and <strong>do not use online deletion</strong>.</p>
 <p>Ripple provides a set of public full-history servers as a public service at <code>s2.ripple.com</code>. This service is provided for the benefit of the larger XRP community. Ripple reserves the right to block those who abuse the servers or use more than their fair share of the servers' resources.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Unlike some cryptocurrency networks, servers in the XRP Ledger do not need full history to know the current state and keep up with current transactions.</p>
 <p>For instructions on setting up full history, see <a href="configure-full-history.html">Configure Full History</a>.</p>
-<h2 id="history-sharding">History Sharding</h2>
+<h2 id="history-sharding">History Sharding<a aria-hidden="true" class="hover_anchor" href="#history-sharding"><i class="fa fa-link"></i></a></h2>
 <p>An alternative to storing the full history of the XRP Ledger on a single expensive machine is to configure many servers to each store a portion of ledger history. The <a href="history-sharding.html">History Sharding</a> feature makes this possible, storing ranges of ledger history in a separate storage area called the <em>shard store</em>. When a peer server asks for specific data (as described in <a href="#fetching-history">fetching history</a> above), a server can answer using data from either its ledger store or shard store.</p>
 <p>Online deletion <strong>does not</strong> delete from the shard store. However, if you configure online deletion to keep at least 32768 ledger versions in your server's ledger store, your server can copy full shards from the ledger store to the shard store before automatically deleting them from the ledger store.</p>
 <p>For more information, see <a href="configure-history-sharding.html">Configure History Sharding</a>.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="ledgers.html">Ledgers</a></li>
@@ -616,6 +616,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

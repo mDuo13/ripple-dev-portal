@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-account-settings/set-up-multi-signing.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-account-settings/set-up-multi-signing.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -207,10 +207,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="set-up-multi-signing">Set Up Multi-Signing</h1>
+        <h1 id="set-up-multi-signing">Set Up Multi-Signing<a aria-hidden="true" class="hover_anchor" href="#set-up-multi-signing"><i class="fa fa-link"></i></a></h1>
 <p><a href="multi-signing.html">Multi-signing</a> is one of three ways to authorize <a href="transaction-basics.html">transactions</a> for the XRP Ledger, alongside signing with <a href="cryptographic-keys.html">regular keys and master keys</a>. You can configure your <a href="accounts.html">address</a> to allow any combination of the three methods to authorize transactions.</p>
 <p>This tutorial demonstrates how to enable multi-signing for an address.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>
 <p>You must have a funded XRP Ledger <a href="accounts.html">address</a> with enough spare XRP to send transactions and meet the <a href="reserves.html">reserve requirement</a> of a new signer list.</p>
@@ -233,9 +233,9 @@
 <p>Multi-signing must be available. (The MultiSign amendment has been enabled in the production XRP Ledger since <strong>2016-06-27</strong>.)</p>
 </li>
 </ul>
-<h2 id="1-design-your-configuration">1. Design Your Configuration</h2>
+<h2 id="1-design-your-configuration">1. Design Your Configuration<a aria-hidden="true" class="hover_anchor" href="#1-design-your-configuration"><i class="fa fa-link"></i></a></h2>
 <p>Decide how many signers you want to include (up to 8). Choose a quorum number for your signer list and weights for your signers based on how many signatures you want to require for a given transaction. For a straightforward "M-of-N" signing setup, assign each signer weight <strong><code>1</code></strong> and set your list's quorum to be "M", the number of signatures to require.</p>
-<h2 id="2-prepare-member-keys">2. Prepare member keys</h2>
+<h2 id="2-prepare-member-keys">2. Prepare member keys<a aria-hidden="true" class="hover_anchor" href="#2-prepare-member-keys"><i class="fa fa-link"></i></a></h2>
 <p>You need one or more validly-formed XRP Ledger addresses to include as members of  your signer list. You or your chosen signers must know the secret keys associated with these addresses. The addresses can be funded accounts that exist in the ledger, but they do not need to be.</p>
 <p>You can generate new addresses using the <a href="wallet_propose.html">wallet_propose method</a>. For example:</p>
 <div class="codehilite"><pre><span></span><code>$ rippled wallet_propose
@@ -255,7 +255,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 <span class="o">}</span>
 </code></pre></div>
 <p>Take note of the <code>account_id</code> (XRP Ledger Address) and <code>master_seed</code> (secret key) for each one you generate.</p>
-<h2 id="3-send-signerlistset-transaction">3. Send SignerListSet transaction</h2>
+<h2 id="3-send-signerlistset-transaction">3. Send SignerListSet transaction<a aria-hidden="true" class="hover_anchor" href="#3-send-signerlistset-transaction"><i class="fa fa-link"></i></a></h2>
 <p><a href="transaction-basics.html#signing-and-submitting-transactions">Sign and submit</a> a <a href="signerlistset.html">SignerListSet transaction</a> in the normal (single-signature) way. This associates a signer list with your XRP Ledger address, so that a combination of signatures from the members of that signer list can multi-sign later transactions on your behalf.</p>
 <p>In this example, the signer list has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from <code>rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW</code> plus at least one signature from the other two members of the list.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
@@ -332,10 +332,10 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 </code></pre></div>
 <p>Make sure that the <a href="transaction-results.html">Transaction Result</a> is <a href="tes-success.html"><strong><code>tesSUCCESS</code></strong></a>. Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that <a href="start-a-new-genesis-ledger-in-stand-alone-mode.html#settings-in-new-genesis-ledgers">multi-sign is enabled</a>.</p>
 <p class="devportal-callout note"><strong>Note:</strong> Without the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a>, the more members in the signer list, the more XRP your address must have for purposes of the <a href="reserves.html#owner-reserves">owner reserve</a>. If your address does not have enough XRP, the transaction fails with <a href="tec-codes.html"><code>tecINSUFFICIENT_RESERVE</code></a>. With the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a> enabled, the XRP your address must have for purposes of the <a href="reserves.html#owner-reserves">owner reserve</a> is 5 XRP, regardless of the number of members in the signer list. See also: <a href="signerlist.html#signer-lists-and-reserves">Signer Lists and Reserves</a>.</p>
-<h2 id="4-wait-for-validation">4. Wait for validation</h2>
+<h2 id="4-wait-for-validation">4. Wait for validation<a aria-hidden="true" class="hover_anchor" href="#4-wait-for-validation"><i class="fa fa-link"></i></a></h2>
 <p>On the live network or the Ripple Test Net, you can wait 4-7 seconds for the ledger to close automatically.</p>
 <p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="ledger_accept.html">ledger_accept method</a> to manually close the ledger. <!--#{ fix md highlighting_ #}--></p>
-<h2 id="5-confirm-the-new-signer-list">5. Confirm the new signer list</h2>
+<h2 id="5-confirm-the-new-signer-list">5. Confirm the new signer list<a aria-hidden="true" class="hover_anchor" href="#5-confirm-the-new-signer-list"><i class="fa fa-link"></i></a></h2>
 <p>Use the <a href="account_objects.html">account_objects method</a> to confirm that the signer list is associated with the address in the latest validated ledger.</p>
 <p>Normally, an account can own many objects of different types (such as trust lines and offers). If you funded a new address for this tutorial, the signer list is the only object in the response.</p>
 <div class="codehilite"><pre><span></span><code>$ rippled account_objects rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC validated
@@ -384,13 +384,13 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 <span class="o">}</span>
 </code></pre></div>
 <p>If the signer list is present with the expected contents, then your address is ready to multi-sign.</p>
-<h2 id="6-further-steps">6. Further steps</h2>
+<h2 id="6-further-steps">6. Further steps<a aria-hidden="true" class="hover_anchor" href="#6-further-steps"><i class="fa fa-link"></i></a></h2>
 <p>At this point, your address is ready to <a href="send-a-multi-signed-transaction.html">send a multi-signed transaction</a>. You may also want to:</p>
 <ul>
 <li><a href="disable-master-key-pair.html">Disable the address's master key pair</a>.</li>
 <li><a href="change-or-remove-a-regular-key-pair.html">Remove the address's regular key pair</a> (if you previously set one) by sending a <a href="setregularkey.html">SetRegularKey transaction</a>.</li>
 </ul>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="cryptographic-keys.html">Cryptographic Keys</a></li>
@@ -450,6 +450,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -463,15 +464,15 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -480,21 +481,21 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -504,24 +505,25 @@ Connecting to <span class="m">127</span>.0.0.1:5005
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -548,21 +550,21 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -571,21 +573,21 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -605,6 +607,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -643,7 +646,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -778,6 +781,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/public-rippled-methods/account-methods/gateway_balances.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/account-methods/gateway_balances.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -204,10 +204,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="gateway_balances">gateway_balances</h1>
+        <h1 id="gateway_balances">gateway_balances<a aria-hidden="true" class="hover_anchor" href="#gateway_balances"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>gateway_balances</code> command calculates the total balances issued by a given account, optionally excluding amounts held by <a href="issuing-and-operational-addresses.html">operational addresses</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.2" target="_blank" title="New in: rippled 0.28.2"><img alt="New in: rippled 0.28.2" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<h2 id="request-format">Request Format</h2>
+<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
 <p class="devportal-callout note"><strong>Note:</strong> There is no commandline syntax for this method. You can use the <a href="json.html">json method</a> to access this method from the commandline instead.</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
@@ -278,7 +278,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="response-format">Response Format</h2>
+<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
 
@@ -523,7 +523,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="possible-errors">Possible Errors</h2>
+<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -642,6 +642,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -703,7 +704,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -743,7 +743,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -782,7 +782,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -975,6 +975,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

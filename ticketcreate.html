@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/transaction-formats/transaction-types/ticketcreate.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/transaction-formats/transaction-types/ticketcreate.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -204,11 +204,11 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="ticketcreate">TicketCreate</h1>
+        <h1 id="ticketcreate">TicketCreate<a aria-hidden="true" class="hover_anchor" href="#ticketcreate"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/CreateTicket.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Requires the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
 <p>A TicketCreate transaction sets aside one or more <a href="basic-data-types.html#account-sequence">sequence numbers</a> as <a href="tickets.html">Tickets</a>.</p>
-<h2 id="example-ticketcreate-json">Example TicketCreate JSON</h2>
+<h2 id="example-ticketcreate-json">Example TicketCreate JSON<a aria-hidden="true" class="hover_anchor" href="#example-ticketcreate-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"TicketCreate"</span><span class="p">,</span>
     <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
@@ -217,7 +217,7 @@
     <span class="nt">"TicketCount"</span><span class="p">:</span> <span class="mi">10</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="ticketcreate-fields">TicketCreate Fields</h2>
+<h2 id="ticketcreate-fields">TicketCreate Fields<a aria-hidden="true" class="hover_anchor" href="#ticketcreate-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a TicketCreate transaction uses the following fields:</p>
 <!-- -->
 <table>
@@ -234,12 +234,13 @@
 <td align="left"><code>TicketCount</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">How many Tickets to create. This must be a positive number, and cannot cause the account to own more than 250 Tickets after executing this transaction.</td>
+<td align="left">How many Tickets to create. This must be a positive number and cannot cause the account to own more than 250 Tickets after executing this transaction.</td>
 </tr>
 </tbody>
 </table>
+<p>If the transaction cannot create <em>all</em> of the requested Tickets (either due to the 250-Ticket limit or the <a href="reserves.html">owner reserve</a>), it fails and creates no Tickets. To look up how many Tickets an account currently owns, use the <a href="account_info.html">account_info method</a> and check the <code>account_data.TicketCount</code> field.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> This transaction increases the sending account's <a href="basic-data-types.html#account-sequence">sequence number</a> by the number of tickets created (<code>TicketCount</code>). This is the only transaction that increases an account's sequence number by more than 1.</p>
-<h2 id="error-cases">Error Cases</h2>
+<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
 <p>In addition to errors that can occur for all transactions, TicketCreate transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table>
 <thead>
@@ -375,6 +376,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -436,7 +438,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -476,7 +477,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -515,7 +516,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="active subpage" href="#main_content_body">TicketCreate</a></li>
+                            <li><a class="active subpage" href="#main_content_body">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -708,6 +709,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

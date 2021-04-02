@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/ledger-methods/ledger_entry.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -183,6 +183,17 @@
     <ul class="card-body page-toc">
       <li class="level-1"><a href="#ledger_entry">ledger_entry</a></li>
 <li class="level-2"><a href="#request-format">Request Format</a></li>
+<li class="level-3"><a href="#general-fields">General Fields</a></li>
+<li class="level-3"><a href="#get-ledger-object-by-id">Get Ledger Object by ID</a></li>
+<li class="level-3"><a href="#get-accountroot-object">Get AccountRoot Object</a></li>
+<li class="level-3"><a href="#get-directorynode-object">Get DirectoryNode Object</a></li>
+<li class="level-3"><a href="#get-offer-object">Get Offer Object</a></li>
+<li class="level-3"><a href="#get-ripplestate-object">Get RippleState Object</a></li>
+<li class="level-3"><a href="#get-check-object">Get Check Object</a></li>
+<li class="level-3"><a href="#get-escrow-object">Get Escrow Object</a></li>
+<li class="level-3"><a href="#get-paychannel-object">Get PayChannel Object</a></li>
+<li class="level-3"><a href="#get-depositpreauth-object">Get DepositPreauth Object</a></li>
+<li class="level-3"><a href="#get-ticket-object">Get Ticket Object</a></li>
 <li class="level-2"><a href="#response-format">Response Format</a></li>
 <li class="level-2"><a href="#possible-errors">Possible Errors</a></li>
 
@@ -204,54 +215,56 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="ledger_entry">ledger_entry</h1>
+        <h1 id="ledger_entry">ledger_entry<a aria-hidden="true" class="hover_anchor" href="#ledger_entry"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>ledger_entry</code> method returns a single ledger object from the XRP Ledger in its raw format. See <a href="ledger-object-types.html">ledger format</a> for information on the different types of objects you can retrieve.</p>
-<h2 id="request-format">Request Format</h2>
-<p>An example of the request format:</p>
+<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
+<p>This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters, comprised of the general and type-specific fields listed below, and following the standard <a href="request-formatting.html">request formatting</a>. (For example, a WebSocket request always has the <code>command</code> field and optionally an <code>id</code> field, and a JSON-RPC request uses the <code>method</code> and <code>params</code> fields.)</p>
 <p class="devportal-callout note"><strong>Note:</strong> There is no commandline syntax for this method. You can use the <a href="json.html">json method</a> to access this method from the commandline instead.</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
-
-<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
-  <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"account_root"</span><span class="p">,</span>
-  <span class="nt">"account_root"</span><span class="p">:</span> <span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
-  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
-    <span class="nt">"params"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">"account_root"</span><span class="p">:</span> <span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
-            <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span><span class="p">,</span>
-            <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"account_root"</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="code_sample" id="code-0-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated", "type": "account_root" }'</span>
-</code></pre></div></div>
-</div>
-<p><a class="button" href="websocket-api-tool.html#ledger_entry">Try it!</a></p>
-<p>This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters. Specifically, you should provide exactly one of the following fields:</p>
-<ol>
-<li><code>index</code> - Retrieve any type of ledger object by its unique ID</li>
-<li><code>account_root</code> - Retrieve an <a href="accountroot.html">AccountRoot object</a>. This is roughly equivalent to the <a href="account_info.html">account_info method</a>.</li>
-<li><code>directory</code> - Retrieve a <a href="directorynode.html">DirectoryNode</a>, which contains a list of other ledger objects.</li>
-<li><code>offer</code> - Retrieve an <a href="offer.html">Offer object</a>, which defines an offer to exchange currency.</li>
-<li><code>ripple_state</code> - Retrieve a <a href="ripplestate.html">RippleState object</a>, which tracks a (non-XRP) currency balance between two accounts.</li>
-<li><code>check</code> - Retrieve a <a href="check.html">Check object</a>, which is a potential payment that can be cashed by its recipient. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><code>escrow</code> - Retrieve an <a href="escrow-object.html">Escrow object</a>, which holds XRP until a specific time or condition is met. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><code>payment_channel</code> - Retrieve a <a href="paychannel.html">PayChannel object</a>, which holds XRP for asynchronous payments. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><code>deposit_preauth</code> - Retrieve a <a href="depositpreauth-object.html">DepositPreauth object</a>, which tracks preauthorization for payments to accounts requiring <a href="depositauth.html">Deposit Authorization</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
-<li><code>ticket</code> - Retrieve a <a href="ticket.html">Ticket object</a>, which records a <a href="basic-data-types.html#account-sequence">sequence number</a> set aside for future use. <em>(Requires the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a>)</em></li>
-</ol>
-<p>If you specify more than one of the above items, the server retrieves only one of them; it is undefined which it chooses.</p>
-<p>The full list of parameters recognized by this method is as follows:</p>
+<h3 id="general-fields">General Fields<a aria-hidden="true" class="hover_anchor" href="#general-fields"><i class="fa fa-link"></i></a></h3>
+<table>
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>binary</code></td>
+<td align="left">Boolean</td>
+<td align="left"><em>(Optional)</em> If <code>true</code>, return the requested ledger object's contents as a hex string in the XRP Ledger's <a href="serialization.html">binary format</a>. Otherwise, return data in JSON format. The default is <code>false</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="Updated in: rippled 1.2.0"><img alt="Updated in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><code>ledger_hash</code></td>
+<td align="left">String</td>
+<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+</tr>
+<tr>
+<td align="left"><code>ledger_index</code></td>
+<td align="left">String or Unsigned Integer</td>
+<td align="left"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>generator</code> and <code>ledger</code> parameters are deprecated and may be removed without further notice.</p>
+<p>In addition to the general fields above, you must specify <em>exactly 1</em> of the following fields to indicate what type of object to retrieve, along with its sub-fields as appropriate. The valid fields are:</p>
+<ul>
+<li><a href="#get-ledger-object-by-id"><code>index</code></a></li>
+<li><a href="#get-accountroot-object"><code>account_root</code></a></li>
+<li><a href="#get-directorynode-object"><code>directory</code></a></li>
+<li><a href="#get-offer-object"><code>offer</code></a></li>
+<li><a href="#get-ripplestate-object"><code>ripple_state</code></a></li>
+<li><a href="#get-check-object"><code>check</code></a></li>
+<li><a href="#get-escrow-object"><code>escrow</code></a></li>
+<li><a href="#get-paychannel-object"><code>payment_channel</code></a></li>
+<li><a href="#get-depositpreauth-object"><code>deposit_preauth</code></a></li>
+<li><a href="#get-ticket-object"><code>ticket</code></a></li>
+</ul>
+<p class="devportal-callout caution"><strong>Caution:</strong> If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.</p>
+<h3 id="get-ledger-object-by-id">Get Ledger Object by ID<a aria-hidden="true" class="hover_anchor" href="#get-ledger-object-by-id"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve any type of ledger object by its unique ID.</p>
 <table>
 <thead>
 <tr>
@@ -264,37 +277,101 @@
 <tr>
 <td align="left"><code>index</code></td>
 <td align="left">String</td>
-<td align="left"><em>(Optional)</em> Specify the <a href="ledger-object-ids.html">object ID</a> of a single object to retrieve from the ledger.</td>
+<td align="left">The <a href="ledger-object-ids.html">object ID</a> of a single object to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string.</td>
 </tr>
+</tbody>
+</table>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4"</span><span class="p">,</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+    <span class="nt">"params"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4"</span><span class="p">,</span>
+            <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-0-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4", "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#ledger_entry-by-object-id">Try it!</a></p>
+<blockquote class="devportal-callout tip">
+<p><strong>Tip:</strong> You can use this type of request to get any singleton object, if it exists in the ledger data, because its ID is always the same. For example:</p>
+<ul>
+<li><a href="amendments-object.html"><code>Amendments</code></a> - <code>7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4</code></li>
+<li><a href="feesettings.html"><code>FeeSettings</code></a> - <code>4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651</code></li>
+<li><a href="ledgerhashes.html">Recent History <code>LedgerHashes</code></a> - <code>B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B</code></li>
+<li><a href="negativeunl.html"><code>NegativeUNL</code></a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> - <code>2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244</code></li>
+</ul>
+</blockquote>
+<h3 id="get-accountroot-object">Get AccountRoot Object<a aria-hidden="true" class="hover_anchor" href="#get-accountroot-object"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve an <a href="accountroot.html">AccountRoot object</a> by its address. This is roughly equivalent to the <a href="account_info.html">account_info method</a>.</p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td align="left"><code>account_root</code></td>
 <td align="left">String - <a href="basic-data-types.html#addresses">Address</a></td>
-<td align="left"><em>(Optional)</em> Specify an <a href="accountroot.html">AccountRoot object</a> to retrieve.</td>
+<td align="left">The classic address of the <a href="accountroot.html">AccountRoot object</a> to retrieve.</td>
 </tr>
+</tbody>
+</table>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_get_accountroot"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"account_root"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+    <span class="nt">"params"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">"account_root"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+            <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#ledger_entry-accountroot">Try it!</a></p>
+<h3 id="get-directorynode-object">Get DirectoryNode Object<a aria-hidden="true" class="hover_anchor" href="#get-directorynode-object"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve a <a href="directorynode.html">DirectoryNode</a>, which contains a list of other ledger objects. Can be provided as string (object ID of the Directory) or as an object.</p>
+<table>
+<thead>
 <tr>
-<td align="left"><code>check</code></td>
-<td align="left">String</td>
-<td align="left"><em>(Optional)</em> Specify the <a href="ledger-object-ids.html">object ID</a> of a <a href="check.html">Check object</a> to retrieve.</td>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
-<tr>
-<td align="left"><code>deposit_preauth</code></td>
-<td align="left">Object or String</td>
-<td align="left"><em>(Optional)</em> Specify a <a href="depositpreauth-object.html">DepositPreauth object</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the DepositPreauth object, as hexadecimal. If an object, requires <code>owner</code> and <code>authorized</code> sub-fields.</td>
-</tr>
-<tr>
-<td align="left"><code>deposit_preauth.owner</code></td>
-<td align="left">String - <a href="basic-data-types.html#addresses">Address</a></td>
-<td align="left"><em>(Required if <code>deposit_preauth</code> is specified as an object)</em> The account that provided the preauthorization.</td>
-</tr>
-<tr>
-<td align="left"><code>deposit_preauth.authorized</code></td>
-<td align="left">String - <a href="basic-data-types.html#addresses">Address</a></td>
-<td align="left"><em>(Required if <code>deposit_preauth</code> is specified as an object)</em> The account that received the preauthorization.</td>
-</tr>
+</thead>
+<tbody>
 <tr>
 <td align="left"><code>directory</code></td>
 <td align="left">Object or String</td>
-<td align="left"><em>(Optional)</em> Specify a <a href="directorynode.html">DirectoryNode</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the directory, as hexadecimal. If an object, requires either <code>dir_root</code> or <code>owner</code> as a sub-field, plus optionally a <code>sub_index</code> sub-field.</td>
+<td align="left">The <a href="directorynode.html">DirectoryNode</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the directory, as hexadecimal. If an object, requires either <code>dir_root</code> or <code>owner</code> as a sub-field, plus optionally a <code>sub_index</code> sub-field.</td>
 </tr>
 <tr>
 <td align="left"><code>directory.sub_index</code></td>
@@ -304,52 +381,120 @@
 <tr>
 <td align="left"><code>directory.dir_root</code></td>
 <td align="left">String</td>
-<td align="left"><em>(Required if <code>directory</code> is specified as an object and <code>directory.owner</code> is not provided)</em> Unique index identifying the directory to retrieve, as a hex string.</td>
+<td align="left"><em>(Optional)</em> Unique index identifying the directory to retrieve, as a hex string.</td>
 </tr>
 <tr>
 <td align="left"><code>directory.owner</code></td>
 <td align="left">String</td>
-<td align="left"><em>(Required if <code>directory</code> is specified as an object and <code>directory.dir_root</code> is not provided)</em> Unique address of the account associated with this directory.</td>
+<td align="left"><em>(Optional)</em> Unique address of the account associated with this directory.</td>
 </tr>
+</tbody>
+</table>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">WebSocket</a></li><li><a href="#code-2-1">JSON-RPC</a></li><li><a href="#code-2-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-2-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"directory"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"owner"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+    <span class="nt">"sub_index"</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-2-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+    <span class="nt">"params"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">"directory"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"owner"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+              <span class="nt">"sub_index"</span><span class="p">:</span> <span class="mi">0</span>
+            <span class="p">},</span>
+            <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-2-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "sub_index": 0 }, "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#ledger_entry-directorynode">Try it!</a></p>
+<h3 id="get-offer-object">Get Offer Object<a aria-hidden="true" class="hover_anchor" href="#get-offer-object"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve an <a href="offer.html">Offer object</a>, which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.</p>
+<table>
+<thead>
 <tr>
-<td align="left"><code>escrow</code></td>
-<td align="left">Object or String</td>
-<td align="left"><em>(Optional)</em> Specify an <a href="escrow-object.html">Escrow object</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the Escrow, as hexadecimal. If an object, requires <code>owner</code> and <code>seq</code> sub-fields.</td>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
-<tr>
-<td align="left"><code>escrow.owner</code></td>
-<td align="left">String - <a href="basic-data-types.html#addresses">Address</a></td>
-<td align="left"><em>(Required if <code>escrow</code> is specified as an object)</em> The owner (sender) of the Escrow object.</td>
-</tr>
-<tr>
-<td align="left"><code>escrow.seq</code></td>
-<td align="left">Unsigned Integer</td>
-<td align="left"><em>(Required if <code>escrow</code> is specified as an object)</em> The sequence number of the transaction that created the Escrow object.</td>
-</tr>
+</thead>
+<tbody>
 <tr>
 <td align="left"><code>offer</code></td>
 <td align="left">Object or String</td>
-<td align="left"><em>(Optional)</em> Specify an <a href="offer.html">Offer object</a> to retrieve. If a string, interpret as the <a href="ledgers.html#tree-format">unique index</a> to the Offer. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
+<td align="left">The <a href="offer.html">Offer object</a> to retrieve. If a string, interpret as the <a href="ledgers.html#tree-format">unique object ID</a> to the Offer. If an object, requires the sub-fields <code>account</code> and <code>seq</code> to uniquely identify the offer.</td>
 </tr>
 <tr>
 <td align="left"><code>offer.account</code></td>
 <td align="left">String - <a href="basic-data-types.html#addresses">Address</a></td>
-<td align="left"><em>(Required if <code>offer</code> is specified)</em> The account that placed the offer.</td>
+<td align="left"><em>(Required if <code>offer</code> is specified as an object)</em> The account that placed the offer.</td>
 </tr>
 <tr>
 <td align="left"><code>offer.seq</code></td>
 <td align="left">Unsigned Integer</td>
-<td align="left"><em>(Required if <code>offer</code> is specified)</em> The sequence number of the transaction that created the Offer object.</td>
+<td align="left"><em>(Required if <code>offer</code> is specified as an object)</em> The <a href="basic-data-types.html#account-sequence">Sequence Number</a> of the transaction that created the Offer object.</td>
 </tr>
+</tbody>
+</table>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">WebSocket</a></li><li><a href="#code-3-1">JSON-RPC</a></li><li><a href="#code-3-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-3-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_get_offer"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"offer"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+    <span class="nt">"seq"</span><span class="p">:</span> <span class="mi">359</span>
+  <span class="p">},</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-3-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"params"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">"offer"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">"account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+        <span class="nt">"seq"</span><span class="p">:</span> <span class="mi">359</span>
+      <span class="p">},</span>
+      <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-3-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "seq": 359}, "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#ledger_entry-offer">Try it!</a></p>
+<h3 id="get-ripplestate-object">Get RippleState Object<a aria-hidden="true" class="hover_anchor" href="#get-ripplestate-object"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve a <a href="ripplestate.html">RippleState object</a>, which tracks a (non-XRP) currency balance between two accounts.</p>
+<table>
+<thead>
 <tr>
-<td align="left"><code>payment_channel</code></td>
-<td align="left">String</td>
-<td align="left"><em>(Optional)</em> Specify the <a href="ledger-object-ids.html">object ID</a> of a <a href="paychannel.html">PayChannel object</a> to retrieve.</td>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td align="left"><code>ripple_state</code></td>
 <td align="left">Object</td>
-<td align="left"><em>(Optional)</em> Object specifying the RippleState (trust line) object to retrieve. The <code>accounts</code> and <code>currency</code> sub-fields are required to uniquely specify the RippleState entry to retrieve.</td>
+<td align="left">Object specifying the RippleState (trust line) object to retrieve. The <code>accounts</code> and <code>currency</code> sub-fields are required to uniquely specify the RippleState entry to retrieve.</td>
 </tr>
 <tr>
 <td align="left"><code>ripple_state.accounts</code></td>
@@ -361,10 +506,254 @@
 <td align="left">String</td>
 <td align="left"><em>(Required if <code>ripple_state</code> is specified)</em> <a href="currency-formats.html#currency-codes">Currency Code</a> of the <a href="ripplestate.html">RippleState object</a> to retrieve.</td>
 </tr>
+</tbody>
+</table>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">WebSocket</a></li><li><a href="#code-4-1">JSON-RPC</a></li><li><a href="#code-4-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-4-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_get_ripplestate"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"ripple_state"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"accounts"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+      <span class="s2">"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"</span>
+    <span class="p">],</span>
+    <span class="nt">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span>
+  <span class="p">},</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-4-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"params"</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">"ripple_state"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"accounts"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+        <span class="s2">"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"</span>
+      <span class="p">],</span>
+      <span class="nt">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span>
+    <span class="p">},</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-4-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#ledger_entry-ripplestate">Try it!</a></p>
+<h3 id="get-check-object">Get Check Object<a aria-hidden="true" class="hover_anchor" href="#get-check-object"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve a <a href="check.html">Check object</a>, which is a potential payment that can be cashed by its recipient. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>check</code></td>
+<td align="left">String</td>
+<td align="left">The <a href="ledger-object-ids.html">object ID</a> of a <a href="check.html">Check object</a> to retrieve.</td>
+</tr>
+</tbody>
+</table>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">WebSocket</a></li><li><a href="#code-5-1">JSON-RPC</a></li><li><a href="#code-5-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-5-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_get_check"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"check"</span><span class="p">:</span> <span class="s2">"C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB"</span><span class="p">,</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-5-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"params"</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">"check"</span><span class="p">:</span> <span class="s2">"C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB"</span><span class="p">,</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-5-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#ledger_entry-check">Try it!</a></p>
+<h3 id="get-escrow-object">Get Escrow Object<a aria-hidden="true" class="hover_anchor" href="#get-escrow-object"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve an <a href="escrow-object.html">Escrow object</a>, which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>escrow</code></td>
+<td align="left">Object or String</td>
+<td align="left">The <a href="escrow-object.html">Escrow object</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the Escrow, as hexadecimal. If an object, requires <code>owner</code> and <code>seq</code> sub-fields.</td>
+</tr>
+<tr>
+<td align="left"><code>escrow.owner</code></td>
+<td align="left">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td align="left"><em>(Required if <code>escrow</code> is specified as an object)</em> The owner (sender) of the Escrow object.</td>
+</tr>
+<tr>
+<td align="left"><code>escrow.seq</code></td>
+<td align="left">Unsigned Integer</td>
+<td align="left"><em>(Required if <code>escrow</code> is specified as an object)</em> The <a href="basic-data-types.html#account-sequence">Sequence Number</a> of the transaction that created the Escrow object.</td>
+</tr>
+</tbody>
+</table>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">WebSocket</a></li><li><a href="#code-6-1">JSON-RPC</a></li><li><a href="#code-6-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-6-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_get_escrow"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"escrow"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"owner"</span><span class="p">:</span> <span class="s2">"rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK"</span><span class="p">,</span>
+    <span class="nt">"seq"</span><span class="p">:</span> <span class="mi">126</span>
+  <span class="p">},</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-6-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"params"</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">"escrow"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"account"</span><span class="p">:</span> <span class="s2">"rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK"</span><span class="p">,</span>
+      <span class="nt">"seq"</span><span class="p">:</span> <span class="mi">126</span>
+    <span class="p">},</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-6-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "escrow": { "account": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#ledger_entry-escrow">Try it!</a></p>
+<h3 id="get-paychannel-object">Get PayChannel Object<a aria-hidden="true" class="hover_anchor" href="#get-paychannel-object"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve a <a href="paychannel.html">PayChannel object</a>, which holds XRP for asynchronous payments. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.0.0" target="_blank" title="New in: rippled 1.0.0"><img alt="New in: rippled 1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>payment_channel</code></td>
+<td align="left">String</td>
+<td align="left">The <a href="ledger-object-ids.html">object ID</a> of a <a href="paychannel.html">PayChannel object</a> to retrieve.</td>
+</tr>
+</tbody>
+</table>
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a href="#code-7-0">WebSocket</a></li><li><a href="#code-7-1">JSON-RPC</a></li><li><a href="#code-7-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-7-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_get_paychannel"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"payment_channel"</span><span class="p">:</span> <span class="s2">"C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7"</span><span class="p">,</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-7-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"params"</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">"payment_channel"</span><span class="p">:</span> <span class="s2">"C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7"</span><span class="p">,</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-7-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#ledger_entry-paychannel">Try it!</a></p>
+<h3 id="get-depositpreauth-object">Get DepositPreauth Object<a aria-hidden="true" class="hover_anchor" href="#get-depositpreauth-object"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve a <a href="depositpreauth-object.html">DepositPreauth object</a>, which tracks preauthorization for payments to accounts requiring <a href="depositauth.html">Deposit Authorization</a>. Can be provided as string (object ID of the DepositPreauth) or as an object. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="New in: rippled 1.1.0"><img alt="New in: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>deposit_preauth</code></td>
+<td align="left">Object or String</td>
+<td align="left">Specify a <a href="depositpreauth-object.html">DepositPreauth object</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the DepositPreauth object, as hexadecimal. If an object, requires <code>owner</code> and <code>authorized</code> sub-fields.</td>
+</tr>
+<tr>
+<td align="left"><code>deposit_preauth.owner</code></td>
+<td align="left">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td align="left"><em>(Required if <code>deposit_preauth</code> is specified as an object)</em> The account that provided the preauthorization.</td>
+</tr>
+<tr>
+<td align="left"><code>deposit_preauth.authorized</code></td>
+<td align="left">String - <a href="basic-data-types.html#addresses">Address</a></td>
+<td align="left"><em>(Required if <code>deposit_preauth</code> is specified as an object)</em> The account that received the preauthorization.</td>
+</tr>
+</tbody>
+</table>
+<div class="multicode" id="code-8"><ul class="codetabs"><li><a href="#code-8-0">WebSocket</a></li><li><a href="#code-8-1">JSON-RPC</a></li><li><a href="#code-8-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-8-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_get_deposit_preauth"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"deposit_preauth"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"owner"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+    <span class="nt">"authorized"</span><span class="p">:</span> <span class="s2">"ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"</span>
+  <span class="p">},</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-8-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"params"</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">"deposit_preauth"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"owner"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+      <span class="nt">"authorized"</span><span class="p">:</span> <span class="s2">"ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"</span>
+    <span class="p">},</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-8-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'</span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#ledger_entry-depositpreauth">Try it!</a></p>
+<h3 id="get-ticket-object">Get Ticket Object<a aria-hidden="true" class="hover_anchor" href="#get-ticket-object"><i class="fa fa-link"></i></a></h3>
+<p>Retrieve a <a href="ticket.html">Ticket object</a>, which represents a <a href="basic-data-types.html#account-sequence">sequence number</a> set aside for future use. Can be provided as string (object ID of the Ticket) or as an object. <em>(Requires the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a>)</em> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td align="left"><code>ticket</code></td>
 <td align="left">Object or String</td>
-<td align="left"><em>(Optional)</em> Object specifying the <a href="ticket.html">Ticket object</a> to retrieve. If a string, the must be the <a href="ledger-object-ids.html">object ID</a> of the Ticket, as hexadecimal. If an object, the <code>owner</code> and <code>ticket_sequence</code> sub-fields are required to uniquely specify the Ticket entry to retrieve.</td>
+<td align="left">The <a href="ticket.html">Ticket object</a> to retrieve. If a string, must be the <a href="ledger-object-ids.html">object ID</a> of the Ticket, as hexadecimal. If an object, the <code>owner</code> and <code>ticket_sequence</code> sub-fields are required to uniquely specify the Ticket entry.</td>
 </tr>
 <tr>
 <td align="left"><code>ticket.owner</code></td>
@@ -376,95 +765,40 @@
 <td align="left">Unsigned Integer</td>
 <td align="left"><em>(Required if <code>ticket</code> is specified as an object)</em> The Ticket Sequence number of the Ticket entry to retrieve.</td>
 </tr>
-<tr>
-<td align="left"><code>binary</code></td>
-<td align="left">Boolean</td>
-<td align="left"><em>(Optional)</em> If true, return the requested ledger object's contents as a hex string. Otherwise, return data in JSON format. The default is <code>false</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.2.0" target="_blank" title="Updated in: rippled 1.2.0"><img alt="Updated in: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
-<td align="left"><code>ledger_hash</code></td>
-<td align="left">String</td>
-<td align="left"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
-</tr>
-<tr>
-<td align="left"><code>ledger_index</code></td>
-<td align="left">String or Unsigned Integer</td>
-<td align="left"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
-</tr>
 </tbody>
 </table>
-<p>The <code>generator</code> and <code>ledger</code> parameters are deprecated and may be removed without further notice.</p>
-<h2 id="response-format">Response Format</h2>
-<p>An example of a successful response:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
+<div class="multicode" id="code-9"><ul class="codetabs"><li><a href="#code-9-0">WebSocket</a></li><li><a href="#code-9-1">JSON-RPC</a></li><li><a href="#code-9-2">Commandline</a></li></ul>
 
-<div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">"id"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"</span><span class="p">,</span>
-        <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="mi">6889347</span><span class="p">,</span>
-        <span class="nt">"node"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
-            <span class="nt">"Balance"</span><span class="p">:</span> <span class="s2">"27389517749"</span><span class="p">,</span>
-            <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"AccountRoot"</span><span class="p">,</span>
-            <span class="nt">"OwnerCount"</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-            <span class="nt">"PreviousTxnID"</span><span class="p">:</span> <span class="s2">"B6B410172C0B65575D89E464AF5B99937CC568822929ABF87DA75CBD11911932"</span><span class="p">,</span>
-            <span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mi">6592159</span><span class="p">,</span>
-            <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">1400</span><span class="p">,</span>
-            <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"</span>
-        <span class="p">}</span>
+<div class="code_sample" id="code-9-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_get_ticket"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"ticket"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"owner"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+    <span class="nt">"ticket_sequence"</span><span class="p">:</span> <span class="mi">23</span>
+  <span class="p">},</span>
+  <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-9-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"ledger_entry"</span><span class="p">,</span>
+  <span class="nt">"params"</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">"ticket"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"owner"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+      <span class="nt">"ticket_sequence"</span><span class="p">:</span> <span class="mi">23</span>
     <span class="p">},</span>
-    <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
-    <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"response"</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="s2">"validated"</span>
+  <span class="p">}]</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="mi">200</span> <span class="err">OK</span>
-
-<span class="p">{</span>
-    <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"</span><span class="p">,</span>
-        <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="mi">8696234</span><span class="p">,</span>
-        <span class="nt">"node"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
-            <span class="nt">"Balance"</span><span class="p">:</span> <span class="s2">"13176802787"</span><span class="p">,</span>
-            <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"AccountRoot"</span><span class="p">,</span>
-            <span class="nt">"OwnerCount"</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span>
-            <span class="nt">"PreviousTxnID"</span><span class="p">:</span> <span class="s2">"E5D0235A236F7CD162C1AB87A0325056AE61CFC63D92D1494AB5D826AAD0CDCA"</span><span class="p">,</span>
-            <span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mi">8554742</span><span class="p">,</span>
-            <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">1406</span><span class="p">,</span>
-            <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"</span>
-        <span class="p">},</span>
-        <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
-        <span class="nt">"validated"</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
-   <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
-      <span class="nt">"index"</span> <span class="p">:</span> <span class="s2">"4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"</span><span class="p">,</span>
-      <span class="nt">"ledger_hash"</span> <span class="p">:</span> <span class="s2">"F434A8F21E401F84A2CDEDFDF801E6F3FC8B2567C6841818E684BEE019460179"</span><span class="p">,</span>
-      <span class="nt">"ledger_index"</span> <span class="p">:</span> <span class="mi">56866309</span><span class="p">,</span>
-      <span class="nt">"node"</span> <span class="p">:</span> <span class="p">{</span>
-         <span class="nt">"Account"</span> <span class="p">:</span> <span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
-         <span class="nt">"Balance"</span> <span class="p">:</span> <span class="s2">"13315612685"</span><span class="p">,</span>
-         <span class="nt">"Flags"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-         <span class="nt">"LedgerEntryType"</span> <span class="p">:</span> <span class="s2">"AccountRoot"</span><span class="p">,</span>
-         <span class="nt">"OwnerCount"</span> <span class="p">:</span> <span class="mi">17</span><span class="p">,</span>
-         <span class="nt">"PreviousTxnID"</span> <span class="p">:</span> <span class="s2">"D2FA1C28EF87E53029327AA832C378674B3ACA0551CF9EA1F65BB8CA34913FAB"</span><span class="p">,</span>
-         <span class="nt">"PreviousTxnLgrSeq"</span> <span class="p">:</span> <span class="mi">55180009</span><span class="p">,</span>
-         <span class="nt">"Sequence"</span> <span class="p">:</span> <span class="mi">1406</span><span class="p">,</span>
-         <span class="nt">"index"</span> <span class="p">:</span> <span class="s2">"4F83A2CF7E70F77F79A307E6A472BFC2585B806A70833CCD1C26105BAE0D6E05"</span>
-      <span class="p">},</span>
-      <span class="nt">"status"</span> <span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
-      <span class="nt">"validated"</span> <span class="p">:</span> <span class="kc">true</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<div class="code_sample" id="code-9-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled json ledger_entry <span class="s1">'{ "ticket": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_sequence: 23 }, "ledger_index": "validated" }'</span>
 </code></pre></div></div>
 </div>
+<!-- TODO: enable if/when Tickets are available on Mainnet
+[Try it! >](websocket-api-tool.html#ledger_entry-ticket)
+-->
+<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
 <table>
 <thead>
@@ -497,7 +831,98 @@
 </tr>
 </tbody>
 </table>
-<h2 id="possible-errors">Possible Errors</h2>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-10"><ul class="codetabs"><li><a href="#code-10-0">WebSocket</a></li><li><a href="#code-10-1">JSON-RPC</a></li><li><a href="#code-10-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-10-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"example_get_accountroot"</span><span class="p">,</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span><span class="p">,</span>
+    <span class="nt">"ledger_hash"</span><span class="p">:</span> <span class="s2">"31850E8E48E76D1064651DF39DF4E9542E8C90A9A9B629F4DE339EB3FA74F726"</span><span class="p">,</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="mi">61966146</span><span class="p">,</span>
+    <span class="nt">"node"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+      <span class="nt">"AccountTxnID"</span><span class="p">:</span> <span class="s2">"4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB"</span><span class="p">,</span>
+      <span class="nt">"Balance"</span><span class="p">:</span> <span class="s2">"424021949"</span><span class="p">,</span>
+      <span class="nt">"Domain"</span><span class="p">:</span> <span class="s2">"6D64756F31332E636F6D"</span><span class="p">,</span>
+      <span class="nt">"EmailHash"</span><span class="p">:</span> <span class="s2">"98B4375E1D753E5B91627516F6D70977"</span><span class="p">,</span>
+      <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">9568256</span><span class="p">,</span>
+      <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"AccountRoot"</span><span class="p">,</span>
+      <span class="nt">"MessageKey"</span><span class="p">:</span> <span class="s2">"0000000000000000000000070000000300"</span><span class="p">,</span>
+      <span class="nt">"OwnerCount"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+      <span class="nt">"PreviousTxnID"</span><span class="p">:</span> <span class="s2">"4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB"</span><span class="p">,</span>
+      <span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mi">61965653</span><span class="p">,</span>
+      <span class="nt">"RegularKey"</span><span class="p">:</span> <span class="s2">"rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ"</span><span class="p">,</span>
+      <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">385</span><span class="p">,</span>
+      <span class="nt">"TransferRate"</span><span class="p">:</span> <span class="mi">4294967295</span><span class="p">,</span>
+      <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span>
+    <span class="p">},</span>
+    <span class="nt">"validated"</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+  <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"response"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-10-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="mi">200</span> <span class="err">OK</span>
+
+<span class="p">{</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span><span class="p">,</span>
+    <span class="nt">"ledger_hash"</span><span class="p">:</span> <span class="s2">"395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E"</span><span class="p">,</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="mi">61966165</span><span class="p">,</span>
+    <span class="nt">"node"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+      <span class="nt">"AccountTxnID"</span><span class="p">:</span> <span class="s2">"4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB"</span><span class="p">,</span>
+      <span class="nt">"Balance"</span><span class="p">:</span> <span class="s2">"424021949"</span><span class="p">,</span>
+      <span class="nt">"Domain"</span><span class="p">:</span> <span class="s2">"6D64756F31332E636F6D"</span><span class="p">,</span>
+      <span class="nt">"EmailHash"</span><span class="p">:</span> <span class="s2">"98B4375E1D753E5B91627516F6D70977"</span><span class="p">,</span>
+      <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">9568256</span><span class="p">,</span>
+      <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"AccountRoot"</span><span class="p">,</span>
+      <span class="nt">"MessageKey"</span><span class="p">:</span> <span class="s2">"0000000000000000000000070000000300"</span><span class="p">,</span>
+      <span class="nt">"OwnerCount"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+      <span class="nt">"PreviousTxnID"</span><span class="p">:</span> <span class="s2">"4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB"</span><span class="p">,</span>
+      <span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mi">61965653</span><span class="p">,</span>
+      <span class="nt">"RegularKey"</span><span class="p">:</span> <span class="s2">"rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ"</span><span class="p">,</span>
+      <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">385</span><span class="p">,</span>
+      <span class="nt">"TransferRate"</span><span class="p">:</span> <span class="mi">4294967295</span><span class="p">,</span>
+      <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span>
+    <span class="p">},</span>
+    <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+    <span class="nt">"validated"</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-10-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span><span class="p">,</span>
+    <span class="nt">"ledger_hash"</span><span class="p">:</span> <span class="s2">"395946243EA36C5092AE58AF729D2875F659812409810A63096AC006C73E656E"</span><span class="p">,</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="mi">61966165</span><span class="p">,</span>
+    <span class="nt">"node"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+      <span class="nt">"AccountTxnID"</span><span class="p">:</span> <span class="s2">"4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB"</span><span class="p">,</span>
+      <span class="nt">"Balance"</span><span class="p">:</span> <span class="s2">"424021949"</span><span class="p">,</span>
+      <span class="nt">"Domain"</span><span class="p">:</span> <span class="s2">"6D64756F31332E636F6D"</span><span class="p">,</span>
+      <span class="nt">"EmailHash"</span><span class="p">:</span> <span class="s2">"98B4375E1D753E5B91627516F6D70977"</span><span class="p">,</span>
+      <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">9568256</span><span class="p">,</span>
+      <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"AccountRoot"</span><span class="p">,</span>
+      <span class="nt">"MessageKey"</span><span class="p">:</span> <span class="s2">"0000000000000000000000070000000300"</span><span class="p">,</span>
+      <span class="nt">"OwnerCount"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+      <span class="nt">"PreviousTxnID"</span><span class="p">:</span> <span class="s2">"4E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB"</span><span class="p">,</span>
+      <span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mi">61965653</span><span class="p">,</span>
+      <span class="nt">"RegularKey"</span><span class="p">:</span> <span class="s2">"rD9iJmieYHn8jTtPjwwkW2Wm9sVDvPXLoJ"</span><span class="p">,</span>
+      <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">385</span><span class="p">,</span>
+      <span class="nt">"TransferRate"</span><span class="p">:</span> <span class="mi">4294967295</span><span class="p">,</span>
+      <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span>
+    <span class="p">},</span>
+    <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+    <span class="nt">"validated"</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>deprecatedFeature</code> - The request specified a removed field, such as <code>generator</code>.</li>
@@ -622,6 +1047,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -683,7 +1109,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -723,7 +1148,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -762,7 +1187,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -955,6 +1380,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

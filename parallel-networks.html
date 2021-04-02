@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/consensus-network/parallel-networks.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/consensus-network/parallel-networks.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -201,7 +201,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="parallel-networks">Parallel Networks</h1>
+        <h1 id="parallel-networks">Parallel Networks<a aria-hidden="true" class="hover_anchor" href="#parallel-networks"><i class="fa fa-link"></i></a></h1>
 <p>There is one production XRP Ledger peer-to-peer network, and all business that takes place on the XRP Ledger occurs within the production network—the Mainnet.</p>
 <p>To help members of the XRP Ledger community interact with XRP Ledger technology without affecting anything on the Mainnet, Ripple hosts two alternative networks, or altnets: the Testnet and the Devnet. Here's a breakdown of all three networks:</p>
 <table>
@@ -232,10 +232,10 @@
 </table>
 <p>Testnet and Devnet each have their own separate supply of test XRP, which Ripple <a href="xrp-testnet-faucet.html">gives away for free</a> to parties interested in experimenting with the XRP Ledger and developing applications and integrations. Test XRP does not have real-world value and is lost when the network is reset.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Ripple makes no guarantees about the stability of altnets. These networks have been and continue to be used to test various properties of server configuration, network topology, and network performance.</p>
-<h2 id="parallel-networks-and-consensus">Parallel Networks and Consensus</h2>
+<h2 id="parallel-networks-and-consensus">Parallel Networks and Consensus<a aria-hidden="true" class="hover_anchor" href="#parallel-networks-and-consensus"><i class="fa fa-link"></i></a></h2>
 <p>There is no <code>rippled</code> setting that defines which network it uses. Instead, it uses the consensus of validators it trusts to know which ledger to accept as the truth. When different consensus groups of <code>rippled</code> instances only trust other members of the same group, each group continues as a parallel network. Even if malicious or misbehaving computers connect to both networks, the consensus process overrides the confusion as long as the members of each network are not configured to trust members of another network in excess of their quorum settings.</p>
 <p>Ripple runs the main servers in the Testnet and Devnet; you can also <a href="connect-your-rippled-to-the-xrp-test-net.html">connect your own <code>rippled</code> server to the Testnet</a>. The Testnet and Devnet do not use diverse, censorship-resistant sets of validators. This makes it possible for Ripple to reset the Testnet or Devnet on a regular basis.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Tools:</strong><ul>
 <li><a href="xrp-test-net-faucet.html">XRP Testnet Faucet</a></li>
@@ -617,6 +617,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>Wallets - XRP Ledger Dev Portal (日本語)</title>
+    <title>ウォレット - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="ウォレット | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/wallets.html" />
+    <meta property="og:description" content="XRPとXRP Ledgerの全てに対してのコミュニティーリーソース" />
+    <meta name="description" content="XRPとXRP Ledgerの全てに対してのコミュニティーリーソース" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/wallets.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/wallets.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/wallets.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -55,9 +74,14 @@
 
 <body class="xrp-ledger-dev-portal lang-ja no-sidebar page-wallets">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -68,10 +92,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -79,10 +103,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1 active" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1 active" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -95,20 +119,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/tool/template-explore-wallets.html" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/tool/template-explore-wallets.html" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -116,7 +140,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -125,14 +149,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -153,23 +177,23 @@
 <div class="fullwidth-bg">
   <div class="container">
 
-    <section class="row mt-40 mb-40">
+    <section class="row mt-20 mb-20 mt-40-until-sm mb-40-until-sm">
       <div class="col-lg-3 d-flex flex-column-reverse justify-content-end mb-10">
-        <h1>Options for Storing XRP</h1>
-        <h3 class="text-primary mb-4 h6">XRP Wallets</h3>
+        <h1>XRPを保管する際の選択肢</h1>
+        <h3 class="text-primary mb-4 h6">XRPウォレット</h3>
       </div>
       <div class="col-lg-7 offset-lg-1">
-        <h2 class="mt-12 mb-10">Digital wallets are pieces of software that allow people to send, receive and store cryptocurrencies, including XRP. There are two types of digital wallets: custodial and non-custodial.</h2>
-        <p>Custodial wallets manage a user's private key, which allows the wallet to withdraw cryptocurrency on a user's behalf. Non-custodial wallets do not manage a user's private key, which is up to the user to manage, and therefore cannot send cryptocurrency on the user's behalf.</p>
+        <h2 class="mt-12 mb-10">デジタルウォレットとは、XRPなどの暗号資産の送金、受け取り、保管を行えるソフトウェアです。デジタルウォレットには、カストディ型と非カストディ型という2つのタイプがあります。</h2>
+        <p>カストディ型ウォレットは、ユーザーの秘密鍵を管理しているため、ユーザーの代わりにウォレットが暗号資産を引き出すことができます。非カストディ型ウォレットは秘密鍵を管理せず、秘密鍵の管理はユーザー自身が行います。そのため、ユーザーの代わりにウォレットが暗号資産を送金することはできません。</p>
       </div>
     </section>
 
     <section class="mb-50 row">
-      <h5 class="ml-3 mb-3">XRP Ledger Software Wallets:</h5>
+      <h5 class="ml-3 mb-3">XRP Ledgerソフトウェアウォレット:</h5>
       <div class="w-100"></div>
       <div class="d-flex flex-wrap w-100 mb-10">
-        <a class="square d-flex card-b" href="https://xpring.io/portal/" target="_blank">
-          <img class="mw-100" src="./img/wallets/xpring.png" alt="Xpring logo">
+        <a class="square d-flex card-b" href="https://ripplex.io/portal/" target="_blank">
+          <img class="mw-100" src="assets/img/logos/ripplex.svg" alt="RippleX logo" width="190">
         </a>
         <a class="square d-flex card-b" href="https://xumm.app/" target="_blank">
           <img class="mw-100" src="./img/wallets/xumm.png" alt="Xumm logo">
@@ -177,11 +201,11 @@
         <a class="square d-flex card-b" href="https://trustwallet.com/" target="_blank">
           <img class="mw-100" src="./img/wallets/trust-wallet.png" alt="Trust Wallet logo">
         </a>
-        <a class="square d-flex card-b" href="https://www.secureblockchains.com/harbor-xrp-wallet/" target="_blank">
-          <img class="mw-100" src="./img/wallets/harbor-wallet.png" alt="Harbor Wallet logo">
+        <a class="square d-flex card-b" href="https://gatehub.net/" target="_blank">
+          <img class="mw-100" src="./img/wallets/gatehub-logo.png" alt="GateHub logo">
         </a>
       </div>
-      <h5 class="ml-3 mb-3">Hardware Wallets:</h5>
+      <h5 class="ml-3 mb-3">ハードウェアウォレット:</h5>
       <div class="d-flex flex-wrap w-100">
         <a class="square d-flex card-b" href="https://trezor.io/" target="_blank">
           <img class="mw-100" src="./img/wallets/trezor.png" alt="Trezor logo">
@@ -194,7 +218,7 @@
         </a>
       </div>
       <div class="w-100"></div>
-      <p class="col-sm-4 offset-sm-8 mt-16 text-smallest">Disclaimer: XRPL.org does not endorse or recommend any wallets or make any representations with respect to wallets or the purchase or sale of digital assets more generally. It’s advisable to conduct your own due diligence before relying on any third party or third-party technology, and providers may vary significantly in their compliance, data security, and privacy practices.</p>
+      <p class="col-sm-4 offset-sm-8 mt-16 text-smallest">免責事項: XRPL.orgは、いかなるウォレットの支持、推奨も、ウォレットやデジタル資産の購入および販売に関するいかなる表明も一般的には行いません。サードパーティやサードパーティ技術を利用する前に、ご自身でデューデリジェンスを実施することをお勧めします。コンプライアンス、データセキュリティ、プライバシー慣習はプロバイダーによって大きく異なる場合があります。</p>
     </section>
 
   </div>
@@ -217,13 +241,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -243,11 +267,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -280,7 +304,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -330,6 +354,40 @@ debug: false
 });
 </script>
 
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
+
+<script type="text/javascript">
+  $( '.card-b' )
+  .mouseover( function(e){
+    $( '.card-b' ).addClass( 'not-hover' );
+    $( this ).removeClass( 'not-hover' );
+  })
+  .mouseout( function(e){
+    $( '.card-b' ).removeClass( 'not-hover' );
+  });
+</script>
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
 </script>

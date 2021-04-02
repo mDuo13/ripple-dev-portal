@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>Ubuntuでのrippledの構築と実行 - XRP Ledger Dev Portal (日本語)</title>
+    <title>Ubuntuでのrippledの構築と実行 - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Ubuntuでのrippledの構築と実行 | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/build-run-rippled-ubuntu.html" />
+    <meta property="og:description" content="Ubuntu Linuxでrippledを自分でコンパイルします。" />
+    <meta name="description" content="Ubuntu Linuxでrippledを自分でコンパイルします。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/build-run-rippled-ubuntu.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/build-run-rippled-ubuntu.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/build-run-rippled-ubuntu.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -184,100 +208,94 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="ubuntuでのrippledの構築と実行">Ubuntuでのrippledの構築と実行</h1>
+        <h1 id="ubuntuでのrippledの構築と実行">Ubuntuでのrippledの構築と実行<a aria-hidden="true" class="hover_anchor" href="#ubuntuでのrippledの構築と実行"><i class="fa fa-link"></i></a></h1>
 <p><code>rippled</code>は、XRP Ledgerを管理するコアのピアツーピアサーバーです。<code>rippled</code>サーバーは、ピアのネットワークに接続し、暗号で署名された取引を中継し、共有のグローバル台帳の完全なローカルコピーを維持します。</p>
 <p><code>rippled</code>の概要については、<a href="install-rippled.html">Operating rippled Servers</a>を参照してください。</p>
 <p>次の手順を使用し、16.04以降のUbuntu Linux上で、ソースバージョン1.2.0以上から、<code>rippled</code>実行可能ファイルを構築します。これらの手順は、Ubuntu 16.04 LTSでテスト済みです。</p>
 <p>その他のプラットフォームでの<code>rippled</code>の構築については、<code>rippled</code> GitHubリポジトリの<a class="external-link" href="https://github.com/ripple/rippled/tree/develop/Builds" target="_blank">Builds <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
-<h2 id="前提条件">前提条件</h2>
+<h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>をコンパイルまたはインストールする前に、<a href="system-requirements.html">システム要件</a>を満たす必要があります。</p>
-<h2 id="1-rippledの構築">1. <code>rippled</code>の構築</h2>
+<h2 id="1-rippledの構築">1. <code>rippled</code>の構築<a aria-hidden="true" class="hover_anchor" href="#1-rippledの構築"><i class="fa fa-link"></i></a></h2>
 <p>次の手順では、UbuntuのAPT（Advanced Packaging Tool）を使用し、<code>rippled</code>の構築と実行に必要なソフトウェアをインストールします。</p>
 <ol>
 <li>
 <p><code>apt-get</code>でインストールまたはアップグレードできるパッケージのリストを更新します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">sudo apt-get update</span>
+<div class="codehilite"><pre><span></span><code>sudo apt-get update
 </code></pre></div>
 </li>
 <li>
 <p>現在インストールされているパッケージをアップグレードします。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">sudo apt-get -y upgrade</span>
+<div class="codehilite"><pre><span></span><code>sudo apt-get -y upgrade
 </code></pre></div>
 </li>
 <li>
 <p>依存関係をインストールします。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget</span>
+<div class="codehilite"><pre><span></span><code>sudo apt-get -y install git pkg-config protobuf-compiler libprotobuf-dev libssl-dev wget
 </code></pre></div>
 </li>
 <li>
 <p>CMakeをインストールします。</p>
 </li>
 </ol>
-<p><code>rippled</code>のバージョン1.4.0は、CMake 3.9.0以降を必要とします。このチュートリアルでは、執筆時の最新バージョンだったCMake 3.13.3を使用しました。</p>
+<p><code>rippled</code>のバージョン1.7.0は、CMake 3.9.0以降を必要とします。このチュートリアルでは、執筆時の最新バージョンだったCMake 3.13.3を使用しました。</p>
 <p>CMake 3.9.0以降をすでにインストールしてある場合には、このステップはスキップできます。</p>
 <p>CMake 3.13.3をインストールするには、以下を実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">    wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3-Linux-x86_64.sh</span>
-<span class="err">    sudo sh cmake-3.13.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir</span>
+<div class="codehilite"><pre><span></span><code>    <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Kitware</span><span class="o">/</span><span class="n">CMake</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="mf">13.3</span><span class="o">/</span><span class="n">cmake</span><span class="o">-</span><span class="mf">3.13</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+    <span class="n">sudo</span> <span class="n">sh</span> <span class="n">cmake</span><span class="o">-</span><span class="mf">3.13</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">--</span><span class="n">exclude</span><span class="o">-</span><span class="n">subdir</span>
 </code></pre></div>
 <p><code>cmake --version</code>を使用し、正常にインストールされたことを確認します。</p>
 <ol start="5">
 <li>Boostをコンパイルします。</li>
 </ol>
-<p><code>rippled</code>のバージョン1.4.0は、Boostバージョン1.70.0以降を必要とします。Ubuntu 18.04（または16.04）ソフトウェアリポジトリにBoostバージョン1.70.0以降がないため、自分でコンパイルする必要があります。（次の例では、執筆時点の最新バージョンであるBoost 1.71.0を使用しています。）</p>
+<p><code>rippled</code>のバージョン1.7.0は、Boostバージョン1.70.0以降を必要とします。Ubuntu 18.04（または16.04）ソフトウェアリポジトリにBoostバージョン1.70.0以降がないため、自分でコンパイルする必要があります。（次の例では、執筆時点の最新バージョンであるBoost 1.71.0を使用しています。）</p>
 <p>以前に<code>rippled</code>用にBoost 1.71.0をインストールしていて、<code>BOOST_ROOT</code>環境変数を構成した場合には、このステップはスキップできます。</p>
 <ol>
 <li>
 <p>Boost 1.71.0をダウンロードします。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">   wget https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz</span>
+<div class="codehilite"><pre><span></span><code>   wget https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
 </code></pre></div>
 </li>
 <li>
 <p><code>boost_1_71_0.tar.gz</code>を抽出します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">   tar xvzf boost_1_71_0.tar.gz</span>
+<div class="codehilite"><pre><span></span><code>   tar xvzf boost_1_71_0.tar.gz
 </code></pre></div>
 </li>
 <li>
 <p>新しい<code>boost_1_71_0</code>ディレクトリーに移動します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">   cd boost_1_71_0</span>
+<div class="codehilite"><pre><span></span><code>   cd boost_1_71_0
 </code></pre></div>
 </li>
 <li>
 <p>使用するBoost.Buildシステムを準備します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">   ./bootstrap.sh</span>
+<div class="codehilite"><pre><span></span><code>   ./bootstrap.sh
 </code></pre></div>
 </li>
 <li>
 <p>個別にコンパイルされたBoostライブラリを構築します。ハードウェアの仕様にもよりますが、これには約10分かかります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">   ./b2 -j 4</span>
+<div class="codehilite"><pre><span></span><code>   ./b2 -j 4
 </code></pre></div>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> この例では、4つのプロセスを並行して構築します。使用する最適なプロセス数は、お使いのハードウェアで使用可能なCPUコア数によって異なります。<code>cat /proc/cpuinfo</code>を使用して、ハードウェアプロセッサーに関する情報を取得できます。</p>
 </li>
 <li>
 <p><code>BOOST_ROOT</code>環境変数を、新しい<code>boost_1_71_0</code>ディレクトリーを参照するように設定します。ログイン時に自動的に設定されるようにするため、この環境変数を、シェル用の<code>.profile</code>またはそれに相当するファイルに入れることをお勧めします。ファイルに次の行を追加します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">   export BOOST_ROOT=/home/my_user/boost_1_71_0</span>
+<div class="codehilite"><pre><span></span><code>   <span class="k">export</span> <span class="n">BOOST_ROOT</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">my_user</span><span class="o">/</span><span class="n">boost_1_71_0</span>
 </code></pre></div>
 </li>
 <li>
 <p>更新した<code>.profile</code>ファイルを読み込みます。例:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">   source ~/.profile</span>
+<div class="codehilite"><pre><span></span><code>   source ~/.profile
 </code></pre></div>
 </li>
 <li>
 <p>作業ディレクトリーから、<code>rippled</code>ソースコードを取得します。<code>master</code>ブランチに最新のリリースバージョンがあります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">git clone https://github.com/ripple/rippled.git</span>
-<span class="err">cd rippled</span>
-<span class="err">git checkout master</span>
+<div class="codehilite"><pre><span></span><code>git clone https://github.com/ripple/rippled.git
+cd rippled
+git checkout master
 </code></pre></div>
 </li>
 <li>
-<p>コミットログを調べ、正しいバージョンをコンパイルしていることを確認します。最新のコミットは、よく知られるRipple開発者によって署名され、バージョン番号が最新のリリースバージョンに設定されています。例:</p>
+<p>コミットログを調べ、正しいバージョンをコンパイルしていることを確認します。最新のコミットは、よく知られるRipple開発者によって署名され、バージョン番号が最新のリリースバージョンに設定されています。<a class="external-link" href="https://xrpl.org/blog/label/rippled-release-notes.html" target="_blank"><code>rippled</code>のリリースアナウンスは <i aria-hidden="true" class="fa fa-external-link"></i></a>そのリリースの最新のコミットを示す。</p>
 <div class="codehilite"><pre><span></span><code>$ git log -1
-
-commit 06c371544acc3b488b9d9c057cee4e51f6bef7a2
-Author: Nik Bougalis &lt;nikb@bougalis.net&gt;
-Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span class="m">2019</span> -0800
-
-    Set version to <span class="m">1</span>.4.0
 </code></pre></div>
 </li>
 <li>
@@ -291,30 +309,30 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 </li>
 <li>
 <p>ビルドシステムを生成します。ビルドは、ソースツリールートとは別のディレクトリーで実行します。この例では、<code>rippled</code>のサブディレクトリーである<code>my_build</code>ディレクトリーを使用します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">   mkdir my_build</span>
-<span class="err">   cd my_build</span>
-<span class="err">   cmake ..</span>
+<div class="codehilite"><pre><span></span><code>   mkdir my_build
+   cd my_build
+   cmake ..
 </code></pre></div>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> デフォルトのビルドには、本番環境では有用ではないものの、開発環境に便利なデバッグ記号が含まれています。<code>rippled</code>を本番環境用サーバーで使用するには、<code>cmake</code>コマンドの実行時に<code>-DCMAKE_BUILD_TYPE=Release</code>フラグを追加します。</p>
 </li>
 <li>
 <p><code>rippled</code>のバイナリー実行可能ファイルを構築します。ハードウェアの仕様にもよりますが、これには約30分かかります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">   cmake --build .</span>
+<div class="codehilite"><pre><span></span><code>   cmake --build .
 </code></pre></div>
 </li>
 <li>
 <p><em>（省略可能）</em><code>rippled</code>ユニットテストを実行します。テストエラーがない場合には、<code>rippled</code>実行可能ファイルがほぼ確実に正しくコンパイルされています。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">./rippled -u</span>
+<div class="codehilite"><pre><span></span><code>./rippled -u
 </code></pre></div>
 </li>
 </ol>
-<h2 id="2-rippledの構成">2. <code>rippled</code>の構成</h2>
+<h2 id="2-rippledの構成">2. <code>rippled</code>の構成<a aria-hidden="true" class="hover_anchor" href="#2-rippledの構成"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>を正常に起動させるために必要な以下の構成を行います。その他の構成はすべて省略可能であり、作業サーバーをセットアップしてから調整することもできます。</p>
 <ol>
 <li>
 <p><code>rippled</code>フォルダーに移動して、サンプル構成ファイルのコピーを作成します。構成ファイルをこの場所に保存すると、<code>rippled</code>を非ルートユーザーとして実行できます（推奨）。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">mkdir -p ~/.config/ripple</span>
-<span class="err">cp cfg/rippled-example.cfg ~/.config/ripple/rippled.cfg</span>
+<div class="codehilite"><pre><span></span><code>mkdir -p ~/.config/ripple
+cp cfg/rippled-example.cfg ~/.config/ripple/rippled.cfg
 </code></pre></div>
 </li>
 <li>
@@ -331,63 +349,63 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 </li>
 <li>
 <p>サンプルの<code>validators.txt</code>ファイルを<code>rippled.cfg</code>と同じフォルダーに保存します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">cp cfg/validators-example.txt ~/.config/ripple/validators.txt</span>
+<div class="codehilite"><pre><span></span><code>cp cfg/validators-example.txt ~/.config/ripple/validators.txt
 </code></pre></div>
 </li>
 </ol>
-<p class="devportal-callout 警告"><strong>警告:</strong> Rippleは、安全を第一に考えて<a class="external-link" href="https://xrpl.org/blog/2017/decent-strategy-update.html" target="_blank">分散プラン <i aria-hidden="true" class="fa fa-external-link"></i></a>をデザインしました。特にRippleから勧められない限り、移行中に<code>validators.txt</code>ファイルを変更<em>しない</em>でください。小さな変更であっても、バリデータの設定に変更を加えると、サーバーがネットワークから分岐し、古い、不完全、または正しくないデータについて報告する原因となることがあります。そのようなデータを使用すると、経費の無駄になります。</p>
-<h2 id="3-rippledの実行">3. <code>rippled</code>の実行</h2>
+<p class="devportal-callout 警告"><strong>警告:</strong> <code>validators.txt</code>のファイルはあなたのサーバーがレジャーを検証する判断の為の設定を含まれています。　バリデータの設定に注意しない変更を加えると、サーバーがネットワークから分岐し、古い、不完全、または正しくないデータについて報告する原因となることがあります。そのようなデータを使用すると、経費の無駄になります。</p>
+<h2 id="3-rippledの実行">3. <code>rippled</code>の実行<a aria-hidden="true" class="hover_anchor" href="#3-rippledの実行"><i class="fa fa-link"></i></a></h2>
 <p>定義した構成を使用し、構築した実行可能ファイルからストック<code>rippled</code>サーバーを実行するには、以下を実行します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">cd my_build</span>
-<span class="err">./rippled</span>
+<div class="codehilite"><pre><span></span><code>cd my_build
+./rippled
 </code></pre></div>
-<h3 id="ターミナルに表示される内容">ターミナルに表示される内容</h3>
+<h3 id="ターミナルに表示される内容">ターミナルに表示される内容<a aria-hidden="true" class="hover_anchor" href="#ターミナルに表示される内容"><i class="fa fa-link"></i></a></h3>
 <p><code>rippled</code>を実行するとターミナルに表示される内容の抜粋を以下に示します。</p>
-<div class="codehilite"><pre><span></span><code><span class="c">Loading: "/home/ubuntu/.config/ripple/rippled.cfg"</span>
-<span class="c">Watchdog: Launching child 1</span>
-<span class="err">2018-Jun-06 00:51:35.094331139 JobQueue:NFO Auto-tuning to 4 validation/transaction/proposal threads.</span>
-<span class="err">2018-Jun-06 00:51:35.100607625 Amendments:DBG Amendment 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 is supported.</span>
-<span class="err">2018-Jun-06 00:51:35.101226904 Amendments:DBG Amendment 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC is supported.</span>
-<span class="err">2018-Jun-06 00:51:35.101354503 Amendments:DBG Amendment 42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE is supported.</span>
-<span class="err">2018-Jun-06 00:51:35.101503304 Amendments:DBG Amendment 08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647 is supported.</span>
-<span class="err">2018-Jun-06 00:51:35.101624717 Amendments:DBG Amendment 740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11 is supported.</span>
-<span class="err">...</span>
-<span class="err">2018-Jun-06 00:51:35.106970906 OrderBookDB:DBG Advancing from 0 to 3</span>
-<span class="err">2018-Jun-06 00:51:35.107158071 OrderBookDB:DBG OrderBookDB::update&gt;</span>
-<span class="err">2018-Jun-06 00:51:35.107380722 OrderBookDB:DBG OrderBookDB::update&lt; 0 books found</span>
-<span class="err">2018-Jun-06 00:51:35.168875072 ManifestCache:NFO Manifest: AcceptedNew;Pk: nHBARBMi2MC3LJYuvs9Rhp94WcfbxoQD5BGhwN3jaHBsPkbNpoZq;Seq: 1;</span>
-<span class="err">2018-Jun-06 00:51:35.172099325 ManifestCache:NFO Manifest: AcceptedNew;Pk: nHB57Sey9QgaB8CubTPvMZLkLAzfJzNMWBCCiDRgazWJujRdnz13;Seq: 1;</span>
-<span class="err">2018-Jun-06 00:51:35.175302816 ManifestCache:NFO Manifest: AcceptedNew;Pk: nHDsPCxoBHZS9KNNfsd7iVaQXBSitNtbqXfB6BS1iEmJwwEKLhhQ;Seq: 1;</span>
-<span class="err">2018-Jun-06 00:51:35.178486951 ManifestCache:NFO Manifest: AcceptedNew;Pk: nHBQ3CT3EWYZ4uzbnL3k6TRf9bBPhWRFVcK1F5NjtwCBksMEt5yy;Seq: 2;</span>
-<span class="err">2018-Jun-06 00:51:35.181681868 ManifestCache:NFO Manifest: AcceptedNew;Pk: nHU5egMCYs1g7YRVKrKjEqVYFL12mFWwkqVFTiz2Zi4Z8jppPgxU;Seq: 2;</span>
-<span class="err">2018-Jun-06 00:51:35.184864291 ManifestCache:NFO Manifest: AcceptedNew;Pk: nHBbiP5ua5dUqCTz5i5vd3ia9jg3KJthohDjgKxnc7LxtmnauW7Z;Seq: 2;</span>
-<span class="err">...</span>
-<span class="err">2018-Jun-06 00:51:35.317972033 LedgerConsensus:NFO Entering consensus process, watching, synced=no</span>
-<span class="err">2018-Jun-06 00:51:35.318155351 LedgerConsensus:NFO Consensus mode change before=observing, after=observing</span>
-<span class="err">2018-Jun-06 00:51:35.318360468 NetworkOPs:DBG Initiating consensus engine</span>
-<span class="err">2018-Jun-06 00:51:35.358673488 Server:NFO Opened 'port_rpc_admin_local' (ip=127.0.0.1:5005, admin IPs:127.0.0.1, http)</span>
-<span class="err">2018-Jun-06 00:51:35.359296222 Server:NFO Opened 'port_peer' (ip=0.0.0.0:51235, peer)</span>
-<span class="err">2018-Jun-06 00:51:35.359778994 Server:NFO Opened 'port_ws_admin_local' (ip=127.0.0.1:6006, admin IPs:127.0.0.1, ws)</span>
-<span class="err">2018-Jun-06 00:51:35.360240190 Application:FTL Startup RPC:</span>
-<span class="err">{</span>
-<span class="err">    "command" : "log_level",</span>
-<span class="err">    "severity" : "warning"</span>
-<span class="err">}</span>
-<span class="err">...</span>
-<span class="err">2018-Jun-06 00:52:32.385295633 NetworkOPs:WRN We are not running on the consensus ledger</span>
-<span class="err">2018-Jun-06 00:52:32.388552023 LedgerConsensus:WRN Need consensus ledger 84726E8C5B346E28C21ADE6AAD703E65F802322EDAA5B76446A4D0C5206AB2DB</span>
-<span class="err">2018-Jun-06 00:52:33.379448561 LedgerConsensus:WRN View of consensus changed during open status=open,  mode=wrongLedger</span>
-<span class="err">2018-Jun-06 00:52:33.379541915 LedgerConsensus:WRN 84726E8C5B346E28C21ADE6AAD703E65F802322EDAA5B76446A4D0C5206AB2DB to 1720162AE3BA8CD953BFB40EB746D7B78D13E1C97905E8C553E0B573F1B6A517</span>
-<span class="err">2018-Jun-06 00:52:33.379747629 LedgerConsensus:WRN {"accepted":true,"account_hash":"CC1F1EC08E76BC9FE843BBF9C6068C5B73192E6957B9CC1174DCB2B94DD2025A","close_flags":0,"close_time":581561550,"close_time_human":"2018-Jun-06 00:52:30.000000000","close_time_resolution":30,"closed":true,"hash":"94354A7FECAB638C29BBC79B18CFDBDC05E4FF72647AD62F072DB4D23A5E0317","ledger_hash":"94354A7FECAB638C29BBC79B18CFDBDC05E4FF72647AD62F072DB4D23A5E0317","ledger_index":"3","parent_close_time":581561490,"parent_hash":"80BF92A69F65F5C543E962DF4B41715546FDD97FC6988028E5ACBB46654756CA","seqNum":"3","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}</span>
-<span class="err">...</span>
-<span class="err">2018-Jun-06 00:53:50.568965045 LedgerConsensus:WRN {"accepted":true,"account_hash":"A79E6754544F9C8FC74870C95A39CED1D45CC1206DDA4C113E51F9DB6DDB0E76","close_flags":0,"close_time":581561630,"close_time_human":"2018-Jun-06 00:53:50.000000000","close_time_resolution":10,"closed":true,"hash":"6294118F39F5F2B8349E7CC6D4D5931011622E78DD4E34D91372651E9F453E2F","ledger_hash":"6294118F39F5F2B8349E7CC6D4D5931011622E78DD4E34D91372651E9F453E2F","ledger_index":"29","parent_close_time":581561623,"parent_hash":"5F57870CE5160D6B53271955F26E3BE63696D1127B91BC7943F9A199B313CB85","seqNum":"29","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}</span>
-<span class="err">2018-Jun-06 00:53:50.569776678 LedgerConsensus:WRN Need consensus ledger 6A0DE66550B6BA9636E3F8FDB71C2E924D182A1835E4143B2170DAA1D33CAE8D</span>
-<span class="err">2018-Jun-06 00:53:51.576778862 NetworkOPs:WRN We are not running on the consensus ledger</span>
-<span class="err">2018-Jun-06 00:53:53.576524564 LedgerConsensus:WRN View of consensus changed during establish status=establish,  mode=wrongLedger</span>
-<span class="err">2018-Jun-06 00:53:53.576783663 LedgerConsensus:WRN 6A0DE66550B6BA9636E3F8FDB71C2E924D182A1835E4143B2170DAA1D33CAE8D to 1CB9C9A1C27403CBAB9DFCFA61E1F915059DFE4FA93524537B885CC190DB5C6B</span>
-<span class="err">2018-Jun-06 00:53:53.577079124 LedgerConsensus:WRN {"accepted":true,"account_hash":"5CAB3E4F5F2AC1A764106D7CC0729E6E7D1F7F93C65B7D8CB04C8DE2FC2C1305","close_flags":0,"close_time":581561631,"close_time_human":"2018-Jun-06 00:53:51.000000000","close_time_resolution":10,"closed":true,"hash":"201E147BD195CE3C56B0C0B8DF58386FC7BFF450E1E5B286A29AB856926D5F79","ledger_hash":"201E147BD195CE3C56B0C0B8DF58386FC7BFF450E1E5B286A29AB856926D5F79","ledger_index":"30","parent_close_time":581561630,"parent_hash":"6294118F39F5F2B8349E7CC6D4D5931011622E78DD4E34D91372651E9F453E2F","seqNum":"30","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">Loading</span><span class="o">:</span> <span class="s2">"/home/ubuntu/.config/ripple/rippled.cfg"</span>
+<span class="nt">Watchdog</span><span class="o">:</span> <span class="nt">Launching</span> <span class="nt">child</span> <span class="nt">1</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">094331139</span> <span class="nt">JobQueue</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Auto-tuning</span> <span class="nt">to</span> <span class="nt">4</span> <span class="nt">validation</span><span class="o">/</span><span class="nt">transaction</span><span class="o">/</span><span class="nt">proposal</span> <span class="nt">threads</span><span class="o">.</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">100607625</span> <span class="nt">Amendments</span><span class="p">:</span><span class="nd">DBG</span> <span class="nt">Amendment</span> <span class="nt">4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</span> <span class="nt">is</span> <span class="nt">supported</span><span class="o">.</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">101226904</span> <span class="nt">Amendments</span><span class="p">:</span><span class="nd">DBG</span> <span class="nt">Amendment</span> <span class="nt">6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</span> <span class="nt">is</span> <span class="nt">supported</span><span class="o">.</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">101354503</span> <span class="nt">Amendments</span><span class="p">:</span><span class="nd">DBG</span> <span class="nt">Amendment</span> <span class="nt">42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</span> <span class="nt">is</span> <span class="nt">supported</span><span class="o">.</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">101503304</span> <span class="nt">Amendments</span><span class="p">:</span><span class="nd">DBG</span> <span class="nt">Amendment</span> <span class="nt">08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</span> <span class="nt">is</span> <span class="nt">supported</span><span class="o">.</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">101624717</span> <span class="nt">Amendments</span><span class="p">:</span><span class="nd">DBG</span> <span class="nt">Amendment</span> <span class="nt">740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</span> <span class="nt">is</span> <span class="nt">supported</span><span class="o">.</span>
+<span class="o">...</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">106970906</span> <span class="nt">OrderBookDB</span><span class="p">:</span><span class="nd">DBG</span> <span class="nt">Advancing</span> <span class="nt">from</span> <span class="nt">0</span> <span class="nt">to</span> <span class="nt">3</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">107158071</span> <span class="nt">OrderBookDB</span><span class="p">:</span><span class="nd">DBG</span> <span class="nt">OrderBookDB</span><span class="p">::</span><span class="nd">update</span><span class="o">&gt;</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">107380722</span> <span class="nt">OrderBookDB</span><span class="p">:</span><span class="nd">DBG</span> <span class="nt">OrderBookDB</span><span class="p">::</span><span class="nd">update</span><span class="o">&lt;</span> <span class="nt">0</span> <span class="nt">books</span> <span class="nt">found</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">168875072</span> <span class="nt">ManifestCache</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Manifest</span><span class="o">:</span> <span class="nt">AcceptedNew</span><span class="o">;</span><span class="nt">Pk</span><span class="o">:</span> <span class="nt">nHBARBMi2MC3LJYuvs9Rhp94WcfbxoQD5BGhwN3jaHBsPkbNpoZq</span><span class="o">;</span><span class="nt">Seq</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">172099325</span> <span class="nt">ManifestCache</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Manifest</span><span class="o">:</span> <span class="nt">AcceptedNew</span><span class="o">;</span><span class="nt">Pk</span><span class="o">:</span> <span class="nt">nHB57Sey9QgaB8CubTPvMZLkLAzfJzNMWBCCiDRgazWJujRdnz13</span><span class="o">;</span><span class="nt">Seq</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">175302816</span> <span class="nt">ManifestCache</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Manifest</span><span class="o">:</span> <span class="nt">AcceptedNew</span><span class="o">;</span><span class="nt">Pk</span><span class="o">:</span> <span class="nt">nHDsPCxoBHZS9KNNfsd7iVaQXBSitNtbqXfB6BS1iEmJwwEKLhhQ</span><span class="o">;</span><span class="nt">Seq</span><span class="o">:</span> <span class="nt">1</span><span class="o">;</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">178486951</span> <span class="nt">ManifestCache</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Manifest</span><span class="o">:</span> <span class="nt">AcceptedNew</span><span class="o">;</span><span class="nt">Pk</span><span class="o">:</span> <span class="nt">nHBQ3CT3EWYZ4uzbnL3k6TRf9bBPhWRFVcK1F5NjtwCBksMEt5yy</span><span class="o">;</span><span class="nt">Seq</span><span class="o">:</span> <span class="nt">2</span><span class="o">;</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">181681868</span> <span class="nt">ManifestCache</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Manifest</span><span class="o">:</span> <span class="nt">AcceptedNew</span><span class="o">;</span><span class="nt">Pk</span><span class="o">:</span> <span class="nt">nHU5egMCYs1g7YRVKrKjEqVYFL12mFWwkqVFTiz2Zi4Z8jppPgxU</span><span class="o">;</span><span class="nt">Seq</span><span class="o">:</span> <span class="nt">2</span><span class="o">;</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">184864291</span> <span class="nt">ManifestCache</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Manifest</span><span class="o">:</span> <span class="nt">AcceptedNew</span><span class="o">;</span><span class="nt">Pk</span><span class="o">:</span> <span class="nt">nHBbiP5ua5dUqCTz5i5vd3ia9jg3KJthohDjgKxnc7LxtmnauW7Z</span><span class="o">;</span><span class="nt">Seq</span><span class="o">:</span> <span class="nt">2</span><span class="o">;</span>
+<span class="o">...</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">317972033</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Entering</span> <span class="nt">consensus</span> <span class="nt">process</span><span class="o">,</span> <span class="nt">watching</span><span class="o">,</span> <span class="nt">synced</span><span class="o">=</span><span class="nt">no</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">318155351</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Consensus</span> <span class="nt">mode</span> <span class="nt">change</span> <span class="nt">before</span><span class="o">=</span><span class="nt">observing</span><span class="o">,</span> <span class="nt">after</span><span class="o">=</span><span class="nt">observing</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">318360468</span> <span class="nt">NetworkOPs</span><span class="p">:</span><span class="nd">DBG</span> <span class="nt">Initiating</span> <span class="nt">consensus</span> <span class="nt">engine</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">358673488</span> <span class="nt">Server</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Opened</span> <span class="s1">'port_rpc_admin_local'</span> <span class="o">(</span><span class="nt">ip</span><span class="o">=</span><span class="nt">127</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">1</span><span class="p">:</span><span class="nd">5005</span><span class="o">,</span> <span class="nt">admin</span> <span class="nt">IPs</span><span class="p">:</span><span class="nd">127</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">1</span><span class="o">,</span> <span class="nt">http</span><span class="o">)</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">359296222</span> <span class="nt">Server</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Opened</span> <span class="s1">'port_peer'</span> <span class="o">(</span><span class="nt">ip</span><span class="o">=</span><span class="nt">0</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">0</span><span class="p">:</span><span class="nd">51235</span><span class="o">,</span> <span class="nt">peer</span><span class="o">)</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">359778994</span> <span class="nt">Server</span><span class="p">:</span><span class="nd">NFO</span> <span class="nt">Opened</span> <span class="s1">'port_ws_admin_local'</span> <span class="o">(</span><span class="nt">ip</span><span class="o">=</span><span class="nt">127</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">1</span><span class="p">:</span><span class="nd">6006</span><span class="o">,</span> <span class="nt">admin</span> <span class="nt">IPs</span><span class="p">:</span><span class="nd">127</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">0</span><span class="p">.</span><span class="nc">1</span><span class="o">,</span> <span class="nt">ws</span><span class="o">)</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">51</span><span class="p">:</span><span class="nd">35</span><span class="p">.</span><span class="nc">360240190</span> <span class="nt">Application</span><span class="p">:</span><span class="nd">FTL</span> <span class="nt">Startup</span> <span class="nt">RPC</span><span class="o">:</span>
+<span class="p">{</span>
+    <span class="err">"command"</span> <span class="err">:</span> <span class="err">"log_level",</span>
+    <span class="err">"severity"</span> <span class="err">:</span> <span class="err">"warning"</span>
+<span class="p">}</span>
+<span class="o">...</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">52</span><span class="p">:</span><span class="nd">32</span><span class="p">.</span><span class="nc">385295633</span> <span class="nt">NetworkOPs</span><span class="p">:</span><span class="nd">WRN</span> <span class="nt">We</span> <span class="nt">are</span> <span class="nt">not</span> <span class="nt">running</span> <span class="nt">on</span> <span class="nt">the</span> <span class="nt">consensus</span> <span class="nt">ledger</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">52</span><span class="p">:</span><span class="nd">32</span><span class="p">.</span><span class="nc">388552023</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">WRN</span> <span class="nt">Need</span> <span class="nt">consensus</span> <span class="nt">ledger</span> <span class="nt">84726E8C5B346E28C21ADE6AAD703E65F802322EDAA5B76446A4D0C5206AB2DB</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">52</span><span class="p">:</span><span class="nd">33</span><span class="p">.</span><span class="nc">379448561</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">WRN</span> <span class="nt">View</span> <span class="nt">of</span> <span class="nt">consensus</span> <span class="nt">changed</span> <span class="nt">during</span> <span class="nt">open</span> <span class="nt">status</span><span class="o">=</span><span class="nt">open</span><span class="o">,</span>  <span class="nt">mode</span><span class="o">=</span><span class="nt">wrongLedger</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">52</span><span class="p">:</span><span class="nd">33</span><span class="p">.</span><span class="nc">379541915</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">WRN</span> <span class="nt">84726E8C5B346E28C21ADE6AAD703E65F802322EDAA5B76446A4D0C5206AB2DB</span> <span class="nt">to</span> <span class="nt">1720162AE3BA8CD953BFB40EB746D7B78D13E1C97905E8C553E0B573F1B6A517</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">52</span><span class="p">:</span><span class="nd">33</span><span class="p">.</span><span class="nc">379747629</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">WRN</span> <span class="p">{</span><span class="err">"accepted":true,"account_hash":"CC1F1EC08E76BC9FE843BBF9C6068C5B73192E6957B9CC1174DCB2B94DD2025A","close_flags":0,"close_time":581561550,"close_time_human":"2018-Jun-06</span> <span class="err">00:52:30.000000000","close_time_resolution":30,"closed":true,"hash":"94354A7FECAB638C29BBC79B18CFDBDC05E4FF72647AD62F072DB4D23A5E0317","ledger_hash":"94354A7FECAB638C29BBC79B18CFDBDC05E4FF72647AD62F072DB4D23A5E0317","ledger_index":"3","parent_close_time":581561490,"parent_hash":"80BF92A69F65F5C543E962DF4B41715546FDD97FC6988028E5ACBB46654756CA","seqNum":"3","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"</span><span class="p">}</span>
+<span class="o">...</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">53</span><span class="p">:</span><span class="nd">50</span><span class="p">.</span><span class="nc">568965045</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">WRN</span> <span class="p">{</span><span class="err">"accepted":true,"account_hash":"A79E6754544F9C8FC74870C95A39CED1D45CC1206DDA4C113E51F9DB6DDB0E76","close_flags":0,"close_time":581561630,"close_time_human":"2018-Jun-06</span> <span class="err">00:53:50.000000000","close_time_resolution":10,"closed":true,"hash":"6294118F39F5F2B8349E7CC6D4D5931011622E78DD4E34D91372651E9F453E2F","ledger_hash":"6294118F39F5F2B8349E7CC6D4D5931011622E78DD4E34D91372651E9F453E2F","ledger_index":"29","parent_close_time":581561623,"parent_hash":"5F57870CE5160D6B53271955F26E3BE63696D1127B91BC7943F9A199B313CB85","seqNum":"29","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"</span><span class="p">}</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">53</span><span class="p">:</span><span class="nd">50</span><span class="p">.</span><span class="nc">569776678</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">WRN</span> <span class="nt">Need</span> <span class="nt">consensus</span> <span class="nt">ledger</span> <span class="nt">6A0DE66550B6BA9636E3F8FDB71C2E924D182A1835E4143B2170DAA1D33CAE8D</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">53</span><span class="p">:</span><span class="nd">51</span><span class="p">.</span><span class="nc">576778862</span> <span class="nt">NetworkOPs</span><span class="p">:</span><span class="nd">WRN</span> <span class="nt">We</span> <span class="nt">are</span> <span class="nt">not</span> <span class="nt">running</span> <span class="nt">on</span> <span class="nt">the</span> <span class="nt">consensus</span> <span class="nt">ledger</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">53</span><span class="p">:</span><span class="nd">53</span><span class="p">.</span><span class="nc">576524564</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">WRN</span> <span class="nt">View</span> <span class="nt">of</span> <span class="nt">consensus</span> <span class="nt">changed</span> <span class="nt">during</span> <span class="nt">establish</span> <span class="nt">status</span><span class="o">=</span><span class="nt">establish</span><span class="o">,</span>  <span class="nt">mode</span><span class="o">=</span><span class="nt">wrongLedger</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">53</span><span class="p">:</span><span class="nd">53</span><span class="p">.</span><span class="nc">576783663</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">WRN</span> <span class="nt">6A0DE66550B6BA9636E3F8FDB71C2E924D182A1835E4143B2170DAA1D33CAE8D</span> <span class="nt">to</span> <span class="nt">1CB9C9A1C27403CBAB9DFCFA61E1F915059DFE4FA93524537B885CC190DB5C6B</span>
+<span class="nt">2018-Jun-06</span> <span class="nt">00</span><span class="p">:</span><span class="nd">53</span><span class="p">:</span><span class="nd">53</span><span class="p">.</span><span class="nc">577079124</span> <span class="nt">LedgerConsensus</span><span class="p">:</span><span class="nd">WRN</span> <span class="p">{</span><span class="err">"accepted":true,"account_hash":"5CAB3E4F5F2AC1A764106D7CC0729E6E7D1F7F93C65B7D8CB04C8DE2FC2C1305","close_flags":0,"close_time":581561631,"close_time_human":"2018-Jun-06</span> <span class="err">00:53:51.000000000","close_time_resolution":10,"closed":true,"hash":"201E147BD195CE3C56B0C0B8DF58386FC7BFF450E1E5B286A29AB856926D5F79","ledger_hash":"201E147BD195CE3C56B0C0B8DF58386FC7BFF450E1E5B286A29AB856926D5F79","ledger_index":"30","parent_close_time":581561630,"parent_hash":"6294118F39F5F2B8349E7CC6D4D5931011622E78DD4E34D91372651E9F453E2F","seqNum":"30","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"</span><span class="p">}</span>
 </code></pre></div>
-<h2 id="次のステップ">次のステップ</h2>
+<h2 id="次のステップ">次のステップ<a aria-hidden="true" class="hover_anchor" href="#次のステップ"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>
 <p>これでストック<code>rippled</code>サーバーを実行できたので、次に検証サーバーとして実行してみましょう。検証サーバーの詳細について、そして検証サーバーを実行する理由については、<a href="install-rippled.html">rippledのセットアップチュートリアル</a>を参照してください。</p>
@@ -397,16 +415,16 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 </li>
 <li>
 <p>開発のベストプラクティスとして、<code>rippled</code> <code>.deb</code>パッケージをビルドすることをお勧めします。CMakeビルドのdebパッケージターゲットを使用して、ソースツリーから直接<code>deb</code>パッケージをビルドできます。ビルドマシンには<a class="external-link" href="https://docs.docker.com/install/#supported-platforms" target="_blank">Dockerをインストール <i aria-hidden="true" class="fa fa-external-link"></i></a>している必要があります。このプロセスを完了するのに1時間以上かかる場合があります。<code>deb</code>パッケージをビルドするには、以下の手順に従います。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">mkdir -p build/pkg &amp;&amp; cd build/pkg</span>
-<span class="err">cmake -Dpackages_only=ON ../..</span>
-<span class="err">cmake --build . --target dpkg</span>
+<div class="codehilite"><pre><span></span><code>mkdir -p build/pkg &amp;&amp; cd build/pkg
+cmake -Dpackages_only=ON ../..
+cmake --build . --target dpkg
 </code></pre></div>
 </li>
 <li>
 <p>また、<code>systemd</code>をインストールすることもできます。詳細は、<a class="external-link" href="https://wiki.ubuntu.com/SystemdForUpstartUsers" target="_blank">systemd for Upstart Users <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。<a class="external-link" href="https://github.com/ripple/rippled/blob/master/Builds/containers/shared/rippled.service" target="_blank">公式の<code>rippled</code>システムユニットファイル <i aria-hidden="true" class="fa fa-external-link"></i></a>をそのまま使用するか、ニーズに合わせてファイルを編集して使用できます。</p>
 </li>
 </ul>
-<h2 id="関連項目">関連項目</h2>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>コンセプト:</strong><ul>
 <li><a href="the-rippled-server.html"><code>rippled</code>サーバー</a></li>
@@ -462,6 +480,7 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">XRP Ledger APIの使用開始</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">RippleAPI入門ガイド</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">XRPの送金</a></li>
@@ -475,15 +494,15 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">安全な署名の設定</a></li>
@@ -492,21 +511,21 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">アカウントの設定の利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a></li>
@@ -516,24 +535,25 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">宛先タグの要求</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">オフラインでのアカウント設定のチュートリアル</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Escrowの使用</a></li>
@@ -560,21 +580,21 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a></li>
@@ -583,21 +603,21 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">rippledサーバの利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title active-parent" href="install-rippled.html">rippledのインストール</a></li>
@@ -617,6 +637,7 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">オンライン削除の設定</a></li>
@@ -655,7 +676,7 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -678,13 +699,13 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -704,11 +725,11 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -741,7 +762,7 @@ Date:   Mon Nov <span class="m">25</span> <span class="m">22</span>:58:03 <span 
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -790,6 +811,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

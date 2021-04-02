@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,12 +205,12 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="xrp-api-server">XRP API Server</h1>
+        <h1 id="xrp-api-server">XRP API Server<a aria-hidden="true" class="hover_anchor" href="#xrp-api-server"><i class="fa fa-link"></i></a></h1>
 <p>An API server that provides a REST-like interface to the XRP Ledger.</p>
 <p><a class="external-link" href="https://github.com/xpring-eng/xrp-api" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<h2 id="building-with-typescript-javascript-or-nodejs">Building with TypeScript, JavaScript, or Node.js?</h2>
+<h2 id="building-with-typescript-javascript-or-nodejs">Building with TypeScript, JavaScript, or Node.js?<a aria-hidden="true" class="hover_anchor" href="#building-with-typescript-javascript-or-nodejs"><i class="fa fa-link"></i></a></h2>
 <p>Instead of XRP API, you can use <a class="external-link" href="https://github.com/ripple/ripple-lib" target="_blank">ripple-lib <i aria-hidden="true" class="fa fa-external-link"></i></a> for a native integration experience and access to more advanced XRP Ledger features.</p>
-<h3 id="requirements">Requirements</h3>
+<h3 id="requirements">Requirements<a aria-hidden="true" class="hover_anchor" href="#requirements"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><a class="external-link" href="https://nodejs.org/en/download/" target="_blank">Node v10.4.0 or higher <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a class="external-link" href="https://yarnpkg.com/en/" target="_blank">yarn <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
@@ -219,24 +219,24 @@
 <p>For development, you can use the XRP Testnet and get some test XRP from the <a class="external-link" href="https://xrpl.org/xrp-testnet-faucet.html" target="_blank">XRP Testnet Faucet <i aria-hidden="true" class="fa fa-external-link"></i></a>. The setup script will do this for you automatically.</p>
 </li>
 </ul>
-<h3 id="initial-setup">Initial setup</h3>
+<h3 id="initial-setup">Initial setup<a aria-hidden="true" class="hover_anchor" href="#initial-setup"><i class="fa fa-link"></i></a></h3>
 <ol>
 <li>
 <p>Clone this repository (or download and extract a copy).</p>
-<div class="codehilite"><pre><span></span><code><span class="err">git clone git@github.com:xpring-eng/xrp-api.git</span>
+<div class="codehilite"><pre><span></span><code><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">git</span><span class="nv">@github</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="n">xpring</span><span class="o">-</span><span class="n">eng</span><span class="o">/</span><span class="n">xrp</span><span class="o">-</span><span class="n">api</span><span class="p">.</span><span class="n">git</span><span class="w"></span>
 </code></pre></div>
 <p>Change directory into the project.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">cd xrp-api</span>
+<div class="codehilite"><pre><span></span><code>cd xrp-api
 </code></pre></div>
 </li>
 <li>
 <p>Install dependencies using Yarn.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">yarn install</span>
+<div class="codehilite"><pre><span></span><code>yarn install
 </code></pre></div>
 </li>
 <li>
 <p>Set up your configuration file for the first time.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">yarn run setup</span>
+<div class="codehilite"><pre><span></span><code>yarn run setup
 </code></pre></div>
 </li>
 </ol>
@@ -249,15 +249,15 @@
 <p>Devnet: <code>wss://s.devnet.rippletest.net:51233</code></p>
 </li>
 </ul>
-<h3 id="development">Development</h3>
+<h3 id="development">Development<a aria-hidden="true" class="hover_anchor" href="#development"><i class="fa fa-link"></i></a></h3>
 <p>To start the server in development mode:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">yarn dev</span>
+<div class="codehilite"><pre><span></span><code>yarn dev
 </code></pre></div>
 <p>This starts the server with <code>nodemon</code> so that it will be automatically restarted when you save changes to the code.</p>
 <p>The default port is 3000. To use a custom port, use <code>yarn dev &lt;port&gt;</code>. Example:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">yarn dev 3001</span>
+<div class="codehilite"><pre><span></span><code>yarn dev 3001
 </code></pre></div>
-<h3 id="production">Production</h3>
+<h3 id="production">Production<a aria-hidden="true" class="hover_anchor" href="#production"><i class="fa fa-link"></i></a></h3>
 <p>If you would like to use xrp-api in production with real funds, please contact us! We will assist with your secure deployment.</p>
 <p>Considerations:</p>
 <ul>
@@ -265,56 +265,56 @@
 <li>Restrictions should be made on signing, such as on the types of transactions, amount/velocity, and whitelisting of destinations. This feature is coming in the future.</li>
 <li>If an error occurs, the server will exit to protect security &amp; data integrity. We recommend using <a class="external-link" href="https://www.npmjs.com/package/pm2" target="_blank">PM2 <i aria-hidden="true" class="fa fa-external-link"></i></a>, <a class="external-link" href="https://www.npmjs.com/package/nodemon" target="_blank">nodemon <i aria-hidden="true" class="fa fa-external-link"></i></a>, or <a class="external-link" href="https://www.npmjs.com/package/forever" target="_blank">forever <i aria-hidden="true" class="fa fa-external-link"></i></a> to restart the server if it crashes in production.</li>
 </ul>
-<h3 id="tutorial">Tutorial</h3>
+<h3 id="tutorial">Tutorial<a aria-hidden="true" class="hover_anchor" href="#tutorial"><i class="fa fa-link"></i></a></h3>
 <p>In this simple tutorial, we will get our account's XRP balance, send a payment, and check the status of our payment.</p>
 <ol>
 <li>
 <p>Get our account's XRP balance.</p>
 <p>In the following example, replace <code>{ACCOUNT_ADDRESS_HERE}</code> with your Address:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">curl -X GET \</span>
-<span class="err">  http://localhost:3000/v3/accounts/{ACCOUNT_ADDRESS_HERE}/info</span>
+<div class="codehilite"><pre><span></span><code>curl -X GET \
+  http://localhost:3000/v3/accounts/{ACCOUNT_ADDRESS_HERE}/info
 </code></pre></div>
 </li>
 <li>
 <p>Send a payment</p>
 <p>In the following example, replace <code>{ACCOUNT_ADDRESS_HERE}</code> with your Address (2 locations), <code>{API_KEY_HERE}</code> with your API key, and <code>{DESTINATION_ADDRESS_HERE}</code> with a destination address. If you are using the Testnet, you can use the address <code>rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe</code> as a destination.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">curl -X POST \</span>
-<span class="err">   http://localhost:3000/v3/payments \</span>
-<span class="err">   -H 'Authorization: Bearer {API_KEY_HERE}' \</span>
-<span class="err">   -H 'Content-Type: application/json' \</span>
-<span class="err">   -d '{</span>
-<span class="err">     "payment": {</span>
-<span class="err">         "source_address": "{ACCOUNT_ADDRESS_HERE}",</span>
-<span class="err">         "source_amount": {</span>
-<span class="err">             "value": "20",</span>
-<span class="err">             "currency": "XRP"</span>
-<span class="err">         },</span>
-<span class="err">         "destination_address": "{DESTINATION_ADDRESS_HERE}",</span>
-<span class="err">         "destination_amount": {</span>
-<span class="err">             "value": "20",</span>
-<span class="err">             "currency": "XRP"</span>
-<span class="err">         }</span>
-<span class="err">     },</span>
-<span class="err">     "submit": true</span>
-<span class="err"> }'</span>
+<div class="codehilite"><pre><span></span><code>curl -X POST \
+   http://localhost:3000/v3/payments \
+   -H 'Authorization: Bearer {API_KEY_HERE}' \
+   -H 'Content-Type: application/json' \
+   -d '{
+     "payment": {
+         "source_address": "{ACCOUNT_ADDRESS_HERE}",
+         "source_amount": {
+             "value": "20",
+             "currency": "XRP"
+         },
+         "destination_address": "{DESTINATION_ADDRESS_HERE}",
+         "destination_amount": {
+             "value": "20",
+             "currency": "XRP"
+         }
+     },
+     "submit": true
+ }'
 </code></pre></div>
 <p>The response shows the transaction's identifying hash in the <code>hash</code> field of the <code>tx_json</code> object. Take note of this value for the next step.</p>
 </li>
 <li>
 <p>Check the status of the payment.</p>
 <p>In the following example, replace <code>{TRANSACTION_ID}</code> with the transaction's identifying hash from the previous step:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">curl -X GET \</span>
-<span class="err">  http://localhost:3000/v3/transactions/{TRANSACTION_ID}</span>
+<div class="codehilite"><pre><span></span><code>curl -X GET \
+  http://localhost:3000/v3/transactions/{TRANSACTION_ID}
 </code></pre></div>
 </li>
 </ol>
-<h3 id="docker-container">Docker Container</h3>
+<h3 id="docker-container">Docker Container<a aria-hidden="true" class="hover_anchor" href="#docker-container"><i class="fa fa-link"></i></a></h3>
 <p>You can also run the service in a docker container using the Dockerfile in this repo.</p>
 <ol>
 <li>Be sure you have done the secret_config step from the Initial Setup section.</li>
 <li>
 <p>Build the container.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">docker build . -t &lt;some_tag&gt;</span>
+<div class="codehilite"><pre><span></span><code>docker build . -t &lt;some_tag&gt;
 </code></pre></div>
 </li>
 <li>
@@ -325,7 +325,7 @@
 <p>You should now be able to run the steps in the tutorial.</p>
 </li>
 </ol>
-<h4 id="debugging">Debugging</h4>
+<h4 id="debugging">Debugging<a aria-hidden="true" class="hover_anchor" href="#debugging"><i class="fa fa-link"></i></a></h4>
 <ul>
 <li>We use <a class="external-link" href="https://www.npmjs.com/package/log4js" target="_blank">log4js <i aria-hidden="true" class="fa fa-external-link"></i></a> with 7-character category names and a shim that uses the <code>NODE_DEBUG</code> environment variable to enable logging of specific categories.</li>
 <li>Example: <code>NODE_DEBUG=prp/pmt node dev</code></li>
@@ -333,7 +333,7 @@
 <li><code>prp/pmt</code>: GET <strong>/v3/preparations/payments</strong> (<a class="external-link" href="https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts" target="_blank">./src/api-v3/paths/preparations/payments.ts <i aria-hidden="true" class="fa fa-external-link"></i></a>)</li>
 <li>During development, add logging by using <a class="external-link" href="http://stritti.github.io/log4js/docu/users-guide.html#loglevel" target="_blank">the built-in log levels <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
-<h4 id="notes">Notes</h4>
+<h4 id="notes">Notes<a aria-hidden="true" class="hover_anchor" href="#notes"><i class="fa fa-link"></i></a></h4>
 <ul>
 <li>Requires Node.js 10.4.0+ for <code>BigInt</code> support.</li>
 </ul>
@@ -606,6 +606,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

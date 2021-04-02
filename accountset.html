@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/transaction-formats/transaction-types/accountset.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/transaction-formats/transaction-types/accountset.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -207,10 +207,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="accountset">AccountSet</h1>
+        <h1 id="accountset">AccountSet<a aria-hidden="true" class="hover_anchor" href="#accountset"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/f65cea66ef99b1de149c02c15f06de6c61abf360/src/ripple/app/transactors/SetAccount.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>An AccountSet transaction modifies the properties of an <a href="accountroot.html">account in the XRP Ledger</a>.</p>
-<h2 id="example-accountset-json">Example AccountSet JSON</h2>
+<h2 id="example-accountset-json">Example AccountSet JSON<a aria-hidden="true" class="hover_anchor" href="#example-accountset-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
     <span class="nt">"Account"</span> <span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
@@ -221,7 +221,7 @@
     <span class="nt">"MessageKey"</span><span class="p">:</span> <span class="s2">"03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="accountset-fields">AccountSet Fields</h2>
+<h2 id="accountset-fields">AccountSet Fields<a aria-hidden="true" class="hover_anchor" href="#accountset-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a AccountSet transaction uses the following fields:</p>
 <!-- -->
 <table>
@@ -244,7 +244,7 @@
 <td align="left"><a href="#domain">Domain</a></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
-<td align="left"><em>(Optional)</em> The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase.</td>
+<td align="left"><em>(Optional)</em> The domain that owns this account, as a string of hex representing the ASCII for the domain in lowercase. <a class="external-link" href="https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34" target="_blank">Cannot be more than 256 bytes in length. <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><code>EmailHash</code></td>
@@ -256,7 +256,7 @@
 <td align="left"><code>MessageKey</code></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
-<td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account.</td>
+<td align="left"><em>(Optional)</em> Public key for sending encrypted messages to this account. To set the key, it must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys. To remove the key, use an empty value.</td>
 </tr>
 <tr>
 <td align="left"><a href="#accountset-flags"><code>SetFlag</code></a></td>
@@ -291,15 +291,15 @@
 </tbody>
 </table>
 <p>If none of these options are provided, then the AccountSet transaction has no effect (beyond destroying the transaction cost). See <a href="cancel-or-skip-a-transaction.html">Cancel or Skip a Transaction</a> for more details.</p>
-<h2 id="domain">Domain</h2>
+<h2 id="domain">Domain<a aria-hidden="true" class="hover_anchor" href="#domain"><i class="fa fa-link"></i></a></h2>
 <p>The <code>Domain</code> field is represented as the hex string of the lowercase ASCII of the domain. For example, the domain <em>example.com</em> would be represented as <code>"6578616D706C652E636F6D"</code>.</p>
 <p>To remove the <code>Domain</code> field from an account, send an AccountSet with the Domain set to an empty string.</p>
-<p>You can put any domain in your account's <code>Domain</code> field. To prove that an account and domain belong to the same person or business, Ripple recommends establishing a "two-way link":</p>
+<p>You can put any domain in your account's <code>Domain</code> field. To prove that an account and domain belong to the same person or business, establish a "two-way link":</p>
 <ul>
 <li>Accounts you own should have a domain you own in the <code>Domain</code> field.</li>
 <li>On a website at that domain, host an <a href="xrp-ledger-toml.html">xrp-ledger.toml file</a> listing accounts you own, and optionally other information about how you use the XRP Ledger.</li>
 </ul>
-<h2 id="accountset-flags">AccountSet Flags</h2>
+<h2 id="accountset-flags">AccountSet Flags<a aria-hidden="true" class="hover_anchor" href="#accountset-flags"><i class="fa fa-link"></i></a></h2>
 <p>There are several options which can be either enabled or disabled for an account. Account options are represented by different types of flags depending on the situation:</p>
 <ul>
 <li>The <code>AccountSet</code> transaction type has several "AccountSet Flags" (prefixed <strong><code>asf</code></strong>) that can enable an option when passed as the <code>SetFlag</code> parameter, or disable an option when passed as the <code>ClearFlag</code> parameter.</li>
@@ -426,11 +426,11 @@
 </tbody>
 </table>
 <p class="devportal-callout caution"><strong>Caution:</strong> The numeric values of <code>tf</code> and <code>asf</code> flags in transactions do not match up with the values they set in the accounts "at rest" in the ledger. To read the flags of an account in the ledger, see <a href="accountroot.html#accountroot-flags"><code>AccountRoot</code> flags</a>.</p>
-<h3 id="blocking-incoming-transactions">Blocking Incoming Transactions</h3>
+<h3 id="blocking-incoming-transactions">Blocking Incoming Transactions<a aria-hidden="true" class="hover_anchor" href="#blocking-incoming-transactions"><i class="fa fa-link"></i></a></h3>
 <p>Incoming transactions with unclear purposes may be an inconvenience for financial institutions, who would have to recognize when a customer made a mistake, and then potentially refund accounts or adjust balances depending on the mistake. The <code>asfRequireDest</code> and <code>asfDisallowXRP</code> flags are intended to protect users from accidentally sending funds in a way that is unclear about the reason the funds were sent.</p>
 <p>For example, a destination tag is typically used to identify which hosted balance should be credited when a financial institution receives a payment. If the destination tag is omitted, it may be unclear which account should be credited, creating a need for refunds, among other problems. By using the <code>asfRequireDest</code> tag, you can ensure that every incoming payment has a destination tag, which makes it harder for others to send you an ambiguous payment by accident.</p>
 <p>You can protect against unwanted incoming payments for non-XRP currencies by not creating trust lines in those currencies. Since XRP does not require trust, the <code>asfDisallowXRP</code> flag is used to discourage users from sending XRP to an account. However, this flag is not enforced in <code>rippled</code> because it could potentially cause accounts to become unusable. (If an account did not have enough XRP to send a transaction that disabled the flag, the account would be completely unusable.) Instead, client applications should disallow or discourage XRP payments to accounts with the <code>asfDisallowXRP</code> flag enabled.</p>
-<h2 id="transferrate">TransferRate</h2>
+<h2 id="transferrate">TransferRate<a aria-hidden="true" class="hover_anchor" href="#transferrate"><i class="fa fa-link"></i></a></h2>
 <p>The <code>TransferRate</code> field specifies a fee to charge whenever counterparties transfer the currency you issue. See <a href="transfer-fees.html">Transfer Fees</a> for more information.</p>
 <p>In <code>rippled</code>'s WebSocket and JSON-RPC APIs, the transfer fee is represented as an integer, the amount that must be sent for 1 billion units to arrive. For example, a 20% transfer fee is represented as the value <code>1200000000</code>.  The value cannot be less than 1000000000. (Less than that would indicate giving away money for sending transactions, which is exploitable.) You can specify 0 as a shortcut for 1000000000, meaning no fee.</p>
 <!-- SPELLING_IGNORE: TransferRate -->
@@ -546,6 +546,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -607,7 +608,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -647,7 +647,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -686,7 +686,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -879,6 +879,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -202,7 +202,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="xrp-api-010-methods">XRP-API 0.1.0 Methods</h1>
+        <h1 id="xrp-api-010-methods">XRP-API 0.1.0 Methods<a aria-hidden="true" class="hover_anchor" href="#xrp-api-010-methods"><i class="fa fa-link"></i></a></h1>
 <p>An API server that provides a REST-like interface to the XRP Ledger.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> XRP-API is early alpha software. API methods and data formats are likely to change often in ways that break backwards compatibility.</p>
 <p>View API methods by category:</p>
@@ -217,7 +217,7 @@
 <p><a href="#meta-methods">Meta Methods</a></p>
 </li>
 </ul>
-<h2 id="query-methods">Query Methods</h2>
+<h2 id="query-methods">Query Methods<a aria-hidden="true" class="hover_anchor" href="#query-methods"><i class="fa fa-link"></i></a></h2>
 <p>Methods to access data from the XRP Ledger.</p>
 <table>
 <thead>
@@ -245,7 +245,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="transact-methods">Transact Methods</h2>
+<h2 id="transact-methods">Transact Methods<a aria-hidden="true" class="hover_anchor" href="#transact-methods"><i class="fa fa-link"></i></a></h2>
 <p>Methods to submit transactions to the XRP Ledger.</p>
 <table>
 <thead>
@@ -273,7 +273,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="meta-methods">Meta Methods</h2>
+<h2 id="meta-methods">Meta Methods<a aria-hidden="true" class="hover_anchor" href="#meta-methods"><i class="fa fa-link"></i></a></h2>
 <p>Methods to get information about the XRP-API server itself.</p>
 <table>
 <thead>
@@ -566,6 +566,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

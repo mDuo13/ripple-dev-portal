@@ -121,7 +121,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/tool/template-landing-references.html" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/tool/template-landing-references.html" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -148,7 +148,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -231,7 +231,7 @@
             <h3 class="card-title"><a href="rippleapi-reference.html">RippleAPI Reference</a></h3>
           </div><!--/.card-header-->
           <div class="card-body">
-            <p class="blurb">Official client library to the XRP Ledger. Available for JavaScript only.</p>
+            <p class="blurb">JavaScript/TypeScript client library to the XRP Ledger.</p>
               <div class="curated-links">
                 <ul>
                   <li class="level-1"><a href="rippleapi-reference.html#transaction-overview">Transactions</a></li>
@@ -443,6 +443,8 @@
 
                     <li class="level-4"><a href="fee.html">fee</a></li>
 
+        <li class="level-4"><a href="manifest.html">manifest</a></li>
+
         <li class="level-4"><a href="server_info.html">server_info</a></li>
 
         <li class="level-4"><a href="server_state.html">server_state</a></li>
@@ -529,8 +531,6 @@
         <li class="level-4"><a href="fetch_info.html">fetch_info</a></li>
 
         <li class="level-4"><a href="get_counts.html">get_counts</a></li>
-
-        <li class="level-4"><a href="manifest.html">manifest</a></li>
 
         <li class="level-4"><a href="print.html">print</a></li>
 
@@ -946,6 +946,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});

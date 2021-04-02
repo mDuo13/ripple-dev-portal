@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>Partial Payment - XRP Ledger Dev Portal (日本語)</title>
+    <title>Partial Payment - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Partial Payment | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/partial-payments.html" />
+    <meta property="og:description" content="Partial Paymentsは送金額から手数料を差し引き、変動額を送金します。Partial Paymentsは、追加コストなしで不審な支払いを返金したい場合に便利です。" />
+    <meta name="description" content="Partial Paymentsは送金額から手数料を差し引き、変動額を送金します。Partial Paymentsは、追加コストなしで不審な支払いを返金したい場合に便利です。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/partial-payments.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/partial-payments.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/partial-payments.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-types/partial-payments.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-types/partial-payments.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -184,25 +208,25 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="partial-payment">Partial Payment</h1>
+        <h1 id="partial-payment">Partial Payment<a aria-hidden="true" class="hover_anchor" href="#partial-payment"><i class="fa fa-link"></i></a></h1>
 <p>デフォルトのケースでは、XRP Ledgerの<a href="payment.html">Paymentトランザクション</a>の<code>Amount</code>フィールドに、為替レートと<a href="transfer-fees.html">送金手数料</a>を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（<a href="payment.html#paymentのフラグ"><strong>tfPartialPayment</strong></a>）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで<a href="become-an-xrp-ledger-gateway.html#bouncing-payments">支払を返金</a>したい場合に便利です。</p>
 <p><a href="transaction-cost.html">トランザクションコスト</a>に使用されるXRPの額は、トランザクションタイプに関わらず常に送金元のアカウントから差し引かれます。</p>
 <p>Partial Paymentは、XRP Ledgerとのネイティブ統合を悪用して取引所およびゲートウェイから資金を盗むのに使用される恐れがあります。本書の<a href="#partial-paymentの悪用">Partial Paymentの悪用</a>セクションで、この悪用の仕組みと防止対策を説明します。</p>
-<h2 id="セマンティクス">セマンティクス</h2>
-<h3 id="partial-paymentを使用しない場合">Partial Paymentを使用しない場合</h3>
+<h2 id="セマンティクス">セマンティクス<a aria-hidden="true" class="hover_anchor" href="#セマンティクス"><i class="fa fa-link"></i></a></h2>
+<h3 id="partial-paymentを使用しない場合">Partial Paymentを使用しない場合<a aria-hidden="true" class="hover_anchor" href="#partial-paymentを使用しない場合"><i class="fa fa-link"></i></a></h3>
 <p>Partial Paymentフラグを使用しないで送金する場合、トランザクションの<code>Amount</code>フィールドに実際の送金額を指定し、<code>SendMax</code>フィールドに送金上限額と通貨を指定します。<code>Amount</code>の額を全額送金すると<code>SendMax</code>パラメーターの値を超えてしまう場合や、その他何らかの理由で総額を送金できない場合は、トランザクションは失敗します。トランザクション指示で<code>SendMax</code>フィールドが省略されると、<code>Amount</code>と同額とみなされます。この場合、手数料の合計が0である場合のみ支払が成功します。</p>
 <p>つまり、次の式になります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">Amount+（手数料）=（送金額）≤ SendMax</span>
+<div class="codehilite"><pre><span></span><code>Amount+（手数料）=（送金額）≤ SendMax
 </code></pre></div>
 <p>この式の「手数料」は、<a href="transfer-fees.html">送金手数料</a>と通貨の為替レートを指します。送金額（<code>Amount</code>）の通貨は、送金側と受取側で異なる通貨建てにすることができ、XRP Ledgerの分散型取引所でオファーを消費することにより交換されます。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> トランザクションの<code>Fee</code>フィールドが参照するXRP<a href="transaction-cost.html">トランザクションコスト</a>は、トランザクションをネットワークに中継するために消却されます。トランザクションコストは、常に指定通りの額が送金元から引き落とされ、あらゆるタイプの支払の手数料計算とは完全に切り離されています。</p>
-<h3 id="partial-paymentを使用する場合">Partial Paymentを使用する場合</h3>
+<h3 id="partial-paymentを使用する場合">Partial Paymentを使用する場合<a aria-hidden="true" class="hover_anchor" href="#partial-paymentを使用する場合"><i class="fa fa-link"></i></a></h3>
 <p>Partial Paymentフラグが有効になっている支払を送金する場合、このトランザクションの<code>Amount</code>フィールドには送金限度額を指定します。Partial Paymentでは、制限（手数料、流動性不足、受取アカウントのトラストラインの枠不足など）の有無にかかわらず、指定額の <em>一部</em> を送金できます。</p>
 <p>オプションの<code>DeliverMin</code>フィールドには、送金下限額を指定します。<code>SendMax</code>フィールドは、Partial Payment以外で送金する場合と同様に機能します。Partial Paymentトランザクションは、送金額が<code>DeliverMin</code>フィールドの金額以上、<code>SendMax</code>の金額未満であれば成功します。<code>DeliverMin</code>フィールドに指定のない場合、任意の正の金額の送金であれば、Partial Paymentは成功します。</p>
 <p>つまり、次の式になります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">金額 ≥（送金額）= SendMax -（手数料）≥ DeliverMin &gt; 0</span>
+<div class="codehilite"><pre><span></span><code>金額 ≥（送金額）= SendMax -（手数料）≥ DeliverMin &gt; 0
 </code></pre></div>
-<h3 id="partial-paymentの制限事項">Partial Paymentの制限事項</h3>
+<h3 id="partial-paymentの制限事項">Partial Paymentの制限事項<a aria-hidden="true" class="hover_anchor" href="#partial-paymentの制限事項"><i class="fa fa-link"></i></a></h3>
 <p>Partial Paymentには次の制限事項があります。</p>
 <ul>
 <li>Partial Paymentでは、アドレスにXRPにて資金を供給できません。この場合、<a href="transaction-results.html">結果コード</a><code>telNO_DST_PARTIAL</code>が返されます。</li>
@@ -211,7 +235,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="delivered_amountフィールド"><code>delivered_amount</code>フィールド</h3>
+<h3 id="delivered_amountフィールド"><code>delivered_amount</code>フィールド<a aria-hidden="true" class="hover_anchor" href="#delivered_amountフィールド"><i class="fa fa-link"></i></a></h3>
 <p>Partial Paymentでの実際の送金額を把握できるように、正常に完了したPaymentトランザクションのメタデータには<code>delivered_amount</code>フィールドが含まれています。このフィールドには送金額が<code>Amount</code>フィールドと<a href="basic-data-types.html#通貨額の指定">同じフォーマット</a>で示されています。</p>
 <p>Partial Payment以外の場合、トランザクションのメタデータの<code>delivered_amount</code>フィールドは、トランザクションの<code>Amount</code>フィールドと同じです。支払が発行済み通貨で行われた場合、丸め方により<code>delivered_amount</code>が<code>Amount</code>フィールドとやや異なることがあります。</p>
 <p>次の<strong>両方</strong>の条件に該当するトランザクションでは、送金額を<strong>使用できません</strong>。</p>
@@ -267,10 +291,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="partial-paymentの悪用">Partial Paymentの悪用</h2>
+<h2 id="partial-paymentの悪用">Partial Paymentの悪用<a aria-hidden="true" class="hover_anchor" href="#partial-paymentの悪用"><i class="fa fa-link"></i></a></h2>
 <p>金融機関によるXRP Ledgerとの統合が、Paymentの<code>Amount</code>フィールドは常に総送金額であると想定して行われる場合、不正使用者がその想定を悪用して、金融機関から資金を盗むことが可能になります。Partial Paymentがゲートウェイ、取引所、または業者のソフトウェアで正しく処理されない限り、これらの機関に対してこのような悪用が行われる可能性があります。</p>
 <p><strong>着信Paymentトランザクションを正しく処理するには、</strong><code>Amount</code>フィールドではなく <strong><a href="#delivered_amountフィールド"><code>delivered_amount</code>メタデータフィールド</a>を使用します。</strong> これにより、金融機関が <em>実際の</em> 受取金額を間違えることがなくなります。</p>
-<h3 id="悪用シナリオの流れ">悪用シナリオの流れ</h3>
+<h3 id="悪用シナリオの流れ">悪用シナリオの流れ<a aria-hidden="true" class="hover_anchor" href="#悪用シナリオの流れ"><i class="fa fa-link"></i></a></h3>
 <p>脆弱な金融機関を攻撃するため、不正使用者は次のような操作を試みます。</p>
 <ol>
 <li>不正使用者がPaymentトランザクションを金融機関に送信します。このトランザクションの<code>Amount</code>フィールドの額は高額で、<strong>tfPartialPayment</strong>フラグが有効になっています。</li>
@@ -293,7 +317,7 @@
 <li>脆弱な業者は、XRP Ledgerへの入金された<code>delivered_amount</code> が非常に少額であるにもかかわらず、請求を支払済みとして扱い、商品またはサービスを不正使用者に納入します。</li>
 <li>不正使用者は、業者が差異に気付く前に、商品やサービスを使用、再販売または持ち逃げします。</li>
 </ol>
-<h3 id="その他の緩和対策">その他の緩和対策</h3>
+<h3 id="その他の緩和対策">その他の緩和対策<a aria-hidden="true" class="hover_anchor" href="#その他の緩和対策"><i class="fa fa-link"></i></a></h3>
 <p>このような悪用を防ぐには、着信トランザクションの処理で<a href="#delivered_amountフィールド"><code>delivered_amount</code>フィールド</a>を使用すれば十分です。ただし、積極的な取り組みを追加することによっても、このような悪用が発生する可能性を回避または緩和できます。例:</p>
 <ul>
 <li>出金処理のビジネスロジックにサニティチェックを追加します。XRP Ledgerで保有している残高の合計が、予期されている資産と債務に一致しない場合は、出金を処理をしません。</li>
@@ -365,6 +389,7 @@
                           <li><a class="subpage" href="cryptographic-keys.html">暗号鍵</a></li>
                           <li><a class="subpage" href="multi-signing.html">マルチ署名</a></li>
                           <li><a class="subpage" href="reserves.html">準備金</a></li>
+                          <li><a class="subpage" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                           <li><a class="subpage" href="depositauth.html">Deposit Authorization</a></li>
 
                       <li><a class="nosubcat-page" href="fees.html">手数料（曖昧さの回避）</a></li>
@@ -384,15 +409,15 @@
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_20">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_20" aria-expanded="true" aria-controls="sidenav_collapse_20"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_21">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="payment-types.html">支払いのタイプ</a>
                 <!-- <a class="sidenav_cat_title" href="payment-types.html">Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_20" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_20">
+            <div id="sidenav_collapse_21" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="direct-xrp-payments.html">XRPによる直接支払</a></li>
@@ -404,21 +429,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse20 -->
+            </div><!-- /#sidenav_collapse21 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_28">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_28" aria-expanded="true" aria-controls="sidenav_collapse_28"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_29">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_29" aria-expanded="true" aria-controls="sidenav_collapse_29"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="issued-currencies.html">発行済み通貨</a>
                 <!-- <a class="sidenav_cat_title" href="issued-currencies.html">Issued Currencies</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_28" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_28">
+            <div id="sidenav_collapse_29" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_29">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="issued-currencies-overview.html">発行済み通貨の概要</a></li>
@@ -433,21 +458,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse28 -->
+            </div><!-- /#sidenav_collapse29 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_39">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_39" aria-expanded="true" aria-controls="sidenav_collapse_39"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="decentralized-exchange.html">分散型取引所</a>
                 <!-- <a class="sidenav_cat_title" href="decentralized-exchange.html">Decentralized Exchange</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_39" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_39">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="offers.html">オファー</a></li>
@@ -456,27 +481,28 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse39 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_43">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_43" aria-expanded="true" aria-controls="sidenav_collapse_43"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="consensus-network.html">コンセンサスネットワーク</a>
                 <!-- <a class="sidenav_cat_title" href="consensus-network.html">Consensus Network</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_43" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_43">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="consensus.html">コンセンサス</a></li>
                       <li><a class="nosubcat-page" href="consensus-principles-and-rules.html">コンセンサスの原理とルール</a></li>
                       <li><a class="nosubcat-page" href="consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a></li>
                       <li><a class="nosubcat-page" href="invariant-checking.html">Invariant Checking</a></li>
+                      <li><a class="nosubcat-page" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                       <li><a class="nosubcat-page" href="transaction-queue.html">トランザクションキュー</a></li>
                       <li><a class="nosubcat-page" href="about-canceling-a-transaction.html">トランザクションの取消しについて</a></li>
                       <li><a class="nosubcat-page" href="transaction-malleability.html">トランザクション展性</a></li>
@@ -490,21 +516,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse43 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_55">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_55" aria-expanded="true" aria-controls="sidenav_collapse_55"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_57">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_57" aria-expanded="true" aria-controls="sidenav_collapse_57"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="the-rippled-server.html">rippledサーバー</a>
                 <!-- <a class="sidenav_cat_title" href="the-rippled-server.html">The rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_55" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_55">
+            <div id="sidenav_collapse_57" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_57">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="rippled-server-modes.html">rippledサーバーのモード</a></li>
@@ -519,7 +545,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse55 -->
+            </div><!-- /#sidenav_collapse57 -->
 
           </div><!-- /.card -->
 
@@ -542,13 +568,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -568,11 +594,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -605,7 +631,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -654,6 +680,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

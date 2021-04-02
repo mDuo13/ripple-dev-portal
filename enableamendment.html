@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/transaction-formats/pseudo-transaction-types/enableamendment.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -204,7 +204,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="enableamendment">EnableAmendment</h1>
+        <h1 id="enableamendment">EnableAmendment<a aria-hidden="true" class="hover_anchor" href="#enableamendment"><i class="fa fa-link"></i></a></h1>
 <p>An <code>EnableAmendment</code> <a href="pseudo-transaction-types.html">pseudo-transaction</a> marks a change in status of an <a href="amendments.html">amendment</a> to the XRP Ledger protocol, including:</p>
 <ul>
 <li>A proposed amendment gained supermajority approval from validators.</li>
@@ -212,7 +212,7 @@
 <li>A proposed amendment has been enabled.</li>
 </ul>
 <p class="devportal-callout note"><strong>Note:</strong> You cannot send a pseudo-transaction, but you may find one when processing ledgers.</p>
-<h2 id="example-enableamendment-json">Example EnableAmendment JSON</h2>
+<h2 id="example-enableamendment-json">Example EnableAmendment JSON<a aria-hidden="true" class="hover_anchor" href="#example-enableamendment-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
   <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rrrrrrrrrrrrrrrrrrrrrhoLvTp"</span><span class="p">,</span>
   <span class="nt">"Amendment"</span><span class="p">:</span> <span class="s2">"42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE"</span><span class="p">,</span>
@@ -223,7 +223,7 @@
   <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"EnableAmendment"</span>
 <span class="p">}</span>  
 </code></pre></div>
-<h2 id="enableamendment-fields">EnableAmendment Fields</h2>
+<h2 id="enableamendment-fields">EnableAmendment Fields<a aria-hidden="true" class="hover_anchor" href="#enableamendment-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="pseudo-transaction-types.html">common fields</a>, a EnableAmendment pseudo-transaction uses the following fields:</p>
 <!-- -->
 <table>
@@ -250,7 +250,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="enableamendment-flags">EnableAmendment Flags</h2>
+<h2 id="enableamendment-flags">EnableAmendment Flags<a aria-hidden="true" class="hover_anchor" href="#enableamendment-flags"><i class="fa fa-link"></i></a></h2>
 <p>The <code>Flags</code> value of the EnableAmendment pseudo-transaction indicates the status of the amendment at the time of the ledger including the pseudo-transaction.</p>
 <p>A <code>Flags</code> value of <code>0</code> (no flags) or an omitted <code>Flags</code> field indicates that the amendment has been enabled, and applies to all ledgers afterward. Other <code>Flags</code> values are as follows:</p>
 <table>
@@ -389,6 +389,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -450,7 +451,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -490,7 +490,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -529,7 +529,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title active-parent" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -722,6 +722,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

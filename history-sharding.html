@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/the-rippled-server/ledger-history/history-sharding.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/the-rippled-server/ledger-history/history-sharding.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -203,20 +203,20 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="history-sharding">History Sharding</h1>
+        <h1 id="history-sharding">History Sharding<a aria-hidden="true" class="hover_anchor" href="#history-sharding"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.90.0" target="_blank" title="Introduced in: rippled 0.90.0"><img alt="Introduced in: rippled 0.90.0" class="dactyl_badge" src="https://img.shields.io/badge/Introduced%20in-rippled%200.90.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>As servers run, they naturally produce a database containing data about the ledgers they witnessed or acquired during network runtime. Each <code>rippled</code> server stores that ledger data in its ledger store, but the online delete logic rotates these databases when the number of stored ledgers exceeds configured space limitations.</p>
 <p>Historical sharding distributes the transaction history of the XRP Ledger into segments, called shards, across servers in the XRP Ledger network. A shard is a range of ledgers. A <code>rippled</code> server stores ledgers in both the ledger store and the shard store in the same way.</p>
 <p>Using the history sharding feature, individual <code>rippled</code> servers can contribute to storing historical data without needing to store the entire (multiple terabyte) history. A shard store does not replace a ledger store, but implements a reliable path towards distributed ledger history across the XRP Ledger Network.</p>
 <p><a href="img/xrp-ledger-network-ledger-store-and-shard-store.png"><img alt="XRP Ledger Network: Ledger Store and Shard Store Diagram" src="img/xrp-ledger-network-ledger-store-and-shard-store.png"/></a></p>
 <!-- Diagram source: https://docs.google.com/presentation/d/1mg2jZQwgfLCIhOU8Mr5aOiYpIgbIgk3ymBoDb2hh7_s/edit#slide=id.g417450e8da_0_316 -->
-<h2 id="acquiring-and-sharing-history-shards">Acquiring and Sharing History Shards</h2>
+<h2 id="acquiring-and-sharing-history-shards">Acquiring and Sharing History Shards<a aria-hidden="true" class="hover_anchor" href="#acquiring-and-sharing-history-shards"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code> servers acquire and store history shards only if configured to do so. For those servers, acquiring shards begins after synchronizing with the network and backfilling ledger history to the configured number of recent ledgers. During this time of lower network activity, a <code>rippled</code> server set to maintain a <code>shard_db</code> randomly chooses a shard to add to its shard store. To increase the probability for an even distribution of the network ledger history, shards are randomly selected for acquisition, and the current shard is given no special consideration.</p>
 <p>Once a shard is selected, the ledger acquire process begins by fetching the sequence of the last ledger in the shard and working backwards toward the first. The retrieval process begins with the server checking for the data locally. For data that is not available, the server requests data from its peer <code>rippled</code> servers. Those servers that have the data available for the requested period respond with their history. The requesting server combines those responses to create the shard. The shard is complete when it contains all the ledgers in a specific range.</p>
 <p>If a <code>rippled</code> server runs out of space before completely acquiring a shard, it stops its retrieval process until it has space available to continue. After that point, the most recently completed shard may replace an older shard. If there is sufficient disk space, the <code>rippled</code> server acquires additional randomly selected shards to add to the shard store until reaching the maximum allocated disk space for shards (<code>max_size_gb</code>).</p>
-<h2 id="xrp-ledger-network-data-integrity">XRP Ledger Network Data Integrity</h2>
+<h2 id="xrp-ledger-network-data-integrity">XRP Ledger Network Data Integrity<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger-network-data-integrity"><i class="fa fa-link"></i></a></h2>
 <p>The history of all ledgers is shared by servers agreeing to keep particular ranges of historical ledgers. This makes it possible for servers to confirm that they have all the data they agreed to maintain, and produce proof trees or ledger deltas. Since <code>rippled</code> servers that are configured with history sharding randomly select the shards that they store, the entire history of all closed ledgers is stored in a normal distribution curve, increasing the probability that the XRP Ledger Network evenly maintains the history.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="ledgers.html">Ledgers</a></li>
@@ -595,6 +595,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

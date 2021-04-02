@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/api-conventions/response-formatting.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/api-conventions/response-formatting.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -186,6 +186,7 @@
 <li class="level-2"><a href="#api-warnings">API Warnings</a></li>
 <li class="level-3"><a href="#1001-unsupported-amendments-have-reached-majority">1001. Unsupported amendments have reached majority</a></li>
 <li class="level-3"><a href="#1002-this-server-is-amendment-blocked">1002. This server is amendment blocked</a></li>
+<li class="level-3"><a href="#1003-this-is-a-reporting-server">1003. This is a reporting server</a></li>
 <li class="level-2"><a href="#see-also">See Also</a></li>
 
     </ul>
@@ -205,7 +206,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="response-formatting">Response Formatting</h1>
+        <h1 id="response-formatting">Response Formatting<a aria-hidden="true" class="hover_anchor" href="#response-formatting"><i class="fa fa-link"></i></a></h1>
 <p>Responses from the <code>rippled</code> APIs is formatted slightly differently based on whether the method is called with the WebSocket, JSON-RPC, or Commandline interfaces. The Commandline and JSON-RPC interfaces use the same format because the Commandline interface calls JSON-RPC.</p>
 <p>The fields of a successful response include:</p>
 <table>
@@ -252,9 +253,14 @@
 <td align="left">Array</td>
 <td align="left"><em>(May be omitted)</em> If this field is provided, it contains one or more <strong>Warnings Objects</strong> with important warnings. For details, see <a href="#api-warnings">API Warnings</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
+<tr>
+<td align="left"><code>forwarded</code></td>
+<td align="left">Boolean</td>
+<td align="left"><em>(May be omitted)</em> If <code>true</code>, this request and response have been forwarded from a <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a> server to a P2P Mode server (and back) because the request requires data that is not available in Reporting Mode. The default is <code>false</code>.</td>
+</tr>
 </tbody>
 </table>
-<h2 id="example-successful-response">Example Successful Response</h2>
+<h2 id="example-successful-response">Example Successful Response<a aria-hidden="true" class="hover_anchor" href="#example-successful-response"><i class="fa fa-link"></i></a></h2>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -278,7 +284,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">HTTP</span> <span class="err">Status:</span> <span class="mi">200</span> <span class="err">OK</span>
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">HTTP</span> <span class="err">S</span><span class="kc">tatus</span><span class="p">:</span> <span class="mi">200</span> <span class="err">OK</span>
 
 <span class="p">{</span>
     <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
@@ -318,7 +324,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="api-warnings">API Warnings</h2>
+<h2 id="api-warnings">API Warnings<a aria-hidden="true" class="hover_anchor" href="#api-warnings"><i class="fa fa-link"></i></a></h2>
 <p>When the response contains a <code>warnings</code> array, each member of the array represents a separate warning from the server. Each such <strong>Warning Object</strong> contains the following fields:</p>
 <table>
 <thead>
@@ -347,9 +353,9 @@
 </tbody>
 </table>
 <p>The following reference describes all possible warnings.</p>
-<h3 id="1001-unsupported-amendments-have-reached-majority">1001. Unsupported amendments have reached majority</h3>
+<h3 id="1001-unsupported-amendments-have-reached-majority">1001. Unsupported amendments have reached majority<a aria-hidden="true" class="hover_anchor" href="#1001-unsupported-amendments-have-reached-majority"><i class="fa fa-link"></i></a></h3>
 <p>Example warning:</p>
-<div class="codehilite"><pre><span></span><code><span class="s2">"warnings"</span> <span class="err">:</span> <span class="p">[</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">"warnings"</span> <span class="p">:</span> <span class="p">[</span>
   <span class="p">{</span>
     <span class="nt">"details"</span> <span class="p">:</span> <span class="p">{</span>
       <span class="nt">"expected_date"</span> <span class="p">:</span> <span class="mi">864030</span><span class="p">,</span>
@@ -385,9 +391,9 @@
 </tbody>
 </table>
 <p>Due to the variation in ledger close times, these times are approximate. It is also possible that the amendment fails to maintain support from &gt;80% of validators until the specified time, and does not become enabled at the expected time. The server will not become amendment blocked so long as the unsupported amendments do not become enabled.</p>
-<h3 id="1002-this-server-is-amendment-blocked">1002. This server is amendment blocked</h3>
+<h3 id="1002-this-server-is-amendment-blocked">1002. This server is amendment blocked<a aria-hidden="true" class="hover_anchor" href="#1002-this-server-is-amendment-blocked"><i class="fa fa-link"></i></a></h3>
 <p>Example warning:</p>
-<div class="codehilite"><pre><span></span><code><span class="s2">"warnings"</span> <span class="err">:</span> <span class="p">[</span>
+<div class="codehilite"><pre><span></span><code><span class="nt">"warnings"</span> <span class="p">:</span> <span class="p">[</span>
   <span class="p">{</span>
     <span class="nt">"id"</span> <span class="p">:</span> <span class="mi">1002</span><span class="p">,</span>
     <span class="nt">"message"</span> <span class="p">:</span> <span class="s2">"This server is amendment blocked, and must be updated to be able to stay in sync with the network."</span>
@@ -396,7 +402,20 @@
 </code></pre></div>
 <p>This warning indicates that the server is <a href="amendments.html#amendment-blocked">amendment blocked</a> and can no longer remain synced with the XRP Ledger.</p>
 <p>The server administrator must <a href="install-rippled.html">upgrade <code>rippled</code></a> to a version that supports the activated amendments.</p>
-<h2 id="see-also">See Also</h2>
+<h3 id="1003-this-is-a-reporting-server">1003. This is a reporting server<a aria-hidden="true" class="hover_anchor" href="#1003-this-is-a-reporting-server"><i class="fa fa-link"></i></a></h3>
+<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="New in: rippled 1.7.0"><img alt="New in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Example warning:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">"warnings"</span> <span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">"id"</span> <span class="p">:</span> <span class="mi">1003</span><span class="p">,</span>
+    <span class="nt">"message"</span> <span class="p">:</span> <span class="s2">"This is a reporting server. The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>This warning indicates that the server answering the request is running <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a>. Certain API methods are not available or behave differently because Reporting Mode does not connect to the peer-to-peer network and does not track ledger data that has not yet been validated.</p>
+<p>It is generally safe to ignore this warning.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> If you request ledger data without explicitly <a href="basic-data-types.html#specifying-ledgers">specifying a ledger version</a>, Reporting Mode uses the latest validated ledger by default instead of the current in-progress ledger.</p>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="the-rippled-server.html">The <code>rippled</code> Server</a></li>
@@ -530,6 +549,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -591,7 +611,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -631,7 +650,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -670,7 +689,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -863,6 +882,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

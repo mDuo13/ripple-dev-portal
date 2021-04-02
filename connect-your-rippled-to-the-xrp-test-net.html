@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/configuration/connect-your-rippled-to-the-xrp-test-net.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -207,12 +207,12 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="connect-your-rippled-to-a-parallel-network">Connect Your rippled to a Parallel Network</h1>
+        <h1 id="connect-your-rippled-to-a-parallel-network">Connect Your rippled to a Parallel Network<a aria-hidden="true" class="hover_anchor" href="#connect-your-rippled-to-a-parallel-network"><i class="fa fa-link"></i></a></h1>
 <p>Ripple hosts <a href="parallel-networks.html">alternative test and development networks</a> for developers to test their apps on the latest non-production version of the XRP Ledger (Testnet) or to test and experiment with features on the latest beta version (Devnet). <strong>The funds used on these networks are not real funds and are intended for testing only.</strong> You can connect your <a href="the-rippled-server.html"><code>rippled</code> server</a> to either the Testnet or Devnet.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> The Devnet frequently has new and experimental <a href="amendments.html">amendments</a> enabled, so the latest production release version is likely to be amendment blocked when connecting to Devnet. You should use a pre-release or nightly build when connecting to Devnet.</p>
-<h2 id="steps">Steps</h2>
+<h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
 <p>To connect your <code>rippled</code> server to the XRP Testnet or Devnet, complete these steps. You can also use these steps to switch back to the production Mainnet after being on the Testnet or Devnet.</p>
-<h2 id="1-configure-your-server-to-connect-to-the-right-hub">1. Configure your server to connect to the right hub.</h2>
+<h2 id="1-configure-your-server-to-connect-to-the-right-hub">1. Configure your server to connect to the right hub.<a aria-hidden="true" class="hover_anchor" href="#1-configure-your-server-to-connect-to-the-right-hub"><i class="fa fa-link"></i></a></h2>
 <p>Edit your <code>rippled.cfg</code> file.</p>
 <p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.</p>
 <!--{_ }-->
@@ -241,7 +241,7 @@
 </code></pre></div>
 </li>
 </ol>
-<h2 id="2-set-your-trusted-validator-list">2. Set your trusted validator list.</h2>
+<h2 id="2-set-your-trusted-validator-list">2. Set your trusted validator list.<a aria-hidden="true" class="hover_anchor" href="#2-set-your-trusted-validator-list"><i class="fa fa-link"></i></a></h2>
 <p>Edit your <code>validators.txt</code> file. This file is located in the same folder as your <code>rippled.cfg</code> file and defines which validators your server trusts not to collude.</p>
 <ol>
 <li>
@@ -291,16 +291,16 @@
 </code></pre></div>
 </li>
 </ol>
-<h2 id="3-devnet-only-enable-features">3. (Devnet Only) Enable Features</h2>
+<h2 id="3-devnet-only-enable-features">3. (Devnet Only) Enable Features<a aria-hidden="true" class="hover_anchor" href="#3-devnet-only-enable-features"><i class="fa fa-link"></i></a></h2>
 <p>To connect to Devnet, you must also forcefully enable any experimental features that are currently in testing on Devnet. Add or modify the <code>[features]</code> stanza of your config file as follows:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">[features]</span>
 <span class="na">NegativeUNL</span>
 </code></pre></div>
 <p class="devportal-callout warning"><strong>Warning:</strong> Do not use the <code>[features]</code> stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.</p>
-<h2 id="4-restart-the-server">4. Restart the server.</h2>
+<h2 id="4-restart-the-server">4. Restart the server.<a aria-hidden="true" class="hover_anchor" href="#4-restart-the-server"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code>$ sudo systemctl restart rippled
 </code></pre></div>
-<h2 id="5-verify-that-your-server-syncs">5. Verify that your server syncs.</h2>
+<h2 id="5-verify-that-your-server-syncs">5. Verify that your server syncs.<a aria-hidden="true" class="hover_anchor" href="#5-verify-that-your-server-syncs"><i class="fa fa-link"></i></a></h2>
 <p>It takes about 5 to 15 minutes to sync to the network after a restart. After your server is synced, the <a href="server_info.html">server_info method</a> shows the a <code>validated_ledger</code> object based on the network you are connected to.</p>
 <p>To verify that your <code>rippled</code> is connected to the XRP Testnet or Devnet, compare the results from your server to <a href="get-started-with-the-rippled-api.html#public-servers">a public server</a> on the Testnet or Devnet. The <code>seq</code> field of the <code>validated_ledger</code> object should be the same on both servers (possibly off by one or two, if it changed as you were checking).</p>
 <p>The following example shows how to check the latest validated ledger from the commandline:</p>
@@ -322,7 +322,7 @@ $ rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span 
 </code></pre></div></div>
 </div>
 <p class="devportal-callout note"><strong>Note:</strong> The IP addresses in these examples are for public servers, and may change periodically. If you get no response, look up the IP address of a <a href="get-started-with-the-rippled-api.html#public-servers">public server</a>, for example using the <code>dig</code> command.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Tools:</strong><ul>
 <li><a href="xrp-testnet-faucet.html">XRP Faucets</a></li>
@@ -381,6 +381,7 @@ $ rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span 
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -394,15 +395,15 @@ $ rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span 
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -411,21 +412,21 @@ $ rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span 
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -435,24 +436,25 @@ $ rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span 
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -479,21 +481,21 @@ $ rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span 
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -502,21 +504,21 @@ $ rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span 
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -536,6 +538,7 @@ $ rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span 
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="active subpage" href="#main_content_body">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -574,7 +577,7 @@ $ rippled --rpc_ip <span class="m">34</span>.201.59.230:51234 server_info <span 
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -709,6 +712,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

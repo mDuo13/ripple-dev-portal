@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-system-basics/accounts/depositauth.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-system-basics/accounts/depositauth.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -208,7 +208,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="deposit-authorization">Deposit Authorization</h1>
+        <h1 id="deposit-authorization">Deposit Authorization<a aria-hidden="true" class="hover_anchor" href="#deposit-authorization"><i class="fa fa-link"></i></a></h1>
 <p><em>(Added by the <a href="known-amendments.html#depositauth">DepositAuth amendment</a>.)</em></p>
 <p>Deposit Authorization is an optional <a href="accounts.html">account</a> setting in the XRP Ledger. If enabled, Deposit Authorization blocks all transfers from strangers, including transfers of XRP and issued currencies. An account with Deposit Authorization can only receive value in two ways:</p>
 <ul>
@@ -216,19 +216,19 @@
 <li>By sending a transaction to receive the funds. For example, an account with Deposit Authorization could finish an <a href="escrow.html">Escrow</a> that was initiated by a stranger.</li>
 </ul>
 <p>By default, new accounts have DepositAuth disabled and can receive XRP from anyone.</p>
-<h2 id="background">Background</h2>
+<h2 id="background">Background<a aria-hidden="true" class="hover_anchor" href="#background"><i class="fa fa-link"></i></a></h2>
 <p>Financial services regulations and licenses may require that a business or entity must know the sender of all transactions it receives. This presents a challenge on a decentralized system like the XRP Ledger where participants are identified by pseudonyms which can be freely generated and the default behavior is for any address to be able to pay any other.</p>
 <p>The Deposit Authorization flag introduces an option for those using the XRP Ledger to comply with such regulations without changing the fundamental nature of the decentralized ledger. With Deposit Authorization enabled, an account can only receive funds it explicitly approves by sending a transaction. The owner of an account using Deposit Authorization can perform the due diligence necessary to identify the sender of any funds <em>before</em> sending the transaction that causes the account to receive the money.</p>
 <p>When you have Deposit Authorization enabled, you can receive money from <a href="known-amendments.html#checks">Checks</a>, <a href="escrow.html">Escrow</a>, and <a href="known-amendments.html#paychan">Payment Channels</a>. In these transactions' "two-step" model, first the source sends a transaction to authorize sending funds, then the destination sends a transaction to authorize receiving those funds.</p>
 <p>To receive money from <a href="payment.html">Payment transactions</a> when you have Deposit Authorization enabled, you must <a href="#preauthorization">preauthorize</a> the senders of those Payments. <em>(Added by the <a href="known-amendments.html#depositpreauth">DepositPreauth amendment</a>.)</em></p>
-<h2 id="recommended-usage">Recommended Usage</h2>
+<h2 id="recommended-usage">Recommended Usage<a aria-hidden="true" class="hover_anchor" href="#recommended-usage"><i class="fa fa-link"></i></a></h2>
 <p>To get the full effect of Deposit Authorization, Ripple recommends also doing the following:</p>
 <ul>
 <li>Always maintain an XRP balance higher than the minimum <a href="reserves.html">reserve requirement</a>.</li>
 <li>Keep the Default Ripple flag in its default (disabled) state. Do not enable <a href="rippling.html">rippling</a> on any trust lines. When sending <a href="trustset.html">TrustSet transactions</a>, always use the <a href="trustset.html"><code>tfSetNoRipple</code> flag</a>.</li>
 <li>Do not place <a href="offercreate.html">Offers</a>. It is impossible to know in advance which matching offers will be consumed to execute such a trade.</li>
 </ul>
-<h2 id="precise-semantics">Precise Semantics</h2>
+<h2 id="precise-semantics">Precise Semantics<a aria-hidden="true" class="hover_anchor" href="#precise-semantics"><i class="fa fa-link"></i></a></h2>
 <p>An account with Deposit Authorization enabled:</p>
 <ul>
 <li><strong>Cannot</strong> be the destination of <a href="payment.html">Payment transactions</a>, with <strong>the following exceptions</strong>:<ul>
@@ -428,12 +428,12 @@
 }
 </style>
 <!-- -->
-<h2 id="enabling-or-disabling-deposit-authorization">Enabling or Disabling Deposit Authorization</h2>
+<h2 id="enabling-or-disabling-deposit-authorization">Enabling or Disabling Deposit Authorization<a aria-hidden="true" class="hover_anchor" href="#enabling-or-disabling-deposit-authorization"><i class="fa fa-link"></i></a></h2>
 <p>An account can enable deposit authorization by sending an <a href="accountset.html">AccountSet transaction</a> with the <code>SetFlag</code> field set to the <code>asfDepositAuth</code> value (9). The account can disable deposit authorization by sending an <a href="accountset.html">AccountSet transaction</a> with the <code>ClearFlag</code> field set to the <code>asfDepositAuth</code> value (9). For more information on AccountSet flags, see <a href="accountset.html">AccountSet flags</a>.</p>
-<h2 id="checking-whether-an-account-has-depositauth-enabled">Checking Whether an Account Has DepositAuth Enabled</h2>
+<h2 id="checking-whether-an-account-has-depositauth-enabled">Checking Whether an Account Has DepositAuth Enabled<a aria-hidden="true" class="hover_anchor" href="#checking-whether-an-account-has-depositauth-enabled"><i class="fa fa-link"></i></a></h2>
 <p>To see whether an account has Deposit Authorization enabled, use the <a href="account_info.html">account_info method</a> to look up the account. Compare the value of the <code>Flags</code> field (in the <code>result.account_data</code> object) with the <a href="accountroot.html">bitwise flags defined for an AccountRoot ledger object</a>.</p>
 <p>If the result of the <code>Flags</code> value bitwise-AND the <code>lsfDepositAuth</code> flag value (<code>0x01000000</code>) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.</p>
-<h2 id="preauthorization">Preauthorization</h2>
+<h2 id="preauthorization">Preauthorization<a aria-hidden="true" class="hover_anchor" href="#preauthorization"><i class="fa fa-link"></i></a></h2>
 <p><em>(Added by the <a href="known-amendments.html#depositpreauth">DepositPreauth amendment</a>.)</em></p>
 <p>Accounts with DepositAuth enabled can <em>preauthorize</em> certain senders, to allow payments from those senders to succeed even with DepositAuth enabled. This allows specific senders to send funds directly without the receiver taking action on each transaction individually. Preauthorization is not required to use DepositAuth, but can make certain operations more convenient.</p>
 <p>Preauthorization is currency-agnostic. You cannot preauthorize accounts for specific currencies only.</p>
@@ -446,13 +446,13 @@
 <li><a href="paymentchannelclaim.html">PaymentChannelClaim</a></li>
 </ul>
 <p>Preauthorization has no effect on the other ways to send money to an account with DepositAuth enabled. See <a href="#precise-semantics">Precise Semantics</a> for the exact rules.</p>
-<h3 id="checking-for-authorization">Checking for Authorization</h3>
+<h3 id="checking-for-authorization">Checking for Authorization<a aria-hidden="true" class="hover_anchor" href="#checking-for-authorization"><i class="fa fa-link"></i></a></h3>
 <p>You can use the <a href="deposit_authorized.html">deposit_authorized method</a> to see if an account is authorized to deposit to another account. This method checks two things:</p>
 <ul>
 <li>Whether the destination account requires Deposit Authorization. (If it does not require authorization, then all source accounts are considered authorized.)</li>
 <li>Whether the source account is preauthorized to send money to the destination.</li>
 </ul>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>The <a href="depositpreauth.html">DepositPreauth transaction</a> reference.</li>
 <li>The <a href="depositpreauth-object.html">DepositPreauth ledger object type</a>.</li>
@@ -820,6 +820,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

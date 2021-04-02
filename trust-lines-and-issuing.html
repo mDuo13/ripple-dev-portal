@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/issued-currencies/trust-lines-and-issuing.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/issued-currencies/trust-lines-and-issuing.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -201,17 +201,17 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="trust-lines-and-issuing">Trust Lines and Issuing</h1>
+        <h1 id="trust-lines-and-issuing">Trust Lines and Issuing<a aria-hidden="true" class="hover_anchor" href="#trust-lines-and-issuing"><i class="fa fa-link"></i></a></h1>
 <p><a href="issued-currencies.html">Issued currencies</a> in the XRP Ledger often represent value held by <em>gateways</em> in the world outside the XRP Ledger. The address that issues those funds in the XRP Ledger is expected to pay the balance back, outside of the XRP Ledger, when users redeem their XRP Ledger balances by returning them to the issuer.</p>
 <p>Since a computer program cannot force a someone to keep a promise in the outside world, trust lines represent a way of configuring how much you trust an issuer to hold on your behalf. Since a large, reputable financial institution is more likely to be able to pay you back than, say, your broke roommate, you can set different limits on each trust line, to indicate the maximum amount you are willing to let the issuer "owe" you in the XRP Ledger. If the issuer defaults or goes out of business, you can lose up to that much money because the balances you hold in the XRP Ledger can no longer be exchanged for equivalent balances elsewhere. (You can still keep or trade the issued currency in the XRP Ledger, but there is probably no longer any reason to consider that issued currency to be worth anything.)</p>
 <p>There are two cases where you can hold a balance on a trust line that is <em>greater</em> than your limit: when you acquire more of that currency through <a href="decentralized-exchange.html">trading</a>, or when you decrease the limit on your trust line.</p>
 <p>Since a trust line occupies space in the ledger, <a href="reserves.html">a trust line increases the XRP your account must hold in reserve</a>. This applies to the account extending trust, not to the account receiving it.</p>
 <p>Each trust line is specific to a given <a href="currency-formats.html#currency-codes">currency code</a>. Two accounts can have any number of trust lines between them for different currency codes, but only one trust line in either direction for any given currency code.</p>
-<h2 id="trust-line-settings">Trust Line Settings</h2>
+<h2 id="trust-line-settings">Trust Line Settings<a aria-hidden="true" class="hover_anchor" href="#trust-line-settings"><i class="fa fa-link"></i></a></h2>
 <p>Trust lines are represented in the ledger's state data as <a href="ripplestate.html">RippleState objects</a>. A single RippleState object represents the potential for a trust line in either direction or both: it has a limit and other settings for each side, but a single shared net balance between the two sides.</p>
 <p>A trust line with settings in the default state is equivalent to no trust line.</p>
 <p>The default state of all trust line flags is off, except for the <a href="rippling.html">No Ripple flag</a>, whose default state depends on the Default Ripple flag.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="decentralized-exchange.html">Decentralized Exchange</a></li>
@@ -587,6 +587,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

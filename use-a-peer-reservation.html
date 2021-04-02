@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/configure-peering/use-a-peer-reservation.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -209,7 +209,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="use-a-peer-reservation">Use a Peer Reservation</h1>
+        <h1 id="use-a-peer-reservation">Use a Peer Reservation<a aria-hidden="true" class="hover_anchor" href="#use-a-peer-reservation"><i class="fa fa-link"></i></a></h1>
 <p>A <a href="peer-protocol.html#fixed-peers-and-peer-reservations">peer reservation</a> is a setting that makes a <code>rippled</code> server always accept connections from a peer matching the reservation. This page describes how to use peer reservations to keep a consistent peer-to-peer connection between two servers, with the cooperation of the administrators of both servers.</p>
 <p>Peer reservations are most useful when the two servers are run by different parties, and the server that receives the incoming connection is a <a href="rippled-server-modes.html#public-hubs">hub server</a> with many peers. For clarity, these instructions use the following terms:</p>
 <ul>
@@ -217,7 +217,7 @@
 <li>The server receiving the incoming connection is the <strong>hub server</strong>. The administrator <em>adds</em> the peer reservation to this server.</li>
 </ul>
 <p>However, you can use these instructions to set up a peer reservation regardless of whether one server or both are hubs, validators, or stock servers. It is also possible to use a peer reservation when the busier server is the one making the outgoing connection, but this process does not describe that configuration.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>To complete these steps, you must meet the following prerequisites:</p>
 <ul>
 <li>The administrators both servers must have <code>rippled</code> <a href="install-rippled.html">installed</a> and running.</li>
@@ -225,9 +225,9 @@
 <li>The hub server must be able to receive incoming peer connections. For instructions on how to configure a firewall to allow this, see <a href="forward-ports-for-peering.html">Forward Ports for Peering</a>.</li>
 <li>Both servers must be configured to sync with the same <a href="parallel-networks.html">XRP Ledger network</a>, such as the production XRP Ledger, the Testnet, or the Devnet.</li>
 </ul>
-<h2 id="steps">Steps</h2>
+<h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
 <p>To use a peer reservation, complete the following steps:</p>
-<h3 id="1-stock-server-set-up-a-permanent-node-key-pair">1. (Stock Server) Set up a permanent node key pair</h3>
+<h3 id="1-stock-server-set-up-a-permanent-node-key-pair">1. (Stock Server) Set up a permanent node key pair<a aria-hidden="true" class="hover_anchor" href="#1-stock-server-set-up-a-permanent-node-key-pair"><i class="fa fa-link"></i></a></h3>
 <p>The administrator of the stock server completes this step.</p>
 <p>If you have already configured your server with a permanent node key pair value, you can skip ahead to <a href="#2-communicate-the-stock-servers-node-public-key">step 2: Communicate your node public key to the peer's admin</a>. (For example, setting up a permanent node key pair for each server is part of the process of <a href="cluster-rippled-servers.html">setting up a server cluster</a>.)</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Setting up a permanent node key pair is optional, but makes it easier to keep the peer reservation set up if you need to erase your server's databases or move to a new machine. If you don't want to set up a permanent node key pair, you can use your server's automatically-generated node public key as reported in the <code>pubkey_node</code> field of the <a href="server_info.html">server_info method</a> response.</p>
@@ -235,24 +235,24 @@
 <li>
 <p>Generate a new, random key pair using the <a href="validation_create.html">validation_create method</a>. (Omit the <code>secret</code> value.)</p>
 <p>For example:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">rippled</span> <span class="n">validation_create</span>
+<div class="codehilite"><pre><span></span><code>rippled validation_create
 
-<span class="n">Loading</span><span class="p">:</span> <span class="ss">"/etc/rippled.cfg"</span>
-<span class="n">Connecting</span> <span class="k">to</span> <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">:</span><span class="mi">5005</span>
-<span class="err">{</span>
-   <span class="ss">"result"</span> <span class="p">:</span> <span class="err">{</span>
-      <span class="ss">"status"</span> <span class="p">:</span> <span class="ss">"success"</span><span class="p">,</span>
-      <span class="ss">"validation_key"</span> <span class="p">:</span> <span class="ss">"FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA"</span><span class="p">,</span>
-      <span class="ss">"validation_public_key"</span> <span class="p">:</span> <span class="ss">"n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG"</span><span class="p">,</span>
-      <span class="ss">"validation_seed"</span> <span class="p">:</span> <span class="ss">"ssZkdwURFMBXenJPbrpE14b6noJSu"</span>
-   <span class="err">}</span>
-<span class="err">}</span>
+Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
+      "validation_public_key" : "n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG",
+      "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
+   }
+}
 </code></pre></div>
 <p>Save the <code>validation_seed</code> (your node seed value) and the <code>validation_public_key</code> value (your node public key )</p>
 </li>
 <li>
 <p>Edit your <code>rippled</code>'s config file.</p>
-<div class="codehilite"><pre><span></span><code><span class="err">vim /etc/opt/ripple/rippled.cfg</span>
+<div class="codehilite"><pre><span></span><code>vim /etc/opt/ripple/rippled.cfg
 </code></pre></div>
 <p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.<!--_ --></p>
 </li>
@@ -266,13 +266,13 @@
 </li>
 <li>
 <p>Restart your <code>rippled</code> server:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">systemctl restart rippled</span>
+<div class="codehilite"><pre><span></span><code>systemctl restart rippled
 </code></pre></div>
 </li>
 </ol>
-<h3 id="2-communicate-the-stock-servers-node-public-key">2. Communicate the stock server's node public key</h3>
+<h3 id="2-communicate-the-stock-servers-node-public-key">2. Communicate the stock server's node public key<a aria-hidden="true" class="hover_anchor" href="#2-communicate-the-stock-servers-node-public-key"><i class="fa fa-link"></i></a></h3>
 <p>The administrator of the stock server tells the administrator of the hub server what the stock server's node public key is. (Use the <code>validation_public_key</code> from step 1.) The administrator of the hub server needs this value for the next steps.</p>
-<h3 id="3-hub-server-add-the-peer-reservation">3. (Hub Server) Add the peer reservation</h3>
+<h3 id="3-hub-server-add-the-peer-reservation">3. (Hub Server) Add the peer reservation<a aria-hidden="true" class="hover_anchor" href="#3-hub-server-add-the-peer-reservation"><i class="fa fa-link"></i></a></h3>
 <p>The administrator of the hub server completes this step.</p>
 <p>Use the <a href="peer_reservations_add.html">peer_reservations_add method</a> to add a reservation using the node public key that you got in the previous step. For example:</p>
 <div class="codehilite"><pre><span></span><code>$ rippled peer_reservations_add n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG <span class="s2">"Description here"</span>
@@ -287,36 +287,36 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 <span class="o">}</span>
 </code></pre></div>
 <p class="devportal-callout tip"><strong>Tip:</strong> The description is an optional field that you can provide to add a human-readable note about who this reservation is for.</p>
-<h3 id="4-communicate-the-hub-servers-current-ip-address-and-peer-port">4. Communicate the hub server's current IP address and peer port</h3>
+<h3 id="4-communicate-the-hub-servers-current-ip-address-and-peer-port">4. Communicate the hub server's current IP address and peer port<a aria-hidden="true" class="hover_anchor" href="#4-communicate-the-hub-servers-current-ip-address-and-peer-port"><i class="fa fa-link"></i></a></h3>
 <p>The administrator of the hub server must tell their server's current IP address and peer port to the administrator of the stock server. If the hub server is behind a firewall that does network address translation (NAT), use the server's <em>external</em> IP address. The default config file uses port 51235 for the peer protocol.</p>
-<h3 id="5-stock-server-connect-to-the-peer-server">5. (Stock Server) Connect to the peer server</h3>
+<h3 id="5-stock-server-connect-to-the-peer-server">5. (Stock Server) Connect to the peer server<a aria-hidden="true" class="hover_anchor" href="#5-stock-server-connect-to-the-peer-server"><i class="fa fa-link"></i></a></h3>
 <p>The administrator of the stock server completes this step.</p>
 <p>Use the <a href="connect.html">connect method</a> to connect your server to the hub server. For example:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
 
-<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">{</span>
-<span class="err">    "command": "connect",</span>
-<span class="err">    "ip": "169.54.2.151",</span>
-<span class="err">    "port": 51235</span>
-<span class="err">}</span>
+<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    <span class="s2">"</span><span class="s">command</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">connect</span><span class="s2">"</span>,
+    <span class="s2">"</span><span class="s">ip</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">169.54.2.151</span><span class="s2">"</span>,
+    <span class="s2">"</span><span class="s">port</span><span class="s2">"</span>: <span class="mi">51235</span>
+}
 </code></pre></div></div>
 
-<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">{</span>
-<span class="err">    "method": "connect",</span>
-<span class="err">    "params": [</span>
-<span class="err">        {</span>
-<span class="err">            "ip": "169.54.2.151",</span>
-<span class="err">            "port": 51235</span>
-<span class="err">        }</span>
-<span class="err">    ]</span>
-<span class="err">}</span>
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    <span class="s2">"</span><span class="s">method</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">connect</span><span class="s2">"</span>,
+    <span class="s2">"</span><span class="s">params</span><span class="s2">"</span>: [
+        {
+            <span class="s2">"</span><span class="s">ip</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">169.54.2.151</span><span class="s2">"</span>,
+            <span class="s2">"</span><span class="s">port</span><span class="s2">"</span>: <span class="mi">51235</span>
+        }
+    ]
+}
 </code></pre></div></div>
 
-<div class="code_sample" id="code-0-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">rippled connect 169.54.2.151 51235</span>
+<div class="code_sample" id="code-0-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="nv">rippled</span> <span class="k">connect</span> <span class="mi">169</span>.<span class="mi">54</span>.<span class="mi">2</span>.<span class="mi">151</span> <span class="mi">51235</span>
 </code></pre></div></div>
 </div>
 <p>If the hub server's administrator has set up the peer reservation as described in the previous steps, this should automatically connect and remain connected as long as possible.</p>
-<h2 id="next-steps">Next Steps</h2>
+<h2 id="next-steps">Next Steps<a aria-hidden="true" class="hover_anchor" href="#next-steps"><i class="fa fa-link"></i></a></h2>
 <p>As a server administrator, you can manage the reservations your server has for other peers. (It is not possible to check which other servers have reservations for yours.) You can:</p>
 <ul>
 <li>Add more peer reservations or update their descriptions, using the <a href="peer_reservations_add.html">peer_reservations_add method</a>.</li>
@@ -325,7 +325,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 <li>Check which peers are currently connected and how much bandwidth they have used, using the <a href="peers.html">peers method</a>.</li>
 </ul>
 <p class="devportal-callout tip"><strong>Tip:</strong> Although there is no API method to immediately disconnect from an unwanted peer, you can use a software firewall such as <code>firewalld</code> to block an unwanted peer from connecting to your server. For examples, see the community-contributed <a class="external-link" href="https://github.com/gnanderson/rbh" target="_blank">rbh script <i aria-hidden="true" class="fa fa-external-link"></i></a>. <!-- SPELLING_IGNORE: rbh --></p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="peer-protocol.html">Peer Protocol</a></li>
@@ -385,6 +385,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -398,15 +399,15 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -415,21 +416,21 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -439,24 +440,25 @@ Connecting to <span class="m">127</span>.0.0.1:5005
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -483,21 +485,21 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -506,21 +508,21 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -540,6 +542,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -578,7 +581,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -713,6 +716,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

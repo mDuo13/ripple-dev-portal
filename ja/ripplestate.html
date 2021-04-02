@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>RippleState - XRP Ledger Dev Portal (日本語)</title>
+    <title>RippleState - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="RippleState | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/ripplestate.html" />
+    <meta property="og:description" content="2つのアカウントをリンクし、それらのアカウント間の特定の通貨の残高を追跡します。トラストラインのコンセプトは、このオブジェクトタイプを抽象化することです。" />
+    <meta name="description" content="2つのアカウントをリンクし、それらのアカウント間の特定の通貨の残高を追跡します。トラストラインのコンセプトは、このオブジェクトタイプを抽象化することです。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ripplestate.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/ripplestate.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/ripplestate.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/ledger-data-formats/ledger-object-types/ripplestate.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -183,11 +207,11 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="ripplestate">RippleState</h1>
+        <h1 id="ripplestate">RippleState<a aria-hidden="true" class="hover_anchor" href="#ripplestate"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L70" target="_blank" title="Source">[ソース]<br/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>RippleState</code>オブジェクトタイプは、1つの通貨で2つのアカウントを接続します。概念的には<code>RippleState</code>オブジェクトは、アカウント間の2つの <em>トラストライン</em> を表し、各アカウント側から1つずつ確立されます。各アカウントの<code>RippleState</code>オブジェクト設定は、各アカウント側で変更できますが、残高については単一の値を両アカウント間で共有します。完全にデフォルト状態のトラストラインは、存在しないトラストラインと同様に見なされます。このため<code>rippled</code> は、プロパティがすべてデフォルトである<code>RippleState</code>オブジェクトを削除します。</p>
 <p>XRP Ledgerではどのアカウントにも権限がないため、<code>RippleState</code>オブジェクトはアカウントアドレスを数値順にソートし、正規の形式になるようにします。数値順の低いアドレスは「低位アカウント」と見なされ、数値順の高いアドレスは「高位アカウント」と見なされます。</p>
-<h2 id="ripplestate-jsonの例">RippleState JSONの例</h2>
+<h2 id="ripplestate-jsonの例">RippleState JSONの例<a aria-hidden="true" class="hover_anchor" href="#ripplestate-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
    <span class="nt">"Balance"</span><span class="p">:</span> <span class="p">{</span>
        <span class="nt">"currency"</span><span class="p">:</span> <span class="s2">"USD"</span><span class="p">,</span>
@@ -213,7 +237,7 @@
    <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"9CA88CDEDFF9252B3DE183CE35B038F57282BC9503CDFA1923EF9A95DF0D6F7B"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="ripplestateフィールド">RippleStateフィールド</h2>
+<h2 id="ripplestateフィールド">RippleStateフィールド<a aria-hidden="true" class="hover_anchor" href="#ripplestateフィールド"><i class="fa fa-link"></i></a></h2>
 <p><code>RippleState</code>オブジェクトのフィールドは次のとおりです。</p>
 <table>
 <thead>
@@ -305,7 +329,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="ripplestateのフラグ">RippleStateのフラグ</h2>
+<h2 id="ripplestateのフラグ">RippleStateのフラグ<a aria-hidden="true" class="hover_anchor" href="#ripplestateのフラグ"><i class="fa fa-link"></i></a></h2>
 <p>トラストラインに対して有効化または無効化できる各種オプションがあります。これらのオプションを変更するには、<a href="trustset.html">TrustSetトランザクション</a>を使用します。レジャーではフラグはバイナリ値として表され、これらのバイナリ値はビットOR演算と組み合わせることができます。レジャーでのフラグのビット値は、トランザクションでこれらのフラグを有効または無効にするために使用する値とは異なります。レジャーのフラグには、 <em>lsf</em> で始まる名前が付いています。</p>
 <p>RippleStateオブジェクトには以下のフラグ値を指定できます。</p>
 <table>
@@ -377,7 +401,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="所有者の準備金への資金供給">所有者の準備金への資金供給</h2>
+<h2 id="所有者の準備金への資金供給">所有者の準備金への資金供給<a aria-hidden="true" class="hover_anchor" href="#所有者の準備金への資金供給"><i class="fa fa-link"></i></a></h2>
 <p>アカウントがトラストラインをデフォルト以外の状態に変更した場合、そのトラストラインはアカウントの<a href="reserves.html#所有者準備金">所有者準備金</a>に反映されます。RippleStateオブジェクトの<code>lsfLowReserve</code>フラグと<code>lsfHighReserve</code>フラグは、いずれのアカウントが所有者準備金に責任があるかを示します。<code>rippled</code>サーバーは、トラストラインの変更時にこれらのフラグを自動的に設定します。</p>
 <p>トラストラインのデフォルト以外の状態に反映される値は以下の通りです。</p>
 <table>
@@ -418,7 +442,7 @@
 <p>2つのNoRippleフラグのデフォルト状態は、対応するAccountRootオブジェクトの<a href="accountroot.html#accountrootのフラグ">lsfDefaultRippleフラグ</a>の状態によって異なります。DefaultRippleが無効の場合（デフォルト）、アカウントのすべてのトラストラインのlsfNoRippleフラグはデフォルトで <em>有効</em> となります。アカウントがDefaultRippleを有効にすると、アカウントのトラストラインのlsfNoRippleフラグはデフォルトで <em>無効</em> となります（Ripplingが有効になります）。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> <code>rippled</code>バージョン0.27.3（2015年3月10日）にてDefaultRippleフラグが導入される前は、すべてのトラストラインはデフォルトで両方のNoRippleフラグが無効になっていました（Ripplingは有効）。</p>
 <p><code>rippled</code>は遅延評価を使用して所有者準備金を計算しています。つまり、アカウントがDefaultRippleフラグを変更してそのすべてのトラストラインのデフォルト状態を変更しても、変更後しばらくの間はアカウントの準備金が同じ状態で維持されます。アカウントがトラストラインを変更すると、<code>rippled</code>は個々のトラストラインがデフォルト状態にあるか否かや、所有者準備金への資金供給の必要性を再評価します。</p>
-<h2 id="ripplestate-idのフォーマット">RippleState IDのフォーマット</h2>
+<h2 id="ripplestate-idのフォーマット">RippleState IDのフォーマット<a aria-hidden="true" class="hover_anchor" href="#ripplestate-idのフォーマット"><i class="fa fa-link"></i></a></h2>
 <p>RippleStateオブジェクトのIDは、以下の値がこの順序で連結されている<a href="basic-data-types.html#ハッシュ">SHA-512ハーフ</a>です。</p>
 <ul>
 <li>RippleStateスペースキー（<code>0x0072</code>）</li>
@@ -538,6 +562,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -599,7 +624,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -634,10 +658,12 @@
                             <li><a class="subpage" href="escrow-object.html">Escrow</a></li>
                             <li><a class="subpage" href="feesettings.html">FeeSettings</a></li>
                             <li><a class="subpage" href="ledgerhashes.html">LedgerHashes</a></li>
+                            <li><a class="subpage" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="offer.html">Offer</a></li>
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="active subpage" href="#main_content_body">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -676,14 +702,16 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">疑似トランザクション</a></li>
 
                             <li><a class="subpage" href="enableamendment.html">EnableAmendment</a></li>
                             <li><a class="subpage" href="setfee.html">SetFee</a></li>
+                            <li><a class="subpage" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
-                        <li><a class="subcat-title" href="transaction-results.html">取引の結果</a></li>
+                        <li><a class="subcat-title" href="transaction-results.html">トランザクションの結果</a></li>
 
                             <li><a class="subpage" href="tec-codes.html">tecコード</a></li>
                             <li><a class="subpage" href="tef-codes.html">tefコード</a></li>
@@ -755,13 +783,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -781,11 +809,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -818,7 +846,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -867,6 +895,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

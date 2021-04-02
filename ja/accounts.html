@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>アカウント - XRP Ledger Dev Portal (日本語)</title>
+    <title>アカウント - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="アカウント | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/accounts.html" />
+    <meta property="og:description" content="XRP Ledgerのアカウントについて説明します。アカウントはトランザクションを送信でき、XRPを保有できます。" />
+    <meta name="description" content="XRP Ledgerのアカウントについて説明します。アカウントはトランザクションを送信でき、XRPを保有できます。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/accounts.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/accounts.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/accounts.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-system-basics/accounts/accounts.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-system-basics/accounts/accounts.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -183,7 +207,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="アカウント">アカウント</h1>
+        <h1 id="アカウント">アカウント<a aria-hidden="true" class="hover_anchor" href="#アカウント"><i class="fa fa-link"></i></a></h1>
 <p>XRP Ledgerの「アカウント」は、XRPの所有者と<a href="transaction-formats.html">トランザクション</a>の送信者を表します。アカウントの主な要素は次のとおりです。</p>
 <ul>
 <li>識別用の<strong>アドレス</strong>。例えば、<code>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</code></li>
@@ -200,7 +224,7 @@
 </ul>
 <p>アカウントのコアデータは、レジャーのデータツリーの<a href="accountroot.html">AccountRoot</a>レジャーのオブジェクトタイプに保存されます。アカウントは、他の複数のタイプのデータの所有者（または部分的な所有者）になることもできます。</p>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> XRP Ledgerの「アカウント」は、財務上の用途（例:「銀行口座」）やコンピューター上の用途（例:「UNIXアカウント」）で使用されます。XRP以外の通貨および資産はXRP Ledgerアカウント自体には保存されません。そのような資産はそれぞれ、両当事者を結ぶ「トラストライン」と呼ばれる会計関係に保存されます。</p>
-<h3 id="アカウントの作成">アカウントの作成</h3>
+<h3 id="アカウントの作成">アカウントの作成<a aria-hidden="true" class="hover_anchor" href="#アカウントの作成"><i class="fa fa-link"></i></a></h3>
 <p>「アカウント作成」専用のトランザクションはありません。Paymentトランザクション でまだアカウントを所有していない数学的に有効なアドレスに<a href="reserves.html">アカウントの準備金</a>以上のXRPが送信されると、<a href="payment.html">Paymentトランザクション</a>で自動的に新しいアカウントが作成されます。これはアカウントの <em>資金提供</em> と呼ばれ、レジャーに<a href="accountroot.html">AccountRootオブジェクト</a>が作成されます。それ以外のトランザクションでアカウントを作成することはできません。</p>
 <p class="devportal-callout 注意"><strong>注意:</strong> アカウントを資金提供することによって、そのアカウントに対して特別な権限を持つことには<strong>なりません</strong>。アカウントのアドレスに対応するシークレットキーを持っている人なら誰でも、アカウントとそれに含まれるすべてのXRPの完全制御権を持っています。一部のアドレスでは、誰もシークレットキーを持っていない場合があります。その場合、アカウントは<a href="#特別なアドレス">ブラックホール</a>になり、XRPは永久に失われます。</p>
 <p>XRP Ledgerでアカウントを取得する一般的な方法は次のとおりです。</p>
@@ -218,7 +242,7 @@
 <p class="devportal-callout 注意"><strong>注意:</strong> 自身のXRP Ledgerアドレスで初めてXRPを受け取る場合は<a href="reserves.html">アカウントの準備金</a>（現在は20 XRP）を支払う必要があります。この金額のXRPは無期限に使用できなくなります。一方で、一般の取引所では通常、顧客のXRPはすべて、共有されたいくつかのXRP Ledgerアカウントに保有されているため、顧客はその取引所で個々のアカウントの準備金を支払う必要はありません。引き出す前に、XRP Ledgerに直接アカウントを保有することが、金額に見合う価値があるかどうかを検討してください。</p>
 </li>
 </ul>
-<h2 id="アドレス">アドレス</h2>
+<h2 id="アドレス">アドレス<a aria-hidden="true" class="hover_anchor" href="#アドレス"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerのアカウントは、XRP Ledgerの<a href="base58-encodings.html">base58</a>フォーマットのアドレスで識別されます。このアドレスはアカウントのマスター<a class="external-link" href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank">公開鍵 <i aria-hidden="true" class="fa fa-external-link"></i></a>から生成され、マスター公開鍵は秘密鍵から生成されます。アドレスはJSON文字列で記述され、以下の特徴があります。</p>
 <ul>
 <li>長さは25から35文字です</li>
@@ -234,7 +258,7 @@
 <p>有効なアドレスに資金供給することで、そのアドレスを<a href="#アカウントの作成">XRP Ledgerのアカウントにする</a>ことができます。<a href="setregularkey.html">レギュラーキー</a>または<a href="multi-signing.html">署名者リスト</a>のメンバーを表すために資金供給されていないアドレスを使用することもできます。資金供給されたアカウントのみがトランザクションの送信者になることができます。</p>
 <p>キーペアを始め、有効なアドレスの作成は、厳密な数学的演算です。キーペアの生成と、そのアドレスの計算は完全にオフラインで行うことができます。XRP Ledgerやその他の関係者と通信する必要はありません。公開鍵からアドレスへの変換には一方向のハッシュ関数が含まれるため、公開鍵がアドレスと一致することは確認できますが、アドレスのみから公開鍵を導出することはできません。（このことが、署名付きのトランザクションに送信者の公開鍵 <em>と</em> アドレスが含まれる理由の1つとなっています。）</p>
 <p>XRP Ledgerアドレスの計算方法の技術的な詳細は、<a href="#アドレスのエンコード">アドレスのエンコード</a>を参照してください。</p>
-<h3 id="特別なアドレス">特別なアドレス</h3>
+<h3 id="特別なアドレス">特別なアドレス<a aria-hidden="true" class="hover_anchor" href="#特別なアドレス"><i class="fa fa-link"></i></a></h3>
 <p>XRP Ledgerでは、過去の使用という点で、一部のアドレスに特別な意味があります。多くの場合、これらのアドレスは「ブラックホール」アドレスです。つまり、このアドレスは既知のシークレットキーから派生したものではありません。アドレスのみからシークレットキーを推測することは事実上不可能なため、ブラックホールアドレスが保有しているXRPは永久に失われます。</p>
 <table>
 <thead>
@@ -278,7 +302,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="アカウントの削除">アカウントの削除</h2>
+<h2 id="アカウントの削除">アカウントの削除<a aria-hidden="true" class="hover_anchor" href="#アカウントの削除"><i class="fa fa-link"></i></a></h2>
 <p><a href="known-amendments.html#deletableaccounts">DeletableAccounts amendment</a>（有効2020-05-08）では、アカウントの削除は可能になりました。</p>
 <p>削除するには、アカウントが次の要件を満たしている必要があります。</p>
 <ul>
@@ -294,7 +318,7 @@
 <p>アカウントは、削除した後、通常の<a href="#アカウントの作成">アカウント作成</a>方法でレジャーに再作成できます。削除後に再作成されたアカウントと、初めて作成されたアカウントに違いはありません。</p>
 <p>Bitcoinやその他の多くの暗号資産とは異なり、新バージョンのXRP Ledgerの公開レジャーチェーンにはそれぞれレジャーの全状態が含まれており、新規アカウントが増えるごとにサイズが大きくなります。そのため、XRP Ledgerの新規アカウントは必要な場合以外は作成しないでください。アカウントを削除することで、アカウントの<a href="reserves.html">準備金</a>である20 XRPの一部を復元できますが、そのためには少なくとも5 XRPを消却する必要があります。</p>
 <p>多くのユーザーに代わって価値を送受信する金融機関などは、XRP Ledgerでは1つ（または少数）のアカウントのみを使用し、顧客との間の個別の決済を区別するために<a href="source-and-destination-tags.html"><strong>ソースタグ</strong>と<strong>宛先タグ</strong></a>を使用できます。</p>
-<h2 id="トランザクション履歴">トランザクション履歴</h2>
+<h2 id="トランザクション履歴">トランザクション履歴<a aria-hidden="true" class="hover_anchor" href="#トランザクション履歴"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerでは、トランザクション（取引）履歴をトランザクションの「スレッド」によって追跡することができます。これはトランザクションの識別用のハッシュとレジャーインデックスにリンクされています。<code>AccountRoot</code>レジャーオブジェクトには、それを最後に修正したトランザクションの識別用のハッシュとレジャーが含まれます。そのトランザクションのメタデータには、<code>AccountRoot</code>ノードの前の状態が含まれているため、この方法で1つのアカウントの履歴を繰り返すことができます。このトランザクション履歴には、<code>AccountRoot</code>ノードを直接変更するトランザクションが含まれます。以下に例を示します。</p>
 <ul>
 <li>アカウントによって送信されるトランザクション。アカウントの<code>Sequence</code>番号が変更されるため。このようなトランザクションでは、<a href="transaction-cost.html">トランザクションコスト</a>によりアカウントのXRP残高も変更されます。</li>
@@ -310,7 +334,7 @@
 <li><code>SignerList</code> <a href="multi-signing.html">マルチ署名</a>によってアカウントのトランザクションを承認できるアドレスのリストを表すオブジェクト。</li>
 </ul>
 <p>これらの各オブジェクトの詳細は、<a href="ledger-data-formats.html">レジャーフォーマットのリファレンス</a>を参照してください。</p>
-<h2 id="アドレスのエンコード">アドレスのエンコード</h2>
+<h2 id="アドレスのエンコード">アドレスのエンコード<a aria-hidden="true" class="hover_anchor" href="#アドレスのエンコード"><i class="fa fa-link"></i></a></h2>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> これらの技術的な詳細は、XRP Ledgerとの互換性を保つために低レベルのライブラリソフトウェアを構築しているユーザーのみを対象としています。</p>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>XRP Ledgerのアドレスは、<a href="base58-encodings.html">base58</a><em>形式のディクショナリ</em><code>rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz</code>を使用してエンコードされています。XRP Ledgerはbase58でいくつかのタイプのキーをエンコードするため、それらを区別するためにエンコードされたデータの前に1バイトの「タイププレフィクス」（「バージョンプレフィクス」とも呼ばれます）を付けます。タイププレフィクスによりアドレスは通常、base58形式の異なる文字で始まります。</p>
@@ -325,8 +349,8 @@
     const crypto = require('crypto');
     const R_B58_DICT = 'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz';
     const base58 = require('base-x')(R_B58_DICT);</p>
-<div class="codehilite"><pre><span></span><code><span class="err">assert(crypto.getHashes().includes('sha256'));</span>
-<span class="err">assert(crypto.getHashes().includes('ripemd160'));</span>
+<div class="codehilite"><pre><span></span><code>assert(crypto.getHashes().includes('sha256'));
+assert(crypto.getHashes().includes('ripemd160'));
 </code></pre></div>
 </li>
 <li>
@@ -338,31 +362,31 @@
 </li>
 <li>
 <p>公開鍵のSHA-256ハッシュの<a class="external-link" href="https://en.wikipedia.org/wiki/RIPEMD" target="_blank">RIPEMD160 <i aria-hidden="true" class="fa fa-external-link"></i></a>ハッシュを計算します。この値は「Account ID」です。</p>
-<div class="codehilite"><pre><span></span><code><span class="err"> const pubkey_inner_hash = crypto.createHash('sha256').update(pubkey);</span>
-<span class="err">const pubkey_outer_hash = crypto.createHash('ripemd160');</span>
-<span class="err">pubkey_outer_hash.update(pubkey_inner_hash.digest());</span>
-<span class="err">const account_id = pubkey_outer_hash.digest();</span>
+<div class="codehilite"><pre><span></span><code> <span class="k">const</span> <span class="n">pubkey_inner_hash</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">createHash</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">pubkey</span><span class="p">);</span>
+<span class="k">const</span> <span class="n">pubkey_outer_hash</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">createHash</span><span class="p">(</span><span class="s1">'ripemd160'</span><span class="p">);</span>
+<span class="n">pubkey_outer_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">pubkey_inner_hash</span><span class="o">.</span><span class="n">digest</span><span class="p">());</span>
+<span class="k">const</span> <span class="n">account_id</span> <span class="o">=</span> <span class="n">pubkey_outer_hash</span><span class="o">.</span><span class="n">digest</span><span class="p">();</span>
 </code></pre></div>
 </li>
 <li>
 <p>アカウントIDのSHA-256ハッシュのSHA-256ハッシュを計算します。最初の4バイトを使用ます。この値が「チェックサム」です。</p>
-<div class="codehilite"><pre><span></span><code><span class="err"> const address_type_prefix = Buffer.from([0x00]);</span>
-<span class="err">const payload = Buffer.concat([address_type_prefix, account_id]);</span>
-<span class="err">const chksum_hash1 = crypto.createHash('sha256').update(payload).digest();</span>
-<span class="err">const chksum_hash2 = crypto.createHash('sha256').update(chksum_hash1).digest();</span>
-<span class="err">const checksum =  chksum_hash2.slice(0,4);</span>
+<div class="codehilite"><pre><span></span><code> <span class="k">const</span> <span class="n">address_type_prefix</span> <span class="o">=</span> <span class="n">Buffer</span><span class="o">.</span><span class="n">from</span><span class="p">([</span><span class="mh">0x00</span><span class="p">]);</span>
+<span class="k">const</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">Buffer</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">address_type_prefix</span><span class="p">,</span> <span class="n">account_id</span><span class="p">]);</span>
+<span class="k">const</span> <span class="n">chksum_hash1</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">createHash</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">();</span>
+<span class="k">const</span> <span class="n">chksum_hash2</span> <span class="o">=</span> <span class="n">crypto</span><span class="o">.</span><span class="n">createHash</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chksum_hash1</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">();</span>
+<span class="k">const</span> <span class="n">checksum</span> <span class="o">=</span>  <span class="n">chksum_hash2</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
 </code></pre></div>
 </li>
 <li>
 <p>ペイロードとチェックサムを連結します。連結バッファーのbase58値を計算します。この結果が、該当のアドレスになります。</p>
-<div class="codehilite"><pre><span></span><code><span class="err"> const dataToEncode = Buffer.concat([payload, checksum]);</span>
-<span class="err">const address = base58.encode(dataToEncode);</span>
-<span class="err">console.log(address);</span>
-<span class="err">// rDTXLQ7ZKZVKz33zJbHjgVShjsBnqMBhmN</span>
+<div class="codehilite"><pre><span></span><code> <span class="k">const</span> <span class="n">dataToEncode</span> <span class="o">=</span> <span class="n">Buffer</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">payload</span><span class="p">,</span> <span class="n">checksum</span><span class="p">]);</span>
+<span class="k">const</span> <span class="n">address</span> <span class="o">=</span> <span class="n">base58</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">dataToEncode</span><span class="p">);</span>
+<span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">rDTXLQ7ZKZVKz33zJbHjgVShjsBnqMBhmN</span>
 </code></pre></div>
 </li>
 </ol>
-<h2 id="関連項目">関連項目</h2>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>コンセプト:</strong></li>
 <li><a href="reserves.html">準備金</a></li>
@@ -444,6 +468,7 @@
                           <li><a class="subpage" href="cryptographic-keys.html">暗号鍵</a></li>
                           <li><a class="subpage" href="multi-signing.html">マルチ署名</a></li>
                           <li><a class="subpage" href="reserves.html">準備金</a></li>
+                          <li><a class="subpage" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                           <li><a class="subpage" href="depositauth.html">Deposit Authorization</a></li>
 
                       <li><a class="nosubcat-page" href="fees.html">手数料（曖昧さの回避）</a></li>
@@ -463,15 +488,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_20">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_20" aria-expanded="true" aria-controls="sidenav_collapse_20"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_21">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="payment-types.html">支払いのタイプ</a>
                 <!-- <a class="sidenav_cat_title" href="payment-types.html">Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_20" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_20">
+            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="direct-xrp-payments.html">XRPによる直接支払</a></li>
@@ -483,21 +508,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse20 -->
+            </div><!-- /#sidenav_collapse21 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_28">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_28" aria-expanded="true" aria-controls="sidenav_collapse_28"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_29">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_29" aria-expanded="true" aria-controls="sidenav_collapse_29"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="issued-currencies.html">発行済み通貨</a>
                 <!-- <a class="sidenav_cat_title" href="issued-currencies.html">Issued Currencies</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_28" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_28">
+            <div id="sidenav_collapse_29" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_29">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="issued-currencies-overview.html">発行済み通貨の概要</a></li>
@@ -512,21 +537,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse28 -->
+            </div><!-- /#sidenav_collapse29 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_39">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_39" aria-expanded="true" aria-controls="sidenav_collapse_39"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="decentralized-exchange.html">分散型取引所</a>
                 <!-- <a class="sidenav_cat_title" href="decentralized-exchange.html">Decentralized Exchange</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_39" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_39">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="offers.html">オファー</a></li>
@@ -535,27 +560,28 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse39 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_43">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_43" aria-expanded="true" aria-controls="sidenav_collapse_43"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="consensus-network.html">コンセンサスネットワーク</a>
                 <!-- <a class="sidenav_cat_title" href="consensus-network.html">Consensus Network</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_43" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_43">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="consensus.html">コンセンサス</a></li>
                       <li><a class="nosubcat-page" href="consensus-principles-and-rules.html">コンセンサスの原理とルール</a></li>
                       <li><a class="nosubcat-page" href="consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a></li>
                       <li><a class="nosubcat-page" href="invariant-checking.html">Invariant Checking</a></li>
+                      <li><a class="nosubcat-page" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                       <li><a class="nosubcat-page" href="transaction-queue.html">トランザクションキュー</a></li>
                       <li><a class="nosubcat-page" href="about-canceling-a-transaction.html">トランザクションの取消しについて</a></li>
                       <li><a class="nosubcat-page" href="transaction-malleability.html">トランザクション展性</a></li>
@@ -569,21 +595,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse43 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_55">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_55" aria-expanded="true" aria-controls="sidenav_collapse_55"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_57">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_57" aria-expanded="true" aria-controls="sidenav_collapse_57"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="the-rippled-server.html">rippledサーバー</a>
                 <!-- <a class="sidenav_cat_title" href="the-rippled-server.html">The rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_55" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_55">
+            <div id="sidenav_collapse_57" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_57">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="rippled-server-modes.html">rippledサーバーのモード</a></li>
@@ -598,7 +624,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse55 -->
+            </div><!-- /#sidenav_collapse57 -->
 
           </div><!-- /.card -->
 
@@ -621,13 +647,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -647,11 +673,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -684,7 +710,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -733,6 +759,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

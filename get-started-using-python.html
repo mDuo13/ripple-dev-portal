@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Get Started Using Python - XRPL.org</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Get Started Using Python | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/get-started-using-python.html" />
+    <meta property="og:description" content="Build a simple Python app that interacts with the XRP Ledger." />
+    <meta name="description" content="Build a simple Python app that interacts with the XRP Ledger." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/get-started-using-python.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/get-started-using-python.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/get-started-using-python.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="/xrpl-dev-portal/assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/assets/css/devportal2020.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en ">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<div class="container-fluid">
+<nav class="top-nav navbar navbar-expand-lg navbar-dark row">
+  <a href="/xrpl-dev-portal/" class="navbar-brand"><img src="/xrpl-dev-portal/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+    <ul class="nav navbar-nav">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
+          <a class="dropdown-item top-level-1" href="overview.html">Overview</a>
+          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
+          <a class="dropdown-item top-level-1" href="history.html">History</a>
+          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+        </div>
+      </li>
+
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
+          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+        </div>
+      </li>
+
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="topnav_docs.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Build</a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docs.html">
+          <a class="dropdown-item top-level-1" href="docs.html">Docs</a>
+          <a class="dropdown-item top-level-2" href="concepts.html">Concepts</a>
+          <a class="dropdown-item top-level-2" href="tutorials.html">Tutorials</a>
+          <a class="dropdown-item top-level-2" href="references.html">References</a>
+          <a class="dropdown-item top-level-1" href="dev-tools.html">Dev Tools</a>
+          <a class="dropdown-item top-level-1" href="/blog/">Dev Blog</a>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="contribute.html">Contribute</a>
+      </li>
+
+<div class="nav-item github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/get-started/get-started-using-python.md" target="_blank" class="nav-link github-edit">Edit</a>
+</div><!-- /.github-edit -->
+      <li class="nav-item dropdown" id="navbar-search">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <div class="dropdown-menu">
+          <form class="navbar-form navbar-right" role="search">
+            <div class="form-inline">
+              <div class="input-group">
+                <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search site...</span></label>
+                <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="Search site...">
+                <div class="input-group-append d-none d-lg-flex">
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                </div>
+              </div><!--/.input-group-->
+            </div>
+          </form>
+        </div><!--/.dropdown-menu-->
+      </li><!--/.dropdown-->
+
+      <li class="nav-item wrap-button">
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav navbar-nav language-selector">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Eng
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <a class="dropdown-item" href="/xrpl-dev-portal/get-started-using-python.html">Eng</a>
+          <a class="dropdown-item" href="/xrpl-dev-portal/ja/get-started-using-python.html">日本語</a>
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+  </div><!--/#navbarHolder-->
+</nav>
+</div>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <div class="card" id="page-toc-wrapper">
+    <div class="card-header">
+      <h4>In this document</h4>
+    </div>
+    <ul class="card-body page-toc">
+      <li class="level-1"><a href="#get-started-using-python">Get Started Using Python</a></li>
+<li class="level-2"><a href="#learning-goals">Learning goals</a></li>
+<li class="level-2"><a href="#requirements">Requirements</a></li>
+<li class="level-2"><a href="#installation">Installation</a></li>
+<li class="level-2"><a href="#start-building">Start building</a></li>
+<li class="level-3"><a href="#1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger</a></li>
+<li class="level-3"><a href="#2-generate-wallet">2. Generate wallet</a></li>
+<li class="level-3"><a href="#3-query-the-xrp-ledger">3. Query the XRP Ledger</a></li>
+<li class="level-3"><a href="#4-putting-it-all-together">4. Putting it all together</a></li>
+<li class="level-2"><a href="#keep-on-building">Keep on building</a></li>
+
+    </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Build</a></li>
+    <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
+    <li class="active breadcrumb-item"><a href="get-started.html">Get Started</a></li>
+    <li class="active breadcrumb-item">Get Started Using Python</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="content">
+        <h1 id="get-started-using-python">Get Started Using Python<a aria-hidden="true" class="hover_anchor" href="#get-started-using-python"><i class="fa fa-link"></i></a></h1>
+<p>This tutorial walks you through the basics of building a very simple XRP Ledger-connected application using <a class="external-link" href="https://github.com/XRPLF/xrpl-py" target="_blank"><code>xrpl-py</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>, a pure <a class="external-link" href="https://www.python.org" target="_blank">Python <i aria-hidden="true" class="fa fa-external-link"></i></a> library that makes it easy to interact with the XRP Ledger using native Python models and methods.</p>
+<p>This tutorial is intended for beginners and should take no longer than 30 minutes to complete.</p>
+<h2 id="learning-goals">Learning goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
+<p>In this tutorial, you'll learn:</p>
+<ul>
+<li>The basic building blocks of XRP Ledger-based applications.</li>
+<li>How to connect to the XRP Ledger using <code>xrpl-py</code>.</li>
+<li>How to generate a wallet on the <a href="xrp-testnet-faucet.html">Testnet</a> using <code>xrpl-py</code>.</li>
+<li>How to use the <code>xrpl-py</code> library to look up information about an account on the XRP Ledger.</li>
+<li>How to put these steps together to create a simple Python app.</li>
+</ul>
+<h2 id="requirements">Requirements<a aria-hidden="true" class="hover_anchor" href="#requirements"><i class="fa fa-link"></i></a></h2>
+<p>The <code>xrpl-py</code> library supports <a class="external-link" href="https://www.python.org/downloads/" target="_blank">Python 3.7 <i aria-hidden="true" class="fa fa-external-link"></i></a> and later.</p>
+<h2 id="installation">Installation<a aria-hidden="true" class="hover_anchor" href="#installation"><i class="fa fa-link"></i></a></h2>
+<p>The <a class="external-link" href="https://github.com/XRPLF/xrpl-py" target="_blank"><code>xrpl-py</code> library <i aria-hidden="true" class="fa fa-external-link"></i></a> is available on <a class="external-link" href="https://pypi.org/project/xrpl-py/" target="_blank">PyPI <i aria-hidden="true" class="fa fa-external-link"></i></a>. Install with <code>pip</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pip3</span> <span class="n">install</span> <span class="n">xrpl</span><span class="o">-</span><span class="n">py</span>
+</code></pre></div>
+<h2 id="start-building">Start building<a aria-hidden="true" class="hover_anchor" href="#start-building"><i class="fa fa-link"></i></a></h2>
+<p>When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP into your <a href="wallets.html">wallet</a>, integrating with the <a href="decentralized-exchange.html">decentralized exchange</a>, or <a href="issued-currencies.html">issuing tokens</a>. This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.</p>
+<p>Here are the basic steps you'll need to cover for almost any XRP Ledger project:</p>
+<ol>
+<li><a href="#1-connect-to-the-xrp-ledger">Connect to the XRP Ledger.</a></li>
+<li><a href="#2-generate-wallet">Generate a wallet.</a></li>
+<li><a href="#3-query-the-xrp-ledger">Query the XRP Ledger.</a></li>
+</ol>
+<h3 id="1-connect-to-the-xrp-ledger">1. Connect to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#1-connect-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
+<p>To make queries and submit transactions, you need to establish a connection to the XRP Ledger. To do this with <code>xrpl-py</code>, use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html" target="_blank"><code>xrp.clients</code> module <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Define the network client</span>
+<span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<span class="n">JSON_RPC_URL</span> <span class="o">=</span> <span class="s2">"https://s.altnet.rippletest.net:51234/"</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">JSON_RPC_URL</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="connect-to-the-production-xrp-ledger">Connect to the production XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#connect-to-the-production-xrp-ledger"><i class="fa fa-link"></i></a></h4>
+<p>The sample code in the previous section shows you how to connect to the Testnet, which is one of the available <a href="parallel-networks.html">parallel networks</a>. When you're ready to integrate with the production XRP Ledger, you'll need to connect to the Mainnet. You can do that in two ways:</p>
+<ul>
+<li>
+<p>By <a href="install-rippled.html">installing the core server</a> (<code>rippled</code>) and running a node yourself (the core server connects to the Mainnet by default and you can <a href="connect-your-rippled-to-the-xrp-test-net.html">change the configuration to use an altnet</a> ). <a href="the-rippled-server.html#reasons-to-run-your-own-server">There are good reasons to run your own core server</a>. If you run your own server, you can coconnect to it like so:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<span class="n">JSON_RPC_URL</span> <span class="o">=</span> <span class="s2">"http://localhost:5005/"</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">JSON_RPC_URL</span><span class="p">)</span>
+</code></pre></div>
+<p>See the example <a class="external-link" href="https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562" target="_blank">core server config file <i aria-hidden="true" class="fa fa-external-link"></i></a> for more information about default values.</p>
+</li>
+<li>
+<p>By using one of the <a href="get-started-with-the-rippled-api.html#public-servers">available public servers</a>:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<span class="n">JSON_RPC_URL</span> <span class="o">=</span> <span class="s2">"https://s2.ripple.com:51234/"</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">JSON_RPC_URL</span><span class="p">)</span>
+</code></pre></div>
+</li>
+</ul>
+<h3 id="2-generate-wallet">2. Generate wallet<a aria-hidden="true" class="hover_anchor" href="#2-generate-wallet"><i class="fa fa-link"></i></a></h3>
+<p>To store value and execute transactions on the XRP Ledger, you need to create a wallet: a <a href="cryptographic-keys.html#key-components">set of keys</a> and an <a href="accounts.html#addresses">address</a> that's been <a href="accounts.html#creating-accounts">funded with enough XRP</a> to meet the <a href="reserves.html">account reserve</a>. The address is the identifier of your account and you use the <a href="cryptographic-keys.html#private-key">private key</a> to sign transactions that you submit to the XRP Ledger.</p>
+<p>For testing and development purposes, you can use the <a href="xrp-testnet-faucet.html">XRP Faucets</a> to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a <a href="set-up-secure-signing.html">secure signing method</a>.</p>
+<p>To make it easy to create a wallet on the Testnet, <code>xrpl-py</code> provides the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet" target="_blank"><code>generate_faucet_wallet</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Create a wallet using the testnet faucet:</span>
+<span class="c1"># https://xrpl.org/xrp-testnet-faucet.html</span>
+<span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">generate_faucet_wallet</span>
+<span class="n">test_wallet</span> <span class="o">=</span> <span class="n">generate_faucet_wallet</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>This method returns a <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.Wallet" target="_blank"><code>Wallet</code> instance <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">test_wallet</span><span class="p">)</span>
+
+<span class="c1"># print output</span>
+<span class="n">public_key</span><span class="p">::</span> <span class="mi">022</span><span class="n">FA613294CD13FFEA759D0185007DBE763331910509EF8F1635B4F84FA08AEE3</span>
+<span class="n">private_key</span><span class="p">::</span> <span class="o">-</span><span class="n">HIDDEN</span><span class="o">-</span>
+<span class="n">classic_address</span><span class="p">:</span> <span class="n">raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q</span>
+</code></pre></div>
+<h4 id="using-the-wallet">Using the wallet<a aria-hidden="true" class="hover_anchor" href="#using-the-wallet"><i class="fa fa-link"></i></a></h4>
+<p>In this tutorial we only query details about the generated account from the XRP Ledger, but you can use the values in the <code>Wallet</code> instance to prepare, sign, and submit transactions with <code>xrpl-py</code>.   </p>
+<h5 id="prepare">Prepare<a aria-hidden="true" class="hover_anchor" href="#prepare"><i class="fa fa-link"></i></a></h5>
+<p>To prepare the transaction:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Prepare payment</span>
+<span class="kn">from</span> <span class="nn">xrpl.models.transactions</span> <span class="kn">import</span> <span class="n">Payment</span>
+<span class="kn">from</span> <span class="nn">xrpl.utils</span> <span class="kn">import</span> <span class="n">xrp_to_drops</span>
+<span class="n">my_tx_payment</span> <span class="o">=</span> <span class="n">Payment</span><span class="p">(</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">test_account</span><span class="p">,</span>
+    <span class="n">amount</span><span class="o">=</span><span class="n">xrp_to_drops</span><span class="p">(</span><span class="mi">22</span><span class="p">),</span>
+    <span class="n">destination</span><span class="o">=</span><span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+    <span class="n">sequence</span><span class="o">=</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">sequence</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<h5 id="sign">Sign<a aria-hidden="true" class="hover_anchor" href="#sign"><i class="fa fa-link"></i></a></h5>
+<p>To sign the transaction:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Sign the transaction</span>
+<span class="kn">from</span> <span class="nn">xrpl.transaction</span> <span class="kn">import</span> <span class="n">safe_sign_and_autofill_transaction</span>
+
+<span class="n">my_tx_payment_signed</span> <span class="o">=</span> <span class="n">safe_sign_and_autofill_transaction</span><span class="p">(</span><span class="n">my_tx_payment</span><span class="p">,</span><span class="n">test_wallet</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="send">Send<a aria-hidden="true" class="hover_anchor" href="#send"><i class="fa fa-link"></i></a></h5>
+<p>To send the transaction:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Submit and send the transaction</span>
+<span class="kn">from</span> <span class="nn">xrpl.transaction</span> <span class="kn">import</span> <span class="n">send_reliable_submission</span>
+
+<span class="n">tx_response</span> <span class="o">=</span> <span class="n">send_reliable_submission</span><span class="p">(</span><span class="n">my_tx_payment_signed</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="derive-an-x-address">Derive an X-address<a aria-hidden="true" class="hover_anchor" href="#derive-an-x-address"><i class="fa fa-link"></i></a></h5>
+<p>You can use <code>xrpl-py</code>'s <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.core.addresscodec.html" target="_blank"><code>xrpl.core.addresscodec</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> module to derive an <a class="external-link" href="https://xrpaddress.info/" target="_blank">X-address <i aria-hidden="true" class="fa fa-external-link"></i></a> from the <code>Wallet.classic_address</code> field:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Derive an x-address from the classic address:</span>
+<span class="c1"># https://xrpaddress.info/</span>
+<span class="kn">from</span> <span class="nn">xrpl.core</span> <span class="kn">import</span> <span class="n">addresscodec</span>
+<span class="n">test_xaddress</span> <span class="o">=</span> <span class="n">addresscodec</span><span class="o">.</span><span class="n">classic_address_to_xaddress</span><span class="p">(</span><span class="n">test_account</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span> <span class="n">is_test_network</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Classic address:</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">test_account</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"X-address:</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">test_xaddress</span><span class="p">)</span>
+</code></pre></div>
+<p>The X-address format <a class="external-link" href="https://github.com/xrp-community/standards-drafts/issues/6" target="_blank">packs the address and destination tag <i aria-hidden="true" class="fa fa-external-link"></i></a> into a more user-friendly value.</p>
+<h3 id="3-query-the-xrp-ledger">3. Query the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#3-query-the-xrp-ledger"><i class="fa fa-link"></i></a></h3>
+<p>You can query the XRP Ledger to get information about <a href="account-methods.html">a specific account</a>, <a href="tx.html">a specific transaction</a>, the state of a <a href="ledger-methods.html">current or a historical ledger</a>, and <a href="path-and-order-book-methods.html">the XRP Ledger's decentralized exhange</a>. You need to make these queries, among other reasons, to look up account info to follow best practices for <a href="reliable-transaction-submission.html">reliable transaction submission</a>.  </p>
+<p>Here, we'll use <code>xrpl-py</code>'s <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html" target="_blank"><code>xrpl.account</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> module to look up information about the <a href="#2-generate-wallet">wallet we generated</a> in the previous step.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Look up info about your account</span>
+<span class="kn">from</span> <span class="nn">xrpl.models.requests.account_info</span> <span class="kn">import</span> <span class="n">AccountInfo</span>
+<span class="n">acct_info</span> <span class="o">=</span> <span class="n">AccountInfo</span><span class="p">(</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">test_account</span><span class="p">,</span>
+    <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
+    <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">acct_info</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"response.status: "</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="4-putting-it-all-together">4. Putting it all together<a aria-hidden="true" class="hover_anchor" href="#4-putting-it-all-together"><i class="fa fa-link"></i></a></h3>
+<p>Using these building blocks, we can create a simple Python app that:</p>
+<ol>
+<li>Generates a wallet on the Testnet.</li>
+<li>Connects to the XRP Ledger.</li>
+<li>Looks up and prints information about the account you created.</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Define the network client</span>
+<span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<span class="n">JSON_RPC_URL</span> <span class="o">=</span> <span class="s2">"https://s.altnet.rippletest.net:51234/"</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">JSON_RPC_URL</span><span class="p">)</span>
+
+
+<span class="c1"># Create a wallet using the testnet faucet:</span>
+<span class="c1"># https://xrpl.org/xrp-testnet-faucet.html</span>
+<span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">generate_faucet_wallet</span>
+<span class="n">test_wallet</span> <span class="o">=</span> <span class="n">generate_faucet_wallet</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Create an account str from the wallet</span>
+<span class="n">test_account</span> <span class="o">=</span> <span class="n">test_wallet</span><span class="o">.</span><span class="n">classic_address</span>
+
+<span class="c1"># Derive an x-address from the classic address:</span>
+<span class="c1"># https://xrpaddress.info/</span>
+<span class="kn">from</span> <span class="nn">xrpl.core</span> <span class="kn">import</span> <span class="n">addresscodec</span>
+<span class="n">test_xaddress</span> <span class="o">=</span> <span class="n">addresscodec</span><span class="o">.</span><span class="n">classic_address_to_xaddress</span><span class="p">(</span><span class="n">test_account</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span> <span class="n">is_test_network</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Classic address:</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">test_account</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"X-address:</span><span class="se">\n\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">test_xaddress</span><span class="p">)</span>
+
+
+<span class="c1"># Look up info about your account</span>
+<span class="kn">from</span> <span class="nn">xrpl.models.requests.account_info</span> <span class="kn">import</span> <span class="n">AccountInfo</span>
+<span class="n">acct_info</span> <span class="o">=</span> <span class="n">AccountInfo</span><span class="p">(</span>
+    <span class="n">account</span><span class="o">=</span><span class="n">test_account</span><span class="p">,</span>
+    <span class="n">ledger_index</span><span class="o">=</span><span class="s2">"validated"</span><span class="p">,</span>
+    <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">acct_info</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"response.status: "</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+<p>To run the app, you can copy and paste the code into an editor or IDE and run it from there. Or you could download the file from the <a class="external-link" href="https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/xrpl-py" target="_blank">XRP Ledger Dev Portal repo <i aria-hidden="true" class="fa fa-external-link"></i></a> and run it locally:</p>
+<div class="codehilite"><pre><span></span><code>git clone git@github.com:ripple/xrpl-dev-portal.git
+<span class="nb">cd</span> xrpl-dev-portal/content/_code-samples/xrpl-py/get-acct-info.py
+python3 get-acct-info.py
+</code></pre></div>
+<p>You should see output similar to this example:</p>
+<div class="codehilite"><pre><span></span><code>Classic address:
+
+ rnQLnSEA1YFMABnCMrkMWFKxnqW6sQ8EWk
+X-address:
+
+ T7dRN2ktZGYSTyEPWa9SyDevrwS5yDca4m7xfXTGM3bqff8
+response.status:  ResponseStatus.SUCCESS
+<span class="o">{</span>
+    <span class="s2">"account_data"</span>: <span class="o">{</span>
+        <span class="s2">"Account"</span>: <span class="s2">"rnQLnSEA1YFMABnCMrkMWFKxnqW6sQ8EWk"</span>,
+        <span class="s2">"Balance"</span>: <span class="s2">"1000000000"</span>,
+        <span class="s2">"Flags"</span>: <span class="m">0</span>,
+        <span class="s2">"LedgerEntryType"</span>: <span class="s2">"AccountRoot"</span>,
+        <span class="s2">"OwnerCount"</span>: <span class="m">0</span>,
+        <span class="s2">"PreviousTxnID"</span>: <span class="s2">"5A5203AFF41503539D11ADC41BE4185761C5B78B7ED382E6D001ADE83A59B8DC"</span>,
+        <span class="s2">"PreviousTxnLgrSeq"</span>: <span class="m">16126889</span>,
+        <span class="s2">"Sequence"</span>: <span class="m">16126889</span>,
+        <span class="s2">"index"</span>: <span class="s2">"CAD0F7EF3AB91DA7A952E09D4AF62C943FC1EEE41BE926D632DDB34CAA2E0E8F"</span>
+    <span class="o">}</span>,
+    <span class="s2">"ledger_current_index"</span>: <span class="m">16126890</span>,
+    <span class="s2">"queue_data"</span>: <span class="o">{</span>
+        <span class="s2">"txn_count"</span>: <span class="m">0</span>
+    <span class="o">}</span>,
+    <span class="s2">"validated"</span>: <span class="nb">false</span>
+<span class="o">}</span>
+</code></pre></div>
+<h4 id="interpreting-the-response">Interpreting the response<a aria-hidden="true" class="hover_anchor" href="#interpreting-the-response"><i class="fa fa-link"></i></a></h4>
+<p>The response fields that you want to inspect in most cases are:</p>
+<ul>
+<li>
+<p><code>account_data.Sequence</code> — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions. With <code>xrpl-py</code>, you can use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html#xrpl.account.get_next_valid_seq_number" target="_blank"><code>get_next_valid_seq_number</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to get this automatically from the XRP Ledger. See an example of this usage in the project <a class="external-link" href="https://github.com/XRPLF/xrpl-py#serialize-and-sign-transactions" target="_blank">README <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+</li>
+<li>
+<p><code>account_data.Balance</code> — This is the account's balance of <a href="basic-data-types.html#specifying-currency-amounts">XRP, in drops</a>. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the <a href="transaction-cost.html#current-transaction-cost">current transaction cost</a> for a given transaction.</p>
+</li>
+<li>
+<p><code>validated</code> — Indicates whether the returned data is from a <a href="ledgers.html#open-closed-and-validated-ledgers">validated ledger</a>. When sending transactions, it's important to ensure that the results are in a <a href="finality-of-results.html">final</a> state in a validated ledger before further processing the transaction. For more information about best practices for transaction processing, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
+</li>
+</ul>
+<p>For a detailed description of every response field, see <a href="account_info.html#response-format">account_info</a>.</p>
+<h2 id="keep-on-building">Keep on building<a aria-hidden="true" class="hover_anchor" href="#keep-on-building"><i class="fa fa-link"></i></a></h2>
+<p>Now that you know how to use <code>xrpl-py</code> to connect to the XRP Ledger, generate a wallet, and look up information about an account, you can also use <code>xrpl-py</code> to:</p>
+<ul>
+<li><a href="send-xrp.html">Send XRP</a>.</li>
+<li><a href="set-up-secure-signing.html">Set up secure signing</a> for your account.</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+<div class="tree-nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="tutorials.html"> Tutorials</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+        <!---->
+          <div class="card active">
+            <div class="card-header" role="tab" id="sidenav_cat_head_2">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title active-parent" href="get-started.html">Get Started</a>
+                <!-- <a class="sidenav_cat_title" href="get-started.html">Get Started</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_2" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="active nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
+                      <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
+                      <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
+                      <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
+                      <li><a class="nosubcat-page" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse2 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
+                <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
+                      <li><a class="nosubcat-page" href="look-up-transaction-results.html">Look Up Transaction Results</a></li>
+                      <li><a class="nosubcat-page" href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse9 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
+                <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="disable-master-key-pair.html">Disable Master Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
+                      <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
+                      <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
+                      <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse14 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
+                <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
+
+                          <li><a class="subpage" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a></li>
+                          <li><a class="subpage" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a></li>
+                          <li><a class="subpage" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a></li>
+                          <li><a class="subpage" href="look-up-escrows.html">Look up escrows</a></li>
+                          <li><a class="subpage" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+                      <li><a class="subcat-title" href="use-payment-channels.html">Use Payment Channels</a></li>
+
+                          <li><a class="subpage" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+                      <li><a class="subcat-title" href="use-checks.html">Use Checks</a></li>
+
+                          <li><a class="subpage" href="send-a-check.html">Send a Check</a></li>
+                          <li><a class="subpage" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount</a></li>
+                          <li><a class="subpage" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount</a></li>
+                          <li><a class="subpage" href="cancel-a-check.html">Cancel a Check</a></li>
+                          <li><a class="subpage" href="look-up-checks-by-sender.html">Look Up Checks by Sender</a></li>
+                          <li><a class="subpage" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient</a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse23 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
+                <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
+                      <li><a class="nosubcat-page" href="list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts</a></li>
+                      <li><a class="nosubcat-page" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse40 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
+                <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
+
+                          <li><a class="subpage" href="system-requirements.html">System Requirements</a></li>
+                          <li><a class="subpage" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a></li>
+                          <li><a class="subpage" href="install-rippled-on-ubuntu.html">Install on Ubuntu or Debian Linux</a></li>
+                          <li><a class="subpage" href="update-rippled-automatically-on-linux.html">Update Automatically on Linux</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a></li>
+                          <li><a class="subpage" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+                          <li><a class="subpage" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a></li>
+                          <li><a class="subpage" href="capacity-planning.html">Capacity Planning</a></li>
+                          <li><a class="subpage" href="rippled-1-3-migration-instructions.html">rippled v1.3.x Migration Instructions</a></li>
+
+                      <li><a class="subcat-title" href="configure-rippled.html">Configure rippled</a></li>
+
+                          <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
+                          <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
+                          <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
+                          <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
+                          <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
+                          <li><a class="subpage" href="configure-advisory-deletion.html">Configure Advisory Deletion</a></li>
+                          <li><a class="subpage" href="configure-history-sharding.html">Configure History Sharding</a></li>
+                          <li><a class="subpage" href="configure-full-history.html">Configure Full History</a></li>
+                          <li><a class="subpage" href="configure-grpc.html">Configure gRPC</a></li>
+                          <li><a class="subpage" href="enable-public-signing.html">Enable Public Signing</a></li>
+
+                      <li><a class="subcat-title" href="configure-peering.html">Configure Peering</a></li>
+
+                          <li><a class="subpage" href="cluster-rippled-servers.html">Cluster rippled Servers</a></li>
+                          <li><a class="subpage" href="configure-a-private-server.html">Configure a Private Server</a></li>
+                          <li><a class="subpage" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a></li>
+                          <li><a class="subpage" href="enable-link-compression.html">Enable Link Compression</a></li>
+                          <li><a class="subpage" href="forward-ports-for-peering.html">Forward Ports for Peering</a></li>
+                          <li><a class="subpage" href="manually-connect-to-a-specific-peer.html">Manually Connect to a Specific Peer</a></li>
+                          <li><a class="subpage" href="set-max-number-of-peers.html">Set Maximum Number of Peers</a></li>
+                          <li><a class="subpage" href="use-a-peer-reservation.html">Use a Peer Reservation</a></li>
+
+                      <li><a class="subcat-title" href="use-stand-alone-mode.html">Test rippled Functionality in Stand-Alone Mode</a></li>
+
+                          <li><a class="subpage" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a></li>
+
+                      <li><a class="subcat-title" href="troubleshoot-the-rippled-server.html">Troubleshooting rippled</a></li>
+
+                          <li><a class="subpage" href="diagnosing-problems.html">Diagnosing Problems with rippled</a></li>
+                          <li><a class="subpage" href="health-check-interventions.html">Health Check Interventions</a></li>
+                          <li><a class="subpage" href="understanding-log-messages.html">Understanding Log Messages</a></li>
+                          <li><a class="subpage" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a></li>
+                          <li><a class="subpage" href="server-wont-start.html">rippled Server Won't Start</a></li>
+                          <li><a class="subpage" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue</a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse44 -->
+
+          </div><!-- /.card -->
+
+    </div><!-- /#sidenav -->
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container card-grid card-grid-Nx1">
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="overview.html">Learn</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="uses.html">Uses</a></li>
+
+        <li class="level-1"><a href="history.html">History</a></li>
+
+        <li class="level-1"><a href="impact.html">Impact</a></li>
+
+        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="explore.html">Explore</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+
+        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+
+        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="docs.html">Build</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+              <li class="level-1"><a href="concepts.html">Concepts</a></li>
+          <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+          <li class="level-1"><a href="references.html">References</a></li>
+          <li class="level-1"><a href="dev-tools.html">Dev Tools</a></li>
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="contribute.html">Contribute</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="contribute-code.html">Contribute Code to the XRP Ledger</a></li>
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+        </div><!--/.card -->
+
+  </section>
+
+  <section class="container">
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2020</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbox',
+algoliaOptions: { 'facetFilters': ["lang:en"] },
+debug: false
+});
+</script>
+
+
+<!-- Helper for interactive tutorials -->
+<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});
+</script>
+</body>
+</html>

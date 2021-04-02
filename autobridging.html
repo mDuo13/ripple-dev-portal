@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/decentralized-exchange/autobridging.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/decentralized-exchange/autobridging.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -200,11 +200,11 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="auto-bridging">Auto-Bridging</h1>
+        <h1 id="auto-bridging">Auto-Bridging<a aria-hidden="true" class="hover_anchor" href="#auto-bridging"><i class="fa fa-link"></i></a></h1>
 <p>Any <a href="offers.html">Offer</a> in the XRP Ledger's <a href="decentralized-exchange.html">decentralized exchange</a> that would exchange two non-XRP currencies could potentially use <a href="xrp.html">XRP</a> as an intermediary currency in a synthetic order book. This is because of <em>auto-bridging</em>, which serves to improve liquidity across all currency pairs by using XRP when doing so is cheaper than trading those currencies directly. This works because of XRP's nature as a native cryptocurrency to the XRP Ledger. Offer execution can use a combination of direct and auto-bridged offers to achieve the best total exchange rate.</p>
 <p>Example: <em>Anita places an offer to sell GBP and buy BRL. She might find that this uncommon currency market has few offers. There is one offer with a good rate, but it has insufficient quantity to satisfy Anita's trade. However, both GBP and BRL have active, competitive markets to XRP. The XRP Ledger's auto-bridging system finds a way to complete Anita's offer by purchasing XRP with GBP from one trader, then selling the XRP to another trader to buy BRL. Anita automatically gets the best rate possible by combining the small offer in the direct GBP:BRL market with the better composite rates created by pairing GBP:XRP and XRP:BRL offers.</em></p>
 <p>Auto-bridging happens automatically on any <a href="offercreate.html">OfferCreate transaction</a>. <a href="payment.html">Payment transactions</a> <em>do not</em> use auto-bridging by default, but path-finding can find <a href="paths.html">paths</a> that have the same effect.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>
 <p><a class="external-link" href="https://xrpl.org/blog/2014/introducing-offer-autobridging.html" target="_blank">Dev Blog: Introducing Autobridging <i aria-hidden="true" class="fa fa-external-link"></i></a> <!-- SPELLING_IGNORE: autobridging --></p>
@@ -573,6 +573,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

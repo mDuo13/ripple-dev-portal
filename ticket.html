@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/ledger-data-formats/ledger-object-types/ticket.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/ledger-data-formats/ledger-object-types/ticket.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -204,23 +204,22 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="ticket">Ticket</h1>
+        <h1 id="ticket">Ticket<a aria-hidden="true" class="hover_anchor" href="#ticket"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/76a6956138c4ecd156c5c408f136ed3d6ab7d0c1/src/ripple/protocol/impl/LedgerFormats.cpp#L155-L164" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>(Requires the [TicketBatch amendment][] <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
-<p>The <code>Ticket</code> object type represents a <a href="tickets.html">Ticket</a>, which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][]. [New in: rippled 1.7.0][]</p>
-<h2 id="example-ticket-json">Example Ticket JSON</h2>
-<!-- TODO: this example is synthetic. Replace with a real example when possible -->
+<p><em>(Requires the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
+<p>The <code>Ticket</code> object type represents a <a href="tickets.html">Ticket</a>, which tracks an account <a href="basic-data-types.html#account-sequence">sequence number</a> that has been set aside for future use. You can create new tickets with a <a href="ticketcreate.html">TicketCreate transaction</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="New in: rippled 1.7.0"><img alt="New in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<h2 id="example-ticket-json">Example Ticket JSON<a aria-hidden="true" class="hover_anchor" href="#example-ticket-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
-  <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"Ticket"</span><span class="p">,</span>
-  <span class="nt">"OwnerNode"</span><span class="p">:</span> <span class="s2">"0000000000000000"</span><span class="p">,</span>
-  <span class="nt">"PreviousTxnID"</span><span class="p">:</span> <span class="s2">"F0AB71E777B2DA54B86231E19B82554EF1F8211F92ECA473121C655BFC5329BF"</span><span class="p">,</span>
-  <span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mi">14524914</span><span class="p">,</span>
-  <span class="nt">"TicketSequence"</span><span class="p">:</span> <span class="mi">381</span>
+  <span class="nt">"Account"</span> <span class="p">:</span> <span class="s2">"rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de"</span><span class="p">,</span>
+  <span class="nt">"Flags"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">"LedgerEntryType"</span> <span class="p">:</span> <span class="s2">"Ticket"</span><span class="p">,</span>
+  <span class="nt">"OwnerNode"</span> <span class="p">:</span> <span class="s2">"0000000000000000"</span><span class="p">,</span>
+  <span class="nt">"PreviousTxnID"</span> <span class="p">:</span> <span class="s2">"F19AD4577212D3BEACA0F75FE1BA1644F2E854D46E8D62E9C95D18E9708CBFB1"</span><span class="p">,</span>
+  <span class="nt">"PreviousTxnLgrSeq"</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="nt">"TicketSequence"</span> <span class="p">:</span> <span class="mi">3</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="ticket-fields">Ticket Fields</h2>
+<h2 id="ticket-fields">Ticket Fields<a aria-hidden="true" class="hover_anchor" href="#ticket-fields"><i class="fa fa-link"></i></a></h2>
 <p>A <code>Ticket</code> object has the following fields:</p>
 <table>
 <thead>
@@ -266,23 +265,30 @@
 <td align="left"><code>PreviousTxnLgrSeq</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object.</td>
+<td align="left">The <a href="basic-data-types.html#ledger-index">index of the ledger</a> that contains the transaction that most recently modified this object.</td>
 </tr>
 <tr>
 <td align="left"><code>TicketSequence</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left">The [Sequence Number][] this Ticket sets aside.</td>
+<td align="left">The <a href="basic-data-types.html#account-sequence">Sequence Number</a> this Ticket sets aside.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="ticket-id-format">Ticket ID Format</h2>
+<h2 id="ticket-id-format">Ticket ID Format<a aria-hidden="true" class="hover_anchor" href="#ticket-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of a Ticket object is the SHA-512Half of the following values, concatenated in order:</p>
 <ul>
 <li>The Ticket space key (<code>0x0054</code>)</li>
 <li>The AccountID of the owner of the Ticket</li>
 <li>The <code>TicketSequence</code> number of the Ticket</li>
 </ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
     </div>
   </article>
       </main>
@@ -388,6 +394,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -449,7 +456,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -489,7 +495,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="active subpage" href="#main_content_body">Ticket</a></li>
+                            <li><a class="active subpage" href="#main_content_body">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -528,7 +534,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -721,6 +727,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

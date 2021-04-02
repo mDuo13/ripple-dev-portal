@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/issued-currencies/demurrage.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/issued-currencies/demurrage.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,10 +205,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="demurrage">Demurrage</h1>
-<p class="devportal-callout warning"><strong>Warning:</strong> Demurrage is a deprecated feature with no ongoing support. This page describes historical behavior of older versions of Ripple software.</p>
+        <h1 id="demurrage">Demurrage<a aria-hidden="true" class="hover_anchor" href="#demurrage"><i class="fa fa-link"></i></a></h1>
+<p class="devportal-callout warning"><strong>Warning:</strong> Demurrage is a deprecated feature with no ongoing support. This page describes historical behavior of older versions of XRP Ledger software.</p>
 <p><a class="external-link" href="http://en.wikipedia.org/wiki/Demurrage_%28currency%29" target="_blank">Demurrage <i aria-hidden="true" class="fa fa-external-link"></i></a> is a negative interest rate on assets held that represents the cost of holding those assets. To represent the demurrage on an issued currency in the XRP Ledger, you can track it using a custom <a href="currency-formats.html#currency-codes">currency code</a> that indicates the demurrage rate. This effectively creates separate versions of the currency for each varying amount of demurrage. Client applications can support this by representing the demurraging currency code with an annual percentage rate alongside the currency code. For example: "XAU (-0.5%pa)".</p>
-<h2 id="representing-demurraging-currency-amounts">Representing Demurraging Currency Amounts</h2>
+<h2 id="representing-demurraging-currency-amounts">Representing Demurraging Currency Amounts<a aria-hidden="true" class="hover_anchor" href="#representing-demurraging-currency-amounts"><i class="fa fa-link"></i></a></h2>
 <p>Rather than continuously update all amounts in the XRP Ledger, this approach divides amounts of interest-bearing or demurraging currency into two types of amount: "ledger values" recorded in the XRP Ledger, and "display values" shown to people. The "ledger values" represent the value of the currency at a fixed point, namely the "Ripple Epoch" of midnight January 1, 2000. The "display values" represent the amount at a later point in time (usually the current time) after calculating continuous interest or demurrage from the Ripple Epoch until that time.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> You can think of demurrage as similar to inflation, where the value of all assets affected by it decreases over time, but the ledger always holds amounts in year-2000 values. This does not reflect actual real-world inflation; demurrage is more like hypothetical inflation at a constant rate.</p>
 <p>Thus, client software must apply two conversions:</p>
@@ -216,9 +216,9 @@
 <li>Taking display values at a given time and converting them to ledger values to be recorded.</li>
 <li>Taking ledger values and converting them to a display value at a given point in time.</li>
 </ul>
-<h3 id="calculating-demurrage">Calculating Demurrage</h3>
+<h3 id="calculating-demurrage">Calculating Demurrage<a aria-hidden="true" class="hover_anchor" href="#calculating-demurrage"><i class="fa fa-link"></i></a></h3>
 <p>The full formula for calculating demurrage on a currency is as follows:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">D = A × ( e ^ (t ÷ τ) )</span>
+<div class="codehilite"><pre><span></span><code>D = A × ( e ^ (t ÷ τ) )
 </code></pre></div>
 <ul>
 <li><strong>D</strong> is the amount after demurrage</li>
@@ -237,7 +237,7 @@
 </li>
 <li>If necessary, adjust the resulting value so that it can be represented to the desired accuracy. Ledger values are limited to 15 decimal digits of precision, according to the XRP Ledger's <a href="currency-formats.html#issued-currency-precision">issued currency format</a>.</li>
 </ol>
-<h2 id="interest-bearing-currency-code-format">Interest-Bearing Currency Code Format</h2>
+<h2 id="interest-bearing-currency-code-format">Interest-Bearing Currency Code Format<a aria-hidden="true" class="hover_anchor" href="#interest-bearing-currency-code-format"><i class="fa fa-link"></i></a></h2>
 <p>Rather than using the <a href="currency-formats.html#currency-codes">standard currency code format</a>, currencies that have positive interest or negative interest (demurrage) use a 160-bit currency code in the following format:</p>
 <p><img alt="Demurraging Currency Code Format" src="img/demurrage-currency-code-format.png"/></p>
 <ol>
@@ -248,7 +248,7 @@
 <li>The next 64 bits are the interest rate of the currency, represented as "<a class="external-link" href="http://en.wikipedia.org/wiki/E-folding" target="_blank">e-folding time <i aria-hidden="true" class="fa fa-external-link"></i></a>" in an IEEE 754 double format.</li>
 <li>The next 24 bits are reserved and should be all <code>0</code>s.</li>
 </ol>
-<h3 id="calculating-e-folding-time">Calculating e-folding Time</h3>
+<h3 id="calculating-e-folding-time">Calculating e-folding Time<a aria-hidden="true" class="hover_anchor" href="#calculating-e-folding-time"><i class="fa fa-link"></i></a></h3>
 <p>To convert between ledger amounts and display amounts, or to calculate a currency code for an interest-bearing/demurraging currency, you need the interest rate as an "e-folding time". The e-folding time is the amount of time it takes a quantity to increase by a factor of <em>e</em> (Euler's number). By convention, e-folding time is written as the letter <strong>τ</strong> in formulas.</p>
 <p>To calculate an e-folding time for a given rate of annual percent interest:</p>
 <ol>
@@ -258,7 +258,7 @@
 <li>Take the number of seconds in one year (31536000) and divide by the natural log result from the previous step. For example, <strong>31536000 ÷ -0.005012541823544286 = -6291418827.045599</strong>. This result is the e-folding time in seconds.</li>
 </ol>
 <p class="devportal-callout note"><strong>Note:</strong> By convention, the XRP Ledger's interest/demurrage rules use a fixed number of seconds per year (31536000), which is not adjusted for leap days or leap seconds.</p>
-<h2 id="client-support">Client Support</h2>
+<h2 id="client-support">Client Support<a aria-hidden="true" class="hover_anchor" href="#client-support"><i class="fa fa-link"></i></a></h2>
 <p>To support interest-bearing and demurraging currencies, client applications must implement several features:</p>
 <ul>
 <li>
@@ -271,7 +271,7 @@
 <p>Clients must distinguish between currencies that do and do not have interest or demurrage, and among currencies that have different rates of interest or demurrage. Clients should be able to parse the <a href="#interest-bearing-currency-code-format">Interest-Bearing Currency Code Format</a> into a display such as "XAU (-0.5% pa)".</p>
 </li>
 </ul>
-<h3 id="ripple-lib-support">ripple-lib Support</h3>
+<h3 id="ripple-lib-support">ripple-lib Support<a aria-hidden="true" class="hover_anchor" href="#ripple-lib-support"><i class="fa fa-link"></i></a></h3>
 <p>Demurrage was supported in ripple-lib versions <strong>0.7.37</strong> through <strong>0.12.9</strong>. Demurrage is <strong><em>not supported</em></strong> in <a href="rippleapi-reference.html">RippleAPI</a>.</p>
 <p>The following code samples demonstrate how to use compatible versions of ripple-lib to convert between ledger values and display values. Also see the <a class="external-link" href="https://ripple.github.io/ripple-demurrage-tool/" target="_blank">Ripple Demurrage Calculator <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>To convert from a display value to a ledger value, use <code>Amount.from_human()</code>:</p>
@@ -658,6 +658,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

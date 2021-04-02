@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/issued-currencies/issued-currencies-overview.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/issued-currencies/issued-currencies-overview.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -202,7 +202,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="issued-currencies-overview">Issued Currencies Overview</h1>
+        <h1 id="issued-currencies-overview">Issued Currencies Overview<a aria-hidden="true" class="hover_anchor" href="#issued-currencies-overview"><i class="fa fa-link"></i></a></h1>
 <p>All currencies other than XRP can be represented in the XRP Ledger as <strong>issued currencies</strong>. These digital assets (sometimes called "IOUs") are tracked in accounting relationships, called "trust lines," between addresses. Issued currencies are typically considered as liabilities from one perspective and assets from the other, so the balance of a trust line is negative or positive depending on which side you view it from. Any address may freely issue (non-XRP) currencies, limited only by how much other addresses are willing to hold.</p>
 <p>Issued currencies can "ripple" through multiple issuers and holders if they use the same currency code. This is useful in some cases, but can cause unexpected and undesirable behavior in others. You can use the <a href="rippling.html">No Ripple flag</a> on trust lines to prevent those trust lines from rippling.</p>
 <p>Issued currencies can be traded with XRP or each other in the XRP Ledger's decentralized exchange.</p>
@@ -210,7 +210,7 @@
 <p>There are other use cases for issued currencies in the XRP Ledger. For example, you can create an "Initial Coin Offering" (ICO) by issuing a fixed amount of currency to a secondary address, then "throwing away the key" to the issuer.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> ICOs may be <a class="external-link" href="https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings" target="_blank">regulated as securities <i aria-hidden="true" class="fa fa-external-link"></i></a> in the USA. <!-- SPELLING_IGNORE: icos --></p>
 <p>Ripple strongly recommends researching the relevant regulations before engaging in any financial service business.</p>
-<h2 id="issued-currency-usage">Issued Currency Usage</h2>
+<h2 id="issued-currency-usage">Issued Currency Usage<a aria-hidden="true" class="hover_anchor" href="#issued-currency-usage"><i class="fa fa-link"></i></a></h2>
 <p>A trust line represents an explicit statement of willingness to hold gateway debt obligations. (In other words: "I'll allow you to owe me up to this much money outside the XRP Ledger.")</p>
 <p>The intended model for issued currency usage is with <em>gateways</em>, trusted financial institutions that custody outside-world assets and allow them to be used in the XRP Ledger for <a href="cross-currency-payments.html">cross-currency payments</a> and trading in the <a href="decentralized-exchange.html">decentralized exchange</a>. The flow looks something like this:</p>
 <ol>
@@ -222,12 +222,12 @@
 <li>The gateway confirms the identity of the customer who sent the balance in the XRP Ledger funds, and gives the corresponding amount of money <em>outside the XRP Ledger</em> to that customer.</li>
 </ol>
 <p>The details of the process of sending money "into" and "out of" the XRP Ledger can vary based on the gateway, the jurisdiction, the type of assets involved, and other factors.</p>
-<h2 id="issued-currency-properties">Issued Currency Properties</h2>
+<h2 id="issued-currency-properties">Issued Currency Properties<a aria-hidden="true" class="hover_anchor" href="#issued-currency-properties"><i class="fa fa-link"></i></a></h2>
 <p>All issued currencies in the XRP Ledger exist in trust lines, represented in the ledger's data as <a href="ripplestate.html">RippleState objects</a>. To create an issued currency, the issuing address sends a <a href="payment.html">Payment transaction</a> to an address which has a trust line to the issuer with a nonzero limit for that currency. (You can also create issued currency by rippling "through" such a trust line.) You can erase issued currency by sending it back to the issuer.</p>
 <p>The issuer of a currency can define a percentage <a href="transfer-fees.html">transfer fee</a> to deduct when two parties transact in its issued currencies.</p>
 <p>Addresses can also <a href="freezes.html">freeze</a> issued currencies, which may be useful for businesses to comply with financial regulations in their jurisdiction. If you do not need this feature and do not want to freeze currencies, you can give up your address's ability to freeze individual trust lines and to undo a global freeze. XRP cannot be frozen.</p>
 <p>Issued currencies are designed to be able to represent any kind of currency or asset, including those with very small or very large nominal values. For detailed technical information on the types of currency codes and the numeric limits of issued currency representation, see the <a href="currency-formats.html">currency format reference</a>.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="xrp.html">XRP</a></li>
@@ -608,6 +608,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

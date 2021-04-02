@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>rippledコマンドライン使用リファレンス - XRP Ledger Dev Portal (日本語)</title>
+    <title>rippledコマンドライン使用リファレンス - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="rippledコマンドライン使用リファレンス | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/commandline-usage.html" />
+    <meta property="og:description" content="rippledサーバーのコマンドライン使用オプションです。" />
+    <meta name="description" content="rippledサーバーのコマンドライン使用オプションです。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/commandline-usage.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/commandline-usage.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/commandline-usage.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/commandline-usage.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/commandline-usage.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -185,9 +209,9 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="rippledコマンドライン使用リファレンス">rippledコマンドライン使用リファレンス</h1>
+        <h1 id="rippledコマンドライン使用リファレンス">rippledコマンドライン使用リファレンス<a aria-hidden="true" class="hover_anchor" href="#rippledコマンドライン使用リファレンス"><i class="fa fa-link"></i></a></h1>
 <p><code>rippled</code>実行可能ファイルは、通常はXRP Ledgerを処理するデーモンとして実行されますが、他のモードでも実行できます。このページでは、コマンドラインから実行する場合に<code>rippled</code>に渡すことができるすべてのオプションを説明します。</p>
-<h2 id="使用できるモード">使用できるモード</h2>
+<h2 id="使用できるモード">使用できるモード<a aria-hidden="true" class="hover_anchor" href="#使用できるモード"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>デーモンモード</strong> - デフォルトです。XRP Ledgerに接続して、トランザクションを処理し、レジャーデータベースを構築します。</li>
 <li><strong>スタンドアロンモード</strong> - <code>-a</code>または<code>--standalone</code>オプションを使用します。他のサーバーには接続できない以外は、デーモンモードと同様です。このモードは、トランザクション処理やその他の機能のテストに使用できます。</li>
@@ -199,7 +223,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="汎用オプション">汎用オプション</h2>
+<h2 id="汎用オプション">汎用オプション<a aria-hidden="true" class="hover_anchor" href="#汎用オプション"><i class="fa fa-link"></i></a></h2>
 <p>ほとんどのモードに適用されるオプションは、以下の通りです。</p>
 <table>
 <thead>
@@ -215,7 +239,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="詳細レベルのオプション">詳細レベルのオプション</h3>
+<h3 id="詳細レベルのオプション">詳細レベルのオプション<a aria-hidden="true" class="hover_anchor" href="#詳細レベルのオプション"><i class="fa fa-link"></i></a></h3>
 <p>次の汎用オプションは、標準出力とログファイルに書き込まれる情報の量を制御します。</p>
 <table>
 <thead>
@@ -243,7 +267,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="デーモンモードのオプション">デーモンモードのオプション</h2>
+<h2 id="デーモンモードのオプション">デーモンモードのオプション<a aria-hidden="true" class="hover_anchor" href="#デーモンモードのオプション"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code>rippled <span class="o">[</span>OPTIONS<span class="o">]</span>
 </code></pre></div>
 <p>デーモンモードは、<code>rippled</code>のデフォルトの運用モードです。<a href="#汎用オプション">汎用オプション</a>の他に、以下のいずれかのオプションを指定できます。</p>
@@ -275,18 +299,15 @@
 <td align="left"><code>--quorum {QUORUM}</code></td>
 <td align="left">これは<a href="parallel-networks.html">テストネットワーク</a>のブートストラップ用のオプションです。検証のための最小定数をオーバーライドするには、<code>{QUORUM}</code>の信頼できるバリデータの同意を必要とします。デフォルトでは、検証のための定数は、信頼できるバリデータの実際の数に基づき、安全な数に自動的に設定されます。一部のバリデータがオンラインではない場合、このオプションにより、標準定数よりも少ない数のバリデータで続行できるようになります。<strong>警告:</strong> 定数を手動で設定すると、設定した値が小さすぎるためにサーバーがネットワークの他の部分から分岐することを防ぐことができない可能性があります。このオプションは、コンセンサスを十分に理解し、標準以外の設定を使用する必要がある場合にのみ使用してください。</td>
 </tr>
-<tr>
-<td align="left"><code>--validateShards</code></td>
-<td align="left">シャードストアーのデータが有効であり、ネットワーク履歴と整合性があることを確認してください。シャードストアーの詳細は、<a href="history-sharding.html">履歴シャーディング</a>を参照してください。</td>
-</tr>
 </tbody>
 </table>
-<h2 id="スタンドアロンモードのオプション">スタンドアロンモードのオプション</h2>
+<p>次のフィールドは廃止されました： <code>--validateShards</code>。 <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="削除: rippled 1.7.0"><img alt="削除: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E5%89%8A%E9%99%A4-rippled%201.7.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<h2 id="スタンドアロンモードのオプション">スタンドアロンモードのオプション<a aria-hidden="true" class="hover_anchor" href="#スタンドアロンモードのオプション"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code>rippled --standalone <span class="o">[</span>OPTIONS<span class="o">]</span>
 rippled -a <span class="o">[</span>OPTIONS<span class="o">]</span>
 </code></pre></div>
 <p>スタンドアロンモードで実行します。このモードでは、<code>rippled</code>はネットワークに接続しないか、またはコンセンサスを実行しません。（それ以外の場合、<code>rippled</code>はデーモンモードで実行されます。）</p>
-<h3 id="初期レジャーオプション">初期レジャーオプション</h3>
+<h3 id="初期レジャーオプション">初期レジャーオプション<a aria-hidden="true" class="hover_anchor" href="#初期レジャーオプション"><i class="fa fa-link"></i></a></h3>
 <p>以下のオプションにより、起動時に最初に読み込むレジャーが判断されます。これらはのオプションは、履歴レジャーのリプレイまたはテストネットワークのブートストラップのためのものです。</p>
 <table>
 <thead>
@@ -302,7 +323,7 @@ rippled -a <span class="o">[</span>OPTIONS<span class="o">]</span>
 </tr>
 <tr>
 <td align="left"><code>--ledgerfile {FILE}</code></td>
-<td align="left">指定された<code>{FILE}</code>からレジャーバージョンを読み込みます（このファイルには完全なレジャーがJSONフォーマットで格納されている必要があります）。このようなファイルの例については、付属の<a class="external-link" href="https://github.com/ripple/xrpl-dev-portal/blob/2020refresh/content/_code-samples/rippled-cli/ledger-file.json" target="_blank"><code>ledger-file.json</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</td>
+<td align="left">指定された<code>{FILE}</code>からレジャーバージョンを読み込みます（このファイルには完全なレジャーがJSONフォーマットで格納されている必要があります）。このようなファイルの例については、付属の<a class="external-link" href="https://github.com/ripple/xrpl-dev-portal/blob/master/content/_code-samples/rippled-cli/ledger-file.json" target="_blank"><code>ledger-file.json</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</td>
 </tr>
 <tr>
 <td align="left"><code>--load</code></td>
@@ -322,7 +343,7 @@ rippled -a <span class="o">[</span>OPTIONS<span class="o">]</span>
 </tr>
 </tbody>
 </table>
-<h2 id="クライアントモードのオプション">クライアントモードのオプション</h2>
+<h2 id="クライアントモードのオプション">クライアントモードのオプション<a aria-hidden="true" class="hover_anchor" href="#クライアントモードのオプション"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code>rippled <span class="o">[</span>OPTIONS<span class="o">]</span> -- <span class="o">{</span>COMMAND<span class="o">}</span> <span class="o">{</span>COMMAND_PARAMETERS<span class="o">}</span>
 </code></pre></div>
 <p>クライアントモードでは、<code>rippled</code>実行可能ファイルが別の<code>rippled</code>サービスのクライアントとして動作します。（サービスは別のプロセスでローカルに実行されている同じ実行可能ファイルである場合や、別のサーバー上の<code>rippled</code>サーバーである場合があります。）</p>
@@ -354,7 +375,7 @@ rippled -a <span class="o">[</span>OPTIONS<span class="o">]</span>
 <p>使用例（使用可能な最も古いレジャーバージョンから最新のレジャーバージョンまでのアカウントトランザクション履歴を取得）:</p>
 <div class="codehilite"><pre><span></span><code>rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1
 </code></pre></div>
-<h2 id="単体テスト">単体テスト</h2>
+<h2 id="単体テスト">単体テスト<a aria-hidden="true" class="hover_anchor" href="#単体テスト"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code>rippled --unittest <span class="o">[</span>OPTIONS<span class="o">]</span>
 rippled -u <span class="o">[</span>OPTIONS<span class="o">]</span>
 </code></pre></div>
@@ -397,24 +418,24 @@ rippled -u <span class="o">[</span>OPTIONS<span class="o">]</span>
 </tr>
 </tbody>
 </table>
-<h3 id="特定の単体テスト">特定の単体テスト</h3>
+<h3 id="特定の単体テスト">特定の単体テスト<a aria-hidden="true" class="hover_anchor" href="#特定の単体テスト"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><pre><span></span><code>rippled --unittest<span class="o">={</span>TEST_OR_PACKAGE_NAME<span class="o">}</span>
 </code></pre></div>
 <p>デフォルトでは、<code>rippled</code>は「手動」に分類されている単体テスト以外のすべての単体テストを実行します。テストの名前を指定してテストを個別に実行するか、またはパッケージ名を指定してテストのサブセットを実行することができます。</p>
 <p>テストはパッケージの階層にまとめられます。パッケージは<code>.</code>文字で区切られ、テストケース名で終わります。</p>
-<h4 id="単体テストの出力">単体テストの出力</h4>
+<h4 id="単体テストの出力">単体テストの出力<a aria-hidden="true" class="hover_anchor" href="#単体テストの出力"><i class="fa fa-link"></i></a></h4>
 <div class="codehilite"><pre><span></span><code>rippled --unittest<span class="o">=</span>print
 </code></pre></div>
 <p><code>print</code>は、使用可能なテストとそのパッケージのリストを出力する特殊な単体テストです。</p>
-<h4 id="手動単体テスト">手動単体テスト</h4>
+<h4 id="手動単体テスト">手動単体テスト<a aria-hidden="true" class="hover_anchor" href="#手動単体テスト"><i class="fa fa-link"></i></a></h4>
 <p>完了に時間を要する一部の単体テストは、「手動」に分類されています。このようなテストについては、<code>print</code>単体テストの出力に<code>|M|</code>と表示されます。すべての単体テストまたは単体テストのパッケージを実行するときには、手動テストはデフォルトで実行されません。手動テストを個別に実行するには、テスト名を指定します。例:</p>
 <div class="codehilite"><pre><span></span><code>$ ./rippled --unittest<span class="o">=</span>ripple.tx.OversizeMeta
 ripple.tx.OversizeMeta
-Longest suite times: 
+Longest suite times:
   <span class="m">60</span>.9s ripple.tx.OversizeMeta
 <span class="m">60</span>.9s, <span class="m">1</span> suite, <span class="m">1</span> <span class="k">case</span>, <span class="m">9016</span> tests total, <span class="m">0</span> failures
 </code></pre></div>
-<h4 id="単体テストの引数の指定">単体テストの引数の指定</h4>
+<h4 id="単体テストの引数の指定">単体テストの引数の指定<a aria-hidden="true" class="hover_anchor" href="#単体テストの引数の指定"><i class="fa fa-link"></i></a></h4>
 <p>特定の手動単体テストでは引数を指定できます。以下のオプションを使用して引数を指定します。</p>
 <table>
 <thead>
@@ -542,6 +563,7 @@ Longest suite times:
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -603,7 +625,6 @@ Longest suite times:
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -638,10 +659,12 @@ Longest suite times:
                             <li><a class="subpage" href="escrow-object.html">Escrow</a></li>
                             <li><a class="subpage" href="feesettings.html">FeeSettings</a></li>
                             <li><a class="subpage" href="ledgerhashes.html">LedgerHashes</a></li>
+                            <li><a class="subpage" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="offer.html">Offer</a></li>
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -680,14 +703,16 @@ Longest suite times:
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">疑似トランザクション</a></li>
 
                             <li><a class="subpage" href="enableamendment.html">EnableAmendment</a></li>
                             <li><a class="subpage" href="setfee.html">SetFee</a></li>
+                            <li><a class="subpage" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
-                        <li><a class="subcat-title" href="transaction-results.html">取引の結果</a></li>
+                        <li><a class="subcat-title" href="transaction-results.html">トランザクションの結果</a></li>
 
                             <li><a class="subpage" href="tec-codes.html">tecコード</a></li>
                             <li><a class="subpage" href="tef-codes.html">tefコード</a></li>
@@ -759,13 +784,13 @@ Longest suite times:
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -785,11 +810,11 @@ Longest suite times:
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -822,7 +847,7 @@ Longest suite times:
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -871,6 +896,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/ledger-data-formats/ledger-object-types/paychannel.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -208,14 +208,14 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="paychannel">PayChannel</h1>
+        <h1 id="paychannel">PayChannel<a aria-hidden="true" class="hover_anchor" href="#paychannel"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L141-L155" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Added by the <a href="known-amendments.html#paychan">PayChan amendment</a>.)</em></p>
 <p>The <code>PayChannel</code> object type represents a payment channel. Payment channels enable small, rapid off-ledger payments of XRP that can be later reconciled with the consensus ledger. A payment channel holds a balance of XRP that can only be paid out to a specific destination address until the channel is closed. Any unspent XRP is returned to the channel's owner (the source address that created and funded it) when the channel closes.</p>
 <p>The <a href="paymentchannelcreate.html">PaymentChannelCreate transaction</a> type creates a <code>PayChannel</code> object. The <a href="paymentchannelfund.html">PaymentChannelFund</a> and <a href="paymentchannelclaim.html">PaymentChannelClaim transaction</a> types modify existing <code>PayChannel</code> objects.</p>
 <p>When a payment channel expires, at first it remains on the ledger, because only new transactions can modify ledger contents. Transaction processing automatically closes a payment channel when any transaction accesses it after the expiration. To close an expired channel and return the unspent XRP to the owner, some address must send a new PaymentChannelClaim or PaymentChannelFund transaction accessing the channel.</p>
 <p>For an example of using payment channels, see the <a href="use-payment-channels.html">Payment Channels Tutorial</a>.</p>
-<h2 id="example-paychannel-json">Example PayChannel JSON</h2>
+<h2 id="example-paychannel-json">Example PayChannel JSON<a aria-hidden="true" class="hover_anchor" href="#example-paychannel-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt"</span><span class="p">,</span>
     <span class="nt">"Destination"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
@@ -235,7 +235,7 @@
     <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"96F76F27D8A327FC48753167EC04A46AA0E382E6F57F32FD12274144D00F1797"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="paychannel-fields">PayChannel Fields</h2>
+<h2 id="paychannel-fields">PayChannel Fields<a aria-hidden="true" class="hover_anchor" href="#paychannel-fields"><i class="fa fa-link"></i></a></h2>
 <p>A <code>PayChannel</code> object has the following fields:</p>
 <table>
 <thead>
@@ -339,9 +339,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="setting-channel-expiration">Setting Channel Expiration</h2>
+<h2 id="setting-channel-expiration">Setting Channel Expiration<a aria-hidden="true" class="hover_anchor" href="#setting-channel-expiration"><i class="fa fa-link"></i></a></h2>
 <p>The <code>Expiration</code> field of a payment channel is the mutable expiration time, in contrast to the immutable expiration time represented by the <code>CancelAfter</code> field. The expiration of a channel is always considered relative to the <a href="ledger-header.html"><code>close_time</code> field</a> of the previous ledger. The <code>Expiration</code> field is omitted when a <code>PayChannel</code> object is created. There are several ways the <code>Expiration</code> field of a <code>PayChannel</code> object can be updated, which can be summarized as follows: a channel's source address can set the <code>Expiration</code> of the channel freely as long as the channel always remains open at least <code>SettleDelay</code> seconds after the first attempt to close it.</p>
-<h3 id="source-address">Source Address</h3>
+<h3 id="source-address">Source Address<a aria-hidden="true" class="hover_anchor" href="#source-address"><i class="fa fa-link"></i></a></h3>
 <p>The source address can set the <code>Expiration</code> directly with the PaymentChannelFund transaction type. The new value must not be earlier than whichever of the following values is earliest:</p>
 <ul>
 <li>The current <code>Expiration</code> value (if one is set)</li>
@@ -354,11 +354,11 @@
 <li>The previous ledger's close time plus the <code>SettleDelay</code> of the channel</li>
 </ul>
 <p>The source address can remove the <code>Expiration</code> with the <code>tfRenew</code> flag of the PaymentChannelClaim transaction type.</p>
-<h3 id="destination-address">Destination Address</h3>
+<h3 id="destination-address">Destination Address<a aria-hidden="true" class="hover_anchor" href="#destination-address"><i class="fa fa-link"></i></a></h3>
 <p>The destination address cannot set the <code>Expiration</code> field. However, the destination address can use the PaymentChannelClaim's <code>tfClose</code> flag to close a channel immediately.</p>
-<h3 id="other-addresses">Other Addresses</h3>
+<h3 id="other-addresses">Other Addresses<a aria-hidden="true" class="hover_anchor" href="#other-addresses"><i class="fa fa-link"></i></a></h3>
 <p>If any other address attempts to set an <code>Expiration</code> field, the transaction fails with the <code>tecNO_PERMISSION</code> error code. However, if the channel is already expired, the transaction causes the channel to close and results in <code>tesSUCCESS</code> instead.</p>
-<h2 id="paychannel-id-format">PayChannel ID Format</h2>
+<h2 id="paychannel-id-format">PayChannel ID Format<a aria-hidden="true" class="hover_anchor" href="#paychannel-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of a <code>PayChannel</code> object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The PayChannel space key (<code>0x0078</code>)</li>
@@ -479,6 +479,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -540,7 +541,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -580,7 +580,7 @@
                             <li><a class="active subpage" href="#main_content_body">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -619,7 +619,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -812,6 +812,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

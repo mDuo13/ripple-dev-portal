@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-system-basics/transaction-basics/transaction-basics.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-system-basics/transaction-basics/transaction-basics.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -207,22 +207,22 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="transaction-basics">Transaction Basics</h1>
+        <h1 id="transaction-basics">Transaction Basics<a aria-hidden="true" class="hover_anchor" href="#transaction-basics"><i class="fa fa-link"></i></a></h1>
 <p>A <em>Transaction</em> is the only way to modify the XRP Ledger. Transactions are only final if signed, submitted, and accepted into a validated ledger version following the <a href="consensus.html">consensus process</a>. Some ledger rules also generate <em><a href="pseudo-transaction-types.html">pseudo-transactions</a></em>, which aren't signed or submitted, but still must be accepted by consensus. Transactions that fail are also included in ledgers because they modify balances of XRP to pay for the anti-spam <a href="transaction-cost.html">transaction cost</a>.</p>
 <p>Transactions can do more than send money. In addition to supporting various <a href="payment-types.html">Payment Types</a>, transactions in the XRP Ledger are also used to rotate <a href="cryptographic-keys.html">cryptographic keys</a>, manage other settings, and trade in the XRP Ledger's <a href="decentralized-exchange.html">decentralized exchange</a>. The <a href="rippled-api.html"><code>rippled</code> API reference</a> has a complete <a href="transaction-types.html">list of transaction types</a>.</p>
-<h3 id="identifying-transactions">Identifying Transactions</h3>
+<h3 id="identifying-transactions">Identifying Transactions<a aria-hidden="true" class="hover_anchor" href="#identifying-transactions"><i class="fa fa-link"></i></a></h3>
 <p>Every signed transaction has a unique <code>"hash"</code> that identifies it. The server provides the hash in the response when you submit the transaction; you can also look up a transaction in an account's transaction history with the <a href="account_tx.html">account_tx command</a>.</p>
 <p>The transaction hash can be used as a "proof of payment" since anyone can <a href="look-up-transaction-results.html">look up the transaction by its hash</a> to verify its final status.</p>
 <p class="devportal-callout note"><strong>Note:</strong> In the full history of the XRP Ledger, there is an exception to the rule that transaction hashes are unique. Two early <a href="setfee.html">SetFee pseudo-transactions</a> had the exact same fields, resulting in the same hash, <code>1C15FEA3E1D50F96B6598607FC773FF1F6E0125F30160144BE0C5CBC52F5151B</code>. The first of these transactions appears <a href="websocket-api-tool.html?server=wss%3A%2F%2Fs2.ripple.com%2F&amp;req=%7B%22id%22%3A%22setfee_nonunique_hash_1%22%2C%22command%22%3A%22transaction_entry%22%2C%22tx_hash%22%3A%221C15FEA3E1D50F96B6598607FC773FF1F6E0125F30160144BE0C5CBC52F5151B%22%2C%22ledger_index%22%3A3715073%7D">in ledger 3715073</a> and the second is <a href="websocket-api-tool.html?server=wss%3A%2F%2Fs2.ripple.com%2F&amp;req=%7B%22id%22%3A%22setfee_nonunique_hash_1%22%2C%22command%22%3A%22transaction_entry%22%2C%22tx_hash%22%3A%221C15FEA3E1D50F96B6598607FC773FF1F6E0125F30160144BE0C5CBC52F5151B%22%2C%22ledger_index%22%3A3721729%7D">in ledger 3721729</a>. Newer <a href="setfee.html">SetFee pseudo-transactions</a> include a <code>LedgerSequence</code> field so that they are guaranteed to be unique.</p>
 <!--_ -->
-<h2 id="claimed-cost-justification">Claimed Cost Justification</h2>
+<h2 id="claimed-cost-justification">Claimed Cost Justification<a aria-hidden="true" class="hover_anchor" href="#claimed-cost-justification"><i class="fa fa-link"></i></a></h2>
 <p>Although it may seem unfair to charge a <a href="transaction-cost.html">transaction cost</a> for a failed transaction, the <code>tec</code> class of errors exists for good reasons:</p>
 <ul>
 <li>Transactions submitted after the failed one do not have to have their Sequence values renumbered. Incorporating the failed transaction into a ledger uses up the transaction's sequence number, preserving the expected sequence.</li>
 <li>Distributing the transaction throughout the network increases network load. Enforcing a cost makes it harder for attackers to abuse the network with failed transactions.</li>
 <li>The transaction cost is generally very small in real-world value, so it should not harm users unless they are sending large quantities of transactions.</li>
 </ul>
-<h2 id="authorizing-transactions">Authorizing Transactions</h2>
+<h2 id="authorizing-transactions">Authorizing Transactions<a aria-hidden="true" class="hover_anchor" href="#authorizing-transactions"><i class="fa fa-link"></i></a></h2>
 <p>In the decentralized XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. A signed transaction is immutable: its contents cannot change, and the signature is not valid for any other transaction. <!-- STYLE_OVERRIDE: is authorized to --></p>
 <p>A transaction can be authorized by any of the following types of signatures:</p>
 <ul>
@@ -238,7 +238,7 @@
 </ul>
 <p>For more information about master and regular key pairs, see <a href="cryptographic-keys.html">Cryptographic Keys</a>.</p>
 <!-- -->
-<h2 id="signing-and-submitting-transactions">Signing and Submitting Transactions</h2>
+<h2 id="signing-and-submitting-transactions">Signing and Submitting Transactions<a aria-hidden="true" class="hover_anchor" href="#signing-and-submitting-transactions"><i class="fa fa-link"></i></a></h2>
 <p>Sending a transaction to the XRP Ledger involves several steps:</p>
 <ol>
 <li>Create an <a href="#example-unsigned-transaction">unsigned transaction in JSON format</a>.</li>
@@ -246,10 +246,10 @@
 <li>Submit a transaction to a <code>rippled</code> server. If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.</li>
 <li>The <a href="consensus.html">consensus process</a> determines which provisional transactions get included in the next validated ledger.</li>
 <li>The <code>rippled</code> servers apply those transactions to the previous ledger in a canonical order and share their results.</li>
-<li>If enough <a href="rippled-server-modes.html#reasons-to-run-a-validator">trusted validators</a> created the exact same ledger, that ledger is declared <em>validated</em> and the <a href="transaction-results.html">results of the transactions</a> in that ledger are immutable.</li>
+<li>If enough <a href="rippled-server-modes.html#validators">trusted validators</a> created the exact same ledger, that ledger is declared <em>validated</em> and the <a href="transaction-results.html">results of the transactions</a> in that ledger are immutable.</li>
 </ol>
 <p>See <a href="send-xrp.html">Send XRP</a> for an interactive tutorial in sending XRP payments.</p>
-<h3 id="example-unsigned-transaction">Example Unsigned Transaction</h3>
+<h3 id="example-unsigned-transaction">Example Unsigned Transaction<a aria-hidden="true" class="hover_anchor" href="#example-unsigned-transaction"><i class="fa fa-link"></i></a></h3>
 <p>Here is an example of an unsigned <a href="payment.html">Payment transaction</a> in JSON:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
   <span class="nt">"TransactionType"</span> <span class="p">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
@@ -276,7 +276,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="example-signed-transaction-blob">Example Signed Transaction Blob</h2>
+<h2 id="example-signed-transaction-blob">Example Signed Transaction Blob<a aria-hidden="true" class="hover_anchor" href="#example-signed-transaction-blob"><i class="fa fa-link"></i></a></h2>
 <p>Signing a transaction generates a binary blob that can be submitted to the network. This means using <code>rippled</code>'s <a href="submit.html">submit command</a>. Here is an example of the same transaction, as a signed blob, being submitted with the WebSocket API:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
   <span class="nt">"id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
@@ -284,7 +284,7 @@
   <span class="nt">"tx_blob"</span> <span class="p">:</span> <span class="s2">"120000240000000461D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000F732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74483046022100982064CDD3F052D22788DB30B52EEA8956A32A51375E72274E417328EBA31E480221008F522C9DB4B0F31E695AA013843958A10DE8F6BA7D6759BEE645F71A7EB240BE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="example-executed-transaction-with-metadata">Example Executed Transaction with Metadata</h2>
+<h2 id="example-executed-transaction-with-metadata">Example Executed Transaction with Metadata<a aria-hidden="true" class="hover_anchor" href="#example-executed-transaction-with-metadata"><i class="fa fa-link"></i></a></h2>
 <p>After a transaction has been submitted, you can check its status using the API, for example using the <a href="tx.html">tx command</a>. This shows the transaction instructions, its outcome, and the <a href="transaction-metadata.html">metadata</a> of all changes that were made in the process of executing it.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> The success of a transaction is not final unless the transaction appears in a <strong>validated</strong> ledger with the result code <code>tesSUCCESS</code>. See also: <a href="finality-of-results.html">Finality of Results</a>.</p>
 <p>Example response from the <code>tx</code> command:</p>
@@ -374,7 +374,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="payment-types.html">Payment Types</a></li>
@@ -758,6 +758,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

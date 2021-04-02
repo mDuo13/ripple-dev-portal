@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-types/direct-xrp-payments.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-types/direct-xrp-payments.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,9 +205,9 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="direct-xrp-payments">Direct XRP Payments</h1>
+        <h1 id="direct-xrp-payments">Direct XRP Payments<a aria-hidden="true" class="hover_anchor" href="#direct-xrp-payments"><i class="fa fa-link"></i></a></h1>
 <p>The basis of any financial system is <em>transferring value</em>: or, in one word, payments. The simplest type of payment in the XRP Ledger is a direct XRP-to-XRP payment, which transfers XRP directly from one account in the XRP Ledger to another.</p>
-<h2 id="about-direct-xrp-to-xrp-payments">About Direct XRP-to-XRP Payments</h2>
+<h2 id="about-direct-xrp-to-xrp-payments">About Direct XRP-to-XRP Payments<a aria-hidden="true" class="hover_anchor" href="#about-direct-xrp-to-xrp-payments"><i class="fa fa-link"></i></a></h2>
 <p>Generally, any address in the XRP Ledger can send XRP directly to any other address. The address on the receiving side is often called the <em>destination address</em>, and the address on the sending side is called the <em>source address</em>. To send XRP directly, the sender uses a <a href="payment.html">Payment transaction</a>, which can be as concise as the following:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
   <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"Payment"</span><span class="p">,</span>
@@ -219,13 +219,13 @@
 <p>These transaction instructions mean: Send a payment from <code>rf1Bi...</code> to <code>ra5nK...</code> delivering exactly 13 XRP. If the transaction is successfully processed, it does exactly that. Since it usually takes about 4 seconds for each new ledger version to become <a href="consensus.html">validated</a>, a successful transaction can be created, submitted, executed, and have a final outcome in 8 seconds or less, even if gets queued for the ledger version after the current in-progress one.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> The <a href="payment.html">Payment transaction type</a> can also be used for some more specialized kinds of payments, including <a href="cross-currency-payments.html">cross-currency payments</a> and <a href="partial-payments.html">partial payments</a>. In the case of partial payments, it is possible that the <code>Amount</code> shows a large amount of XRP even if the transaction only delivered a very small amount. See <a href="partial-payments.html#partial-payments-exploit">partial payments exploit</a> for how to avoid crediting a customer for the wrong amount.</p>
 <p>Direct XRP-to-XRP payments cannot be partial payments, but partial payments can deliver XRP after converting from a different source currency.</p>
-<h2 id="funding-accounts">Funding Accounts</h2>
+<h2 id="funding-accounts">Funding Accounts<a aria-hidden="true" class="hover_anchor" href="#funding-accounts"><i class="fa fa-link"></i></a></h2>
 <p>Any mathematically-valid address can receive a payment, even if the XRP Ledger has no record of that address existing beforehand, as long as the payment delivers enough XRP to meet the minimum <a href="reserves.html">account reserve</a>. If the payment would not deliver enough XRP, it fails.</p>
 <p>For more information, see <a href="accounts.html#creating-accounts">Accounts</a>.</p>
-<h2 id="address-reuse">Address Reuse</h2>
+<h2 id="address-reuse">Address Reuse<a aria-hidden="true" class="hover_anchor" href="#address-reuse"><i class="fa fa-link"></i></a></h2>
 <p>In the XRP Ledger, addresses where you can receive payments are permanent, and have a non-trivial <a href="reserves.html">reserve requirement</a> of XRP that they cannot spend. This means that, contrary to some other blockchain systems, it is not a good idea to use a different, disposable address for every transaction. The best practice for the XRP Ledger is to reuse the same address for multiple transactions. If you use the address regularly (especially if it's managed by an internet-connected service), you should set a <a href="cryptographic-keys.html">regular key</a> and proactively change keys on a regular basis to reduce the risk of a key compromise.</p>
 <p>As a sender, it is best not to assume that your intended recipient is using the same address from the last time you sent them a payment. Inevitably, sometimes security compromises happen and a person or business has to change addresses. Before sending money, you should ask the recipient for their current receiving address, so you don't accidentally send money to a malicious user who has taken control of a compromised old address.</p>
-<h2 id="how-direct-xrp-payments-are-processed">How Direct XRP Payments Are Processed</h2>
+<h2 id="how-direct-xrp-payments-are-processed">How Direct XRP Payments Are Processed<a aria-hidden="true" class="hover_anchor" href="#how-direct-xrp-payments-are-processed"><i class="fa fa-link"></i></a></h2>
 <p>From a relatively high level, the XRP Ledger's transaction processing engine applies a direct XRP payment as follows:</p>
 <ol>
 <li>
@@ -242,7 +242,7 @@
 <li>
 <p>It checks whether the receiving address is a funded account.</p>
 <ul>
-<li>If the receiving address is funded, it checks whether the receiving address has any limitations on receiving payments, such as <a href="depositauth.html">Deposit Authorization</a> or <a href="source-and-destination-tags.html#requiring-tags"><code>RequireDest</code></a>. If the payment does not meet any such limitations, the payment fails.</li>
+<li>If the receiving address is funded, the engine checks any additional requirements for receiving payments, such as <a href="depositauth.html">Deposit Authorization</a> or <a href="source-and-destination-tags.html#requiring-tags"><code>RequireDest</code></a>. If the payment does not satisfy any of these additional requirements, the payment fails.</li>
 <li>If the receiving address is not funded, it checks whether the payment would deliver enough XRP to meet the minimum <a href="reserves.html">account reserve</a>. If not, the payment fails.</li>
 </ul>
 </li>
@@ -252,7 +252,7 @@
 <p>The engine adds a <code>delivered_amount</code> field to the <a href="transaction-metadata.html">transaction's metadata</a> to indicate how much was delivered. You should always use <code>delivered_amount</code>, <strong>not</strong> the <code>Amount</code> field, to avoid being tricked about how much XRP you received. (Cross-currency "Partial Payments" can deliver less XRP than stated in the <code>Amount</code> field.) For more information, see <a href="partial-payments.html">Partial Payments</a>.</p>
 </li>
 </ol>
-<h2 id="comparison-to-other-payment-types">Comparison to Other Payment Types</h2>
+<h2 id="comparison-to-other-payment-types">Comparison to Other Payment Types<a aria-hidden="true" class="hover_anchor" href="#comparison-to-other-payment-types"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Direct XRP Payments</strong> are the only way to both send and receive XRP in a single transaction. They are a good balance of speed, simplicity, and low cost.</li>
 <li><a href="cross-currency-payments.html">Cross-currency payments</a> also use the <a href="payment.html">Payment</a> transaction type, but can send any combination of XRP and non-XRP <a href="issued-currencies.html">issued currencies</a> except XRP-to-XRP. They can also be <a href="partial-payments.html">partial payments</a>. Cross-currency payments are good for payments not denominated in XRP or for taking arbitrage opportunities in the <a href="decentralized-exchange.html">decentralized exchange</a>.</li>
@@ -260,7 +260,7 @@
 <li><a href="escrow.html">Escrow</a> sets aside XRP which can be claimed by its intended recipient when certain conditions are met. The XRP amount is fully guaranteed and cannot be otherwise used by the sender unless the Escrow expires. Escrow is good for smart contracts in large amounts.</li>
 <li><a href="payment-channels.html">Payment Channels</a> set aside XRP. The recipient can claim XRP from the channel in bulk using signed authorizations. Individual authorizations can be verified without sending a full XRP Ledger transaction. Payment channels are good for extremely high-volume micropayments or "streaming" payments.</li>
 </ul>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="payment-system-basics.html">Payment System Basics</a></li>
@@ -635,6 +635,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/introduction/xrp.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/introduction/xrp.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -204,18 +204,18 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="xrp">XRP</h1>
+        <h1 id="xrp">XRP<a aria-hidden="true" class="hover_anchor" href="#xrp"><i class="fa fa-link"></i></a></h1>
 <p><strong>XRP</strong> is the native cryptocurrency of the XRP Ledger. All <a href="accounts.html">accounts</a> in the XRP Ledger can send XRP among one another and must hold a minimum amount of XRP as a <a href="reserves.html">reserve</a>. XRP can be sent directly from any XRP Ledger address to any other, without needing a gateway or liquidity provider. This helps make XRP a convenient bridge currency.</p>
 <p>Some advanced features of the XRP Ledger, such as <a href="escrow.html">Escrow</a> and <a href="use-payment-channels.html">Payment Channels</a>, only work with XRP. Order book <a class="external-link" href="https://xrpl.org/blog/2014/introducing-offer-autobridging.html" target="_blank">auto-bridging <i aria-hidden="true" class="fa fa-external-link"></i></a> uses XRP to deepen liquidity in the decentralized exchange by merging order books of two issued currencies with XRP order books to create synthetic combined order books. (For example, auto-bridging matches USD:XRP and XRP:EUR orders to augment USD:EUR order books.)</p>
 <p>XRP also serves as a protective measure against spamming the network. All XRP Ledger addresses need a small amount of XRP to offset the costs of maintaining the XRP Ledger. The <a href="transaction-cost.html">transaction cost</a> and <a href="reserves.html">reserve</a> are neutral fees denominated in XRP and not paid to any party. In the ledger's data format, XRP is stored in <a href="accountroot.html">AccountRoot objects</a>.</p>
 <p>Some of the desirable properties of XRP come from the nature of the XRP Ledger and its <a href="consensus.html">consensus process</a>. The XRP Ledger does not require mining and the consensus process does not require multiple confirmations for immutability, which makes the XRP Ledger faster and more efficient at processing transactions than Bitcoin and other top cryptocurrencies.</p>
-<h2 id="xrp-properties">XRP Properties</h2>
+<h2 id="xrp-properties">XRP Properties<a aria-hidden="true" class="hover_anchor" href="#xrp-properties"><i class="fa fa-link"></i></a></h2>
 <p>The very first ledger contained 100 billion XRP, and no new XRP can be created. XRP can be destroyed by <a href="transaction-cost.html">transaction costs</a> or lost by sending it to addresses for which no one holds a key, so XRP is slightly <a class="external-link" href="https://en.wikipedia.org/wiki/Deflation" target="_blank">deflationary <i aria-hidden="true" class="fa fa-external-link"></i></a> by nature. No need to worry about running out, though: at the current rate of destruction, it would take at least 70,000 years to destroy all XRP, and XRP <a href="fee-voting.html">prices and fees can be adjusted</a> as the total supply of XRP changes.</p>
 <p>In technical contexts, XRP is measured precisely to the nearest 0.000001 XRP, called a "drop" of XRP. The <a href="rippled-api.html"><code>rippled</code> APIs</a> require all XRP amounts to be specified in drops of XRP. For example, 1 XRP is represented as <code>1000000</code> drops. For more detailed information, see the <a href="currency-formats.html">currency format reference</a>.</p>
-<h2 id="history">History</h2>
-<h3 id="xrp-sales">XRP Sales</h3>
+<h2 id="history">History<a aria-hidden="true" class="hover_anchor" href="#history"><i class="fa fa-link"></i></a></h2>
+<h3 id="xrp-sales">XRP Sales<a aria-hidden="true" class="hover_anchor" href="#xrp-sales"><i class="fa fa-link"></i></a></h3>
 <p>The XRP Ledger was built over 2011 – early 2012 by Jed McCaleb, Arthur Britto and David Schwartz. In September 2012, Jed and Arthur, along with Chris Larsen formed Ripple (the company, called OpenCoin Inc. at the time) and decided to gift 80 billion XRP to Ripple in exchange for Ripple developing on the XRP Ledger. Since then, the company has regularly sold XRP, used it to strengthen XRP markets and improve network liquidity, and incentivized development of the greater ecosystem. In 2017, the company <a class="external-link" href="https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/" target="_blank">placed 55 billion XRP in escrow <i aria-hidden="true" class="fa fa-external-link"></i></a> to ensure that the amount entering the general supply <a class="external-link" href="https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/" target="_blank">grows predictably <i aria-hidden="true" class="fa fa-external-link"></i></a> for the foreseeable future. Ripple's <a class="external-link" href="https://ripple.com/xrp/market-performance/" target="_blank">XRP Market Performance site <i aria-hidden="true" class="fa fa-external-link"></i></a> reports how much XRP the company has available and locked in escrow at present. <!-- SPELLING_IGNORE: mccaleb, britto, opencoin --></p>
-<h3 id="naming">Naming</h3>
+<h3 id="naming">Naming<a aria-hidden="true" class="hover_anchor" href="#naming"><i class="fa fa-link"></i></a></h3>
 <p>Originally, the XRP Ledger was called "Ripple" for the way the technology allowed payments <a href="rippling.html">to ripple through multiple hops and currencies</a>. For the native asset built into the ledger, the creators chose the ticker symbol "XRP" from the term "ripple credits" or "ripples" and the X prefix for non-national currencies in the ISO 4217 standard. The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, <a class="external-link" href="https://twitter.com/xrpsymbol/status/1006925937571713025" target="_blank">the community selected a new "X" symbol <i aria-hidden="true" class="fa fa-external-link"></i></a> to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.</p>
 <table>
 <thead>
@@ -232,7 +232,7 @@
 </tbody>
 </table>
 <p>The smallest, indivisible unit of XRP was named a "drop" at the suggestion of Ripple forum member ThePiachu. An early alternative term was a "jed", after Jed McCaleb. <!-- SPELLING_IGNORE: thepiachu, mccaleb --></p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a href="send-xrp.html">Send XRP (Interactive Tutorial)</a></li>
 <li><a href="list-xrp-as-an-exchange.html">List XRP In Your Exchange</a></li>
@@ -588,6 +588,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

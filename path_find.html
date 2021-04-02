@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -214,7 +214,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="path_find">path_find</h1>
+        <h1 id="path_find">path_find<a aria-hidden="true" class="hover_anchor" href="#path_find"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>WebSocket API only!</em> The <code>path_find</code> method searches for a <a href="paths.html">path</a> along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see the <a href="ripple_path_find.html">ripple_path_find method</a>. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.</p>
 <p>There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the <code>subcommand</code> parameter:</p>
@@ -224,11 +224,11 @@
 <li><code>status</code> - Get the information of the currently-open pathfinding request</li>
 </ul>
 <p>Although the <code>rippled</code> server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths. Due to server load, pathfinding may not find the best results. Additionally, you should be careful with the pathfinding results from untrusted servers. A server could be modified to return less-than-optimal paths to earn money for its operators. If you do not have your own server that you can trust with pathfinding, you should compare the results of pathfinding from multiple servers run by different parties, to minimize the risk of a single server returning poor results. (<strong>Note:</strong> A server returning less-than-optimal results is not necessarily proof of malicious behavior; it could also be a symptom of heavy server load.)</p>
-<h2 id="path_find-create">path_find create</h2>
+<h2 id="path_find-create">path_find create<a aria-hidden="true" class="hover_anchor" href="#path_find-create"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>create</code> sub-command of <code>path_find</code> creates an ongoing request to find possible paths along which a payment transaction could be made from one specified account such that another account receives a desired amount of some currency. The initial response contains a suggested path between the two addresses that would result in the desired amount being received. After that, the server sends additional messages, with <code>"type": "path_find"</code>, with updates to the potential paths. The frequency of updates is left to the discretion of the server, but it usually means once every few seconds when there is a new ledger version.</p>
 <p>A client can only have one pathfinding request open at a time. If another pathfinding request is already open on the same connection, the old request is automatically closed and replaced with the new request.</p>
-<h3 id="request-format">Request Format</h3>
+<h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li></ul>
 
@@ -290,7 +290,7 @@
 </tbody>
 </table>
 <p>The server also recognizes the following fields, but the results of using them are not guaranteed: <code>source_currencies</code>, <code>bridges</code>. These fields should be considered reserved for future use.</p>
-<h3 id="response-format">Response Format</h3>
+<h3 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h3>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li></ul>
 
@@ -723,13 +723,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="possible-errors">Possible Errors</h3>
+<h3 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>noEvents</code> - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See the <a href="ripple_path_find.html">ripple_path_find method</a> for a pathfinding method that <em>is</em> compatible with JSON-RPC.)</li>
 </ul>
-<h3 id="asynchronous-follow-ups">Asynchronous Follow-ups</h3>
+<h3 id="asynchronous-follow-ups">Asynchronous Follow-ups<a aria-hidden="true" class="hover_anchor" href="#asynchronous-follow-ups"><i class="fa fa-link"></i></a></h3>
 <p>In addition to the initial response, the server sends more messages in a similar format to update on the status of <a href="paths.html">payment paths</a> over time. These messages include the <code>id</code> of the original WebSocket request so you can tell which request prompted them, and the field <code>"type": "path_find"</code> at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.</p>
 <p>If the follow-up includes <code>"full_reply": true</code>, then this is the best path that rippled can find as of the current ledger.</p>
 <p>Here is an example of an asynchronous follow-up from a path_find create request:</p>
@@ -739,7 +739,7 @@
     <span class="nt">"id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"path_find"</span><span class="p">,</span>
     <span class="nt">"alternatives"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="err">/*</span> <span class="err">paths</span> <span class="err">omitted</span> <span class="err">from</span> <span class="err">this</span> <span class="err">example;</span> <span class="err">same</span> <span class="err">format</span> <span class="err">as</span> <span class="err">the</span> <span class="err">initial</span> <span class="err">response</span> <span class="err">*/</span>
+        <span class="err">/*</span> <span class="err">pa</span><span class="kc">t</span><span class="err">hs</span> <span class="err">omi</span><span class="kc">tte</span><span class="err">d</span> <span class="kc">fr</span><span class="err">om</span> <span class="kc">t</span><span class="err">his</span> <span class="err">example;</span> <span class="err">same</span> <span class="kc">f</span><span class="err">orma</span><span class="kc">t</span> <span class="err">as</span> <span class="kc">t</span><span class="err">he</span> <span class="err">i</span><span class="kc">n</span><span class="err">i</span><span class="kc">t</span><span class="err">ial</span> <span class="err">respo</span><span class="kc">nse</span> <span class="err">*/</span>
     <span class="p">],</span>
     <span class="nt">"destination_account"</span><span class="p">:</span> <span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
     <span class="nt">"destination_amount"</span><span class="p">:</span> <span class="p">{</span>
@@ -751,10 +751,10 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="path_find-close">path_find close</h2>
+<h2 id="path_find-close">path_find close<a aria-hidden="true" class="hover_anchor" href="#path_find-close"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>close</code> sub-command of <code>path_find</code> instructs the server to stop sending information about the current open pathfinding request.</p>
-<h3 id="request-format-1">Request Format</h3>
+<h3 id="request-format-1">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-1"><i class="fa fa-link"></i></a></h3>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">WebSocket</a></li></ul>
 
@@ -782,7 +782,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="response-format-1">Response Format</h3>
+<h3 id="response-format-1">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-1"><i class="fa fa-link"></i></a></h3>
 <p>If a pathfinding request was successfully closed, the response follows the same format as the initial response to <a href="#path_find-create"><code>path_find create</code></a>, plus the following field:</p>
 <table>
 <thead>
@@ -801,17 +801,17 @@
 </tbody>
 </table>
 <p>If there was no outstanding pathfinding request, an error is returned instead.</p>
-<h3 id="possible-errors-1">Possible Errors</h3>
+<h3 id="possible-errors-1">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors-1"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - If any fields are specified incorrectly, or any required fields are missing.</li>
 <li><code>noEvents</code> - If you tried to use this method on a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See the <a href="ripple_path_find.html">ripple_path_find method</a> for a pathfinding method that <em>is</em> compatible with JSON-RPC.)</li>
 <li><code>noPathRequest</code> - You tried to close a pathfinding request when there is not an open one.</li>
 </ul>
-<h2 id="path_find-status">path_find status</h2>
+<h2 id="path_find-status">path_find status<a aria-hidden="true" class="hover_anchor" href="#path_find-status"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>status</code> sub-command of <code>path_find</code> requests an immediate update about the client's currently-open pathfinding request.</p>
-<h3 id="request-format-2">Request Format</h3>
+<h3 id="request-format-2">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-2"><i class="fa fa-link"></i></a></h3>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">WebSocket</a></li></ul>
 
@@ -839,7 +839,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="response-format-2">Response Format</h3>
+<h3 id="response-format-2">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-2"><i class="fa fa-link"></i></a></h3>
 <p>If a pathfinding request is open, the response follows the same format as the initial response to <a href="#path_find-create"><code>path_find create</code></a>, plus the following field:</p>
 <table>
 <thead>
@@ -858,7 +858,7 @@
 </tbody>
 </table>
 <p>If there was no outstanding pathfinding request, an error is returned instead.</p>
-<h3 id="possible-errors-2">Possible Errors</h3>
+<h3 id="possible-errors-2">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors-2"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -976,6 +976,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -1037,7 +1038,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -1077,7 +1077,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -1116,7 +1116,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -1309,6 +1309,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

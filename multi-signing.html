@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-system-basics/accounts/multi-signing.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-system-basics/accounts/multi-signing.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -203,7 +203,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="multi-signing">Multi-Signing</h1>
+        <h1 id="multi-signing">Multi-Signing<a aria-hidden="true" class="hover_anchor" href="#multi-signing"><i class="fa fa-link"></i></a></h1>
 <p>Multi-signing in the XRP Ledger is a method of <a href="transaction-basics.html#authorizing-transactions">authorizing transactions</a> for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a <a href="cryptographic-keys.html#master-key-pair">master key pair</a>, and a <a href="cryptographic-keys.html#regular-key-pair">regular key pair</a>. (The only requirement is that <em>at least one</em> method must be enabled.)</p>
 <p>Benefits of multi-signing include:</p>
 <ul>
@@ -212,10 +212,10 @@
 <li>You can delegate the power to send transactions from your address to a group of people, who can control your address if you are unavailable or unable to sign normally.</li>
 <li>... and more.</li>
 </ul>
-<h2 id="signer-lists">Signer Lists</h2>
+<h2 id="signer-lists">Signer Lists<a aria-hidden="true" class="hover_anchor" href="#signer-lists"><i class="fa fa-link"></i></a></h2>
 <p>Before you can multi-sign, you must create a list of which addresses can sign for you.</p>
 <p>The <a href="signerlistset.html">SignerListSet transaction</a> defines which addresses can authorize transactions from your address. You can include up to 8 addresses in a SignerList. You can control how many signatures are needed, in which combinations, by using the quorum and weight values of the SignerList.</p>
-<h2 id="sending-multi-signed-transactions">Sending Multi-Signed Transactions</h2>
+<h2 id="sending-multi-signed-transactions">Sending Multi-Signed Transactions<a aria-hidden="true" class="hover_anchor" href="#sending-multi-signed-transactions"><i class="fa fa-link"></i></a></h2>
 <p>To successfully submit a multi-signed transaction, you must do all of the following:</p>
 <ul>
 <li>The address sending the transaction (specified in the <code>Account</code> field) must have a <a href="signerlist.html">signer list in the ledger</a>. For instructions on how to do this, see <a href="set-up-multi-signing.html">Set Up Multi-Signing</a>.</li>
@@ -227,7 +227,7 @@
 <li>All fields of the transaction must be defined before collecting signatures. You cannot <a href="transaction-common-fields.html#auto-fillable-fields">auto-fill</a> any fields.</li>
 <li>If presented in binary form, the <code>Signers</code> array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the <a href="submit_multisigned.html">submit_multisigned method</a> handles this automatically.)</li>
 </ul>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Tutorials:</strong><ul>
 <li><a href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
@@ -602,6 +602,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

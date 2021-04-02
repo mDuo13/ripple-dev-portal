@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>バリデータとしてのrippledの実行 - XRP Ledger Dev Portal (日本語)</title>
+    <title>バリデータとしてのrippledの実行 - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="バリデータとしてのrippledの実行 | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/run-rippled-as-a-validator.html" />
+    <meta property="og:description" content="サーバーがコンセンサスレジャーで投票できるようにします。" />
+    <meta name="description" content="サーバーがコンセンサスレジャーで投票できるようにします。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/run-rippled-as-a-validator.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/run-rippled-as-a-validator.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/run-rippled-as-a-validator.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/configuration/run-rippled-as-a-validator.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -188,7 +212,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="バリデータとしてのrippledの実行">バリデータとしてのrippledの実行</h1>
+        <h1 id="バリデータとしてのrippledの実行">バリデータとしてのrippledの実行<a aria-hidden="true" class="hover_anchor" href="#バリデータとしてのrippledの実行"><i class="fa fa-link"></i></a></h1>
 <p><a href="rippled-server-modes.html">バリデータモード</a>で実行されている<a href="the-rippled-server.html"><code>rippled</code>サーバー</a>は、ストックサーバーが実行するあらゆる処理を実行します。</p>
 <ul>
 <li>
@@ -204,7 +228,7 @@
 <p>バリデータが <em>特異である</em> のは、検証メッセージも発行するという点です。これらのメッセージは、<a href="consensus-principles-and-rules.html#コンセンサスの仕組み">コンセンサスプロセス</a>の進行中、XRP Ledgerネットワークによる評価の対象となる候補のトランザクションです。</p>
 <p>ただし、単に検証メッセージを発行するだけで、バリデータにコンセンサスプロセスでの発言権が自動的に付与されるわけではありません。他のサーバーがバリデータ（モードのサーバー）を彼らのユニークノードリスト（UNL）に追加しない限り、彼らは（バリデータモードのサーバーからの）検証メッセージを無視します。バリデータがUNLに含まれている場合、 <em>信頼できる</em> バリデータであり、その提案は、信頼する側のサーバーによってコンセンサスプロセスで検討されます。</p>
 <p>バリデータが <em>信頼できる</em> バリデータではない場合も、ネットワークの全体的な健全性に関して、重要な役割を果たすことに変わりはありません。これらのバリデータは、信頼できるバリデータを評価するための基準の確立を支援します。例えば、信頼できるバリデータが、UNLに含まれていない多数のバリデータに対して異議を唱えている場合、問題があることを示しているおそれがあります。</p>
-<h2 id="1-優れたバリデータの特徴の理解">1. 優れたバリデータの特徴の理解</h2>
+<h2 id="1-優れたバリデータの特徴の理解">1. 優れたバリデータの特徴の理解<a aria-hidden="true" class="hover_anchor" href="#1-優れたバリデータの特徴の理解"><i class="fa fa-link"></i></a></h2>
 <p>バリデータ（サーバー）が以下の特質を常に備えるよう努めます。優れたバリデータであることは、<code>rippled</code>サーバーの運用者や<a class="external-link" href="https://vl.ripple.com" target="_blank">https://vl.ripple.com <i aria-hidden="true" class="fa fa-external-link"></i></a>などのバリデータリスト発行者が、バリデータを彼らのUNLに追加する際に、バリデータを信頼する上で後押しになります。</p>
 <ul>
 <li><strong>可用性</strong></li>
@@ -223,9 +247,9 @@
 </ul>
 <p>優れたバリデータには、身元が明確な所有者が存在します。<a href="#6-ドメイン検証の提供">ドメイン検証</a>を提供することは、その第一歩になります。XRP LedgerネットワークのUNLに、多くの法的な管轄域および地域のさまざまな所有者によって運営されているバリデータが含まれていると理想的です。結果として、信頼できるバリデータの公正な運用が地域特有の事象によって損なわれるおそれが低減されます。</p>
 <p>Ripple社は、推奨される一連のバリデータを記載した<a class="external-link" href="https://github.com/ripple/rippled/blob/develop/cfg/validators-example.txt" target="_blank">バリデータリスト <i aria-hidden="true" class="fa fa-external-link"></i></a>を公開しています。本番環境のサーバーでは、このリストを使用することを強くお勧めします。</p>
-<h2 id="2-rippledサーバーのインストール">2. <code>rippled</code>サーバーのインストール</h2>
+<h2 id="2-rippledサーバーのインストール">2. <code>rippled</code>サーバーのインストール<a aria-hidden="true" class="hover_anchor" href="#2-rippledサーバーのインストール"><i class="fa fa-link"></i></a></h2>
 <p>詳細は、<a href="install-rippled.html"><code>rippled</code>のインストール</a>を参照してください。</p>
-<h2 id="3-rippledサーバーで検証を有効化">3. <code>rippled</code>サーバーで検証を有効化</h2>
+<h2 id="3-rippledサーバーで検証を有効化">3. <code>rippled</code>サーバーで検証を有効化<a aria-hidden="true" class="hover_anchor" href="#3-rippledサーバーで検証を有効化"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>サーバーで検証を有効にすることは、サーバーの<code>rippled.cfg</code>ファイルにあるバリデータトークンを提供することを意味します。バリデータキーとトークンを安全に生成して管理するために、<code>validator-keys</code>ツール（<code>rippled</code> RPMに含まれる）を使用することをお勧めします。</p>
 <p>バリデータ（サーバー）<strong>以外の</strong>場所で、以下の手順に従います。</p>
 <ol>
@@ -238,14 +262,14 @@
 </li>
 </ol>
 <p>Ubuntuでの出力の例:</p>
-<div class="codehilite"><pre><span></span><code>    <span class="k">Validator</span> <span class="n">keys</span> <span class="n">stored</span> <span class="k">in</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="k">user</span><span class="o">/</span><span class="p">.</span><span class="n">ripple</span><span class="o">/</span><span class="k">validator</span><span class="o">-</span><span class="n">keys</span><span class="p">.</span><span class="n">json</span>
+<div class="codehilite"><pre><span></span><code>    Validator keys stored in /home/my-user/.ripple/validator-keys.json
 
-    <span class="n">This</span> <span class="n">file</span> <span class="n">should</span> <span class="n">be</span> <span class="n">stored</span> <span class="n">securely</span> <span class="k">and</span> <span class="k">not</span> <span class="n">shared</span><span class="p">.</span>
+    This file should be stored securely and not shared.
 </code></pre></div>
 <p>macOSでの出力の例:</p>
-<div class="codehilite"><pre><span></span><code>    <span class="k">Validator</span> <span class="n">keys</span> <span class="n">stored</span> <span class="k">in</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="k">user</span><span class="o">/</span><span class="p">.</span><span class="n">ripple</span><span class="o">/</span><span class="k">validator</span><span class="o">-</span><span class="n">keys</span><span class="p">.</span><span class="n">json</span>
+<div class="codehilite"><pre><span></span><code>    Validator keys stored in /Users/my-user/.ripple/validator-keys.json
 
-    <span class="n">This</span> <span class="n">file</span> <span class="n">should</span> <span class="n">be</span> <span class="n">stored</span> <span class="n">securely</span> <span class="k">and</span> <span class="k">not</span> <span class="n">shared</span><span class="p">.</span>
+    This file should be stored securely and not shared.
 </code></pre></div>
 <p class="devportal-callout 警告"><strong>警告:</strong> 生成した<code>validator-keys.json</code>キーファイルは、暗号化されたUSBフラッシュドライブなど、安全かつ回復可能なオフラインの場所に保管してください。内容には修正を加えないでください。特に、キーの使用場所となるバリデータにキーファイルを保存しないようにします。バリデータの<code>secret_key</code>が悪用された場合は、ただちに<a class="external-link" href="https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation" target="_blank">キーを破棄 <i aria-hidden="true" class="fa fa-external-link"></i></a>します。</p>
 <p><code>validator-keys</code>ツールおよびツールで生成されるキーペアの詳細は、<a class="external-link" href="https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md" target="_blank">Validator Keys Tool Guide <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
@@ -295,7 +319,7 @@
 </li>
 </ul>
 <p><strong>セキュリティのヒント:</strong> <code>rippled.cfg</code>ファイルに対する権限をより制限的なものに変更します。Linuxでは、<code>0600</code>にすることを推奨します。<code>chmod 0600 rippled.cfg</code>を使用して変更できます。</p>
-<h2 id="4-ネットワークへの接続">4. ネットワークへの接続</h2>
+<h2 id="4-ネットワークへの接続">4. ネットワークへの接続<a aria-hidden="true" class="hover_anchor" href="#4-ネットワークへの接続"><i class="fa fa-link"></i></a></h2>
 <p>このセクションでは、バリデータをXRP Ledgerネットワークに接続するために使用できる3種類の構成について説明します。ユースケースに最適な構成を使用してください。</p>
 <ul>
 <li>
@@ -309,10 +333,10 @@
 </li>
 </ul>
 <p>これらのアプローチの違いについては、<a href="peer-protocol.html#ピア接続設定のメリットとデメリット">ピア接続設定のメリットとデメリット</a>を参照してください。</p>
-<h3 id="検出されたピアを使用した接続">検出されたピアを使用した接続</h3>
+<h3 id="検出されたピアを使用した接続">検出されたピアを使用した接続<a aria-hidden="true" class="hover_anchor" href="#検出されたピアを使用した接続"><i class="fa fa-link"></i></a></h3>
 <p>この構成では、<a href="peer-protocol.html#ピアの検出">検出されたピア</a>を使用してバリデータをXRP Ledgerネットワークに接続します。これは<code>rippled</code>サーバーのデフォルトの動作です。</p>
 <p><em><strong>検出されたピアを使用してバリデータをXRP Ledgerネットワークに接続するには、</strong></em> バリデータの<code>rippled.cfg</code>ファイルで<code>[peer_private]</code>スタンザを省略するか、それを<code>0</code>に設定します。この構成の<a class="external-link" href="https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg" target="_blank">サンプルのrippled.cfgファイル <i aria-hidden="true" class="fa fa-external-link"></i></a>が提供されています。</p>
-<h3 id="プロキシを使用した接続">プロキシを使用した接続</h3>
+<h3 id="プロキシを使用した接続">プロキシを使用した接続<a aria-hidden="true" class="hover_anchor" href="#プロキシを使用した接続"><i class="fa fa-link"></i></a></h3>
 <p>この構成は、自社で運用するストック<code>rippled</code>サーバーを通じてバリデータをネットワークに接続します。これらのプロキシサーバーは、バリデータと発着信ネットワークトラフィックの間に設置します。</p>
 <p><em><strong>プロキシを使用してバリデータをXRP Ledgerネットワークに接続するには、次の手順を実行します。</strong></em></p>
 <ol>
@@ -351,7 +375,7 @@
 </li>
 </ol>
 <!-- { TODO: Future: add a recommended network architecture diagram to represent the proxy, clustering, and firewall setup: https://ripplelabs.atlassian.net/browse/DOC-2046 }-->
-<h3 id="公開ハブを使用した接続">公開ハブを使用した接続</h3>
+<h3 id="公開ハブを使用した接続">公開ハブを使用した接続<a aria-hidden="true" class="hover_anchor" href="#公開ハブを使用した接続"><i class="fa fa-link"></i></a></h3>
 <p>この構成では、2つの<a href="rippled-server-modes.html#公開ハブ">公開ハブ</a>を使用してバリデータをネットワークに接続します。この構成は、<a href="#プロキシを使用した接続">自社で運用しているプロキシを使用した接続</a>と似ていますが、公開ハブを通じて接続します。</p>
 <p><em><strong>公開ハブを使用してバリデータをネットワークに接続するには、次の手順を実行します。</strong></em></p>
 <ol>
@@ -383,7 +407,7 @@
 </code></pre></div>
 </li>
 </ol>
-<h2 id="5-ネットワーク接続の確認">5. ネットワーク接続の確認</h2>
+<h2 id="5-ネットワーク接続の確認">5. ネットワーク接続の確認<a aria-hidden="true" class="hover_anchor" href="#5-ネットワーク接続の確認"><i class="fa fa-link"></i></a></h2>
 <p>ここでは、バリデータがXRP Ledgerネットワークへの健全な接続を保持していることを検証する方法をいくつか紹介します。</p>
 <ul>
 <li><a href="peers.html"><code>peers</code></a>コマンドを使用して、バリデータに接続しているすべての<code>rippled</code>サーバーのリストを取得します。<code>peers</code>の配列が<code>null</code>である場合、ネットワークへの健全な接続が存在していません。このドキュメントの手順に従ってバリデータを設置した場合、<code>peers</code>の配列には、<code>[ips_fixed]</code>スタンザで定義されているピアの数と同数のオブジェクトが含まれています。</li>
@@ -397,7 +421,7 @@
 <ul>
 <li><a href="validators.html"><code>validators</code></a>コマンドを使用して、バリデータによって使用される、公開済みかつ信頼できるバリデータの最新リストを取得します。<code>validator_list_expires</code>の値が、<code>never</code>（無期限）、期限が切れていない、または期限切れ間近のいずれかであることを確認してください。</li>
 </ul>
-<h2 id="6-ドメイン検証の提供">6. ドメイン検証の提供</h2>
+<h2 id="6-ドメイン検証の提供">6. ドメイン検証の提供<a aria-hidden="true" class="hover_anchor" href="#6-ドメイン検証の提供"><i class="fa fa-link"></i></a></h2>
 <p>検証リスト発行者およびXRP Ledgerネットワーク内のその他の参加者がバリデータの運用元を把握しやすいようにするには、バリデータのドメイン検証を提供します。ドメイン検証とは、ハイレベルでは双方向リンクを指します。</p>
 <ul>
 <li>
@@ -422,27 +446,27 @@
 <li>
 <p>バリデータのサーバーで以下のコマンドを実行して、バリデータの公開鍵を検出します。</p>
 <p>$ /opt/ripple/bin/rippled server_info | grep pubkey_validator</p>
-<div class="codehilite"><pre><span></span><code><span class="err">  返された値を、Googleフォームの**Validator Public Key**フィールドに入力します。</span>
+<div class="codehilite"><pre><span></span><code>  返された値を、Googleフォームの**Validator Public Key**フィールドに入力します。
 </code></pre></div>
 </li>
 <li>
 <p>WebドメインのTLS秘密鍵を使用して、バリデータの公開鍵に署名します。TLS秘密鍵ファイルをバリデータのサーバーに保存する必要はありません。</p>
 <p>$ openssl dgst -sha256 -hex -sign /PATH/TO/YOUR/TLS.key &lt;(echo YOUR_VALIDATOR_PUBLIC_KEY_HERE)</p>
-<div class="codehilite"><pre><span></span><code>  <span class="err">出力の例</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code>  出力の例:
 
-    <span class="mi">4</span><span class="n">a8b84ac264d18d116856efd2761a76f3f4544a1fbd82b9835bcd0aa67db91c53342a1ab197ab1ec4ae763d8476dd92fb9c24e6d9de37e3594c0af05d0f14fd2a00a7a5369723c019f122956bf3fc6c6b176ed0469c70c864aa07b4bf73042b1c7cf0b2c656aaf20ece5745f54ab0f78fab50ebd599e62401f4b57a4cccdf8b76d26f4490a1c51367e4a36faf860d48dd2f98a6134ebec1a6d92fadf9f89aae67e854f33e1acdcde12cfaf5f5dbf1b6a33833e768edbb9ff374cf4ae2be21dbc73186a5b54cc518f63d6081919e6125f7daf9a1d8e96e3fdbf3b94b089438221f8cfd78fd4fc85c646b288eb6d22771a3ee47fb597d28091e7aff38a1e636b4f</span>
+    4a8b84ac264d18d116856efd2761a76f3f4544a1fbd82b9835bcd0aa67db91c53342a1ab197ab1ec4ae763d8476dd92fb9c24e6d9de37e3594c0af05d0f14fd2a00a7a5369723c019f122956bf3fc6c6b176ed0469c70c864aa07b4bf73042b1c7cf0b2c656aaf20ece5745f54ab0f78fab50ebd599e62401f4b57a4cccdf8b76d26f4490a1c51367e4a36faf860d48dd2f98a6134ebec1a6d92fadf9f89aae67e854f33e1acdcde12cfaf5f5dbf1b6a33833e768edbb9ff374cf4ae2be21dbc73186a5b54cc518f63d6081919e6125f7daf9a1d8e96e3fdbf3b94b089438221f8cfd78fd4fc85c646b288eb6d22771a3ee47fb597d28091e7aff38a1e636b4f
 
-  <span class="err">返された値を、</span><span class="n">Googleフォームの</span><span class="o">**</span><span class="n">SSL</span> <span class="n">Signature</span><span class="o">**</span><span class="err">フィールドに入力します。</span>
+  返された値を、Googleフォームの**SSL Signature**フィールドに入力します。
 </code></pre></div>
 </li>
 <li>
 <p><a class="external-link" href="https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md" target="_blank"><code>validator-keys</code>ツール <i aria-hidden="true" class="fa fa-external-link"></i></a>（<code>rippled</code>のRPMに収録）を使用して、ドメイン名に署名します。</p>
 <p>$ validator-keys --keyfile /PATH/TO/YOUR/validator-keys.json sign YOUR_DOMAIN_NAME</p>
-<div class="codehilite"><pre><span></span><code>  <span class="err">出力の例</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code>  出力の例:
 
-    <span class="n">E852C2FE725B64F353E19DB463C40B1ABB85959A63B8D09F72C6B6C27F80B6C72ED9D5ED6DC4B8690D1F195E28FF1B00FB7119C3F9831459F3C3DE263B73AC04</span>
+    E852C2FE725B64F353E19DB463C40B1ABB85959A63B8D09F72C6B6C27F80B6C72ED9D5ED6DC4B8690D1F195E28FF1B00FB7119C3F9831459F3C3DE263B73AC04
 
-  <span class="err">返された値を、</span><span class="n">Googleフォームの</span><span class="o">**</span><span class="k">Domain</span> <span class="n">Signature</span><span class="o">**</span><span class="err">フィールドに入力します。</span>
+  返された値を、Googleフォームの**Domain Signature**フィールドに入力します。
 </code></pre></div>
 </li>
 <li>
@@ -450,10 +474,10 @@
 </li>
 </ol>
 <!--{ ***TODO: For the future - add a new section or separate document: "Operating a Trusted Validator" -- things that you need to be aware of once your validator has been added to a UNL and is participating in consensus. We should tell the user what to expect once they are listed in a UNL. How to tell if your validator is participating in the consensus process? How to tell if something isn't right with your validator - warning signs that they should look out for? How to tell if your validator has fallen out of agreement - what is the acceptable vs unacceptable threshold? Maybe provide a script that will alert them when something is going wrong.*** }-->
-<h2 id="バリデータキーの破棄">バリデータキーの破棄</h2>
+<h2 id="バリデータキーの破棄">バリデータキーの破棄<a aria-hidden="true" class="hover_anchor" href="#バリデータキーの破棄"><i class="fa fa-link"></i></a></h2>
 <p>バリデータのマスター秘密鍵が漏えいした場合は、ただちに永続的に破棄する必要があります。</p>
 <p><code>validator-keys</code>ツールでバリデータ用に生成したマスターキーペアを破棄する方法については、<a class="external-link" href="https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation" target="_blank">Key Revocation <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
-<h2 id="関連項目">関連項目</h2>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>コンセプト:</strong></li>
 <li><a href="xrp-ledger-overview.html">XRP Ledgerの概要</a></li>
@@ -506,6 +530,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">XRP Ledger APIの使用開始</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">RippleAPI入門ガイド</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">XRPの送金</a></li>
@@ -519,15 +544,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">安全な署名の設定</a></li>
@@ -536,21 +561,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">アカウントの設定の利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a></li>
@@ -560,24 +585,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">宛先タグの要求</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">オフラインでのアカウント設定のチュートリアル</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Escrowの使用</a></li>
@@ -604,21 +630,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a></li>
@@ -627,21 +653,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">rippledサーバの利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">rippledのインストール</a></li>
@@ -661,6 +687,7 @@
 
                           <li><a class="active subpage" href="#main_content_body">バリデータとしてのrippledの実行</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">オンライン削除の設定</a></li>
@@ -699,7 +726,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -722,13 +749,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -748,11 +775,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -785,7 +812,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -834,6 +861,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

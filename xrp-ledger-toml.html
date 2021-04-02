@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/xrp-ledger-toml.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/xrp-ledger-toml.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -216,42 +216,42 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="xrp-ledgertoml-file">xrp-ledger.toml File</h1>
+        <h1 id="xrp-ledgertoml-file">xrp-ledger.toml File<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgertoml-file"><i class="fa fa-link"></i></a></h1>
 <p>If you run an XRP Ledger validator or use the XRP Ledger for your business, you can provide information about your usage of the XRP Ledger to the world in a machine-readable <strong><code>xrp-ledger.toml</code></strong> file. Scripts and applications can use the information contained in your <code>xrp-ledger.toml</code> file to better understand and represent you in the XRP Ledger. In some cases, humans may also find it useful to read the same file.</p>
 <p>One of the primary use cases for the <code>xrp-ledger.toml</code> file is <a href="#domain-verification">domain verification</a>.</p>
-<h4 id="notational-conventions">Notational Conventions</h4>
+<h4 id="notational-conventions">Notational Conventions<a aria-hidden="true" class="hover_anchor" href="#notational-conventions"><i class="fa fa-link"></i></a></h4>
 <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a class="external-link" href="https://tools.ietf.org/html/rfc2119" target="_blank">RFC 2119 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="serving-the-file">Serving the File</h2>
+<h2 id="serving-the-file">Serving the File<a aria-hidden="true" class="hover_anchor" href="#serving-the-file"><i class="fa fa-link"></i></a></h2>
 <p>The <code>xrp-ledger.toml</code> file is meant to be served by a web server. The file should be available at the following URL:</p>
-<div class="codehilite"><pre><span></span><code><span class="c">https://{DOMAIN}/.well-known/xrp-ledger.toml</span>
+<div class="codehilite"><pre><span></span><code>https://{DOMAIN}/.well-known/xrp-ledger.toml
 </code></pre></div>
 <p>The <code>{DOMAIN}</code> is your domain name, including any subdomains. For example, you could serve the file from either of the following URLs:</p>
-<div class="codehilite"><pre><span></span><code><span class="c">https://example.com/.well-known/xrp-ledger.toml</span>
-<span class="c">https://xrp.services.example.com/.well-known/xrp-ledger.toml</span>
+<div class="codehilite"><pre><span></span><code>https://example.com/.well-known/xrp-ledger.toml
+https://xrp.services.example.com/.well-known/xrp-ledger.toml
 </code></pre></div>
-<h3 id="protocol">Protocol</h3>
+<h3 id="protocol">Protocol<a aria-hidden="true" class="hover_anchor" href="#protocol"><i class="fa fa-link"></i></a></h3>
 <p>The contents MUST be served through the <strong>HTTPS protocol</strong> for security, using a current and secure version of <a class="external-link" href="https://tools.ietf.org/html/rfc8446" target="_blank">TLS <i aria-hidden="true" class="fa fa-external-link"></i></a>, using a valid certificate signed by a well-known certificate authority. (Note: TLS was formerly called SSL, but those versions are no longer secure.) In other words, a prerequisite for hosting an <code>xrp-ledger.toml</code> file is to have a properly-configured HTTPS web server.</p>
 <p>The plain HTTP protocol is vulnerable to man-in-the-middle attacks; for example, some internet services have been known to modify contents retrieved over plain HTTP to inject their own advertisements. To prevent similar techniques from misrepresenting the contents of the <code>xrp-ledger.toml</code> file and potentially causing scripts to behave incorrectly or deceptively, one SHOULD NOT trust the contents of an <code>xrp-ledger.toml</code> file that is served over plain HTTP.</p>
-<h3 id="domain">Domain</h3>
+<h3 id="domain">Domain<a aria-hidden="true" class="hover_anchor" href="#domain"><i class="fa fa-link"></i></a></h3>
 <p>The domain where you serve the <code>xrp-ledger.toml</code> file is a statement of ownership. The file's contents are not as useful or trustworthy when they stand on their own. For practical reasons, it may be undesirable to serve the file from your main domain, so you MAY use any number of subdomains. When setting the <a href="accountset.html#domain"><code>Domain</code> field of XRP Ledger accounts</a>, you MUST provide the full domain, including all subdomains you used. See <a href="#account-verification">Account Verification</a> for details.</p>
 <p>You MAY serve the same file from multiple subdomains, if desired. For example, if the subdomain <code>www.example.com</code> goes to the same website as <code>example.com</code>, you can serve the file from both locations. If your website <em>requires</em> the <code>www</code> prefix, be sure to include it when you specify the domain (for example, when setting the <code>Domain</code> field of an XRP Ledger account).</p>
 <p>It is RECOMMENDED that you serve a human-readable website from the same domain as the <code>xrp-ledger.toml</code> file. The website can provide further information about your identity and how you use the XRP Ledger, which helps to build trust toward you and your services.</p>
-<h3 id="path">Path</h3>
+<h3 id="path">Path<a aria-hidden="true" class="hover_anchor" href="#path"><i class="fa fa-link"></i></a></h3>
 <p>In compliance with <a class="external-link" href="https://tools.ietf.org/html/rfc5785" target="_blank">RFC5785 <i aria-hidden="true" class="fa fa-external-link"></i></a>, the path MUST start with <code>/.well-known/</code>. The file MUST be available at the path <code>/.well-known/xrp-ledger.toml</code> exactly (case-sensitive, all lower case). <!-- SPELLING_IGNORE: rfc5785 --></p>
 <p>You MAY, if desired, serve the same file from paths with different capitalization, such as <code>/.well-known/XRP-Ledger.TOML</code>. You MUST NOT serve different contents depending on how the path is capitalized.</p>
-<h3 id="headers">Headers</h3>
-<h4 id="content-type">Content-Type</h4>
+<h3 id="headers">Headers<a aria-hidden="true" class="hover_anchor" href="#headers"><i class="fa fa-link"></i></a></h3>
+<h4 id="content-type">Content-Type<a aria-hidden="true" class="hover_anchor" href="#content-type"><i class="fa fa-link"></i></a></h4>
 <p>The recommended <strong>Content-Type</strong> for the <code>xrp-ledger.toml</code> file is <strong><code>application/toml</code></strong>. However, applications consuming the file SHOULD also accept a Content-Type value of <code>text/plain</code>.</p>
-<h4 id="cors">CORS</h4>
+<h4 id="cors">CORS<a aria-hidden="true" class="hover_anchor" href="#cors"><i class="fa fa-link"></i></a></h4>
 <p>To allow scripts on other websites to query the file, <a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank">CORS <i aria-hidden="true" class="fa fa-external-link"></i></a> should be enabled for the file. Specifically, the server should provide the following header when serving <code>xrp-ledger.toml</code>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c">Access-Control-Allow-Origin: *</span>
+<div class="codehilite"><pre><span></span><code>Access-Control-Allow-Origin: *
 </code></pre></div>
 <p>For information on how to configure your server to provide this header, see <a href="#cors-setup">CORS setup</a>.</p>
-<h4 id="other-headers">Other Headers</h4>
+<h4 id="other-headers">Other Headers<a aria-hidden="true" class="hover_anchor" href="#other-headers"><i class="fa fa-link"></i></a></h4>
 <p>The server MAY use other standard HTTP headers as desired, including ones for compression, cache control, redirection, and linking related resources.</p>
-<h3 id="generation">Generation</h3>
+<h3 id="generation">Generation<a aria-hidden="true" class="hover_anchor" href="#generation"><i class="fa fa-link"></i></a></h3>
 <p>The <code>xrp-ledger.toml</code> file MAY be an actual file stored on the web server, or it MAY be generated on-demand by the web server. The latter case may be preferable depending on the contents provided in the file or the configuration of your website.</p>
-<h2 id="contents">Contents</h2>
+<h2 id="contents">Contents<a aria-hidden="true" class="hover_anchor" href="#contents"><i class="fa fa-link"></i></a></h2>
 <p>The contents of the <code>xrp-ledger.toml</code> file MUST be formatted in <a class="external-link" href="https://github.com/toml-lang/toml" target="_blank">TOML <i aria-hidden="true" class="fa fa-external-link"></i></a>. <strong>All contents are optional.</strong> Comments are optional, but encouraged for readability.</p>
 <p>Example contents:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">Example</span><span class="w"> </span><span class="n">xrp</span><span class="o">-</span><span class="n">ledger</span><span class="p">.</span><span class="n">toml</span><span class="w"> </span><span class="k">file</span><span class="p">.</span><span class="w"> </span><span class="n">These</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">considered</span><span class="w"></span>
@@ -319,7 +319,7 @@
 
 <span class="err">#</span><span class="w"> </span><span class="k">End</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">file</span><span class="w"></span>
 </code></pre></div>
-<h3 id="metadata">Metadata</h3>
+<h3 id="metadata">Metadata<a aria-hidden="true" class="hover_anchor" href="#metadata"><i class="fa fa-link"></i></a></h3>
 <p>The metadata section provides information about the <code>xrp-ledger.toml</code> file itself. If present, this section MUST BE presented as a single table, headed by the line  <code>[METADATA]</code>, using <em>single</em> square brackets. (Most other sections of the <code>xrp-ledger.toml</code> file use double brackets, for arrays of information, but there is at most one <code>[METADATA]</code> section.) You MAY provide any of the following fields (case-sensitive):</p>
 <table>
 <thead>
@@ -344,7 +344,7 @@
 </table>
 <p>The specification does not define a <code>domain</code> field; the field should be determined from the site serving the file.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> For Offset Date-Time values, Ripple RECOMMENDS that you use the offset <code>Z</code> and provide precision up to milliseconds. (For example, <code>2019-01-22T22:26:58.027Z</code>) If you edit the file by hand, you MAY approximate the time by providing zeroes for the hours, minutes, seconds, and milliseconds. (For example, <code>2019-01-22T00:00:00.000Z</code>)</p>
-<h3 id="validators">Validators</h3>
+<h3 id="validators">Validators<a aria-hidden="true" class="hover_anchor" href="#validators"><i class="fa fa-link"></i></a></h3>
 <p>The validators list provides information about validating servers you run. If present, the validators list MUST BE presented as an array of tables, with each entry using the header <code>[[VALIDATORS]]</code>, including double square brackets. Each entry describes a separate validating server.</p>
 <p>The <em>first</em> <code>[[VALIDATORS]]</code> entry in the file is treated as your primary validator. If you run one or more validators for the production XRP Ledger, you should put the one you want others to trust first.</p>
 <p>For <em>each</em> <code>[[VALIDATORS]]</code> entry, you MAY provide any of the following fields:</p>
@@ -389,7 +389,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="accounts">Accounts</h3>
+<h3 id="accounts">Accounts<a aria-hidden="true" class="hover_anchor" href="#accounts"><i class="fa fa-link"></i></a></h3>
 <p>The accounts list provides information about XRP Ledger accounts you own. If present, the accounts list MUST BE presented as an array of tables, with each entry using the header <code>[[ACCOUNTS]]</code>, including double square brackets. Each entry describes a separate account. For <em>each</em> <code>[[ACCOUNTS]]</code> entry, you MAY provide any of the following fields:</p>
 <table>
 <thead>
@@ -418,7 +418,7 @@
 </tbody>
 </table>
 <p class="devportal-callout caution"><strong>Caution:</strong> Anyone could claim ownership of any account by hosting an <code>xrp-ledger.toml</code> file, so the presence of an account here SHOULD NOT be considered authoritative unless the <a href="accountset.html#domain"><code>Domain</code> field for these accounts in the XRP Ledger</a> also matches the domain that this <code>xrp-ledger.toml</code> file was served from. See <a href="#account-verification">Account Verification</a> for details.</p>
-<h3 id="principals">Principals</h3>
+<h3 id="principals">Principals<a aria-hidden="true" class="hover_anchor" href="#principals"><i class="fa fa-link"></i></a></h3>
 <p>The principals list provides information about the people (or business entities) involved in your XRP Ledger businesses and services. If present, the principals list MUST BE presented as an array of tables, with each entry using the header <code>[[PRINCIPALS]]</code>, including double square brackets. Each entry describes a different point of contact. For <em>each</em> <code>[[PRINCIPALS]]</code> entry, you MAY provide any of the following fields:</p>
 <table>
 <thead>
@@ -442,7 +442,7 @@
 </tbody>
 </table>
 <p>You may provide other contact information as desired. (See <a href="#custom-fields">Custom Fields</a> for information about custom fields.)</p>
-<h3 id="servers">Servers</h3>
+<h3 id="servers">Servers<a aria-hidden="true" class="hover_anchor" href="#servers"><i class="fa fa-link"></i></a></h3>
 <p>The servers list provides information about XRP Ledger servers (<code>rippled</code>) you run with public access. If present, the servers list MUST BE presented as an array of tables, with each entry using the header <code>[[SERVERS]]</code>, including double square brackets. Each entry describes a different server or server cluster. For <em>each</em> <code>[[SERVERS]]</code> entry, you MAY provide any of the following fields:</p>
 <table>
 <thead>
@@ -476,7 +476,7 @@
 </tbody>
 </table>
 <p>For all URLs in this section, the trailing slash is RECOMMENDED. If omitted, client applications SHOULD assume that there is a trailing slash implied.</p>
-<h3 id="currencies">Currencies</h3>
+<h3 id="currencies">Currencies<a aria-hidden="true" class="hover_anchor" href="#currencies"><i class="fa fa-link"></i></a></h3>
 <p>If you issue any assets, tokens, or currencies in the XRP Ledger, you can provide information about them in the <code>[[CURRENCIES]]</code> list. If present, the currencies list MUST BE presented as an array of tables, with each entry using the header <code>[[CURRENCIES]]</code>, including double square brackets. Each entry describes a separate issued currency or asset. For <em>each</em> <code>[[CURRENCIES]]</code> entry, you MAY provide any of the following fields:</p>
 <table>
 <thead>
@@ -514,12 +514,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="custom-fields">Custom Fields</h3>
+<h3 id="custom-fields">Custom Fields<a aria-hidden="true" class="hover_anchor" href="#custom-fields"><i class="fa fa-link"></i></a></h3>
 <p>The <code>xrp-ledger.toml</code> file is intended for users of the XRP Ledger to provide information to other users, scripts, and applications. As such, there may be many kinds of information that are useful to convey but are not described in this specification. Users are encouraged to add other fields at any level of the <code>xrp-ledger.toml</code> file, as desired to convey relevant information.</p>
 <p>Tools that parse the <code>xrp-ledger.toml</code> file MUST accept documents that contain any other fields that the application is not familiar with. Those tools MAY make those additional fields available to higher-level applications that call them, or MAY discard those fields. To maintain forward-compatibility with future versions of this specification, tools MAY also discard fields specified in this standard. Tools MUST NOT return an error if an <code>xrp-ledger.toml</code> file contains an unrecognized field. To detect typos, tools MAY provide a warning on unrecognized fields, especially if those field names are similar to the names of standard fields.</p>
 <p>Tools MAY return an error if a field they recognize is not formatted as expected, even if that field is not defined in this specification.</p>
 <p>When creating custom fields, be mindful of the field name you choose. If you use a very generic field name, other users may use the same name to mean something different, or formatted in a conflicting way. If you use a custom field that you think others will find useful, please contribute a specification for your field to the maintainers of this document.</p>
-<h2 id="cors-setup">CORS Setup</h2>
+<h2 id="cors-setup">CORS Setup<a aria-hidden="true" class="hover_anchor" href="#cors-setup"><i class="fa fa-link"></i></a></h2>
 <p>You MUST configure your web server to allow Cross-Origin Resource Sharing (<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank">CORS <i aria-hidden="true" class="fa fa-external-link"></i></a>) for the <code>xrp-ledger.toml</code> file. This configuration depends on your web server.</p>
 <p>If you run an Apache HTTP Server, add the following to your config file:</p>
 <div class="codehilite"><pre><span></span><code><span class="nt">&lt;Location</span> <span class="err">"/.well-known/xrp-ledger.toml"</span><span class="nt">&gt;</span>
@@ -532,12 +532,12 @@
 <span class="nt">&lt;/Files&gt;</span>
 </code></pre></div>
 <p>If you use nginx, add the following to your config file:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">location /.well-known/xrp-ledger.toml {</span>
-<span class="err">    add_header 'Access-Control-Allow-Origin' '*';</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code>location /.well-known/xrp-ledger.toml {
+    add_header 'Access-Control-Allow-Origin' '*';
+}
 </code></pre></div>
 <p>For other web servers, see <a class="external-link" href="https://enable-cors.org/server.html" target="_blank">I want to add CORS support to my server <i aria-hidden="true" class="fa fa-external-link"></i></a>. If you use managed hosting, consult your web host's documentation for how to enable CORS on a specific path. (You probably do not want to enable CORS for your entire website.)</p>
-<h2 id="domain-verification">Domain Verification</h2>
+<h2 id="domain-verification">Domain Verification<a aria-hidden="true" class="hover_anchor" href="#domain-verification"><i class="fa fa-link"></i></a></h2>
 <p>One use for the <code>xrp-ledger.toml</code> file is verifying that the same entity that runs a particular domain also runs a particular validator, as identified by the validator's public key. Verifying that a domain and a validator are owned by the same entity provides greater assurances of the identity of the validator operator and is a recommended step for becoming a trusted validator. (For other recommendations, see <a href="run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator">Properties of a Good Validator</a>.)</p>
 <p>Domain verification requires establishing a two-way link between the domain operator and the validator:</p>
 <ol>
@@ -564,7 +564,7 @@
 </li>
 <li>
 <p>Run the following command to generate a new validator token that incorporates your domain and update your <code>xrp-ledger.toml</code> and <code>rippled.cfg</code> files:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">$./validator-keys set_domain example.com</span>
+<div class="codehilite"><pre><span></span><code>$./validator-keys set_domain example.com
 </code></pre></div>
 </li>
 </ul>
@@ -601,7 +601,7 @@
 </code></pre></div>
 <p>Update <a href="#contents">the contents of your <code>xrp-ledger.toml</code> file</a> with the <code>attestation</code> block, and update the <code>rippled.cfg</code> file with the <code>[validator_token]</code> block from the sample output.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> Your validator token is meant to be kept secret. Do not share it on your <code>xrp-ledger.toml</code> file or anywhere else.</p>
-<h2 id="account-verification">Account Verification</h2>
+<h2 id="account-verification">Account Verification<a aria-hidden="true" class="hover_anchor" href="#account-verification"><i class="fa fa-link"></i></a></h2>
 <p>Similar to <a href="#domain-verification">Domain Verification</a>, account verification is the idea of proving that the same entity controls a particular domain and a particular XRP Ledger address. Account verification is not necessary for using the XRP Ledger or providing an <code>xrp-ledger.toml</code> file, but you may desire to verify your accounts in the name of transparency.</p>
 <p>Account verification requires establishing a two-way link between the domain operator and the address:</p>
 <ol>
@@ -623,7 +623,7 @@
 </li>
 </ol>
 <p>Either of these two links, on their own, SHOULD NOT be considered authoritative. Anyone could host an <code>xrp-ledger.toml</code> file claiming ownership of any account, and any account operator could set its <code>Domain</code> field to any string it wants. If the two match, it provides strong evidence that the same entity controls both.</p>
-<h2 id="acknowledgements">Acknowledgements</h2>
+<h2 id="acknowledgements">Acknowledgements<a aria-hidden="true" class="hover_anchor" href="#acknowledgements"><i class="fa fa-link"></i></a></h2>
 <p>This specification is derived from the <a class="external-link" href="https://web.archive.org/web/20161007113240/https://wiki.ripple.com/Ripple.txt" target="_blank">original ripple.txt spec <i aria-hidden="true" class="fa fa-external-link"></i></a> and draws inspiration from the <a class="external-link" href="https://www.stellar.org/developers/guides/walkthroughs/how-to-complete-stellar-toml.html" target="_blank">stellar.toml file <i aria-hidden="true" class="fa fa-external-link"></i></a>. This specification also incorporates feedback from XRP community members and many past and current Ripple employees. <!-- SPELLING_IGNORE: txt --></p>
     </div>
   </article>
@@ -732,6 +732,7 @@
 
 
 
+
                         <li><a class="subcat-title" href="admin-rippled-methods.html">Admin rippled Methods</a></li>
 
                             <li><a class="subpage" href="key-generation-methods.html">Key Generation Methods</a></li>
@@ -739,7 +740,6 @@
                             <li><a class="subpage" href="server-control-methods.html">Server Control Methods</a></li>
                             <li><a class="subpage" href="peer-management-methods.html">Peer Management Methods</a></li>
                             <li><a class="subpage" href="status-and-debugging-methods.html">Status and Debugging Methods</a></li>
-
 
 
 
@@ -1904,6 +1904,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

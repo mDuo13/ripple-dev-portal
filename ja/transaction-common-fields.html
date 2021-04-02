@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>トランザクションの共通フィールド - XRP Ledger Dev Portal (日本語)</title>
+    <title>トランザクションの共通フィールド - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="トランザクションの共通フィールド | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/transaction-common-fields.html" />
+    <meta property="og:description" content="どのトランザクションについても、共通する一連のフィールドがあります。" />
+    <meta name="description" content="どのトランザクションについても、共通する一連のフィールドがあります。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/transaction-common-fields.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/transaction-common-fields.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/transaction-common-fields.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/transaction-formats/transaction-common-fields.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/transaction-formats/transaction-common-fields.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -184,7 +208,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="トランザクションの共通フィールド">トランザクションの共通フィールド</h1>
+        <h1 id="トランザクションの共通フィールド">トランザクションの共通フィールド<a aria-hidden="true" class="hover_anchor" href="#トランザクションの共通フィールド"><i class="fa fa-link"></i></a></h1>
 <p>どのトランザクションについても、共通する一連のフィールドに加え、<a href="transaction-types.html">トランザクションのタイプ</a>に応じた追加のフィールドがあります。フィールドの名前では、大文字と小文字が区別されます。すべてのトランザクションに共通するフィールドは、以下のとおりです。</p>
 <table>
 <thead>
@@ -271,11 +295,11 @@
 </tbody>
 </table>
 <p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.0" target="_blank" title="削除: rippled 0.28.0"><img alt="削除: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/%E5%89%8A%E9%99%A4-rippled%200.28.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>: トランザクションの<code>PreviousTxnID</code>フィールドは、<a href="#accounttxnid">AccountTxnID</a>フィールドに置き換えられました。この文字列/Hash256フィールドは、過去に発生したトランザクションの一部に記述されています。このフィールドは、一部の<a href="ledger-data-formats.html">レジャーオブジェクト</a>にある<code>PreviousTxnID</code>という同じ名前のフィールドとは無関係です。</p>
-<h2 id="accounttxnid">AccountTxnID</h2>
+<h2 id="accounttxnid">AccountTxnID<a aria-hidden="true" class="hover_anchor" href="#accounttxnid"><i class="fa fa-link"></i></a></h2>
 <p><code>AccountTxnID</code>フィールドにより、直前のトランザクション（シーケンス番号で識別）も有効で、かつ期待するトランザクションに一致しない限り、現在のトランザクションが有効にならないよう、トランザクションどうしをチェーンにすることができます。</p>
 <p>このフィールドが有用になるのは、例えば、トランザクション送信用のプライマリーシステムと受動的なバックアップシステムを運用している場合です。受動的なバックアップシステムがプライマーリから切断されたものの、プライマリが完全に稼働停止となったわけではなく、両システムが同時に稼働を開始した場合は、トランザクションが2回送信される、あるいはまったく送信されないなど、深刻な問題が発生するおそれがあります。<code>AccountTxnID</code>を使用してトランザクションどうしをチェーンにすると、両方のシステムがアクティブになったときも、有効なトランザクションを送信できるのはいずれか一方のみとなります。</p>
 <p>AccountTxnIDを使用するには、アカウントの1つ前のトランザクションのIDがレジャーで追跡されるよう、最初に<a href="accountset.html#accountsetのフラグ">asfAccountTxnID</a>フラグを設定する必要があります。</p>
-<h2 id="自動入力可能なフィールド">自動入力可能なフィールド</h2>
+<h2 id="自動入力可能なフィールド">自動入力可能なフィールド<a aria-hidden="true" class="hover_anchor" href="#自動入力可能なフィールド"><i class="fa fa-link"></i></a></h2>
 <p>一部のフィールドについては、トランザクションの署名前に、<code>rippled</code>サーバーによって、または署名に使用される<a class="external-link" href="https://github.com/ripple/ripple-lib" target="_blank">ripple-lib <i aria-hidden="true" class="fa fa-external-link"></i></a>などのライブラリーによって値を自動入力できます。値を自動入力するには、最新の状態を取得するためのXRP Ledgerへのアクティブな接続が必要です。したがって、オフラインでは実行できません。<a class="external-link" href="https://github.com/ripple/ripple-lib" target="_blank">ripple-lib <i aria-hidden="true" class="fa fa-external-link"></i></a>と<code>rippled</code>のどちらも、以下の値を自動的に提供できます。</p>
 <ul>
 <li>
@@ -288,12 +312,12 @@
 </ul>
 <p>本番システムについては、これらのフィールドの値がサーバーによって入力される状態に <em>しない</em> ことをお勧めします。例えば、ネットワークの負荷が一時的に急上昇したためにトランザクションコストが高騰した場合、トランザクションによっては、一時的な高額のコストを支払うよりも、必要に応じて待機し、コストが低下してから送信したほうが好ましいことがあります。</p>
 <p><a href="payment.html">Paymentトランザクション</a>タイプの<a href="payment.html#パス"><code>Paths</code>フィールド</a>についても、値を自動入力できます。</p>
-<h2 id="flagsフィールド">Flagsフィールド</h2>
+<h2 id="flagsフィールド">Flagsフィールド<a aria-hidden="true" class="hover_anchor" href="#flagsフィールド"><i class="fa fa-link"></i></a></h2>
 <p><code>Flags</code>フィールドには、トランザクションの行動を調整する各種のオプションを設定できます。オプションは、ビット単位のOR操作と組み合わせることで複数のフラグを同時に設定できるバイナリー値として表現します。</p>
 <p>トランザクションで所定のフラグが有効になっているかどうかを確認するには、ビット単位のAND演算子をフラグの値と<code>Flags</code>フィールドで使用します。結果が0の場合は無効になっていることを示し、結果がフラグ値と等しい場合は有効になっていることを示します（その他の結果の場合は、実行した操作に誤りがあることを示します）。</p>
 <p>ほとんどのフラグは、特定のタイプのトランザクションに対してのみ効果があります。複数のタイプのトランザクションに対して、同一のビット単位値をフラグに再利用できるため、フラグの設定と読み取りでは<code>TransactionType</code>フィールドに留意することが重要です。</p>
 <p>フラグとして定義しないビットは、0にする必要があります(<a href="known-amendments.html#fix1543">fix1543 Amendment</a>では、一部のタイプのトランザクションについて、このルールが適用されます。デフォルトでは、ほとんどのタイプのトランザクションでこのルールが強制されます)。</p>
-<h3 id="グローバルフラグ">グローバルフラグ</h3>
+<h3 id="グローバルフラグ">グローバルフラグ<a aria-hidden="true" class="hover_anchor" href="#グローバルフラグ"><i class="fa fa-link"></i></a></h3>
 <p>すべてのトランザクションにグローバルに適用される唯一のフラグは、以下のとおりです。</p>
 <table>
 <thead>
@@ -315,7 +339,7 @@
 </table>
 <p><a href="sign.html">signメソッド</a>（または「署名と送信」モードの<a href="submit.html">submitメソッド</a>）を使用すると、<code>rippled</code>は、<code>Flags</code>フィールドがすでに存在している場合を除き、<code>tfFullyCanonicalSig</code>フラグを有効にした状態で<code>Flags</code>フィールドを追加します。<code>tfFullyCanonicalSig</code>フラグは、<code>Flags</code>が明示的に指定されている場合、自動的には有効に<strong><em>なりません</em></strong>。また、<a href="sign_for.html">sign_forメソッド</a>を使用してマルチ署名済みトランザクションに署名を追加する場合も、自動的には有効に<strong><em>なりません</em></strong>。</p>
 <p class="devportal-callout 警告"><strong>警告:</strong> <code>tfFullyCanonicalSig</code>を有効にしない場合は、不正使用者がトランザクションの署名を改変して、期待されるものとは別のハッシュを使用してトランザクションを成功させることが理論上可能になります。最悪の場合、同一の支払を何回も送信するようシステムに仕掛けられるおそれがあります。この問題を回避するには、署名するすべてのトランザクションで<code>tfFullyCanonicalSig</code>フラグを有効にします。</p>
-<h3 id="フラグの範囲">フラグの範囲</h3>
+<h3 id="フラグの範囲">フラグの範囲<a aria-hidden="true" class="hover_anchor" href="#フラグの範囲"><i class="fa fa-link"></i></a></h3>
 <p>トランザクションの<code>Flags</code>フィールドでは、さまざまなレベルや状況に適用されるフラグを設定できます。個々の状況に関するフラグは、以下の範囲に限定されます。</p>
 <table>
 <thead>
@@ -344,7 +368,7 @@
 </tbody>
 </table>
 <p class="devportal-callout 注記"><strong>注記:</strong> <a href="accountset.html">AccountSetトランザクション</a>タイプには、タイプに基づくフラグと似た目的を果たす<a href="accountset.html#accountsetのフラグ">ビット単位ではない独自のフラグ</a>があります。<a href="ledger-object-types.html">レジャーオブジェクト</a>にも、さまざまなビット単位のフラグが定義される<code>Flags</code>フィールドがあります。</p>
-<h2 id="memosフィールド">Memosフィールド</h2>
+<h2 id="memosフィールド">Memosフィールド<a aria-hidden="true" class="hover_anchor" href="#memosフィールド"><i class="fa fa-link"></i></a></h2>
 <p><code>Memos</code>フィールドは、トランザクションに関する任意のメッセージデータを保持します。このフィールドは、オブジェクトの配列として表現します。各オブジェクトには唯一のフィールド<code>Memo</code>があり、このフィールドは、以下のフィールドを<em>1つ以上</em>持つ別のオブジェクトを保持しています。</p>
 <table>
 <thead>
@@ -379,22 +403,22 @@
 <p>MemoTypeフィールドとMemoFormatフィールドには、以下の文字のみを使用できます。 <code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&amp;'()*+,;=%</code></p>
 <p><code>Memos</code>フィールドのサイズの上限は1KBです（バイナリーフォーマットでシリアル化されている場合）。</p>
 <p>以下に、Memosフィールドが定義されているトランザクションの例を示します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">{</span>
-<span class="err">    "TransactionType": "Payment",</span>
-<span class="err">    "Account": "rMmTCjGFRWPz8S2zAUUoNVSQHxtRQD4eCx",</span>
-<span class="err">    "Destination": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",</span>
-<span class="err">    "Memos": [</span>
-<span class="err">        {</span>
-<span class="err">            "Memo": {</span>
-<span class="err">                "MemoType": "687474703a2f2f6578616d706c652e636f6d2f6d656d6f2f67656e65726963",</span>
-<span class="err">                "MemoData": "72656e74"</span>
-<span class="err">            }</span>
-<span class="err">        }</span>
-<span class="err">    ],</span>
-<span class="err">    "Amount": "1"</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code>{
+    "TransactionType": "Payment",
+    "Account": "rMmTCjGFRWPz8S2zAUUoNVSQHxtRQD4eCx",
+    "Destination": "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV",
+    "Memos": [
+        {
+            "Memo": {
+                "MemoType": "687474703a2f2f6578616d706c652e636f6d2f6d656d6f2f67656e65726963",
+                "MemoData": "72656e74"
+            }
+        }
+    ],
+    "Amount": "1"
+}
 </code></pre></div>
-<h2 id="signersフィールド">Signersフィールド</h2>
+<h2 id="signersフィールド">Signersフィールド<a aria-hidden="true" class="hover_anchor" href="#signersフィールド"><i class="fa fa-link"></i></a></h2>
 <p><code>Signers</code>フィールドには、最大8つのキーペアから取得された署名を保持し、トランザクションを承認するための<a href="multi-signing.html">マルチ署名</a>が含まれています。<code>Signers</code>リストはオブジェクトの配列であり、各オブジェクトが1つの<code>Signer</code>フィールドを保持しています。<code>Signer</code>フィールドには、以下の入れ子フィールドがあります。</p>
 <table>
 <thead>
@@ -540,6 +564,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -601,7 +626,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -636,10 +660,12 @@
                             <li><a class="subpage" href="escrow-object.html">Escrow</a></li>
                             <li><a class="subpage" href="feesettings.html">FeeSettings</a></li>
                             <li><a class="subpage" href="ledgerhashes.html">LedgerHashes</a></li>
+                            <li><a class="subpage" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="offer.html">Offer</a></li>
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -678,14 +704,16 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">疑似トランザクション</a></li>
 
                             <li><a class="subpage" href="enableamendment.html">EnableAmendment</a></li>
                             <li><a class="subpage" href="setfee.html">SetFee</a></li>
+                            <li><a class="subpage" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
-                        <li><a class="subcat-title" href="transaction-results.html">取引の結果</a></li>
+                        <li><a class="subcat-title" href="transaction-results.html">トランザクションの結果</a></li>
 
                             <li><a class="subpage" href="tec-codes.html">tecコード</a></li>
                             <li><a class="subpage" href="tef-codes.html">tefコード</a></li>
@@ -757,13 +785,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -783,11 +811,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -820,7 +848,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -869,6 +897,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

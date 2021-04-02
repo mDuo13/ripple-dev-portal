@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>トランザクションコスト - XRP Ledger Dev Portal (日本語)</title>
+    <title>トランザクションコスト - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="トランザクションコスト | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/transaction-cost.html" />
+    <meta property="og:description" content="トランザクションコストとはトランザクション送信のために償却される少額のXRPで、これによってレジャーがスパムから保護されます。トランザクションコストの適用方法について説明します。" />
+    <meta name="description" content="トランザクションコストとはトランザクション送信のために償却される少額のXRPで、これによってレジャーがスパムから保護されます。トランザクションコストの適用方法について説明します。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/transaction-cost.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/transaction-cost.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/transaction-cost.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-system-basics/transaction-basics/transaction-cost.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-system-basics/transaction-basics/transaction-cost.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -196,13 +220,13 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="トランザクションコスト">トランザクションコスト</h1>
+        <h1 id="トランザクションコスト">トランザクションコスト<a aria-hidden="true" class="hover_anchor" href="#トランザクションコスト"><i class="fa fa-link"></i></a></h1>
 <p>XRP LedgerをスパムやDoS攻撃から守るため、各トランザクションでは少額の<a href="xrp.html">XRP</a>が消却されます。この <em>トランザクションコスト</em> はネットワークの負荷とともに増加するように設計されており、故意または不注意にネットワークに過剰な負荷をかけると非常に高くつきます。</p>
 <p>各トランザクションのトランザクションコストを支払う際には、<a href="#トランザクションコストの指定">消却するXRPの額を指定</a>する必要があります。</p>
-<h2 id="現在のトランザクションコスト">現在のトランザクションコスト</h2>
+<h2 id="現在のトランザクションコスト">現在のトランザクションコスト<a aria-hidden="true" class="hover_anchor" href="#現在のトランザクションコスト"><i class="fa fa-link"></i></a></h2>
 <p>ネットワークが標準のトランザクションに必要とする現在の最低トランザクションコストは<strong>0.00001 XRP</strong>（10 drop）です。これは負荷が通常より高くなると増加することがあります。</p>
 <p>また、<a href="#トランザクションコストの問い合わせ">現在のトランザクションコストについて<code>rippled</code>に問い合わせる</a>こともできます。</p>
-<h3 id="特別なトランザクションコスト">特別なトランザクションコスト</h3>
+<h3 id="特別なトランザクションコスト">特別なトランザクションコスト<a aria-hidden="true" class="hover_anchor" href="#特別なトランザクションコスト"><i class="fa fa-link"></i></a></h3>
 <p>一部のトランザクションには異なるトランザクションコストがあります。</p>
 <table>
 <thead>
@@ -234,9 +258,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="トランザクションコストの受取人">トランザクションコストの受取人</h2>
+<h2 id="トランザクションコストの受取人">トランザクションコストの受取人<a aria-hidden="true" class="hover_anchor" href="#トランザクションコストの受取人"><i class="fa fa-link"></i></a></h2>
 <p>トランザクションコストは誰かに支払われるものではありません。XRPは取り消し不能で消却されます。XRPを新たに作ることはできないため、XRPの希少性が高まり、XRPの価値を高めることによって、すべてのXRP保有者に利益がもたらされます。</p>
-<h2 id="負荷コストとオープンレジャーコスト">負荷コストとオープンレジャーコスト</h2>
+<h2 id="負荷コストとオープンレジャーコスト">負荷コストとオープンレジャーコスト<a aria-hidden="true" class="hover_anchor" href="#負荷コストとオープンレジャーコスト"><i class="fa fa-link"></i></a></h2>
 <p><a href="known-amendments.html#feeescalation">FeeEscalation Amendment</a>が有効な場合、トランザクションコストには以下の2つのしきい値があります。</p>
 <ul>
 <li>トランザクションコストが<code>rippled</code>サーバーの<a href="#ローカル負荷コスト">負荷ベーストランザクションコストのしきい値</a>を満たしていない場合、サーバーはそのトランザクションを完全に無視します。（このロジックはAmendmentの有無にかかわらず基本的に変わりません。）</li>
@@ -248,19 +272,19 @@
 <li>トランザクションコストが高く設定され、現在のオープンレジャーに組み入れられるトランザクション。</li>
 <li>その中間のトランザクション。<a href="#キューに入れられたトランザクション">後のレジャーバージョンのキューに入れられます</a>。</li>
 </ul>
-<h2 id="ローカル負荷コスト">ローカル負荷コスト</h2>
+<h2 id="ローカル負荷コスト">ローカル負荷コスト<a aria-hidden="true" class="hover_anchor" href="#ローカル負荷コスト"><i class="fa fa-link"></i></a></h2>
 <p>各<code>rippled</code>サーバーには、現在の負荷に基づいてコストしきい値が保持されています。送信するトランザクションの<code>Fee</code>値が<code>rippled</code>サーバーの現在の負荷ベーストランザクションコストより低い場合、そのサーバーはトランザクションの適用も中継もしません。（<strong>注記:</strong> <a href="get-started-with-the-rippled-api.html">管理者接続</a>を介してトランザクションを送信する場合、トランザクションがスケーリングされていない最低トランザクションコストを満たすかぎり、サーバーはそのトランザクションを適用し、中継します。）トランザクションの<code>Fee</code>値が大半のサーバーの要件を満たさないかぎり、そのトランザクションが<a href="consensus.html">コンセンサスプロセス</a>を完了する可能性は極めて低くなります。</p>
-<h2 id="オープンレジャーコスト">オープンレジャーコスト</h2>
+<h2 id="オープンレジャーコスト">オープンレジャーコスト<a aria-hidden="true" class="hover_anchor" href="#オープンレジャーコスト"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>サーバーにはトランザクションコストを強制する2つ目のメカニズムがあり、 <em>オープンレジャーコスト</em> と呼ばれます。トランザクションがXRPによるオープンレジャーコスト要件を満たす場合のみ、そのトランザクションをオープンレジャーに含めることができます。オープンレジャーコスト要件を満たさないトランザクションは、<a href="#キューに入れられたトランザクション">次のレジャーのキューに入れられます</a>。</p>
 <p>新しいレジャーバージョンごとに、サーバーは前のレジャーのトランザクション数に基づいてオープンレジャーに含めるトランザクション数のソフトリミットを選択します。オープンレジャーコストは、オープンレジャー内のトランザクション数がソフトリミットと等しくなるまでは、スケーリングされていない最低トランザクションコストと同じです。それを超えると、オープンレジャーコストはオープンレジャーに含まれるトランザクションごとに急激に増加します。次のレジャーでは、現行のレジャーにソフトリミットを超えるトランザクションが含まれていれば、サーバーはソフトリミットを高くし、コンセンサスプロセスに5秒より時間が掛かる場合はソフトリミットを低くします。</p>
 <p>オープンレジャーコストの水準は、絶対的なトランザクションコストではなく<a href="#手数料レベル">標準的なトランザクションコストに比例</a>しています。標準よりも高い要件を持つトランザクションタイプ（<a href="multi-signing.html">マルチ署名済みトランザクション</a>など）は、オープンレジャーコストを満たすために最低限のトランザクションコスト要件を持つトランザクションよりも多く支払う必要があります。</p>
 <p>関連項目: <a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/app/misc/FeeEscalation.md" target="_blank"><code>rippled</code>リポジトリー内のFee Escalationの説明 <i aria-hidden="true" class="fa fa-external-link"></i></a>。</p>
-<h3 id="キューに入れられたトランザクション">キューに入れられたトランザクション</h3>
+<h3 id="キューに入れられたトランザクション">キューに入れられたトランザクション<a aria-hidden="true" class="hover_anchor" href="#キューに入れられたトランザクション"><i class="fa fa-link"></i></a></h3>
 <p><code>rippled</code>が、サーバーのローカル負荷コストは満たすが<a href="#オープンレジャーコスト">オープンレジャーコスト</a>は満たさないトランザクションを受け取った場合、サーバーはそのトランザクションが後のレジャーに「含まれる可能性」を判断します。その可能性が高いと判断すれば、サーバーはそのトランザクションをトランザクションキューに追加し、他のネットワークメンバーにトランザクションを中継します。そうでない場合、サーバーはトランザクションを破棄します。<a href="#トランザクションコストと失敗したトランザクション">トランザクションコストは検証済みレジャーに含まれるトランザクションにのみ適用される</a>ため、サーバーは、トランザクションコストを支払わないトランザクションにより生じるネットワーク負荷量を最低限に抑えようとします。</p>
 <p>キューに入れられたトランザクションの詳細は、<a href="transaction-queue.html">トランザクションキュー</a>を参照してください。</p>
-<h2 id="referenceトランザクションコスト">Referenceトランザクションコスト</h2>
+<h2 id="referenceトランザクションコスト">Referenceトランザクションコスト<a aria-hidden="true" class="hover_anchor" href="#referenceトランザクションコスト"><i class="fa fa-link"></i></a></h2>
 <p>「Referenceトランザクション」とは、負荷スケーリング前の<a href="transaction-cost.html">トランザクションコスト</a>という観点からは、最も安価な（無料ではない）トランザクションと言えます。ほとんどのトランザクションのコストはReferenceトランザクションと同じです。<a href="multi-signing.html">マルチ署名済みトランザクション</a>など一部のトランザクションでは、このコストの数倍のコストが必要です。オープンレジャーコストが上昇する場合は、コスト水準はトランザクションの基本コストに比例します。</p>
-<h3 id="手数料レベル">手数料レベル</h3>
+<h3 id="手数料レベル">手数料レベル<a aria-hidden="true" class="hover_anchor" href="#手数料レベル"><i class="fa fa-link"></i></a></h3>
 <p><em>手数料レベル</em> は、トランザクションの最少コストと実際のコストとの相対的な差を表します。<a href="#オープンレジャーコスト">オープンレジャーコスト</a>は絶対的なコストではなく手数料レベルで評価されます。比較する場合は以下の表を参照してください。</p>
 <table>
 <thead>
@@ -303,20 +327,20 @@
 </tr>
 </tbody>
 </table>
-<h2 id="トランザクションコストの問い合わせ">トランザクションコストの問い合わせ</h2>
+<h2 id="トランザクションコストの問い合わせ">トランザクションコストの問い合わせ<a aria-hidden="true" class="hover_anchor" href="#トランザクションコストの問い合わせ"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code> APIには、ローカル負荷ベースのトランザクションコストを問い合わせる方法が2つあります。<code>server_info</code>コマンド（人を対象とする）と<code>server_state</code>コマンド（マシンを対象とする）です。</p>
 <p><a href="known-amendments.html#feeescalation">FeeEscalation Amendment</a>が有効である場合、<a href="fee.html">feeメソッド</a>を使用してオープンレジャーコストを確認することができます。</p>
-<h3 id="server_info">server_info</h3>
+<h3 id="server_info">server_info<a aria-hidden="true" class="hover_anchor" href="#server_info"><i class="fa fa-link"></i></a></h3>
 <p><a href="server_info.html">server_infoメソッド</a>は、<code>validated_ledger.base_fee_xrp</code>と同様に、前のレジャー時点のスケーリングされていない最低XRPコストを10進XRPの形式でレポートします。トランザクションを中継するために必要な実際のコストをスケーリングするには、その<code>base_fee_xrp</code>値に同じ応答内の<code>load_factor</code>パラメーターを掛けます。このパラメーターは、サーバーの現在の負荷レベルを表します。つまり、次の式になります。</p>
 <p><strong>XRP単位の現在のトランザクションコスト = <code>base_fee_xrp</code> × <code>load_factor</code></strong></p>
-<h3 id="server_state">server_state</h3>
+<h3 id="server_state">server_state<a aria-hidden="true" class="hover_anchor" href="#server_state"><i class="fa fa-link"></i></a></h3>
 <p><a href="server_state.html">server_stateメソッド</a>は、<code>rippled</code>の内部負荷計算の内容をそのままの表示形式で返します。この場合、有効負荷率は<code>load_base</code>に対する<code>load_factor</code>の割合です。<code>validated_ledger.base_fee</code>パラメーターは、<a href="basic-data-types.html#通貨額の指定">XRPのdrop</a>単位の最低トランザクションコストをレポートします。この設計により、<code>rippled</code>では整数のみでトランザクションコストの計算ができ、サーバー負荷の微調整も十分に行えます。実際のトランザクションコストの計算は以下のようになります。</p>
 <p><strong>drop単位の現在のトランザクションコスト = (<code>base_fee</code> × <code>load_factor</code>) ÷ <code>load_base</code></strong></p>
-<h2 id="トランザクションコストの指定">トランザクションコストの指定</h2>
+<h2 id="トランザクションコストの指定">トランザクションコストの指定<a aria-hidden="true" class="hover_anchor" href="#トランザクションコストの指定"><i class="fa fa-link"></i></a></h2>
 <p>署名されたすべてのトランザクションの<a href="transaction-common-fields.html"><code>Fee</code>フィールド</a>には、トランザクションコストを含める必要があります。署名されたトランザクションのすべてのフィールドと同様に、このフィールドは署名の無効化を行わなければ変更できません。</p>
 <p>通常、XRP Ledgerはトランザクションを署名された <em>とおりに</em> 実行します。（少なくとも、分散型コンセンサスネットワーク全体をコーディネートしてそれ以外のことを実行するのは難しいと思われます。）したがって、<code>Fee</code>フィールドに指定されたXRPの額が、ネットワーク内で指定されているどの現在の最低トランザクションコストをもはるかに上回っていたとしても、指定したとおりのXRPがすべてのトランザクションで消却されます。トランザクションコストでは、アカウントの<a href="reserves.html">準備金</a>用に確保していたXRPも消却される場合があります。</p>
 <p>トランザクションに署名する前に、<a href="#トランザクションコストの問い合わせ">現在の負荷ベースのトランザクションコストを調べる</a>ことをお勧めします。負荷スケーリングが原因でトランザクションコストが高い場合は、低下するまで待つことができます。トランザクションをすぐに送信するつもりがない場合は、トランザクションコストにおける将来の負荷ベースの変動を考慮して、少し高めのトランザクションコストを指定することをお勧めします。</p>
-<h3 id="トランザクションコストの自動指定">トランザクションコストの自動指定</h3>
+<h3 id="トランザクションコストの自動指定">トランザクションコストの自動指定<a aria-hidden="true" class="hover_anchor" href="#トランザクションコストの自動指定"><i class="fa fa-link"></i></a></h3>
 <p>オンラインでトランザクションに署名する場合は、<code>Fee</code>フィールドを省略できます。この場合、<code>rippled</code>または<a href="rippleapi-reference.html">RippleAPI</a>が現在の要件に照らしてピアツーピアネットワークの状態を確認し、トランザクションに署名する前に<code>Fee</code>値を追加します。ただし、このようなトランザクションコストへの自動入力にはいくつかの欠点と制限事項があります。</p>
 <ul>
 <li>トランザクションに署名し、分散するまでの間にネットワークのトランザクションコストが上昇した場合、そのトランザクションは承認されない場合があります。</li>
@@ -326,21 +350,21 @@
 <li>オフラインのマシンから現在のトランザクションコストを調べることはできません。</li>
 <li><a href="multi-signing.html">マルチ署名</a>の場合、トランザクションコストの自動指定は行えません。</li>
 </ul>
-<h2 id="トランザクションコストと失敗したトランザクション">トランザクションコストと失敗したトランザクション</h2>
+<h2 id="トランザクションコストと失敗したトランザクション">トランザクションコストと失敗したトランザクション<a aria-hidden="true" class="hover_anchor" href="#トランザクションコストと失敗したトランザクション"><i class="fa fa-link"></i></a></h2>
 <p>トランザクションコストの目的はXRP Ledgerピアツーピアネットワークを過度な負荷から保護することであるため、トランザクションが成功するかどうかにかかわらず、ネットワークに分散されるすべてのトランザクションにコストが適用されます。ただし、共有のグローバルレジャーに作用するため、トランザクションを検証済みレジャーに含める必要があります。したがって、<code>rippled</code>サーバーは<a href="transaction-results.html"><code>tec</code>ステータスコード</a>（「tec」は「トランザクションエンジン - 請求手数料のみ」（Transaction Engine - Claimed fee only）を表します）で、失敗したトランザクションをレジャーに含めようとします。</p>
 <p>トランザクションコストは、トランザクションが実際に検証済みレジャーに含められた場合に、送信者のXRP残高から差し引かれるだけです。このことは、トランザクションが成功するか<code>tec</code>コードとともに失敗するかにかかわらず適用されます。</p>
 <p>トランザクションの失敗が<a href="finality-of-results.html">確定</a>である場合、<code>rippled</code>サーバーによるネットワークへの中継は行われません。トランザクションは検証済みレジャーに含まれないため、誰のXRP残高にも影響することはありません。</p>
-<h3 id="不十分なxrp">不十分なXRP</h3>
+<h3 id="不十分なxrp">不十分なXRP<a aria-hidden="true" class="hover_anchor" href="#不十分なxrp"><i class="fa fa-link"></i></a></h3>
 <p><code>rippled</code>サーバーが最初にトランザクションを評価するとき、送信側アカウントにXRPトランザクションコストを支払うのに十分なXRP残高がない場合は、エラーコード<code>terINSUF_FEE_B</code>にてトランザクションを拒否します。これは<code>ter</code>（再試行）コードであるため、トランザクションの結果が<a href="finality-of-results.html">確定</a>になるまで、<code>rippled</code>サーバーはネットワークへの中継を行わずにトランザクションを再試行します。</p>
 <p>トランザクションはすでにネットワークに配信されているけれども、アカウントにトランザクションコストを支払うのに十分なXRPがない場合は、結果コード<code>tecINSUFF_FEE</code>が発生します。この場合、アカウントからは可能なかぎりすべてのXRPが支払われるため、最終的に0 XRPになります。これは、<code>rippled</code>がトランザクションをネットワークに中継するかどうかを進行中のレジャーに基づいて判断するために起こります。しかしコンセンサスレジャーを作成するときにトランザクションは破棄されるか並べ替えられることになります。</p>
-<h2 id="key-resetトランザクション">Key Resetトランザクション</h2>
+<h2 id="key-resetトランザクション">Key Resetトランザクション<a aria-hidden="true" class="hover_anchor" href="#key-resetトランザクション"><i class="fa fa-link"></i></a></h2>
 <p>特殊なケースですが、アカウントの<a href="accountroot.html">lsfPasswordSpentフラグ</a>が無効であるかぎり、そのアカウントはトランザクションコスト<code>0</code>で<a href="setregularkey.html">SetRegularKey</a>トランザクションを送信できます。このトランザクションにはアカウントの <em>マスターキーペア</em> による署名が必要です。このトランザクションを送信すると、lsfPasswordSpentフラグが有効になります。</p>
 <p>この機能は、レギュラーキーが危害を受けた場合に、危害を受けたアカウントに使用可能なXRPがあるかどうかを気にすることなく、そのアカウントを復元できるように設計されています。このようにして、追加のXRPを送信する前にそのアカウントを再び管理できるようになります。</p>
 <p><a href="accountroot.html">lsfPasswordSpentフラグ</a>は無効になります。このフラグを有効にするには、マスターキーペアによって署名されたSetRegularKeyトランザクションを送信します。アカウントでXRPの<a href="payment.html">支払い</a>が受け入れた場合、再び無効になります。</p>
 <p><a href="known-amendments.html#feeescalation">FeeEscalation Amendment</a>が有効な場合、Key Resetトランザクションの名目トランザクションコストがゼロであっても、<code>rippled</code>は他のトランザクションよりもKey Resetトランザクションを優先します。</p>
-<h2 id="トランザクションコストの変更">トランザクションコストの変更</h2>
+<h2 id="トランザクションコストの変更">トランザクションコストの変更<a aria-hidden="true" class="hover_anchor" href="#トランザクションコストの変更"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerは、XRPの価値が長期的に変化することを見越して、最低トランザクションコストを変更するしくみを備えています。変更はすべて、コンセンサスプロセスによる承認が必要です。詳細は、<a href="fee-voting.html">手数料の投票</a>を参照してください。</p>
-<h2 id="関連項目">関連項目</h2>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>コンセプト:</strong></li>
 <li><a href="reserves.html">準備金</a></li>
@@ -420,6 +444,7 @@
                           <li><a class="subpage" href="cryptographic-keys.html">暗号鍵</a></li>
                           <li><a class="subpage" href="multi-signing.html">マルチ署名</a></li>
                           <li><a class="subpage" href="reserves.html">準備金</a></li>
+                          <li><a class="subpage" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                           <li><a class="subpage" href="depositauth.html">Deposit Authorization</a></li>
 
                       <li><a class="nosubcat-page" href="fees.html">手数料（曖昧さの回避）</a></li>
@@ -439,15 +464,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_20">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_20" aria-expanded="true" aria-controls="sidenav_collapse_20"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_21">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="payment-types.html">支払いのタイプ</a>
                 <!-- <a class="sidenav_cat_title" href="payment-types.html">Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_20" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_20">
+            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="direct-xrp-payments.html">XRPによる直接支払</a></li>
@@ -459,21 +484,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse20 -->
+            </div><!-- /#sidenav_collapse21 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_28">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_28" aria-expanded="true" aria-controls="sidenav_collapse_28"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_29">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_29" aria-expanded="true" aria-controls="sidenav_collapse_29"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="issued-currencies.html">発行済み通貨</a>
                 <!-- <a class="sidenav_cat_title" href="issued-currencies.html">Issued Currencies</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_28" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_28">
+            <div id="sidenav_collapse_29" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_29">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="issued-currencies-overview.html">発行済み通貨の概要</a></li>
@@ -488,21 +513,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse28 -->
+            </div><!-- /#sidenav_collapse29 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_39">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_39" aria-expanded="true" aria-controls="sidenav_collapse_39"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="decentralized-exchange.html">分散型取引所</a>
                 <!-- <a class="sidenav_cat_title" href="decentralized-exchange.html">Decentralized Exchange</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_39" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_39">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="offers.html">オファー</a></li>
@@ -511,27 +536,28 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse39 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_43">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_43" aria-expanded="true" aria-controls="sidenav_collapse_43"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="consensus-network.html">コンセンサスネットワーク</a>
                 <!-- <a class="sidenav_cat_title" href="consensus-network.html">Consensus Network</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_43" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_43">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="consensus.html">コンセンサス</a></li>
                       <li><a class="nosubcat-page" href="consensus-principles-and-rules.html">コンセンサスの原理とルール</a></li>
                       <li><a class="nosubcat-page" href="consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a></li>
                       <li><a class="nosubcat-page" href="invariant-checking.html">Invariant Checking</a></li>
+                      <li><a class="nosubcat-page" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                       <li><a class="nosubcat-page" href="transaction-queue.html">トランザクションキュー</a></li>
                       <li><a class="nosubcat-page" href="about-canceling-a-transaction.html">トランザクションの取消しについて</a></li>
                       <li><a class="nosubcat-page" href="transaction-malleability.html">トランザクション展性</a></li>
@@ -545,21 +571,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse43 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_55">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_55" aria-expanded="true" aria-controls="sidenav_collapse_55"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_57">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_57" aria-expanded="true" aria-controls="sidenav_collapse_57"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="the-rippled-server.html">rippledサーバー</a>
                 <!-- <a class="sidenav_cat_title" href="the-rippled-server.html">The rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_55" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_55">
+            <div id="sidenav_collapse_57" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_57">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="rippled-server-modes.html">rippledサーバーのモード</a></li>
@@ -574,7 +600,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse55 -->
+            </div><!-- /#sidenav_collapse57 -->
 
           </div><!-- /.card -->
 
@@ -597,13 +623,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -623,11 +649,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -660,7 +686,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -709,6 +735,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

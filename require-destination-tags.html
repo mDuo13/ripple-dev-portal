@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-account-settings/require-destination-tags.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-account-settings/require-destination-tags.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -182,6 +182,13 @@
     </div>
     <ul class="card-body page-toc">
       <li class="level-1"><a href="#require-destination-tags">Require Destination Tags</a></li>
+<li class="level-2"><a href="#prerequisites">Prerequisites</a></li>
+<li class="level-2"><a href="#steps">Steps</a></li>
+<li class="level-3"><a href="#1-get-credentials">1. Get Credentials</a></li>
+<li class="level-3"><a href="#2-connect-to-the-network">2. Connect to the Network</a></li>
+<li class="level-3"><a href="#3-send-accountset-transaction">3. Send AccountSet Transaction</a></li>
+<li class="level-3"><a href="#4-wait-for-validation">4. Wait for Validation</a></li>
+<li class="level-3"><a href="#5-confirm-account-settings">5. Confirm Account Settings</a></li>
 <li class="level-2"><a href="#see-also">See Also</a></li>
 
     </ul>
@@ -200,63 +207,174 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="require-destination-tags">Require Destination Tags</h1>
-<p>The <code>RequireDest</code> setting (<code>requireDestinationTag</code> in RippleAPI) is designed to prevent customers from sending <a href="payment-types.html">payments</a> to your address if they forgot the <a href="source-and-destination-tags.html">destination tag</a> that identifies whom to credit for the payment. When enabled, the XRP Ledger rejects any payment to your address if it does not specify a destination tag.</p>
-<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an <a href="accountset.html">AccountSet transaction</a> to enable the <code>RequireDest</code> flag:</p>
-<p>Request:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">JSON-RPC</a></li></ul>
-
-<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">POST</span> <span class="err">http://localhost:</span><span class="mi">5005</span><span class="err">/</span>
-<span class="err">Content-Type:</span> <span class="err">application/json</span>
-
-<span class="p">{</span>
-    <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"submit"</span><span class="p">,</span>
-    <span class="nt">"params"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">"secret"</span><span class="p">:</span> <span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">,</span>
-            <span class="nt">"tx_json"</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
-                <span class="nt">"Fee"</span><span class="p">:</span> <span class="s2">"15000"</span><span class="p">,</span>
-                <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-                <span class="nt">"SetFlag"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"AccountSet"</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
-<!-- -->
+        <h1 id="require-destination-tags">Require Destination Tags<a aria-hidden="true" class="hover_anchor" href="#require-destination-tags"><i class="fa fa-link"></i></a></h1>
+<p>The Require Destination Tag setting is designed for addresses that host balances for multiple people or purposes, to prevent people from sending money and forgetting to use a <a href="source-and-destination-tags.html">destination tag</a> to identify whom to credit. When this setting is enabled on your address, the XRP Ledger rejects <a href="payment-types.html">any payment</a> to your address if it does not specify a destination tag.</p>
+<p>This tutorial demonstrates how to enable the Require Destination Tag flag on your account.</p>
+<p class="devportal-callout note"><strong>Note:</strong> The meanings of specific destination tags are entirely up to the logic built on top of the XRP Ledger. The ledger has no way of knowing whether any specific tag is valid in your system, so you must still be ready to receive transactions with the wrong destination tag. Typically, this involves providing a customer support experience that can track down payments made incorrectly and credit customers accordingly, and possibly also bouncing unwanted payments.</p>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li>You need a funded XRP Ledger account, with an address, secret key, and some XRP. For production, you can use the same address and secret consistently. For this tutorial, you can generate new test credentials as needed.</li>
+<li>You need a connection to the XRP Ledger network.</li>
+</ul>
+<p>This page provides examples that use <a href="get-started-with-rippleapi-for-javascript.html">ripple-lib for JavaScript</a>. Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.</p>
+<!-- Source for this specific tutorial's interactive bits: -->
+<script src="assets/js/tutorials/require-destination-tags.js" type="application/javascript"></script>
+<h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
+<h3 id="1-get-credentials">1. Get Credentials<a aria-hidden="true" class="hover_anchor" href="#1-get-credentials"><i class="fa fa-link"></i></a></h3>
+<p>To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these using the following interface:</p>
+<div class="interactive-block" id="interactive-generate">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="generate" data-steplabel="Generate" id="bc-ul-generate">
+<li class="breadcrumb-item bc-generate current"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-send_accountset disabled"><a href="#interactive-send_accountset">Send AccountSet</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-confirm_settings disabled"><a href="#interactive-confirm_settings">Confirm Settings</a></li><li class="breadcrumb-item bc-test_payments disabled"><a href="#interactive-test_payments">Test Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary" data-fauceturl="https://faucet.altnet.rippletest.net/accounts" id="generate-creds-button">Get Testnet credentials</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/>Generating Keys...</div>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
 </div>
-<p>Response:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">JSON-RPC</a></li></ul>
+<p class="devportal-callout caution"><strong>Caution:</strong> Ripple provides the <a href="parallel-networks.html">Testnet and Devnet</a> for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, Ripple recommends <strong>not</strong> using the same addresses on Testnet/Devnet and Mainnet.</p>
+<p>When you're <a href="production-readiness.html">building actual production-ready software</a>, you'll instead use an existing account, and manage your keys using a <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
+<h3 id="2-connect-to-the-network">2. Connect to the Network<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-the-network"><i class="fa fa-link"></i></a></h3>
+<p>You must be connected to the network to submit transactions to it.</p>
+<p>The following code uses a <a href="rippleapi-reference.html">ripple-lib for JavaScript</a> instance to connect to a public XRP Testnet server:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">ripple</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span> <span class="c1">// Node.js only. Use a &lt;script&gt; tag in browsers.</span>
 
-<div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="mi">200</span> <span class="err">OK</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
+  <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
 
-<span class="p">{</span>
-   <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
-      <span class="nt">"deprecated"</span> <span class="p">:</span> <span class="s2">"Signing support in the 'submit' command has been deprecated and will be removed in a future version of the server. Please migrate to a standalone signing tool."</span><span class="p">,</span>
-      <span class="nt">"engine_result"</span> <span class="p">:</span> <span class="s2">"tesSUCCESS"</span><span class="p">,</span>
-      <span class="nt">"engine_result_code"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="nt">"engine_result_message"</span> <span class="p">:</span> <span class="s2">"The transaction was applied. Only final in a validated ledger."</span><span class="p">,</span>
-      <span class="nt">"status"</span> <span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
-      <span class="nt">"tx_blob"</span> <span class="p">:</span> <span class="s2">"12000322000000002400000179202100000001684000000000003A98732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402201C430B4C29D0A0AB94286AE55FB9981B00F84C7985AF4BD44570782C5E0C5E290220363B68B81580231B32176F8C477B822ECB9EC673B84237BEF15BE6F59108B97D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"</span><span class="p">,</span>
-      <span class="nt">"tx_json"</span> <span class="p">:</span> <span class="p">{</span>
-         <span class="nt">"Account"</span> <span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
-         <span class="nt">"Fee"</span> <span class="p">:</span> <span class="s2">"15000"</span><span class="p">,</span>
-         <span class="nt">"Flags"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-         <span class="nt">"Sequence"</span> <span class="p">:</span> <span class="mi">377</span><span class="p">,</span>
-         <span class="nt">"SetFlag"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-         <span class="nt">"SigningPubKey"</span> <span class="p">:</span> <span class="s2">"03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"</span><span class="p">,</span>
-         <span class="nt">"TransactionType"</span> <span class="p">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
-         <span class="nt">"TxnSignature"</span> <span class="p">:</span> <span class="s2">"304402201C430B4C29D0A0AB94286AE55FB9981B00F84C7985AF4BD44570782C5E0C5E290220363B68B81580231B32176F8C477B822ECB9EC673B84237BEF15BE6F59108B97D"</span><span class="p">,</span>
-         <span class="nt">"hash"</span> <span class="p">:</span> <span class="s2">"3F2B233907BE9EC51AE1C822EC0B6BB0965EFD2400B218BE988DDA9529F53CA4"</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
+  <span class="c1">// Code in the following examples continues here...</span>
 <span class="p">}</span>
-</code></pre></div></div>
+
+<span class="nx">main</span><span class="p">()</span>
+</code></pre></div>
+<p class="devportal-callout note"><strong>Note:</strong> The code samples in this tutorial use JavaScript's <a class="external-link" href="https://javascript.info/async-await" target="_blank"><code>async</code>/<code>await</code> pattern <i aria-hidden="true" class="fa fa-external-link"></i></a>. Since <code>await</code> needs to be used from within an <code>async</code> function, the remaining code samples are written to continue inside the <code>main()</code> function started here. You can also use Promise methods <code>.then()</code> and <code>.catch()</code> instead of <code>async</code>/<code>await</code> if you prefer.</p>
+<p>For this tutorial, you can connect directly from your browser by pressing the following button:</p>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-connect">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="connect" data-steplabel="Connect" id="bc-ul-connect">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled current"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-send_accountset disabled"><a href="#interactive-send_accountset">Send AccountSet</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-confirm_settings disabled"><a href="#interactive-confirm_settings">Confirm Settings</a></li><li class="breadcrumb-item bc-test_payments disabled"><a href="#interactive-test_payments">Test Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary" data-wsurl="wss://s.altnet.rippletest.net:51233" id="connect-button">Connect to Testnet</button>
+<div>
+<strong>Connection status:</strong>
+<span id="connection-status">Not connected</span>
+<div class="loader collapse" id="loader-connect"><img class="throbber" src="assets/img/xrp-loader-96.png"/></div>
 </div>
-<h2 id="see-also">See Also</h2>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="3-send-accountset-transaction">3. Send AccountSet Transaction<a aria-hidden="true" class="hover_anchor" href="#3-send-accountset-transaction"><i class="fa fa-link"></i></a></h3>
+<p>To enable the <code>RequireDest</code> flag, set the <a href="accountset.html#accountset-flags"><code>asfRequireDest</code> value (<code>1</code>)</a> in the <code>SetFlag</code> field of an <a href="accountset.html">AccountSet transaction</a>. To send the transaction, you first <em>prepare</em> it to fill out all the necessary fields, then <em>sign</em> it with your account's secret key, and finally <em>submit</em> it to the network.</p>
+<p>For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">prepared</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareTransaction</span><span class="p">({</span>
+  <span class="s2">"TransactionType"</span><span class="o">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
+  <span class="s2">"Account"</span><span class="o">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+  <span class="s2">"SetFlag"</span><span class="o">:</span> <span class="mf">1</span> <span class="c1">// RequireDest</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Prepared transaction:"</span><span class="p">,</span> <span class="nx">prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">max_ledger</span> <span class="o">=</span> <span class="nx">prepared</span><span class="p">.</span><span class="nx">instructions</span><span class="p">.</span><span class="nx">maxLedgerVersion</span>
+
+<span class="kd">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="s2">"s████████████████████████████"</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction hash:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">tx_id</span> <span class="o">=</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">id</span>
+<span class="kd">const</span> <span class="nx">tx_blob</span> <span class="o">=</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">signedTransaction</span>
+
+<span class="kd">const</span> <span class="nx">prelim_result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">"submit"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"tx_blob"</span><span class="o">:</span> <span class="nx">tx_blob</span><span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Preliminary result:"</span><span class="p">,</span> <span class="nx">prelim_result</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">min_ledger</span> <span class="o">=</span> <span class="nx">prelim_result</span><span class="p">.</span><span class="nx">validated_ledger_index</span>
+
+<span class="c1">// min_ledger, max_ledger, and tx_id are useful for looking up the transaction's</span>
+<span class="c1">// status later.</span>
+</code></pre></div>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-send_accountset">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="send_accountset" data-steplabel="Send AccountSet" id="bc-ul-send_accountset">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-send_accountset disabled current"><a href="#interactive-send_accountset">Send AccountSet</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-confirm_settings disabled"><a href="#interactive-confirm_settings">Confirm Settings</a></li><li class="breadcrumb-item bc-test_payments disabled"><a href="#interactive-test_payments">Test Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" data-wait-step-name="Wait" id="send-accountset">Send AccountSet</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/>Sending...</div>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="4-wait-for-validation">4. Wait for Validation<a aria-hidden="true" class="hover_anchor" href="#4-wait-for-validation"><i class="fa fa-link"></i></a></h3>
+<p>Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.)</p>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-wait">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="wait" data-steplabel="Wait" id="bc-ul-wait">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-send_accountset disabled"><a href="#interactive-send_accountset">Send AccountSet</a></li><li class="breadcrumb-item bc-wait disabled current"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-confirm_settings disabled"><a href="#interactive-confirm_settings">Confirm Settings</a></li><li class="breadcrumb-item bc-test_payments disabled"><a href="#interactive-test_payments">Test Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<table class="wait-step" data-explorerurl="https://testnet.xrpl.org">
+<tr>
+<th>Transaction ID:</th>
+<td class="waiting-for-tx">(None)</td>
+<tr>
+<th>Latest Validated Ledger Index:</th>
+<td class="validated-ledger-version">(Not connected)</td>
+</tr>
+<tr>
+<th>Ledger Index at Time of Submission:</th>
+<td class="earliest-ledger-version">(Not submitted)</td>
+</tr>
+<tr>
+<th>Transaction <code>LastLedgerSequence</code>:</th>
+<td class="lastledgersequence">(Not prepared)</td>
+</tr>
+<tr class="tx-validation-status">
+</tr>
+</tr></table>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h3 id="5-confirm-account-settings">5. Confirm Account Settings<a aria-hidden="true" class="hover_anchor" href="#5-confirm-account-settings"><i class="fa fa-link"></i></a></h3>
+<p>After the transaction is validated, you can check your account's settings to confirm that the Require Destination Tag flag is enabled.</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nx">account_info</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">"account_info"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">"account"</span><span class="o">:</span> <span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
+    <span class="s2">"ledger_index"</span><span class="o">:</span> <span class="s2">"validated"</span>
+<span class="p">})</span>
+<span class="kd">const</span> <span class="nx">flags</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">parseAccountFlags</span><span class="p">(</span><span class="nx">account_info</span><span class="p">.</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Flags</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">flags</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mf">2</span><span class="p">))</span>
+<span class="c1">// Look for "requireDestinationTag": true</span>
+</code></pre></div>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-confirm_settings">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="confirm_settings" data-steplabel="Confirm Settings" id="bc-ul-confirm_settings">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-send_accountset disabled"><a href="#interactive-send_accountset">Send AccountSet</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-confirm_settings disabled current"><a href="#interactive-confirm_settings">Confirm Settings</a></li><li class="breadcrumb-item bc-test_payments disabled"><a href="#interactive-test_payments">Test Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="btn btn-primary previous-steps-required" data-wait-step-name="Wait" id="confirm-settings">Confirm Settings</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/>Sending...</div>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<p>For further confirmation, you can send test transactions (from a different address) to confirm that the setting is working as you expect it to. If you a payment with a destination tag, it should succeed, and if you send one <em>without</em> a destination tag, it should fail with the error code <a href="tec-codes.html"><code>tecDST_TAG_NEEDED</code></a>.</p>
+<!--/.interactive-block--><div class="interactive-block" id="interactive-test_payments">
+<div class="interactive-block-inner">
+<div class="breadcrumbs-wrap">
+<ul class="breadcrumb tutorial-step-crumbs" data-stepid="test_payments" data-steplabel="Test Payments" id="bc-ul-test_payments">
+<li class="breadcrumb-item bc-generate"><a href="#interactive-generate">Generate</a></li><li class="breadcrumb-item bc-connect disabled"><a href="#interactive-connect">Connect</a></li><li class="breadcrumb-item bc-send_accountset disabled"><a href="#interactive-send_accountset">Send AccountSet</a></li><li class="breadcrumb-item bc-wait disabled"><a href="#interactive-wait">Wait</a></li><li class="breadcrumb-item bc-confirm_settings disabled"><a href="#interactive-confirm_settings">Confirm Settings</a></li><li class="breadcrumb-item bc-test_payments disabled current"><a href="#interactive-test_payments">Test Payments</a></li></ul><!--/.breadcrumb.tutorial-step-crumbs-->
+</div><!--/.breadcrumbs-wrap-->
+<div class="interactive-block-ui">
+<button class="test-payment btn btn-primary" data-dt="10">Send XRP (with Destination Tag)</button>
+<button class="test-payment btn btn-primary" data-dt="">Send XRP (without Destination Tag)</button>
+<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"/>Sending...</div>
+<div class="output-area"></div>
+</div><!--/.interactive-block-ui-->
+</div><!--/.interactive-block-inner-->
+</div>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="accounts.html">Accounts</a></li>
@@ -283,6 +401,7 @@
 <!-- -->
 <!-- -->
 <!-- rippled release notes links -->
+<!--/.interactive-block-->
     </div>
   </article>
       </main>
@@ -312,6 +431,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -325,15 +445,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -342,21 +462,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -366,24 +486,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="active nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -410,21 +531,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -433,21 +554,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -467,6 +588,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -505,7 +627,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -640,6 +762,35 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+<!-- ripple-lib & prerequisites -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>
+<script type="application/javascript" src="assets/js/ripple-lib-1.9.1.min.js"></script>
+
+<!-- Helper for interactive tutorials -->
+<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

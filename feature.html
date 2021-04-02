@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/admin-rippled-methods/status-and-debugging-methods/feature.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -204,12 +204,12 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="feature">feature</h1>
+        <h1 id="feature">feature<a aria-hidden="true" class="hover_anchor" href="#feature"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>feature</code> command returns information about <a href="amendments.html">amendments</a> this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the <a href="amendments.html#amendment-process">amendment process</a>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="New in: rippled 0.31.0"><img alt="New in: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>You can use the <code>feature</code> command to temporarily configure the server to vote against or in favor of an amendment. This change does not persist if you restart the server. To make lasting changes in amendment voting, use the <code>rippled.cfg</code> file. See <a href="amendments.html#configuring-amendment-voting">Configuring Amendment Voting</a> for more information.</p>
+<p>You can use the <code>feature</code> command to configure the server to vote against or in favor of an amendment. This change persists even if you restart the server. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>The <code>feature</code> method is an <a href="admin-rippled-methods.html">admin method</a> that cannot be run by unprivileged users.</em></p>
-<h3 id="request-format">Request Format</h3>
+<h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket - list all</a></li><li><a href="#code-0-1">WebSocket - reject</a></li><li><a href="#code-0-2">JSON-RPC</a></li><li><a href="#code-0-3">Commandline</a></li></ul>
 
@@ -265,7 +265,7 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 </tbody>
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> You can configure your server to vote in favor of a new amendment, even if the server does not currently know how to apply that amendment, by specifying the amendment ID in the <code>feature</code> field. For example, you might want to do this if you plan to upgrade soon to a new <code>rippled</code> version that <em>does</em> support the amendment.</p>
-<h3 id="response-format">Response Format</h3>
+<h3 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h3>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket - list all</a></li><li><a href="#code-1-1">WebSocket - reject</a></li><li><a href="#code-1-2">JSON-RPC</a></li><li><a href="#code-1-3">Commandline</a></li></ul>
 
@@ -342,8 +342,8 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample" id="code-1-3" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loading:</span> <span class="s2">"/etc/rippled.cfg"</span>
-<span class="err">Connecting</span> <span class="err">to</span> <span class="mf">127.0</span><span class="err">.</span><span class="mf">0.1</span><span class="err">:</span><span class="mi">5005</span>
+<div class="code_sample" id="code-1-3" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/rippled.cfg"</span>
+<span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
     <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
@@ -391,10 +391,11 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 </tbody>
 </table>
 <p class="devportal-callout caution"><strong>Caution:</strong> The <code>name</code> for an amendment does not strictly indicate what that amendment does. The name is not guaranteed to be unique or consistent across servers.</p>
-<h3 id="possible-errors">Possible Errors</h3>
+<h3 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>badFeature</code> - The <code>feature</code> specified was invalidly formatted, or the server does not know an amendment with that name.</li>
+<li><code>reportingUnsupported</code> - (<a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a> servers only) This method is not available in Reporting Mode.</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -508,6 +509,7 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -569,7 +571,6 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
                             <li><a class="active subpage" href="#main_content_body">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -609,7 +610,7 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -648,7 +649,7 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -841,6 +842,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

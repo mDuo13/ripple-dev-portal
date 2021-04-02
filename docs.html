@@ -121,7 +121,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/tool/template-landing-docs.html" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/tool/template-landing-docs.html" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -148,7 +148,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -491,6 +491,10 @@
 
 
 
+
+
+
+
             <li class="level-1"><a href="production-readiness.html">Production Readiness</a></li>
 
 
@@ -509,6 +513,10 @@
 
 
             <li class="level-1"><a href="manage-account-settings.html">Manage Account Settings</a></li>
+
+
+
+
 
 
 
@@ -624,6 +632,10 @@
 
 
             <li class="level-1"><a href="manage-the-rippled-server.html">Manage the rippled Server</a></li>
+
+
+
+
 
 
 
@@ -1332,13 +1344,19 @@
             
 
             <li class="level-2"><a href="get-started.html">Get Started</a></li>
-                      <li class="level-3"><a href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
+                      <li class="level-3"><a href="get-started-using-python.html">Get Started Using Python</a></li>
+
+        <li class="level-3"><a href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
 
         <li class="level-3"><a href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
 
         <li class="level-3"><a href="send-xrp.html">Send XRP</a></li>
 
         <li class="level-3"><a href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a></li>
+
+
+
+
 
 
 
@@ -1401,6 +1419,12 @@
         <li class="level-3"><a href="require-destination-tags.html">Require Destination Tags</a></li>
 
         <li class="level-3"><a href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+
+        <li class="level-3"><a href="use-tickets.html">Use Tickets</a></li>
+
+
+
+
 
 
 
@@ -1600,6 +1624,8 @@
 
         <li class="level-4"><a href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
 
+        <li class="level-4"><a href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
+
         <li class="level-4"><a href="configure-statsd.html">Configure StatsD</a></li>
 
         <li class="level-4"><a href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
@@ -1664,6 +1690,10 @@
         <li class="level-4"><a href="server-wont-start.html">rippled Server Won't Start</a></li>
 
         <li class="level-4"><a href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue</a></li>
+
+
+
+
 
 
 
@@ -1970,6 +2000,8 @@
 
                     <li class="level-5"><a href="fee.html">fee</a></li>
 
+        <li class="level-5"><a href="manifest.html">manifest</a></li>
+
         <li class="level-5"><a href="server_info.html">server_info</a></li>
 
         <li class="level-5"><a href="server_state.html">server_state</a></li>
@@ -2056,8 +2088,6 @@
         <li class="level-5"><a href="fetch_info.html">fetch_info</a></li>
 
         <li class="level-5"><a href="get_counts.html">get_counts</a></li>
-
-        <li class="level-5"><a href="manifest.html">manifest</a></li>
 
         <li class="level-5"><a href="print.html">print</a></li>
 
@@ -2508,6 +2538,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});

@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>path_find - XRP Ledger Dev Portal (日本語)</title>
+    <title>path_find - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="path_find | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/path_find.html" />
+    <meta property="og:description" content="トランザクションが実行される可能性のあるパスを探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。" />
+    <meta name="description" content="トランザクションが実行される可能性のあるパスを探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/path_find.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/path_find.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/path_find.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/path-and-order-book-methods/path_find.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -191,7 +215,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="path_find">path_find</h1>
+        <h1 id="path_find">path_find<a aria-hidden="true" class="hover_anchor" href="#path_find"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp" target="_blank" title="Source">[ソース]<br/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>WebSocket APIのみ。</em><code>path_find</code>メソッドは、トランザクションが実行される可能性のある<a href="paths.html">パス</a>を探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。JSON-RPCでサポートされているシンプルなバージョンについては、<a href="ripple_path_find.html">ripple_path_findメソッド</a>を参照してください。完全にXRPで行われる支払いの場合、XRPはどのアカウントにも直接送金できるためパスを探索する必要はありません。</p>
 <p>path_findコマンドには3種類のモード（サブコマンド）があります。使用するモードを<code>subcommand</code>パラメーターに指定します。</p>
@@ -201,11 +225,11 @@
 <li><code>status</code> - 現在処理中のPathfinding要求に関する情報を取得します</li>
 </ul>
 <p><code>rippled</code>サーバーは支払いを行うにあたり最も安価なパスまたはパスの組み合わせを探索しますが、このメソッドで返されるパスが最良のパスであることは保証されません。サーバーの負荷が原因で、Pathfindingで最良のパスを検出できないことがあります。また、信頼できないサーバーからのPathfindingの結果には注意する必要があります。オペレーターの収益となるように、最良ではないパスを返すようにサーバーが改ざんされる可能性があります。Pathfindingについて信頼できる独自サーバーがない場合は、1つのサーバーから不適切な結果が返されるリスクを最小限に抑えるため、異なる当事者が実行する複数のサーバーからのPathfindingの結果を比較してください。（<strong>注記:</strong> サーバーから最良ではない結果が返されても、必ずしも悪意のある振る舞いの証拠とはなりません。サーバーの負荷が高い場合の症状である可能性もあります。）</p>
-<h2 id="path_find-create">path_find create</h2>
+<h2 id="path_find-create">path_find create<a aria-hidden="true" class="hover_anchor" href="#path_find-create"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L50-L56" target="_blank" title="Source">[ソース]<br/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>path_find</code>の<code>create</code>サブコマンドは、指定された特定アカウントから支払トランザクションを実行できるパスを探索する継続的な要求を作成し、別のアカウントが何らかの通貨で希望する額を受領できるようにします。初期応答には2つのアドレス間で提案されるパスが含まれています。このパスにより、希望する額を受領できます。その後サーバーは、<code>"type": "path_find"</code>で有効なパスの更新を含む追加メッセージを送信します。更新の頻度はサーバーにより決定されますが、新しいレジャーバージョンがある場合には通常、数秒間に1回です。</p>
 <p>クライアントは一度に1つのPathfinding要求のみ実行できます。同じ接続ですでに他のPathfinding要求が実行されている場合、古い要求が自動的にクローズされ、新しい要求に置き換えられます。</p>
-<h3 id="要求フォーマット">要求フォーマット</h3>
+<h3 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h3>
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li></ul>
 
@@ -267,7 +291,7 @@
 </tbody>
 </table>
 <p>サーバーは<code>source_currencies</code>および<code>bridges</code>フィールドも認識しますが、これらのフィールドを使用した場合の結果は保証されません。これらのフィールドは将来のために予約されているものと考えてください。</p>
-<h3 id="応答フォーマット">応答フォーマット</h3>
+<h3 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h3>
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li></ul>
 
@@ -700,13 +724,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="考えられるエラー">考えられるエラー</h3>
+<h3 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>のすべて。</li>
 <li><code>invalidParams</code> - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。</li>
 <li><code>noEvents</code> - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、<a href="ripple_path_find.html">ripple_path_findメソッド</a>を参照してください。）</li>
 </ul>
-<h3 id="非同期フォローアップ">非同期フォローアップ</h3>
+<h3 id="非同期フォローアップ">非同期フォローアップ<a aria-hidden="true" class="hover_anchor" href="#非同期フォローアップ"><i class="fa fa-link"></i></a></h3>
 <p>サーバーからは初期応答の他に、時間の経過にともなう<a href="paths.html">ペイメントパス</a>のステータスを更新するため類似したフォーマットでさらにメッセージが送信されます。これらのメッセージには、元のWebSocket要求の<code>id</code>が含まれているので、どの要求からメッセージが送信されたかを確認できます。また、最上位レベルの<code>"type": "path_find"</code>フィールドは、追加応答であることを示します。その他のフィールドは、初期応答と同じ方法で定義されます。</p>
 <p>フォローアップに<code>"full_reply": true</code>が含まれている場合、これは現行レジャーの時点でrippledが検出できる最良のパスです。</p>
 <p>path_find create要求からの非同期フォローアップの例を次に示します。</p>
@@ -716,7 +740,7 @@
    <span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
    <span class="nt">"type"</span><span class="p">:</span><span class="s2">"path_find"</span><span class="p">,</span>
    <span class="nt">"alternatives"</span><span class="p">:[</span>
-       <span class="err">/*</span> <span class="err">paths</span> <span class="err">omitted</span> <span class="err">from</span> <span class="err">this</span> <span class="err">example;</span> <span class="err">same</span> <span class="err">format</span> <span class="err">as</span> <span class="err">the</span> <span class="err">initial</span> <span class="err">response</span> <span class="err">*/</span>
+       <span class="err">/*</span> <span class="err">pa</span><span class="kc">t</span><span class="err">hs</span> <span class="err">omi</span><span class="kc">tte</span><span class="err">d</span> <span class="kc">fr</span><span class="err">om</span> <span class="kc">t</span><span class="err">his</span> <span class="err">example;</span> <span class="err">same</span> <span class="kc">f</span><span class="err">orma</span><span class="kc">t</span> <span class="err">as</span> <span class="kc">t</span><span class="err">he</span> <span class="err">i</span><span class="kc">n</span><span class="err">i</span><span class="kc">t</span><span class="err">ial</span> <span class="err">respo</span><span class="kc">nse</span> <span class="err">*/</span>
    <span class="p">],</span>
    <span class="nt">"destination_account"</span><span class="p">:</span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
    <span class="nt">"destination_amount"</span><span class="p">:{</span>
@@ -728,10 +752,10 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="path_find-close">path_find close</h2>
+<h2 id="path_find-close">path_find close<a aria-hidden="true" class="hover_anchor" href="#path_find-close"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67" target="_blank" title="Source">[ソース]<br/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>path_find</code>の<code>close</code>サブコマンドは、サーバーに対して現在実行中のPathfinding要求に関する情報の送信を停止するように指示します。</p>
-<h3 id="要求フォーマット-1">要求フォーマット</h3>
+<h3 id="要求フォーマット-1">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット-1"><i class="fa fa-link"></i></a></h3>
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">WebSocket</a></li></ul>
 
@@ -759,7 +783,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="応答フォーマット-1">応答フォーマット</h3>
+<h3 id="応答フォーマット-1">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット-1"><i class="fa fa-link"></i></a></h3>
 <p>Pathfinding要求が正常にクローズされた場合、応答は<a href="#path_find-create"><code>path_find create</code></a>に対する初期応答と同じフォーマットであり、されに以下のフィールドが含まれます。</p>
 <table>
 <thead>
@@ -778,17 +802,17 @@
 </tbody>
 </table>
 <p>未処理のPathfinding要求がない場合はエラーが返されます。</p>
-<h3 id="考えられるエラー-1">考えられるエラー</h3>
+<h3 id="考えられるエラー-1">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー-1"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>のすべて。</li>
 <li><code>invalidParams</code> - フィールドの指定が正しくないか、必須フィールドが指定されていません。</li>
 <li><code>noEvents</code> - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）でこのメソッドを使用しようとしました。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、<a href="ripple_path_find.html">ripple_path_findメソッド</a>を参照してください。）</li>
 <li><code>noPathRequest</code> - Pathfinding要求をクローズしようとしましたが、実行中の要求がありませんでした。</li>
 </ul>
-<h2 id="path_find-status">path_find status</h2>
+<h2 id="path_find-status">path_find status<a aria-hidden="true" class="hover_anchor" href="#path_find-status"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L69-L77" target="_blank" title="Source">[ソース]<br/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>path_find</code>の<code>status</code>サブコマンドは、現在実行中のクライアントのPathfinding要求の即時更新を要求します。</p>
-<h3 id="要求フォーマット-2">要求フォーマット</h3>
+<h3 id="要求フォーマット-2">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット-2"><i class="fa fa-link"></i></a></h3>
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">WebSocket</a></li></ul>
 
@@ -816,7 +840,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="応答フォーマット-2">応答フォーマット</h3>
+<h3 id="応答フォーマット-2">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット-2"><i class="fa fa-link"></i></a></h3>
 <p>Pathfinding要求が実行中の場合、応答は<a href="#path_find-create"><code>path_find create</code></a>に対する初期応答と同じフォーマットであるのに加えて、以下のフィールドがあります。</p>
 <table>
 <thead>
@@ -835,7 +859,7 @@
 </tbody>
 </table>
 <p>未処理のPathfinding要求がない場合はエラーが返されます。</p>
-<h3 id="考えられるエラー-2">考えられるエラー</h3>
+<h3 id="考えられるエラー-2">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー-2"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>のすべて。</li>
 <li><code>invalidParams</code> - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。</li>
@@ -953,6 +977,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -1014,7 +1039,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -1049,10 +1073,12 @@
                             <li><a class="subpage" href="escrow-object.html">Escrow</a></li>
                             <li><a class="subpage" href="feesettings.html">FeeSettings</a></li>
                             <li><a class="subpage" href="ledgerhashes.html">LedgerHashes</a></li>
+                            <li><a class="subpage" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="offer.html">Offer</a></li>
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -1091,14 +1117,16 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">疑似トランザクション</a></li>
 
                             <li><a class="subpage" href="enableamendment.html">EnableAmendment</a></li>
                             <li><a class="subpage" href="setfee.html">SetFee</a></li>
+                            <li><a class="subpage" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
-                        <li><a class="subcat-title" href="transaction-results.html">取引の結果</a></li>
+                        <li><a class="subcat-title" href="transaction-results.html">トランザクションの結果</a></li>
 
                             <li><a class="subpage" href="tec-codes.html">tecコード</a></li>
                             <li><a class="subpage" href="tef-codes.html">tefコード</a></li>
@@ -1170,13 +1198,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -1196,11 +1224,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -1233,7 +1261,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -1282,6 +1310,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

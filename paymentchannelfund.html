@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -183,6 +183,7 @@
     <ul class="card-body page-toc">
       <li class="level-1"><a href="#paymentchannelfund">PaymentChannelFund</a></li>
 <li class="level-2"><a href="#paymentchannelfund-fields">PaymentChannelFund Fields</a></li>
+<li class="level-2"><a href="#error-cases">Error Cases</a></li>
 
     </ul>
   </div>
@@ -202,10 +203,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="paymentchannelfund">PaymentChannelFund</h1>
+        <h1 id="paymentchannelfund">PaymentChannelFund<a aria-hidden="true" class="hover_anchor" href="#paymentchannelfund"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>Added by the <a href="known-amendments.html#paychan">PayChan amendment</a>.</em></p>
-<p>Add additional XRP to an open payment channel, update the expiration time of the channel, or both. Only the source address of the channel can use this transaction. (Transactions from other addresses fail with the error <code>tecNO_PERMISSION</code>.)</p>
+<p>Add additional <a href="xrp.html">XRP</a> to an open <a href="payment-channels.html">payment channel</a>, and optionally update the expiration time of the channel. Only the source address of the channel can use this transaction.</p>
 <p>Example PaymentChannelFund:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
@@ -215,7 +216,7 @@
     <span class="nt">"Expiration"</span><span class="p">:</span> <span class="mi">543171558</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="paymentchannelfund-fields">PaymentChannelFund Fields</h2>
+<h2 id="paymentchannelfund-fields">PaymentChannelFund Fields<a aria-hidden="true" class="hover_anchor" href="#paymentchannelfund-fields"><i class="fa fa-link"></i></a></h2>
 <p>In addition to the <a href="transaction-common-fields.html">common fields</a>, a PaymentChannelFund transaction uses the following fields:</p>
 <!-- -->
 <table>
@@ -238,17 +239,56 @@
 <td align="left"><code>Amount</code></td>
 <td align="left">String</td>
 <td align="left">Amount</td>
-<td align="left">Amount of <a href="basic-data-types.html#specifying-currency-amounts">XRP, in drops</a> to add to the channel. To set the expiration for a channel without adding more XRP, set this to <code>"0"</code>.</td>
+<td align="left">Amount of <a href="basic-data-types.html#specifying-currency-amounts">XRP, in drops</a> to add to the channel. Must be a positive amount of XRP.</td>
 </tr>
 <tr>
 <td align="left"><code>Expiration</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left"><em>(Optional)</em> New <code>Expiration</code> time to set for the channel, in seconds since the Ripple Epoch. This must be later than either the current time plus the <code>SettleDelay</code> of the channel, or the existing <code>Expiration</code> of the channel. After the <code>Expiration</code> time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (<code>Expiration</code> is separate from the channel's immutable <code>CancelAfter</code> time.) For more information, see the <a href="paychannel.html">PayChannel ledger object type</a>.</td>
+<td align="left"><em>(Optional)</em> New <code>Expiration</code> time to set for the channel, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>. This must be later than either the current time plus the <code>SettleDelay</code> of the channel, or the existing <code>Expiration</code> of the channel. After the <code>Expiration</code> time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (<code>Expiration</code> is separate from the channel's immutable <code>CancelAfter</code> time.) For more information, see the <a href="paychannel.html">PayChannel ledger object type</a>.</td>
 </tr>
 </tbody>
 </table>
-<p>If the destination account has been deleted, the transaction fails with <code>tecNO_DST</code>. This is only possible if the payment channel was created before the <a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir amendment</a> became enabled (on 2020-05-01).</p>
+<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
+<p>In addition to errors that can occur for all transactions, PaymentChannelFund transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Error Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>tecINSUFFICIENT_RESERVE</code></td>
+<td align="left">The sending account has less XRP than the <a href="reserves.html">reserve requirement</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_DST</code></td>
+<td align="left">The destination account of the channel has been deleted. This is only possible if the payment channel was created before the <a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir amendment</a> became enabled (on 2020-05-01).</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_ENTRY</code></td>
+<td align="left">The Payment Channel identified by the <code>Channel</code> field does not exist.</td>
+</tr>
+<tr>
+<td align="left"><code>tecNO_PERMISSION</code></td>
+<td align="left">The sender of the transaction is not the source address for the channel.</td>
+</tr>
+<tr>
+<td align="left"><code>tecUNFUNDED</code></td>
+<td align="left">The sending account does not have enough XRP to fund the channel with the requested amount and still meet the <a href="reserves.html">reserve requirement</a>.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_AMOUNT</code></td>
+<td align="left">The <code>Amount</code> field of the transaction is invalid. The amount must be XRP and it cannot be zero or negative.</td>
+</tr>
+<tr>
+<td align="left"><code>temBAD_EXPIRATION</code></td>
+<td align="left">The <code>Expiration</code> field is invalid.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -361,6 +401,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -422,7 +463,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -462,7 +502,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -501,7 +541,7 @@
                             <li><a class="active subpage" href="#main_content_body">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -694,6 +734,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

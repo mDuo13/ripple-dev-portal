@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/consensus-network/fee-voting.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/consensus-network/fee-voting.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -202,7 +202,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="fee-voting">Fee Voting</h1>
+        <h1 id="fee-voting">Fee Voting<a aria-hidden="true" class="hover_anchor" href="#fee-voting"><i class="fa fa-link"></i></a></h1>
 <p>Validators can vote for changes to basic <a href="transaction-cost.html">transaction cost</a> as well as <a href="reserves.html">reserve requirements</a>. If the preferences in a validator's configuration are different than the network's current settings, the validator expresses its preferences to the network periodically. If a quorum of validators agrees on a change, they can apply a change that takes effect thereafter. Validators may do this for various reasons, especially to adjust to long-term changes in the value of XRP.</p>
 <p>Operators of <a href="run-rippled-as-a-validator.html"><code>rippled</code> validators</a> can set their preferences for the transaction cost and reserve requirements in the <code>[voting]</code> stanza of the <code>rippled.cfg</code> file.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Insufficient requirements, if adopted by a consensus of trusted validators, could expose the XRP Ledger peer-to-peer network to denial-of-service attacks.</p>
@@ -233,7 +233,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="voting-process">Voting Process</h2>
+<h2 id="voting-process">Voting Process<a aria-hidden="true" class="hover_anchor" href="#voting-process"><i class="fa fa-link"></i></a></h2>
 <p>Every 256th ledger is called a "flag" ledger. (A flag ledger is defined such that the <code>ledger_index</code> <a class="external-link" href="https://en.wikipedia.org/wiki/Modulo_operation" target="_blank">modulo <i aria-hidden="true" class="fa fa-external-link"></i></a> <code>256</code> is equal to <code>0</code>.) In the ledger immediately before the flag ledger, each validator whose account reserve or transaction cost preferences are different than the current network setting distributes a "vote" message alongside its ledger validation, indicating the values that validator prefers.</p>
 <p>In the flag ledger itself, nothing happens, but validators receive and take note of the votes from other validators they trust.</p>
 <p>After counting the votes of other validators, each validator attempts to compromise between its own preferences and the preferences of a majority of validators it trusts. (For example, if one validator wants to raise the minimum transaction cost from 10 to 100, but most validators only want to raise it from 10 to 20, the one validator settles on the change to raise the cost to 20. However, the one validator never settles on a value lower than 10 or higher than 100.) If a compromise is possible, the validator inserts a <a href="setfee.html">SetFee pseudo-transaction</a> into its proposal for the ledger following the flag ledger. Other validators who want the same change insert the same SetFee pseudo-transaction into their proposals for the same ledger. (Validators whose preferences match the existing network settings do nothing.) If a SetFee pseudo-transaction survives the consensus process to be included in a validated ledger, then the new transaction cost and reserve settings denoted by the SetFee pseudo-transaction take effect starting with the following ledger.</p>
@@ -244,7 +244,7 @@
 <li><strong>Flag ledger +1</strong>: Validators insert SetFee pseudo-transaction into their proposed ledgers.</li>
 <li><strong>Flag ledger +2</strong>: New settings take effect, if a SetFee pseudo-transaction achieved consensus.</li>
 </ul>
-<h2 id="maximum-fee-values">Maximum Fee Values</h2>
+<h2 id="maximum-fee-values">Maximum Fee Values<a aria-hidden="true" class="hover_anchor" href="#maximum-fee-values"><i class="fa fa-link"></i></a></h2>
 <p>The maximum possible values for the fees are limited by the internal data types stored in the <a href="feesettings.html">FeeSettings ledger object</a>. These values are as follows:</p>
 <table>
 <thead>
@@ -272,7 +272,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="amendments.html">Amendments</a></li>
@@ -650,6 +650,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>Checkの取消し - XRP Ledger Dev Portal (日本語)</title>
+    <title>Checkの取消し - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Checkの取消し | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/cancel-a-check.html" />
+    <meta property="og:description" content="XRPとXRP Ledgerの全てに対してのコミュニティーリーソース" />
+    <meta name="description" content="XRPとXRP Ledgerの全てに対してのコミュニティーリーソース" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/cancel-a-check.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/cancel-a-check.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/cancel-a-check.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/use-complex-payment-types/use-checks/cancel-a-check.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/use-complex-payment-types/use-checks/cancel-a-check.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -190,11 +214,11 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="checkの取消し">Checkの取消し</h1>
+        <h1 id="checkの取消し">Checkの取消し<a aria-hidden="true" class="hover_anchor" href="#checkの取消し"><i class="fa fa-link"></i></a></h1>
 <p><em><a href="known-amendments.html#checks">Checks Amendment</a>が必要です。</em></p>
 <p>このチュートリアルでは、<a href="checks.html">Check</a>を取り消す手順を説明します。この手順を実行すると、送金を行わずに<a href="check.html">レジャーのCheckオブジェクト</a>が削除されます。</p>
 <p>着信したCheckが不要な場合、取り消すことができます。送信時に内容を誤って入力した場合や状況が変化した場合に、送信したCheckを取り消すこともできます。有効期限切れのCheckはレジャーから削除する必要があります。これにより、送金元に<a href="reserves.html#所有者準備金">所有者準備金</a>が戻ります。</p>
-<h2 id="前提条件">前提条件</h2>
+<h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
 <p>このチュートリアルでCheckを取り消すには、以下が必要です。</p>
 <ul>
 <li>現在レジャーに記録されているCheckオブジェクトのIDが必要です。<ul>
@@ -208,7 +232,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1checkcancelトランザクションの準備">1.CheckCancelトランザクションの準備</h2>
+<h2 id="1checkcancelトランザクションの準備">1.CheckCancelトランザクションの準備<a aria-hidden="true" class="hover_anchor" href="#1checkcancelトランザクションの準備"><i class="fa fa-link"></i></a></h2>
 <p><a href="checkcancel.html">CheckCancelトランザクション</a>のフィールドの値を決定します。以下のフィールドは必要最小限のフィールドです。その他のフィールドはオプションまたは署名時に<a href="transaction-common-fields.html#自動入力可能なフィールド">自動入力</a>可能なフィールドです。</p>
 <table>
 <thead>
@@ -238,7 +262,7 @@
 </table>
 <p><a href="rippleapi-reference.html">RippleAPI</a>を使用している場合は、<code>prepareCheckCancel()</code>ヘルパーメソッドを使用できます。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> CheckはRippleAPIバージョン0.19.0以降でサポートされています。</p>
-<h3 id="checkcancelトランザクションの準備の例">CheckCancelトランザクションの準備の例</h3>
+<h3 id="checkcancelトランザクションの準備の例">CheckCancelトランザクションの準備の例<a aria-hidden="true" class="hover_anchor" href="#checkcancelトランザクションの準備の例"><i class="fa fa-link"></i></a></h3>
 <p>Checkを取り消す例を以下に示します。</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">JSON-RPC、WebSocket、またはコマンドライン</a></li><li><a href="#code-0-1">RippleAPI</a></li></ul>
 
@@ -251,18 +275,18 @@
 </code></pre></div></div>
 
 <div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span>
-<span class="kr">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
 
-  <span class="kr">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="s1">'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za'</span>
-  <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="s1">'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za'</span>
+  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1">// Allow up to 60 ledger versions (~5 min) instead of the default 3 versions</span>
     <span class="c1">// before this transaction fails permanently.</span>
-    <span class="s2">"maxLedgerVersionOffset"</span><span class="o">:</span> <span class="mi">60</span>
+    <span class="s2">"maxLedgerVersionOffset"</span><span class="o">:</span> <span class="mf">60</span>
   <span class="p">}</span>
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareCheckCancel</span><span class="p">(</span><span class="nx">sender</span><span class="p">,</span> <span class="p">{</span>
     <span class="s2">"checkID"</span><span class="o">:</span> <span class="s2">"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2"</span>
@@ -293,24 +317,24 @@
 <span class="c1">// Disconnected</span>
 </code></pre></div></div>
 </div>
-<h2 id="2checkcancelトランザクションの署名">2.CheckCancelトランザクションの署名</h2>
+<h2 id="2checkcancelトランザクションの署名">2.CheckCancelトランザクションの署名<a aria-hidden="true" class="hover_anchor" href="#2checkcancelトランザクションの署名"><i class="fa fa-link"></i></a></h2>
 <p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
 <p>In all cases, note the signed transaction's identifying hash for later. <!--#{ fix md highlighting_ #}--></p>
-<h3 id="要求の例">要求の例</h3>
+<h3 id="要求の例">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">RippleAPI</a></li><li><a href="#code-1-1">コマンドライン</a></li></ul>
 
 <div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span>
-<span class="kr">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// Can sign offline if the txJSON has all required fields</span>
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">()</span>
 
-<span class="kr">const</span> <span class="nx">txJSON</span> <span class="o">=</span> <span class="s1">'{"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za","TransactionType":"CheckCancel","CheckID":"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2","Flags":2147483648,"LastLedgerSequence":8004884,"Fee":"12","Sequence":7}'</span>
+<span class="kd">const</span> <span class="nx">txJSON</span> <span class="o">=</span> <span class="s1">'{"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za","TransactionType":"CheckCancel","CheckID":"2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2","Flags":2147483648,"LastLedgerSequence":8004884,"Fee":"12","Sequence":7}'</span>
 
 <span class="c1">// Be careful where you store your real secret.</span>
-<span class="kr">const</span> <span class="nx">secret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span>
+<span class="kd">const</span> <span class="nx">secret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span>
 
-<span class="kr">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">secret</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">secret</span><span class="p">)</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx_blob is:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx hash is:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
@@ -324,15 +348,15 @@
 <span class="s1">}'</span>
 </code></pre></div></div>
 </div>
-<h3 id="応答の例">応答の例</h3>
+<h3 id="応答の例">応答の例<a aria-hidden="true" class="hover_anchor" href="#応答の例"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">RippleAPI</a></li><li><a href="#code-2-1">コマンドライン</a></li></ul>
 
-<div class="code_sample" id="code-2-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">tx_blob is: 12001222800000002400000007201B007A251450182E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C268400000000000000C732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB4007446304402205D77451B0D7BCDA1FE5B98763C5B3B2837453371FE93C2B86157C44B1867AE36022003800273848BC2F8E1C6EC7EE4B0CB2425A888AE80E586886C306C796B25678B8114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF</span>
-<span class="err">tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215</span>
+<div class="code_sample" id="code-2-0" style="position: static;"><div class="codehilite"><pre><span></span><code>tx_blob is: 12001222800000002400000007201B007A251450182E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C268400000000000000C732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB4007446304402205D77451B0D7BCDA1FE5B98763C5B3B2837453371FE93C2B86157C44B1867AE36022003800273848BC2F8E1C6EC7EE4B0CB2425A888AE80E586886C306C796B25678B8114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF
+tx hash is: 54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215
 </code></pre></div></div>
 
-<div class="code_sample" id="code-2-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loading:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
-<span class="mi">2018</span><span class="err">-Jan</span><span class="mi">-24</span> <span class="mi">01</span><span class="err">:</span><span class="mi">11</span><span class="err">:</span><span class="mi">07</span> <span class="err">HTTPClient:NFO</span> <span class="err">Connecting</span> <span class="err">to</span> <span class="mf">127.0</span><span class="err">.</span><span class="mf">0.1</span><span class="err">:</span><span class="mi">5005</span>
+<div class="code_sample" id="code-2-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
+<span class="mi">2018-</span><span class="err">Ja</span><span class="kc">n</span><span class="mi">-24</span> <span class="mi">01</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">07</span> <span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span> <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
    <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
@@ -353,21 +377,21 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="3署名済みcheckcancelトランザクションの送信">3.署名済みCheckCancelトランザクションの送信</h2>
+<h2 id="3署名済みcheckcancelトランザクションの送信">3.署名済みCheckCancelトランザクションの送信<a aria-hidden="true" class="hover_anchor" href="#3署名済みcheckcancelトランザクションの送信"><i class="fa fa-link"></i></a></h2>
 <p>Take the signed transaction blob from the previous step and submit it to a <code>rippled</code> server. You can do this safely even if you do not run the <code>rippled</code> server. The response contains a provisional result, which should be <code>tesSUCCESS</code>, but this result is <a href="finality-of-results.html">usually not final</a>. A provisional response of <code>terQUEUED</code> is also OK, since <a href="transaction-cost.html#キューに入れられたトランザクション">queued transactions</a> are generally included in the next open ledger version (usually about 10 seconds after submission).</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> If the preliminary result is <code>tefMAX_LEDGER</code>, the transaction has failed permanently because its <code>LastLedgerSequence</code> parameter is lower than the current ledger. This happens when you take longer than the expected number of ledger versions between preparing and submitting the transaction. If this occurs, <a href="#1checkcancelトランザクションの準備">start over from step 1</a> with a higher <code>LastLedgerSequence</code> value. <!--#{ fix md highlighting_ #}--></p>
-<h3 id="要求の例-1">要求の例</h3>
+<h3 id="要求の例-1">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例-1"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">RippleAPI</a></li><li><a href="#code-3-1">コマンドライン</a></li></ul>
 
 <div class="code_sample" id="code-3-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span>
-<span class="kr">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
 
-  <span class="kr">const</span> <span class="nx">tx_blob</span> <span class="o">=</span> <span class="s2">"12001222800000002400000007201B007A251450182E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C268400000000000000C732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB4007446304402205D77451B0D7BCDA1FE5B98763C5B3B2837453371FE93C2B86157C44B1867AE36022003800273848BC2F8E1C6EC7EE4B0CB2425A888AE80E586886C306C796B25678B8114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF"</span>
+  <span class="kd">const</span> <span class="nx">tx_blob</span> <span class="o">=</span> <span class="s2">"12001222800000002400000007201B007A251450182E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C268400000000000000C732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB4007446304402205D77451B0D7BCDA1FE5B98763C5B3B2837453371FE93C2B86157C44B1867AE36022003800273848BC2F8E1C6EC7EE4B0CB2425A888AE80E586886C306C796B25678B8114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF"</span>
 
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">tx_blob</span><span class="p">)</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -385,7 +409,7 @@
 <div class="code_sample" id="code-3-1" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled submit 12001222800000002400000003501849647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB068400000000000000C7321022C53CD19049F32F31848DD3B3BE5CEF6A2DD1EFDA7971AB3FA49B1BAF12AEF78744630440220615F9D19FA182F08530CD978A4C216C8676D0BA9EDB53A620AC909AA0EF0FE7E02203A09CC34C3DB85CCCB3137E78081F8F2B441FB0A3B9E40901F312D3CBA0A67A181147990EC5D1D8DF69E070A968D4B186986FDF06ED0
 </code></pre></div></div>
 </div>
-<h3 id="応答の例-1">応答の例</h3>
+<h3 id="応答の例-1">応答の例<a aria-hidden="true" class="hover_anchor" href="#応答の例-1"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">RippleAPI</a></li><li><a href="#code-4-1">コマンドライン</a></li></ul>
 
 <div class="code_sample" id="code-4-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="nx">Connected</span>
@@ -393,8 +417,8 @@
 <span class="nx">Disconnected</span>
 </code></pre></div></div>
 
-<div class="code_sample" id="code-4-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loading:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
-<span class="mi">2018</span><span class="err">-Jan</span><span class="mi">-24</span> <span class="mi">01</span><span class="err">:</span><span class="mi">11</span><span class="err">:</span><span class="mi">07</span> <span class="err">HTTPClient:NFO</span> <span class="err">Connecting</span> <span class="err">to</span> <span class="mf">127.0</span><span class="err">.</span><span class="mf">0.1</span><span class="err">:</span><span class="mi">5005</span>
+<div class="code_sample" id="code-4-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
+<span class="mi">2018-</span><span class="err">Ja</span><span class="kc">n</span><span class="mi">-24</span> <span class="mi">01</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">07</span> <span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span> <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
   <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
@@ -418,24 +442,24 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="4検証の待機">4.検証の待機</h2>
+<h2 id="4検証の待機">4.検証の待機<a aria-hidden="true" class="hover_anchor" href="#4検証の待機"><i class="fa fa-link"></i></a></h2>
 <p>本番環境のネットワークやRipple Test Netでは、レジャーが自動的に閉鎖するまでに4～7秒かかる場合があります。</p>
 <p>スタンドアロンモードで<code>rippled</code>を実行している場合は、<a href="ledger_accept.html">ledger_acceptメソッド</a>を使用してレジャーを手動で閉鎖します。 <!--#{ fix md highlighting_ #}--></p>
-<h2 id="5最終結果の確認">5.最終結果の確認</h2>
+<h2 id="5最終結果の確認">5.最終結果の確認<a aria-hidden="true" class="hover_anchor" href="#5最終結果の確認"><i class="fa fa-link"></i></a></h2>
 <p>トランザクションのステータスを確認するには、CheckCancelトランザクションの識別用ハッシュを指定した<a href="tx.html">txメソッド</a>を使用します。トランザクションが成功したことを示す<code>"TransactionResult": "tesSUCCESS"</code>フィールドをトランザクションメタデータから検索し、またこの結果が最終結果であることを示す<code>"validated": true</code>フィールドを結果から検索します。</p>
 <p>トランザクションによって<a href="check.html">Checkレジャーオブジェクト</a>が削除されたことを示す<code>"LedgerEntryType": "Check"</code>を含む<code>DeletedNode</code>オブジェクトを、トランザクションメタデータから検索します。このオブジェクトの<code>LedgerIndex</code>はCheckのIDに一致している必要があります。</p>
-<h3 id="要求の例-2">要求の例</h3>
+<h3 id="要求の例-2">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例-2"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">RippleAPI</a></li><li><a href="#code-5-1">コマンドライン</a></li></ul>
 
 <div class="code_sample" id="code-5-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span>
-<span class="kr">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
 
-  <span class="kr">const</span> <span class="nx">tx_hash</span> <span class="o">=</span> <span class="s2">"54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215"</span>
+  <span class="kd">const</span> <span class="nx">tx_hash</span> <span class="o">=</span> <span class="s2">"54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215"</span>
 
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getTransaction</span><span class="p">(</span><span class="nx">tx_hash</span><span class="p">)</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
@@ -453,29 +477,29 @@
 <div class="code_sample" id="code-5-1" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled tx 414558223CA8595916BB1FEF238B3BB601B7C0E52659292251CE613E6B4370F9
 </code></pre></div></div>
 </div>
-<h3 id="応答の例-2">応答の例</h3>
+<h3 id="応答の例-2">応答の例<a aria-hidden="true" class="hover_anchor" href="#応答の例-2"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">RippleAPI</a></li><li><a href="#code-6-1">コマンドライン</a></li></ul>
 
-<div class="code_sample" id="code-6-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Connected</span>
-<span class="err">Final</span> <span class="err">transaction</span> <span class="err">result:</span> <span class="p">{</span> <span class="err">type:</span> <span class="err">'checkCancel',</span>
-  <span class="err">address:</span> <span class="err">'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za',</span>
-  <span class="err">sequence:</span> <span class="err">7,</span>
-  <span class="err">id:</span> <span class="err">'54A7A917BE9AC13962251BCF1D09803C7BBE75882B8BFC987B5933A566A48215',</span>
-  <span class="err">specification:</span>
-   <span class="err">{</span> <span class="err">checkID:</span> <span class="err">'2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2'</span> <span class="p">}</span><span class="err">,</span>
-  <span class="err">outcome:</span>
-   <span class="p">{</span> <span class="err">result:</span> <span class="err">'tesSUCCESS',</span>
-     <span class="err">timestamp:</span> <span class="err">'2018-04-02T23:42:22.000Z',</span>
-     <span class="err">fee:</span> <span class="err">'0.000012',</span>
-     <span class="err">balanceChanges:</span> <span class="err">{</span> <span class="err">rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za:</span> <span class="err">[Array]</span> <span class="p">}</span><span class="err">,</span>
-     <span class="err">orderbookChanges:</span> <span class="p">{}</span><span class="err">,</span>
-     <span class="err">ledgerVersion:</span> <span class="mi">8004870</span><span class="err">,</span>
-     <span class="err">indexInLedger:</span> <span class="mi">3</span> <span class="err">}</span> <span class="err">}</span>
-<span class="err">Disconnected</span>
+<div class="code_sample" id="code-6-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">te</span><span class="err">d</span>
+<span class="err">Fi</span><span class="kc">nal</span> <span class="kc">transa</span><span class="err">c</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span> <span class="err">resul</span><span class="kc">t</span><span class="p">:</span> <span class="p">{</span> <span class="kc">t</span><span class="err">ype</span><span class="p">:</span> <span class="err">'checkCa</span><span class="kc">n</span><span class="err">cel'</span><span class="p">,</span>
+  <span class="err">address</span><span class="p">:</span> <span class="err">'rBXsgNkPcDN</span><span class="mi">2</span><span class="err">ru</span><span class="kc">ns</span><span class="err">vWmwxk</span><span class="mi">3</span><span class="err">Lh</span><span class="mi">97</span><span class="err">zdgo</span><span class="mi">9</span><span class="err">za'</span><span class="p">,</span>
+  <span class="err">seque</span><span class="kc">n</span><span class="err">ce</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+  <span class="err">id</span><span class="p">:</span> <span class="err">'</span><span class="mi">54</span><span class="err">A</span><span class="mi">7</span><span class="err">A</span><span class="mi">917</span><span class="err">BE</span><span class="mi">9</span><span class="err">AC</span><span class="mi">13962251</span><span class="err">BCF</span><span class="mi">1</span><span class="err">D</span><span class="mi">09803</span><span class="err">C</span><span class="mi">7</span><span class="err">BBE</span><span class="mi">75882</span><span class="err">B</span><span class="mi">8</span><span class="err">BFC</span><span class="mi">987</span><span class="err">B</span><span class="mi">5933</span><span class="err">A</span><span class="mi">566</span><span class="err">A</span><span class="mi">48215</span><span class="err">'</span><span class="p">,</span>
+  <span class="err">speci</span><span class="kc">f</span><span class="err">ica</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span>
+   <span class="p">{</span> <span class="err">checkID</span><span class="p">:</span> <span class="err">'</span><span class="mf">2E0</span><span class="err">AD</span><span class="mi">0740</span><span class="err">B</span><span class="mi">79</span><span class="err">BE</span><span class="mi">0</span><span class="err">AAE</span><span class="mf">5E</span><span class="err">DD</span><span class="mi">1</span><span class="err">D</span><span class="mi">5</span><span class="err">FC</span><span class="mf">79E3</span><span class="err">C</span><span class="mi">5</span><span class="err">C</span><span class="mi">221</span><span class="err">D</span><span class="mi">23</span><span class="err">C</span><span class="mi">6</span><span class="err">A</span><span class="mi">7</span><span class="err">F</span><span class="mi">771</span><span class="err">D</span><span class="mi">85569</span><span class="err">B</span><span class="mi">5</span><span class="err">B</span><span class="mi">91195</span><span class="err">C</span><span class="mi">2</span><span class="err">'</span> <span class="p">},</span>
+  <span class="err">ou</span><span class="kc">t</span><span class="err">come</span><span class="p">:</span>
+   <span class="p">{</span> <span class="err">resul</span><span class="kc">t</span><span class="p">:</span> <span class="err">'</span><span class="kc">tes</span><span class="err">SUCCESS'</span><span class="p">,</span>
+     <span class="kc">t</span><span class="err">imes</span><span class="kc">ta</span><span class="err">mp</span><span class="p">:</span> <span class="err">'</span><span class="mi">2018-04-02</span><span class="err">T</span><span class="mi">23</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mf">22.000</span><span class="err">Z'</span><span class="p">,</span>
+     <span class="kc">fee</span><span class="p">:</span> <span class="err">'</span><span class="mf">0.000012</span><span class="err">'</span><span class="p">,</span>
+     <span class="err">bala</span><span class="kc">n</span><span class="err">ceCha</span><span class="kc">n</span><span class="err">ges</span><span class="p">:</span> <span class="p">{</span> <span class="err">rBXsgNkPcDN</span><span class="mi">2</span><span class="err">ru</span><span class="kc">ns</span><span class="err">vWmwxk</span><span class="mi">3</span><span class="err">Lh</span><span class="mi">97</span><span class="err">zdgo</span><span class="mi">9</span><span class="err">za</span><span class="p">:</span> <span class="p">[</span><span class="err">Array</span><span class="p">]</span> <span class="p">},</span>
+     <span class="err">orderbookCha</span><span class="kc">n</span><span class="err">ges</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="err">ledgerVersio</span><span class="kc">n</span><span class="p">:</span> <span class="mi">8004870</span><span class="p">,</span>
+     <span class="err">i</span><span class="kc">n</span><span class="err">dexI</span><span class="kc">n</span><span class="err">Ledger</span><span class="p">:</span> <span class="mi">3</span> <span class="p">}</span> <span class="p">}</span>
+<span class="err">Disco</span><span class="kc">nne</span><span class="err">c</span><span class="kc">te</span><span class="err">d</span>
 </code></pre></div></div>
 
-<div class="code_sample" id="code-6-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loading:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
-<span class="mi">2018</span><span class="err">-Jan</span><span class="mi">-24</span> <span class="mi">01</span><span class="err">:</span><span class="mi">11</span><span class="err">:</span><span class="mi">53</span> <span class="err">HTTPClient:NFO</span> <span class="err">Connecting</span> <span class="err">to</span> <span class="mf">127.0</span><span class="err">.</span><span class="mf">0.1</span><span class="err">:</span><span class="mi">5005</span>
+<div class="code_sample" id="code-6-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
+<span class="mi">2018-</span><span class="err">Ja</span><span class="kc">n</span><span class="mi">-24</span> <span class="mi">01</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">53</span> <span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span> <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
    <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
@@ -601,6 +625,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">XRP Ledger APIの使用開始</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">RippleAPI入門ガイド</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">XRPの送金</a></li>
@@ -614,15 +639,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">安全な署名の設定</a></li>
@@ -631,21 +656,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">アカウントの設定の利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a></li>
@@ -655,24 +680,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">宛先タグの要求</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">オフラインでのアカウント設定のチュートリアル</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Escrowの使用</a></li>
@@ -699,21 +725,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a></li>
@@ -722,21 +748,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">rippledサーバの利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">rippledのインストール</a></li>
@@ -756,6 +782,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">オンライン削除の設定</a></li>
@@ -794,7 +821,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -817,13 +844,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -843,11 +870,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -880,7 +907,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -929,6 +956,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

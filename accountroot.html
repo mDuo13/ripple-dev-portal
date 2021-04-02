@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/ledger-data-formats/ledger-object-types/accountroot.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,10 +205,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="accountroot">AccountRoot</h1>
+        <h1 id="accountroot">AccountRoot<a aria-hidden="true" class="hover_anchor" href="#accountroot"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>AccountRoot</code> object type describes a single <a href="accounts.html">account</a>, its settings, and XRP balance.</p>
-<h2 id="example-accountroot-json">Example AccountRoot JSON</h2>
+<h2 id="example-accountroot-json">Example AccountRoot JSON<a aria-hidden="true" class="hover_anchor" href="#example-accountroot-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
     <span class="nt">"AccountTxnID"</span><span class="p">:</span> <span class="s2">"0D5FB50FA65C9FE1538FD7E398FFFE9D1908DFA4576D8D7A020040686F93C77D"</span><span class="p">,</span>
@@ -226,7 +226,7 @@
     <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="accountroot-fields">AccountRoot Fields</h2>
+<h2 id="accountroot-fields">AccountRoot Fields<a aria-hidden="true" class="hover_anchor" href="#accountroot-fields"><i class="fa fa-link"></i></a></h2>
 <p>The <code>AccountRoot</code> object has the following fields:</p>
 <table>
 <thead>
@@ -296,7 +296,7 @@
 <td align="left"><code>Domain</code></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
-<td align="left"><em>(Optional)</em> A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain.</td>
+<td align="left"><em>(Optional)</em> A domain associated with this account. In JSON, this is the hexadecimal for the ASCII representation of the domain. <a class="external-link" href="https://github.com/ripple/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34" target="_blank">Cannot be more than 256 bytes in length. <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><code>EmailHash</code></td>
@@ -308,7 +308,7 @@
 <td align="left"><code>MessageKey</code></td>
 <td align="left">String</td>
 <td align="left">Blob</td>
-<td align="left"><em>(Optional)</em> A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. No more than 33 bytes.</td>
+<td align="left"><em>(Optional)</em> A public key that may be used to send encrypted messages to this account. In JSON, uses hexadecimal. Must be exactly 33 bytes, with the first byte indicating the key type: <code>0x02</code> or <code>0x03</code> for secp256k1 keys, <code>0xED</code> for Ed25519 keys.</td>
 </tr>
 <tr>
 <td align="left"><code>RegularKey</code></td>
@@ -320,7 +320,7 @@
 <td align="left"><code>TicketCount</code></td>
 <td align="left">Number</td>
 <td align="left">UInt32</td>
-<td align="left"><em>(Optional)</em> How many <a href="tickets.html">Tickets</a> this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. <em>(Added by the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a> :not_enabled)</em></td>
+<td align="left"><em>(Optional)</em> How many <a href="tickets.html">Tickets</a> this account owns in the ledger. This is updated automatically to ensure that the account stays within the hard limit of 250 Tickets at a time. This field is omitted if the account has zero Tickets. <em>(Added by the <a href="known-amendments.html#ticketbatch">TicketBatch amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></td>
 </tr>
 <tr>
 <td align="left"><code>TickSize</code></td>
@@ -348,7 +348,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="accountroot-flags">AccountRoot Flags</h2>
+<h2 id="accountroot-flags">AccountRoot Flags<a aria-hidden="true" class="hover_anchor" href="#accountroot-flags"><i class="fa fa-link"></i></a></h2>
 <p>There are several options which can be either enabled or disabled for an account. These options can be changed with an <a href="accountset.html">AccountSet transaction</a>. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <strong><code>lsf</code></strong>.</p>
 <p>AccountRoot objects can have the following flag values:</p>
 <table>
@@ -427,7 +427,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="accountroot-id-format">AccountRoot ID Format</h2>
+<h2 id="accountroot-id-format">AccountRoot ID Format<a aria-hidden="true" class="hover_anchor" href="#accountroot-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of an AccountRoot object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The Account space key (<code>0x0061</code>)</li>
@@ -545,6 +545,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -606,7 +607,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -646,7 +646,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -685,7 +685,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -878,6 +878,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/transaction-formats/transaction-metadata.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/transaction-formats/transaction-metadata.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -206,7 +206,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="transaction-metadata">Transaction Metadata</h1>
+        <h1 id="transaction-metadata">Transaction Metadata<a aria-hidden="true" class="hover_anchor" href="#transaction-metadata"><i class="fa fa-link"></i></a></h1>
 <p>Transaction metadata is a section of data that gets added to a transaction after it is processed. Any transaction that gets included in a ledger has metadata, regardless of whether it is successful. The transaction metadata describes the outcome of the transaction in detail.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> The changes described in transaction metadata are only final if the transaction is in a validated ledger version.</p>
 <p>Some fields that may appear in transaction metadata include:</p>
@@ -246,7 +246,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="example-metadata">Example Metadata</h2>
+<h2 id="example-metadata">Example Metadata<a aria-hidden="true" class="hover_anchor" href="#example-metadata"><i class="fa fa-link"></i></a></h2>
 <p>The following JSON object shows the metadata for <a class="external-link" href="https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B" target="_blank">a complex cross-currency payment <i aria-hidden="true" class="fa fa-external-link"></i></a>:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
   <span class="nt">"AffectedNodes"</span><span class="p">:</span> <span class="p">[</span>
@@ -725,7 +725,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="affectednodes">AffectedNodes</h2>
+<h2 id="affectednodes">AffectedNodes<a aria-hidden="true" class="hover_anchor" href="#affectednodes"><i class="fa fa-link"></i></a></h2>
 <p>The <code>AffectedNodes</code> array contains a complete list of the <a href="ledger-object-types.html">objects in the ledger</a> that this transaction modified in some way. Each entry in this array is an object with one top-level field indicating what type it is:</p>
 <ul>
 <li><code>CreatedNode</code> indicates that the transaction created a new object in the ledger.</li>
@@ -733,7 +733,7 @@
 <li><code>ModifiedNode</code> indicates that the transaction modified an existing object in the ledger.</li>
 </ul>
 <p>The value of each of these fields is a JSON object describing the changes made to the ledger object.</p>
-<h3 id="creatednode-fields">CreatedNode Fields</h3>
+<h3 id="creatednode-fields">CreatedNode Fields<a aria-hidden="true" class="hover_anchor" href="#creatednode-fields"><i class="fa fa-link"></i></a></h3>
 <p>A <code>CreatedNode</code> object contains the following fields:</p>
 <table>
 <thead>
@@ -761,7 +761,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="deletednode-fields">DeletedNode Fields</h3>
+<h3 id="deletednode-fields">DeletedNode Fields<a aria-hidden="true" class="hover_anchor" href="#deletednode-fields"><i class="fa fa-link"></i></a></h3>
 <p>A <code>DeletedNode</code> object contains the following fields:</p>
 <table>
 <thead>
@@ -789,7 +789,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="modifiednode-fields">ModifiedNode Fields</h3>
+<h3 id="modifiednode-fields">ModifiedNode Fields<a aria-hidden="true" class="hover_anchor" href="#modifiednode-fields"><i class="fa fa-link"></i></a></h3>
 <p>A <code>ModifiedNode</code> object contains the following fields:</p>
 <table>
 <thead>
@@ -833,7 +833,7 @@
 </tbody>
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> If the modified ledger object has <code>PreviousTxnID</code> and <code>PreviousTxnLgrSeq</code> fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the <code>FinalFields</code> of the <code>ModifiedNode</code> object, and their previous values are listed at the top level of the <code>ModifiedNode</code> object rather than in the nested <code>PreviousFields</code> object.</p>
-<h2 id="delivered_amount">delivered_amount</h2>
+<h2 id="delivered_amount">delivered_amount<a aria-hidden="true" class="hover_anchor" href="#delivered_amount"><i class="fa fa-link"></i></a></h2>
 <p>The <code>Amount</code> of a <a href="payment.html">Payment transaction</a> indicates the amount to deliver to the <code>Destination</code>, so if the transaction was successful, then the destination received that much -- <strong>except if the transaction was a <a href="partial-payments.html">partial payment</a></strong>. (In that case, any positive amount up to <code>Amount</code> might have arrived.) Rather than choosing whether or not to trust the <code>Amount</code> field, you should use the <code>delivered_amount</code> field of the metadata to see how much actually reached its destination.</p>
 <p>The <code>rippled</code> server provides a <code>delivered_amount</code> field in JSON transaction metadata for all successful Payment transactions. This field is formatted like a normal currency amount. However, the delivered amount is not available for transactions that meet both of the following criteria:</p>
 <ul>
@@ -957,6 +957,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -1018,7 +1019,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -1058,7 +1058,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -1097,7 +1097,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -1290,6 +1290,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

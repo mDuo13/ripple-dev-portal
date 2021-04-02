@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>sign_for - XRP Ledger Dev Portal (日本語)</title>
+    <title>sign_for - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="sign_for | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/sign_for.html" />
+    <meta property="og:description" content="マルチ署名済みトランザクションの署名を1つ提供します。" />
+    <meta name="description" content="マルチ署名済みトランザクションの署名を1つ提供します。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/sign_for.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/sign_for.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/sign_for.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/public-rippled-methods/transaction-methods/sign_for.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/transaction-methods/sign_for.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -181,13 +205,13 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="sign_for">sign_for</h1>
+        <h1 id="sign_for">sign_for<a aria-hidden="true" class="hover_anchor" href="#sign_for"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp" target="_blank" title="Source">[ソース]<br/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>sign_for</code>コマンドは、<a href="multi-signing.html">マルチ署名済みトランザクション</a>の署名を1つ提供します。</p>
-<p><em>By default, this method is <a href="admin-rippled-methods.html">admin-only</a>. It can be used as a public method if the server has <a href="enable-public-signing.html">enabled public signing</a>.</em>
-<!--_ --></p>
+<p><em>By default, this method is <a href="admin-rippled-methods.html">admin-only</a>. It can be used as a public method if the server has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
+<!--_ -->
 <p>このコマンドを使用するには、<a href="known-amendments.html#multisign">MultiSign Amendment</a>が有効になっている必要があります。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<h2 id="要求フォーマット">要求フォーマット</h2>
+<h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">コマンドライン</a></li></ul>
 
@@ -304,7 +328,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 <li><code>secret</code>値を指定し、<code>key_type</code>フィールドを省略します。この値は、XRP Ledgerの<a href="base58-encodings.html">base58</a>シード、RFC-1751、16進値のフォーマットで記述するか、文字列パスフレーズとして記述します（secp256k1キーのみ）。</li>
 <li><code>key_type</code>値と、<code>seed</code>、<code>seed_hex</code>、または<code>passphrase</code>のいずれか1つを提供します。<code>secret</code>フィールドは省略します。（コマンドライン構文ではサポートされません。）</li>
 </ul>
-<h2 id="応答フォーマット">応答フォーマット</h2>
+<h2 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">コマンドライン</a></li></ul>
 
@@ -341,40 +365,40 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">200 OK</span>
+<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="mf">200</span> <span class="n">OK</span>
 <span class="err">{</span>
-<span class="err">  "result" :{</span>
-<span class="err">     "status" :"success",</span>
-<span class="err">     "tx_blob" :"1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1F1",</span>
-<span class="err">     "tx_json" :{</span>
-<span class="err">        "Account" :"rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC",</span>
-<span class="err">        "Fee" :"30000",</span>
-<span class="err">        "Flags" :262144,</span>
-<span class="err">        "LimitAmount" :{</span>
-<span class="err">           "currency" :"USD",</span>
-<span class="err">           "issuer" :"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",</span>
-<span class="err">           "value" :"100"</span>
-<span class="err">        },</span>
-<span class="err">        "Sequence" :2,</span>
-<span class="err">        "Signers" :[</span>
-<span class="err">           {</span>
-<span class="err">              "Signer" :{</span>
-<span class="err">                 "Account" :"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",</span>
-<span class="err">                 "SigningPubKey" :"02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF",</span>
-<span class="err">                 "TxnSignature" :"30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"</span>
-<span class="err">              }</span>
-<span class="err">           }</span>
-<span class="err">        ],</span>
-<span class="err">        "SigningPubKey" :"",</span>
-<span class="err">        "TransactionType" :"TrustSet",</span>
-<span class="err">        "hash" :"A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"</span>
-<span class="err">     }</span>
-<span class="err">  }</span>
+  <span class="s">"result"</span> <span class="p">:</span><span class="err">{</span>
+     <span class="s">"status"</span> <span class="p">:</span><span class="s">"success"</span><span class="p">,</span>
+     <span class="s">"tx_blob"</span> <span class="p">:</span><span class="s">"1200142200040000240000000263D5038D7EA4C680000000000000000000000000005553440000000000B5F762798A53D543A014CAF8B297CFF8F2F937E868400000000000753073008114A3780F5CB5A44D366520FC44055E8ED44D9A2270F3E010732102B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF744730450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E58114204288D2E47F8EF6C99BCC457966320D12409711E1F1"</span><span class="p">,</span>
+     <span class="s">"tx_json"</span> <span class="p">:</span><span class="err">{</span>
+        <span class="s">"Account"</span> <span class="p">:</span><span class="s">"rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC"</span><span class="p">,</span>
+        <span class="s">"Fee"</span> <span class="p">:</span><span class="s">"30000"</span><span class="p">,</span>
+        <span class="s">"Flags"</span> <span class="p">:</span><span class="mf">262144</span><span class="p">,</span>
+        <span class="s">"LimitAmount"</span> <span class="p">:</span><span class="err">{</span>
+           <span class="s">"currency"</span> <span class="p">:</span><span class="s">"USD"</span><span class="p">,</span>
+           <span class="s">"issuer"</span> <span class="p">:</span><span class="s">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">,</span>
+           <span class="s">"value"</span> <span class="p">:</span><span class="s">"100"</span>
+        <span class="err">}</span><span class="p">,</span>
+        <span class="s">"Sequence"</span> <span class="p">:</span><span class="mf">2</span><span class="p">,</span>
+        <span class="s">"Signers"</span> <span class="p">:</span><span class="err">[</span>
+           <span class="err">{</span>
+              <span class="s">"Signer"</span> <span class="p">:</span><span class="err">{</span>
+                 <span class="s">"Account"</span> <span class="p">:</span><span class="s">"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"</span><span class="p">,</span>
+                 <span class="s">"SigningPubKey"</span> <span class="p">:</span><span class="s">"02B3EC4E5DD96029A647CFA20DA07FE1F85296505552CCAC114087E66B46BD77DF"</span><span class="p">,</span>
+                 <span class="s">"TxnSignature"</span> <span class="p">:</span><span class="s">"30450221009C195DBBF7967E223D8626CA19CF02073667F2B22E206727BFE848FF42BEAC8A022048C323B0BED19A988BDBEFA974B6DE8AA9DCAE250AA82BBD1221787032A864E5"</span>
+              <span class="err">}</span>
+           <span class="err">}</span>
+        <span class="err">]</span><span class="p">,</span>
+        <span class="s">"SigningPubKey"</span> <span class="p">:</span><span class="s">""</span><span class="p">,</span>
+        <span class="s">"TransactionType"</span> <span class="p">:</span><span class="s">"TrustSet"</span><span class="p">,</span>
+        <span class="s">"hash"</span> <span class="p">:</span><span class="s">"A94A6417D1A7AAB059822B894E13D322ED3712F7212CE9257801F96DE6C3F6AE"</span>
+     <span class="err">}</span>
+  <span class="err">}</span>
 <span class="err">}</span>
 </code></pre></div></div>
 
-<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loading:</span><span class="s2">"/etc/rippled.cfg"</span>
-<span class="err">Connecting</span> <span class="err">to</span> <span class="mf">127.0</span><span class="err">.</span><span class="mf">0.1</span><span class="err">:</span><span class="mi">5005</span>
+<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="s2">"/etc/rippled.cfg"</span>
+<span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
   <span class="nt">"result"</span> <span class="p">:{</span>
@@ -429,7 +453,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 </tr>
 </tbody>
 </table>
-<h2 id="考えられるエラー">考えられるエラー</h2>
+<h2 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>のすべて。</li>
 <li><code>invalidParams</code> - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。</li>
@@ -549,6 +573,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -610,7 +635,6 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -645,10 +669,12 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
                             <li><a class="subpage" href="escrow-object.html">Escrow</a></li>
                             <li><a class="subpage" href="feesettings.html">FeeSettings</a></li>
                             <li><a class="subpage" href="ledgerhashes.html">LedgerHashes</a></li>
+                            <li><a class="subpage" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="offer.html">Offer</a></li>
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -687,14 +713,16 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">疑似トランザクション</a></li>
 
                             <li><a class="subpage" href="enableamendment.html">EnableAmendment</a></li>
                             <li><a class="subpage" href="setfee.html">SetFee</a></li>
+                            <li><a class="subpage" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
-                        <li><a class="subcat-title" href="transaction-results.html">取引の結果</a></li>
+                        <li><a class="subcat-title" href="transaction-results.html">トランザクションの結果</a></li>
 
                             <li><a class="subpage" href="tec-codes.html">tecコード</a></li>
                             <li><a class="subpage" href="tef-codes.html">tefコード</a></li>
@@ -766,13 +794,13 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -792,11 +820,11 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -829,7 +857,7 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -878,6 +906,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

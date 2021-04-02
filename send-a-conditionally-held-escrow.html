@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/use-complex-payment-types/use-escrows/send-a-conditionally-held-escrow.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -209,45 +209,45 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="send-a-conditionally-held-escrow">Send a Conditionally-Held Escrow</h1>
-<h2 id="1-generate-condition-and-fulfillment">1. Generate condition and fulfillment</h2>
+        <h1 id="send-a-conditionally-held-escrow">Send a Conditionally-Held Escrow<a aria-hidden="true" class="hover_anchor" href="#send-a-conditionally-held-escrow"><i class="fa fa-link"></i></a></h1>
+<h2 id="1-generate-condition-and-fulfillment">1. Generate condition and fulfillment<a aria-hidden="true" class="hover_anchor" href="#1-generate-condition-and-fulfillment"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledger escrows require PREIMAGE-SHA-256 <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-04" target="_blank">crypto-conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>. To calculate a condition and fulfillment in the proper format, you should use a crypto-conditions library such as <a class="external-link" href="https://github.com/interledgerjs/five-bells-condition" target="_blank">five-bells-condition <i aria-hidden="true" class="fa fa-external-link"></i></a>. To generate the fulfillment:</p>
 <ul>
 <li>Use a cryptographically secure source of randomness to generate at least 32 random bytes.</li>
 <li>Follow Interledger Protocol's <a class="external-link" href="https://github.com/interledger/rfcs/blob/master/deprecated/0016-pre-shared-key/0016-pre-shared-key.md" target="_blank">PSK specification <i aria-hidden="true" class="fa fa-external-link"></i></a> and use an HMAC-SHA-256 of the ILP packet as the fulfillment. <!-- SPELLING_IGNORE: psk --></li>
 </ul>
 <p>Example JavaScript code for a random fulfillment and condition:</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">cc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'five-bells-condition'</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'crypto'</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">cc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'five-bells-condition'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'crypto'</span><span class="p">)</span>
 
-<span class="kr">const</span> <span class="nx">preimageData</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mf">32</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">myFulfillment</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cc</span><span class="p">.</span><span class="nx">PreimageSha256</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">preimageData</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mf">32</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">myFulfillment</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cc</span><span class="p">.</span><span class="nx">PreimageSha256</span><span class="p">()</span>
 <span class="nx">myFulfillment</span><span class="p">.</span><span class="nx">setPreimage</span><span class="p">(</span><span class="nx">preimageData</span><span class="p">)</span>
 
-<span class="kr">const</span> <span class="nx">condition</span> <span class="o">=</span> <span class="nx">myFulfillment</span><span class="p">.</span><span class="nx">getConditionBinary</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="s1">'hex'</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">condition</span> <span class="o">=</span> <span class="nx">myFulfillment</span><span class="p">.</span><span class="nx">getConditionBinary</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="s1">'hex'</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">()</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Condition:'</span><span class="p">,</span> <span class="nx">condition</span><span class="p">)</span>
 <span class="c1">// (Random hexadecimal, 72 chars in length)</span>
 
 <span class="c1">// keep secret until you want to finish executing the held payment:</span>
-<span class="kr">const</span> <span class="nx">fulfillment</span> <span class="o">=</span> <span class="nx">myFulfillment</span><span class="p">.</span><span class="nx">serializeBinary</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="s1">'hex'</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">fulfillment</span> <span class="o">=</span> <span class="nx">myFulfillment</span><span class="p">.</span><span class="nx">serializeBinary</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="s1">'hex'</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">()</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Fulfillment:'</span><span class="p">,</span> <span class="nx">fulfillment</span><span class="p">)</span>
 <span class="c1">// (Random hexadecimal, 78 chars in length)</span>
 </code></pre></div>
 <p>Save the condition and the fulfillment for later. Be sure to keep the fulfillment secret until you want to finish executing the held payment. Anyone who knows the fulfillment can finish the escrow, releasing the held funds to their intended destination.</p>
-<h2 id="2-calculate-release-or-cancel-time">2. Calculate release or cancel time</h2>
+<h2 id="2-calculate-release-or-cancel-time">2. Calculate release or cancel time<a aria-hidden="true" class="hover_anchor" href="#2-calculate-release-or-cancel-time"><i class="fa fa-link"></i></a></h2>
 <p>A Conditional <code>Escrow</code> transaction must contain either a <code>CancelAfter</code> or <code>FinishAfter</code> field, or both. The <code>CancelAfter</code> field lets the XRP revert to the sender if the condition is not fulfilled before the specified time. The <code>FinishAfter</code> field specifies a time before which the escrow cannot execute, even if someone sends the correct fulfillment. Whichever field you provide, the time it specifies must be in the future.</p>
 <p>Example for setting a <code>CancelAfter</code> time of 24 hours in the future:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">JavaScript</a></li></ul>
 
-<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">rippleOffset</span> <span class="o">=</span> <span class="mf">946684800</span>
-<span class="kr">const</span> <span class="nx">CancelAfter</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1000</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">24</span><span class="o">*</span><span class="mf">60</span><span class="o">*</span><span class="mf">60</span><span class="p">)</span> <span class="o">-</span> <span class="nx">rippleOffset</span>
+<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">rippleOffset</span> <span class="o">=</span> <span class="mf">946684800</span>
+<span class="kd">const</span> <span class="nx">CancelAfter</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1000</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">24</span><span class="o">*</span><span class="mf">60</span><span class="o">*</span><span class="mf">60</span><span class="p">)</span> <span class="o">-</span> <span class="nx">rippleOffset</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CancelAfter</span><span class="p">)</span>
 <span class="c1">// Example: 556927412</span>
 </code></pre></div></div>
 <!-- -->
 </div>
 <p class="devportal-callout warning"><strong>Warning:</strong> In the XRP Ledger, you must specify time as <strong><a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a></strong>. If you use a UNIX time in the <code>CancelAfter</code> or <code>FinishAfter</code> field without converting it, that sets the unlock time to an extra <strong>30 years</strong> in the future!</p>
-<h2 id="3-submit-escrowcreate-transaction">3. Submit EscrowCreate transaction</h2>
+<h2 id="3-submit-escrowcreate-transaction">3. Submit EscrowCreate transaction<a aria-hidden="true" class="hover_anchor" href="#3-submit-escrowcreate-transaction"><i class="fa fa-link"></i></a></h2>
 <p><a href="transaction-basics.html#signing-and-submitting-transactions">Sign and submit</a> an <a href="escrowcreate.html">EscrowCreate transaction</a>. Set the <code>Condition</code> field of the transaction to the time when the held payment should be released. Set the <code>Destination</code> to the recipient, which can be the same address as the sender. Include the <code>CancelAfter</code> or <code>FinishAfter</code> time you calculated in the previous step. Set the <code>Amount</code> to the total amount of <a href="basic-data-types.html#specifying-currency-amounts">XRP, in drops</a>, to escrow.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network. <!--#{ fix md highlighting_ #}--></p>
 <p>Request:</p>
@@ -298,10 +298,10 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="4-wait-for-validation">4. Wait for validation</h2>
+<h2 id="4-wait-for-validation">4. Wait for validation<a aria-hidden="true" class="hover_anchor" href="#4-wait-for-validation"><i class="fa fa-link"></i></a></h2>
 <p>On the live network or the Ripple Test Net, you can wait 4-7 seconds for the ledger to close automatically.</p>
 <p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="ledger_accept.html">ledger_accept method</a> to manually close the ledger. <!--#{ fix md highlighting_ #}--></p>
-<h2 id="5-confirm-that-the-escrow-was-created">5. Confirm that the escrow was created</h2>
+<h2 id="5-confirm-that-the-escrow-was-created">5. Confirm that the escrow was created<a aria-hidden="true" class="hover_anchor" href="#5-confirm-that-the-escrow-was-created"><i class="fa fa-link"></i></a></h2>
 <p>Use the <a href="tx.html">tx method</a> with the transaction's identifying hash to check its final status. In particular, look for a <code>CreatedNode</code> in the transaction metadata to indicate that it created an <a href="escrow.html">Escrow ledger object</a>.</p>
 <p>Request:</p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">Websocket</a></li></ul>
@@ -399,7 +399,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="6-submit-escrowfinish-transaction">6. Submit EscrowFinish transaction</h2>
+<h2 id="6-submit-escrowfinish-transaction">6. Submit EscrowFinish transaction<a aria-hidden="true" class="hover_anchor" href="#6-submit-escrowfinish-transaction"><i class="fa fa-link"></i></a></h2>
 <p><a href="transaction-basics.html#signing-and-submitting-transactions">Sign and submit</a> an <a href="escrowfinish.html">EscrowFinish transaction</a> to execute the release of the funds after the <code>FinishAfter</code> time has passed. Set the <code>Owner</code> field of the transaction to the <code>Account</code> address from the EscrowCreate transaction, and the <code>OfferSequence</code> to the <code>Sequence</code> number from the EscrowCreate transaction. Set the <code>Condition</code> and <code>Fulfillment</code> fields to the condition and fulfillment values, in hexadecimal, that you generated in step 1. Set the <code>Fee</code> (<a href="transaction-cost.html">transaction cost</a>) value based on the size of the fulfillment in bytes: a conditional EscrowFinish requires at least 330 drops of XRP plus 10 drops per 16 bytes in the size of the fulfillment.</p>
 <p class="devportal-callout note"><strong>Note:</strong> If you included a <code>FinishAfter</code> field in the EscrowCreate transaction, you cannot execute it before that time has passed, even if you provide the correct fulfillment for the Escrow's condition. The EscrowFinish transaction fails with the <a href="transaction-results.html">result code</a> <code>tecNO_PERMISSION</code> if the previously-closed ledger's close time is before the <code>FinishAfter</code> time.</p>
 <p>If the escrow has expired, you can only <a href="cancel-an-expired-escrow.html">cancel the escrow</a> instead.</p>
@@ -453,10 +453,10 @@
 </code></pre></div></div>
 </div>
 <p>Take note of the transaction's identifying <code>hash</code> value so you can check its final status when it is included in a validated ledger version.</p>
-<h2 id="7-wait-for-validation">7. Wait for validation</h2>
+<h2 id="7-wait-for-validation">7. Wait for validation<a aria-hidden="true" class="hover_anchor" href="#7-wait-for-validation"><i class="fa fa-link"></i></a></h2>
 <p>On the live network or the Ripple Test Net, you can wait 4-7 seconds for the ledger to close automatically.</p>
 <p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="ledger_accept.html">ledger_accept method</a> to manually close the ledger. <!--#{ fix md highlighting_ #}--></p>
-<h2 id="8-confirm-final-result">8. Confirm final result</h2>
+<h2 id="8-confirm-final-result">8. Confirm final result<a aria-hidden="true" class="hover_anchor" href="#8-confirm-final-result"><i class="fa fa-link"></i></a></h2>
 <p>Use the <a href="tx.html">tx method</a> with the EscrowFinish transaction's identifying hash to check its final status. In particular, look in the transaction metadata for a <code>ModifiedNode</code> of type <code>AccountRoot</code> for the destination of the escrowed payment. The <code>FinalFields</code> of the object should show the increase in XRP in the <code>Balance</code> field.</p>
 <p>Request:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -562,7 +562,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-04" target="_blank">Crypto-Conditions Specification <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><strong>Concepts:</strong><ul>
@@ -625,6 +625,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -638,15 +639,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -655,21 +656,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -679,24 +680,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title active-parent" href="use-escrows.html">Use Escrows</a></li>
@@ -723,21 +725,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -746,21 +748,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -780,6 +782,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -818,7 +821,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -953,6 +956,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

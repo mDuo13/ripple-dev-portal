@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/public-rippled-methods/public-rippled-methods.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/public-rippled-methods.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -208,9 +208,9 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="public-rippled-methods">Public rippled Methods</h1>
+        <h1 id="public-rippled-methods">Public rippled Methods<a aria-hidden="true" class="hover_anchor" href="#public-rippled-methods"><i class="fa fa-link"></i></a></h1>
 <p>Communicate directly with a <code>rippled</code> server using the following public API methods. Public methods are not necessarily meant for the general public, but they are used by any client attached to the server. Think of public methods as being for members or customers of the organization running the server.</p>
-<h2 id="account-methods"><a href="account-methods.html">Account Methods</a></h2>
+<h2 id="account-methods"><a href="account-methods.html">Account Methods</a><a aria-hidden="true" class="hover_anchor" href="#account-methods"><i class="fa fa-link"></i></a></h2>
 <p>An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info.</p>
 <ul>
 <li><strong><a href="account_channels.html"><code>account_channels</code></a></strong> - Get a list of payment channels where the account is the source of the channel.</li>
@@ -223,7 +223,7 @@
 <li><strong><a href="gateway_balances.html"><code>gateway_balances</code></a></strong> - Calculate total amounts issued by an account.</li>
 <li><strong><a href="noripple_check.html"><code>noripple_check</code></a></strong> - Get recommended changes to an account's Default Ripple and No Ripple settings.</li>
 </ul>
-<h2 id="ledger-methods"><a href="ledger-methods.html">Ledger Methods</a></h2>
+<h2 id="ledger-methods"><a href="ledger-methods.html">Ledger Methods</a><a aria-hidden="true" class="hover_anchor" href="#ledger-methods"><i class="fa fa-link"></i></a></h2>
 <p>A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trust lines, balances, transactions, and other data. Use these methods to retrieve ledger info.</p>
 <ul>
 <li><strong><a href="ledger.html"><code>ledger</code></a></strong> - Get info about a ledger version.</li>
@@ -232,7 +232,7 @@
 <li><strong><a href="ledger_data.html"><code>ledger_data</code></a></strong> - Get the raw contents of a ledger version.</li>
 <li><strong><a href="ledger_entry.html"><code>ledger_entry</code></a></strong> - Get one element from a ledger version.</li>
 </ul>
-<h2 id="transaction-methods"><a href="transaction-methods.html">Transaction Methods</a></h2>
+<h2 id="transaction-methods"><a href="transaction-methods.html">Transaction Methods</a><a aria-hidden="true" class="hover_anchor" href="#transaction-methods"><i class="fa fa-link"></i></a></h2>
 <p>Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions.</p>
 <ul>
 <li><strong><a href="sign.html"><code>sign</code></a></strong> - Cryptographically sign a transaction.</li>
@@ -243,7 +243,7 @@
 <li><strong><a href="tx.html"><code>tx</code></a></strong> - Retrieve info about a transaction from all the ledgers on hand.</li>
 <li><strong><a href="tx_history.html"><code>tx_history</code></a></strong> - Retrieve info about all recent transactions.</li>
 </ul>
-<h2 id="path-and-order-book-methods"><a href="path-and-order-book-methods.html">Path and Order Book Methods</a></h2>
+<h2 id="path-and-order-book-methods"><a href="path-and-order-book-methods.html">Path and Order Book Methods</a><a aria-hidden="true" class="hover_anchor" href="#path-and-order-book-methods"><i class="fa fa-link"></i></a></h2>
 <p>Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.</p>
 <ul>
 <li><strong><a href="book_offers.html"><code>book_offers</code></a></strong> - Get info about offers to exchange two currencies.</li>
@@ -251,33 +251,34 @@
 <li><strong><a href="path_find.html"><code>path_find</code></a></strong> - Find a path for a payment between two accounts and receive updates.</li>
 <li><strong><a href="ripple_path_find.html"><code>ripple_path_find</code></a></strong> - Find a path for payment between two accounts, once.</li>
 </ul>
-<h2 id="payment-channel-methods"><a href="payment-channel-methods.html">Payment Channel Methods</a></h2>
+<h2 id="payment-channel-methods"><a href="payment-channel-methods.html">Payment Channel Methods</a><a aria-hidden="true" class="hover_anchor" href="#payment-channel-methods"><i class="fa fa-link"></i></a></h2>
 <p>Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels.</p>
 <ul>
 <li><strong><a href="channel_authorize.html"><code>channel_authorize</code></a></strong> - Sign a claim for money from a payment channel.</li>
 <li><strong><a href="channel_verify.html"><code>channel_verify</code></a></strong> - Check a payment channel claim's signature.</li>
 </ul>
-<h2 id="subscription-methods"><a href="subscription-methods.html">Subscription Methods</a></h2>
+<h2 id="subscription-methods"><a href="subscription-methods.html">Subscription Methods</a><a aria-hidden="true" class="hover_anchor" href="#subscription-methods"><i class="fa fa-link"></i></a></h2>
 <p>Use these methods to enable the server to push updates to your client when various events happen, so that you can know and react right away. <em>WebSocket API only.</em></p>
 <ul>
 <li><strong><a href="subscribe.html"><code>subscribe</code></a></strong> - Listen for updates about a particular subject.</li>
 <li><strong><a href="unsubscribe.html"><code>unsubscribe</code></a></strong> - Stop listening for updates about a particular subject.</li>
 </ul>
-<h2 id="server-info-methods"><a href="server-info-methods.html">Server Info Methods</a></h2>
+<h2 id="server-info-methods"><a href="server-info-methods.html">Server Info Methods</a><a aria-hidden="true" class="hover_anchor" href="#server-info-methods"><i class="fa fa-link"></i></a></h2>
 <p>Use these methods to retrieve information about the current state of the <code>rippled</code> server.</p>
 <ul>
 <li><strong><a href="fee.html"><code>fee</code></a></strong> - Get information about transaction cost.</li>
 <li><strong><a href="server_info.html"><code>server_info</code></a></strong> - Retrieve status of the server in human-readable format.</li>
 <li><strong><a href="server_state.html"><code>server_state</code></a></strong> - Retrieve status of the server in machine-readable format.</li>
+<li><strong><a href="manifest.html"><code>manifest</code></a></strong> - Retrieve the latest ephemeral public key information about a known validator.</li>
 </ul>
-<h2 id="utility-methods"><a href="utility-methods.html">Utility Methods</a></h2>
+<h2 id="utility-methods"><a href="utility-methods.html">Utility Methods</a><a aria-hidden="true" class="hover_anchor" href="#utility-methods"><i class="fa fa-link"></i></a></h2>
 <p>Use these methods to perform convenient tasks, such as ping and random number generation.</p>
 <ul>
 <li><strong><a href="json.html"><code>json</code></a></strong> - Use as a proxy to running other commands. Accepts the parameters for the command as a JSON value. <em>Commandline only.</em></li>
 <li><strong><a href="ping.html"><code>ping</code></a></strong> - Confirm connectivity with the server.</li>
 <li><strong><a href="random.html"><code>random</code></a></strong> - Generate a random number.</li>
 </ul>
-<h2 id="deprecated-methods">Deprecated Methods</h2>
+<h2 id="deprecated-methods">Deprecated Methods<a aria-hidden="true" class="hover_anchor" href="#deprecated-methods"><i class="fa fa-link"></i></a></h2>
 <p>The <code>owner_info</code> command is deprecated. Use <a href="account_objects.html"><code>account_objects</code></a> instead.</p>
     </div>
   </article>
@@ -384,6 +385,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -445,7 +447,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -485,7 +486,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -524,7 +525,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -717,6 +718,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

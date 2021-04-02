@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-system-basics/accounts/reserves.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-system-basics/accounts/reserves.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,17 +205,17 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="reserves">Reserves</h1>
+        <h1 id="reserves">Reserves<a aria-hidden="true" class="hover_anchor" href="#reserves"><i class="fa fa-link"></i></a></h1>
 <p>The XRP Ledger applies <em>reserve requirements</em>, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM and the full ledger history on disk.</p>
 <p>To submit transactions, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send enough XRP to meet the reserve requirement.</p>
 <p>The current minimum reserve requirement is <strong>20 XRP</strong>. (This is the cost of an address that owns no other objects in the ledger.) Each new <a href="accounts.html">account</a> must set aside this much XRP, which cannot be recovered or sent to others.</p>
-<h2 id="base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</h2>
+<h2 id="base-reserve-and-owner-reserve">Base Reserve and Owner Reserve<a aria-hidden="true" class="hover_anchor" href="#base-reserve-and-owner-reserve"><i class="fa fa-link"></i></a></h2>
 <p>The reserve requirement is divided into two parts:</p>
 <ul>
 <li>The <strong>Base Reserve</strong> is a minimum amount of XRP that is required for every address in the ledger. Currently, this is 20 XRP (<code>20000000</code> drops).</li>
 <li>The <strong>Owner Reserve</strong> is an increase to the reserve requirement for each object that the address owns in the ledger. Currently, this is 5 XRP (<code>5000000</code> drops) per item.</li>
 </ul>
-<h3 id="owner-reserves">Owner Reserves</h3>
+<h3 id="owner-reserves">Owner Reserves<a aria-hidden="true" class="hover_anchor" href="#owner-reserves"><i class="fa fa-link"></i></a></h3>
 <p>Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.</p>
 <ul>
 <li><a href="offer.html">Offers</a> are owned by the address that placed them. Transaction processing automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an <a href="offercancel.html">OfferCancel transaction</a>, or by sending an <a href="offercreate.html">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
@@ -226,15 +226,15 @@
 <li><a href="directorynode.html">Owner directories</a> list all the ledger objects that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.</li>
 <li><a href="checks.html">Checks</a> are owned by the address that created them (the sender, not the destination).</li>
 </ul>
-<h4 id="owner-reserve-edge-cases">Owner Reserve Edge Cases</h4>
+<h4 id="owner-reserve-edge-cases">Owner Reserve Edge Cases<a aria-hidden="true" class="hover_anchor" href="#owner-reserve-edge-cases"><i class="fa fa-link"></i></a></h4>
 <p>The XRP Ledger considers an <a href="offercreate.html">OfferCreate transaction</a> to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the <code>taker_pays</code> currency if such a trust line does not exist. However, if the offer's owner does not hold enough XRP to also meet the owner reserve requirement of the new trust line, the offer is considered unfunded. See also: <a href="offers.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
-<h2 id="going-below-the-reserve-requirement">Going Below the Reserve Requirement</h2>
+<h2 id="going-below-the-reserve-requirement">Going Below the Reserve Requirement<a aria-hidden="true" class="hover_anchor" href="#going-below-the-reserve-requirement"><i class="fa fa-link"></i></a></h2>
 <p>During transaction processing, the <a href="transaction-cost.html">transaction cost</a> destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.</p>
 <p>When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would transfer XRP to others, or increase its own reserve. Even so, the address continues to exist in the ledger and can send other transactions as long as it has enough XRP to pay the transaction cost. The address can become able to send all types of transactions again if it receives enough XRP to meet its reserve requirement again, or if the <a href="#changing-the-reserve-requirements">reserve requirement decreases</a> to less than the address's XRP holdings.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> When an address is below the reserve requirement, it can send new <a href="offercreate.html">OfferCreate transactions</a> to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new <a href="ripplestate.html">trust lines</a>, or <a href="offer.html">Offer nodes in the ledger</a>, so they can only execute trades that consume Offers that are already in the order books.</p>
-<h2 id="changing-the-reserve-requirements">Changing the Reserve Requirements</h2>
+<h2 id="changing-the-reserve-requirements">Changing the Reserve Requirements<a aria-hidden="true" class="hover_anchor" href="#changing-the-reserve-requirements"><i class="fa fa-link"></i></a></h2>
 <p>The XRP Ledger has a mechanism to adjust the reserve requirements for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="fee-voting.html">Fee Voting</a> for more information.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a href="account_objects.html">account_objects method</a></li>
 <li><a href="accountroot.html">AccountRoot Object</a></li>
@@ -598,6 +598,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

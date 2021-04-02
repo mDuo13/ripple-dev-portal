@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/public-rippled-methods/transaction-methods/sign.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/transaction-methods/sign.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,13 +205,13 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="sign">sign</h1>
+        <h1 id="sign">sign<a aria-hidden="true" class="hover_anchor" href="#sign"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>sign</code> method takes a <a href="transaction-formats.html">transaction in JSON format</a> and a <a href="cryptographic-keys.html">seed value</a>, and returns a signed binary representation of the transaction. To contribute one signature to a <a href="multi-signing.html">multi-signed transaction</a>, use the <a href="sign_for.html">sign_for method</a> instead.</p>
 <p><em>By default, this method is <a href="admin-rippled-methods.html">admin-only</a>. It can be used as a public method if the server has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
 <!--_ -->
 <p class="devportal-callout caution"><strong>Caution:</strong> Unless you run the <code>rippled</code> server yourself, you should do <a href="rippleapi-reference.html#sign">local signing with RippleAPI</a> instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.</p>
-<h2 id="request-format">Request Format</h2>
+<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
 
@@ -327,7 +327,7 @@ rippled sign s██████████████████████
 </tr>
 </tbody>
 </table>
-<h3 id="auto-fillable-fields">Auto-Fillable Fields</h3>
+<h3 id="auto-fillable-fields">Auto-Fillable Fields<a aria-hidden="true" class="hover_anchor" href="#auto-fillable-fields"><i class="fa fa-link"></i></a></h3>
 <p>The server automatically tries to fill in certain fields in <code>tx_json</code> (the <a href="transaction-formats.html">Transaction object</a>) automatically if you omit them. The server provides the following fields before signing, unless the request specified <code>offline</code> as <code>true</code>:</p>
 <ul>
 <li><code>Sequence</code> - The server automatically uses the next Sequence number from the sender's account information.<ul>
@@ -342,7 +342,7 @@ rippled sign s██████████████████████
 </li>
 <li><code>Paths</code> - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you used the <a href="ripple_path_find.html">ripple_path_find method</a>. Only filled if <code>build_path</code> is provided.</li>
 </ul>
-<h2 id="response-format">Response Format</h2>
+<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
 
@@ -398,8 +398,8 @@ rippled sign s██████████████████████
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loading:</span> <span class="s2">"/etc/rippled.cfg"</span>
-<span class="err">Connecting</span> <span class="err">to</span> <span class="mf">127.0</span><span class="err">.</span><span class="mf">0.1</span><span class="err">:</span><span class="mi">5005</span>
+<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/rippled.cfg"</span>
+<span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
    <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
@@ -453,7 +453,7 @@ rippled sign s██████████████████████
 <li>Do not paste this error to a public place for debugging.</li>
 <li>Do not display the error message on a website, even by accident.</li>
 </ul>
-<h2 id="possible-errors">Possible Errors</h2>
+<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -573,6 +573,7 @@ rippled sign s██████████████████████
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -634,7 +635,6 @@ rippled sign s██████████████████████
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -674,7 +674,7 @@ rippled sign s██████████████████████
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -713,7 +713,7 @@ rippled sign s██████████████████████
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -906,6 +906,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

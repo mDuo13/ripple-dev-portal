@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/troubleshooting/understanding-log-messages.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -198,6 +198,7 @@
 <li class="level-2"><a href="#rotating-validatedseq">rotating validatedSeq</a></li>
 <li class="level-2"><a href="#shard-no-such-file-or-directory">Shard: No such file or directory</a></li>
 <li class="level-2"><a href="#unable-to-determine-hash-of-ancestor">Unable to determine hash of ancestor</a></li>
+<li class="level-2"><a href="#veto_amendments-section-in-config-file-ignored">[veto_amendments] section in config file ignored</a></li>
 <li class="level-2"><a href="#view-of-consensus-changed-during-open">View of consensus changed during open</a></li>
 <li class="level-2"><a href="#we-are-not-running-on-the-consensus-ledger">We are not running on the consensus ledger</a></li>
 <li class="level-2"><a href="#see-also">See Also</a></li>
@@ -219,10 +220,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="understanding-log-messages">Understanding Log Messages</h1>
+        <h1 id="understanding-log-messages">Understanding Log Messages<a aria-hidden="true" class="hover_anchor" href="#understanding-log-messages"><i class="fa fa-link"></i></a></h1>
 <p>The following sections describe some of the most common types of log messages that can appear in a <a href="the-rippled-server.html"><code>rippled</code> server's</a> debug log and how to interpret them.</p>
 <p>This is an important step in <a href="diagnosing-problems.html">Diagnosing Problems</a> with <code>rippled</code>.</p>
-<h2 id="log-message-structure">Log Message Structure</h2>
+<h2 id="log-message-structure">Log Message Structure<a aria-hidden="true" class="hover_anchor" href="#log-message-structure"><i class="fa fa-link"></i></a></h2>
 <p>The following shows the format of the log file:</p>
 <div class="codehilite"><pre><span></span><code>2020-Jul-08 20:10:17.372178946 UTC Peer:WRN [236] onReadMessage from n9J2CP7hZypxDJ27ZSxoy4VjbaSgsCNaRRJtJkNJM5KMdGaLdRy7 at 197.27.127.136:53046: stream truncated
 2020-Jul-08 20:11:13.582438263 UTC PeerFinder:ERR Logic testing     52.196.126.86:13308 with error, Connection timed out
@@ -238,11 +239,11 @@
 <li>The log message, such as <code>Job: sweep run: 1172ms wait: 0ms</code>.</li>
 </ol>
 <p>For simplicity, the examples in this page omit the date, time, and time zone indicator.</p>
-<h2 id="crashes">Crashes</h2>
+<h2 id="crashes">Crashes<a aria-hidden="true" class="hover_anchor" href="#crashes"><i class="fa fa-link"></i></a></h2>
 <p>Messages in the log that mention runtime errors can indicate that the server crashed. These messages usually start with a message such as one of the following examples:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">Throw&lt;std::runtime_error&gt;</span>
+<div class="codehilite"><pre><span></span><code>Throw&lt;std::runtime_error&gt;
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Terminating thread rippled: main: unhandled St13runtime_error</span>
+<div class="codehilite"><pre><span></span><code>Terminating thread rippled: main: unhandled St13runtime_error
 </code></pre></div>
 <p>If your server always crashes on startup, see <a href="server-wont-start.html">Server Won't Start</a> for possible cases.</p>
 <p>If your server crashes randomly during operation or as a result of particular commands, make sure you are <a href="install-rippled.html">updated</a> to the latest <code>rippled</code> version. If you are on the latest version and your server is still crashing, check the following:</p>
@@ -252,7 +253,7 @@
 <li>Does your server meet the <a href="system-requirements.html">minimum requirements</a> to run <code>rippled</code>? What about the <a href="system-requirements.html#recommended-specifications">recommendations for production servers</a>?</li>
 </ul>
 <p>If none of the above apply, please report the issue to Ripple as a security-sensitive bug. If Ripple can reproduce the crash, you may be eligible for a bounty. See <a class="external-link" href="https://ripple.com/bug-bounty/" target="_blank">https://ripple.com/bug-bounty/ <i aria-hidden="true" class="fa fa-external-link"></i></a> for details.</p>
-<h2 id="already-validated-sequence-at-or-past">Already validated sequence at or past</h2>
+<h2 id="already-validated-sequence-at-or-past">Already validated sequence at or past<a aria-hidden="true" class="hover_anchor" href="#already-validated-sequence-at-or-past"><i class="fa fa-link"></i></a></h2>
 <p>Log messages such as the following indicate that a server received validations for different ledger indexes out of order.</p>
 <div class="codehilite"><pre><span></span><code>Validations:WRN Val for 2137ACEFC0D137EFA1D84C2524A39032802E4B74F93C130A289CD87C9C565011 trusted/full from nHUeUNSn3zce2xQZWNghQvd9WRH6FWEnCBKYVJu2vAizMxnXegfJ signing key n9KcRZYHLU9rhGVwB9e4wEMYsxXvUfgFxtmX25pc1QPNgweqzQf5 already validated sequence at or past 12133663 src=1
 </code></pre></div>
@@ -262,7 +263,7 @@
 <li>The validator described in the message is having network issues.</li>
 <li>The validator described in the message is behaving maliciously.</li>
 </ul>
-<h2 id="async_send-failed">async_send failed</h2>
+<h2 id="async_send-failed">async_send failed<a aria-hidden="true" class="hover_anchor" href="#async_send-failed"><i class="fa fa-link"></i></a></h2>
 <p>The following log message indicates that <a href="configure-statsd.html">StatsD export</a> failed:</p>
 <div class="codehilite"><pre><span></span><code>Collector:ERR async_send failed: Connection refused
 </code></pre></div>
@@ -273,12 +274,12 @@
 </ul>
 <p>Check the <code>[insight]</code> stanza in your <code>rippled</code>'s config file and confirm that you have network connectivity from your <code>rippled</code> server to your StatsD server.</p>
 <p>This error has no other impact on the <code>rippled</code> server, which should continue to work as normal except for the sending of StatsD metrics.</p>
-<h2 id="check-for-upgrade">Check for upgrade</h2>
+<h2 id="check-for-upgrade">Check for upgrade<a aria-hidden="true" class="hover_anchor" href="#check-for-upgrade"><i class="fa fa-link"></i></a></h2>
 <p>The following message indicates that the server has detected that it is running an older software version than at least 60% of its trusted validators:</p>
 <div class="codehilite"><pre><span></span><code>LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running a newer version.
 </code></pre></div>
 <p>This is not strictly a problem, but an old server version is likely to become <a href="amendments.html#amendment-blocked">amendment blocked</a>. You should <a href="install-rippled.html">update <code>rippled</code></a> to the latest stable version. (If you are connected to <a href="parallel-networks.html">devnet</a>, update to the latest nightly version instead.)</p>
-<h2 id="connection-reset-by-peer">Connection reset by peer</h2>
+<h2 id="connection-reset-by-peer">Connection reset by peer<a aria-hidden="true" class="hover_anchor" href="#connection-reset-by-peer"><i class="fa fa-link"></i></a></h2>
 <p>The following log message indicates that a peer <code>rippled</code> server closed a connection:</p>
 <div class="codehilite"><pre><span></span><code>Peer:WRN [012] onReadMessage: Connection reset by peer
 </code></pre></div>
@@ -288,14 +289,14 @@
 <li>Your internet connection to one or more specific peers was cut off.</li>
 <li>Your server may have been overloading the peer with requests, causing the peer to disconnect your server.</li>
 </ul>
-<h2 id="consumer-entry-dropped-with-balance-at-or-above-drop-threshold">Consumer entry dropped with balance at or above drop threshold</h2>
+<h2 id="consumer-entry-dropped-with-balance-at-or-above-drop-threshold">Consumer entry dropped with balance at or above drop threshold<a aria-hidden="true" class="hover_anchor" href="#consumer-entry-dropped-with-balance-at-or-above-drop-threshold"><i class="fa fa-link"></i></a></h2>
 <p>The following log message indicates that a client to the server's public API has been dropped as a result of <a href="rate-limiting.html">rate limiting</a>:</p>
 <div class="codehilite"><pre><span></span><code>Resource:WRN Consumer entry 169.55.164.21 dropped with balance 15970 at or above drop threshold 15000
 </code></pre></div>
 <p>The entry contains the IP address of the client that exceeded its rate limit, and the client's "balance", which is a score estimating the rate at which the client has been using the API. The threshold for dropping a client is <a class="external-link" href="https://github.com/ripple/rippled/blob/06c371544acc3b488b9d9c057cee4e51f6bef7a2/src/ripple/resource/impl/Tuning.h#L34-L35" target="_blank">hardcoded to a score of 15000 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>If you see frequent messages from the same IP address, you may want to block those IP addresses from your network to reduce the load on your server's public API. (For example, you may be able to configure your firewall to block those IP addresses.)</p>
 <p>To avoid being dropped by rate limiting on your own server, <a href="get-started-with-the-rippled-api.html#admin-access">connect as an admin</a>.</p>
-<h2 id="inboundledger-11-timeouts-for-ledger">InboundLedger 11 timeouts for ledger</h2>
+<h2 id="inboundledger-11-timeouts-for-ledger">InboundLedger 11 timeouts for ledger<a aria-hidden="true" class="hover_anchor" href="#inboundledger-11-timeouts-for-ledger"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code>InboundLedger:WRN 11 timeouts for ledger 8265938
 </code></pre></div>
 <p>This indicates that your server is having trouble requesting specific ledger data from its peers. If the <a href="basic-data-types.html#ledger-index">ledger index</a> is much lower than the most recent validated ledger's index as reported by the <a href="server_info.html">server_info method</a>, this probably indicates that your server is downloading a <a href="history-sharding.html">history shard</a>.</p>
@@ -303,12 +304,12 @@
 <div class="codehilite"><pre><span></span><code><span class="k">[ips_fixed]</span>
 <span class="na">s2.ripple.com 51235</span>
 </code></pre></div>
-<h2 id="inboundledger-want-hash">InboundLedger Want hash</h2>
+<h2 id="inboundledger-want-hash">InboundLedger Want hash<a aria-hidden="true" class="hover_anchor" href="#inboundledger-want-hash"><i class="fa fa-link"></i></a></h2>
 <p>Log messages such as the following indicate that the server is requesting ledger data from other servers:</p>
 <div class="codehilite"><pre><span></span><code>InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CDD21E019B
 </code></pre></div>
 <p>This is normal if your server is syncing, backfilling, or downloading <a href="history-sharding.html">history shards</a>.</p>
-<h2 id="loadmonitor-job">LoadMonitor Job</h2>
+<h2 id="loadmonitor-job">LoadMonitor Job<a aria-hidden="true" class="hover_anchor" href="#loadmonitor-job"><i class="fa fa-link"></i></a></h2>
 <p>Messages such as the following occur when a function takes a long time to run (over 11 seconds in this example):</p>
 <div class="codehilite"><pre><span></span><code>2018-Aug-28 22:56:36.180827973 LoadMonitor:WRN Job: gotFetchPack run: 11566ms wait: 0ms
 </code></pre></div>
@@ -329,18 +330,18 @@ LoadMonitor:WRN Job: AcquisitionDone run: 0ms wait: 11566ms
 <span class="k">[shard_db]</span>
 <span class="na">type</span><span class="o">=</span><span class="s">RocksDB</span>
 </code></pre></div>
-<h2 id="no-hash-for-fetch-pack">No hash for fetch pack</h2>
+<h2 id="no-hash-for-fetch-pack">No hash for fetch pack<a aria-hidden="true" class="hover_anchor" href="#no-hash-for-fetch-pack"><i class="fa fa-link"></i></a></h2>
 <p>Messages such as the following are caused by a bug in <code>rippled</code> v1.1.0 and earlier when downloading historical ledgers for <a href="history-sharding.html">history sharding</a>:</p>
 <div class="codehilite"><pre><span></span><code>2018-Aug-28 22:56:21.397076850 LedgerMaster:ERR No hash for fetch pack. Missing Index 7159808
 </code></pre></div>
 <p>These can be safely ignored.</p>
-<h2 id="not-deleting">Not deleting</h2>
+<h2 id="not-deleting">Not deleting<a aria-hidden="true" class="hover_anchor" href="#not-deleting"><i class="fa fa-link"></i></a></h2>
 <p>Messages such as the following occur when <a href="online-deletion.html#interrupting-online-deletion">online deletion is interrupted</a>:</p>
 <div class="codehilite"><pre><span></span><code>SHAMapStore:WRN Not deleting. state: syncing. age 25s
 </code></pre></div>
 <p>The <code>state</code> indicates the <a href="rippled-server-states.html">server state</a>. The <code>age</code> indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)</p>
 <p>During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the <a href="system-requirements.html">system requirements</a>, especially disk I/O, to run online deletion at the same time as everything else the server is doing.</p>
-<h2 id="potential-censorship">Potential Censorship</h2>
+<h2 id="potential-censorship">Potential Censorship<a aria-hidden="true" class="hover_anchor" href="#potential-censorship"><i class="fa fa-link"></i></a></h2>
 <p>Log messages such as the following are issued when the XRP Ledger detects potential transaction censorship. For more information about these log messages and the transaction censorship detector, see <a href="transaction-censorship-detection.html">Transaction Censorship Detection</a>.</p>
 <p><strong>Warning Message</strong></p>
 <div class="codehilite"><pre><span></span><code>LedgerConsensus:WRN Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851545.
@@ -348,7 +349,7 @@ LoadMonitor:WRN Job: AcquisitionDone run: 0ms wait: 11566ms
 <p><strong>Error Message</strong></p>
 <div class="codehilite"><pre><span></span><code>LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7, which we are tracking since ledger 18851530 has not been included as of ledger 18851605. Additional warnings suppressed.
 </code></pre></div>
-<h2 id="rotating-validatedseq">rotating validatedSeq</h2>
+<h2 id="rotating-validatedseq">rotating validatedSeq<a aria-hidden="true" class="hover_anchor" href="#rotating-validatedseq"><i class="fa fa-link"></i></a></h2>
 <p>This message indicates that <a href="online-deletion.html">online deletion</a> has started running:</p>
 <div class="codehilite"><pre><span></span><code>SHAMapStore:WRN rotating  validatedSeq 54635511 lastRotated 54635255 deleteInterval 256 canDelete_ 4294967295
 </code></pre></div>
@@ -390,7 +391,7 @@ LoadMonitor:WRN Job: AcquisitionDone run: 0ms wait: 11566ms
 </code></pre></div>
 <p>The number at the end of the message is the <a href="basic-data-types.html#ledger-index">ledger index</a> of the validated ledger at the time online deletion started, matching the <code>validatedSeq</code> value of the "rotating" message. This becomes the <code>lastRotated</code> value the next time online deletion runs.</p>
 <p>If the server falls out of sync while running online deletion, it interrupts online deletion and writes a <a href="#not-deleting">"Not deleting" log message</a> instead of a "finished rotation" message.</p>
-<h2 id="shard-no-such-file-or-directory">Shard: No such file or directory</h2>
+<h2 id="shard-no-such-file-or-directory">Shard: No such file or directory<a aria-hidden="true" class="hover_anchor" href="#shard-no-such-file-or-directory"><i class="fa fa-link"></i></a></h2>
 <p>A bug in <code>rippled</code> 1.3.1 can cause it to write log messages such as the following when you have <a href="history-sharding.html">history sharding</a> enabled:</p>
 <div class="codehilite"><pre><span></span><code>ShardStore:ERR shard 1804: No such file or directory
 ShardStore:ERR shard 354: No such file or directory
@@ -407,13 +408,18 @@ ShardStore:ERR shard 2236: No such file or directory
 <li>The shard folder was deleted</li>
 </ul>
 <p class="devportal-callout tip"><strong>Tip:</strong> It is generally safe to delete <code>rippled</code>'s database files when the service is stopped, but you should never delete them while the server is running.</p>
-<h2 id="unable-to-determine-hash-of-ancestor">Unable to determine hash of ancestor</h2>
+<h2 id="unable-to-determine-hash-of-ancestor">Unable to determine hash of ancestor<a aria-hidden="true" class="hover_anchor" href="#unable-to-determine-hash-of-ancestor"><i class="fa fa-link"></i></a></h2>
 <p>Log messages such as the following occur when the server sees a validation message from a peer and it does not know the parent ledger version that server is building on. This can occur when the server is not in sync with the rest of the network:</p>
 <div class="codehilite"><pre><span></span><code>Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E seq=12133675
 </code></pre></div>
 <p>During the first 5 to 15 minutes after the server starts up, it is normal for it to be out of sync with the rest of the network and print messages such as these. If the server writes these messages long after starting up, it could indicate a problem. Common causes include unreliable network connections and insufficient <a href="system-requirements.html">hardware specs</a>. This can also happen when other processes running on the same hardware are competing with <code>rippled</code> for resources. (Examples of other processes that may compete with <code>rippled</code> for resources include scheduled backups, virus scanners, and periodic database cleaners.)</p>
 <!--_ -->
-<h2 id="view-of-consensus-changed-during-open">View of consensus changed during open</h2>
+<h2 id="veto_amendments-section-in-config-file-ignored">[veto_amendments] section in config file ignored<a aria-hidden="true" class="hover_anchor" href="#veto_amendments-section-in-config-file-ignored"><i class="fa fa-link"></i></a></h2>
+<p>Log messages such as the following occur when  your <code>rippled.cfg</code> file contains a legacy <code>[veto_amendments]</code> stanza. The first time the server starts on version 1.7.0 or higher, it reads the stanza to set amendment votes; on later restarts, it ignores the <code>[amendments]</code> and <code>[veto_amendments]</code> stanzas and prints this message instead.</p>
+<div class="codehilite"><pre><span></span><code>Amendments:WRN [veto_amendments] section in config file ignored in favor of data in db/wallet.db.
+</code></pre></div>
+<p>To resolve this error, remove the <code>[amendments]</code> and <code>[veto_amendments]</code> stanzas from your config file. For more information, see <a href="amendments.html#amendment-voting">Amendment Voting</a>.</p>
+<h2 id="view-of-consensus-changed-during-open">View of consensus changed during open<a aria-hidden="true" class="hover_anchor" href="#view-of-consensus-changed-during-open"><i class="fa fa-link"></i></a></h2>
 <p>Log messages such as the following occur when a server is not in sync with the rest of the network:</p>
 <div class="codehilite"><pre><span></span><code>LedgerConsensus:WRN View of consensus changed during open status=open,  mode=proposing
 LedgerConsensus:WRN 96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661 to 00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E
@@ -421,12 +427,12 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 </code></pre></div>
 <p>During the first 5 to 15 minutes after the server starts up, it is normal for it to be out of sync with the rest of the network and print messages such as these. If the server writes these messages long after starting up, it could indicate a problem. Common causes include unreliable network connections and insufficient <a href="system-requirements.html">hardware specs</a>. This can also happen when other processes running on the same hardware are competing with <code>rippled</code> for resources. (Examples of other processes that may compete with <code>rippled</code> for resources include scheduled backups, virus scanners, and periodic database cleaners.)</p>
 <!--_ -->
-<h2 id="we-are-not-running-on-the-consensus-ledger">We are not running on the consensus ledger</h2>
+<h2 id="we-are-not-running-on-the-consensus-ledger">We are not running on the consensus ledger<a aria-hidden="true" class="hover_anchor" href="#we-are-not-running-on-the-consensus-ledger"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code>NetworkOPs:WRN We are not running on the consensus ledger
 </code></pre></div>
 <p>During the first 5 to 15 minutes after the server starts up, it is normal for it to be out of sync with the rest of the network and print messages such as these. If the server writes these messages long after starting up, it could indicate a problem. Common causes include unreliable network connections and insufficient <a href="system-requirements.html">hardware specs</a>. This can also happen when other processes running on the same hardware are competing with <code>rippled</code> for resources. (Examples of other processes that may compete with <code>rippled</code> for resources include scheduled backups, virus scanners, and periodic database cleaners.)</p>
 <!--_ -->
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="the-rippled-server.html">The <code>rippled</code> Server</a></li>
@@ -484,6 +490,7 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -497,15 +504,15 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -514,21 +521,21 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -538,24 +545,25 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -582,21 +590,21 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -605,21 +613,21 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -639,6 +647,7 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -677,7 +686,7 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -812,6 +821,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

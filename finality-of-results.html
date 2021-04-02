@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-system-basics/transaction-basics/finality-of-results.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-system-basics/transaction-basics/finality-of-results.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -202,7 +202,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="finality-of-results">Finality of Results</h1>
+        <h1 id="finality-of-results">Finality of Results<a aria-hidden="true" class="hover_anchor" href="#finality-of-results"><i class="fa fa-link"></i></a></h1>
 <p>The order in which transactions apply to the consensus <a href="ledgers.html">ledger</a> is not final until a ledger is closed and the exact transaction set is approved by the <a href="intro-to-consensus.html">consensus process</a>. A transaction that succeeded initially could still fail, and a transaction that failed initially could still succeed. Additionally, a transaction that was rejected by the consensus process in one round could achieve consensus in a later round.</p>
 <p>A validated ledger can include successful transactions (<code>tes</code> result codes) as well as failed transactions (<code>tec</code> result codes). No transaction with any other result is included in a ledger.</p>
 <p>For any other result code, it can be difficult to determine if the result is final. The following table summarizes when a transaction's outcome is final, based on the result code from submitting the transaction:</p>
@@ -237,7 +237,7 @@
 </tbody>
 </table>
 <p>Any other transaction result is potentially not final. In that case, the transaction could still succeed or fail later, especially if conditions change such that the transaction is no longer prevented from applying. For example, trying to send a non-XRP currency to an account that does not exist yet would fail, but it could succeed if another transaction sends enough XRP to create the destination account. A server might even store a temporarily-failed, signed transaction and then successfully apply it later without asking first.</p>
-<h2 id="how-can-non-final-results-change">How can non-final results change?</h2>
+<h2 id="how-can-non-final-results-change">How can non-final results change?<a aria-hidden="true" class="hover_anchor" href="#how-can-non-final-results-change"><i class="fa fa-link"></i></a></h2>
 <p>When you initially submit a transaction, the <code>rippled</code> server tentatively applies that transaction to its current open ledger, then returns the tentative <a href="transaction-results.html">transaction results</a> from doing so. However, the transaction's final result may be very different than its tentative results, for several reasons:</p>
 <ul>
 <li>
@@ -273,10 +273,10 @@
 <p>A <a href="payment.html">Payment transaction</a> that tentatively failed because the sender did not have enough funds may later succeed because another transaction delivering the necessary funds came first in the canonical order. The reverse is also possible: a transaction that tentatively succeeded may fail because a transaction delivering the necessary funds did not come first after being put into canonical order.</p>
 </li>
 </ul>
-<p class="devportal-callout tip"><strong>Tip:</strong> For this reason, when running tests against the XRP Ledger, be sure to wait for a ledger close in between transactions if you have several accounts affecting the same data. If you are testing against a server in <a href="rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode">stand-alone-mode</a>, you must <a href="advance-the-ledger-in-stand-alone-mode.html">manually close the ledger</a> in such cases.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> For this reason, when running tests against the XRP Ledger, be sure to wait for a ledger close in between transactions if you have several accounts affecting the same data. If you are testing against a server in <a href="rippled-server-modes.html#stand-alone-mode">stand-alone mode</a>, you must <a href="advance-the-ledger-in-stand-alone-mode.html">manually close the ledger</a> in such cases.</p>
 </li>
 </ul>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a href="look-up-transaction-results.html">Look up Transaction Results</a></li>
 <li><a href="transaction-results.html">Transaction Results Reference</a></li>
@@ -638,6 +638,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

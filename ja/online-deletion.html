@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>オンライン削除 - XRP Ledger Dev Portal (日本語)</title>
+    <title>オンライン削除 - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="オンライン削除 | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/online-deletion.html" />
+    <meta property="og:description" content="オンライン削除は古いトランザクションと状態の履歴を消去します。" />
+    <meta name="description" content="オンライン削除は古いトランザクションと状態の履歴を消去します。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/online-deletion.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/online-deletion.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/online-deletion.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/the-rippled-server/ledger-history/online-deletion.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/the-rippled-server/ledger-history/online-deletion.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -184,16 +208,16 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="オンライン削除">オンライン削除</h1>
+        <h1 id="オンライン削除">オンライン削除<a aria-hidden="true" class="hover_anchor" href="#オンライン削除"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/app/misc/SHAMapStoreImp.cpp" target="_blank" title="Source">[ソース]<br/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>オンライン削除機能により、<code>rippled</code>サーバーはレジャーの古いバージョンのローカルコピーを削除できます。これにより、時間とともにディスク使用量が急増しないようにできます。デフォルトの構成ファイルにはオンライン削除の自動実行が設定されていますが、指示があった場合にのみオンライン削除を実行するようにも設定できます。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.27.0" target="_blank" title="新規: rippled 0.27.0"><img alt="新規: rippled 0.27.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.27.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>サーバーは、レジャーおよびそのすべての残高と設定を、常に完全かつ <em>最新</em> の状態に維持します。削除されるデータには、保存されている履歴よりも古いレジャー状態の古いトランザクションやバージョンがあります。</p>
 <p>デフォルトの構成ファイルは、<code>rippled</code>サーバーが2000の最新レジャーバージョンを保持し、古いデータを自動的に削除するように設定されています。</p>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> オンライン削除を使用しても、同一期間のレジャーデータを保管するのに必要なディスク容量は時間の経過とともに増加します。これは、個々のレジャーバージョンのサイズが時間とともに増加する傾向にあるためです。蓄積データが増加するペースは、古いレジャーを削除しない場合に比べると、非常にゆっくりとしています。必要なディスク容量に関する詳細は、<a href="capacity-planning.html">容量の計画</a>を参照してください。</p>
-<h2 id="背景">背景</h2>
+<h2 id="背景">背景<a aria-hidden="true" class="hover_anchor" href="#背景"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>サーバーでは<a href="ledger-history.html">レジャー履歴</a>がその <em>レジャーストアー</em> に保管されます。このデータは時間とともに蓄積されます。</p>
 <p>レジャーストアー内ではレジャーデータの「重複排除」が行われます。つまり、バージョン間で変更されていないデータは1回だけ保存されます。レジャーストアーのレコード自体には、レコードが記録されているレジャーバージョンの記載はありません。オンライン削除処理において、古いレジャーバージョンでのみ使用されるレコードが特定されます。この処理には時間がかかり、またディスクI/Oとアプリケーションキャッシュに影響するため、レジャーを閉鎖するたびに古いデータを削除することは現実的ではありません。</p>
-<h2 id="オンライン削除の動作">オンライン削除の動作</h2>
+<h2 id="オンライン削除の動作">オンライン削除の動作<a aria-hidden="true" class="hover_anchor" href="#オンライン削除の動作"><i class="fa fa-link"></i></a></h2>
 <p>オンライン削除の設定では、<code>rippled</code>サーバーがレジャーストアーで使用可能な状態で維持するレジャーバージョンの数が設定されます。ただし、指定される数は目安であり、厳格に適用されるものではありません。</p>
 <ul>
 <li>サーバーでは、設定された数のレジャーバージョンよりも新しいデータが削除されることはありませんが、長期にわたってサーバーが稼働していない場合や、ネットワークとの同期が失われた場合には、サーバーに含まれるレジャーバージョンの数が使用可能な数よりも少ないことがあります。（サーバーは一部の履歴の埋め戻しを試みます。詳細は、<a href="ledger-history.html#履歴の取得">履歴の取得</a>を参照してください。）</li>
@@ -219,11 +243,11 @@
 <p>オンライン削除が有効であり、自動的に実行される場合（つまり指示による削除が無効な場合）、保管されるレジャーデータの量は、最低でもサーバーに設定された保持レジャーバージョン数に相当し、最大でその約2倍です。</p>
 <p>オンライン削除が実行されても、ディスク上のSQLiteデータベースファイルのサイズは減少しません。これらのファイルの中に新しいデータを入れるのに再利用できるスペースが確保されるだけです。オンライン削除によって、レジャーストアーが含まれるRocksDB または NuDB データベースファイルのサイズは <em>減少します</em> 。</p>
 <p>サーバーでは、削除範囲を決定する際に検証済みレジャーバージョンの数だけがカウントされます。（ローカルネットワーク接続が停止していたか、グローバルXRP Ledgerネットワークがコンセンサスに達しなかったことが原因で）サーバーが新しいレジャーバージョンを検証できない例外的な状況にある場合、ネットワークが復旧した際に迅速に回復できるように、<code>rippled</code>は引き続きレジャーを閉鎖します。この場合、サーバーには未検証の閉鎖済みレジャーが多数蓄積されます。このような未検証レジャーは、オンライン削除の実行までにサーバーに保持される <em>検証済み</em> レジャーの数には影響しません。</p>
-<h3 id="オンライン削除の中断">オンライン削除の中断</h3>
+<h3 id="オンライン削除の中断">オンライン削除の中断<a aria-hidden="true" class="hover_anchor" href="#オンライン削除の中断"><i class="fa fa-link"></i></a></h3>
 <p><a href="rippled-server-states.html">サーバーの状態</a>が<code>full</code>より優先順位の低い状態になると、オンライン削除は自動的に停止します。この場合、サーバーはプレフィクス<code>SHAMapStore::WRN</code>が付いたログメッセージを書き込みます。サーバーは完全に同期された後、次の検証済みレジャーバージョン以降からオンライン削除の再開を試みます。</p>
 <p>サーバーを停止した場合や、オンライン削除の実行中にサーバーがクラッシュした場合には、サーバーが再起動し、完全に同期されれば、オンライン削除が再開されます。</p>
 <p>オンライン削除を一時的に無効にするには、引数<code>never</code>を指定した<a href="can_delete.html">can_deleteメソッド</a>を使用できます。この変更は、<a href="can_delete.html">can_delete</a> をもう一度呼び出してオンライン削除を再度有効にするまで保持されます。オンライン削除の実行時点の制御についての詳細は、<a href="#指示による削除">指示による削除</a>を参照してください。</p>
-<h2 id="設定">設定</h2>
+<h2 id="設定">設定<a aria-hidden="true" class="hover_anchor" href="#設定"><i class="fa fa-link"></i></a></h2>
 <p>オンライン削除に関連する設定は以下のとおりです。</p>
 <ul>
 <li>
@@ -250,16 +274,16 @@
 </li>
 </ul>
 <p>さまざまな量の履歴の保管に必要なディスク容量の見積もりについては、<a href="capacity-planning.html#ディスク容量">容量の計画</a>を参照してください。</p>
-<h3 id="指示による削除">指示による削除</h3>
+<h3 id="指示による削除">指示による削除<a aria-hidden="true" class="hover_anchor" href="#指示による削除"><i class="fa fa-link"></i></a></h3>
 <p>デフォルトの構成ファイルでは、オンライン削除が定期的に自動で実行されるように設定されています。構成ファイルに<code>online_delete</code>間隔が指定されていない場合、オンライン削除は実行されません。構成ファイルで<code>advisory_delete</code>設定が有効になっている場合、オンライン削除は、管理者が<a href="can_delete.html">can_deleteメソッド</a>を使用してオンライン削除をトリガーしたときにのみ実行されます。</p>
 <p>指示による削除とスケジュール済みジョブを使用すれば、閉鎖済みレジャーバージョン数の代わりに、時刻に基づいて自動削除をトリガーできます。サーバーの使用率が高い場合、オンライン削除によって負荷が追加されるとサーバーの処理が遅延し、コンセンサスネットワークと一時的に非同期になることがあります。この場合は、指示による削除を使用して、オンライン削除をオフピーク期間にのみ実行するようにスケジュールできます。</p>
 <p>指示による削除はその他の目的でも使用できます。たとえば、トランザクションデータを削除する前に、そのデータが別のサーバーにバックアップされていることを手動で確認できます。あるいは、トランザクションデータを削除する前に、別のタスクによるそのデータの処理が完了していることを手動で確認できます。</p>
 <p><code>can_delete</code> API メソッドは、構成ファイルで <code>advisory_delete</code> が有効になっている場合は、一般的な自動削除または特定のレジャーバージョンまでの自動削除を有効または無効にできます。<code>rippled</code>サーバーの再起動前に構成ファイルで<code>advisory_delete</code>を無効にしている場合を除き、これらの設定はサーバーを再起動しても維持されます。</p>
-<h2 id="仕組み">仕組み</h2>
+<h2 id="仕組み">仕組み<a aria-hidden="true" class="hover_anchor" href="#仕組み"><i class="fa fa-link"></i></a></h2>
 <p>オンライン削除では2つのデータベースが作成されます。このため、「古い」読み取り専用データベースと、書き込み可能な「現行」データベースが常に存在します。<code>rippled</code>サーバーはいずれかのデータベースからオブジェクトを読み取ることができます。このため、現行レジャーバージョンにはいずれかのデータベースのオブジェクトが含まれます。レジャーバージョン間でレジャー内のオブジェクトに変更がない場合、そのオブジェクトのコピーが1つだけデータベースに残ります。これにより、オブジェクトのコピーが重複してサーバーに保存されることはありません。レジャーバージョンの更新によりオブジェクトが変更されると、サーバーは変更されたオブジェクトを「新しい」データベースに保存し、古いバージョンのオブジェクト（古いレジャーバージョンで使用されているオブジェクト）は「古い」データベースに残ります。</p>
 <p>オンライン削除を実行する場合、サーバーはまず、最も古いレジャーバージョンの中から保持するものを確認し、そのレジャーバージョンのすべてのオブジェクトを読み取り専用の「古い」データベースから「現行」データベースにコピーします。これにより、「現行」データベースには、選択したレジャーバージョンとそれ以降のすべての新しいバージョンで使用されるオブジェクトがすべて含まれることになります。次に、サーバーは「古い」データベースを削除し、既存の「現行」データベースを「古い」読み取り専用データベースにします。これ以降、サーバーは新しい「現行」データベースを始動し、新たな変更をすべてこのデータベースに保存します。</p>
 <p><img alt="オンライン削除で2つのデータベースがどのように使用されるかを示す図" src="img/online-deletion-process.ja.png"/></p>
-<h2 id="関連項目">関連項目</h2>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a href="capacity-planning.html">容量の計画</a></li>
 <li><a href="can_delete.html">can_deleteメソッド</a> - APIリファレンス資料</li>
@@ -333,6 +357,7 @@
                           <li><a class="subpage" href="cryptographic-keys.html">暗号鍵</a></li>
                           <li><a class="subpage" href="multi-signing.html">マルチ署名</a></li>
                           <li><a class="subpage" href="reserves.html">準備金</a></li>
+                          <li><a class="subpage" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                           <li><a class="subpage" href="depositauth.html">Deposit Authorization</a></li>
 
                       <li><a class="nosubcat-page" href="fees.html">手数料（曖昧さの回避）</a></li>
@@ -352,15 +377,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_20">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_20" aria-expanded="true" aria-controls="sidenav_collapse_20"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_21">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="payment-types.html">支払いのタイプ</a>
                 <!-- <a class="sidenav_cat_title" href="payment-types.html">Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_20" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_20">
+            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="direct-xrp-payments.html">XRPによる直接支払</a></li>
@@ -372,21 +397,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse20 -->
+            </div><!-- /#sidenav_collapse21 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_28">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_28" aria-expanded="true" aria-controls="sidenav_collapse_28"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_29">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_29" aria-expanded="true" aria-controls="sidenav_collapse_29"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="issued-currencies.html">発行済み通貨</a>
                 <!-- <a class="sidenav_cat_title" href="issued-currencies.html">Issued Currencies</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_28" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_28">
+            <div id="sidenav_collapse_29" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_29">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="issued-currencies-overview.html">発行済み通貨の概要</a></li>
@@ -401,21 +426,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse28 -->
+            </div><!-- /#sidenav_collapse29 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_39">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_39" aria-expanded="true" aria-controls="sidenav_collapse_39"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="decentralized-exchange.html">分散型取引所</a>
                 <!-- <a class="sidenav_cat_title" href="decentralized-exchange.html">Decentralized Exchange</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_39" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_39">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="offers.html">オファー</a></li>
@@ -424,27 +449,28 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse39 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_43">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_43" aria-expanded="true" aria-controls="sidenav_collapse_43"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="consensus-network.html">コンセンサスネットワーク</a>
                 <!-- <a class="sidenav_cat_title" href="consensus-network.html">Consensus Network</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_43" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_43">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="consensus.html">コンセンサス</a></li>
                       <li><a class="nosubcat-page" href="consensus-principles-and-rules.html">コンセンサスの原理とルール</a></li>
                       <li><a class="nosubcat-page" href="consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a></li>
                       <li><a class="nosubcat-page" href="invariant-checking.html">Invariant Checking</a></li>
+                      <li><a class="nosubcat-page" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                       <li><a class="nosubcat-page" href="transaction-queue.html">トランザクションキュー</a></li>
                       <li><a class="nosubcat-page" href="about-canceling-a-transaction.html">トランザクションの取消しについて</a></li>
                       <li><a class="nosubcat-page" href="transaction-malleability.html">トランザクション展性</a></li>
@@ -458,21 +484,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse43 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_55">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_55" aria-expanded="true" aria-controls="sidenav_collapse_55"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_57">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_57" aria-expanded="true" aria-controls="sidenav_collapse_57"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="the-rippled-server.html">rippledサーバー</a>
                 <!-- <a class="sidenav_cat_title" href="the-rippled-server.html">The rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_55" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_55">
+            <div id="sidenav_collapse_57" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_57">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="rippled-server-modes.html">rippledサーバーのモード</a></li>
@@ -487,7 +513,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse55 -->
+            </div><!-- /#sidenav_collapse57 -->
 
           </div><!-- /.card -->
 
@@ -510,13 +536,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -536,11 +562,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -573,7 +599,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -622,6 +648,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

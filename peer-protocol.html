@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/the-rippled-server/peer-protocol.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/the-rippled-server/peer-protocol.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -207,7 +207,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="peer-protocol">Peer Protocol</h1>
+        <h1 id="peer-protocol">Peer Protocol<a aria-hidden="true" class="hover_anchor" href="#peer-protocol"><i class="fa fa-link"></i></a></h1>
 <p>Servers in the XRP Ledger communicate to each other using the XRP Ledger peer protocol, also known as RTXP.</p>
 <p>The peer protocol is the main mode of communication between servers in the XRP Ledger. All information about the behavior, progress, and connectivity of the XRP Ledger passes through the peer protocol. Examples of peer-to-peer communications include all of the following:</p>
 <ul>
@@ -217,12 +217,12 @@
 <li>Proposing a set of transactions for consensus, or sharing the calculated outcome of applying a consensus transaction set.</li>
 </ul>
 <p>To establish a peer-to-peer connection, one server connects to another via HTTPS and requests an <a class="external-link" href="https://tools.ietf.org/html/rfc7230#section-6.7" target="_blank">HTTP upgrade <i aria-hidden="true" class="fa fa-external-link"></i></a> to switch to RTXP. (For more information, see the <a class="external-link" href="https://github.com/ripple/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake" target="_blank">Overlay Network <i aria-hidden="true" class="fa fa-external-link"></i></a> article in the <a class="external-link" href="https://github.com/ripple/rippled" target="_blank"><code>rippled</code> repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.)</p>
-<h2 id="peer-discovery">Peer Discovery</h2>
+<h2 id="peer-discovery">Peer Discovery<a aria-hidden="true" class="hover_anchor" href="#peer-discovery"><i class="fa fa-link"></i></a></h2>
 <p>The XRP Ledger uses a "gossip" protocol to help find servers find others to connect to in the XRP Ledger network. Whenever a server starts up, it reconnects to any other peers it previously connected to. As a fallback, it uses the <a class="external-link" href="https://github.com/ripple/rippled/blob/fa57859477441b60914e6239382c6fba286a0c26/src/ripple/overlay/impl/OverlayImpl.cpp#L518-L525" target="_blank">hardcoded public hubs <i aria-hidden="true" class="fa fa-external-link"></i></a>. After a server successfully connects to a peer, it asks that peer for the contact information (generally, IP address and port) of other XRP Ledger servers that may also be seeking peers. The server can then connect to those servers, and ask them for the contact information of yet more XRP Ledger servers to peer with. Through this process, the server establishes enough peer connections that it can remain reliably connected to the rest of the network even if it loses a connection to any single peer.</p>
 <p>Typically, a server needs to connect to a public hub only once, for a short amount of time, to find other peers. After doing so, the server may or may not remain connected to the hub, depending on how stable its network connection is, how busy the hub is, and how many other high-quality peers the server finds. The server saves the addresses of these other peers so it can try reconnecting directly to those peers later, after a network outage or a restart.</p>
 <p>The <a href="peers.html">peers method</a> shows a list of peers your server is currently connected to.</p>
 <p>For certain high-value servers (such as important <a href="rippled-server-modes.html#rippled-server-modes">validators</a>) you may prefer not to have your server connect to untrusted peers through the peer discovery process. In this case, you can configure your server to use <a href="#private-peers">private peers</a> only.</p>
-<h2 id="peer-protocol-port">Peer Protocol Port</h2>
+<h2 id="peer-protocol-port">Peer Protocol Port<a aria-hidden="true" class="hover_anchor" href="#peer-protocol-port"><i class="fa fa-link"></i></a></h2>
 <p>To participate in the XRP Ledger, <code>rippled</code> servers connect to arbitrary peers using the peer protocol. (All peers are treated as untrusted, unless they are <a href="clustering.html">clustered</a> with the current server.)</p>
 <p>Ideally, the server should be able to send <em>and</em> receive connections on the peer port. You should <a href="forward-ports-for-peering.html">forward the port used for the peer protocol through your firewall</a> to the <code>rippled</code> server.</p>
 <p>IANA <a class="external-link" href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=2459" target="_blank">has assigned port <strong>2459</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> for the XRP Ledger peer protocol, but for compatibility with legacy systems, the <a class="external-link" href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg" target="_blank">default <code>rippled</code> config file <i aria-hidden="true" class="fa fa-external-link"></i></a> listens for incoming peer protocol connections on <strong>port 51235</strong> on all network interfaces. If you run a server, you can configure which port(s) your server listens on using the <code>rippled.cfg</code> file.</p>
@@ -233,11 +233,11 @@
 <span class="na">protocol</span> <span class="o">=</span> <span class="s">peer</span>
 </code></pre></div>
 <p>The peer protocol port also serves <a href="peer-port-methods.html">special peer port methods</a>.</p>
-<h2 id="node-key-pair">Node Key Pair</h2>
+<h2 id="node-key-pair">Node Key Pair<a aria-hidden="true" class="hover_anchor" href="#node-key-pair"><i class="fa fa-link"></i></a></h2>
 <p>When a server first starts up, it generates a <em>node key pair</em> to use to identify itself in peer protocol communications. The server uses its key to sign all its peer protocol communications. This makes it possible to reliably identify and verify the integrity of messages from another server in the peer-to-peer network even if that server's messages are being relayed by untrusted peers.</p>
 <p>The node key pair is saved in the database and reused when the server restarts. If you delete the server's databases, it creates a new node key pair, effectively coming online with a different identity. To reuse the same key pair even if the databases are deleted, you can configure the server with a <code>[node_seed]</code> stanza. To generate a value suitable for use in the <code>[node_seed]</code> stanza, use the <a href="validation_create.html">validation_create method</a>.</p>
 <p>The node key pair also identifies other servers for purposes of <a href="clustering.html">clustering</a> or <a href="#fixed-peers-and-peer-reservations">reserving peer slots</a>. If you have a cluster of servers, you should configure each server in the cluster with a unique <code>[node_seed]</code> setting. For more information on setting up a cluster, see <a href="cluster-rippled-servers.html">Cluster <code>rippled</code> Servers</a>.</p>
-<h2 id="fixed-peers-and-peer-reservations">Fixed Peers and Peer Reservations</h2>
+<h2 id="fixed-peers-and-peer-reservations">Fixed Peers and Peer Reservations<a aria-hidden="true" class="hover_anchor" href="#fixed-peers-and-peer-reservations"><i class="fa fa-link"></i></a></h2>
 <p>Normally, a <code>rippled</code> server attempts to maintain a healthy number of peers, and automatically connects to untrusted peers up to a maximum number. You can configure a <code>rippled</code> server to remain connected to specific peer servers in several ways:</p>
 <ul>
 <li>Use <strong>Fixed Peers</strong> to remain always connected to specific other peers based on their IP addresses. This only works if the peers have fixed IP addresses. Use the <code>[ips_fixed]</code> config stanza to configure fixed peers. This is a necessary part of <a href="clustering.html">clustering</a> or <a href="#private-peers">private peers</a>. Fixed peers are defined in the config file, so changes only apply after restarting the server. Fixed peers are most useful for keeping servers connected if those servers are run by the same person or organization.</li>
@@ -246,9 +246,9 @@
 <p>In the following cases, a <code>rippled</code> server does not connect to untrusted peers:</p>
 <ul>
 <li>If the server is configured as a <a href="#private-peers">private peer</a>, it connects <em>only</em> to its fixed peers.</li>
-<li>If the server is running in <a href="rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode">stand-alone mode</a> it does not connect to <em>any</em> peers.</li>
+<li>If the server is running in <a href="rippled-server-modes.html#stand-alone-mode">stand-alone mode</a> it does not connect to <em>any</em> peers.</li>
 </ul>
-<h2 id="private-peers">Private Peers</h2>
+<h2 id="private-peers">Private Peers<a aria-hidden="true" class="hover_anchor" href="#private-peers"><i class="fa fa-link"></i></a></h2>
 <p>You can configure a <code>rippled</code> server to act as a "private" server to keep its IP address hidden from the general public. This can be a useful precaution against denial of service attacks and intrusion attempts on important <code>rippled</code> servers such as trusted validators. To participate in the peer-to-peer network, a private server must be configured to connect to at least one non-private server, which relays its messages to the rest of the network.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> If you configure a private server without any <a href="#fixed-peers-and-peer-reservations">fixed peers</a>, the server cannot connect to the network, so it cannot know network state, broadcast transactions, or participate in the consensus process.</p>
 <p>Configuring a server as a private server has several effects:</p>
@@ -261,7 +261,7 @@
 <p class="devportal-callout caution"><strong>Caution:</strong> It is possible to modify a server's source code so that it ignores this request and shares its immediate peers' IP addresses anyway. You should configure your private server to connect only to servers that you know are not modified in this way.</p>
 </li>
 </ul>
-<h3 id="pros-and-cons-of-peering-configurations">Pros and Cons of Peering Configurations</h3>
+<h3 id="pros-and-cons-of-peering-configurations">Pros and Cons of Peering Configurations<a aria-hidden="true" class="hover_anchor" href="#pros-and-cons-of-peering-configurations"><i class="fa fa-link"></i></a></h3>
 <p>To be part of the XRP Ledger, a <code>rippled</code> server must be connected to the rest of the open peer-to-peer network. Roughly speaking, there are three categories of configurations for how a <code>rippled</code> server connects to the network:</p>
 <ul>
 <li>Using <strong>discovered peers</strong>. The server connects to any untrusted servers it finds and stays connected as long as those servers behave appropriately. (For example, they don't request too much data, their network connections are stable, and they appear to be following the same <a href="parallel-networks.html">network</a>.) This is the default.</li>
@@ -313,9 +313,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="configuring-a-private-server">Configuring a Private Server</h3>
+<h3 id="configuring-a-private-server">Configuring a Private Server<a aria-hidden="true" class="hover_anchor" href="#configuring-a-private-server"><i class="fa fa-link"></i></a></h3>
 <p>To configure your server as a private server, set the <code>[peer_private]</code> setting to <code>1</code> in the config file. For detailed instructions, see <a href="configure-a-private-server.html">Configure a Private Server</a>.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="consensus.html">Consensus</a></li>
@@ -700,6 +700,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/use-complex-payment-types/use-checks/cash-a-check-for-an-exact-amount.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -213,11 +213,11 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="cash-a-check-for-an-exact-amount">Cash a Check for an Exact Amount</h1>
+        <h1 id="cash-a-check-for-an-exact-amount">Cash a Check for an Exact Amount<a aria-hidden="true" class="hover_anchor" href="#cash-a-check-for-an-exact-amount"><i class="fa fa-link"></i></a></h1>
 <p><em>Added by the <a href="known-amendments.html#checks">Checks amendment</a>.</em></p>
 <p>As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive any exact amount up to the amount specified in the Check by sending a <a href="checkcash.html">CheckCash transaction</a> with an <code>Amount</code> field. You would cash a Check this way if you want to receive a specific amount, for example to pay off an invoice or bill exactly.</p>
 <p>The specified recipient can also <a href="cash-a-check-for-a-flexible-amount.html">cash the check for a flexible amount</a>.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>The prerequisites for cashing a check are the same whether you are cashing it for an exact amount or a flexible amount.</p>
 <ul>
 <li>You need the ID of a Check object currently in the ledger.<ul>
@@ -235,7 +235,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-prepare-the-checkcash-transaction">1. Prepare the CheckCash transaction</h2>
+<h2 id="1-prepare-the-checkcash-transaction">1. Prepare the CheckCash transaction<a aria-hidden="true" class="hover_anchor" href="#1-prepare-the-checkcash-transaction"><i class="fa fa-link"></i></a></h2>
 <p>Figure out the values of the <a href="checkcash.html">CheckCash transaction</a> fields. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be <a href="transaction-common-fields.html#auto-fillable-fields">auto-filled</a> when signing:</p>
 <table>
 <thead>
@@ -268,7 +268,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="example-checkcash-preparation-for-an-exact-amount">Example CheckCash Preparation for an exact amount</h3>
+<h3 id="example-checkcash-preparation-for-an-exact-amount">Example CheckCash Preparation for an exact amount<a aria-hidden="true" class="hover_anchor" href="#example-checkcash-preparation-for-an-exact-amount"><i class="fa fa-link"></i></a></h3>
 <p>The following examples show how to prepare a transaction to cash a Check for a fixed amount.</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">JSON-RPC, WebSocket, or Commandline</a></li><li><a href="#code-0-1">RippleAPI</a></li></ul>
 
@@ -282,15 +282,15 @@
 </code></pre></div></div>
 
 <div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span>
-<span class="kr">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
 
 <span class="c1">// This example connects to a public Test Net server</span>
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
 
-  <span class="kr">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="s1">'rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis'</span>
-  <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="s1">'rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis'</span>
+  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1">// Allow up to 60 ledger versions (~5 min) instead of the default 3 versions</span>
     <span class="c1">// before this transaction fails permanently.</span>
     <span class="s2">"maxLedgerVersionOffset"</span><span class="o">:</span> <span class="mf">60</span>
@@ -329,10 +329,10 @@
 <span class="c1">// Disconnected</span>
 </code></pre></div></div>
 </div>
-<h2 id="2-sign-the-checkcash-transaction">2. Sign the CheckCash transaction</h2>
+<h2 id="2-sign-the-checkcash-transaction">2. Sign the CheckCash transaction<a aria-hidden="true" class="hover_anchor" href="#2-sign-the-checkcash-transaction"><i class="fa fa-link"></i></a></h2>
 <p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
 <p>In all cases, note the signed transaction's identifying hash for later. <!--#{ fix md highlighting_ #}--></p>
-<h3 id="example-request">Example Request</h3>
+<h3 id="example-request">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled sign s████████████████████████████ <span class="s1">'{</span>
@@ -344,11 +344,11 @@
 <span class="s1">}'</span>
 </code></pre></div></div>
 </div>
-<h3 id="example-response">Example Response</h3>
+<h3 id="example-response">Example Response<a aria-hidden="true" class="hover_anchor" href="#example-response"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">Commandline</a></li></ul>
 
-<div class="code_sample" id="code-2-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loading:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
-<span class="mi">2018</span><span class="err">-Jan</span><span class="mi">-24</span> <span class="mi">01</span><span class="err">:</span><span class="mi">17</span><span class="err">:</span><span class="mi">54</span> <span class="err">HTTPClient:NFO</span> <span class="err">Connecting</span> <span class="err">to</span> <span class="mf">127.0</span><span class="err">.</span><span class="mf">0.1</span><span class="err">:</span><span class="mi">5005</span>
+<div class="code_sample" id="code-2-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
+<span class="mi">2018-</span><span class="err">Ja</span><span class="kc">n</span><span class="mi">-24</span> <span class="mi">01</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">54</span> <span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span> <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
    <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
@@ -370,20 +370,20 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="3-submit-the-signed-checkcash-transaction">3. Submit the signed CheckCash transaction</h2>
+<h2 id="3-submit-the-signed-checkcash-transaction">3. Submit the signed CheckCash transaction<a aria-hidden="true" class="hover_anchor" href="#3-submit-the-signed-checkcash-transaction"><i class="fa fa-link"></i></a></h2>
 <p>Take the signed transaction blob from the previous step and submit it to a <code>rippled</code> server. You can do this safely even if you do not run the <code>rippled</code> server. The response contains a provisional result, which should be <code>tesSUCCESS</code>, but this result is <a href="finality-of-results.html">usually not final</a>. A provisional response of <code>terQUEUED</code> is also OK, since <a href="transaction-cost.html#queued-transactions">queued transactions</a> are generally included in the next open ledger version (usually about 10 seconds after submission).</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> If the preliminary result is <code>tefMAX_LEDGER</code>, the transaction has failed permanently because its <code>LastLedgerSequence</code> parameter is lower than the current ledger. This happens when you take longer than the expected number of ledger versions between preparing and submitting the transaction. If this occurs, <a href="#1-prepare-the-checkcash-transaction">start over from step 1</a> with a higher <code>LastLedgerSequence</code> value. <!--#{ fix md highlighting_ #}--></p>
-<h3 id="example-request-1">Example Request</h3>
+<h3 id="example-request-1">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request-1"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-3-0" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled submit 120011228000000024000000015018838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334614000000005F5E10068400000000000000C732102F135B14C552968B0ABE8493CC4C5795A7484D73F6BFD01379F73456F725F66ED74473045022100C64278AC90B841CD3EA9889A4847CAB3AC9927057A34130810FAA7FAC0C6E3290220347260A4C0A6DC9B699DA12510795B2B3414E1FA222AF743226345FBAAEF937C811449FF0C73CA6AF9733DA805F76CA2C37776B7C46B
 </code></pre></div></div>
 </div>
-<h3 id="example-response-1">Example Response</h3>
+<h3 id="example-response-1">Example Response<a aria-hidden="true" class="hover_anchor" href="#example-response-1"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">Commandline</a></li></ul>
 
-<div class="code_sample" id="code-4-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loading:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
-<span class="mi">2018</span><span class="err">-Jan</span><span class="mi">-24</span> <span class="mi">01</span><span class="err">:</span><span class="mi">17</span><span class="err">:</span><span class="mi">54</span> <span class="err">HTTPClient:NFO</span> <span class="err">Connecting</span> <span class="err">to</span> <span class="mf">127.0</span><span class="err">.</span><span class="mf">0.1</span><span class="err">:</span><span class="mi">5005</span>
+<div class="code_sample" id="code-4-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
+<span class="mi">2018-</span><span class="err">Ja</span><span class="kc">n</span><span class="mi">-24</span> <span class="mi">01</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">54</span> <span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span> <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
   <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
@@ -408,24 +408,24 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="4-wait-for-validation">4. Wait for validation</h2>
+<h2 id="4-wait-for-validation">4. Wait for validation<a aria-hidden="true" class="hover_anchor" href="#4-wait-for-validation"><i class="fa fa-link"></i></a></h2>
 <p>On the live network or the Ripple Test Net, you can wait 4-7 seconds for the ledger to close automatically.</p>
 <p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="ledger_accept.html">ledger_accept method</a> to manually close the ledger. <!--#{ fix md highlighting_ #}--></p>
-<h2 id="5-confirm-final-result">5. Confirm final result</h2>
+<h2 id="5-confirm-final-result">5. Confirm final result<a aria-hidden="true" class="hover_anchor" href="#5-confirm-final-result"><i class="fa fa-link"></i></a></h2>
 <p>Use the <a href="tx.html">tx method</a> with the CheckCash transaction's identifying hash to check its status. Look for a <code>"TransactionResult": "tesSUCCESS"</code> field in the transaction's metadata, indicating that the transaction succeeded, and the field <code>"validated": true</code> in the result, indicating that this result is final.</p>
 <p>If the check was cashed for an exact <code>Amount</code> and succeeded, you can assume that the recipient was credited for exactly that amount (with possible rounding for very large or very small amounts of issued currencies).</p>
 <p>If cashing the Check failed, the Check remains in the ledger so you can try cashing again later. You may want to <a href="cash-a-check-for-a-flexible-amount.html">cash the Check for a flexible amount</a> instead.</p>
-<h3 id="example-request-2">Example Request</h3>
+<h3 id="example-request-2">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request-2"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-5-0" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled tx 0521707D510858BC8AF69D2227E1D1ADA7DB7C5B4B74115BCD0D91B62AFA8EDC
 </code></pre></div></div>
 </div>
-<h3 id="example-response-2">Example Response</h3>
+<h3 id="example-response-2">Example Response<a aria-hidden="true" class="hover_anchor" href="#example-response-2"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">Commandline</a></li></ul>
 
-<div class="code_sample" id="code-6-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loading:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
-<span class="mi">2018</span><span class="err">-Jan</span><span class="mi">-24</span> <span class="mi">01</span><span class="err">:</span><span class="mi">18</span><span class="err">:</span><span class="mi">39</span> <span class="err">HTTPClient:NFO</span> <span class="err">Connecting</span> <span class="err">to</span> <span class="mf">127.0</span><span class="err">.</span><span class="mf">0.1</span><span class="err">:</span><span class="mi">5005</span>
+<div class="code_sample" id="code-6-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
+<span class="mi">2018-</span><span class="err">Ja</span><span class="kc">n</span><span class="mi">-24</span> <span class="mi">01</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mi">39</span> <span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span> <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
    <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
@@ -569,6 +569,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -582,15 +583,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -599,21 +600,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -623,24 +624,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -667,21 +669,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -690,21 +692,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -724,6 +726,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -762,7 +765,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -897,6 +900,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

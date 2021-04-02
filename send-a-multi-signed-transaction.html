@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/use-simple-xrp-payments/send-a-multi-signed-transaction.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -206,9 +206,9 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="send-a-multi-signed-transaction">Send a Multi-Signed Transaction</h1>
+        <h1 id="send-a-multi-signed-transaction">Send a Multi-Signed Transaction<a aria-hidden="true" class="hover_anchor" href="#send-a-multi-signed-transaction"><i class="fa fa-link"></i></a></h1>
 <p>The following procedure demonstrates how to create, sign, and submit a multi-signed transaction.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>
 <p>You must have already <a href="set-up-multi-signing.html">set up multi-signing</a> for your address.</p>
@@ -217,7 +217,7 @@
 <p>Multi-signing must be available. Multi-signing has been enabled by an <a href="amendments.html"><strong>Amendment</strong></a> to the XRP Ledger Consensus Protocol since 2016-06-27.</p>
 </li>
 </ul>
-<h2 id="1-create-the-transaction">1. Create the transaction</h2>
+<h2 id="1-create-the-transaction">1. Create the transaction<a aria-hidden="true" class="hover_anchor" href="#1-create-the-transaction"><i class="fa fa-link"></i></a></h2>
 <p>Create a JSON object that represents the transaction you want to submit. You have to specify <em>everything</em> about this transaction, including <code>Fee</code> and <code>Sequence</code>. Also include the field <code>SigningPubKey</code> as an empty string, to indicate that the transaction is multi-signed.</p>
 <p>Keep in mind that the <code>Fee</code> for multi-signed transactions is significantly higher than for regularly-signed transactions. It should be at least (N+1) times the normal <a href="transaction-cost.html">transaction cost</a>, where N is the number of signatures you plan to provide. Since it sometimes takes a while to collect signatures from multiple sources, you may want to specify more than the current minimum, in case the <a href="transaction-cost.html">transaction cost</a> increases in that time.</p>
 <p>Here's an example transaction ready to be multi-signed:</p>
@@ -236,7 +236,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>(This transaction creates an accounting relationship from <code>rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC</code> to <code>rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh</code> with a maximum balance of 100 USD.)</p>
-<h2 id="2-get-one-signature">2. Get one signature</h2>
+<h2 id="2-get-one-signature">2. Get one signature<a aria-hidden="true" class="hover_anchor" href="#2-get-one-signature"><i class="fa fa-link"></i></a></h2>
 <p>Use the <a href="sign_for.html">sign_for method</a> with the secret key and address of one of the members of your SignerList to get a signature for that member.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <!-- -->
@@ -287,7 +287,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 </code></pre></div>
 <p>Save the <code>tx_json</code> field of the response: it has the new signature in the <code>Signers</code> field. You can discard the value of the <code>tx_blob</code> field.</p>
 <p>If you have a problem in stand-alone mode or a non-production network, check that <a href="start-a-new-genesis-ledger-in-stand-alone-mode.html#settings-in-new-genesis-ledgers">multi-sign is enabled</a>.</p>
-<h2 id="3-get-additional-signatures">3. Get additional signatures</h2>
+<h2 id="3-get-additional-signatures">3. Get additional signatures<a aria-hidden="true" class="hover_anchor" href="#3-get-additional-signatures"><i class="fa fa-link"></i></a></h2>
 <p>You can collect additional signatures in parallel or in serial:</p>
 <ul>
 <li>In parallel: Use the <code>sign_for</code> command with the original JSON for the transaction. Each response has a single signature in the <code>Signers</code> array.</li>
@@ -358,7 +358,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 <span class="o">}</span>
 </code></pre></div>
 <p>Depending on the SignerList you configured, you may need to repeat this step several times to get signatures from all the necessary parties.</p>
-<h2 id="4-combine-signatures-and-submit">4. Combine signatures and submit</h2>
+<h2 id="4-combine-signatures-and-submit">4. Combine signatures and submit<a aria-hidden="true" class="hover_anchor" href="#4-combine-signatures-and-submit"><i class="fa fa-link"></i></a></h2>
 <p>If you collected the signatures in serial, the <code>tx_json</code> from the last <code>sign_for</code> response has all the signatures assembled, so you can use that as the argument to the <a href="submit_multisigned.html">submit_multisigned method</a>.</p>
 <p>If you collected the signatures in parallel, you must manually construct a <code>tx_json</code> object with all the signatures included. Take the <code>Signers</code> arrays from all the <code>sign_for</code> responses, and combine their contents into a single <code>Signers</code> array that has each signature. Add the combined <code>Signers</code> array to the original transaction JSON value, and use that as the argument to the <a href="submit_multisigned.html">submit_multisigned method</a>.</p>
 <div class="codehilite"><pre><span></span><code>$ rippled submit_multisigned <span class="s1">'{</span>
@@ -431,7 +431,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 <span class="o">}</span>
 </code></pre></div>
 <p>Take note of the <code>hash</code> value from the response so you can check the results of the transaction later.  (In this case, the hash is <code>BD636194C48FD7A100DE4C972336534C8E710FD008C0F3CF7BC5BF34DAF3C3E6</code>.)</p>
-<h2 id="5-close-the-ledger">5. Close the ledger</h2>
+<h2 id="5-close-the-ledger">5. Close the ledger<a aria-hidden="true" class="hover_anchor" href="#5-close-the-ledger"><i class="fa fa-link"></i></a></h2>
 <p>If you are using the live network, you can wait 4-7 seconds for the ledger to close automatically.</p>
 <p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="ledger_accept.html">ledger_accept method</a> to manually close the ledger:</p>
 <div class="codehilite"><pre><span></span><code>$ rippled ledger_accept
@@ -444,7 +444,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="6-confirm-transaction-results">6. Confirm transaction results</h2>
+<h2 id="6-confirm-transaction-results">6. Confirm transaction results<a aria-hidden="true" class="hover_anchor" href="#6-confirm-transaction-results"><i class="fa fa-link"></i></a></h2>
 <p>Use the hash value from the response to the <code>submit_multisigned</code> command to look up the transaction using the <a href="tx.html">tx method</a>. In particular, check that the <code>TransactionResult</code> is the string <code>tesSUCCESS</code>.</p>
 <p>On the live network, you must also confirm that the <code>validated</code> field is set to the boolean <code>true</code>. If the field is not <code>true</code>, you might need to wait longer for the consensus process to finish; or your transaction may be unable to be included in a ledger for some reason.</p>
 <p>In stand-alone mode, the server automatically considers a ledger to be <code>validated</code> if it has been manually closed.</p>
@@ -595,6 +595,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -608,15 +609,15 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -625,21 +626,21 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -649,24 +650,25 @@ Connecting to <span class="m">127</span>.0.0.1:5005
                       <li><a class="active nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -693,21 +695,21 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -716,21 +718,21 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -750,6 +752,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -788,7 +791,7 @@ Connecting to <span class="m">127</span>.0.0.1:5005
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -923,6 +926,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

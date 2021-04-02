@@ -128,7 +128,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/tool/template-learn-history.html" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/tool/template-learn-history.html" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -155,7 +155,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -230,13 +230,10 @@
 
       <section class="row mt-30 mb-40">
         <h6 class="section-marker" id="section-marker-podcast">Podcast</h6>
-        <div class="col-sm-5 order-1 order-sm-2 mb-10 text-center">
-          <img class="mw-100" src="./img/graphics/chris-larsen.png">
-        </div>
         <div class="col-sm-5 offset-sm-1 order-2 order-sm-1 mt-20">
           <h2 class="mb-10">How Digital Assets Will Help Create a Sustainable Global Economy</h2>
           <p class="mb-10">Hear from Ripple co-founder Chris Larsen in the inaugural episode of the Block Stars podcast.</p>
-          <a href="https://podcasts.apple.com/us/podcast/how-digital-assets-will-help-create-sustainable-global/id1511803793?i=1000473686455" class="btn btn-outline-secondary">Listen Now</a>
+          <a href="https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5idXp6c3Byb3V0LmNvbS85Mzg5OTUucnNz/episode/QnV6enNwcm91dC0zNjI0MTE4?sa=X&ved=0CAQQkfYCahcKEwiQ4OnQnoHvAhUAAAAAHQAAAAAQAQ" class="btn btn-outline-secondary">Listen Now</a>
         </div>
       </section>
     </div>
@@ -371,6 +368,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});

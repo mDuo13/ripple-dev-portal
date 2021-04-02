@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>Escrow - XRP Ledger Dev Portal (日本語)</title>
+    <title>Escrow - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Escrow | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/escrow.html" />
+    <meta property="og:description" content="XRPはEscrowに預託され、後日特定の条件が満たされた時点で送金されます。Escrowは時間制限、暗号条件、あるいはその両方によって異なる場合があります。" />
+    <meta name="description" content="XRPはEscrowに預託され、後日特定の条件が満たされた時点で送金されます。Escrowは時間制限、暗号条件、あるいはその両方によって異なる場合があります。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/escrow.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/escrow.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/escrow.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-types/escrow.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-types/escrow.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -186,21 +210,21 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="escrow">Escrow</h1>
+        <h1 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h1>
 <p>Escrowは、XRP建ての条件付き送金決済を可能にするXRP Ledgerの機能です。 <em>Escrow</em> と呼ばれるこの条件付き決済では、XRPはエスクローに預託され、後日特定の条件が満たされた時点で送金されます。Escrowを完了する条件には、時間ベースのロック解除や<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-04" target="_blank">Crypto-conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>などがあります。期限までに終了しなかった場合に期限切れとなるようにEscrowを設定することもできます。</p>
 <p>エスクローに預託されているXRPはロックアップされます。Escrowが正常に終了またはキャンセルされるまでは、誰もXRPを使用または消却できません。有効期限前は、指定された受取人のみがXRPを受領できます。有効期限経過後は、XRPは送金元にのみ返金されます。</p>
-<h2 id="使用法">使用法</h2>
+<h2 id="使用法">使用法<a aria-hidden="true" class="hover_anchor" href="#使用法"><i class="fa fa-link"></i></a></h2>
 <!-- -->
 <p><a href="img/escrow-success-flow.ja.png"><img alt="Escrowのフローチャート（正常終了）" src="img/escrow-success-flow.ja.png"/></a></p>
 <p><strong>ステップ1:</strong> Escrowを送信するにあたり、送金元は<a href="escrowcreate.html">EscrowCreateトランザクション</a>を使用していくらかのXRPをロックアップします。このトランザクションでは、終了時刻または有効期限、あるいはその両方が定義されます。また、このトランザクションでは、Escrow終了時に満たされるべきCrypto-conditionも定義できます。さらに、このトランザクションでは、XRPの指定受取人を定義する必要があります。受取人と送金元は同じでも <em>かまいません</em> 。</p>
 <p><strong>ステップ2:</strong> このトランザクションの処理完了後に、エスクローに預託されたXRPを保持する<a href="escrow-object.html">Escrowオブジェクト</a>がXRP Ledgerに作成されます。このオブジェクトには、オブジェクトを作成したトランザクションにより定義されたEscrowのプロパティーが含まれています。このEscrowに終了時刻が設定されている場合、この時刻まではXRPには誰もアクセスできません。</p>
 <p><strong>ステップ3:</strong> 受取人またはその他のXRP Ledgerアドレスが<a href="escrowfinish.html">EscrowFinishトランザクション</a>を送信し、XRPが送金されます。正しい条件が満たされると、レジャーのEscrowオブジェクトは消却され、XRPが指定受取人に入金されます。EscrowにCrypto-conditionが指定されている場合、このトランザクションにはその条件に対するフルフィルメントが含まれている必要があります。Escrowの有効期限がすでに切れている場合、EscrowFinishトランザクションはコード<a href="tec-codes.html"><code>tecNO_PERMISSION</code></a>で失敗します。</p>
-<h3 id="有効期限切れの例">有効期限切れの例</h3>
+<h3 id="有効期限切れの例">有効期限切れの例<a aria-hidden="true" class="hover_anchor" href="#有効期限切れの例"><i class="fa fa-link"></i></a></h3>
 <p><a href="img/escrow-cancel-flow.ja.png"><img alt="Escrowのフローチャート（期限切れEscrow）" src="img/escrow-cancel-flow.ja.png"/></a></p>
 <p>Escrowはすべて同じ方法で開始されるため、<strong>ステップ1と2</strong>は正常終了の例と同じです。</p>
 <p><strong>ステップ3a:</strong> Escrowに有効期限が設定されており、有効期限までにEscrowが正常に終了しなかった場合、Escrowは期限切れとみなされます。XRP Ledgerに引き続き残りますが、これ以降は正常に終了できなくなります。（期限切れオブジェクトは、トランザクションにより変更されるまでレジャーに残ります。時間ベースのトリガーではレジャーの内容は変更できません。）</p>
 <p><strong>ステップ4a:</strong> 送金元またはその他のXRP Ledgerアドレスが、<a href="escrowcancel.html">EscrowCancelトランザクション</a>を送信し、期限切れのEscrowをキャンセルします。これによりレジャーの<a href="escrow-object.html">Escrowオブジェクト</a>が消却され、XRPは送金元に返金されます。</p>
-<h2 id="制約事項">制約事項</h2>
+<h2 id="制約事項">制約事項<a aria-hidden="true" class="hover_anchor" href="#制約事項"><i class="fa fa-link"></i></a></h2>
 <p>Escrowは、XRP Ledgerを<a class="external-link" href="https://interledger.org/" target="_blank">Interledger Protocol <i aria-hidden="true" class="fa fa-external-link"></i></a>やその他のスマートコントラクトで使用できるようにする機能として設計されています。現行バージョンでは、複雑にならないように範囲が適度に制限されています。</p>
 <ul>
 <li>EscrowはXRPでのみ実行でき、発行済み通貨では実行できません。</li>
@@ -219,7 +243,7 @@
 <li>サポートされている唯一の<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-04" target="_blank">Crypto-condition <i aria-hidden="true" class="fa fa-external-link"></i></a>タイプはPREIMAGE-SHA-256です。</li>
 </ul>
 <p>Escrowは、少量の大口決済に適した大きな保証を提供しています。<a href="use-payment-channels.html">Payment Channel</a>は、迅速な小口決済に適しています。もちろん、条件無しの<a href="payment.html">決済</a>も多くのユースケースで好まれます。</p>
-<h2 id="状態遷移図">状態遷移図</h2>
+<h2 id="状態遷移図">状態遷移図<a aria-hidden="true" class="hover_anchor" href="#状態遷移図"><i class="fa fa-link"></i></a></h2>
 <p>次の図は、Escrow実施時の各状態を示します。</p>
 <p><a href="img/escrow-states.ja.png"><img alt="Escrowの状態がHeld → Ready/Conditionally Ready → Expiredと遷移する様子を示す状態遷移図" src="img/escrow-states.ja.png"/></a></p>
 <p>この図は、Escrowの「Finish-after」時刻（<code>FinishAfter</code>フィールド）、Crypto-condition（<code>Condition</code>フィールド）、および有効期限（<code>CancelAfter</code>フィールド）の3通りの組み合わせの3つの例を示します。</p>
@@ -234,26 +258,26 @@
 <p><strong>条件付きEscrow（右）:</strong> EscrowでCrypto-condition（<code>Condition</code>フィールド）が指定されており、Finish-after時刻が指定されていない場合、Escrowは作成時点で即時に<strong>Conditionally Ready</strong>になります。この時点では、Crypto-conditionに対する正しいフルフィルメントを提供した人だけがEscrowを終了できます。有効期限（<code>CancelAfter</code>フィールド）までに終了されなかったEscrowは<strong>Expired</strong>になります。（Finish-after時刻が設定されていないEscrowには、有効期限が設定されている <em>必要があります</em> 。）Expired状態では、Escrowを終了できなくなり、誰でもEscrowをキャンセルできるようになります。</p>
 </li>
 </ul>
-<h2 id="escrowの利用可能性">Escrowの利用可能性</h2>
+<h2 id="escrowの利用可能性">Escrowの利用可能性<a aria-hidden="true" class="hover_anchor" href="#escrowの利用可能性"><i class="fa fa-link"></i></a></h2>
 <p>条件付き決済は、2017-03-31以降XRP Ledgerコンセンサスプロトコルに対する<a href="known-amendments.html#escrow">「Escrow」Amendment</a>により利用可能になりました。同機能の以前のバージョンは、2016年に「Suspended Payments」（SusPay）という名称で<a href="xrp-testnet-faucet.html">XRP Ledger Testnet</a>で利用可能になりました。</p>
 <p><a href="rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由">スタンドアロンモード</a>でのテストの際には、Amendmentのステータスに関係なく、Escrow機能をローカルで強制的に有効にできます。次のスタンザを<code>rippled.cfg</code>に追加してください。</p>
 <div class="codehilite"><pre><span></span><code><span class="k">[features]</span>
 <span class="na">Escrow</span>
 </code></pre></div>
 <p>Escrow Amendmentのステータスは、<a href="feature.html">featureメソッド</a>を使用して確認できます。</p>
-<h2 id="escrowfinishトランザクションのコスト">EscrowFinishトランザクションのコスト</h2>
+<h2 id="escrowfinishトランザクションのコスト">EscrowFinishトランザクションのコスト<a aria-hidden="true" class="hover_anchor" href="#escrowfinishトランザクションのコスト"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-04" target="_blank">Crypto-condition <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用する場合、Crypto-conditionフルフィルメントの検証に高い処理負荷がかかるため、EscrowFinishトランザクションでは<a href="transaction-cost.html#特別なトランザクションコスト">高額なトランザクションコスト</a>を支払う必要があります。</p>
 <p>Escrowが時間のみによってロックされており、Crypto-conditionがない場合、EscrowFinishのコストは、リファレンストランザクションの標準<a href="transaction-cost.html">トランザクションコスト</a>のみです。</p>
 <p>必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、<strong>330 drop（<a href="basic-data-types.html#通貨額の指定">XRPのdrop数</a>）と、フルフィルメントのサイズで16バイトあたり10 drop</strong>が必要です。<a href="multi-signing.html">マルチ署名済み</a>トランザクションの場合、マルチ署名のコストがフルフィルメントのコストに加算されます。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> 上記の式は、トランザクションのリファレンスコストがXRPの10 dropであることを前提としています。</p>
 <p><a href="fee-voting.html">手数料投票</a>により<code>reference_fee</code>の値が変更される場合、この式は新しいリファレンスコストに基づいてスケーリングされます。フルフィルメントのあるEscrowFinishトランザクションの公式は次のとおりです。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))</span>
+<div class="codehilite"><pre><span></span><code>reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 </code></pre></div>
-<h2 id="escrowを使用する理由">Escrowを使用する理由</h2>
+<h2 id="escrowを使用する理由">Escrowを使用する理由<a aria-hidden="true" class="hover_anchor" href="#escrowを使用する理由"><i class="fa fa-link"></i></a></h2>
 <p>従来の<a class="external-link" href="https://en.wikipedia.org/wiki/Escrow" target="_blank">Escrow <i aria-hidden="true" class="fa fa-external-link"></i></a>では、特にオンラインでリスクが高いと見なされる可能性のあるさまざまな金融取引を可能にしてきました。取引期間中または評価期間中に信頼できる第三者に資金を預託することで、相手側が当事者としての責任を必ず果たすことが両者に対し保証されます。</p>
 <p>Escrow機能では、第三者をXRP Ledger に組み込まれている自動システムに置き換えることで、この概念をさらに発展させました。これにより、資金のロックアップとリリースが公平に行われ、自動化できるようになりました。</p>
 <p>完全に自動化されたEscrowは、XRP Ledger 自体の整合性で裏付けられており、Rippleにとって重大な問題を解決します。Escrowで実現可能なユースケースは他にも多数あると思われます。Rippleは、Escrowのユニークな活用法を新たに編み出すように業界に働きかけています。</p>
-<h3 id="ユースケース-時間ベースのロックアップ">ユースケース: 時間ベースのロックアップ</h3>
+<h3 id="ユースケース-時間ベースのロックアップ">ユースケース: 時間ベースのロックアップ<a aria-hidden="true" class="hover_anchor" href="#ユースケース-時間ベースのロックアップ"><i class="fa fa-link"></i></a></h3>
 <p><strong>背景:</strong> Rippleは大量のXRPを保有しており、XRP Ledgerと関連テクノロジーの健全な発展を促進し、資金を調達する目的でXRPを系統立てて売却しています。その一方、大量のXRPを保有しているために、Rippleでは次のような課題が生じています:</p>
 <ul>
 <li>XRP Ledgerを使用する個人や企業は、Rippleが市場でXRPを通常よりも高値で売却して市場へ大量供給した場合に、XRPへの投資の希薄化や価値の低下を招く可能性があると懸念しています。<ul>
@@ -264,11 +288,11 @@
 </ul>
 <p><strong>解決策:</strong> Rippleは550億XRPを時間ベースのエスクローに預託することで、XRPの供給量を予測可能なものとし、その供給量がゆっくりですが安定したペースで増加していくようにしています。XRPを保有するその他の当事者は、Rippleの優先課題や戦略が変わったとしても、同社が市場へ大量供給できないとわかっています。</p>
 <p>資金をEscrowに委託しても、Rippleの保有分が不正使用者から直接保護されるわけではありませんが、不正使用者が一時的にRippleのXRPアカウントを乗っ取っても、すぐに盗んだり流用したりできるXRPの量は大幅に減少します。これによりXRPの壊滅的な損失リスクは減少し、Rippleが自社のXRP資産の不正な流用を検出、防止、追跡する時間が増加します。</p>
-<h3 id="ユースケース-インターレジャー決済">ユースケース: インターレジャー決済</h3>
+<h3 id="ユースケース-インターレジャー決済">ユースケース: インターレジャー決済<a aria-hidden="true" class="hover_anchor" href="#ユースケース-インターレジャー決済"><i class="fa fa-link"></i></a></h3>
 <p><strong>背景:</strong> 急速に成長しているフィンテック業界の主な課題の1つに、複数のデジタル通貨システムまたはレジャー間でのアクティビティーの調整があります。この課題に対して多くの解決策（XRP Ledgerの初期ビューを含む）が提案されていますが、これは「すべてを管理する1つのレジャー」の作成に絞り込むことができます。Rippleでは、1つのシステムでは世界中のすべての人々のニーズに応えることはできないと考えています。実際に、望ましい機能のいくつかは互いに矛盾しています。Rippleではその代わりに、レジャーを相互に接続するネットワーク、つまり <em>インターレジャー</em> に、フィンテックの未来があると考えています。<a class="external-link" href="https://interledger.org/" target="_blank">Interledger Protocol <i aria-hidden="true" class="fa fa-external-link"></i></a>は、できるだけ多くのシステムを安全かつスムーズに接続するための標準を定義します。</p>
 <p>インターレジャー決済の根幹をなす基本原則は、 <em>条件付き送金</em> です。マルチホップペイメントにはリスクの問題があります。中間のホップが増えるほど、決済が失敗する箇所が増えます。インターレジャーでは、この問題が金融版「<a class="external-link" href="https://en.wikipedia.org/wiki/Two-phase_commit_protocol" target="_blank">2相コミット <i aria-hidden="true" class="fa fa-external-link"></i></a>」で解決されます。この2相コミットでの2つのステップとは、（1）条件付き送金の準備と（2）送金実行のための条件のフルフィルメントです。インターレジャープロジェクトでは、条件の定義と確認を自動化する方法を標準化するために<a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-04" target="_blank">Crypto-condition <i aria-hidden="true" class="fa fa-external-link"></i></a>仕様が定義され、このような条件の「共通の土台」としてSHA-256ハッシュが定められました。</p>
 <p><strong>解決策:</strong> Escrow機能により、XRP LedgerはInterledger Protocolを使用したマルチホップペイメントのブリッジングに理想的なレジャーとなりました。これは、Escrow機能がPREIMAGE-SHA-256 Crypto-conditionに基づいてXRPの送金をネイティブにサポートしており、一致するフルフィルメントの提示から数秒以内にこれらの送金が実行されるためです。</p>
-<h2 id="参考情報">参考情報</h2>
+<h2 id="参考情報">参考情報<a aria-hidden="true" class="hover_anchor" href="#参考情報"><i class="fa fa-link"></i></a></h2>
 <p>XRP LedgerのEscrowの詳細は、以下を参照してください:</p>
 <ul>
 <li><a href="use-escrows.html">Escrowチュートリアル</a><ul>
@@ -356,6 +380,7 @@
                           <li><a class="subpage" href="cryptographic-keys.html">暗号鍵</a></li>
                           <li><a class="subpage" href="multi-signing.html">マルチ署名</a></li>
                           <li><a class="subpage" href="reserves.html">準備金</a></li>
+                          <li><a class="subpage" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                           <li><a class="subpage" href="depositauth.html">Deposit Authorization</a></li>
 
                       <li><a class="nosubcat-page" href="fees.html">手数料（曖昧さの回避）</a></li>
@@ -375,15 +400,15 @@
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_20">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_20" aria-expanded="true" aria-controls="sidenav_collapse_20"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_21">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="payment-types.html">支払いのタイプ</a>
                 <!-- <a class="sidenav_cat_title" href="payment-types.html">Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_20" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_20">
+            <div id="sidenav_collapse_21" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="direct-xrp-payments.html">XRPによる直接支払</a></li>
@@ -395,21 +420,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse20 -->
+            </div><!-- /#sidenav_collapse21 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_28">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_28" aria-expanded="true" aria-controls="sidenav_collapse_28"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_29">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_29" aria-expanded="true" aria-controls="sidenav_collapse_29"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="issued-currencies.html">発行済み通貨</a>
                 <!-- <a class="sidenav_cat_title" href="issued-currencies.html">Issued Currencies</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_28" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_28">
+            <div id="sidenav_collapse_29" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_29">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="issued-currencies-overview.html">発行済み通貨の概要</a></li>
@@ -424,21 +449,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse28 -->
+            </div><!-- /#sidenav_collapse29 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_39">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_39" aria-expanded="true" aria-controls="sidenav_collapse_39"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="decentralized-exchange.html">分散型取引所</a>
                 <!-- <a class="sidenav_cat_title" href="decentralized-exchange.html">Decentralized Exchange</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_39" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_39">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="offers.html">オファー</a></li>
@@ -447,27 +472,28 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse39 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_43">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_43" aria-expanded="true" aria-controls="sidenav_collapse_43"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="consensus-network.html">コンセンサスネットワーク</a>
                 <!-- <a class="sidenav_cat_title" href="consensus-network.html">Consensus Network</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_43" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_43">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="consensus.html">コンセンサス</a></li>
                       <li><a class="nosubcat-page" href="consensus-principles-and-rules.html">コンセンサスの原理とルール</a></li>
                       <li><a class="nosubcat-page" href="consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a></li>
                       <li><a class="nosubcat-page" href="invariant-checking.html">Invariant Checking</a></li>
+                      <li><a class="nosubcat-page" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                       <li><a class="nosubcat-page" href="transaction-queue.html">トランザクションキュー</a></li>
                       <li><a class="nosubcat-page" href="about-canceling-a-transaction.html">トランザクションの取消しについて</a></li>
                       <li><a class="nosubcat-page" href="transaction-malleability.html">トランザクション展性</a></li>
@@ -481,21 +507,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse43 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_55">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_55" aria-expanded="true" aria-controls="sidenav_collapse_55"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_57">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_57" aria-expanded="true" aria-controls="sidenav_collapse_57"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="the-rippled-server.html">rippledサーバー</a>
                 <!-- <a class="sidenav_cat_title" href="the-rippled-server.html">The rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_55" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_55">
+            <div id="sidenav_collapse_57" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_57">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="rippled-server-modes.html">rippledサーバーのモード</a></li>
@@ -510,7 +536,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse55 -->
+            </div><!-- /#sidenav_collapse57 -->
 
           </div><!-- /.card -->
 
@@ -533,13 +559,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -559,11 +585,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -596,7 +622,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -645,6 +671,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

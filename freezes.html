@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/issued-currencies/freezes.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/issued-currencies/freezes.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -219,7 +219,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="freezing-issued-currencies">Freezing Issued Currencies</h1>
+        <h1 id="freezing-issued-currencies">Freezing Issued Currencies<a aria-hidden="true" class="hover_anchor" href="#freezing-issued-currencies"><i class="fa fa-link"></i></a></h1>
 <p>XRP is not an issued currency. XRP is the only native asset on the XRP Ledger and is required in order to conduct transactions on the XRP Ledger. XRP is counterparty free, meaning that when someone holds XRP, they are not holding a liability, they are holding the actual currency, XRP. Due to this fact, <em><strong><u>XRP CANNOT be frozen by any entity or individual</u></strong></em>.</p>
 <p>All non-XRP currencies can be represented in the XRP Ledger as issued currencies. These issued currencies (sometimes called "IOUs") are tracked in accounting relationships, called "trust lines," between addresses. Issued currencies are typically considered as liabilities from one perspective and assets from the other, so the balance of a trust line is negative or positive depending on which side you view it from. Any address may freely issue (non-XRP) currencies, limited only by how much other addresses are willing to hold.</p>
 <p>In certain cases, to meet regulatory requirements, or while investigating suspicious activity, an exchange or gateway may want to quickly freeze non-XRP issued currency balances.</p>
@@ -230,9 +230,9 @@
 <li><a href="#global-freeze"><strong>Global Freeze</strong></a> - Freeze all counterparties.</li>
 <li><a href="#no-freeze"><strong>No Freeze</strong></a> - Permanently give up the ability to freeze individual counterparties, as well as the ability to end a global freeze.</li>
 </ul>
-<p>The freeze feature only applies to issued currencies. Because no party has a privileged place in the XRP Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one, not even Ripple, can freeze XRP.</p>
+<p>The freeze feature only applies to issued currencies. Because no party has a privileged place in the XRP Ledger, the freeze feature cannot prevent a counterparty from conducting transactions in XRP or funds issued by other counterparties. No one can freeze XRP.</p>
 <p>All freeze settings can be enacted regardless of whether the balance(s) to be frozen are positive or negative. Either the currency issuer or the currency holder can freeze a trust line; however, the effect of a currency holder freezing an issuer is minimal.</p>
-<h2 id="individual-freeze">Individual Freeze</h2>
+<h2 id="individual-freeze">Individual Freeze<a aria-hidden="true" class="hover_anchor" href="#individual-freeze"><i class="fa fa-link"></i></a></h2>
 <p>The <strong>Individual Freeze</strong> feature is a setting on a <a href="trust-lines-and-issuing.html">trust line</a>. When an issuing address enables the Individual Freeze setting, the following rules apply to the currency of that trust line:</p>
 <ul>
 <li>Payments can still occur directly between the two parties of the frozen trust line.</li>
@@ -245,7 +245,7 @@
 <p>An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including <a href="issuing-and-operational-addresses.html">operational addresses</a>, from sending that financial institution's issued currencies to the individual address. This type of individual freeze has no effect on offers.</p>
 <p>The Individual Freeze applies to a single currency only. To freeze multiple currencies with a particular counterparty, the address must enable Individual Freeze on the trust lines for each currency individually.</p>
 <p>An address cannot enable the Individual Freeze setting if it has enabled the <a href="#no-freeze">No Freeze</a> setting.</p>
-<h2 id="global-freeze">Global Freeze</h2>
+<h2 id="global-freeze">Global Freeze<a aria-hidden="true" class="hover_anchor" href="#global-freeze"><i class="fa fa-link"></i></a></h2>
 <p>The <strong>Global Freeze</strong> feature is a setting on an address. When an issuing address enables the Global Freeze feature, the following rules apply to all currencies they issue:</p>
 <ul>
 <li>All counterparties of the frozen issuing address can no longer decrease the balances in their trust lines to the frozen address, except in direct payments to the issuer. (This also affects any <a href="issuing-and-operational-addresses.html">operational addresses</a>.)</li>
@@ -257,7 +257,7 @@
 <p>It can also be useful to enable Global Freeze if a financial institution intends to migrate to a new <a href="issuing-and-operational-addresses.html">issuing address</a>, or if the financial institution intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.</p>
 <p>Global Freeze applies to <em>all</em> currencies issued and held by the address. You cannot enable Global Freeze for only one currency. If you want to have the ability to freeze some currencies and not others, you should use different addresses for each currency.</p>
 <p>An address can always enable the Global Freeze setting. However, if the address has enabled the <a href="#no-freeze">No Freeze</a> setting, it can never <em>disable</em> Global Freeze.</p>
-<h2 id="no-freeze">No Freeze</h2>
+<h2 id="no-freeze">No Freeze<a aria-hidden="true" class="hover_anchor" href="#no-freeze"><i class="fa fa-link"></i></a></h2>
 <p>The <strong>No Freeze</strong> feature is a setting on an address that permanently gives up the ability to freeze issued currencies arbitrarily. An issuer can use this feature to treat its issued funds as "more like physical money" in the sense that the issuer cannot interfere with counterparties trading the currency among themselves.</p>
 <p>Reminder: XRP already cannot be frozen. The No Freeze feature only applies to other currencies issued in the XRP Ledger.</p>
 <p>The No Freeze setting has two effects:</p>
@@ -268,9 +268,9 @@
 <p>The XRP Ledger cannot force an issuer to honor the obligations that its issued funds represent, so No Freeze does stop an issuer from defaulting on its obligations. However, No Freeze ensures that an issuer does not use the Global Freeze feature unfairly against specific users.</p>
 <p>The No Freeze setting applies to all currencies issued to and from an address. If you want to be able to freeze some currencies but not others, you should use different addresses for each currency.</p>
 <p>You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a <a href="setregularkey.html">Regular Key</a> or a <a href="multi-signing.html">multi-signed transaction</a> to enable No Freeze.</p>
-<h1 id="technical-details">Technical Details</h1>
-<h2 id="enabling-or-disabling-individual-freeze">Enabling or Disabling Individual Freeze</h2>
-<h3 id="using-rippled">Using <code>rippled</code></h3>
+<h1 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h1>
+<h2 id="enabling-or-disabling-individual-freeze">Enabling or Disabling Individual Freeze<a aria-hidden="true" class="hover_anchor" href="#enabling-or-disabling-individual-freeze"><i class="fa fa-link"></i></a></h2>
+<h3 id="using-rippled">Using <code>rippled</code><a aria-hidden="true" class="hover_anchor" href="#using-rippled"><i class="fa fa-link"></i></a></h3>
 <p>To enable or disable Individual Freeze on a specific trust line, send a <code>TrustSet</code> transaction. Use the <a href="trustset.html#trustset-flags"><code>tfSetFreeze</code> flag</a> to enable a freeze, and the <code>tfClearFreeze</code> flag to disable it. The fields of the transaction should be as follows:</p>
 <table>
 <thead>
@@ -342,7 +342,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never send your secret key to an untrusted server or over an insecure channel.</p>
-<h3 id="using-rippleapi">Using RippleAPI</h3>
+<h3 id="using-rippleapi">Using RippleAPI<a aria-hidden="true" class="hover_anchor" href="#using-rippleapi"><i class="fa fa-link"></i></a></h3>
 <p>To enable or disable Individual Freeze on a specific trust line, prepare a <code>Trustline</code> transaction using the <a href="rippleapi-reference.html#preparetrustline"><code>prepareTrustline()</code> method</a>. The fields of the <code>trustline</code> parameter should be set as follows:</p>
 <table>
 <thead>
@@ -377,26 +377,26 @@
 </table>
 <p>The rest of the <a href="rippleapi-reference.html#transaction-flow">transaction flow</a> is the same as any other transaction.</p>
 <p>Example JavaScript (ECMAScript 6) code to enable Individual Freeze on a trust line:</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
 
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
   <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="c1">// Public rippled server</span>
 <span class="p">});</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="kr">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">issuing_secret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">issuing_secret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span><span class="p">;</span>
     <span class="c1">// Best practice: get your secret from an encrypted</span>
     <span class="c1">//  config file instead</span>
-<span class="kr">const</span> <span class="nx">address_to_freeze</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">currency_to_freeze</span> <span class="o">=</span> <span class="s1">'USD'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">address_to_freeze</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">currency_to_freeze</span> <span class="o">=</span> <span class="s1">'USD'</span><span class="p">;</span>
 
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 
   <span class="c1">// Look up current state of trust line</span>
-  <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span><span class="nx">counterparty</span><span class="o">:</span> <span class="nx">address_to_freeze</span><span class="p">,</span>
+  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span><span class="nx">counterparty</span><span class="o">:</span> <span class="nx">address_to_freeze</span><span class="p">,</span>
                  <span class="nx">currency</span><span class="o">:</span> <span class="nx">currency_to_freeze</span><span class="p">};</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'looking up'</span><span class="p">,</span> <span class="nx">currency_to_freeze</span><span class="p">,</span> <span class="s1">'trust line from'</span><span class="p">,</span>
               <span class="nx">issuing_address</span><span class="p">,</span> <span class="s1">'to'</span><span class="p">,</span> <span class="nx">address_to_freeze</span><span class="p">);</span>
@@ -427,7 +427,7 @@
 
   <span class="c1">// Sign and submit the trustline transaction</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'signing tx:'</span><span class="p">,</span> <span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">signed1</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">issuing_secret</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">signed1</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">issuing_secret</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'submitting tx:'</span><span class="p">,</span> <span class="nx">signed1</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">signed1</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">);</span>
@@ -435,8 +435,8 @@
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="enabling-or-disabling-global-freeze">Enabling or Disabling Global Freeze</h2>
-<h3 id="using-rippled-1">Using <code>rippled</code></h3>
+<h2 id="enabling-or-disabling-global-freeze">Enabling or Disabling Global Freeze<a aria-hidden="true" class="hover_anchor" href="#enabling-or-disabling-global-freeze"><i class="fa fa-link"></i></a></h2>
+<h3 id="using-rippled-1">Using <code>rippled</code><a aria-hidden="true" class="hover_anchor" href="#using-rippled-1"><i class="fa fa-link"></i></a></h3>
 <p>To enable Global Freeze on an address, send an <code>AccountSet</code> transaction with the <a href="accountset.html#accountset-flags"><code>asfGlobalFreeze</code> flag value</a> in the <code>SetFlag</code> field. To disable Global Freeze, put the <code>asfGlobalFreeze</code> flag value in the <code>ClearFlag</code> field instead.</p>
 <p>Example of submitting an AccountSet transaction to enable Global Freeze using the <a href="get-started-with-the-rippled-api.html#websocket-api">WebSocket API</a>:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -457,7 +457,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never send your secret key to an untrusted server or over an insecure channel.</p>
-<h3 id="using-rippleapi-1">Using RippleAPI</h3>
+<h3 id="using-rippleapi-1">Using RippleAPI<a aria-hidden="true" class="hover_anchor" href="#using-rippleapi-1"><i class="fa fa-link"></i></a></h3>
 <p>To enable or disable Global Freeze on an address, prepare a <strong>Settings</strong> transaction using the <a href="rippleapi-reference.html#preparesettings"><code>prepareSettings()</code> method</a>. The <code>settings</code> parameter should be an object set as follows:</p>
 <table>
 <thead>
@@ -477,24 +477,24 @@
 </table>
 <p>The rest of the <a href="rippleapi-reference.html#transaction-flow">transaction flow</a> is the same as any other transaction.</p>
 <p>Example JavaScript (ECMAScript 6) code to enable Global Freeze on an address:</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
 
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
   <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="c1">// Public rippled server</span>
 <span class="p">});</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="kr">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">issuing_secret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">issuing_secret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span><span class="p">;</span>
     <span class="c1">// Best practice: get your secret from an encrypted</span>
     <span class="c1">//  config file instead</span>
 
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 
   <span class="c1">// Prepare a settings transaction to enable global freeze</span>
-  <span class="kr">const</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'globalFreeze'</span><span class="o">:</span> <span class="kc">true</span>
   <span class="p">};</span>
 
@@ -506,7 +506,7 @@
 
   <span class="c1">// Sign and submit the settings transaction</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'signing tx:'</span><span class="p">,</span> <span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">signed1</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">issuing_secret</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">signed1</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">issuing_secret</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'submitting tx:'</span><span class="p">,</span> <span class="nx">signed1</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">signed1</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">);</span>
@@ -515,8 +515,8 @@
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="enabling-no-freeze">Enabling No Freeze</h2>
-<h3 id="using-rippled-2">Using <code>rippled</code></h3>
+<h2 id="enabling-no-freeze">Enabling No Freeze<a aria-hidden="true" class="hover_anchor" href="#enabling-no-freeze"><i class="fa fa-link"></i></a></h2>
+<h3 id="using-rippled-2">Using <code>rippled</code><a aria-hidden="true" class="hover_anchor" href="#using-rippled-2"><i class="fa fa-link"></i></a></h3>
 <p>To enable No Freeze on an address, send an <code>AccountSet</code> transaction with the <a href="accountset.html#accountset-flags"><code>asfNoFreeze</code> flag value</a> in the <code>SetFlag</code> field. You must sign this transaction using the master key. Once enabled, you cannot disable No Freeze.</p>
 <p>Example of submitting an AccountSet transaction to enable No Freeze using the <a href="get-started-with-the-rippled-api.html#websocket-api">WebSocket API</a>:</p>
 <p>WebSocket request:</p>
@@ -538,7 +538,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never send your secret key to an untrusted server or over an insecure channel.</p>
-<h3 id="using-rippleapi-2">Using RippleAPI</h3>
+<h3 id="using-rippleapi-2">Using RippleAPI<a aria-hidden="true" class="hover_anchor" href="#using-rippleapi-2"><i class="fa fa-link"></i></a></h3>
 <p>To enable No Freeze on an address, prepare a <strong>Settings</strong> transaction using the <a href="rippleapi-reference.html#preparesettings"><code>prepareSettings() method</code></a>. Once enabled, you cannot disable No Freeze. The <code>settings</code> parameter should be an object set as follows:</p>
 <table>
 <thead>
@@ -558,24 +558,24 @@
 </table>
 <p>You must <a href="rippleapi-reference.html#sign">sign</a> this transaction using the master key. The rest of the <a href="rippleapi-reference.html#transaction-flow">transaction flow</a> is the same as any other transaction.</p>
 <p>Example JavaScript (ECMAScript 6) code to enable No Freeze on an address:</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
 
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
   <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="c1">// Public rippled server</span>
 <span class="p">});</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="kr">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">issuing_secret</span> <span class="o">=</span> <span class="s1">'snnDVkSW3aV6jvMJTPdCiE2Qxv1RW'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">issuing_address</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">issuing_secret</span> <span class="o">=</span> <span class="s1">'snnDVkSW3aV6jvMJTPdCiE2Qxv1RW'</span><span class="p">;</span>
     <span class="c1">// Best practice: get your secret from an encrypted</span>
     <span class="c1">//  config file instead</span>
 
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 
   <span class="c1">// Prepare a settings transaction to enable no freeze</span>
-  <span class="kr">const</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'noFreeze'</span><span class="o">:</span> <span class="kc">true</span>
   <span class="p">};</span>
 
@@ -587,7 +587,7 @@
 
   <span class="c1">// Sign and submit the settings transaction</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'signing tx:'</span><span class="p">,</span> <span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">);</span>
-  <span class="kr">const</span> <span class="nx">signed1</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">issuing_secret</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">signed1</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared_tx</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">issuing_secret</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'submitting tx:'</span><span class="p">,</span> <span class="nx">signed1</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">signed1</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">);</span>
@@ -595,8 +595,8 @@
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="checking-for-individual-freeze">Checking for Individual Freeze</h2>
-<h3 id="using-rippled-3">Using <code>rippled</code></h3>
+<h2 id="checking-for-individual-freeze">Checking for Individual Freeze<a aria-hidden="true" class="hover_anchor" href="#checking-for-individual-freeze"><i class="fa fa-link"></i></a></h2>
+<h3 id="using-rippled-3">Using <code>rippled</code><a aria-hidden="true" class="hover_anchor" href="#using-rippled-3"><i class="fa fa-link"></i></a></h3>
 <p>To see if a trust line has an Individual Freeze enabled, use the <a href="account_lines.html">account_lines method</a> with the following parameters:</p>
 <table>
 <thead>
@@ -679,7 +679,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>The field <code>"freeze": true</code> indicates that <code>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</code> has enabled Individual Freeze on the USD trust line to <code>rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW</code>. The lack of a field <code>"freeze_peer": true</code> indicates that the counterparty has <em>not</em> frozen the trust line.</p>
-<h3 id="using-rippleapi-3">Using RippleAPI</h3>
+<h3 id="using-rippleapi-3">Using RippleAPI<a aria-hidden="true" class="hover_anchor" href="#using-rippleapi-3"><i class="fa fa-link"></i></a></h3>
 <p>To see if a trust line has an Individual Freeze enabled, use the <a href="rippleapi-reference.html#gettrustlines"><code>getTrustlines</code> method</a> with the following parameters:</p>
 <table>
 <thead>
@@ -725,23 +725,23 @@
 </tbody>
 </table>
 <p>Example JavaScript (ECMAScript 6) code to check whether a trust line is frozen:</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
 
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
   <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="c1">// Public rippled server</span>
 <span class="p">});</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="kr">const</span> <span class="nx">my_address</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">counterparty_address</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">frozen_currency</span> <span class="o">=</span> <span class="s1">'USD'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">my_address</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">counterparty_address</span> <span class="o">=</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">frozen_currency</span> <span class="o">=</span> <span class="s1">'USD'</span><span class="p">;</span>
 
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 
   <span class="c1">// Look up current state of trust line</span>
-  <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span><span class="nx">counterparty</span><span class="o">:</span> <span class="nx">counterparty_address</span><span class="p">,</span>
+  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span><span class="nx">counterparty</span><span class="o">:</span> <span class="nx">counterparty_address</span><span class="p">,</span>
                    <span class="nx">currency</span><span class="o">:</span> <span class="nx">frozen_currency</span><span class="p">};</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'looking up'</span><span class="p">,</span> <span class="nx">frozen_currency</span><span class="p">,</span> <span class="s1">'trust line from'</span><span class="p">,</span>
               <span class="nx">my_address</span><span class="p">,</span> <span class="s1">'to'</span><span class="p">,</span> <span class="nx">counterparty_address</span><span class="p">);</span>
@@ -753,7 +753,7 @@
     <span class="k">throw</span> <span class="s1">'should only be 1 trust line per counterparty+currency pair'</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="kr">const</span> <span class="nx">trustline</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+  <span class="kd">const</span> <span class="nx">trustline</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Trust line frozen from our side?'</span><span class="p">,</span>
               <span class="nx">trustline</span><span class="p">.</span><span class="nx">specification</span><span class="p">.</span><span class="nx">frozen</span> <span class="o">===</span> <span class="kc">true</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Trust line frozen from counterparty\'s side?'</span><span class="p">,</span>
@@ -763,8 +763,8 @@
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="checking-for-global-freeze-and-no-freeze">Checking for Global Freeze and No Freeze</h2>
-<h3 id="using-rippled-4">Using <code>rippled</code></h3>
+<h2 id="checking-for-global-freeze-and-no-freeze">Checking for Global Freeze and No Freeze<a aria-hidden="true" class="hover_anchor" href="#checking-for-global-freeze-and-no-freeze"><i class="fa fa-link"></i></a></h2>
+<h3 id="using-rippled-4">Using <code>rippled</code><a aria-hidden="true" class="hover_anchor" href="#using-rippled-4"><i class="fa fa-link"></i></a></h3>
 <p>To see if an address has enabled Global Freeze, No Freeze, or both, use the <a href="account_info.html">account_info method</a> with the following parameters:</p>
 <table>
 <thead>
@@ -841,7 +841,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">currentFlags</span> <span class="o">&amp;</span> <span class="nx">lsfNoFreeze</span><span class="p">);</span> <span class="c1">//0</span>
 <span class="c1">//therefore, No Freeze is not enabled</span>
 </code></pre></div>
-<h3 id="using-rippleapi-4">Using RippleAPI</h3>
+<h3 id="using-rippleapi-4">Using RippleAPI<a aria-hidden="true" class="hover_anchor" href="#using-rippleapi-4"><i class="fa fa-link"></i></a></h3>
 <p>To see if an address has enabled Global Freeze, No Freeze, or both, use the <a href="rippleapi-reference.html#getsettings"><code>getSettings</code> method</a> with the following parameters:</p>
 <table>
 <thead>
@@ -882,16 +882,16 @@
 </tbody>
 </table>
 <p>Example JavaScript (ECMAScript 6) code to check whether an address has Global Freeze or No Freeze enabled:</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="p">{</span><span class="nx">RippleAPI</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">);</span>
 
-<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span>
   <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="c1">// Public rippled server</span>
 <span class="p">});</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="p">(</span><span class="nx">errorCode</span><span class="p">,</span> <span class="nx">errorMessage</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">errorCode</span> <span class="o">+</span> <span class="s1">': '</span> <span class="o">+</span> <span class="nx">errorMessage</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="kr">const</span> <span class="nx">my_address</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">my_address</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
 
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
   <span class="c1">// Look up settings object</span>
@@ -906,7 +906,7 @@
   <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
 </code></pre></div>
-<h1 id="see-also">See Also</h1>
+<h1 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h1>
 <ul>
 <li><a class="external-link" href="https://ripple.com/files/GB-2014-02.pdf" target="_blank">GB-2014-02 New Feature: Balance Freeze <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a class="external-link" href="https://github.com/ripple/ripple-dev-portal/tree/master/content/_code-samples/freeze" target="_blank">Freeze Code Samples <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
@@ -1277,6 +1277,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

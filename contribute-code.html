@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/contributing/contribute-code.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/contributing/contribute-code.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -199,7 +199,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger</h1>
+        <h1 id="contribute-code-to-the-xrp-ledger">Contribute Code to the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#contribute-code-to-the-xrp-ledger"><i class="fa fa-link"></i></a></h1>
 <p>The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the <a href="docs.html">documentation</a> to jump directly into the related source code, or browse the source code on GitHub:</p>
 <table>
 <thead>
@@ -224,10 +224,10 @@
 </tbody>
 </table>
 <p>If you're not sure where to start, Dev Null Productions provides a detailed and thorough <a class="external-link" href="https://xrpintel.com/source" target="_blank"><strong>Source Code Guide</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> that describes the structure and functions of the <code>rippled</code> XRP Ledger server implementation.</p>
-<h2 id="standards-drafts">Standards Drafts</h2>
+<h2 id="standards-drafts">Standards Drafts<a aria-hidden="true" class="hover_anchor" href="#standards-drafts"><i class="fa fa-link"></i></a></h2>
 <p>When developing amendments to the XRP Ledger protocol or interoperability between XRP Ledger applications, it's best to discuss the proposed changes with the community.</p>
 <p>The <a class="external-link" href="https://github.com/xrp-community/standards-drafts/" target="_blank"><strong>Community Standards Drafts</strong> <i aria-hidden="true" class="fa fa-external-link"></i></a> project is a great place to share your plans and collect suggestions on a proposed standard. This feedback can help to balance trade-offs, design for greater efficiency, and address potential security implications before you share your actual source code with others.</p>
-<h2 id="related-repositories">Related Repositories</h2>
+<h2 id="related-repositories">Related Repositories<a aria-hidden="true" class="hover_anchor" href="#related-repositories"><i class="fa fa-link"></i></a></h2>
 <p>You can find various XRP Ledger-related projects under these and other GitHub organizations:</p>
 <ul>
 <li><a class="external-link" href="https://github.com/ripple/" target="_blank">Ripple <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
@@ -391,6 +391,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

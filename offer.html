@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/ledger-data-formats/ledger-object-types/offer.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/ledger-data-formats/ledger-object-types/offer.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,12 +205,12 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="offer">Offer</h1>
+        <h1 id="offer">Offer<a aria-hidden="true" class="hover_anchor" href="#offer"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>Offer</code> object type describes an offer to exchange currencies, more traditionally known as an <em>order</em>, in the XRP Ledger's distributed exchange. An <a href="offercreate.html">OfferCreate transaction</a> only creates an <code>Offer</code> object in the ledger when the offer cannot be fully executed immediately by consuming other offers already in the ledger.</p>
 <p>An offer can become unfunded through other activities in the network, while remaining in the ledger. However, <code>rippled</code> automatically prunes any unfunded offers it happens across in the course of transaction processing (and <em>only</em> transaction processing, because the ledger state must only be changed by transactions).</p>
 <p>For more information, see <a href="offers.html">Offers</a>.</p>
-<h2 id="example-offer-json">Example Offer JSON</h2>
+<h2 id="example-offer-json">Example Offer JSON<a aria-hidden="true" class="hover_anchor" href="#example-offer-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rBqb89MRQJnMPq8wTwEbtz4kvxrEDfcYvt"</span><span class="p">,</span>
     <span class="nt">"BookDirectory"</span><span class="p">:</span> <span class="s2">"ACC27DE91DBA86FC509069EAF4BC511D73128B780F2E54BF5E07A369E2446000"</span><span class="p">,</span>
@@ -230,7 +230,7 @@
     <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"96F76F27D8A327FC48753167EC04A46AA0E382E6F57F32FD12274144D00F1797"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="offer-fields">Offer Fields</h2>
+<h2 id="offer-fields">Offer Fields<a aria-hidden="true" class="hover_anchor" href="#offer-fields"><i class="fa fa-link"></i></a></h2>
 <p>An <code>Offer</code> object has the following fields:</p>
 <table>
 <thead>
@@ -316,7 +316,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="offer-flags">Offer Flags</h2>
+<h2 id="offer-flags">Offer Flags<a aria-hidden="true" class="hover_anchor" href="#offer-flags"><i class="fa fa-link"></i></a></h2>
 <p>There are several options which can be either enabled or disabled when an <a href="offercreate.html">OfferCreate transaction</a> creates an offer object. In the ledger, flags are represented as binary values that can be combined with bitwise-or operations. The bit values for the flags in the ledger are different than the values used to enable or disable those flags in a transaction. Ledger flags have names that begin with <strong><code>lsf</code></strong>.</p>
 <p><code>Offer</code> objects can have the following flag values:</p>
 <table>
@@ -346,7 +346,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="offer-id-format">Offer ID Format</h2>
+<h2 id="offer-id-format">Offer ID Format<a aria-hidden="true" class="hover_anchor" href="#offer-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of an <code>Offer</code> object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The Offer space key (<code>0x006F</code>)</li>
@@ -466,6 +466,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -527,7 +528,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -567,7 +567,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -606,7 +606,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -799,6 +799,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

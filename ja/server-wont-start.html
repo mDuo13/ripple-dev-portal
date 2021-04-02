@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>rippledサーバーが起動しない - XRP Ledger Dev Portal (日本語)</title>
+    <title>rippledサーバーが起動しない - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="rippledサーバーが起動しない | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/server-wont-start.html" />
+    <meta property="og:description" content="rippledサーバーが起動しない原因となると思われる問題とその解決方法です。" />
+    <meta name="description" content="rippledサーバーが起動しない原因となると思われる問題とその解決方法です。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/server-wont-start.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/server-wont-start.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/server-wont-start.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/troubleshooting/server-wont-start.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -187,10 +211,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="rippledサーバーが起動しない">rippledサーバーが起動しない</h1>
+        <h1 id="rippledサーバーが起動しない">rippledサーバーが起動しない<a aria-hidden="true" class="hover_anchor" href="#rippledサーバーが起動しない"><i class="fa fa-link"></i></a></h1>
 <p>このページでは、<a href="the-rippled-server.html"><code>rippled</code>サーバー</a>が起動しない際に考えられる原因とその修正方法を説明します。</p>
 <p>以下の手順では、サポートされているプラットフォームに<a href="install-rippled.html"><code>rippled</code>がインストール</a>されていることを前提としています。</p>
-<h2 id="ファイル記述子の制限">ファイル記述子の制限</h2>
+<h2 id="ファイル記述子の制限">ファイル記述子の制限<a aria-hidden="true" class="hover_anchor" href="#ファイル記述子の制限"><i class="fa fa-link"></i></a></h2>
 <p>一部のLinuxバリアントでは、<code>rippled</code>を実行しようとすると以下のようなエラーメッセージが出力されることがあります。</p>
 <div class="codehilite"><pre><span></span><code>WARNING: There are only 1024 file descriptors (soft limit) available, which
 limit the number of simultaneous connections.
@@ -199,13 +223,13 @@ limit the number of simultaneous connections.
 <ol>
 <li>
 <p>次の行を<code>/etc/security/limits.conf</code>ファイルの終わりに追加します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">*                soft    nofile          65536</span>
-<span class="err">*                hard    nofile          65536</span>
+<div class="codehilite"><pre><span></span><code>*                soft    nofile          65536
+*                hard    nofile          65536
 </code></pre></div>
 </li>
 <li>
 <p><a class="external-link" href="https://ss64.com/bash/ulimit.html" target="_blank">開くことができるファイルの数のハード制限 <i aria-hidden="true" class="fa fa-external-link"></i></a>が現在<code>65536</code>であることを確認します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">ulimit -Hn</span>
+<div class="codehilite"><pre><span></span><code>ulimit -Hn
 </code></pre></div>
 </li>
 </ol>
@@ -213,16 +237,16 @@ limit the number of simultaneous connections.
 <ol start="3">
 <li>
 <p><code>rippled</code>をもう一度起動します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">systemctl start rippled</span>
+<div class="codehilite"><pre><span></span><code>systemctl start rippled
 </code></pre></div>
 </li>
 <li>
 <p>それでも<code>rippled</code>が起動しない場合は、<code>/etc/sysctl.conf</code>を開き、以下のカーネルレベル設定を付加します。</p>
-<div class="codehilite"><pre><span></span><code><span class="err">fs.file-max = 65536</span>
+<div class="codehilite"><pre><span></span><code>fs.file-max = 65536
 </code></pre></div>
 </li>
 </ol>
-<h2 id="etcoptripplerippledcfgを開くことができない">/etc/opt/ripple/rippled.cfgを開くことができない</h2>
+<h2 id="etcoptripplerippledcfgを開くことができない">/etc/opt/ripple/rippled.cfgを開くことができない<a aria-hidden="true" class="hover_anchor" href="#etcoptripplerippledcfgを開くことができない"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>が起動時にクラッシュし、以下のようなエラーが出力される場合は、<code>rippled</code>が構成ファイルを読み取ることができません。</p>
 <div class="codehilite"><pre><span></span><code>Loading: "/etc/opt/ripple/rippled.cfg"
 Failed to open '"/etc/opt/ripple/rippled.cfg"'.
@@ -242,7 +266,7 @@ Aborted (core dumped)
 <p><code>--conf</code><a href="commandline-usage.html">コマンドラインオプション</a>を使用して、使用する構成ファイルのパスを指定します。</p>
 </li>
 </ul>
-<h2 id="バリデータファイルを開くことができない">バリデータファイルを開くことができない</h2>
+<h2 id="バリデータファイルを開くことができない">バリデータファイルを開くことができない<a aria-hidden="true" class="hover_anchor" href="#バリデータファイルを開くことができない"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>が起動時にクラッシュし、以下のようなエラーが出力される場合は、<code>rippled</code>はプライマリ構成ファイルを読み取ることはできても、この構成ファイルに指定されている別のバリデータ構成ファイル（通常は<code>validators.txt</code>）を読み取ることができません。</p>
 <div class="codehilite"><pre><span></span><code>Loading: "/home/rippled/.config/ripple/rippled.cfg"
 Terminating thread rippled: main: unhandled St13runtime_error 'The file specified in [validators_file] does not exist: /home/rippled/.config/ripple/validators.txt'
@@ -267,7 +291,7 @@ Aborted (core dumped)
 </code></pre></div>
 </li>
 </ul>
-<h2 id="データベースパスを作成できない">データベースパスを作成できない</h2>
+<h2 id="データベースパスを作成できない">データベースパスを作成できない<a aria-hidden="true" class="hover_anchor" href="#データベースパスを作成できない"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>が起動時にクラッシュし、以下のようなエラーが出力される場合は、その構成ファイルの<code>[database_path]</code>への書き込み権限がサーバーにありません。</p>
 <div class="codehilite"><pre><span></span><code>Loading: "/home/rippled/.config/ripple/rippled.cfg"
 Terminating thread rippled: main: unhandled St13runtime_error 'Can not create "/var/lib/rippled/db"'
@@ -286,7 +310,7 @@ Aborted (core dumped)
 <p><code>rippled</code>ユーザーに対し、設定されているデータベースパスへの書き込み権限を付与します。</p>
 </li>
 </ul>
-<h2 id="状態dbエラー">状態DBエラー</h2>
+<h2 id="状態dbエラー">状態DBエラー<a aria-hidden="true" class="hover_anchor" href="#状態dbエラー"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code>サーバーの状態データベースが破損している場合に、以下のエラーが発生する可能性があります。これは、予期しないシャットダウンが行われた場合、またはデータベースのタイプをRocksDBからNuDBに変更したが構成ファイルの<code>path</code>設定と<code>[database_path]</code>設定を変更しなかった場合に発生する可能性があります。</p>
 <div class="codehilite"><pre><span></span><code>2018-Aug-21 23:06:38.675117810 SHAMapStore:ERR state db error:
   writableDbExists false archiveDbExists false
@@ -311,23 +335,23 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 <span class="k">[database_path]</span>
 <span class="na">/var/lib/rippled/custom_sqlite_db_path</span>
 </code></pre></div>
-<h2 id="オンライン削除の値がレジャー履歴の値よりも少ない">オンライン削除の値がレジャー履歴の値よりも少ない</h2>
+<h2 id="オンライン削除の値がレジャー履歴の値よりも少ない">オンライン削除の値がレジャー履歴の値よりも少ない<a aria-hidden="true" class="hover_anchor" href="#オンライン削除の値がレジャー履歴の値よりも少ない"><i class="fa fa-link"></i></a></h2>
 <p>以下のようなエラーメッセージが出力される場合、<code>rippled.cfg</code>ファイルの<code>[ledger_history]</code>と<code>online_delete</code>に矛盾する値が指定されています。</p>
 <div class="codehilite"><pre><span></span><code>Terminating thread rippled: main: unhandled St13runtime_error 'online_delete must not be less than ledger_history (currently 3000)
 </code></pre></div>
 <p><code>[ledger_history]</code>設定は、サーバーが埋め戻す履歴のレジャー数を表します。<code>online_delete</code>フィールド（<code>[node_db]</code>スタンザ）は、古い履歴を削除するときに維持する履歴のレジャー数を示します。サーバーがダウンロードしようとしている履歴レジャーを削除しないようにするため、<code>online_delete</code>の値は<code>[ledger_history]</code>以上でなければなりません。</p>
 <p>この問題を修正するには、<code>rippled.cfg</code>ファイルを編集し、<code>[ledger_history]</code>オプションまたは<code>online_delete</code>オプションのいずれかを変更または削除します。（<code>[ledger_history]</code>を省略すると、デフォルトの256レジャーバージョンに設定されるので、<code>online_delete</code>を残して指定する場合は256よりも大きな値にする必要があります。<code>online_delete</code>を省略すると、古いレジャーバージョンの自動削除が無効になります。）</p>
-<h2 id="node_sizeの値が正しくない">node_sizeの値が正しくない</h2>
+<h2 id="node_sizeの値が正しくない">node_sizeの値が正しくない<a aria-hidden="true" class="hover_anchor" href="#node_sizeの値が正しくない"><i class="fa fa-link"></i></a></h2>
 <p>以下のようなエラーが出力される場合は、<code>rippled.cfg</code>ファイルの<code>node_size</code>設定の値が誤っています。</p>
 <div class="codehilite"><pre><span></span><code>Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'
 </code></pre></div>
 <p><code>node_size</code>フィールドの有効なパラメーターは<code>tiny</code>、<code>small</code>、<code>medium</code>、<code>large</code>、<code>huge</code>です。詳細は、<a href="capacity-planning.html#ノードサイズ">ノードサイズ</a>を参照してください。</p>
-<h2 id="シャードパスが欠落している">シャードパスが欠落している</h2>
+<h2 id="シャードパスが欠落している">シャードパスが欠落している<a aria-hidden="true" class="hover_anchor" href="#シャードパスが欠落している"><i class="fa fa-link"></i></a></h2>
 <p>以下のようなエラーが出力される場合は、<code>rippled.cfg</code>の<a href="history-sharding.html">履歴シャーディング</a>の設定が不完全です。</p>
 <div class="codehilite"><pre><span></span><code>Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
 </code></pre></div>
 <p>設定に<code>[shard_db]</code>スタンザが含まれている場合、このスタンザには<code>path</code>フィールドが指定されている必要があります。このフィールドは、<code>rippled</code>がシャードストアーのデータを書き込むことができるディレクトリを指しています。このエラーが発生する場合は、<code>path</code>フィールドが欠落しているか、誤った位置に指定されています。構成ファイルで余分な空白やスペルミスがないかどうかを確認し、<a href="configure-history-sharding.html#2-rippledcfgの編集">シャード設定の例</a>と比較してください。</p>
-<h2 id="サポート対象外のシャードストアータイプ-rocksdb">サポート対象外のシャードストアータイプ: RocksDB</h2>
+<h2 id="サポート対象外のシャードストアータイプ-rocksdb">サポート対象外のシャードストアータイプ: RocksDB<a aria-hidden="true" class="hover_anchor" href="#サポート対象外のシャードストアータイプ-rocksdb"><i class="fa fa-link"></i></a></h2>
 <p>RocksDBは、<a href="history-sharding.html">履歴シャーディング</a>のバックエンドとしてサポートされなくなりました。RocksDBシャードストアーを定義している既存の構成がある場合は、サーバーが起動に失敗します。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.3.1" target="_blank" title="新規: rippled 1.3.1"><img alt="新規: rippled 1.3.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.3.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>この場合、log startupコマンドの直後にプロセスが終了し、出力ログの早い段階で次のようなメッセージが表示されます。</p>
 <div class="codehilite"><pre><span></span><code>ShardStore:ERR Unsupported shard store type: RocksDB
@@ -337,7 +361,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 <li>代わりにNuDBを使用するようにシャードストアーを変更します。</li>
 <li>履歴シャーディングを無効にします。</li>
 </ul>
-<h2 id="関連項目">関連項目</h2>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>コンセプト:</strong><ul>
 <li><a href="the-rippled-server.html"><code>rippled</code>サーバー</a></li>
@@ -392,6 +416,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">XRP Ledger APIの使用開始</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">RippleAPI入門ガイド</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">XRPの送金</a></li>
@@ -405,15 +430,15 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">安全な署名の設定</a></li>
@@ -422,21 +447,21 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">アカウントの設定の利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a></li>
@@ -446,24 +471,25 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">宛先タグの要求</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">オフラインでのアカウント設定のチュートリアル</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Escrowの使用</a></li>
@@ -490,21 +516,21 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a></li>
@@ -513,21 +539,21 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">rippledサーバの利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">rippledのインストール</a></li>
@@ -547,6 +573,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">オンライン削除の設定</a></li>
@@ -585,7 +612,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -608,13 +635,13 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -634,11 +661,11 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -671,7 +698,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'state db error'
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -720,6 +747,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

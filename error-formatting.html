@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/api-conventions/error-formatting.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/api-conventions/error-formatting.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -203,7 +203,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="error-formatting">Error Formatting</h1>
+        <h1 id="error-formatting">Error Formatting<a aria-hidden="true" class="hover_anchor" href="#error-formatting"><i class="fa fa-link"></i></a></h1>
 <p>It is impossible to list all the possible ways an error can occur. Some may occur in the transport layer (for example, loss of network connectivity), in which case the results vary depending on what client and transport you are using. However, if the <code>rippled</code> server successfully receives your request, it tries to respond in a standardized error format.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> When your request results in an error, the entire request is copied back as part of the response, so that you can try to debug the error. However, this also includes any secrets that were passed as part of the request. When sharing error messages, be very careful not to accidentally expose important account secrets to others.</p>
 <p>Some example errors:</p>
@@ -224,7 +224,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">HTTP</span> <span class="err">Status:</span> <span class="mi">200</span> <span class="err">OK</span>
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">HTTP</span> <span class="err">S</span><span class="kc">tatus</span><span class="p">:</span> <span class="mi">200</span> <span class="err">OK</span>
 
 <span class="p">{</span>
     <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
@@ -254,7 +254,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="websocket-format">WebSocket Format</h2>
+<h2 id="websocket-format">WebSocket Format<a aria-hidden="true" class="hover_anchor" href="#websocket-format"><i class="fa fa-link"></i></a></h2>
 <table>
 <thead>
 <tr>
@@ -296,10 +296,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="json-rpc-format">JSON-RPC Format</h2>
+<h2 id="json-rpc-format">JSON-RPC Format<a aria-hidden="true" class="hover_anchor" href="#json-rpc-format"><i class="fa fa-link"></i></a></h2>
 <p>Some JSON-RPC request respond with an error code on the HTTP layer. In these cases, the response is a plain-text explanation in the response body. For example, if you forgot to specify the command in the <code>method</code> parameter, the response is like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">HTTP Status: 400 Bad Request</span>
-<span class="err">Null method</span>
+<div class="codehilite"><pre><span></span><code>HTTP Status: 400 Bad Request
+Null method
 </code></pre></div>
 <p>For other errors that returned with HTTP status code 200 OK, the responses are formatted in JSON, with the following fields:</p>
 <table>
@@ -333,10 +333,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="universal-errors">Universal Errors</h2>
+<h2 id="universal-errors">Universal Errors<a aria-hidden="true" class="hover_anchor" href="#universal-errors"><i class="fa fa-link"></i></a></h2>
 <p>All methods can potentially return any of the following values for the <code>error</code> code:</p>
 <ul>
 <li><code>amendmentBlocked</code> - The server is <a href="amendments.html#amendment-blocked">amendment blocked</a> and needs to be updated to the latest version to stay synced with the XRP Ledger network.</li>
+<li><code>failedToForward</code> - (<a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a> servers only) The server tried to forward this request to a P2P Mode server, but the connection failed.</li>
 <li><code>invalid_API_version</code> - The server does not support the <a href="request-formatting.html#api-versioning">API version number</a> from the request.</li>
 <li><code>jsonInvalid</code> - (WebSocket only) The request is not a proper JSON object.<ul>
 <li>JSON-RPC returns a 400 Bad Request HTTP error in this case instead.</li>
@@ -353,6 +354,13 @@
 <li><code>unknownCmd</code> - The request does not contain a <a href="rippled-api.html">command</a> that the <code>rippled</code> server recognizes.</li>
 <li><code>wsTextRequired</code> - (WebSocket only) The request's <a class="external-link" href="https://tools.ietf.org/html/rfc6455#section-5.2" target="_blank">opcode <i aria-hidden="true" class="fa fa-external-link"></i></a> is not text. <!-- SPELLING_IGNORE: opcode --></li>
 </ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
     </div>
   </article>
       </main>
@@ -458,6 +466,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -519,7 +528,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -559,7 +567,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -598,7 +606,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -791,6 +799,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

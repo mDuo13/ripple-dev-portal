@@ -121,7 +121,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/tool/template-xrp-ledger-rpc-tool.html" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/tool/template-xrp-ledger-rpc-tool.html" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -148,7 +148,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -179,11 +179,11 @@
   <h1>RPC Tool</h1>
   <div class="content">
 
-  <p>This is a debug tool for printing raw information about an account, a transaction (by hash) or a ledger (by sequence number).</p>
+  <p>This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number).</p>
 
   <form id="account-entry">
-  <fieldset><input id="target" class="form-control" required="" type="text" placeholder="XRP Ledger classic address or transaction ID" />
-  <span class="help-block"><small>Try an account like <em>r9kiSEUEw6iSCNksDVKf9k3AyxjW3r1qPf</em>.</small></span>
+  <fieldset><input id="target" class="form-control" required="" type="text" placeholder="XRP Ledger address, transaction ID, or ledger index" />
+  <span class="help-block"><small>Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>.</small></span>
   <button class="btn btn-primary">Get info</button></fieldset>
   </form>
   <div id="result">
@@ -194,13 +194,10 @@
     <div id="error" class="devportal-callout warning"></div>
     <ul id="links" class="nav nav-pills">
      	<li><a id="permalink" href="#" target="_blank" rel="noopener">Permalink</a></li>
-     	<li><a id="graphlink" href="#" target="_blank" rel="noopener">Graph</a></li>
+     	<li><a id="explorerlink" href="#" target="_blank" rel="noopener">Explorer</a></li>
     </ul>
-    <div class="devportal-callout tip"><strong>Tip:</strong> This page features intelligent copy/paste. Any
-    nodes you expand will be copied, any that you don't expand will show up
-    as a little <code>/* */</code> comment in your copy/pasted text.</div>
     <div class="group group-tx">
-    <h3>tx</h3>
+    <h3><a href="tx.html">tx</a></h3>
     <ul class="tools nav nav-pills">
      	<li><a class="tx-expand">expand all</a></li>
      	<li><a class="tx-collapse">collapse all</a></li>
@@ -213,9 +210,9 @@
     </div>
 
     <div class="group group-account">
-    <h3>account_info</h3>
+    <h3><a href="account_info.html">account_info</a></h3>
     <pre id="account_info" class="json"></pre>
-    <h3>account_lines</h3>
+    <h3><a href="account_lines.html">account_lines</a></h3>
     <ul class="tools nav nav-pills">
      	<li><a class="account-lines-expand">expand all</a></li>
      	<li><a class="account-lines-collapse">collapse all</a></li>
@@ -225,7 +222,7 @@
      	<li><a class="account-lines-expand">expand all</a></li>
      	<li><a class="account-lines-collapse">collapse all</a></li>
     </ul>
-    <h3>account_tx (last 20)</h3>
+    <h3><a href="account_tx.html">account_tx</a> (last 20)</h3>
     <ul class="tools nav nav-pills">
      	<li><a class="account-tx-expand-tx">expand tx</a></li>
      	<li><a class="account-tx-expand">expand all</a></li>
@@ -241,20 +238,20 @@
      	<li><a class="account-tx-more">next 20</a></li>
      	<li><a class="account-tx-back">prev 20</a></li>
     </ul>
-    <h3>account_offers</h3>
+    <h3><a href="account_objects.html">account_objects</a></h3>
     <ul class="tools nav nav-pills">
-     	<li><a class="account-offers-expand">expand all</a></li>
-     	<li><a class="account-offers-collapse">collapse all</a></li>
+     	<li><a class="account-objects-expand">expand all</a></li>
+     	<li><a class="account-objects-collapse">collapse all</a></li>
     </ul>
-    <pre id="account_offers" class="json"></pre>
+    <pre id="account_objects" class="json"></pre>
     <ul class="tools nav nav-pills">
-     	<li><a class="account-offers-expand">expand all</a></li>
-     	<li><a class="account-offers-collapse">collapse all</a></li>
+     	<li><a class="account-objects-expand">expand all</a></li>
+     	<li><a class="account-objects-collapse">collapse all</a></li>
     </ul>
     </div>
 
     <div class="group group-ledger">
-    <h3>ledger</h3>
+    <h3><a href="ledger.html">ledger</a></h3>
     <ul class="tools nav nav-pills">
      	<li><a class="ledger-expand-tx">expand tx</a></li>
      	<li><a class="ledger-tx-expand">expand all</a></li>
@@ -432,10 +429,32 @@ debug: false
 });
 </script>
 
-  <script type='text/javascript' src='assets/js/es5-shim.js'></script>
-  <script type='text/javascript' src='assets/js/ripple-0.11.0-min.js'></script>
-  <script type='text/javascript' src='assets/vendor/async.min.js'></script>
-  <script type='text/javascript' src='assets/vendor/cm-javascript.min.js'></script>
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>
+  <script type="application/javascript" src="assets/js/ripple-lib-1.9.1.min.js"></script>
   <script type='text/javascript' src='assets/js/rpc-tool.js'></script>
 
   <script type="application/javascript">

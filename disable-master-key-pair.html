@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-account-settings/disable-master-key-pair.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-account-settings/disable-master-key-pair.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -206,11 +206,11 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="disable-master-key-pair">Disable Master Key Pair</h1>
+        <h1 id="disable-master-key-pair">Disable Master Key Pair<a aria-hidden="true" class="hover_anchor" href="#disable-master-key-pair"><i class="fa fa-link"></i></a></h1>
 <p>This page describes how to disable the <a href="cryptographic-keys.html">master key pair</a> that is mathematically associated with an <a href="accounts.html">account</a>'s address. You should do this if your account's master key pair may have been compromised, or if you want to make <a href="multi-signing.html">multi-signing</a> the <em>only</em> way to submit transactions from your account.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> Disabling the master key pair removes one method of <a href="transaction-basics.html#authorizing-transactions">authorizing transactions</a>. You should be sure you can use one of the other ways of authorizing transactions, such as with a regular key or by multi-signing, before you disable the master key pair. (For example, if you <a href="assign-a-regular-key-pair.html">assigned a regular key pair</a>, make sure that you can successfully submit transactions with that regular key.) Due to the decentralized nature of the XRP Ledger, no one can restore access to your account if you cannot use the remaining ways of authorizing transactions.</p>
 <p><strong>To disable the master key pair, you must use the master key pair.</strong> However, you can <em>re-enable</em> the master key pair using any other method of authorizing transactions.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>To disable the master key pair for an account, you must meet the following prerequisites:</p>
 <ul>
 <li>You must have an XRP Ledger <a href="accounts.html">account</a> and you must be able to sign and submit transactions from that account using the master key pair. See also: <a href="set-up-secure-signing.html">Set Up Secure Signing</a>. Two common ways this can work are:<ul>
@@ -224,8 +224,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="steps">Steps</h2>
-<h3 id="1-construct-transaction-json">1. Construct Transaction JSON</h3>
+<h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
+<h3 id="1-construct-transaction-json">1. Construct Transaction JSON<a aria-hidden="true" class="hover_anchor" href="#1-construct-transaction-json"><i class="fa fa-link"></i></a></h3>
 <p>Prepare an <a href="accountset.html">AccountSet transaction</a> from your account with the field <code>"SetValue": 4</code>. This is the value for the AccountSet flag "Disable Master" (<code>asfDisableMaster</code>). The only other required fields for this transaction are the required <a href="transaction-common-fields.html">common fields</a>. For example, if you leave off the <a href="transaction-common-fields.html#auto-fillable-fields">auto-fillable fields</a>, the following transaction instructions are enough:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
   <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"AccountSet"</span><span class="p">,</span>
@@ -234,10 +234,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <p class="devportal-callout tip"><strong>Tip:</strong> It is strongly recommended to also provide the <code>LastLedgerSequence</code> field so that you can <a href="reliable-transaction-submission.html">reliably get the outcome of the transaction in a predictable amount of time</a>.</p>
-<h3 id="2-sign-transaction">2. Sign Transaction</h3>
+<h3 id="2-sign-transaction">2. Sign Transaction<a aria-hidden="true" class="hover_anchor" href="#2-sign-transaction"><i class="fa fa-link"></i></a></h3>
 <p>You must use the <strong>master key pair</strong> to sign the transaction.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> Do not submit your secret to a server you don't control, and do not transmit it over the network unencrypted. These examples assume you are using a <a href="set-up-secure-signing.html#run-rippled-locally">local <code>rippled</code> server</a>. You should adapt these instructions if you are using another <a href="set-up-secure-signing.html">secure signing configuration</a>.</p>
-<h4 id="example-request">Example Request</h4>
+<h4 id="example-request">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request"><i class="fa fa-link"></i></a></h4>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -270,7 +270,7 @@
 <span class="s1">    "Account":"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "SetFlag":4}'</span>
 </code></pre></div></div>
 </div>
-<h4 id="example-response">Example Response</h4>
+<h4 id="example-response">Example Response<a aria-hidden="true" class="hover_anchor" href="#example-response"><i class="fa fa-link"></i></a></h4>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -343,9 +343,9 @@
 <li><code>"error": "masterDisabled"</code> means this address's master key pair is <em>already</em> disabled.</li>
 </ul>
 <p>Take note of the <code>tx_blob</code> value from the response. This is a signed transaction binary you can submit to the network.</p>
-<h3 id="3-submit-transaction">3. Submit Transaction</h3>
+<h3 id="3-submit-transaction">3. Submit Transaction<a aria-hidden="true" class="hover_anchor" href="#3-submit-transaction"><i class="fa fa-link"></i></a></h3>
 <p>Submit the signed transaction blob from the previous step to the XRP Ledger.</p>
-<h4 id="example-request-1">Example Request</h4>
+<h4 id="example-request-1">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request-1"><i class="fa fa-link"></i></a></h4>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">WebSocket</a></li><li><a href="#code-2-1">JSON-RPC</a></li><li><a href="#code-2-2">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-2-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -367,7 +367,7 @@
 <div class="code_sample" id="code-2-2" style="position: static;"><div class="codehilite"><pre><span></span><code>$ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
 </code></pre></div></div>
 </div>
-<h4 id="example-response-1">Example Response</h4>
+<h4 id="example-response-1">Example Response<a aria-hidden="true" class="hover_anchor" href="#example-response-1"><i class="fa fa-link"></i></a></h4>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">WebSocket</a></li><li><a href="#code-3-1">JSON-RPC</a></li><li><a href="#code-3-2">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-3-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -441,10 +441,10 @@
 </code></pre></div></div>
 </div>
 <p>If the transaction fails with the result <code>tecNO_ALTERNATIVE_KEY</code>, your account does not have another method of authorizing transactions currently enabled. You must <a href="assign-a-regular-key-pair.html">assign a regular key pair</a> or <a href="set-up-multi-signing.html">set up multi-signing</a>, then try again to disable the master key pair.</p>
-<h3 id="4-wait-for-validation">4. Wait for validation</h3>
+<h3 id="4-wait-for-validation">4. Wait for validation<a aria-hidden="true" class="hover_anchor" href="#4-wait-for-validation"><i class="fa fa-link"></i></a></h3>
 <p>On the live network or the Ripple Test Net, you can wait 4-7 seconds for the ledger to close automatically.</p>
 <p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="ledger_accept.html">ledger_accept method</a> to manually close the ledger. <!--#{ fix md highlighting_ #}--></p>
-<h3 id="5-confirm-account-flags">5. Confirm Account Flags</h3>
+<h3 id="5-confirm-account-flags">5. Confirm Account Flags<a aria-hidden="true" class="hover_anchor" href="#5-confirm-account-flags"><i class="fa fa-link"></i></a></h3>
 <p>Confirm that your account's master key is disabled using the <a href="account_info.html">account_info method</a>. Be sure to specify the following parameters:</p>
 <table>
 <thead>
@@ -464,7 +464,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="example-request-2">Example Request</h4>
+<h4 id="example-request-2">Example Request<a aria-hidden="true" class="hover_anchor" href="#example-request-2"><i class="fa fa-link"></i></a></h4>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">WebSocket</a></li><li><a href="#code-4-1">JSON-RPC</a></li><li><a href="#code-4-2">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-4-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -486,7 +486,7 @@
 <div class="code_sample" id="code-4-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
 </code></pre></div></div>
 </div>
-<h4 id="example-response-2">Example Response</h4>
+<h4 id="example-response-2">Example Response<a aria-hidden="true" class="hover_anchor" href="#example-response-2"><i class="fa fa-link"></i></a></h4>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">WebSocket</a></li><li><a href="#code-5-1">JSON-RPC</a></li><li><a href="#code-5-2">Commandline</a></li></ul>
 
 <div class="code_sample" id="code-5-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -582,7 +582,7 @@
 <div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">JavaScript</a></li><li><a href="#code-6-1">Python</a></li></ul>
 
 <div class="code_sample" id="code-6-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="c1">// Assuming the JSON-RPC response above is saved as account_info_response</span>
-<span class="kr">const</span> <span class="nx">lsfDisableMaster</span> <span class="o">=</span> <span class="mh">0x00100000</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">lsfDisableMaster</span> <span class="o">=</span> <span class="mh">0x00100000</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">acct_flags</span> <span class="o">=</span> <span class="nx">account_info_response</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">account_data</span><span class="p">.</span><span class="nx">Flags</span><span class="p">;</span>
 <span class="k">if</span> <span class="p">((</span><span class="nx">lsfDisableMaster</span> <span class="o">&amp;</span> <span class="nx">acct_flags</span><span class="p">)</span> <span class="o">===</span> <span class="nx">lsfDisableMaster</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Master key pair is DISABLED"</span><span class="p">);</span>
@@ -643,6 +643,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -656,15 +657,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -673,21 +674,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -697,24 +698,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -741,21 +743,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -764,21 +766,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -798,6 +800,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -836,7 +839,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -971,6 +974,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

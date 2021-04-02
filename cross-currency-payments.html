@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/payment-types/cross-currency-payments.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/payment-types/cross-currency-payments.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -202,10 +202,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="cross-currency-payments">Cross-Currency Payments</h1>
+        <h1 id="cross-currency-payments">Cross-Currency Payments<a aria-hidden="true" class="hover_anchor" href="#cross-currency-payments"><i class="fa fa-link"></i></a></h1>
 <p>In the XRP Ledger, you can send cross-currency payments that exchange one or more issued currencies, XRP, or both. Like <a href="use-simple-xrp-payments.html">direct XRP payments</a>, these payments use the <a href="payment.html">Payment transaction type</a>. Cross-currency payments within the XRP Ledger are fully atomic, meaning that either the payment fully executes or no part of it executes.</p>
 <p>By default, cross-currency payments deliver a fixed amount to their destination at a variable cost to their source. Cross-currency payments can also be <a href="partial-payments.html">partial payments</a>, which deliver a variable amount to the destination within a fixed sending limit.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>By definition, a cross-currency payment involves at least two currencies, which means that at least one currency involved must be a non-XRP issued currency.<ul>
 <li>Typically, this means using one or more currencies issued by an <a href="become-an-xrp-ledger-gateway.html">XRP Ledger Gateway</a>. Such currencies are backed by funds outside the XRP Ledger, and can be withdrawn through the gateway.</li>
@@ -214,10 +214,10 @@
 </li>
 <li>There must be at least one <a href="paths.html">Path</a> between the sender and receiver, and the total liquidity across all paths must be enough to execute the payment. Cross-currency payments convert from one currency to another by consuming <a href="offers.html">Offers</a> in the XRP Ledger's decentralized exchange.</li>
 </ul>
-<h2 id="auto-bridging">Auto-Bridging</h2>
+<h2 id="auto-bridging">Auto-Bridging<a aria-hidden="true" class="hover_anchor" href="#auto-bridging"><i class="fa fa-link"></i></a></h2>
 <p>Cross-currency payments that exchange two issued currencies automatically use XRP, when it decreases the cost of the payment, by connecting order books to deepen the pool of available liquidity. For example, a payment sending from USD to MXN automatically converts USD to XRP and then XRP to MXN if doing so is cheaper than converting USD to MXN directly.</p>
 <p>For more information, see <a href="autobridging.html">Auto-Bridging</a>.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="issued-currencies.html">Issued Currencies</a></li>
@@ -590,6 +590,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

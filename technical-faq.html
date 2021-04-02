@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/introduction/technical-faq.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/introduction/technical-faq.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -203,53 +203,53 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="technical-faq">Technical FAQ</h1>
-<h2 id="validators-and-unique-node-lists">Validators and Unique Node Lists</h2>
+        <h1 id="technical-faq">Technical FAQ<a aria-hidden="true" class="hover_anchor" href="#technical-faq"><i class="fa fa-link"></i></a></h1>
+<h2 id="validators-and-unique-node-lists">Validators and Unique Node Lists<a aria-hidden="true" class="hover_anchor" href="#validators-and-unique-node-lists"><i class="fa fa-link"></i></a></h2>
 <!--#{ using h4s for questions to keep them out of the right side nav (too cluttered when they display) and to provide appropriate text size for questions. #}-->
-<h4 id="what-service-do-transaction-validators-provide">What service do transaction validators provide?</h4>
+<h4 id="what-service-do-transaction-validators-provide">What service do transaction validators provide?<a aria-hidden="true" class="hover_anchor" href="#what-service-do-transaction-validators-provide"><i class="fa fa-link"></i></a></h4>
 <p>Validators determine if transactions meet protocol requirements, and are therefore “valid.” The service validators uniquely provide is grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending. <!-- STYLE_OVERRIDE: therefore --></p>
 <p>See <a href="consensus.html">Consensus</a> and the <a class="external-link" href="https://ripple.com/insights/ripple-labs-tech-talk-consensus-within-the-ripple-protocol/" target="_blank">Ripple Labs Tech Talk: Understanding Consensus <i aria-hidden="true" class="fa fa-external-link"></i></a> for more information about the consensus process.</p>
-<h4 id="how-much-does-it-cost-to-run-a-validator">How much does it cost to run a validator?</h4>
+<h4 id="how-much-does-it-cost-to-run-a-validator">How much does it cost to run a validator?<a aria-hidden="true" class="hover_anchor" href="#how-much-does-it-cost-to-run-a-validator"><i class="fa fa-link"></i></a></h4>
 <p>Running a validator does not require any fees or XRP. It is comparable in cost to running an email server in terms of electricity.</p>
-<h4 id="what-are-unique-node-lists-unls">What are Unique Node Lists (UNLs)?</h4>
+<h4 id="what-are-unique-node-lists-unls">What are Unique Node Lists (UNLs)?<a aria-hidden="true" class="hover_anchor" href="#what-are-unique-node-lists-unls"><i class="fa fa-link"></i></a></h4>
 <p>They are the lists of transaction validators a given participant believes will not conspire to defraud them. <!-- STYLE_OVERRIDE: will --></p>
-<h4 id="which-unl-should-i-select">Which UNL should I select?</h4>
+<h4 id="which-unl-should-i-select">Which UNL should I select?<a aria-hidden="true" class="hover_anchor" href="#which-unl-should-i-select"><i class="fa fa-link"></i></a></h4>
 <p>Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, Ripple provides a default and recommended list which we expand based on watching the history of validators run by Ripple and third parties. Eventually, Ripple intends to remove itself from this process entirely by having network participants select their own lists based on publicly available data about validator quality.</p>
-<h4 id="if-ripple-recommends-adoption-of-its-unl-doesnt-that-create-a-centralized-system">If Ripple recommends adoption of its UNL, doesn't that create a centralized system?</h4>
+<h4 id="if-ripple-recommends-adoption-of-its-unl-doesnt-that-create-a-centralized-system">If Ripple recommends adoption of its UNL, doesn't that create a centralized system?<a aria-hidden="true" class="hover_anchor" href="#if-ripple-recommends-adoption-of-its-unl-doesnt-that-create-a-centralized-system"><i class="fa fa-link"></i></a></h4>
 <p>No. The XRP Ledger network is opt-in. Each participant directly or indirectly chooses its UNL. Should Ripple stop operating or should Ripple act maliciously, participants could change their UNLs to continue using the XRP Ledger.</p>
-<h4 id="what-is-the-validator-incentive-structure-for-validators-not-run-by-ripple">What is the validator incentive structure for validators not run by Ripple?</h4>
+<h4 id="what-is-the-validator-incentive-structure-for-validators-not-run-by-ripple">What is the validator incentive structure for validators not run by Ripple?<a aria-hidden="true" class="hover_anchor" href="#what-is-the-validator-incentive-structure-for-validators-not-run-by-ripple"><i class="fa fa-link"></i></a></h4>
 <p>The primary incentive to run a validator is to preserve and protect the stable operation and sensible evolution of the network. It is the validators who decide the evolution of the XRP Ledger, so any business that uses or depends on the XRP Ledger has an inherent incentive to ensure the reliability and stability of the network.</p>
 <p>If you run an XRP Ledger server to participate in the network, the additional cost and effort to run a validator is minimal. This means that additional incentives, such as the mining rewards in Bitcoin, are not necessary. Ripple avoids paying XRP as a reward for operating a validator so that such incentives do not warp the behavior of validators.</p>
-<h4 id="can-financial-institutions-set-up-transaction-validators-to-help-them-meet-specific-institutional-standards-and-requirements">Can financial institutions set up transaction validators to help them meet specific institutional standards and requirements?</h4>
+<h4 id="can-financial-institutions-set-up-transaction-validators-to-help-them-meet-specific-institutional-standards-and-requirements">Can financial institutions set up transaction validators to help them meet specific institutional standards and requirements?<a aria-hidden="true" class="hover_anchor" href="#can-financial-institutions-set-up-transaction-validators-to-help-them-meet-specific-institutional-standards-and-requirements"><i class="fa fa-link"></i></a></h4>
 <p>No, institutions cannot set up customized validator policies for choosing to allow some transactions and reject others. Validators either follow the protocol, or they do not. If software does not follow protocol rules, it does not function. Thus, it is not recommended that institutions seek out custom implementations without in-house expertise.</p>
-<h4 id="what-happens-if-more-than-20-of-nodes-within-the-network-do-not-agree-with-the-majority-how-is-the-final-version-of-the-ledger-chosen">What happens if more than 20% of nodes within the network do not agree with the majority? How is the final version of the ledger chosen?</h4>
+<h4 id="what-happens-if-more-than-20-of-nodes-within-the-network-do-not-agree-with-the-majority-how-is-the-final-version-of-the-ledger-chosen">What happens if more than 20% of nodes within the network do not agree with the majority? How is the final version of the ledger chosen?<a aria-hidden="true" class="hover_anchor" href="#what-happens-if-more-than-20-of-nodes-within-the-network-do-not-agree-with-the-majority-how-is-the-final-version-of-the-ledger-chosen"><i class="fa fa-link"></i></a></h4>
 <p>The network may temporarily halt to reconfigure itself to continue with the new UNL list based on those that want to reach consensus. This temporary processing delay is desired rather than double spending.</p>
 <p>In the process of determining the final, authoritative version of the ledger, there may be multiple temporary internal versions. Such internal versions naturally happen in distributed systems because not all nodes receive transactions in the same order. The analogous behavior in Bitcoin is where two servers each see a different longest chain because two blocks were mined at about the same time.</p>
 <p>However, there can be only one latest <em>validated</em> ledger version at any given time; other versions are irrelevant and harmless.</p>
-<h4 id="does-the-xrp-ledger-have-a-formal-process-for-adding-validators">Does the XRP Ledger have a formal process for adding validators?</h4>
+<h4 id="does-the-xrp-ledger-have-a-formal-process-for-adding-validators">Does the XRP Ledger have a formal process for adding validators?<a aria-hidden="true" class="hover_anchor" href="#does-the-xrp-ledger-have-a-formal-process-for-adding-validators"><i class="fa fa-link"></i></a></h4>
 <p>No, a formal process for adding validators is not compatible with the XRP Ledger, because it is a system with no central authority.</p>
 <p>For recommendations and best practices, see <a href="run-rippled-as-a-validator.html">Run <code>rippled</code> as a Validator</a>.</p>
-<h2 id="role-of-xrp">Role of XRP</h2>
-<h4 id="why-does-ripple-use-xrp-holdings">Why does Ripple use XRP holdings?</h4>
+<h2 id="role-of-xrp">Role of XRP<a aria-hidden="true" class="hover_anchor" href="#role-of-xrp"><i class="fa fa-link"></i></a></h2>
+<h4 id="why-does-ripple-use-xrp-holdings">Why does Ripple use XRP holdings?<a aria-hidden="true" class="hover_anchor" href="#why-does-ripple-use-xrp-holdings"><i class="fa fa-link"></i></a></h4>
 <p>Ripple's XRP holdings incentivize the company to make the XRP Ledger as useful as possible. XRP exists as a native asset in the XRP Ledger for anti-spam transaction purposes, and for currency bridging only if beneficial to users. Otherwise, XRP is completely optional.</p>
-<h4 id="how-does-the-xrp-ledger-respond-to-transaction-floods">How does the XRP Ledger respond to transaction floods?</h4>
+<h4 id="how-does-the-xrp-ledger-respond-to-transaction-floods">How does the XRP Ledger respond to transaction floods?<a aria-hidden="true" class="hover_anchor" href="#how-does-the-xrp-ledger-respond-to-transaction-floods"><i class="fa fa-link"></i></a></h4>
 <p>The XRP Ledger is designed to set the transaction cost dynamically based on demand as an anti-spam measure. The impact of any potential XRP manipulation is minimized by increases in network size as the market cap and transaction volume increase.</p>
-<h4 id="what-is-ripple-standard-operating-procedure-regarding-money-laundering-and-suspicious-economic-activity">What is Ripple standard operating procedure regarding money laundering and suspicious economic activity?</h4>
+<h4 id="what-is-ripple-standard-operating-procedure-regarding-money-laundering-and-suspicious-economic-activity">What is Ripple standard operating procedure regarding money laundering and suspicious economic activity?<a aria-hidden="true" class="hover_anchor" href="#what-is-ripple-standard-operating-procedure-regarding-money-laundering-and-suspicious-economic-activity"><i class="fa fa-link"></i></a></h4>
 <!-- STYLE_OVERRIDE: regarding -->
 <p>Ripple is committed to monitoring and reporting any AML flags across the XRP Ledger network, as well as reporting suspicious activity to FinCEN as applicable.</p>
-<h2 id="security-concerns">Security Concerns</h2>
-<h4 id="what-is-ripples-process-for-reviewing-third-party-code-contributions">What is Ripple's process for reviewing third-party code contributions?</h4>
+<h2 id="security-concerns">Security Concerns<a aria-hidden="true" class="hover_anchor" href="#security-concerns"><i class="fa fa-link"></i></a></h2>
+<h4 id="what-is-ripples-process-for-reviewing-third-party-code-contributions">What is Ripple's process for reviewing third-party code contributions?<a aria-hidden="true" class="hover_anchor" href="#what-is-ripples-process-for-reviewing-third-party-code-contributions"><i class="fa fa-link"></i></a></h4>
 <p>The code contribution process starts with a developer opening a <a class="external-link" href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests" target="_blank">pull request <i aria-hidden="true" class="fa fa-external-link"></i></a> to Ripple's <code>rippled</code> repo. This pull request triggers automated unit and integration tests, as well as code reviews by several developers who, typically, have significant expertise in the area of code that the pull request affects.</p>
 <p>Once the pull request passes automated tests and receives approvals from reviewers, a trusted <a class="external-link" href="https://opensource.guide/best-practices/" target="_blank">maintainer of the repo <i aria-hidden="true" class="fa fa-external-link"></i></a> can stage it for inclusion in the next beta.</p>
-<h4 id="does-ripple-own-or-control-the-xrp-ledger-or-xrp-ledger-network">Does Ripple own or control the XRP Ledger or XRP Ledger network?</h4>
+<h4 id="does-ripple-own-or-control-the-xrp-ledger-or-xrp-ledger-network">Does Ripple own or control the XRP Ledger or XRP Ledger network?<a aria-hidden="true" class="hover_anchor" href="#does-ripple-own-or-control-the-xrp-ledger-or-xrp-ledger-network"><i class="fa fa-link"></i></a></h4>
 <p>No, Ripple does not own or control the XRP Ledger or XRP Ledger network.</p>
 <p>Ripple does publish a reference implementation of the core XRP Ledger server (<a class="external-link" href="https://github.com/ripple/rippled" target="_blank"><code>rippled</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>) and employs a team of engineers who contribute to the open-source codebase. Ripple also periodically publishes pre-compiled binary packages of the software as a convenience. Anyone is free to <a href="install-rippled.html">download and compile the software from source</a>, if they prefer.  </p>
 <p>You don't need to use Ripple’s version of the XRP Ledger software to interact with the XRP Ledger. <code>rippled</code> is open-source software and Ripple grants anyone the ability to use, extend, and modify it as long as they follow the terms of the <a class="external-link" href="https://github.com/ripple/rippled/blob/develop/LICENSE" target="_blank">ISC license <i aria-hidden="true" class="fa fa-external-link"></i></a>. The ISC License is very permissive compared to some other open-source licenses that strictly limit how you can extend and adapt the software.</p>
-<h4 id="does-ripple-offer-a-secure-method-to-download-their-software">Does Ripple offer a secure method to download their software?</h4>
+<h4 id="does-ripple-offer-a-secure-method-to-download-their-software">Does Ripple offer a secure method to download their software?<a aria-hidden="true" class="hover_anchor" href="#does-ripple-offer-a-secure-method-to-download-their-software"><i class="fa fa-link"></i></a></h4>
 <p><code>rippled</code> source code is available at <a class="external-link" href="https://github.com/ripple/rippled" target="_blank">https://github.com/ripple/rippled <i aria-hidden="true" class="fa fa-external-link"></i></a>, where the tip of the <code>master</code>, <code>release</code> and <code>develop</code> branches always contains a version-setting commit signed by a <code>rippled</code> developer. The XRP Ledger also offers pre-built binary packages for CentOS, RedHat Enterprise Linux, Fedora, Ubuntu, and Debian Linux. Those packages are digitally signed by Ripple so that they are tamper-evident and their authenticity can be verified. Lastly, release bulletins are made available over a secure website, and include the commit ID of the repository, as well as the cryptographic hash values of the packages that are published. <!-- STYLE_OVERRIDE: evident --></p>
-<h4 id="does-ripple-distinguish-between-the-codebase-for-validation-and-the-one-for-user-software">Does Ripple distinguish between the codebase for validation and the one for user software?</h4>
+<h4 id="does-ripple-distinguish-between-the-codebase-for-validation-and-the-one-for-user-software">Does Ripple distinguish between the codebase for validation and the one for user software?<a aria-hidden="true" class="hover_anchor" href="#does-ripple-distinguish-between-the-codebase-for-validation-and-the-one-for-user-software"><i class="fa fa-link"></i></a></h4>
 <p>Yes. Client software for the XRP Ledger, including ripple-lib, has a different codebase and repositories from <code>rippled</code> (validation).</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a class="external-link" href="https://github.com/ripple/rippled" target="_blank"><code>rippled</code> codebase <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li>User software codebase:<ul>
@@ -609,6 +609,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

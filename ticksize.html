@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/decentralized-exchange/ticksize.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/decentralized-exchange/ticksize.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -200,13 +200,13 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="tick-size">Tick Size</h1>
+        <h1 id="tick-size">Tick Size<a aria-hidden="true" class="hover_anchor" href="#tick-size"><i class="fa fa-link"></i></a></h1>
 <p><em>(Added by the <a href="known-amendments.html#ticksize">TickSize amendment</a>.)</em></p>
 <p>When an Offer is placed into an order book, its exchange rate is truncated based on the <code>TickSize</code> values set by the issuers of the currencies involved in the Offer. When a trader offers to exchange XRP and an issued currency, the <code>TickSize</code> from the issuer of the currency applies. When a trader offers to exchange two issued currencies, the offer uses the smaller <code>TickSize</code> value (that is, the one with fewer significant digits). If neither currency has a <code>TickSize</code> set, the default behavior applies.</p>
 <p>The <code>TickSize</code> value truncates the number of <em>significant digits</em> in the exchange rate of an offer when it gets placed in an order book. Issuers can set <code>TickSize</code> to an integer from <code>3</code> to <code>15</code> using an <a href="accountset.html">AccountSet transaction</a>. The exchange rate is represented as significant digits and an exponent; the <code>TickSize</code> does not affect the exponent. This allows the XRP Ledger to represent exchange rates between assets that vary greatly in value (for example, a highly inflated currency compared to a rare commodity). The lower the <code>TickSize</code> an issuer sets, the larger the increment traders must offer to be considered a higher exchange rate than the existing Offers.</p>
 <p>The <code>TickSize</code> does not affect the part of an Offer that can be executed immediately. (For that reason, OfferCreate transactions with <code>tfImmediateOrCancel</code> are unaffected by <code>TickSize</code> values.) If the Offer cannot be fully executed, the transaction processing engine calculates the exchange rate and truncates it based on <code>TickSize</code>. Then, the engine rounds the remaining amount of the Offer from the "less important" side to match the truncated exchange rate. For a default OfferCreate transaction (a "buy" Offer), the <code>TakerPays</code> amount (the amount being bought) gets rounded. If the <code>tfSell</code> flag is enabled (a "sell" Offer) the <code>TakerGets</code> amount (the amount being sold) gets rounded.</p>
 <p>When an issuer enables, disables, or changes the <code>TickSize</code>, Offers that were placed under the previous setting are unaffected.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a class="external-link" href="https://xrpl.org/blog/2017/ticksize-voting.html#ticksize-amendment-overview" target="_blank">Dev Blog: Introducing the TickSize Amendment <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><strong>References:</strong><ul>
@@ -573,6 +573,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

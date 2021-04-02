@@ -75,6 +75,7 @@ https://xrpl.org/peer-protocol.html
 https://xrpl.org/transaction-censorship-detection.html
 https://xrpl.org/tutorials.html
 https://xrpl.org/get-started.html
+https://xrpl.org/get-started-using-python.html
 https://xrpl.org/get-started-with-the-rippled-api.html
 https://xrpl.org/get-started-with-rippleapi-for-javascript.html
 https://xrpl.org/send-xrp.html
@@ -93,6 +94,7 @@ https://xrpl.org/set-up-multi-signing.html
 https://xrpl.org/send-a-multi-signed-transaction.html
 https://xrpl.org/require-destination-tags.html
 https://xrpl.org/offline-account-setup.html
+https://xrpl.org/use-tickets.html
 https://xrpl.org/use-specialized-payment-types.html
 https://xrpl.org/use-complex-payment-types.html
 https://xrpl.org/use-escrows.html
@@ -131,6 +133,7 @@ https://xrpl.org/rippled-1-3-migration-instructions.html
 https://xrpl.org/configure-rippled.html
 https://xrpl.org/run-rippled-as-a-validator.html
 https://xrpl.org/run-rippled-as-a-wallet-server.html
+https://xrpl.org/configure-amendment-voting.html
 https://xrpl.org/configure-statsd.html
 https://xrpl.org/connect-your-rippled-to-the-xrp-test-net.html
 https://xrpl.org/configure-online-deletion.html
@@ -211,6 +214,7 @@ https://xrpl.org/subscribe.html
 https://xrpl.org/unsubscribe.html
 https://xrpl.org/server-info-methods.html
 https://xrpl.org/fee.html
+https://xrpl.org/manifest.html
 https://xrpl.org/server_info.html
 https://xrpl.org/server_state.html
 https://xrpl.org/utility-methods.html
@@ -244,7 +248,6 @@ https://xrpl.org/consensus_info.html
 https://xrpl.org/feature.html
 https://xrpl.org/fetch_info.html
 https://xrpl.org/get_counts.html
-https://xrpl.org/manifest.html
 https://xrpl.org/print.html
 https://xrpl.org/validator_info.html
 https://xrpl.org/validator_list_sites.html

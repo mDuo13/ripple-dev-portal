@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/transaction-formats/transaction-results/tel-codes.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/transaction-formats/transaction-results/tel-codes.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -201,9 +201,9 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="tel-codes">tel Codes</h1>
+        <h1 id="tel-codes">tel Codes<a aria-hidden="true" class="hover_anchor" href="#tel-codes"><i class="fa fa-link"></i></a></h1>
 <p>These codes indicate an error in the local server processing the transaction; it is possible that another server with a different configuration or load level could process the transaction successfully. They have numerical values in the range -399 to -300. The exact code for any given error is subject to change, so don't rely on it.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> Transactions with <code>tel</code> codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, a transaction that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see <a href="finality-of-results.html">Finality of Results</a> and <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Transactions with <code>tel</code> codes are not applied to ledgers and cannot cause any changes to the XRP Ledger state. However, these transactions may be automatically cached and retried later. Transactions that provisionally failed may still succeed or fail with a different code after being reapplied. For more information, see <a href="finality-of-results.html">Finality of Results</a> and <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
 <table>
 <thead>
 <tr>
@@ -222,7 +222,7 @@
 </tr>
 <tr>
 <td align="left"><code>telBAD_PUBLIC_KEY</code></td>
-<td align="left">The transaction specified a public key value (for example, as the <code>MessageKey</code> field of an <a href="accountset.html">AccountSet transaction</a>) that cannot be used, probably because it is too long.</td>
+<td align="left">The transaction specified a public key value (for example, as the <code>MessageKey</code> field of an <a href="accountset.html">AccountSet transaction</a>) that cannot be used, probably because it is not the right length.</td>
 </tr>
 <tr>
 <td align="left"><code>telCAN_NOT_QUEUE</code></td>
@@ -254,7 +254,7 @@
 </tr>
 <tr>
 <td align="left"><code>telINSUF_FEE_P</code></td>
-<td align="left">The <code>Fee</code> from the transaction is not high enough to meet the server's current <a href="transaction-cost.html">transaction cost</a> requirement, which is derived from its load level.</td>
+<td align="left">The <code>Fee</code> from the transaction is not high enough to meet the server's current <a href="transaction-cost.html">transaction cost</a> requirement, which is derived from its load level and network-level requirements. If the individual server is too busy to process your transaction right now, it may cache the transaction and automatically retry later.</td>
 </tr>
 <tr>
 <td align="left"><code>telLOCAL_ERROR</code></td>
@@ -378,6 +378,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -439,7 +440,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -479,7 +479,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -518,7 +518,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -711,6 +711,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

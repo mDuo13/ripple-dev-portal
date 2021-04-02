@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -207,14 +207,14 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="load-a-saved-ledger-in-stand-alone-mode">Load a Saved Ledger in Stand-Alone Mode</h1>
+        <h1 id="load-a-saved-ledger-in-stand-alone-mode">Load a Saved Ledger in Stand-Alone Mode<a aria-hidden="true" class="hover_anchor" href="#load-a-saved-ledger-in-stand-alone-mode"><i class="fa fa-link"></i></a></h1>
 <p>You can start a <code>rippled</code> server in <a href="rippled-server-modes.html">Stand-Alone Mode</a> using a <a href="ledgers.html">historical ledger version</a> that was previously saved to disk. For example, if your <code>rippled</code> server was previously synced with any XRP Ledger peer-to-peer network including <a href="parallel-networks.html">the production Mainnet, the Testnet, or the Devnet</a>, you can load any ledger version your server had available.</p>
 <p>Loading a historical ledger version so may be useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different <a href="amendments.html">amendments</a> enabled. In the unlikely event that <a href="consensus-protections.html">an attack against the XRP Ledger's consensus mechanism</a> caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a previous, known-good network state starting with this process.</p>
-<h2 id="1-start-rippled-normally">1. Start <code>rippled</code> normally.</h2>
+<h2 id="1-start-rippled-normally">1. Start <code>rippled</code> normally.<a aria-hidden="true" class="hover_anchor" href="#1-start-rippled-normally"><i class="fa fa-link"></i></a></h2>
 <p>To load an existing ledger, you must first retrieve that ledger from the network. Start <code>rippled</code> in online mode as normal:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">rippled --conf=/path/to/rippled.cfg</span>
+<div class="codehilite"><pre><span></span><code>rippled --conf=/path/to/rippled.cfg
 </code></pre></div>
-<h2 id="2-wait-until-rippled-is-synced">2. Wait until <code>rippled</code> is synced.</h2>
+<h2 id="2-wait-until-rippled-is-synced">2. Wait until <code>rippled</code> is synced.<a aria-hidden="true" class="hover_anchor" href="#2-wait-until-rippled-is-synced"><i class="fa fa-link"></i></a></h2>
 <p>Use the <a href="server_info.html">server_info method</a> to check the state of your server relative to the network. Your server is synced when the <code>server_state</code> value shows any of the following values:</p>
 <ul>
 <li><code>full</code></li>
@@ -222,15 +222,15 @@
 <li><code>validating</code></li>
 </ul>
 <p>For more information, see <a href="rippled-server-states.html">Possible Server States</a>.</p>
-<h2 id="3-optional-retrieve-specific-ledger-versions">3. (Optional) Retrieve specific ledger versions.</h2>
+<h2 id="3-optional-retrieve-specific-ledger-versions">3. (Optional) Retrieve specific ledger versions.<a aria-hidden="true" class="hover_anchor" href="#3-optional-retrieve-specific-ledger-versions"><i class="fa fa-link"></i></a></h2>
 <p>If you only want the most recent ledger, you can skip this step.</p>
 <p>If you want to load a specific historical ledger version, use the <a href="ledger_request.html">ledger_request method</a> to make <code>rippled</code> fetch it. If <code>rippled</code> does not already have the ledger version, you may have to run the <code>ledger_request</code> command multiple times until it has finished retrieving the ledger.</p>
 <p>If you want to replay a specific historical ledger version, you must fetch both the ledger version to replay and the ledger version before it. (The previous ledger version sets up the initial state upon which you apply the changes described by the ledger version you replay.)</p>
-<h2 id="4-shut-down-rippled">4. Shut down <code>rippled</code>.</h2>
+<h2 id="4-shut-down-rippled">4. Shut down <code>rippled</code>.<a aria-hidden="true" class="hover_anchor" href="#4-shut-down-rippled"><i class="fa fa-link"></i></a></h2>
 <p>Use the <a href="stop.html">stop method</a>:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">rippled stop --conf=/path/to/rippled.cfg</span>
+<div class="codehilite"><pre><span></span><code>rippled stop --conf=/path/to/rippled.cfg
 </code></pre></div>
-<h2 id="5-start-rippled-in-stand-alone-mode">5. Start <code>rippled</code> in stand-alone mode.</h2>
+<h2 id="5-start-rippled-in-stand-alone-mode">5. Start <code>rippled</code> in stand-alone mode.<a aria-hidden="true" class="hover_anchor" href="#5-start-rippled-in-stand-alone-mode"><i class="fa fa-link"></i></a></h2>
 <p>To load the most recent ledger version, start the server with the <code>-a</code> and <code>--load</code> options:</p>
 <div class="codehilite"><pre><span></span><code><span class="n">rippled</span> <span class="o">-</span><span class="n">a</span> <span class="o">--</span><span class="nb">load</span> <span class="o">--</span><span class="n">conf</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">rippled</span><span class="o">.</span><span class="n">cfg</span>
 </code></pre></div>
@@ -238,11 +238,11 @@
 <div class="codehilite"><pre><span></span><code><span class="n">rippled</span> <span class="o">-</span><span class="n">a</span> <span class="o">--</span><span class="nb">load</span> <span class="o">--</span><span class="n">ledger</span> <span class="mi">19860944</span> <span class="o">--</span><span class="n">conf</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">rippled</span><span class="o">.</span><span class="n">cfg</span>
 </code></pre></div>
 <p>For more information on the options you can use when starting <code>rippled</code> in stand-alone mode, see <a href="commandline-usage.html#stand-alone-mode-options">Commandline Usage: Stand-Alone Mode Options</a>.</p>
-<h2 id="6-manually-advance-the-ledger">6. Manually advance the ledger.</h2>
+<h2 id="6-manually-advance-the-ledger">6. Manually advance the ledger.<a aria-hidden="true" class="hover_anchor" href="#6-manually-advance-the-ledger"><i class="fa fa-link"></i></a></h2>
 <p>When you load a ledger with <code>--ledger</code> in stand-alone mode, it goes to the current open ledger, so you must <a href="advance-the-ledger-in-stand-alone-mode.html">manually advance the ledger</a>:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">rippled ledger_accept --conf=/path/to/rippled.cfg</span>
+<div class="codehilite"><pre><span></span><code>rippled ledger_accept --conf=/path/to/rippled.cfg
 </code></pre></div>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="the-rippled-server.html">The <code>rippled</code> Server</a><ul>
@@ -300,6 +300,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -313,15 +314,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -330,21 +331,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -354,24 +355,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -398,21 +400,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -421,21 +423,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -455,6 +457,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -493,7 +496,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -628,6 +631,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>Open a Payment Channel to Enable an Inter-Exchange Network - XRP Ledger Dev Portal (日本語)</title>
+    <title>Open a Payment Channel to Enable an Inter-Exchange Network - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Open a Payment Channel to Enable an Inter-Exchange Network | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/open-a-payment-channel-to-enable-an-inter-exchange-network.html" />
+    <meta property="og:description" content="XRPとXRP Ledgerの全てに対してのコミュニティーリーソース" />
+    <meta name="description" content="XRPとXRP Ledgerの全てに対してのコミュニティーリーソース" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/open-a-payment-channel-to-enable-an-inter-exchange-network.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/open-a-payment-channel-to-enable-an-inter-exchange-network.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/use-complex-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/use-complex-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -189,15 +213,15 @@
     <li class="active breadcrumb-item">Open a Payment Channel to Enable an Inter-Exchange Network</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
-    <div class="devportal-callout note mb-5"><strong>も仕分けありませんがこのページは日本語では入手不可</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう努力していますが、すべてのページがすべての言語で利用できるわけではありません。助けたいと思うなら<a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.ja.md">提供して下さい！</a></p>
+    <div class="devportal-callout note mb-5"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。ご協力いただける場合は、<a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="open-a-payment-channel-to-enable-an-inter-exchange-network">Open a Payment Channel to Enable an Inter-Exchange Network</h1>
+        <h1 id="open-a-payment-channel-to-enable-an-inter-exchange-network">Open a Payment Channel to Enable an Inter-Exchange Network<a aria-hidden="true" class="hover_anchor" href="#open-a-payment-channel-to-enable-an-inter-exchange-network"><i class="fa fa-link"></i></a></h1>
 <p>A payment channel enables you to send one-way, "asynchronous" XRP payments that can be divided into very small increments and settled later. As a digital asset exchange, if you send many payments of XRP to another exchange, you can improve the efficiency of these payments by opening an XRP Ledger <a href="payment-channels.html">payment channel</a> between your exchange (the <em>payer</em> exchange) and the other exchange (the <em>payee</em> exchange). In the case of a two-way flow with another exchange, you can open two payment channels (one for each direction).</p>
-<h2 id="why-send-xrp-to-other-exchanges">Why Send XRP to Other Exchanges?</h2>
+<h2 id="why-send-xrp-to-other-exchanges">Why Send XRP to Other Exchanges?<a aria-hidden="true" class="hover_anchor" href="#why-send-xrp-to-other-exchanges"><i class="fa fa-link"></i></a></h2>
 <p>The need to send XRP from your exchange to another exchange may originate with your customers withdrawing XRP from your exchange and depositing it to the other exchange. If you are a large exchange, you probably have many customers moving XRP from your exchange into another exchange. You may be processing XRP payments all day long and for each payment, you are waiting for confirmation times, potentially at both ends of the transaction, as well as paying transaction costs.</p>
-<h2 id="benefits-of-using-a-payment-channel">Benefits of Using a Payment Channel</h2>
+<h2 id="benefits-of-using-a-payment-channel">Benefits of Using a Payment Channel<a aria-hidden="true" class="hover_anchor" href="#benefits-of-using-a-payment-channel"><i class="fa fa-link"></i></a></h2>
 <p>Here are some of the benefits of using a payment channel to send XRP instead of using individual payment transactions: <!-- --></p>
 <ul>
 <li>
@@ -211,14 +235,14 @@
 </ul>
 <p>Here’s a roadmap to the high-level tasks you’ll need to perform to implement this payment channel use case. To go directly to a full payment channels tutorial, see <a href="use-payment-channels.html">Use Payment Channels</a>.</p>
 <!-- #{TODO: for the future: per Warren, it would be great to add diagrams for each step in the flow - showing claims and batch redemptions moving through the payment channel. Also, we have any recommendations around Payment Channel Managers, we can surface that here.}# -->
-<h2 id="understand-payment-channels">Understand payment channels</h2>
+<h2 id="understand-payment-channels">Understand payment channels<a aria-hidden="true" class="hover_anchor" href="#understand-payment-channels"><i class="fa fa-link"></i></a></h2>
 <p>Learn more about payment channels and whether they provide the features you need for your specific implementation.</p>
 <p><a class="button" href="payment-channels.html">Understand payment channels</a></p>
-<h2 id="payer-and-payee-set-up-and-run-rippled-servers">Payer and payee: Set up and run <code>rippled</code> servers</h2>
+<h2 id="payer-and-payee-set-up-and-run-rippled-servers">Payer and payee: Set up and run <code>rippled</code> servers<a aria-hidden="true" class="hover_anchor" href="#payer-and-payee-set-up-and-run-rippled-servers"><i class="fa fa-link"></i></a></h2>
 <p>To use a payment channel to send and receive XRP, both the payer and payee exchanges must each have access to a <code>rippled</code> server that they can use to send transactions. If your exchange processes XRP withdrawals directly, you are probably already running a <code>rippled</code> server that you can use for this purpose.</p>
 <p>If not, a great way for an exchange to get access to a <code>rippled</code> server is to set up and run one.</p>
 <p><a class="button" href="manage-the-rippled-server.html">Set up and run rippled servers</a></p>
-<h2 id="payer-and-payee-fund-xrp-ledger-accounts-with-enough-xrp">Payer and payee: Fund XRP Ledger accounts with enough XRP</h2>
+<h2 id="payer-and-payee-fund-xrp-ledger-accounts-with-enough-xrp">Payer and payee: Fund XRP Ledger accounts with enough XRP<a aria-hidden="true" class="hover_anchor" href="#payer-and-payee-fund-xrp-ledger-accounts-with-enough-xrp"><i class="fa fa-link"></i></a></h2>
 <p>If your exchange processes XRP deposits and withdrawals directly, you probably have existing funded XRP Ledger accounts that you can use for this purpose. Ensure that they are funded with enough XRP as described here.</p>
 <p>Along these lines, there's a good chance that you are following industry best practices and have a cold account plus one or more hot accounts. Use the hot accounts for your payment channels.</p>
 <ul>
@@ -239,7 +263,7 @@
 </li>
 </ul>
 <p><a class="button" href="accounts.html">Fund XRP Ledger accounts with enough XRP</a></p>
-<h2 id="payer-open-a-payment-channel">Payer: <a href="use-payment-channels.html#1-支払人が特定の受取人へのpayment-channelを作成します">Open a payment channel</a></h2>
+<h2 id="payer-open-a-payment-channel">Payer: <a href="use-payment-channels.html#1-支払人が特定の受取人へのpayment-channelを作成します">Open a payment channel</a><a aria-hidden="true" class="hover_anchor" href="#payer-open-a-payment-channel"><i class="fa fa-link"></i></a></h2>
 <p>The payer exchange opens a payment channel from their XRP Ledger account to the payee exchange's XRP Ledger account. Opening a payment channel includes setting certain specifics of the channel, such as its expiration date and the amount it can hold.</p>
 <p>For this exchange use case, there is no real need to ever close the channel, so the payer exchange may not want to define a <code>CancelAfter</code> (expiration) value. If they ever need to close the channel, they can still do so.</p>
 <p>As the payer exchange, you can think of the payment channel as a special sub-wallet exclusively for a particular destination. Consider estimating how much XRP the payment channel requires similar to how you would estimate a hot wallet's needs. According to <a href="issuing-and-operational-addresses.html">typical best practices</a>, exchanges hold the vast majority of XRP across all of their user accounts in a cold wallet, with a small amount of XRP in a hot wallet.</p>
@@ -247,13 +271,13 @@
 <p>For withdrawals that are larger than the amount of XRP you have in the payment channel, you must process them specially. Either you can send large withdrawals as normal XRP payments, skipping the payment channel entirely, or you can first send a transaction to add the full withdrawal amount to the payment channel before creating claims for those. (See below for details on creating claims.)</p>
 <p>If either exchange has multiple hot accounts in the XRP Ledger, the two exchanges should each designate a specific hot account to use with the payment channel between them. Although there are other potentially viable configurations, this use case assumes a configuration with one payment channel connecting two exchanges. This channel can serve all customers sending XRP from the payer exchange to the payee exchange.</p>
 <p>Since payment channels are unidirectional, you need a second channel in the opposite direction to send XRP from the <em>payee</em> exchange to the <em>payer</em> exchange. This second channel does not need to connect the exact same pair of hot accounts, but it is most convenient to do so. With two unidirectional channels, each exchange can use the XRP it redeems from its incoming channel to refill its outgoing channel.</p>
-<h2 id="payee-verify-payment-channel-details">Payee: Verify payment channel details</h2>
+<h2 id="payee-verify-payment-channel-details">Payee: Verify payment channel details<a aria-hidden="true" class="hover_anchor" href="#payee-verify-payment-channel-details"><i class="fa fa-link"></i></a></h2>
 <p>The payee exchange reviews the details of the payment channel.</p>
 <p><a class="button" href="use-payment-channels.html#2-受取人がpayment-channelの特性を確認します">Verify payment channel details</a></p>
-<h2 id="payer-create-claims">Payer: Create claims</h2>
+<h2 id="payer-create-claims">Payer: Create claims<a aria-hidden="true" class="hover_anchor" href="#payer-create-claims"><i class="fa fa-link"></i></a></h2>
 <p>The payer exchange creates one or more claims for amounts of XRP that it wants to guarantee to the payee exchange.</p>
 <p><a class="button" href="use-payment-channels.html#3-支払人がchannelのxrpに対して1つ以上の署名付き-クレーム-を作成します">Create claims</a></p>
-<h2 id="payer-send-claim-details-to-the-payer-exchange">Payer: Send claim details to the payer exchange</h2>
+<h2 id="payer-send-claim-details-to-the-payer-exchange">Payer: Send claim details to the payer exchange<a aria-hidden="true" class="hover_anchor" href="#payer-send-claim-details-to-the-payer-exchange"><i class="fa fa-link"></i></a></h2>
 <p>After creating a claim, the payer exchange must send details of the claim to the payee exchange, off-ledger.</p>
 <p>Consider a series of claims prompted by payer exchange customers withdrawing XRP and depositing it to the payee exchange. In this case, the payer and payee exchanges should agree on the information the payer exchange must send for each claim to enable the payee exchange to correctly credit its customers' accounts. For example, consider sharing the following claim information off-ledger:</p>
 <p><strong>Channel ID</strong>: <code>7C02D0802B272599889ADFA4298FD92E4C8BD5120ED9A5BA3884CF636F9B4029</code></p>
@@ -323,12 +347,12 @@
 </tbody>
 </table>
 <p><a class="button" href="use-payment-channels.html#4-支払人が商品またはサービスに対する支払いとしてクレームを受取人に送信します">Send claim details to the payer exchange</a></p>
-<h2 id="payee-verify-claims">Payee: Verify claims</h2>
+<h2 id="payee-verify-claims">Payee: Verify claims<a aria-hidden="true" class="hover_anchor" href="#payee-verify-claims"><i class="fa fa-link"></i></a></h2>
 <p>The payee exchange verifies claims sent by the payer exchange.</p>
 <p>After verifying claims, the payee exchange should credit the claimed XRP to the customer accounts indicated by the destination tags sent by the payer exchange. Because claim amounts are cumulative, the payee exchange needs to be careful to credit the customer for only the <em>the difference from the previous claim</em>.</p>
 <p>For example, to know how much to credit a customer for a claim amount of 3000, the payee exchange needs to know that the previous claim amount was 2000. The difference between the claim amount and the previous claim amount (3000 - 2000 = 1000) is the amount the payee exchange must credit to the customer account.</p>
 <p><a class="button" href="use-payment-channels.html#5-受取人がクレームを検証します">Verify claims</a></p>
-<h2 id="payee-redeem-them-in-batches">Payee: Redeem them in batches</h2>
+<h2 id="payee-redeem-them-in-batches">Payee: Redeem them in batches<a aria-hidden="true" class="hover_anchor" href="#payee-redeem-them-in-batches"><i class="fa fa-link"></i></a></h2>
 <p>The payee exchange can redeem batches of claims after verifying them to receive the XRP guaranteed by the payer exchange. Here are some guidelines the payee exchange can use to decide how often to redeem claims:</p>
 <ul>
 <li>
@@ -349,10 +373,10 @@
 </ul>
 <!-- #{ TODO: Talk to some active PayChan users like Coil people to get some more specific recommendations. But I imagine that settling every few minutes or even hours could make sense depending on how much the payee exchange trusts the payer exchange, how many transactions they do how rapidly, etc. }# -->
 <p><a class="button" href="use-payment-channels.html#8-準備が完了すれば受取人は承認された額のクレームを清算します">Redeem them in batches</a></p>
-<h2 id="payer-and-payee-continue-to-use-the-payment-channel">Payer and payee: Continue to use the payment channel</h2>
+<h2 id="payer-and-payee-continue-to-use-the-payment-channel">Payer and payee: Continue to use the payment channel<a aria-hidden="true" class="hover_anchor" href="#payer-and-payee-continue-to-use-the-payment-channel"><i class="fa fa-link"></i></a></h2>
 <p>Payer and payee exchanges can continue to send, verify, and redeem batches of claims as needed within the parameters set by the payment channel.</p>
 <p><a class="button" href="use-payment-channels.html#7-必要に応じてステップ36を繰り返します">Continue to use the payment channel</a></p>
-<h2 id="payer-when-its-time-make-a-request-to-close-the-payment-channel">Payer: When it's time, make a request to close the payment channel</h2>
+<h2 id="payer-when-its-time-make-a-request-to-close-the-payment-channel">Payer: When it's time, make a request to close the payment channel<a aria-hidden="true" class="hover_anchor" href="#payer-when-its-time-make-a-request-to-close-the-payment-channel"><i class="fa fa-link"></i></a></h2>
 <p>When the payer exchange and payee exchange are done using the payment channel, the payer exchange can make a request to close the payment channel.</p>
 <p><a class="button" href="use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します">Close the payment channel</a></p>
     </div>
@@ -384,6 +408,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">XRP Ledger APIの使用開始</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">RippleAPI入門ガイド</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">XRPの送金</a></li>
@@ -397,15 +422,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">安全な署名の設定</a></li>
@@ -414,21 +439,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">アカウントの設定の利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a></li>
@@ -438,24 +463,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">マルチ署名済みトランザクションの送信</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">宛先タグの要求</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">オフラインでのアカウント設定のチュートリアル</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="use-specialized-payment-types.html">専門化した支払いタイプの使用</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Escrowの使用</a></li>
@@ -482,21 +508,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledgerが利用する会社について</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">取引所としてのXRPの上場</a></li>
@@ -505,21 +531,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">rippledサーバの利用</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">rippledのインストール</a></li>
@@ -539,6 +565,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">XRPL Altnetへのrippledの接続</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">オンライン削除の設定</a></li>
@@ -577,7 +604,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -600,13 +627,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -626,11 +653,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -663,7 +690,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -712,6 +739,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

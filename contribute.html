@@ -128,7 +128,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/tool/template-contribute.html" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/tool/template-contribute.html" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -155,7 +155,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -175,53 +175,27 @@
       <main class="main col-md-12 order-md-3  landing" role="main" id="main_content_body">
   <div class="marketing-wrapper">
     <div class="container mt-40 mb-30">
-    <section class="row mb-50">
-      <div class="col-md-5">
-        <div class="d-flex flex-column-reverse justify-content-end">
-          <h1 class="mb-10">Join the Conversation</h1>
-          <h6 class="text-primary mb-4">Find Your Voice</h6>
+      <h1 class="mb-10">For Developers</h1>
+      <section class="row mb-30">
+        <div class="col-md-6 offset-md-1 order-2 mb-10">
+          <div class="d-flex flex-wrap w-100">
+            <a class="square square-50 d-flex card-b" href="https://github.com/ripple/xrpl-dev-portal" target="_blank">
+              <h3>XRPL.org on <img class="mt-2" src="assets/img/logos/github.png" alt="GitHub"></h3>
+            </a>
+            <a class="square square-50 d-flex card-b" href="https://github.com/XRPLF/XRPL-Standards" target="_blank">
+              <h3><i class="fa fa-comments-o mw-100 mr-2"></i> XRP Ledger Standards</h3>
+            </a>
+          </div>
         </div>
-        <p>Thank you for your interest in contributing to XRPL.org.</p>
-        <p>This website was created for the community and is meant to be a living, breathing source of truth for XRP resources.</p>
-				<p>If you'd like to recommend new content or provide feedback, visit the community resources at the RippleX forum or XRP Chat.</p>
-      </div>
-      <div class="col-md-6 offset-md-1 mb-10 mt-10">
-        <div class="d-flex flex-wrap w-100">
-          <a class="square square-50 d-flex card-b" href="https://forum.ripplex.io/">
-            <div class="align-center align-self-end">
-              <img class="mw-100 mx-autod-block" src="assets/img/logos/ripplex.svg" style="margin-bottom: 48px;" width="190">
-              <p class="btn btn-outline-secondary d-block">RippleX Forum</p>
-            </div>
-          </a>
-          <a class="square square-50 d-flex card-b" href="https://www.xrpchat.com/">
-            <div class="align-center align-self-end">
-              <img class="mw-100 mx-auto d-block" src="./img/overview/real.png" style="height: 83px; margin-bottom: 26px;">
-              <p class="btn btn-outline-secondary d-block">XRP Chat Forum</p>
-            </div>
-          </a>
+        <div class="col-md-5 order-1">
+          <p>Thank you for your interest in contributing to XRPL.org. This website was created for the community and is meant to be a living, breathing source of truth for XRP and XRP Ledger resources.</p>
+          <p>Contributing to XRPL.org is a great way to learn about the XRP Ledger. This portal is open-source and anyone can suggest changes. For more information, please <a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md" target="_blank">read and consider the contributing guidelines</a>.</p>
+          <p>You may also be interested in learning about <a href="https://interledger.org/" target="_blank">Interledger</a>, <a href="https://ripplex.io/" target="_blank">RippleX</a>, and <a href="https://paystring.org/" target="_blank">PayString</a>.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="row mb-30">
-      <div class="col-md-6 offset-md-1 order-2 mb-10">
-        <div class="d-flex flex-wrap w-100">
-          <a class="square square-50 d-flex card-b" href="https://github.com/ripple/xrpl-dev-portal" target="_blank">
-            <img class="mw-100" src="assets/img/logos/github.png">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-5 order-1">
-        <h2 class="mb-10 h1">For Developers</h2>
-        <p class="mb-10 normal">Contributing to XRPL.org is a great way to learn about the XRP Ledger. This portal is open-source and anyone can suggest changes. For more information, please <a href="https://github.com/ripple/xrpl-dev-portal/blob/master/CONTRIBUTING.md" target="_blank">read and consider the contributing guidelines</a>.</p>
-        <p>You may also be interested in learning about <a href="https://interledger.org/" target="_blank">Interledger</a>, <a href="https://ripplex.io/" target="_blank">RippleX</a>, and <a href="https://payid.org/" target="_blank">PayID</a>.</p>
-      </div>
-    </section>
-
-
+      </section>
+    </div>
+    <img id="page-contribute-bot" src="assets/img/backgrounds/bg-contribute.png">
   </div>
-  <img id="page-contribute-bot" src="assets/img/backgrounds/bg-contribute.png">
-</div>
       </main>
     </div><!--/.row (main layout)-->
   </div>
@@ -352,6 +326,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});

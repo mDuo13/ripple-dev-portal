@@ -137,7 +137,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/get-started/get-started.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/get-started/get-started.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -164,7 +164,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,66 +205,67 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="get-started">Get Started</h1>
+        <h1 id="get-started">Get Started<a aria-hidden="true" class="hover_anchor" href="#get-started"><i class="fa fa-link"></i></a></h1>
 <p>The XRP Ledger is always online and entirely public. Anyone can access it <strong>directly from a web browser</strong> with source code like what's on this page.</p>
 <p>The following example gets the latest <a href="ledgers.html">ledger version</a> and a list of transactions that were newly-validated in that ledger version, using the <a href="rippleapi-reference.html#getledger"><code>getLedger()</code> method</a>. Try running it as-is, or change the code and see what happens.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> If you can, open your browser's Developer Tools by pressing <strong>F12</strong>. The "Console" tab provides a native JavaScript console and can give insight into what code is running on any webpage.</p>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js"></script>
-<script src="https://unpkg.com/ripple-lib@1.8.0/build/ripple-latest-min.js"></script>
+<!-- ripple-lib & prerequisites -->
+<script crossorigin="anonymous" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script src="assets/js/ripple-lib-1.9.1.min.js" type="application/javascript"></script>
 <div class="js_interactive" id="step2">
 <div class="editor"></div>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
   <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span>
 <span class="p">});</span>
 
-<span class="p">(</span><span class="nx">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+<span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 
-  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
     <span class="nx">includeTransactions</span><span class="o">:</span> <span class="kc">true</span>
   <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
 <span class="p">})(</span><span class="nx">mainnet</span><span class="p">);</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
   <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net/'</span>
 <span class="p">});</span>
 
-<span class="p">(</span><span class="nx">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+<span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 
-  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
       <span class="nx">includeTransactions</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
 <span class="p">})(</span><span class="nx">mainnet</span><span class="p">);</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
   <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span>
 <span class="p">});</span>
 
-<span class="p">(</span><span class="nx">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+<span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 
-  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
       <span class="nx">includeTransactions</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">});</span>
   <span class="kd">let</span> <span class="nx">tx_id</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">transactionHashes</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
-  <span class="kd">let</span> <span class="nx">response2</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getTransaction</span><span class="p">(</span><span class="nx">tx_id</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">response2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getTransaction</span><span class="p">(</span><span class="nx">tx_id</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response2</span><span class="p">);</span>
 
 <span class="p">})(</span><span class="nx">mainnet</span><span class="p">);</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
+<div class="codehilite"><pre><span></span><code><span class="kd">const</span> <span class="nx">mainnet</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span>
   <span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s1.ripple.com'</span>
 <span class="p">});</span>
 
-<span class="p">(</span><span class="nx">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+<span class="p">(</span><span class="k">async</span> <span class="kd">function</span><span class="p">(</span><span class="nx">api</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
 
-  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getLedger</span><span class="p">({</span>
       <span class="nx">includeTransactions</span><span class="o">:</span> <span class="kc">true</span>
     <span class="p">});</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Total XRP: '</span><span class="o">+</span><span class="nx">api</span><span class="p">.</span><span class="nx">dropsToXrp</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">totalDrops</span><span class="p">));</span>
@@ -277,20 +278,20 @@
 </p>
 <div class="response"></div>
 </div>
-<h2 id="suggestions">Suggestions</h2>
+<h2 id="suggestions">Suggestions<a aria-hidden="true" class="hover_anchor" href="#suggestions"><i class="fa fa-link"></i></a></h2>
 <p>Try editing the code above to do something different:</p>
 <ul>
 <li>Connect to the <a href="parallel-networks.html">Testnet</a> public server at <code>wss://s.altnet.rippletest.net/</code> instead. <a class="button" href="javascript:js_interactives.step2.ex_1()">Answer</a></li>
 <li>Look up the details of a transaction using the <a href="rippleapi-reference.html#gettransaction"><code>getTransaction()</code> method</a>. For the <code>id</code>, use one of the <code>transactionHashes</code> from the <code>getLedger()</code> response! <a class="button" href="javascript:js_interactives.step2.ex_2()">Answer</a></li>
 <li>Convert the <code>totalDrops</code> from the response to decimal XRP. <a class="button" href="javascript:js_interactives.step2.ex_3()">Answer</a></li>
 </ul>
-<h2 id="setup-steps">Setup Steps</h2>
+<h2 id="setup-steps">Setup Steps<a aria-hidden="true" class="hover_anchor" href="#setup-steps"><i class="fa fa-link"></i></a></h2>
 <p>This page has the necessary prerequisites already loaded, but you can access the XRP Ledger from <strong>any webpage</strong> if you load <a class="external-link" href="https://lodash.com/" target="_blank">Lodash <i aria-hidden="true" class="fa fa-external-link"></i></a> and <a href="rippleapi-reference.html">RippleAPI for JavaScript (ripple-lib)</a> in that page's HTML. For example:</p>
-<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/ripple-lib@1.8.0/build/ripple-latest-min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://unpkg.com/ripple-lib@1.9.1/build/ripple-latest-min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <!-- SPELLING_IGNORE: lodash -->
-<h2 id="further-reading">Further Reading</h2>
+<h2 id="further-reading">Further Reading<a aria-hidden="true" class="hover_anchor" href="#further-reading"><i class="fa fa-link"></i></a></h2>
 <p>When you're ready to move on, continue using the XRP Ledger with these resources:</p>
 <ul>
 <li><a href="concepts.html">Understand the Concepts</a> behind the XRP Ledger's design.</li>
@@ -327,6 +328,7 @@
             <div id="sidenav_collapse_2" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -340,15 +342,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -357,21 +359,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -381,24 +383,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -425,21 +428,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -448,21 +451,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -482,6 +485,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -520,7 +524,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -655,6 +659,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

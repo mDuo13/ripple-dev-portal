@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-account-settings/assign-a-regular-key-pair.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-account-settings/assign-a-regular-key-pair.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -209,7 +209,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="assign-a-regular-key-pair">Assign a Regular Key Pair</h1>
+        <h1 id="assign-a-regular-key-pair">Assign a Regular Key Pair<a aria-hidden="true" class="hover_anchor" href="#assign-a-regular-key-pair"><i class="fa fa-link"></i></a></h1>
 <p>The XRP Ledger allows an account to authorize a secondary key pair, called a <em><a href="cryptographic-keys.html">regular key pair</a></em>, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your <a href="accounts.html">account</a> and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)</p>
 <p>For more information about master and regular key pairs, see <a href="cryptographic-keys.html">Cryptographic Keys</a>.</p>
 <p>This tutorial walks through the steps required to assign a regular key pair to your account:</p>
@@ -219,9 +219,9 @@
 <li><a href="#3-verify-the-regular-key-pair">Verify the regular key pair</a></li>
 <li><a href="#see-also">Explore next steps</a></li>
 </ol>
-<h2 id="1-generate-a-key-pair">1. Generate a Key Pair</h2>
+<h2 id="1-generate-a-key-pair">1. Generate a Key Pair<a aria-hidden="true" class="hover_anchor" href="#1-generate-a-key-pair"><i class="fa fa-link"></i></a></h2>
 <p>Use the <a href="wallet_propose.html">wallet_propose method</a> to generate the key pair that you'll assign to your account as a regular key pair.</p>
-<h3 id="request-format">Request Format</h3>
+<h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
 
@@ -239,7 +239,7 @@
 rippled wallet_propose
 </code></pre></div></div>
 </div>
-<h3 id="response-format">Response Format</h3>
+<h3 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h3>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
 
@@ -266,8 +266,8 @@ rippled wallet_propose
         <span class="nt">"master_seed"</span><span class="p">:</span> <span class="s2">"sh8i92YRnEjJy3fpFkL8txQSCVo79"</span><span class="p">,</span>
         <span class="nt">"master_seed_hex"</span><span class="p">:</span> <span class="s2">"966C0F68643EFBA50D58D191D4CA8AA7"</span><span class="p">,</span>
         <span class="nt">"public_key"</span><span class="p">:</span> <span class="s2">"aBRNH5wUurfhZcoyR6nRwDSa95gMBkovBJ8V4cp1C1pM28H7EPL1"</span><span class="p">,</span>
-        <span class="nt">"public_key_hex"</span><span class="p">:</span> <span class="s2">"03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E"</span>
-        <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"success"</span>
+        <span class="nt">"public_key_hex"</span><span class="p">:</span> <span class="s2">"03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E"</span><span class="p">,</span>
+        <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -287,11 +287,11 @@ rippled wallet_propose
 </code></pre></div></div>
 </div>
 <p>In the next step, you'll use the <code>account_id</code> from this response to assign the key pair as a regular key pair to your account. Also, save the <code>master_seed</code> value somewhere securely. (Everything else, you can forget about.)</p>
-<h2 id="2-assign-the-key-pair-to-your-account-as-a-regular-key-pair">2. Assign the Key Pair to Your Account as a Regular Key Pair</h2>
+<h2 id="2-assign-the-key-pair-to-your-account-as-a-regular-key-pair">2. Assign the Key Pair to Your Account as a Regular Key Pair<a aria-hidden="true" class="hover_anchor" href="#2-assign-the-key-pair-to-your-account-as-a-regular-key-pair"><i class="fa fa-link"></i></a></h2>
 <p>Use a <a href="setregularkey.html">SetRegularKey transaction</a> to assign the key pair you generated in step 1 to your account as a regular key pair.</p>
 <p>When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are <a href="set-up-secure-signing.html">several ways of securely signing transactions</a>, but this tutorial uses a local <code>rippled</code> server.</p>
 <p>When you send subsequent SetRegularKey transactions, you can sign using the existing regular private key to replace or <a href="change-or-remove-a-regular-key-pair.html">remove itself</a>. Note that you should still not submit your regular private key across the network.</p>
-<h3 id="sign-your-transaction">Sign Your Transaction</h3>
+<h3 id="sign-your-transaction">Sign Your Transaction<a aria-hidden="true" class="hover_anchor" href="#sign-your-transaction"><i class="fa fa-link"></i></a></h3>
 <p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
@@ -318,7 +318,7 @@ rippled wallet_propose
 </tr>
 </tbody>
 </table>
-<h4 id="request-format-1">Request Format</h4>
+<h4 id="request-format-1">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-1"><i class="fa fa-link"></i></a></h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">WebSocket</a></li><li><a href="#code-2-1">JSON-RPC</a></li><li><a href="#code-2-2">Commandline</a></li></ul>
 
@@ -352,7 +352,7 @@ rippled wallet_propose
 rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki <span class="s1">'{"TransactionType": "SetRegularKey", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93", "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"}'</span>
 </code></pre></div></div>
 </div>
-<h4 id="response-format-1">Response Format</h4>
+<h4 id="response-format-1">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-1"><i class="fa fa-link"></i></a></h4>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">WebSocket</a></li><li><a href="#code-3-1">JSON-RPC</a></li><li><a href="#code-3-2">Commandline</a></li></ul>
 
@@ -416,9 +416,9 @@ rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki <span class="s1">'{"TransactionType":
 </div>
 <p>The <code>sign</code> command response contains a <code>tx_blob</code> value, as shown above. The offline signing response contains a <code>signedTransaction</code> value. Both are signed binary representations (blobs) of the transaction.</p>
 <p>Next, use the <code>submit</code> command to transmit the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
-<h3 id="submit-your-transaction">Submit Your Transaction</h3>
+<h3 id="submit-your-transaction">Submit Your Transaction<a aria-hidden="true" class="hover_anchor" href="#submit-your-transaction"><i class="fa fa-link"></i></a></h3>
 <p>Take the <code>signedTransaction</code> value from the offline signing response or the <code>tx_blob</code> value from the <code>sign</code> command response and submit it as the <code>tx_blob</code> value using the <a href="submit.html">submit method</a>.</p>
-<h4 id="request-format-2">Request Format</h4>
+<h4 id="request-format-2">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-2"><i class="fa fa-link"></i></a></h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">WebSocket</a></li><li><a href="#code-4-1">JSON-RPC</a></li><li><a href="#code-4-2">Commandline</a></li></ul>
 
@@ -442,7 +442,7 @@ rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki <span class="s1">'{"TransactionType":
 rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540
 </code></pre></div></div>
 </div>
-<h4 id="response-format-2">Response Format</h4>
+<h4 id="response-format-2">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-2"><i class="fa fa-link"></i></a></h4>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">WebSocket</a></li><li><a href="#code-5-1">JSON-RPC</a></li><li><a href="#code-5-2">Commandline</a></li></ul>
 
@@ -514,10 +514,10 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 </code></pre></div></div>
 </div>
 <p>Note that the response contains a <code>hash</code> of the transaction, which you can use to <a href="tx.html">look up the transaction's final outcome</a>.</p>
-<h2 id="3-verify-the-regular-key-pair">3. Verify the Regular Key Pair</h2>
+<h2 id="3-verify-the-regular-key-pair">3. Verify the Regular Key Pair<a aria-hidden="true" class="hover_anchor" href="#3-verify-the-regular-key-pair"><i class="fa fa-link"></i></a></h2>
 <p>At this point, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. <strong>To avoid losing control of your account,</strong> it is important that you test your regular key before you take any additional steps such as <a href="disable-master-key-pair.html">disabling the master key pair</a>. If you make a mistake and lose access to your account, no one can restore it for you.</p>
 <p>To verify that your account has the regular key pair set correctly, submit an <a href="accountset.html">AccountSet transaction</a> from your account, signing it with the regular private key you assigned to your account in step 2. As in step 1, this tutorial uses a local <code>rippled</code> server as a <a href="set-up-secure-signing.html">way of securely signing transactions</a>.</p>
-<h3 id="sign-your-transaction-1">Sign Your Transaction</h3>
+<h3 id="sign-your-transaction-1">Sign Your Transaction<a aria-hidden="true" class="hover_anchor" href="#sign-your-transaction-1"><i class="fa fa-link"></i></a></h3>
 <p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="rippleapi-reference.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="sign.html">sign method</a>, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
 <p>In all cases, note the signed transaction's identifying hash for later.</p>
 <!-- -->
@@ -540,7 +540,7 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 </tr>
 </tbody>
 </table>
-<h4 id="request-format-3">Request Format</h4>
+<h4 id="request-format-3">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-3"><i class="fa fa-link"></i></a></h4>
 <p>Here's an example of the request format. Note that the request does not include any <code>AccountSet</code> options. This means that a successful transaction has no effect other than to confirm that the regular key pair is set correctly for your account (and to destroy the transaction cost).</p>
 <div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">WebSocket</a></li><li><a href="#code-6-1">JSON-RPC</a></li><li><a href="#code-6-2">Commandline</a></li></ul>
 
@@ -572,7 +572,7 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 <span class="s1">'{"TransactionType": "AccountSet", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'</span>
 </code></pre></div></div>
 </div>
-<h4 id="response-format-3">Response Format</h4>
+<h4 id="response-format-3">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-3"><i class="fa fa-link"></i></a></h4>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-7"><ul class="codetabs"><li><a href="#code-7-0">WebSocket</a></li><li><a href="#code-7-1">JSON-RPC</a></li><li><a href="#code-7-2">Commandline</a></li></ul>
 
@@ -633,9 +633,9 @@ rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 <span class="s1">'{"TransactionType":
 </div>
 <p>The <code>sign</code> command response contains a <code>tx_blob</code> value, as shown above. The offline signing response contains a <code>signedTransaction</code> value. Both are signed binary representations (blobs) of the transaction.</p>
 <p>Next, use the <code>submit</code> command to transmit the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
-<h3 id="submit-your-transaction-1">Submit Your Transaction</h3>
+<h3 id="submit-your-transaction-1">Submit Your Transaction<a aria-hidden="true" class="hover_anchor" href="#submit-your-transaction-1"><i class="fa fa-link"></i></a></h3>
 <p>Take the <code>signedTransaction</code> value from the offline signing response or the <code>tx_blob</code> value from the <code>sign</code> command response and submit it as the <code>tx_blob</code> value using the <a href="submit.html">submit method</a>.</p>
-<h4 id="request-format-4">Request Format</h4>
+<h4 id="request-format-4">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format-4"><i class="fa fa-link"></i></a></h4>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-8"><ul class="codetabs"><li><a href="#code-8-0">WebSocket</a></li><li><a href="#code-8-1">JSON-RPC</a></li><li><a href="#code-8-2">Commandline</a></li></ul>
 
@@ -659,7 +659,7 @@ rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 <span class="s1">'{"TransactionType":
 rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E
 </code></pre></div></div>
 </div>
-<h4 id="response-format-4">Response Format</h4>
+<h4 id="response-format-4">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format-4"><i class="fa fa-link"></i></a></h4>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-9"><ul class="codetabs"><li><a href="#code-9-0">WebSocket</a></li><li><a href="#code-9-1">JSON-RPC</a></li><li><a href="#code-9-2">Commandline</a></li></ul>
 
@@ -733,7 +733,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 <li><strong><code>tefBAD_AUTH_MASTER</code></strong> or <strong><code>temBAD_AUTH_MASTER</code></strong>: Your account doesn't have a regular key assigned. Check that the SetRegularKey transaction executed successfully. You can also use the <a href="account_info.html">account_info method</a> to confirm that your regular key is set in the <code>RegularKey</code> field as expected.</li>
 </ul>
 <p>For possible causes of other result codes, see <a href="transaction-results.html">Transaction Results</a>.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <p>Now that you're familiar with the benefits of assigning a regular key pair to an account, consider taking a look at these related topics and tutorials:</p>
 <ul>
 <li><strong>Concepts:</strong><ul>
@@ -792,6 +792,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -805,15 +806,15 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -822,21 +823,21 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="active nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -846,24 +847,25 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -890,21 +892,21 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -913,21 +915,21 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -947,6 +949,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -985,7 +988,7 @@ rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -1120,6 +1123,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

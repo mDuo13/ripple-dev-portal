@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/troubleshooting/health-check-interventions.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -208,21 +208,21 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="health-check-interventions">Health Check Interventions</h1>
+        <h1 id="health-check-interventions">Health Check Interventions<a aria-hidden="true" class="hover_anchor" href="#health-check-interventions"><i class="fa fa-link"></i></a></h1>
 <p>The <a href="health-check.html">Health Check method</a> can be used by automated monitoring to recognize when a <code>rippled</code> server is not healthy and prompt interventions such as restarting the server or alerting a human administrator.</p>
 <p>Infrastructure monitoring, and reliability engineering more generally, is an advanced discipline that involves using multiple sources of data to make decisions in context. This document provides some suggestions for how to use the health check most effectively, but these recommendations are only meant as guidelines as part of a larger strategy.</p>
-<h2 id="momentary-failures">Momentary Failures</h2>
+<h2 id="momentary-failures">Momentary Failures<a aria-hidden="true" class="hover_anchor" href="#momentary-failures"><i class="fa fa-link"></i></a></h2>
 <p>Some <a href="health-check.html#response-format">metrics</a> in the health check can rapidly fluctuate into unhealthy ranges and then recover automatically shortly afterward. It is unnecessary and undesirable to raise alerts every single time the health check reports an unhealthy status. An automated monitoring system should call the health check method frequently, but only escalate to a higher level of intervention based on the severity and frequency of the problem.</p>
 <p>For example, if you check the health of the server once per second, you might raise an alert if the server reports "warning" status three times in a row, or four times in a five-second span. You might also raise an alert if the server reports "critical" status twice in a five-second span.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> The server normally reports a "critical" status for the first few seconds after startup, switches to a "warning" status after it establishes a connection to the network, and finally reports a "healthy" status when it has fully synced to the network. After a restart, you should give a server 5–15 minutes to sync before taking additional interventions.</p>
-<h2 id="special-cases">Special Cases</h2>
+<h2 id="special-cases">Special Cases<a aria-hidden="true" class="hover_anchor" href="#special-cases"><i class="fa fa-link"></i></a></h2>
 <p>Certain server configurations may always report a <code>warning</code> status even when operating normally. If your server qualifies as a special case, you must configure your automated monitoring to recognize the difference between the normal status and an actual problem. This probably involves parsing the JSON response body for the health check method and comparing the values there with expected normal ranges.</p>
 <p>Some examples of special cases that may occur include:</p>
 <ul>
 <li>A <a href="peer-protocol.html#private-peers">private peer</a> typically has a very small number of peer-to-peer connections to known servers only, but the health check reports a warning on the <code>peers</code> metric if the server is connected to 7 or fewer peers. You should know the exact number of peers your server is configured to have and check for that value.</li>
 <li>On a <a href="parallel-networks.html">parallel or test network</a> where new transactions are not being sent continuously, the network waits up to 20 seconds for new transactions before attempting to validate a new ledger version, but the health check reports a warning on the <code>validated_ledger</code> metric if the latest validated ledger is 7 or more seconds old. If you are running <code>rippled</code> on a non-production network, you may want to ignore <code>warning</code> messages for this metric unless you know that there should be transactions being regularly sent. You may still want to alert on the <code>critical</code> level of 20 seconds, because the XRP Ledger protocol is designed to validate new ledger versions at least once every 20 seconds even if there are no new transactions to process.</li>
 </ul>
-<h2 id="suggested-interventions">Suggested Interventions</h2>
+<h2 id="suggested-interventions">Suggested Interventions<a aria-hidden="true" class="hover_anchor" href="#suggested-interventions"><i class="fa fa-link"></i></a></h2>
 <p>When a health check fails, and it's not just a <a href="#momentary-failures">momentary failure</a>, the action to take to recover from the outage varies based on the cause. You may be able to configure your infrastructure to fix some types of failures automatically. Other failures require the intervention of a human administrator who can investigate and take the necessary steps to resolve more complex or critical failures; depending on the structure of your organization, you may have different levels of human administrator so that less skilled, lower level administrators can fix certain issues independently, but need to escalate to higher level administrators to fix larger or more complex issues. How and when you respond is likely to depend on your unique situation, but the metrics reported in the health check result can be a factor in these decisions.</p>
 <p>The following sections suggest some common interventions you may want to attempt and the health check statuses most likely to prompt those interventions. Automated systems and human administrators may selectively escalate through these and other interventions:</p>
 <ul>
@@ -232,10 +232,10 @@
 <li><a href="#investigate-network">Investigate network</a> in case the problem originates elsewhere</li>
 <li><a href="#replace-hardware">Replace hardware</a></li>
 </ul>
-<h3 id="redirect-traffic">Redirect Traffic</h3>
+<h3 id="redirect-traffic">Redirect Traffic<a aria-hidden="true" class="hover_anchor" href="#redirect-traffic"><i class="fa fa-link"></i></a></h3>
 <p>A common reliability technique is to run a pool of redundant servers through one or more load-balancing proxies. You can do this with <code>rippled</code> servers, but should not do this with <a href="rippled-server-modes.html">validators</a>. In some cases, the load balancers can monitor the health of servers in their pools and direct traffic only to the servers that are currently reporting themselves as healthy. This allows servers to recover from being temporarily overloaded and automatically rejoin the pool of active servers.</p>
 <p>Redirecting traffic away from a server that is unhealthy is an appropriate response, especially for servers that report a <code>health</code> status of <code>warning</code>. Servers in the <code>critical</code> range may need more significant interventions.</p>
-<h3 id="restart">Restart</h3>
+<h3 id="restart">Restart<a aria-hidden="true" class="hover_anchor" href="#restart"><i class="fa fa-link"></i></a></h3>
 <p>The most straightforward intervention is to restart the server. This can resolve temporary issues with several types of failures, including any of the following <a href="health-check.html#response-format">metrics</a>:</p>
 <ul>
 <li><code>load_factor</code></li>
@@ -248,11 +248,11 @@
 </code></pre></div>
 <p>A stronger intervention is to restart the entire machine.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> After a server starts, it typically needs up to 15 minutes to sync to the network. During this time, the health check is likely to report a critical or warning status. You should be sure your automated systems give servers enough time to sync before restarting them again.</p>
-<h3 id="upgrade">Upgrade</h3>
+<h3 id="upgrade">Upgrade<a aria-hidden="true" class="hover_anchor" href="#upgrade"><i class="fa fa-link"></i></a></h3>
 <p>If the server reports <code>"amendment_blocked": true</code> in the health check, this indicates that the XRP Ledger has enabled a <a href="amendments.html">protocol amendment</a> that your server does not understand. As a precaution against misinterpreting the revised rules of the network in a way that causes you to lose money, such servers become "amendment blocked" instead of operating normally.</p>
 <p>To resolve being amendment blocked, <a href="install-rippled.html">update your server</a> to a newer software version that understands the amendment.</p>
 <p>Also, software bugs can cause a server to get <a href="server-doesnt-sync.html">stuck not syncing</a>. In this case, the <code>server_state</code> metric is likely to be in a warning or critical state. If you are not using the latest stable release, you should upgrade to get the latest fixes for any known issues that could cause this.</p>
-<h3 id="investigate-network">Investigate Network</h3>
+<h3 id="investigate-network">Investigate Network<a aria-hidden="true" class="hover_anchor" href="#investigate-network"><i class="fa fa-link"></i></a></h3>
 <p>An unreliable or insufficient network connection can cause a server to report outages. Warning or critical values in the following <a href="health-check.html#response-format">metrics</a> can indicate network problems:</p>
 <ul>
 <li><code>peers</code></li>
@@ -265,7 +265,7 @@
 <li>Restarting or replacing network interfaces, switches, routers, or cabling</li>
 <li>Contacting other network service providers to resolve an issue on their end</li>
 </ul>
-<h3 id="replace-hardware">Replace Hardware</h3>
+<h3 id="replace-hardware">Replace Hardware<a aria-hidden="true" class="hover_anchor" href="#replace-hardware"><i class="fa fa-link"></i></a></h3>
 <p>If the outage is caused by a hardware failure or by higher load than the hardware is capable of handling, you may need to replace some components or even the entire server.</p>
 <p>The amount of load on a server in the XRP Ledger depends in part on transaction volume in the network, which varies organically. Load also depends on your usage pattern. See <a href="capacity-planning.html">Capacity Planning</a> for how to plan the appropriate hardware and settings for your situation.</p>
 <p>Warning or critical values for the following <a href="health-check.html#response-format">metrics</a> may indicate insufficient hardware:</p>
@@ -310,6 +310,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -323,15 +324,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -340,21 +341,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -364,24 +365,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -408,21 +410,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -431,21 +433,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -465,6 +467,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -503,7 +506,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -638,6 +641,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/get-started/get-started-with-the-rippled-api.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/get-started/get-started-with-the-rippled-api.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -206,11 +206,11 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="get-started-with-xrp-ledger-apis">Get Started with XRP Ledger APIs</h1>
+        <h1 id="get-started-with-xrp-ledger-apis">Get Started with XRP Ledger APIs<a aria-hidden="true" class="hover_anchor" href="#get-started-with-xrp-ledger-apis"><i class="fa fa-link"></i></a></h1>
 <p>The XRP Ledger's core server software is <a href="the-rippled-server.html"><code>rippled</code></a>. You can jump straight into developing on the XRP Ledger by accessing the API of a <code>rippled</code> server.</p>
 <p>The quickest way to dive into the API is with the <a href="websocket-api-tool.html"><strong>WebSocket API Tool</strong></a>, or use the <a class="external-link" href="https://livenet.xrpl.org/" target="_blank">XRP Ledger Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a> to watch the progress of the ledger live.</p>
 <p>You can also <a href="install-rippled.html">run your own instance of <code>rippled</code></a> or use a <a href="#public-servers">public server</a>.</p>
-<h2 id="public-servers">Public Servers</h2>
+<h2 id="public-servers">Public Servers<a aria-hidden="true" class="hover_anchor" href="#public-servers"><i class="fa fa-link"></i></a></h2>
 <p>Ripple provides several public servers for the benefit of the XRP Ledger community:</p>
 <table>
 <thead>
@@ -260,11 +260,11 @@
 </tr>
 </tbody>
 </table>
-<p>¹Ripple's public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own <code>rippled</code> server or contract someone you trust to do so.</p>
-<h2 id="admin-access">Admin Access</h2>
+<p>¹Ripple's public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should run your own <code>rippled</code> server or contract someone you trust to do so. Ripple includes <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a> servers in its public clusters.</p>
+<h2 id="admin-access">Admin Access<a aria-hidden="true" class="hover_anchor" href="#admin-access"><i class="fa fa-link"></i></a></h2>
 <p><code>rippled</code> API methods are divided into <a href="public-rippled-methods.html">Public Methods</a> and <a href="admin-rippled-methods.html">Admin Methods</a> so that organizations can offer public servers for the benefit of the community. To access admin methods, or admin functionality of public methods, you must connect to the API on a <strong>port and IP address marked as admin</strong> in the server's config file.</p>
 <p>The <a class="external-link" href="https://github.com/ripple/rippled/blob/f00f263852c472938bf8e993e26c7f96f435935c/cfg/rippled-example.cfg#L1154-L1179" target="_blank">example config file <i aria-hidden="true" class="fa fa-external-link"></i></a> listens for connections on the local loopback network (127.0.0.1), with JSON-RPC (HTTP) on port 5005 and WebSocket (WS) on port 6006, and treats all connected clients as admin.</p>
-<h2 id="websocket-api">WebSocket API</h2>
+<h2 id="websocket-api">WebSocket API<a aria-hidden="true" class="hover_anchor" href="#websocket-api"><i class="fa fa-link"></i></a></h2>
 <p>If you are looking to try out some methods on the XRP Ledger, you can skip writing your own WebSocket code and go straight to using the API at the <a href="websocket-api-tool.html">Ripple WebSocket API Tool</a>. Later on, when you want to connect to your own <code>rippled</code> server, you can <a href="monitor-incoming-payments-with-websocket.html">build your own client in the browser</a> or <a class="external-link" href="https://www.npmjs.com/package/ws" target="_blank">in Node.js <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>Example WebSocket API request:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
@@ -274,11 +274,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>The response to <a href="server_info.html">this command</a> shows you the current status of the server. Or, read more about <a href="request-formatting.html">Request Formatting</a> and <a href="response-formatting.html">Response Formatting</a>.</p>
-<h2 id="json-rpc">JSON-RPC</h2>
+<h2 id="json-rpc">JSON-RPC<a aria-hidden="true" class="hover_anchor" href="#json-rpc"><i class="fa fa-link"></i></a></h2>
 <p>You can use any HTTP client (like <a class="external-link" href="https://addons.mozilla.org/en-US/firefox/addon/rested/" target="_blank">RESTED for Firefox <i aria-hidden="true" class="fa fa-external-link"></i></a>, <a class="external-link" href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en" target="_blank">Postman for Chrome <i aria-hidden="true" class="fa fa-external-link"></i></a> or <a class="external-link" href="https://extendsclass.com/rest-client-online.html" target="_blank">Online HTTP client ExtendsClass <i aria-hidden="true" class="fa fa-external-link"></i></a>) to make JSON-RPC calls a <code>rippled</code> server. Most programming languages have a library for making HTTP requests built in. <!-- SPELLING_IGNORE: extendsclass --></p>
 <p>Example JSON-RPC request:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">POST</span> <span class="err">http://s</span><span class="mi">1</span><span class="err">.ripple.com:</span><span class="mi">51234</span><span class="err">/</span>
-<span class="err">Content-Type:</span> <span class="err">application/json</span>
+<div class="codehilite"><pre><span></span><code><span class="err">POST</span> <span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="err">//s</span><span class="mf">1.</span><span class="err">ripple.com</span><span class="p">:</span><span class="mi">51234</span><span class="err">/</span>
+<span class="err">Co</span><span class="kc">ntent</span><span class="mi">-</span><span class="err">Type</span><span class="p">:</span> <span class="err">applica</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="err">/jso</span><span class="kc">n</span>
 
 <span class="p">{</span>
     <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"server_info"</span><span class="p">,</span>
@@ -290,20 +290,20 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>The response to this command shows you the current status of the server. For more information, see the <a href="server_info.html">server_info method</a>.</p>
-<h2 id="commandline">Commandline</h2>
+<h2 id="commandline">Commandline<a aria-hidden="true" class="hover_anchor" href="#commandline"><i class="fa fa-link"></i></a></h2>
 <p>The commandline interface connects to the same service as the JSON-RPC one, so the public servers and server configuration are the same. By default, the commandline connects to a <code>rippled</code> server running on the same machine.</p>
 <p>Example commandline request:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">rippled --conf=/etc/opt/ripple/rippled.cfg server_info</span>
+<div class="codehilite"><pre><span></span><code>rippled --conf=/etc/opt/ripple/rippled.cfg server_info
 </code></pre></div>
 <p>For more information on <code>rippled</code>'s commandline usage, see <a class="external-link" href="https://xrpl.org/commandline-usage.html" target="_blank">Commandline Usage Reference <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> The commandline interface is intended for administrative purposes only and is <em>not a supported API</em>.  New versions of <code>rippled</code> may introduce breaking changes to the commandline API without warning!</p>
-<h2 id="available-methods">Available Methods</h2>
+<h2 id="available-methods">Available Methods<a aria-hidden="true" class="hover_anchor" href="#available-methods"><i class="fa fa-link"></i></a></h2>
 <p>For a full list of API methods, see:</p>
 <ul>
 <li><a href="public-rippled-methods.html">Public <code>rippled</code> Methods</a>: Methods available on public servers, including looking up data from the ledger and submitting transactions.</li>
 <li><a href="admin-rippled-methods.html">Admin <code>rippled</code> Methods</a>: Methods for <a href="manage-the-rippled-server.html">managing</a> the <code>rippled</code> server.</li>
 </ul>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="xrp-ledger-overview.html">XRP Ledger Overview</a></li>
@@ -359,6 +359,7 @@
             <div id="sidenav_collapse_2" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="active nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -372,15 +373,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -389,21 +390,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -413,24 +414,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -457,21 +459,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -480,21 +482,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -514,6 +516,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -552,7 +555,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -687,6 +690,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

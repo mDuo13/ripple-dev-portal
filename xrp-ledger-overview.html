@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/introduction/xrp-ledger-overview.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/introduction/xrp-ledger-overview.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -207,9 +207,9 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="xrp-ledger-overview">XRP Ledger Overview</h1>
+        <h1 id="xrp-ledger-overview">XRP Ledger Overview<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger-overview"><i class="fa fa-link"></i></a></h1>
 <p>The <strong>XRP Ledger</strong> is an online system for payments, powered by a community without a central leader. Anyone can connect their computer to the peer-to-peer network that manages the ledger. The XRP Ledger is the home of <strong>XRP</strong>, a digital asset designed to bridge the world's many currencies. The XRP Ledger is one part of the developing <em>Internet of Value</em>: a world in which money moves the way information does today.</p>
-<h2 id="the-digital-asset-for-payments">The Digital Asset for Payments</h2>
+<h2 id="the-digital-asset-for-payments">The Digital Asset for Payments<a aria-hidden="true" class="hover_anchor" href="#the-digital-asset-for-payments"><i class="fa fa-link"></i></a></h2>
 <p>XRP is a digital asset native to the XRP Ledger. Anyone with a cryptographic key and an internet connection can receive, hold, and send XRP to anyone else. XRP's creators have developed it to be a desirable bridge currency that can enable trades in any other currency. XRP has many properties which make it an appealing asset for many other use cases, too:</p>
 <ul>
 <li><strong><a href="#censorship-resistant-transaction-processing">Censorship-Resistant Transaction Processing</a>:</strong> No single party decides which XRP transactions succeed or fail, and no one can "roll back" a transaction after it completes. As long as those who choose to participate in the network keep it healthy, they can send and receive XRP in seconds.</li>
@@ -220,7 +220,7 @@
 <li><strong><a href="#modern-features-for-smart-contracts">Modern Features for Smart Contracts</a>:</strong> Features like Escrow, Checks, and Payment Channels support cutting-edge financial applications including the <a class="external-link" href="https://interledger.org/" target="_blank">Interledger Protocol <i aria-hidden="true" class="fa fa-external-link"></i></a>. This toolbox of advanced features comes with safety features like a process for amending the network and separate checks against invariant constraints.</li>
 <li><strong><a href="#on-ledger-decentralized-exchange">On-Ledger Decentralized Exchange</a>:</strong> In addition to all the features that make XRP useful on its own, the XRP Ledger also has a fully-functional accounting system for tracking and trading obligations denominated in any way users want, and an exchange built into the protocol. The XRP Ledger can settle long, cross-currency payment paths and exchanges of multiple currencies in atomic transactions, bridging gaps of trust with XRP.</li>
 </ul>
-<h2 id="censorship-resistant-transaction-processing">Censorship-Resistant Transaction Processing</h2>
+<h2 id="censorship-resistant-transaction-processing">Censorship-Resistant Transaction Processing<a aria-hidden="true" class="hover_anchor" href="#censorship-resistant-transaction-processing"><i class="fa fa-link"></i></a></h2>
 <p>XRP is part of a new class of money which includes Bitcoin and other cryptocurrencies:</p>
 <ul>
 <li>These <strong>Decentralized digital assets</strong> exist in computer systems without a central administrator. As long as the system is sufficiently decentralized, no one can roll back transactions, freeze balances, or block someone from using a decentralized digital asset. These assets are natively digital, so they can be used online across any distance.</li>
@@ -233,11 +233,11 @@
 <p class="devportal-callout note"><strong>Note:</strong> Users of the XRP Ledger <em>can</em> freeze non-XRP currencies issued in the XRP Ledger. For more information, see the <a href="freezes.html">Freeze documentation</a>.</p>
 <p>The XRP Ledger's system of trusted validators uses a small amount of human interaction to achieve better distribution of authority than other decentralized systems. Fully-automated systems for reaching consensus from an unknown set of participants are vulnerable to concentrations of voting power. For example, Bitcoin mining is disproportionately concentrated in places with cheap electricity. As Ripple curates a list of distinct validators run by different entities in different jurisdictions, the XRP Ledger can become more resistant to censorship and outside pressures than proof-of-work mining. For more information on Ripple's plan to decentralize the recommended set of validators, see the  <a class="external-link" href="https://xrpl.org/blog/2017/decent-strategy-update.html" target="_blank">Decentralization Strategy Update <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>For more information about the XRP Ledger's ability to detect censorship, see <a href="transaction-censorship-detection.html">Transaction Censorship Detection</a>.</p>
-<h2 id="fast-efficient-consensus-algorithm">Fast, Efficient Consensus Algorithm</h2>
+<h2 id="fast-efficient-consensus-algorithm">Fast, Efficient Consensus Algorithm<a aria-hidden="true" class="hover_anchor" href="#fast-efficient-consensus-algorithm"><i class="fa fa-link"></i></a></h2>
 <p>The XRP Ledger's biggest difference from most cryptocurrencies is that it uses a unique consensus algorithm that does not require the time and energy of "mining", the way Bitcoin, Ethereum, and almost all other such systems do. Instead of "proof of work" or even "proof of stake", The XRP Ledger's consensus algorithm uses a system where every participant has an overlapping set of "trusted validators" and those trusted validators efficiently agree on which transactions happen in what order. As of early 2018, the amount of electricity the Bitcoin network uses per transaction is more than a family home in the USA uses in an entire day, and confirming the transaction takes hours. A single XRP transaction uses a negligible amount of electricity, and takes 4 or 5 seconds to confirm.</p>
 <p>Furthermore, each new "ledger version" in the XRP Ledger (the equivalent of a "block") contains the full current state of all balances, so a server can synchronize with the network in minutes instead of spending hours downloading and re-processing the full transaction history.</p>
 <p>For more information on how the XRP Ledger's consensus algorithm works, see <a href="consensus.html">The XRP Ledger Consensus Process</a>. For background on why the XRP Ledger uses this consensus algorithm, see <a href="consensus-principles-and-rules.html">Consensus Principles and Rules</a>.</p>
-<h2 id="finite-xrp-supply">Finite XRP Supply</h2>
+<h2 id="finite-xrp-supply">Finite XRP Supply<a aria-hidden="true" class="hover_anchor" href="#finite-xrp-supply"><i class="fa fa-link"></i></a></h2>
 <p>Alongside war and political turmoil, hyperinflation is one of the leading causes of death for currencies. While the decentralized system of validators provides XRP with some resistance to political factors, the rules of the XRP Ledger provide a simpler solution to hyperinflation: the total supply of XRP is finite. Without a mechanism to create more, it becomes much less likely that XRP could suffer hyperinflation.</p>
 <p>The supply of XRP available to the general public <em>does</em> change due to a few factors:</p>
 <ul>
@@ -245,7 +245,7 @@
 <li>Each account in the XRP Ledger must hold a small amount of XRP in reserve. This is an anti-spam measure to disincentivize making the ledger data occupy too much space. XRP Ledger validators can vote to change the amount of XRP required as a reserve, to compensate for changes in XRP's real-world value. (The last time this happened was in December 2013, when <a class="external-link" href="https://ripple.com/insights/proposed-change-to-ripple-reserve-requirement-2/" target="_blank">the reserve requirement decreased from 50 XRP to 20 XRP <i aria-hidden="true" class="fa fa-external-link"></i></a>.) If the reserve requirement decreases, XRP that was previously locked up by the reserve becomes available again.</li>
 <li>Ripple (the company) holds a large reserve of XRP in escrow. At the start of each month, 1 billion XRP is released from escrow for Ripple to use. (Ripple uses XRP to incentivize growth in the XRP Ledger ecosystem and sells XRP to institutional investors. Ripple also sells XRP programmatically on exchanges, limited to a small percentage of overall exchange volume. Ripple publishes sales figures quarterly in the <a class="external-link" href="https://ripple.com/insights/q1-2018-xrp-markets-report/" target="_blank">XRP Markets Report <i aria-hidden="true" class="fa fa-external-link"></i></a>.) At the end of each month, any remaining XRP the company does not sell or give away is stored into escrow for a 54-month period. For more information on Ripple's escrow policy, see <a class="external-link" href="https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/" target="_blank">Ripple Escrows 55 Billion XRP for Supply Predictability <i aria-hidden="true" class="fa fa-external-link"></i></a>. For more information on the technical capabilities of the Escrow feature, see <a href="escrow.html">Escrow</a>.</li>
 </ul>
-<h2 id="responsible-software-governance">Responsible Software Governance</h2>
+<h2 id="responsible-software-governance">Responsible Software Governance<a aria-hidden="true" class="hover_anchor" href="#responsible-software-governance"><i class="fa fa-link"></i></a></h2>
 <p>Any piece of software can only be as good as the developers who code and manage it. Ripple employs a team of world-class engineers dedicated full-time to maintaining and improving the XRP Ledger software, especially the core server, <code>rippled</code>. The <a class="external-link" href="https://github.com/ripple/rippled/" target="_blank">source code for <code>rippled</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> is available to the public with a permissive open-source license, as are many other parts of the XRP Ledger ecosystem. Ripple engineers follow best practices for software engineering, including:</p>
 <ul>
 <li>A famously strict and thorough code review process</li>
@@ -254,10 +254,10 @@
 <li>Regularly commissioning external reviews by professional organizations</li>
 </ul>
 <p>As an entity that is obligated to hold large amounts of XRP for the long term, Ripple has a strong incentive to ensure that XRP is widely used in ways that are legal, sustainable, and constructive. Ripple provides technical support to businesses whose goals align with Ripple's ideal of an Internet of Value. Ripple also cooperates with legislators and regulators worldwide to guide the implementation of sensible laws governing digital assets and associated businesses.</p>
-<h2 id="secure-adaptable-cryptography">Secure, Adaptable Cryptography</h2>
+<h2 id="secure-adaptable-cryptography">Secure, Adaptable Cryptography<a aria-hidden="true" class="hover_anchor" href="#secure-adaptable-cryptography"><i class="fa fa-link"></i></a></h2>
 <p>Cryptography is one of the hardest parts of any distributed system, and a mistake can lead to money stolen by malicious actors anywhere in the world. The XRP Ledger uses industry-standard schemes for signing and verifying transactions, algorithms that have successfully protected hundreds of billions of US dollars' worth of value for many years. The XRP Ledger also layers multi-signing functionality so you can use multi-factor authorization or split keys across multiple people as a backup, and provides new algorithms with a path to migrate the keys you use if a breakthrough in cryptography makes the old algorithms obsolete.</p>
 <p>For more information, see <a href="cryptographic-keys.html">Cryptographic Keys</a> and <a href="multi-signing.html">Multi-Signing</a>.</p>
-<h2 id="modern-features-for-smart-contracts">Modern Features for Smart Contracts</h2>
+<h2 id="modern-features-for-smart-contracts">Modern Features for Smart Contracts<a aria-hidden="true" class="hover_anchor" href="#modern-features-for-smart-contracts"><i class="fa fa-link"></i></a></h2>
 <p>Besides direct value transfer with <a href="direct-xrp-payments.html">XRP payments</a>, the XRP Ledger has advanced features specialized for the Internet of Value. This allows applications built on XRP to provide services and functionality that would have been impractical or impossible in the past. Rather than running applications as "smart contracts" in the network itself, the XRP Ledger provides tools for settling contracts, while letting the applications themselves run anywhere, in whatever environment or container is appropriate. This "keep it simple" approach is flexible, scalable, and powerful. <!-- STYLE_OVERRIDE: simple --></p>
 <p>A sample of advanced features in the XRP Ledger:</p>
 <ul>
@@ -268,7 +268,7 @@
 <li><a class="external-link" href="https://xrpl.org/blog/2017/invariant-checking.html" target="_blank">Invariant Checking <i aria-hidden="true" class="fa fa-external-link"></i></a> provides an independent layer of protections against bugs in transaction execution.</li>
 <li><a href="amendments.html">Amendments</a> provide smooth upgrades to the existing feature set, so the technology can continue to evolve without fracturing the ecosystem or causing uncertainty around times of transition.</li>
 </ul>
-<h2 id="on-ledger-decentralized-exchange">On-Ledger Decentralized Exchange</h2>
+<h2 id="on-ledger-decentralized-exchange">On-Ledger Decentralized Exchange<a aria-hidden="true" class="hover_anchor" href="#on-ledger-decentralized-exchange"><i class="fa fa-link"></i></a></h2>
 <p>One of the biggest features that sets the XRP Ledger apart from other cryptocurrency networks is that it also contains a full currency exchange that runs on the XRP Ledger. Within this system, businesses (typically called "gateways") can freely issue any currency they want to customers, and those customers can freely trade issued currencies for XRP or other issued currencies issued by any gateway. The XRP Ledger can execute atomic cross-currency transactions this way, using orders in the exchange to provide liquidity.</p>
 <p>For more information on how the decentralized exchange works, see <a href="decentralized-exchange.html">Decentralized Exchange</a>. For more information on the gateway business model, see the <a href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>.</p>
     </div>
@@ -621,6 +621,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

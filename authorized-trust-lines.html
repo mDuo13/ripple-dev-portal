@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/issued-currencies/authorized-trust-lines.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/issued-currencies/authorized-trust-lines.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,7 +205,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="authorized-trust-lines">Authorized Trust Lines</h1>
+        <h1 id="authorized-trust-lines">Authorized Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorized-trust-lines"><i class="fa fa-link"></i></a></h1>
 <p>The XRP Ledger's Authorized Trust Lines feature enables a currency issuer to limit who can hold its issued (non-XRP) currencies, so that unknown XRP Ledger addresses cannot hold those currencies. The Authorized Trust Lines feature only applies to issued currencies and has no effect on XRP.</p>
 <p>To use the Authorized Trust Lines feature, enable the <code>RequireAuth</code> flag on your issuing address. After doing so, your issuing address can send <a href="trustset.html">TrustSet transactions</a> to authorize trust lines from other addresses. While RequireAuth is enabled, other addresses can only hold funds issued by your address if the trust line to your issuing address has been authorized.</p>
 <p>The transaction to authorize a trust line must be signed by the issuing address, which unfortunately means an increased risk exposure for that address. The process for sending funds into the XRP Ledger with <code>RequireAuth</code> enabled looks like the following:</p>
@@ -215,16 +215,16 @@
 <li>The gateway's issuing address sends a TrustSet transaction authorizing the customer's trust line.</li>
 </ol>
 <p class="devportal-callout tip"><strong>Tip:</strong> An issuing gateway can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. <em>(Added by the <a href="known-amendments.html#trustsetauth">TrustSetAuth amendment</a>.)</em></p>
-<h2 id="requireauth-setting">RequireAuth Setting</h2>
+<h2 id="requireauth-setting">RequireAuth Setting<a aria-hidden="true" class="hover_anchor" href="#requireauth-setting"><i class="fa fa-link"></i></a></h2>
 <!-- SPELLING_IGNORE: requireauth -->
 <p>The <code>RequireAuth</code> setting (<code>requireAuthorization</code> in <a href="rippleapi-reference.html">RippleAPI</a>) prevents all counterparties from holding balances issued by an address unless the issuing address has specifically approved a trust line with that counterparty for the currency in question.</p>
 <p>As a precaution, Ripple recommends that issuing gateways always enable <code>RequireAuth</code> on <a href="issuing-and-operational-addresses.html">operational addresses and standby addresses</a>, and then never approve any trust lines to those addresses. This prevents operational addresses and standby addresses from issuing currency in the XRP Ledger even by accident. This is a purely precautionary measure, and does not stop those addresses from transferring issued currency balances created by the issuing address, as they are intended to do.</p>
 <p>To use the Authorized Trust Lines feature, an issuer must also enable <code>RequireAuth</code> on its issuing address. After doing so, the issuing address must <a href="#authorizing-trust-lines">submit a <code>TrustSet</code> transaction to approve each trust line</a> from a customer.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> An account can only enable <code>RequireAuth</code> if it owns no trust lines and no offers in the XRP Ledger, so you must decide whether or not to use it before you start doing business in the XRP Ledger.</p>
-<h3 id="enabling-requireauth">Enabling RequireAuth</h3>
+<h3 id="enabling-requireauth">Enabling RequireAuth<a aria-hidden="true" class="hover_anchor" href="#enabling-requireauth"><i class="fa fa-link"></i></a></h3>
 <p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send an <a href="accountset.html">AccountSet transaction</a> to enable the <code>RequireAuth</code> flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)</p>
 <p>Request:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">POST</span> <span class="err">http://localhost:</span><span class="mi">5005</span><span class="err">/</span>
+<div class="codehilite"><pre><span></span><code><span class="err">POST</span> <span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="err">//localhos</span><span class="kc">t</span><span class="p">:</span><span class="mi">5005</span><span class="err">/</span>
 <span class="p">{</span>
     <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"submit"</span><span class="p">,</span>
     <span class="nt">"params"</span><span class="p">:</span> <span class="p">[</span>
@@ -243,15 +243,15 @@
 </code></pre></div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <!-- -->
-<h2 id="checking-whether-an-account-has-requireauth-enabled">Checking Whether an Account Has RequireAuth Enabled</h2>
+<h2 id="checking-whether-an-account-has-requireauth-enabled">Checking Whether an Account Has RequireAuth Enabled<a aria-hidden="true" class="hover_anchor" href="#checking-whether-an-account-has-requireauth-enabled"><i class="fa fa-link"></i></a></h2>
 <p>To see whether an account has the <code>RequireAuth</code> setting enabled, use the <a href="account_info.html">account_info method</a> to look up the account. Compare the value of the <code>Flags</code> field (in the <code>result.account_data</code> object) with the <a href="accountroot.html">bitwise flags defined for an AccountRoot ledger object</a>.</p>
 <p>If the result of the <code>Flags</code> value bitwise-AND the <code>lsfRequireAuth</code> flag value (<code>0x00040000</code>) is nonzero, then the account has <code>RequireAuth</code> enabled. If the result is zero, then the account has <code>RequireAuth</code> disabled.</p>
-<h2 id="authorizing-trust-lines">Authorizing Trust Lines</h2>
+<h2 id="authorizing-trust-lines">Authorizing Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorizing-trust-lines"><i class="fa fa-link"></i></a></h2>
 <p>If you are using the Authorized Trust Lines feature, others cannot hold balances you issue unless you first authorize their trust lines to you. If you issue more than one currency, you must separately authorize trust lines for each currency.</p>
 <p>To authorize a trust line, submit a <a href="trustset.html">TrustSet transaction</a> from your issuing address, with the user to trust as the <code>issuer</code> of the <code>LimitAmount</code>. Leave the <code>value</code> (the amount to trust them for) as <strong>0</strong>, and enable the <a href="trustset.html#trustset-flags"><code>tfSetfAuth</code></a> flag for the transaction.</p>
 <p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="submit.html">submit method</a> to send a TrustSet transaction authorizing the customer address <code>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</code> to hold USD issued by the address <code>rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW</code>:</p>
 <p>Request:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">POST</span> <span class="err">http://localhost:</span><span class="mi">8088</span><span class="err">/</span>
+<div class="codehilite"><pre><span></span><code><span class="err">POST</span> <span class="err">h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="err">//localhos</span><span class="kc">t</span><span class="p">:</span><span class="mi">8088</span><span class="err">/</span>
 
 <span class="p">{</span>
     <span class="nt">"method"</span><span class="p">:</span> <span class="s2">"submit"</span><span class="p">,</span>
@@ -275,10 +275,10 @@
 </code></pre></div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
 <!-- -->
-<h2 id="checking-whether-trust-lines-are-authorized">Checking Whether Trust Lines Are Authorized</h2>
+<h2 id="checking-whether-trust-lines-are-authorized">Checking Whether Trust Lines Are Authorized<a aria-hidden="true" class="hover_anchor" href="#checking-whether-trust-lines-are-authorized"><i class="fa fa-link"></i></a></h2>
 <p>To see whether a trust line has been authorized, use the <a href="account_lines.html">account_lines method</a> to look up the trust line. In the request, provide the customer's address in the <code>account</code> field and the issuer's address in the <code>peer</code> field.</p>
 <p>In the response's <code>result.lines</code> array, find the object whose <code>currency</code> field indicates that it represents a trust line for the currency you want. If that object has a <code>peer_authorized</code> field with the value <code>true</code>, then the issuer (the address you used as the request's <code>peer</code> field) has authorized the trust line.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="depositauth.html">Deposit Authorization</a></li>
@@ -656,6 +656,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

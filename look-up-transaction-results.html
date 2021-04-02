@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/get-started/look-up-transaction-results.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/get-started/look-up-transaction-results.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -213,11 +213,11 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="look-up-transaction-results">Look Up Transaction Results</h1>
+        <h1 id="look-up-transaction-results">Look Up Transaction Results<a aria-hidden="true" class="hover_anchor" href="#look-up-transaction-results"><i class="fa fa-link"></i></a></h1>
 <p>To use the XRP Ledger effectively, you need to be able to understand <a href="transaction-basics.html">transaction</a> outcomes: did the transaction succeed? What did it accomplish? If it failed, why?</p>
 <p>The XRP Ledger is a shared system, with all data recorded publicly and carefully, securely updated with each new <a href="ledgers.html">ledger version</a>. Anyone can look up the exact outcome of any transaction and read the <a href="transaction-metadata.html">transaction metadata</a> to see what it did.</p>
 <p>This document describes, at a low level, how to know why a transaction reached the outcome it did. For an end-user, it is easier to look at a processed view of a transaction. For example, you can <a class="external-link" href="https://xrpcharts.ripple.com/#/transactions/" target="_blank">use XRP Charts to get an English-language description of any recorded transaction <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>To understand the outcome of a transaction as described in these instructions, you must:</p>
 <ul>
 <li>Know which transaction you want to understand. If you know the transaction's <a href="transaction-basics.html#identifying-transactions">identifying hash</a>, you can look it up that way. You can also look at transactions that executed in a recent ledger or the transactions that most recently affected a given account.</li>
@@ -228,7 +228,7 @@
 </li>
 </ul>
 <p class="devportal-callout tip"><strong>Tip:</strong> There are other ways of querying for data on transactions from the XRP Ledger, including the <a href="data-api.html">Data API</a> and other exported databases, but those interfaces are non-authoritative. This document describes how to look up data using the <code>rippled</code> API directly, for the most direct and authoritative results possible.</p>
-<h2 id="1-get-transaction-status">1. Get Transaction Status</h2>
+<h2 id="1-get-transaction-status">1. Get Transaction Status<a aria-hidden="true" class="hover_anchor" href="#1-get-transaction-status"><i class="fa fa-link"></i></a></h2>
 <p>Knowing whether a transaction succeeded or failed is a two-part question:</p>
 <ol>
 <li>Was the transaction included in a validated ledger?</li>
@@ -250,11 +250,11 @@
   <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">376</span><span class="p">,</span>
   <span class="nt">"hash"</span><span class="p">:</span> <span class="s2">"017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567"</span><span class="p">,</span>
 
-  <span class="err">...</span> <span class="err">(omitted)</span> <span class="err">...</span>
+  <span class="err">...</span> <span class="err">(omi</span><span class="kc">tte</span><span class="err">d)</span> <span class="err">...</span>
 
   <span class="nt">"meta"</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">"AffectedNodes"</span><span class="p">:</span> <span class="p">[</span>
-      <span class="err">...</span> <span class="err">(omitted)</span> <span class="err">...</span>
+      <span class="err">...</span> <span class="err">(omi</span><span class="kc">tte</span><span class="err">d)</span> <span class="err">...</span>
     <span class="p">],</span>
     <span class="nt">"TransactionResult"</span><span class="p">:</span> <span class="s2">"tesSUCCESS"</span>
   <span class="p">},</span>
@@ -263,10 +263,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>This example shows an <a href="accountset.html">AccountSet transaction</a> sent by the <a href="accounts.html">account</a> with address <code>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</code>, using <a href="basic-data-types.html#account-sequence">Sequence number</a> 376. The transaction's <a href="transaction-basics.html#identifying-transactions">identifying hash</a> is <code>017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567</code> and its <a href="transaction-results.html">result</a> is <code>tesSUCCESS</code>. The transaction was included in ledger version 46447423, which has been validated, so these results are final.</p>
-<h3 id="case-not-included-in-a-validated-ledger">Case: Not Included in a Validated Ledger</h3>
+<h3 id="case-not-included-in-a-validated-ledger">Case: Not Included in a Validated Ledger<a aria-hidden="true" class="hover_anchor" href="#case-not-included-in-a-validated-ledger"><i class="fa fa-link"></i></a></h3>
 <p><strong>If a transaction is not included in a validated ledger, it cannot possibly have had <em>any</em> effect on the shared XRP Ledger state.</strong> If the transaction's failure to be included in a ledger is <a href="finality-of-results.html"><em>final</em></a>, then it cannot have any future effect, either.</p>
 <p>If the transaction's failure is not final, it may still become included in a <em>future</em> validated ledger. You can use the provisional results of applying the transaction to the current open ledger as a preview of the likely effects the transaction may have in a final ledger, but those results can change due to <a href="finality-of-results.html#how-can-non-final-results-change">many factors</a>.</p>
-<h3 id="case-included-in-a-validated-ledger">Case: Included in a Validated Ledger</h3>
+<h3 id="case-included-in-a-validated-ledger">Case: Included in a Validated Ledger<a aria-hidden="true" class="hover_anchor" href="#case-included-in-a-validated-ledger"><i class="fa fa-link"></i></a></h3>
 <p>If the transaction <em>is</em> included in a validated ledger, then the <a href="transaction-metadata.html">transaction metadata</a> contains a full report of all changes that were made to the ledger state as a result of processing the transaction. The metadata's <code>TransactionResult</code> field contains a <a href="transaction-results.html">transaction result code</a> that summarizes the outcome:</p>
 <ul>
 <li>The code <code>tesSUCCESS</code> indicates that the transaction was, more or less, successful.</li>
@@ -274,7 +274,7 @@
 <li>No other code can appear in any ledger.</li>
 </ul>
 <p>The result code is only a summary of the transaction's outcome. To understand in more detail what the transaction did, you must read the rest of the metadata in context of the transaction's instructions and the ledger state before the transaction executed.</p>
-<h2 id="2-interpret-metadata">2. Interpret Metadata</h2>
+<h2 id="2-interpret-metadata">2. Interpret Metadata<a aria-hidden="true" class="hover_anchor" href="#2-interpret-metadata"><i class="fa fa-link"></i></a></h2>
 <p>Transaction metadata describes <em>exactly</em> how the transaction was applied to the ledger, including the following fields:</p>
 <table>
 <thead>
@@ -380,7 +380,7 @@
 </ul>
 <p>Since the <code>ModifiedNode</code> entry for <code>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</code>'s account is the only object in the <code>AffectedNodes</code> array, no other changes were made to the ledger as a result of this transaction.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> If the transaction sends or receives XRP, the sender's balance changes are combined with the transaction cost, resulting in a single change to the <code>Balance</code> field in the net amount. For example, if you sent 1 XRP (1,000,000 drops) and destroyed 10 drops for the transaction cost, the metadata shows your <code>Balance</code> decreasing by 1,000,010 drops of XRP.</p>
-<h3 id="general-purpose-bookkeeping">General-Purpose Bookkeeping</h3>
+<h3 id="general-purpose-bookkeeping">General-Purpose Bookkeeping<a aria-hidden="true" class="hover_anchor" href="#general-purpose-bookkeeping"><i class="fa fa-link"></i></a></h3>
 <p>Almost any transaction can result in the following types of changes:</p>
 <ul>
 <li><strong>Sequence and Transaction Cost changes:</strong> <a href="#2-interpret-metadata">As mentioned, every transaction (excluding pseudo-transactions) modifies the sender's <code>AccountRoot</code> object</a> to increase the sender's sequence number and destroy the XRP used to pay the transaction cost.</li>
@@ -422,15 +422,15 @@
       <span class="nt">"TakerPaysIssuer"</span><span class="p">:</span> <span class="s2">"5E7B112523F68D2F5E879DB4EAC51C6698A69304"</span>
     <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">}</span><span class="err">,</span>
+<span class="p">},</span>
 </code></pre></div>
 <p>Other things to look for when processing transaction metadata depend on the transaction type.</p>
-<h3 id="payments">Payments</h3>
+<h3 id="payments">Payments<a aria-hidden="true" class="hover_anchor" href="#payments"><i class="fa fa-link"></i></a></h3>
 <p>A <a href="payment.html">Payment transaction</a> can represent a direct XRP-to-XRP transaction, a <a href="cross-currency-payments.html">cross-currency payment</a>, or a direct transaction in an <a href="issued-currencies.html">issued (non-XRP) currency</a>. Anything other than a direct XRP-to-XRP transaction can be a <a href="partial-payments.html">partial payment</a>, including issued currency to XRP or XRP to issued currency transactions.</p>
 <p>XRP amounts are tracked in the <code>Balance</code> field of <code>AccountRoot</code> objects. (XRP can also exist in <a href="escrow-object.html">Escrow objects</a> and <a href="paychannel.html">PayChannel objects</a>, but Payment transactions cannot affect those.)</p>
 <p>You should always use <a href="partial-payments.html#the-delivered_amount-field">the <code>delivered_amount</code> field</a> to see how much a payment delivered.</p>
 <p>If the payment contains a <code>CreatedNode</code> with <code>"LedgerEntryType": "AccountRoot"</code>, that means the payment <a href="accounts.html#creating-accounts">funded a new account</a> in the ledger.</p>
-<h4 id="issued-currency-payments">Issued Currency Payments</h4>
+<h4 id="issued-currency-payments">Issued Currency Payments<a aria-hidden="true" class="hover_anchor" href="#issued-currency-payments"><i class="fa fa-link"></i></a></h4>
 <p>Payments involving issued currencies are a bit more complicated.</p>
 <p>All changes in issued currency balances are reflected in <a href="ripplestate.html">RippleState objects</a>, which represent <a href="trust-lines-and-issuing.html">trust lines</a>. An increase to one party's balance on a trust line is considered to decrease the counterparty's balance by equal amount; in the metadata, this is only recorded as a single change to the shared <code>Balance</code> for the RippleState object. Whether this change is recorded as an "increase" or "decrease" depends on which account has the numerically higher address.</p>
 <p>A single payment may go across a long <a href="paths.html">path</a> consisting of several trust lines and order books. The process of changing the balances on several trust lines to connect parties indirectly is called <a href="rippling.html">rippling</a>. Depending on the <code>issuer</code> specified in the transaction's <code>Amount</code> field, it is also possible that the amount delivered may be split between several trust lines (<code>RippleState</code> accounts) connected to the destination account.</p>
@@ -439,7 +439,7 @@
 <p>The <a href="trustset.html"><code>QualityIn</code> and <code>QualityOut</code> settings of trust lines</a> can affect how one side of a trust line values the issued currency, so that the numeric change in balances is different from how the sender values that currency. The <code>delivered_amount</code> shows how much was delivered as valued by the recipient.</p>
 <p>If the amount to be sent or received is outside of the <a href="currency-formats.html#issued-currency-precision">issued currency precision</a>, it is possible that one side may be debited for an amount that is rounded to nothing on the other side of the transaction. Therefore, when two parties transact while their balances are different by a factor of 10<sup>16</sup>, it is possible that rounding may effectively "create" or "destroy" small amounts of the issued currency. (XRP is never rounded, so this is not possible with XRP.)</p>
 <p>Depending on the length of the <a href="paths.html">paths</a>, the metadata for cross-currency payments can be <em>long</em>. For example, <a class="external-link" href="https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B" target="_blank">transaction 8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B <i aria-hidden="true" class="fa fa-external-link"></i></a> delivered 2.788 GCB issued by <code>rHaaans...</code>, spending XRP but passing through USD from 2 issuers, paying XRP to 2 accounts, removing an unfunded offer from <code>r9ZoLsJ...</code> to trade EUR for ETH, plus bookkeeping for a total of 17 different ledger objects modified. <!-- SPELLING_IGNORE: gcb --></p>
-<h3 id="offers">Offers</h3>
+<h3 id="offers">Offers<a aria-hidden="true" class="hover_anchor" href="#offers"><i class="fa fa-link"></i></a></h3>
 <p>An <a href="offercreate.html">OfferCreate transaction</a> may or may not create an object in the ledger, depending on how much was matched and whether the transaction used flags such as <code>tfImmediateOrCancel</code>. Look for a <code>CreatedNode</code> entry with <code>"LedgerEntryType": "Offer"</code> to see if the transaction added a new Offer to the ledger's order books. For example:</p>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
   <span class="nt">"CreatedNode"</span><span class="p">:</span> <span class="p">{</span>
@@ -490,7 +490,7 @@
 <p>Offers can create, delete, and modify both types of <a href="directorynode.html">DirectoryNode objects</a>, to keep track of who placed which Offers and which Offers are available at which exchange rates. Generally, users don't need to pay close attention to this bookkeeping.</p>
 <p>An <a href="offercancel.html">OfferCancel transaction</a> may have the code <code>tesSUCCESS</code> even if there was no Offer to delete. Look for a <code>DeletedNode</code> of type <code>Offer</code> to confirm that the transaction actually deleted an Offer. If not, the Offer may already have been removed by a previous transaction, or the OfferCancel transaction may have used the wrong sequence number in the <code>OfferSequence</code> field.</p>
 <p>If an OfferCreate transaction shows a <code>CreatedNode</code> of type <code>RippleState</code>, that indicates that <a href="offers.html#offers-and-trust">the Offer created a trust line</a> to hold an issued currency received in the trade.</p>
-<h3 id="escrows">Escrows</h3>
+<h3 id="escrows">Escrows<a aria-hidden="true" class="hover_anchor" href="#escrows"><i class="fa fa-link"></i></a></h3>
 <p>A successful <a href="escrowcreate.html">EscrowCreate transaction</a> creates an <a href="escrow-object.html">Escrow object</a> in the ledger. Look for a <code>CreatedNode</code> entry of type <code>Escrow</code>. The <code>NewFields</code> should show an <code>Amount</code> equal to the amount of XRP escrowed, and other properties as specified.</p>
 <p>A successful EscrowCreate transaction also debits the same amount of XRP from the sender. Look for a <code>ModifiedNode</code> of type <code>AccountRoot</code>, where the <code>Account</code> in the final fields matches the address from the <code>Account</code> in the transaction instructions. The <code>Balance</code> should show the decrease in XRP due to the escrowed XRP (in addition to the XRP destroyed to pay the transaction cost).</p>
 <p>A successful <a href="escrowfinish.html">EscrowFinish transaction</a> modifies the <code>AccountRoot</code> of the recipient to increase their XRP balance (in the <code>Balance</code> field), deletes the <code>Escrow</code> object, and reduces the owner count of the escrow creator. Since the escrow's creator, recipient, and finisher may all be different accounts or the same, this can result in <em>one to three</em> <code>ModifiedNode</code> objects of type <code>AccountRoot</code>. A successful <a href="escrowcancel.html">EscrowCancel transaction</a> is very similar, except it sends the XRP back to the original creator of the escrow.</p>
@@ -515,7 +515,7 @@
     <span class="nt">"PreviousTxnID"</span><span class="p">:</span> <span class="s2">"D853342BC27D8F548CE4D7CB688A8FECE3229177790453BA80BC79DE9AAC3316"</span><span class="p">,</span>
     <span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mi">41005507</span>
   <span class="p">}</span>
-<span class="p">}</span><span class="err">,</span>
+<span class="p">},</span>
 <span class="p">{</span>
   <span class="nt">"DeletedNode"</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">"FinalFields"</span><span class="p">:</span> <span class="p">{</span>
@@ -531,9 +531,9 @@
     <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"Escrow"</span><span class="p">,</span>
     <span class="nt">"LedgerIndex"</span><span class="p">:</span> <span class="s2">"62F0ABB58C874A443F01CDCCA18B12E6DA69C254D3FB17A8B71CD8C6C68DB74D"</span>
   <span class="p">}</span>
-<span class="p">}</span><span class="err">,</span>
+<span class="p">},</span>
 </code></pre></div>
-<h3 id="payment-channels">Payment Channels</h3>
+<h3 id="payment-channels">Payment Channels<a aria-hidden="true" class="hover_anchor" href="#payment-channels"><i class="fa fa-link"></i></a></h3>
 <p>Look for a <code>CreatedNode</code> of type <code>PayChannel</code> when creating a payment channel. You should also find a <code>ModifiedNode</code> of type <code>AccountRoot</code> showing the decrease in the sender's balance. Look for an <code>Account</code> field in the <code>FinalFields</code> to confirm that the address matches the sender, and look at the difference in the <code>Balance</code> fields to see the change in XRP balance.</p>
 <p>The metadata also lists the newly-created payment channel in the destination's <a href="directorynode.html">owner directory</a>. This prevents an account from <a href="accounts.html#deletion-of-accounts">being deleted</a> if it is the destination of an open payment channel. (This behavior was added by the <a href="known-amendments.html#fixpaychanrecipientownerdir">fixPayChanRecipientOwnerDir amendment</a>.)</p>
 <p>There are several ways to request to close a payment channel, aside from the immutable <code>CancelAfter</code> time of the channel (which is only set on creation). If a transaction schedules a channel to close, there is  a <code>ModifiedNode</code> entry of type <code>PayChannel</code> for the channel, with the newly-added close time in the <code>Expiration</code> field of the <code>FinalFields</code>. The following example shows the changes to a <code>PayChannel</code> in a case where the sender requested to close the channel without redeeming a claim:</p>
@@ -559,7 +559,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="trustset-transactions">TrustSet Transactions</h3>
+<h3 id="trustset-transactions">TrustSet Transactions<a aria-hidden="true" class="hover_anchor" href="#trustset-transactions"><i class="fa fa-link"></i></a></h3>
 <p>TrustSet transactions create, modify, or delete <a href="trust-lines-and-issuing.html">trust lines</a>, which are represented as <a href="ripplestate.html"><code>RippleState</code> objects</a>. A single <code>RippleState</code> object contains settings for both parties involved, including their limits, <a href="rippling.html">rippling settings</a>, and more. Creating and modifying trust lines can also <a href="#general-purpose-bookkeeping">adjust the sender's owner reserve and owner directory</a>.</p>
 <p>The following example shows a new trust line, where <strong><code>rf1BiG...</code></strong> is willing to hold up to 110 USD issued by <strong><code>rsA2Lp...</code></strong>:</p>
 <div class="codehilite"><pre><span></span><code> <span class="p">{</span>
@@ -587,7 +587,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="other-transactions">Other Transactions</h3>
+<h3 id="other-transactions">Other Transactions<a aria-hidden="true" class="hover_anchor" href="#other-transactions"><i class="fa fa-link"></i></a></h3>
 <p>Most other transactions create a specific type of ledger entry and <a href="#general-purpose-bookkeeping">adjust the sender's owner reserve and owner directory</a>:</p>
 <ul>
 <li><a href="accountset.html">AccountSet transactions</a> modify the sender's existing <a href="accountroot.html">AccountRoot object</a>, changing the settings and flags as specified.</li>
@@ -595,13 +595,13 @@
 <li><a href="setregularkey.html">SetRegularKey transactions</a> modify the <a href="accountroot.html">AccountRoot object</a> of the sender, changing the <code>RegularKey</code> field as specified.</li>
 <li><a href="signerlistset.html">SignerListSet transactions</a> add, remove, or replace a <a href="signerlist.html">SignerList object</a>.</li>
 </ul>
-<h3 id="pseudo-transactions">Pseudo-Transactions</h3>
+<h3 id="pseudo-transactions">Pseudo-Transactions<a aria-hidden="true" class="hover_anchor" href="#pseudo-transactions"><i class="fa fa-link"></i></a></h3>
 <p><a href="pseudo-transaction-types.html">Pseudo-transactions</a> also have metadata, but they do not follow all the rules of normal transactions. They are not tied to a real account (the <code>Account</code> value is the <a href="accounts.html#special-addresses">base58-encoded form of the number 0</a>), so they do not modify an AccountRoot object in the ledger to increase the <code>Sequence</code> number or destroy XRP. Pseudo-transactions only make specific changes to special ledger objects:</p>
 <ul>
 <li><a href="enableamendment.html">EnableAmendment pseudo-transactions</a> modify the <a href="amendments-object.html">Amendments ledger object</a> to track which amendments are enabled, and which ones are pending with majority support and for how long.</li>
 <li><a href="setfee.html">SetFee pseudo-transactions</a> modify the <a href="feesettings.html">FeeSettings ledger object</a> to change the base levels for the <a href="transaction-cost.html">transaction cost</a> and <a href="reserves.html">reserve requirements</a>.</li>
 </ul>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="finality-of-results.html">Finality of Results</a> - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)</li>
@@ -655,6 +655,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -668,15 +669,15 @@
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -685,21 +686,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -709,24 +710,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -753,21 +755,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -776,21 +778,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -810,6 +812,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -848,7 +851,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -983,6 +986,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

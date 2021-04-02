@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -203,14 +203,14 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="get-server-info">Get Server Info</h1>
+        <h1 id="get-server-info">Get Server Info<a aria-hidden="true" class="hover_anchor" href="#get-server-info"><i class="fa fa-link"></i></a></h1>
 <p>Retrieve information about the current status of the XRP-API Server and the rippled server(s) it is connected to.</p>
 <p class="devportal-callout warning"><strong>Warning:</strong> XRP-API is early alpha software. API methods and data formats are likely to change often in ways that break backwards compatibility.</p>
-<h2 id="request-format">Request Format</h2>
+<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="err">GET /servers/info</span>
 </code></pre></div>
-<h2 id="response-formats">Response Formats</h2>
-<h3 id="200-ok">200 OK</h3>
+<h2 id="response-formats">Response Formats<a aria-hidden="true" class="hover_anchor" href="#response-formats"><i class="fa fa-link"></i></a></h2>
+<h3 id="200-ok">200 OK<a aria-hidden="true" class="hover_anchor" href="#200-ok"><i class="fa fa-link"></i></a></h3>
 <p>The status of the XRP-API server and an array of statuses from the <code>rippled</code> server(s) it is connected to.</p>
 <p><strong>Media type:</strong> application/json</p>
 <p>Formatted as a <a href="xrp-api-data-types-serverinfo.html">ServerInfo</a></p>
@@ -508,6 +508,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/public-rippled-methods/account-methods/account_lines.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/account-methods/account_lines.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -204,10 +204,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="account_lines">account_lines</h1>
+        <h1 id="account_lines">account_lines<a aria-hidden="true" class="hover_anchor" href="#account_lines"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>The <code>account_lines</code> method returns information about an account's trust lines, including balances in all non-XRP currencies and assets. All information retrieved is relative to a particular version of the ledger.</p>
-<h2 id="request-format">Request Format</h2>
+<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
 
@@ -276,7 +276,7 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 </tbody>
 </table>
 <p>The following parameters are deprecated and may be removed without further notice: <code>ledger</code> and <code>peer_index</code>.</p>
-<h2 id="response-format">Response Format</h2>
+<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
 
@@ -698,36 +698,36 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <tr>
 <td align="left"><code>no_ripple</code></td>
 <td align="left">Boolean</td>
-<td align="left"><em>(May be omitted)</em> <code>true</code> if this account has enabled the <a href="rippling.html">No Ripple flag</a> for this line. If omitted, that is the same as <code>false</code>.</td>
+<td align="left"><em>(May be omitted)</em> If <code>true</code>, this account has enabled the <a href="rippling.html">No Ripple flag</a> for this trust line. If present and <code>false</code>, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag enabled, that is not considered <a href="ripplestate.html#contributing-to-the-owner-reserve">the default state</a>. If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple disabled. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><code>no_ripple_peer</code></td>
 <td align="left">Boolean</td>
-<td align="left"><em>(May be omitted)</em> <code>true</code> if the peer account has enabled the <a href="rippling.html">No Ripple flag</a>. If omitted, that is the same as <code>false</code>.</td>
+<td align="left"><em>(May be omitted)</em> If <code>true</code>, the peer account has enabled the <a href="rippling.html">No Ripple flag</a> for this trust line. If present and <code>false</code>, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag enabled, that is not considered <a href="ripplestate.html#contributing-to-the-owner-reserve">the default state</a>. If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple disabled. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td align="left"><code>authorized</code></td>
 <td align="left">Boolean</td>
-<td align="left"><em>(May be omitted)</em> <code>true</code> if this account has <a href="authorized-trust-lines.html">authorized this trust line</a>. If omitted, that is the same as <code>false</code>.</td>
+<td align="left"><em>(May be omitted)</em> If <code>true</code>, this account has <a href="authorized-trust-lines.html">authorized this trust line</a>. The default is <code>false</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>peer_authorized</code></td>
 <td align="left">Boolean</td>
-<td align="left"><em>(May be omitted)</em> <code>true</code> if the peer account has <a href="authorized-trust-lines.html">authorized this trust line</a>. If omitted, that is the same as <code>false</code>.</td>
+<td align="left"><em>(May be omitted)</em> If <code>true</code>, the peer account has <a href="authorized-trust-lines.html">authorized this trust line</a>. The default is <code>false</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>freeze</code></td>
 <td align="left">Boolean</td>
-<td align="left"><em>(May be omitted)</em> <code>true</code> if this account has <a href="freezes.html">frozen</a> this trust line. If omitted, that is the same as <code>false</code>.</td>
+<td align="left"><em>(May be omitted)</em> If <code>true</code>, this account has <a href="freezes.html">frozen</a> this trust line. The default is <code>false</code>.</td>
 </tr>
 <tr>
 <td align="left"><code>freeze_peer</code></td>
 <td align="left">Boolean</td>
-<td align="left"><em>(May be omitted)</em> <code>true</code> if the peer account has <a href="freezes.html">frozen</a> this trust line. If omitted, that is the same as <code>false</code>.</td>
+<td align="left"><em>(May be omitted)</em> If <code>true</code>, the peer account has <a href="freezes.html">frozen</a> this trust line. The default is <code>false</code>.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="possible-errors">Possible Errors</h2>
+<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
@@ -846,6 +846,7 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -907,7 +908,6 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -947,7 +947,7 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -986,7 +986,7 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -1179,6 +1179,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

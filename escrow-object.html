@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/ledger-data-formats/ledger-object-types/escrow.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/ledger-data-formats/ledger-object-types/escrow.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -204,7 +204,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="escrow">Escrow</h1>
+        <h1 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Added by the <a href="known-amendments.html#escrow">Escrow amendment</a>.)</em></p>
 <p>The <code>Escrow</code> object type represents a held payment of XRP waiting to be executed or canceled. An <a href="escrowcreate.html">EscrowCreate transaction</a> creates an <code>Escrow</code> object in the ledger. A successful <a href="escrowfinish.html">EscrowFinish</a> or <a href="escrowcancel.html">EscrowCancel</a> transaction deletes the object. If the <code>Escrow</code> object has a <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank"><em>crypto-condition</em> <i aria-hidden="true" class="fa fa-external-link"></i></a>, the payment can only succeed if an EscrowFinish transaction provides the corresponding <em>fulfillment</em> that satisfies the condition. (The only supported crypto-condition type is <a class="external-link" href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1" target="_blank">PREIMAGE-SHA-256 <i aria-hidden="true" class="fa fa-external-link"></i></a>.) If the <code>Escrow</code> object has a <code>FinishAfter</code> time, the held payment can only execute after that time.</p>
@@ -213,7 +213,7 @@
 <li>The owner, who provides the XRP when creating the <code>Escrow</code> object. If the held payment is canceled, the XRP returns to the owner.</li>
 <li>The destination, where the XRP is paid when the held payment succeeds. The destination can be the same as the owner.</li>
 </ul>
-<h2 id="example-escrow-json">Example Escrow JSON</h2>
+<h2 id="example-escrow-json">Example Escrow JSON<a aria-hidden="true" class="hover_anchor" href="#example-escrow-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
     <span class="nt">"Amount"</span><span class="p">:</span> <span class="s2">"10000"</span><span class="p">,</span>
@@ -232,7 +232,7 @@
     <span class="nt">"index"</span><span class="p">:</span> <span class="s2">"DC5F3851D8A1AB622F957761E5963BC5BD439D5C24AC6AD7AC4523F0640244AC"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="escrow-fields">Escrow Fields</h2>
+<h2 id="escrow-fields">Escrow Fields<a aria-hidden="true" class="hover_anchor" href="#escrow-fields"><i class="fa fa-link"></i></a></h2>
 <p>An <code>Escrow</code> object has the following fields:</p>
 <table>
 <thead>
@@ -330,7 +330,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="escrow-id-format">Escrow ID Format</h2>
+<h2 id="escrow-id-format">Escrow ID Format<a aria-hidden="true" class="hover_anchor" href="#escrow-id-format"><i class="fa fa-link"></i></a></h2>
 <p>The ID of an <code>Escrow</code> object is the <a href="basic-data-types.html#hashes">SHA-512Half</a> of the following values, concatenated in order:</p>
 <ul>
 <li>The Escrow space key (<code>0x0075</code>)</li>
@@ -450,6 +450,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -511,7 +512,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -551,7 +551,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -590,7 +590,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -783,6 +783,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/use-complex-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/use-complex-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -213,11 +213,11 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="open-a-payment-channel-to-enable-an-inter-exchange-network">Open a Payment Channel to Enable an Inter-Exchange Network</h1>
+        <h1 id="open-a-payment-channel-to-enable-an-inter-exchange-network">Open a Payment Channel to Enable an Inter-Exchange Network<a aria-hidden="true" class="hover_anchor" href="#open-a-payment-channel-to-enable-an-inter-exchange-network"><i class="fa fa-link"></i></a></h1>
 <p>A payment channel enables you to send one-way, "asynchronous" XRP payments that can be divided into very small increments and settled later. As a digital asset exchange, if you send many payments of XRP to another exchange, you can improve the efficiency of these payments by opening an XRP Ledger <a href="payment-channels.html">payment channel</a> between your exchange (the <em>payer</em> exchange) and the other exchange (the <em>payee</em> exchange). In the case of a two-way flow with another exchange, you can open two payment channels (one for each direction).</p>
-<h2 id="why-send-xrp-to-other-exchanges">Why Send XRP to Other Exchanges?</h2>
+<h2 id="why-send-xrp-to-other-exchanges">Why Send XRP to Other Exchanges?<a aria-hidden="true" class="hover_anchor" href="#why-send-xrp-to-other-exchanges"><i class="fa fa-link"></i></a></h2>
 <p>The need to send XRP from your exchange to another exchange may originate with your customers withdrawing XRP from your exchange and depositing it to the other exchange. If you are a large exchange, you probably have many customers moving XRP from your exchange into another exchange. You may be processing XRP payments all day long and for each payment, you are waiting for confirmation times, potentially at both ends of the transaction, as well as paying transaction costs.</p>
-<h2 id="benefits-of-using-a-payment-channel">Benefits of Using a Payment Channel</h2>
+<h2 id="benefits-of-using-a-payment-channel">Benefits of Using a Payment Channel<a aria-hidden="true" class="hover_anchor" href="#benefits-of-using-a-payment-channel"><i class="fa fa-link"></i></a></h2>
 <p>Here are some of the benefits of using a payment channel to send XRP instead of using individual payment transactions: <!-- --></p>
 <ul>
 <li>
@@ -231,14 +231,14 @@
 </ul>
 <p>Here’s a roadmap to the high-level tasks you’ll need to perform to implement this payment channel use case. To go directly to a full payment channels tutorial, see <a href="use-payment-channels.html">Use Payment Channels</a>.</p>
 <!-- #{TODO: for the future: per Warren, it would be great to add diagrams for each step in the flow - showing claims and batch redemptions moving through the payment channel. Also, we have any recommendations around Payment Channel Managers, we can surface that here.}# -->
-<h2 id="understand-payment-channels">Understand payment channels</h2>
+<h2 id="understand-payment-channels">Understand payment channels<a aria-hidden="true" class="hover_anchor" href="#understand-payment-channels"><i class="fa fa-link"></i></a></h2>
 <p>Learn more about payment channels and whether they provide the features you need for your specific implementation.</p>
 <p><a class="button" href="payment-channels.html">Understand payment channels</a></p>
-<h2 id="payer-and-payee-set-up-and-run-rippled-servers">Payer and payee: Set up and run <code>rippled</code> servers</h2>
+<h2 id="payer-and-payee-set-up-and-run-rippled-servers">Payer and payee: Set up and run <code>rippled</code> servers<a aria-hidden="true" class="hover_anchor" href="#payer-and-payee-set-up-and-run-rippled-servers"><i class="fa fa-link"></i></a></h2>
 <p>To use a payment channel to send and receive XRP, both the payer and payee exchanges must each have access to a <code>rippled</code> server that they can use to send transactions. If your exchange processes XRP withdrawals directly, you are probably already running a <code>rippled</code> server that you can use for this purpose.</p>
 <p>If not, a great way for an exchange to get access to a <code>rippled</code> server is to set up and run one.</p>
 <p><a class="button" href="manage-the-rippled-server.html">Set up and run rippled servers</a></p>
-<h2 id="payer-and-payee-fund-xrp-ledger-accounts-with-enough-xrp">Payer and payee: Fund XRP Ledger accounts with enough XRP</h2>
+<h2 id="payer-and-payee-fund-xrp-ledger-accounts-with-enough-xrp">Payer and payee: Fund XRP Ledger accounts with enough XRP<a aria-hidden="true" class="hover_anchor" href="#payer-and-payee-fund-xrp-ledger-accounts-with-enough-xrp"><i class="fa fa-link"></i></a></h2>
 <p>If your exchange processes XRP deposits and withdrawals directly, you probably have existing funded XRP Ledger accounts that you can use for this purpose. Ensure that they are funded with enough XRP as described here.</p>
 <p>Along these lines, there's a good chance that you are following industry best practices and have a cold account plus one or more hot accounts. Use the hot accounts for your payment channels.</p>
 <ul>
@@ -259,7 +259,7 @@
 </li>
 </ul>
 <p><a class="button" href="accounts.html">Fund XRP Ledger accounts with enough XRP</a></p>
-<h2 id="payer-open-a-payment-channel">Payer: <a href="use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient">Open a payment channel</a></h2>
+<h2 id="payer-open-a-payment-channel">Payer: <a href="use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient">Open a payment channel</a><a aria-hidden="true" class="hover_anchor" href="#payer-open-a-payment-channel"><i class="fa fa-link"></i></a></h2>
 <p>The payer exchange opens a payment channel from their XRP Ledger account to the payee exchange's XRP Ledger account. Opening a payment channel includes setting certain specifics of the channel, such as its expiration date and the amount it can hold.</p>
 <p>For this exchange use case, there is no real need to ever close the channel, so the payer exchange may not want to define a <code>CancelAfter</code> (expiration) value. If they ever need to close the channel, they can still do so.</p>
 <p>As the payer exchange, you can think of the payment channel as a special sub-wallet exclusively for a particular destination. Consider estimating how much XRP the payment channel requires similar to how you would estimate a hot wallet's needs. According to <a href="issuing-and-operational-addresses.html">typical best practices</a>, exchanges hold the vast majority of XRP across all of their user accounts in a cold wallet, with a small amount of XRP in a hot wallet.</p>
@@ -267,13 +267,13 @@
 <p>For withdrawals that are larger than the amount of XRP you have in the payment channel, you must process them specially. Either you can send large withdrawals as normal XRP payments, skipping the payment channel entirely, or you can first send a transaction to add the full withdrawal amount to the payment channel before creating claims for those. (See below for details on creating claims.)</p>
 <p>If either exchange has multiple hot accounts in the XRP Ledger, the two exchanges should each designate a specific hot account to use with the payment channel between them. Although there are other potentially viable configurations, this use case assumes a configuration with one payment channel connecting two exchanges. This channel can serve all customers sending XRP from the payer exchange to the payee exchange.</p>
 <p>Since payment channels are unidirectional, you need a second channel in the opposite direction to send XRP from the <em>payee</em> exchange to the <em>payer</em> exchange. This second channel does not need to connect the exact same pair of hot accounts, but it is most convenient to do so. With two unidirectional channels, each exchange can use the XRP it redeems from its incoming channel to refill its outgoing channel.</p>
-<h2 id="payee-verify-payment-channel-details">Payee: Verify payment channel details</h2>
+<h2 id="payee-verify-payment-channel-details">Payee: Verify payment channel details<a aria-hidden="true" class="hover_anchor" href="#payee-verify-payment-channel-details"><i class="fa fa-link"></i></a></h2>
 <p>The payee exchange reviews the details of the payment channel.</p>
 <p><a class="button" href="use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel">Verify payment channel details</a></p>
-<h2 id="payer-create-claims">Payer: Create claims</h2>
+<h2 id="payer-create-claims">Payer: Create claims<a aria-hidden="true" class="hover_anchor" href="#payer-create-claims"><i class="fa fa-link"></i></a></h2>
 <p>The payer exchange creates one or more claims for amounts of XRP that it wants to guarantee to the payee exchange.</p>
 <p><a class="button" href="use-payment-channels.html#3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel">Create claims</a></p>
-<h2 id="payer-send-claim-details-to-the-payer-exchange">Payer: Send claim details to the payer exchange</h2>
+<h2 id="payer-send-claim-details-to-the-payer-exchange">Payer: Send claim details to the payer exchange<a aria-hidden="true" class="hover_anchor" href="#payer-send-claim-details-to-the-payer-exchange"><i class="fa fa-link"></i></a></h2>
 <p>After creating a claim, the payer exchange must send details of the claim to the payee exchange, off-ledger.</p>
 <p>Consider a series of claims prompted by payer exchange customers withdrawing XRP and depositing it to the payee exchange. In this case, the payer and payee exchanges should agree on the information the payer exchange must send for each claim to enable the payee exchange to correctly credit its customers' accounts. For example, consider sharing the following claim information off-ledger:</p>
 <p><strong>Channel ID</strong>: <code>7C02D0802B272599889ADFA4298FD92E4C8BD5120ED9A5BA3884CF636F9B4029</code></p>
@@ -343,12 +343,12 @@
 </tbody>
 </table>
 <p><a class="button" href="use-payment-channels.html#4-the-payer-sends-a-claim-to-the-payee-as-payment-for-goods-or-services">Send claim details to the payer exchange</a></p>
-<h2 id="payee-verify-claims">Payee: Verify claims</h2>
+<h2 id="payee-verify-claims">Payee: Verify claims<a aria-hidden="true" class="hover_anchor" href="#payee-verify-claims"><i class="fa fa-link"></i></a></h2>
 <p>The payee exchange verifies claims sent by the payer exchange.</p>
 <p>After verifying claims, the payee exchange should credit the claimed XRP to the customer accounts indicated by the destination tags sent by the payer exchange. Because claim amounts are cumulative, the payee exchange needs to be careful to credit the customer for only the <em>the difference from the previous claim</em>.</p>
 <p>For example, to know how much to credit a customer for a claim amount of 3000, the payee exchange needs to know that the previous claim amount was 2000. The difference between the claim amount and the previous claim amount (3000 - 2000 = 1000) is the amount the payee exchange must credit to the customer account.</p>
 <p><a class="button" href="use-payment-channels.html#5-the-payee-verifies-the-claims">Verify claims</a></p>
-<h2 id="payee-redeem-them-in-batches">Payee: Redeem them in batches</h2>
+<h2 id="payee-redeem-them-in-batches">Payee: Redeem them in batches<a aria-hidden="true" class="hover_anchor" href="#payee-redeem-them-in-batches"><i class="fa fa-link"></i></a></h2>
 <p>The payee exchange can redeem batches of claims after verifying them to receive the XRP guaranteed by the payer exchange. Here are some guidelines the payee exchange can use to decide how often to redeem claims:</p>
 <ul>
 <li>
@@ -369,10 +369,10 @@
 </ul>
 <!-- #{ TODO: Talk to some active PayChan users like Coil people to get some more specific recommendations. But I imagine that settling every few minutes or even hours could make sense depending on how much the payee exchange trusts the payer exchange, how many transactions they do how rapidly, etc. }# -->
 <p><a class="button" href="use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount">Redeem them in batches</a></p>
-<h2 id="payer-and-payee-continue-to-use-the-payment-channel">Payer and payee: Continue to use the payment channel</h2>
+<h2 id="payer-and-payee-continue-to-use-the-payment-channel">Payer and payee: Continue to use the payment channel<a aria-hidden="true" class="hover_anchor" href="#payer-and-payee-continue-to-use-the-payment-channel"><i class="fa fa-link"></i></a></h2>
 <p>Payer and payee exchanges can continue to send, verify, and redeem batches of claims as needed within the parameters set by the payment channel.</p>
 <p><a class="button" href="use-payment-channels.html#7-repeat-steps-3-6-as-desired">Continue to use the payment channel</a></p>
-<h2 id="payer-when-its-time-make-a-request-to-close-the-payment-channel">Payer: When it's time, make a request to close the payment channel</h2>
+<h2 id="payer-when-its-time-make-a-request-to-close-the-payment-channel">Payer: When it's time, make a request to close the payment channel<a aria-hidden="true" class="hover_anchor" href="#payer-when-its-time-make-a-request-to-close-the-payment-channel"><i class="fa fa-link"></i></a></h2>
 <p>When the payer exchange and payee exchange are done using the payment channel, the payer exchange can make a request to close the payment channel.</p>
 <p><a class="button" href="use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed">Close the payment channel</a></p>
     </div>
@@ -404,6 +404,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -417,15 +418,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -434,21 +435,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -458,24 +459,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
@@ -502,21 +504,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -525,21 +527,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -559,6 +561,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -597,7 +600,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -732,6 +735,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

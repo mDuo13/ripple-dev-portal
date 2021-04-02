@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/use-complex-payment-types/use-escrows/cancel-an-expired-escrow.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -205,8 +205,8 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="cancel-an-expired-escrow">Cancel an Expired Escrow</h1>
-<h2 id="1-confirm-the-expired-escrow">1. Confirm the expired escrow</h2>
+        <h1 id="cancel-an-expired-escrow">Cancel an Expired Escrow<a aria-hidden="true" class="hover_anchor" href="#cancel-an-expired-escrow"><i class="fa fa-link"></i></a></h1>
+<h2 id="1-confirm-the-expired-escrow">1. Confirm the expired escrow<a aria-hidden="true" class="hover_anchor" href="#1-confirm-the-expired-escrow"><i class="fa fa-link"></i></a></h2>
 <p>An escrow in the XRP Ledger is expired when its <code>CancelAfter</code> time is lower than the <code>close_time</code> of a validated ledger version. (If the escrow does not have a <code>CancelAfter</code> time, it never expires.) You can look up the close time of the latest validated ledger with the <a href="ledger.html">ledger method</a>:</p>
 <p>Request:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">Websocket</a></li></ul>
@@ -227,13 +227,13 @@
   <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"response"</span><span class="p">,</span>
   <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">"ledger"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="err">...</span> <span class="err">(trimmed)</span> <span class="err">...</span>
+      <span class="err">...</span> <span class="err">(</span><span class="kc">tr</span><span class="err">immed)</span> <span class="err">...</span>
 
       <span class="nt">"close_time"</span><span class="p">:</span> <span class="mi">560302643</span><span class="p">,</span>
       <span class="nt">"close_time_human"</span><span class="p">:</span> <span class="s2">"2017-Oct-02 23:37:23"</span><span class="p">,</span>
       <span class="nt">"close_time_resolution"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
 
-      <span class="err">...</span> <span class="err">(trimmed)</span> <span class="err">...</span>
+      <span class="err">...</span> <span class="err">(</span><span class="kc">tr</span><span class="err">immed)</span> <span class="err">...</span>
     <span class="p">},</span>
     <span class="nt">"ledger_hash"</span><span class="p">:</span> <span class="s2">"668F0647A6F3CC277496245DBBE9BD2E3B8E70E7AA824E97EF3237FE7E1EE3F2"</span><span class="p">,</span>
     <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="mi">2906341</span><span class="p">,</span>
@@ -286,7 +286,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="2-submit-escrowcancel-transaction">2. Submit EscrowCancel transaction</h2>
+<h2 id="2-submit-escrowcancel-transaction">2. Submit EscrowCancel transaction<a aria-hidden="true" class="hover_anchor" href="#2-submit-escrowcancel-transaction"><i class="fa fa-link"></i></a></h2>
 <p><strong><em>Anyone</em></strong> can cancel an expired escrow in the XRP Ledger by <a href="transaction-basics.html#signing-and-submitting-transactions">signing and submitting</a> an <a href="escrowcancel.html">EscrowCancel transaction</a>. Set the <code>Owner</code> field of the transaction to the <code>Account</code> of the <code>EscrowCreate</code> transaction that created this escrow. Set the <code>OfferSequence</code> field to the <code>Sequence</code> of the <code>EscrowCreate</code> transaction.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network. <!--#{ fix md highlighting_ #}--></p>
 <p>Request:</p>
@@ -334,10 +334,10 @@
 </code></pre></div></div>
 </div>
 <p>Take note of the transaction's identifying <code>hash</code> value so you can check its final status when it is included in a validated ledger version.</p>
-<h2 id="3-wait-for-validation">3. Wait for validation</h2>
+<h2 id="3-wait-for-validation">3. Wait for validation<a aria-hidden="true" class="hover_anchor" href="#3-wait-for-validation"><i class="fa fa-link"></i></a></h2>
 <p>On the live network or the Ripple Test Net, you can wait 4-7 seconds for the ledger to close automatically.</p>
 <p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="ledger_accept.html">ledger_accept method</a> to manually close the ledger. <!--#{ fix md highlighting_ #}--></p>
-<h2 id="4-confirm-final-result">4. Confirm final result</h2>
+<h2 id="4-confirm-final-result">4. Confirm final result<a aria-hidden="true" class="hover_anchor" href="#4-confirm-final-result"><i class="fa fa-link"></i></a></h2>
 <p>Use the <a href="tx.html">tx method</a> with the EscrowCancel transaction's identifying hash to check its final status. Look in the transaction metadata for a <code>DeletedNode</code> with <code>LedgerEntryType</code> of <code>Escrow</code>. Also look for a <code>ModifiedNode</code> of type <code>AccountRoot</code> for the sender of the escrowed payment. The <code>FinalFields</code> of the object should show the increase in XRP in the <code>Balance</code> field for the returned XRP.</p>
 <p>Request:</p>
 <div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">Websocket</a></li></ul>
@@ -457,7 +457,7 @@
 </div>
 <p>In the above example, <code>r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT</code> is the sender of the escrow, and the increase in <code>Balance</code> from 99999<strong>8</strong>9990 drops to 99999<strong>9</strong>9990 drops represents the return of the escrowed 10,000 drops of XRP (0.01 XRP).</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> If you don't know what <code>OfferSequence</code> to use in the <a href="escrowfinish.html">EscrowFinish transaction</a> to execute an escrow, use the <a href="tx.html">tx method</a> to look up the transaction that created the escrow, using the identifying hash of the transaction in the Escrow's <code>PreviousTxnID</code> field. Use the <code>Sequence</code> value of that transaction as the <code>OfferSequence</code> value when finishing the escrow.</p>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>Concepts:</strong><ul>
 <li><a href="xrp.html">XRP</a></li>
@@ -519,6 +519,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -532,15 +533,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -549,21 +550,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -573,24 +574,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title active-parent" href="use-escrows.html">Use Escrows</a></li>
@@ -617,21 +619,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -640,21 +642,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -674,6 +676,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -712,7 +715,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -847,6 +850,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

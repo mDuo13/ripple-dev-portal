@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>account_objects - XRP Ledger Dev Portal (日本語)</title>
+    <title>account_objects - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="account_objects | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/account_objects.html" />
+    <meta property="og:description" content="アカウントが所有するすべてのオブジェクトを返します。" />
+    <meta name="description" content="アカウントが所有するすべてのオブジェクトを返します。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/account_objects.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/account_objects.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/account_objects.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/public-rippled-methods/account-methods/account_objects.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/account-methods/account_objects.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -181,7 +205,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="account_objects">account_objects</h1>
+        <h1 id="account_objects">account_objects<a aria-hidden="true" class="hover_anchor" href="#account_objects"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/399c43cae6e90a428e9ce6a988123972b0f03c99/src/ripple/rpc/handlers/AccountObjects.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>account_objects</code>コマンドは、アカウントが所有するすべてのオブジェクトの生<a href="ledger-data-formats.html">レジャーフォーマット</a>を返します。アカウントのトラストラインと残高の概要については、<a href="account_lines.html">account_linesメソッド</a>を参照してください。</p>
 <p>アカウントの<code>account_objects</code>応答に含まれる可能性のあるオブジェクトのタイプには以下のものがあります。</p>
@@ -194,35 +218,35 @@
 <li>保留中のCheckの<a href="check.html">Checkオブジェクト</a>。</li>
 <li>Deposit Preauthorizationの<a href="depositpreauth-object.html">DepositPreauthオブジェクト</a>。<a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.1.0" target="_blank" title="新規: rippled 1.1.0"><img alt="新規: rippled 1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
-<h2 id="要求フォーマット">要求フォーマット</h2>
+<h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">コマンドライン</a></li></ul>
 
-<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">{</span>
-<span class="err">  "id": 1,</span>
-<span class="err">  "command": "account_objects",</span>
-<span class="err">  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">  "ledger_index": "validated",</span>
-<span class="err">  "type": "state",</span>
-<span class="err">  "limit": 10</span>
-<span class="err">}</span>
+<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "id": 1,
+  "command": "account_objects",
+  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+  "ledger_index": "validated",
+  "type": "state",
+  "limit": 10
+}
 </code></pre></div></div>
 
-<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">{</span>
-<span class="err">    "method": "account_objects",</span>
-<span class="err">    "params": [</span>
-<span class="err">        {</span>
-<span class="err">            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">            "ledger_index": "validated",</span>
-<span class="err">            "limit": 10,</span>
-<span class="err">            "type": "state"</span>
-<span class="err">        }</span>
-<span class="err">    ]</span>
-<span class="err">}</span>
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "method": "account_objects",
+    "params": [
+        {
+            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+            "ledger_index": "validated",
+            "limit": 10,
+            "type": "state"
+        }
+    ]
+}
 </code></pre></div></div>
 
-<div class="code_sample" id="code-0-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">#Syntax: account_objects &lt;account&gt; [&lt;ledger&gt;]</span>
-<span class="err">rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated</span>
+<div class="code_sample" id="code-0-2" style="position: static;"><div class="codehilite"><pre><span></span><code>#Syntax: account_objects &lt;account&gt; [&lt;ledger&gt;]
+rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 </code></pre></div></div>
 </div>
 <p>要求には以下のパラメーターが含まれます。</p>
@@ -267,520 +291,520 @@
 </tr>
 </tbody>
 </table>
-<h2 id="応答フォーマット">応答フォーマット</h2>
+<h2 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li></ul>
 
-<div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">{</span>
-<span class="err">    "id": 8,</span>
-<span class="err">    "status": "success",</span>
-<span class="err">    "type": "response",</span>
-<span class="err">    "result": {</span>
-<span class="err">        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">        "account_objects": [</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "ASP",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 65536,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "ASP",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "ASP",</span>
-<span class="err">                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",</span>
-<span class="err">                    "value": "10"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862",</span>
-<span class="err">                "PreviousTxnLgrSeq": 1438879,</span>
-<span class="err">                "index": "2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "XAU",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 3342336,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "XAU",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "XAU",</span>
-<span class="err">                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942",</span>
-<span class="err">                "PreviousTxnLgrSeq": 5982530,</span>
-<span class="err">                "index": "9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 1114112,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "5"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE",</span>
-<span class="err">                "PreviousTxnLgrSeq": 10555014,</span>
-<span class="err">                "index": "2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "MXN",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "481.992867407479"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 65536,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "MXN",</span>
-<span class="err">                    "issuer": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "MXN",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "1000"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5",</span>
-<span class="err">                "PreviousTxnLgrSeq": 3316170,</span>
-<span class="err">                "index": "EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "EUR",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0.793598266778297"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 1114112,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "EUR",</span>
-<span class="err">                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "EUR",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "1"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46",</span>
-<span class="err">                "PreviousTxnLgrSeq": 5447146,</span>
-<span class="err">                "index": "4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "CNY",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 2228224,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "CNY",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "3"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "CNY",</span>
-<span class="err">                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000008",</span>
-<span class="err">                "PreviousTxnID": "2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF",</span>
-<span class="err">                "PreviousTxnLgrSeq": 5949673,</span>
-<span class="err">                "index": "578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "DYM",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "1.336889190631542"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 65536,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "DYM",</span>
-<span class="err">                    "issuer": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "DYM",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "3"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1",</span>
-<span class="err">                "PreviousTxnLgrSeq": 8818732,</span>
-<span class="err">                "index": "5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "CHF",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "-0.3488146605801446"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 131072,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "CHF",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "CHF",</span>
-<span class="err">                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "000000000000008C",</span>
-<span class="err">                "PreviousTxnID": "722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869",</span>
-<span class="err">                "PreviousTxnLgrSeq": 2687590,</span>
-<span class="err">                "index": "F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "BTC",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 131072,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "BTC",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "3"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "BTC",</span>
-<span class="err">                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000043",</span>
-<span class="err">                "PreviousTxnID": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",</span>
-<span class="err">                "PreviousTxnLgrSeq": 8317037,</span>
-<span class="err">                "index": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "-16.00534471983042"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 131072,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "5000"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "000000000000004A",</span>
-<span class="err">                "PreviousTxnID": "CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7",</span>
-<span class="err">                "PreviousTxnLgrSeq": 14365854,</span>
-<span class="err">                "index": "826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"</span>
-<span class="err">            }</span>
-<span class="err">        ],</span>
-<span class="err">        "ledger_hash": "053DF17D2289D1C4971C22F235BC1FCA7D4B3AE966F842E5819D0749E0B8ECD3",</span>
-<span class="err">        "ledger_index": 14378733,</span>
-<span class="err">        "limit": 10,</span>
-<span class="err">        "marker": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5",</span>
-<span class="err">        "validated": true</span>
-<span class="err">    }</span>
-<span class="err">}</span>
+<div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "id": 8,
+    "status": "success",
+    "type": "response",
+    "result": {
+        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+        "account_objects": [
+            {
+                "Balance": {
+                    "currency": "ASP",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "ASP",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "ASP",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "10"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862",
+                "PreviousTxnLgrSeq": 1438879,
+                "index": "2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"
+            },
+            {
+                "Balance": {
+                    "currency": "XAU",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 3342336,
+                "HighLimit": {
+                    "currency": "XAU",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "XAU",
+                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942",
+                "PreviousTxnLgrSeq": 5982530,
+                "index": "9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE",
+                "PreviousTxnLgrSeq": 10555014,
+                "index": "2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"
+            },
+            {
+                "Balance": {
+                    "currency": "MXN",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "481.992867407479"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "MXN",
+                    "issuer": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "MXN",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1000"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5",
+                "PreviousTxnLgrSeq": 3316170,
+                "index": "EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"
+            },
+            {
+                "Balance": {
+                    "currency": "EUR",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0.793598266778297"
+                },
+                "Flags": 1114112,
+                "HighLimit": {
+                    "currency": "EUR",
+                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "EUR",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "1"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46",
+                "PreviousTxnLgrSeq": 5447146,
+                "index": "4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"
+            },
+            {
+                "Balance": {
+                    "currency": "CNY",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 2228224,
+                "HighLimit": {
+                    "currency": "CNY",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CNY",
+                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000008",
+                "PreviousTxnID": "2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF",
+                "PreviousTxnLgrSeq": 5949673,
+                "index": "578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"
+            },
+            {
+                "Balance": {
+                    "currency": "DYM",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "1.336889190631542"
+                },
+                "Flags": 65536,
+                "HighLimit": {
+                    "currency": "DYM",
+                    "issuer": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "DYM",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "LowNode": "0000000000000000",
+                "PreviousTxnID": "6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1",
+                "PreviousTxnLgrSeq": 8818732,
+                "index": "5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"
+            },
+            {
+                "Balance": {
+                    "currency": "CHF",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-0.3488146605801446"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "CHF",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "0"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "CHF",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000008C",
+                "PreviousTxnID": "722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869",
+                "PreviousTxnLgrSeq": 2687590,
+                "index": "F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"
+            },
+            {
+                "Balance": {
+                    "currency": "BTC",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "0"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "BTC",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "3"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "BTC",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "0000000000000043",
+                "PreviousTxnID": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",
+                "PreviousTxnLgrSeq": 8317037,
+                "index": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"
+            },
+            {
+                "Balance": {
+                    "currency": "USD",
+                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+                    "value": "-16.00534471983042"
+                },
+                "Flags": 131072,
+                "HighLimit": {
+                    "currency": "USD",
+                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
+                    "value": "5000"
+                },
+                "HighNode": "0000000000000000",
+                "LedgerEntryType": "RippleState",
+                "LowLimit": {
+                    "currency": "USD",
+                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+                    "value": "0"
+                },
+                "LowNode": "000000000000004A",
+                "PreviousTxnID": "CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7",
+                "PreviousTxnLgrSeq": 14365854,
+                "index": "826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"
+            }
+        ],
+        "ledger_hash": "053DF17D2289D1C4971C22F235BC1FCA7D4B3AE966F842E5819D0749E0B8ECD3",
+        "ledger_index": 14378733,
+        "limit": 10,
+        "marker": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5",
+        "validated": true
+    }
+}
 </code></pre></div></div>
 
-<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">200 OK</span>
+<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="mf">200</span> <span class="n">OK</span>
 <span class="err">{</span>
-<span class="err">    "result": {</span>
-<span class="err">        "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">        "account_objects": [</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "ASP",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 65536,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "ASP",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "ASP",</span>
-<span class="err">                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",</span>
-<span class="err">                    "value": "10"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862",</span>
-<span class="err">                "PreviousTxnLgrSeq": 1438879,</span>
-<span class="err">                "index": "2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "XAU",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 3342336,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "XAU",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "XAU",</span>
-<span class="err">                    "issuer": "r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942",</span>
-<span class="err">                "PreviousTxnLgrSeq": 5982530,</span>
-<span class="err">                "index": "9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 1114112,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "5"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE",</span>
-<span class="err">                "PreviousTxnLgrSeq": 10555014,</span>
-<span class="err">                "index": "2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "MXN",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "481.992867407479"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 65536,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "MXN",</span>
-<span class="err">                    "issuer": "rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "MXN",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "1000"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5",</span>
-<span class="err">                "PreviousTxnLgrSeq": 3316170,</span>
-<span class="err">                "index": "EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "EUR",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0.793598266778297"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 1114112,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "EUR",</span>
-<span class="err">                    "issuer": "rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "EUR",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "1"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46",</span>
-<span class="err">                "PreviousTxnLgrSeq": 5447146,</span>
-<span class="err">                "index": "4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "CNY",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 2228224,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "CNY",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "3"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "CNY",</span>
-<span class="err">                    "issuer": "rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000008",</span>
-<span class="err">                "PreviousTxnID": "2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF",</span>
-<span class="err">                "PreviousTxnLgrSeq": 5949673,</span>
-<span class="err">                "index": "578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "DYM",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "1.336889190631542"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 65536,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "DYM",</span>
-<span class="err">                    "issuer": "rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "DYM",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "3"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000000",</span>
-<span class="err">                "PreviousTxnID": "6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1",</span>
-<span class="err">                "PreviousTxnLgrSeq": 8818732,</span>
-<span class="err">                "index": "5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "CHF",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "-0.3488146605801446"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 131072,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "CHF",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "CHF",</span>
-<span class="err">                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "000000000000008C",</span>
-<span class="err">                "PreviousTxnID": "722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869",</span>
-<span class="err">                "PreviousTxnLgrSeq": 2687590,</span>
-<span class="err">                "index": "F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "BTC",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 131072,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "BTC",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "3"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "BTC",</span>
-<span class="err">                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "0000000000000043",</span>
-<span class="err">                "PreviousTxnID": "03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A",</span>
-<span class="err">                "PreviousTxnLgrSeq": 8317037,</span>
-<span class="err">                "index": "767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"</span>
-<span class="err">            },</span>
-<span class="err">            {</span>
-<span class="err">                "Balance": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",</span>
-<span class="err">                    "value": "-16.00534471983042"</span>
-<span class="err">                },</span>
-<span class="err">                "Flags": 131072,</span>
-<span class="err">                "HighLimit": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",</span>
-<span class="err">                    "value": "5000"</span>
-<span class="err">                },</span>
-<span class="err">                "HighNode": "0000000000000000",</span>
-<span class="err">                "LedgerEntryType": "RippleState",</span>
-<span class="err">                "LowLimit": {</span>
-<span class="err">                    "currency": "USD",</span>
-<span class="err">                    "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",</span>
-<span class="err">                    "value": "0"</span>
-<span class="err">                },</span>
-<span class="err">                "LowNode": "000000000000004A",</span>
-<span class="err">                "PreviousTxnID": "CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7",</span>
-<span class="err">                "PreviousTxnLgrSeq": 14365854,</span>
-<span class="err">                "index": "826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"</span>
-<span class="err">            }</span>
-<span class="err">        ],</span>
-<span class="err">        "ledger_hash": "4C99E5F63C0D0B1C2283B4F5DCE2239F80CE92E8B1A6AED1E110C198FC96E659",</span>
-<span class="err">        "ledger_index": 14380380,</span>
-<span class="err">        "limit": 10,</span>
-<span class="err">        "marker": "F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5",</span>
-<span class="err">        "status": "success",</span>
-<span class="err">        "validated": true</span>
-<span class="err">    }</span>
+    <span class="s">"result"</span><span class="p">:</span> <span class="err">{</span>
+        <span class="s">"account"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+        <span class="s">"account_objects"</span><span class="p">:</span> <span class="err">[</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"ASP"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">65536</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"ASP"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"ASP"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"10"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"BF7555B0F018E3C5E2A3FF9437A1A5092F32903BE246202F988181B9CED0D862"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">1438879</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"2243B0B630EA6F7330B654EFA53E27A7609D9484E535AB11B7F946DF3D247CE9"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"XAU"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">3342336</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"XAU"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"XAU"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"79B26D7D34B950AC2C2F91A299A6888FABB376DD76CFF79D56E805BF439F6942"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">5982530</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"9ED4406351B7A511A012A9B5E7FE4059FA2F7650621379C0013492C315E25B97"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"USD"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">1114112</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"USD"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"USD"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"5"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"6FE8C824364FB1195BCFEDCB368DFEE3980F7F78D3BF4DC4174BB4C86CF8C5CE"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">10555014</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"2DECFAC23B77D5AEA6116C15F5C6D4669EBAEE9E7EE050A40FE2B1E47B6A9419"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"MXN"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"481.992867407479"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">65536</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"MXN"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"MXN"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"1000"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"A467BACE5F183CDE1F075F72435FE86BAD8626ED1048EDEFF7562A4CC76FD1C5"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">3316170</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"EC8B9B6B364AF6CB6393A423FDD2DDBA96375EC772E6B50A3581E53BFBDFDD9A"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"EUR"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0.793598266778297"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">1114112</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"EUR"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"EUR"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"1"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"E9345D44433EA368CFE1E00D84809C8E695C87FED18859248E13662D46A0EC46"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">5447146</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"4513749B30F4AF8DA11F077C448128D6486BF12854B760E4E5808714588AA915"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"CNY"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">2228224</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"CNY"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"3"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"CNY"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"0000000000000008"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"2FDDC81F4394695B01A47913BEC4281AC9A283CC8F903C14ADEA970F60E57FCF"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">5949673</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"578C327DA8944BDE2E10C9BA36AFA2F43E06C8D1E8819FB225D266CBBCFDE5CE"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"DYM"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"1.336889190631542"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">65536</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"DYM"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"DYM"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"3"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"6DA2BD02DFB83FA4DAFC2651860B60071156171E9C021D9E0372A61A477FFBB1"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">8818732</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"5A2A5FF12E71AEE57564E624117BBA68DEF78CD564EF6259F92A011693E027C7"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"CHF"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"-0.3488146605801446"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">131072</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"CHF"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"CHF"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"000000000000008C"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"722394372525A13D1EAAB005642F50F05A93CF63F7F472E0F91CDD6D38EB5869"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">2687590</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"F2DBAD20072527F6AD02CE7F5A450DBC72BE2ABB91741A8A3ADD30D5AD7A99FB"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"BTC"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">131072</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"BTC"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"3"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"BTC"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"0000000000000043"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"03EDF724397D2DEE70E49D512AECD619E9EA536BE6CFD48ED167AE2596055C9A"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">8317037</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"767C12AF647CDF5FEB9019B37018748A79C50EDAF87E8D4C7F39F78AA7CA9765"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="err">{</span>
+                <span class="s">"Balance"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"USD"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"-16.00534471983042"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">131072</span><span class="p">,</span>
+                <span class="s">"HighLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"USD"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"5000"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"HighNode"</span><span class="p">:</span> <span class="s">"0000000000000000"</span><span class="p">,</span>
+                <span class="s">"LedgerEntryType"</span><span class="p">:</span> <span class="s">"RippleState"</span><span class="p">,</span>
+                <span class="s">"LowLimit"</span><span class="p">:</span> <span class="err">{</span>
+                    <span class="s">"currency"</span><span class="p">:</span> <span class="s">"USD"</span><span class="p">,</span>
+                    <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+                    <span class="s">"value"</span><span class="p">:</span> <span class="s">"0"</span>
+                <span class="err">}</span><span class="p">,</span>
+                <span class="s">"LowNode"</span><span class="p">:</span> <span class="s">"000000000000004A"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnID"</span><span class="p">:</span> <span class="s">"CFFF5CFE623C9543308C6529782B6A6532207D819795AAFE85555DB8BF390FE7"</span><span class="p">,</span>
+                <span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mf">14365854</span><span class="p">,</span>
+                <span class="s">"index"</span><span class="p">:</span> <span class="s">"826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"</span>
+            <span class="err">}</span>
+        <span class="err">]</span><span class="p">,</span>
+        <span class="s">"ledger_hash"</span><span class="p">:</span> <span class="s">"4C99E5F63C0D0B1C2283B4F5DCE2239F80CE92E8B1A6AED1E110C198FC96E659"</span><span class="p">,</span>
+        <span class="s">"ledger_index"</span><span class="p">:</span> <span class="mf">14380380</span><span class="p">,</span>
+        <span class="s">"limit"</span><span class="p">:</span> <span class="mf">10</span><span class="p">,</span>
+        <span class="s">"marker"</span><span class="p">:</span> <span class="s">"F60ADF645E78B69857D2E4AEC8B7742FEABC8431BD8611D099B428C3E816DF93,94A9F05FEF9A153229E2E997E64919FD75AAE2028C8153E8EBDB4440BD3ECBB5"</span><span class="p">,</span>
+        <span class="s">"status"</span><span class="p">:</span> <span class="s">"success"</span><span class="p">,</span>
+        <span class="s">"validated"</span><span class="p">:</span> <span class="n">true</span>
+    <span class="err">}</span>
 <span class="err">}</span>
 </code></pre></div></div>
 </div>
@@ -836,7 +860,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="考えられるエラー">考えられるエラー</h2>
+<h2 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>いずれかの<a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>。</li>
 <li><code>invalidParams</code> - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。</li>
@@ -955,6 +979,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -1016,7 +1041,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -1051,10 +1075,12 @@
                             <li><a class="subpage" href="escrow-object.html">Escrow</a></li>
                             <li><a class="subpage" href="feesettings.html">FeeSettings</a></li>
                             <li><a class="subpage" href="ledgerhashes.html">LedgerHashes</a></li>
+                            <li><a class="subpage" href="negativeunl.html">NegativeUNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="offer.html">Offer</a></li>
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -1093,14 +1119,16 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">疑似トランザクション</a></li>
 
                             <li><a class="subpage" href="enableamendment.html">EnableAmendment</a></li>
                             <li><a class="subpage" href="setfee.html">SetFee</a></li>
+                            <li><a class="subpage" href="unlmodify.html">UNLModify <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
-                        <li><a class="subcat-title" href="transaction-results.html">取引の結果</a></li>
+                        <li><a class="subcat-title" href="transaction-results.html">トランザクションの結果</a></li>
 
                             <li><a class="subpage" href="tec-codes.html">tecコード</a></li>
                             <li><a class="subpage" href="tef-codes.html">tefコード</a></li>
@@ -1172,13 +1200,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -1198,11 +1226,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -1235,7 +1263,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -1284,6 +1312,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

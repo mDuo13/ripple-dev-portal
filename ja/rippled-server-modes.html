@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>rippledサーバーのモード - XRP Ledger Dev Portal (日本語)</title>
+    <title>rippledサーバーのモード - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="rippledサーバーのモード | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/rippled-server-modes.html" />
+    <meta property="og:description" content="ストックサーバー、バリデータサーバー、スタンドアロンモードで運用されるrippledサーバーなど、rippledサーバーのモードについて説明します。" />
+    <meta name="description" content="ストックサーバー、バリデータサーバー、スタンドアロンモードで運用されるrippledサーバーなど、rippledサーバーのモードについて説明します。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/rippled-server-modes.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/rippled-server-modes.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/rippled-server-modes.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/the-rippled-server/rippled-server-modes.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/the-rippled-server/rippled-server-modes.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -163,6 +187,7 @@
 <li class="level-3"><a href="#公開ハブ">公開ハブ</a></li>
 <li class="level-2"><a href="#バリデータを運用する理由">バリデータを運用する理由</a></li>
 <li class="level-2"><a href="#rippledサーバーをスタンドアロンモードで実行する理由">rippledサーバーをスタンドアロンモードで実行する理由</a></li>
+<li class="level-2"><a href="#レポーティングモード">レポーティングモード</a></li>
 <li class="level-2"><a href="#関連項目">関連項目</a></li>
 
     </ul>
@@ -181,7 +206,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="rippledサーバーのモード">rippledサーバーのモード</h1>
+        <h1 id="rippledサーバーのモード">rippledサーバーのモード<a aria-hidden="true" class="hover_anchor" href="#rippledサーバーのモード"><i class="fa fa-link"></i></a></h1>
 <p><code>rippled</code>サーバーソフトウェアは、その設定に応じて以下のようなさまざまなモードで実行できます。</p>
 <ul>
 <li>ストックサーバー - レジャーのローカルコピーを保持し、ネットワークをフォローします。</li>
@@ -190,7 +215,7 @@
 </ul>
 <p>また、<a href="rippled-api.html"><code>rippled</code> API</a>にローカルでアクセスするためのクライアントアプリケーションとして、<code>rippled</code>実行可能ファイルを実行できます。（この場合同じバイナリの2つのインスタンスを並列して実行できます。1つのインスタンスをサーバーとして実行し、もう1つのインスタンスをクライアントとして一時的に実行して終了します。）</p>
 <p>各モードでrippledを実行するためのコマンドについては、<a href="commandline-usage.html">rippledコマンドライン使用リファレンス</a>を参照してください。</p>
-<h2 id="ストックサーバーを運用する理由">ストックサーバーを運用する理由</h2>
+<h2 id="ストックサーバーを運用する理由">ストックサーバーを運用する理由<a aria-hidden="true" class="hover_anchor" href="#ストックサーバーを運用する理由"><i class="fa fa-link"></i></a></h2>
 <p>独自の<code>rippled</code>サーバーを運用する理由は多数ありますが、その最たる理由として、独自サーバーが信頼できるものであり、自身でその負荷を管理でき、サーバーにアクセスするタイミングとアクセス方法を他のユーザーに依存せずに決めることができる点があげられます。もちろん、独自サーバーを不正使用者から保護するために適切なネットワークセキュリティ対策を講じなければなりません。</p>
 <p>使用する<code>rippled</code>を信頼する必要があります。悪意のあるサーバーに接続してしまうと、そのサーバーはさまざまな方法であなたを利用して資金を失わせることができます。例:</p>
 <ul>
@@ -200,7 +225,7 @@
 </ul>
 <p>さらに、独自サーバーを運用することでサーバーを制御できるようになり、重要な管理者専用コマンドや負荷の高いコマンドを実行できます。共有サーバーを使用する場合は、同じサーバーを利用する他のユーザーとサーバーのコンピューティング能力をめぐって競合することに注意する必要があります。WebSocket APIのコマンドの多くは、サーバーに大きな負荷をかけるため、<code>rippled</code>には必要に応じてその応答を縮小できるオプションがあります。サーバーを他のユーザーと共有する場合には、常に最適の結果を得られるとは限りません。</p>
 <p>最後に、各自で検証サーバーを運用する場合には、ストックサーバーをパブリックネットワークへのプロキシとして使用し、ストックサーバー経由でのみ外部にアクセス可能なプライベートサブネット上で検証サーバーを維持することができます。これにより、検証サーバーの整合性を危うくすることはさらに難しくなります。</p>
-<h3 id="公開ハブ">公開ハブ</h3>
+<h3 id="公開ハブ">公開ハブ<a aria-hidden="true" class="hover_anchor" href="#公開ハブ"><i class="fa fa-link"></i></a></h3>
 <p>公開ハブは、他のサーバーへの<a href="peer-protocol.html">ピアプロトコル接続</a>が多数あるストックサーバーを指します。ストックサーバーを公開ハブとして実行することで、XRP Ledgerネットワークの効率的な接続を維持できます。適切に運用されている公開ハブには、以下の特徴があります。</p>
 <ul>
 <li>
@@ -213,12 +238,12 @@
 <p>メッセージを確実に中継する能力。</p>
 </li>
 </ul>
-<h2 id="バリデータを運用する理由">バリデータを運用する理由</h2>
+<h2 id="バリデータを運用する理由">バリデータを運用する理由<a aria-hidden="true" class="hover_anchor" href="#バリデータを運用する理由"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerの堅牢性は、バリデータが相互に接続されたネットワークに依存しています。各バリデータは、他の何人かのバリデータが <em>共謀しない</em> と信頼しています。利害の異なるバリデータ運用オペレーターが増えるほど、ネットワークの各メンバーは、ネットワークが引き続き公平に運営されることに確信が持てるようになります。XRP Ledgerを使用している組織や個人の場合、コンセンサスプロセスへ参加することが自らの利益につながります。</p>
 <p>すべての<code>rippled</code>サーバーをバリデータとする必要はありません。信頼する同一オペレーターのサーバーの数が増えても、共謀の発生をよりよく防止できるわけではありません。組織が自然災害などの緊急事態に備えて冗長性を保つために、複数の地域でバリデータを運用することがあります。</p>
 <p>組織が検証サーバーを運用している場合は、1つ以上のストックサーバーを実行して、APIアクセスの計算負荷のバランスを取ったり、それらを検証サーバーと外部ネットワーク間のプロキシとすることもできます。</p>
 <p>バリデータの実行についての詳細は、<a href="run-rippled-as-a-validator.html">バリデータとしての<code>rippled</code>の実行</a>を参照してください。</p>
-<h2 id="rippledサーバーをスタンドアロンモードで実行する理由"><code>rippled</code>サーバーをスタンドアロンモードで実行する理由</h2>
+<h2 id="rippledサーバーをスタンドアロンモードで実行する理由"><code>rippled</code>サーバーをスタンドアロンモードで実行する理由<a aria-hidden="true" class="hover_anchor" href="#rippledサーバーをスタンドアロンモードで実行する理由"><i class="fa fa-link"></i></a></h2>
 <p>信頼できるサーバーのコンセンサスなしでも、<code>rippled</code>をスタンドアロンモードで実行できます。スタンドアロンモードでは、<code>rippled</code>はXRP Ledgerピアツーピアネットワーク内のその他のサーバーとは通信しませんが、同じ操作のほとんどをローカルサーバーのみで実行できます。スタンドアロンでは、本番環境ネットワークに接続せずに<code>rippled</code>の動作をテストできます。たとえば、分散型ネットワークにAmendmentが反映される前に、<a href="amendments.html#amendmentのテスト">Amendmentの効果をテスト</a>できます。</p>
 <p><code>rippled</code>をスタンドアロンモードで実行する場合、どのレジャーバージョンから開始するかを指示する必要があります。</p>
 <ul>
@@ -226,7 +251,13 @@
 <li>ディスクから<a href="load-a-saved-ledger-in-stand-alone-mode.html">既存のレジャーバージョンを読み込む</a>。</li>
 </ul>
 <p class="devportal-callout 注意"><strong>注意:</strong> スタンドアロンモードでは<a href="advance-the-ledger-in-stand-alone-mode.html">レジャーを手動で進める</a>必要があります。</p>
-<h2 id="関連項目">関連項目</h2>
+<h2 id="レポーティングモード">レポーティングモード<a aria-hidden="true" class="hover_anchor" href="#レポーティングモード"><i class="fa fa-link"></i></a></h2>
+<p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="導入: rippled 1.7.0"><img alt="導入: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E5%B0%8E%E5%85%A5-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>[]</p>
+<!-- TODO: translate this section -->
+<p>Reporting mode is specialized mode for serving API requests more efficiently. In this mode, the server gets the latest validated ledger data over <a class="external-link" href="https://xrpl.org/configure-grpc.html" target="_blank">gRPC <i aria-hidden="true" class="fa fa-external-link"></i></a> from a separate <code>rippled</code> server running in P2P Mode, then loads that data into a relational database (<a class="external-link" href="https://www.postgresql.org/" target="_blank">PostgreSQL <i aria-hidden="true" class="fa fa-external-link"></i></a>). The reporting mode server does not directly participate in the peer-to-peer network, though it can forward requests such as transaction submission to the P2P Mode server it uses.</p>
+<p>Multiple reporting mode servers can share access to a PostgreSQL database and <a class="external-link" href="https://cassandra.apache.org/" target="_blank">Apache Cassandra <i aria-hidden="true" class="fa fa-external-link"></i></a> cluster to serve a large amount of history without each server needing a redundant copy of all the data. Reporting mode servers provide this data through the same <a href="rippled-api.html"><code>rippled</code> APIs</a> with some slight changes to accommodate for the differences in how they store the underlying data.</p>
+<p>Most notably, reporting mode servers do not report pending, non-validated ledger data or transactions. This limitation is relevant to certain use cases that rely on rapid access to in-flux data, such as performing arbitrage in the <a href="decentralized-exchange.html">decentralized exchange</a>.</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>リファレンス:</strong></li>
 <li><a href="commandline-usage.html">コマンドライン使用リファレンス</a> - すべての<code>rippled</code>サーバーモードのコマンドラインオプションに関する詳細情報。</li>
@@ -237,7 +268,7 @@
 <li><a href="run-rippled-as-a-validator.html">バリデータとしての<code>rippled</code>の実行</a></li>
 </ul>
 </li>
-<li><a href="use-stand-alone-mode.html">スタンドアロンモードでのrippledの使用</a>: <ul>
+<li><a href="use-stand-alone-mode.html">スタンドアロンモードでのrippledの使用</a>:<ul>
 <li><a href="start-a-new-genesis-ledger-in-stand-alone-mode.html">スタンドアロンモードでの新しいジェネシスレジャーの開始</a></li>
 <li><a href="load-a-saved-ledger-in-stand-alone-mode.html">スタンドアロンモードでの保存済みレジャーの読み込み</a></li>
 <li><a href="advance-the-ledger-in-stand-alone-mode.html">スタンドアロンモードでレジャーを進める</a></li>
@@ -310,6 +341,7 @@
                           <li><a class="subpage" href="cryptographic-keys.html">暗号鍵</a></li>
                           <li><a class="subpage" href="multi-signing.html">マルチ署名</a></li>
                           <li><a class="subpage" href="reserves.html">準備金</a></li>
+                          <li><a class="subpage" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                           <li><a class="subpage" href="depositauth.html">Deposit Authorization</a></li>
 
                       <li><a class="nosubcat-page" href="fees.html">手数料（曖昧さの回避）</a></li>
@@ -329,15 +361,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_20">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_20" aria-expanded="true" aria-controls="sidenav_collapse_20"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_21">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="payment-types.html">支払いのタイプ</a>
                 <!-- <a class="sidenav_cat_title" href="payment-types.html">Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_20" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_20">
+            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="direct-xrp-payments.html">XRPによる直接支払</a></li>
@@ -349,21 +381,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse20 -->
+            </div><!-- /#sidenav_collapse21 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_28">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_28" aria-expanded="true" aria-controls="sidenav_collapse_28"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_29">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_29" aria-expanded="true" aria-controls="sidenav_collapse_29"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="issued-currencies.html">発行済み通貨</a>
                 <!-- <a class="sidenav_cat_title" href="issued-currencies.html">Issued Currencies</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_28" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_28">
+            <div id="sidenav_collapse_29" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_29">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="issued-currencies-overview.html">発行済み通貨の概要</a></li>
@@ -378,21 +410,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse28 -->
+            </div><!-- /#sidenav_collapse29 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_39">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_39" aria-expanded="true" aria-controls="sidenav_collapse_39"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="decentralized-exchange.html">分散型取引所</a>
                 <!-- <a class="sidenav_cat_title" href="decentralized-exchange.html">Decentralized Exchange</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_39" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_39">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="offers.html">オファー</a></li>
@@ -401,27 +433,28 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse39 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_43">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_43" aria-expanded="true" aria-controls="sidenav_collapse_43"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="consensus-network.html">コンセンサスネットワーク</a>
                 <!-- <a class="sidenav_cat_title" href="consensus-network.html">Consensus Network</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_43" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_43">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="consensus.html">コンセンサス</a></li>
                       <li><a class="nosubcat-page" href="consensus-principles-and-rules.html">コンセンサスの原理とルール</a></li>
                       <li><a class="nosubcat-page" href="consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a></li>
                       <li><a class="nosubcat-page" href="invariant-checking.html">Invariant Checking</a></li>
+                      <li><a class="nosubcat-page" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                       <li><a class="nosubcat-page" href="transaction-queue.html">トランザクションキュー</a></li>
                       <li><a class="nosubcat-page" href="about-canceling-a-transaction.html">トランザクションの取消しについて</a></li>
                       <li><a class="nosubcat-page" href="transaction-malleability.html">トランザクション展性</a></li>
@@ -435,21 +468,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse43 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_55">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_55" aria-expanded="true" aria-controls="sidenav_collapse_55"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_57">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_57" aria-expanded="true" aria-controls="sidenav_collapse_57"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="the-rippled-server.html">rippledサーバー</a>
                 <!-- <a class="sidenav_cat_title" href="the-rippled-server.html">The rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_55" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_55">
+            <div id="sidenav_collapse_57" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_57">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="active nosubcat-page" href="rippled-server-modes.html">rippledサーバーのモード</a></li>
@@ -464,7 +497,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse55 -->
+            </div><!-- /#sidenav_collapse57 -->
 
           </div><!-- /.card -->
 
@@ -487,13 +520,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -513,11 +546,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -550,7 +583,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -599,6 +632,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

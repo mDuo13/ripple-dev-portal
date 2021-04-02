@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/peer-port-methods/validator-list.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/peer-port-methods/validator-list.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -206,10 +206,10 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="validator-list-method">Validator List Method</h1>
+        <h1 id="validator-list-method">Validator List Method<a aria-hidden="true" class="hover_anchor" href="#validator-list-method"><i class="fa fa-link"></i></a></h1>
 <p>The validator list method is a special API endpoint that fetches a current, trusted validator list a <code>rippled</code> server is using. This often represents the exact list of validators a server trusts. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>Like the <a href="peer-crawler.html">Peer Crawler</a>, the validator list method is available by default on a non-privileged basis through the <a href="peer-protocol.html">Peer Protocol</a> port, which is also used for <code>rippled</code> servers' peer-to-peer communications.</p>
-<h2 id="request-format">Request Format</h2>
+<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>To request the Validator List information, make the following HTTP
 request:</p>
 <ul>
@@ -227,7 +227,7 @@ request:</p>
 </li>
 </ul>
 <p class="devportal-callout tip"><strong>Tip:</strong> Since this request uses the GET method, you can test this request using the URL bar of your web browser. For example, <a class="external-link" href="https://s1.ripple.com:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734" target="_blank">https://s1.ripple.com:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734 <i aria-hidden="true" class="fa fa-external-link"></i></a> requests Ripple's recommended list from one of Ripple's public servers.</p>
-<h2 id="response-format">Response Format</h2>
+<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>The response has the status code <strong>200 OK</strong> and a JSON object in the message body. The response body is very similar to the format used for validator list sites such as <a class="external-link" href="https://vl.ripple.com/" target="_blank">https://vl.ripple.com/ <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>The JSON object has the following fields:</p>
 <table>
@@ -259,10 +259,14 @@ request:</p>
 <td align="left">Number</td>
 <td align="left">The version of the validator list protocol this object uses. The current version is <strong>1</strong>. A higher version number indicates backwards-incompatible changes with a previous version of the validator list protocol.</td>
 </tr>
+<tr>
+<td align="left"><code>public_key</code></td>
+<td align="left">String</td>
+<td align="left">The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte <code>0xED</code>. <a class="external-link" href="https://github.com/ripple/rippled/releases/tag/1.7.0" target="_blank" title="New in: rippled 1.7.0"><img alt="New in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
 </tbody>
 </table>
-<!-- -->
-<h3 id="manifest-data">Manifest Data</h3>
+<h3 id="manifest-data">Manifest Data<a aria-hidden="true" class="hover_anchor" href="#manifest-data"><i class="fa fa-link"></i></a></h3>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>A "manifest" contains information uniquely identifying a person or organization involved in the consensus process, either a <strong>validator</strong> or a <strong>list publisher</strong>. A validator's manifest contains the <em>public</em> information from that <a href="run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server">validator's token</a>. A list publisher's manifest provides information about the list publisher. Both are typically encoded to binary in the XRP Ledger's standard <a href="serialization.html">binary serialization format</a>. (There is no standard JSON representation of a manifest.)</p>
 <p>One of the main purposes of manifests relates to rotating validator keys. When a validator changes its ephemeral key pair, the validator publishes a new manifest to share its new ephemeral public key, using the validator's master key pair to sign the manifest to prove its authenticity. A validator uses its ephemeral key pair to sign validations as part of the <a href="consensus.html">consensus process</a> and uses its master key pair only to sign new manifests. (The manifest is incorporated into a validator token, alongside private data, that <a href="run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server">the validator administrator adds to the <code>rippled.cfg</code> config file</a>.)</p>
@@ -314,7 +318,7 @@ request:</p>
 </tbody>
 </table>
 <p>The <code>sfMasterSignature</code> and <code>sfSignature</code> signatures are created from signing the <a href="serialization.html">serialized</a> binary data of the manifest, excluding the signature fields (<code>sfMasterSignature</code> and <code>sfSignature</code>) themselves.</p>
-<h3 id="blob-data">Blob Data</h3>
+<h3 id="blob-data">Blob Data<a aria-hidden="true" class="hover_anchor" href="#blob-data"><i class="fa fa-link"></i></a></h3>
 <p>If you decode the <code>blob</code> from base64, the result is a JSON object with the following fields:</p>
 <table>
 <thead>
@@ -364,7 +368,7 @@ request:</p>
 </tr>
 </tbody>
 </table>
-<h4 id="example-decoded-blob">Example Decoded Blob</h4>
+<h4 id="example-decoded-blob">Example Decoded Blob<a aria-hidden="true" class="hover_anchor" href="#example-decoded-blob"><i class="fa fa-link"></i></a></h4>
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">"sequence"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
     <span class="nt">"expiration"</span><span class="p">:</span> <span class="mi">644371200</span><span class="p">,</span>
@@ -516,14 +520,14 @@ request:</p>
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="example">Example</h2>
+<h2 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h2>
 <p>Request:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">HTTP</a></li><li><a href="#code-0-1">cURL</a></li></ul>
 
-<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">GET https://localhost:51235/vl</span>
+<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code>GET https://localhost:51235/vl
 </code></pre></div></div>
 
-<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">curl --insecure https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734</span>
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code>curl --insecure https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 </code></pre></div></div>
 </div>
 <p>Response:</p>
@@ -536,7 +540,7 @@ request:</p>
   <span class="nt">"version"</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a href="peer-protocol.html">Peer Protocol</a></li>
 <li><a href="consensus.html">Consensus</a></li>
@@ -653,6 +657,7 @@ request:</p>
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -714,7 +719,6 @@ request:</p>
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -754,7 +758,7 @@ request:</p>
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -793,7 +797,7 @@ request:</p>
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -986,6 +990,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

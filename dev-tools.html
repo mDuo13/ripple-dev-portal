@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/dev-tools/dev-tools.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/dev-tools/dev-tools.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -182,6 +182,7 @@
     </div>
     <ul class="card-body page-toc">
       <li class="level-1"><a href="#dev-tools">Dev Tools</a></li>
+<li class="level-2"><a href="#more-tools">More Tools</a></li>
 
     </ul>
   </div>
@@ -197,8 +198,8 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="dev-tools">Dev Tools</h1>
-<p>Ripple provides a set of developer tools to help you test, explore, and validate XRP Ledger API requests and behavior.</p>
+        <h1 id="dev-tools">Dev Tools<a aria-hidden="true" class="hover_anchor" href="#dev-tools"><i class="fa fa-link"></i></a></h1>
+<p>Use these developer tools to help you test, explore, and validate XRP Ledger API requests and behavior. All of the following tools are part of this website:</p>
 <ul>
 <li>
 <p><strong><a href="xrp-ledger-rpc-tool.html">XRP Ledger RPC Tool</a></strong></p>
@@ -233,7 +234,39 @@
 <p>View validations of new ledger versions in real-time, chart the geographic location of servers in the XRP Ledger network, and explore the state of the ledger. <a class="external-link" href="https://testnet.xrpl.org/" target="_blank">Testnet Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a> also available!</p>
 </li>
 </ul>
-<p>Have an idea for a tool not provided here? <a class="button" href="mailto:docs@ripple.com">Contact us</a></p>
+<h2 id="more-tools">More Tools<a aria-hidden="true" class="hover_anchor" href="#more-tools"><i class="fa fa-link"></i></a></h2>
+<p>The following tools are maintained by the XRP Ledger community:</p>
+<ul>
+<li>
+<p><strong><a class="external-link" href="https://richardah.github.io/xrpl-binary-visualizer/" target="_blank">Binary Visualizer <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>Parse the XRP Ledger's <a href="serialization.html">native binary format</a> with a visual representation breaking down the raw structure into its component parts.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://bithomp.com/" target="_blank">Bithomp Explorer <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>Explore public ledger data including accounts' transaction history and known names.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://ledger-stream-beta.xrplf.org/" target="_blank">Ledger Stream <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>Watch the <a href="consensus.html">consensus process</a> occur in real time.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://xumm.community/tokens" target="_blank">Token List <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>See all <a href="issued-currencies.html">tokens issued</a> in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://ledger.exposed/" target="_blank">XRP Stats <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>View lists of who has the most XRP in their possession or locked up in <a href="escrow.html">escrow</a>.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://xrpcharts.ripple.com/" target="_blank">XRPCharts <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>View current and historical price data for various currency pairs involving XRP, including transactions at major exchanges and on-ledger activity in the <a href="decentralized-exchange.html">decentralized exchange</a>.</p>
+</li>
+<li>
+<p><strong><a class="external-link" href="https://xrpscan.com/" target="_blank">XRPScan <i aria-hidden="true" class="fa fa-external-link"></i></a></strong></p>
+<p>Explore ledger activity, view <a href="amendments.html">amendment voting</a> in real-time, and get account information. <a class="external-link" href="https://docs.xrpscan.com/" target="_blank">API access <i aria-hidden="true" class="fa fa-external-link"></i></a> also available.</p>
+</li>
+</ul>
+<p>Have an idea for a tool not provided here? <a class="button" href="mailto:docs@ripple.com">Contact us</a> or <a class="button external-link" href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/dev-tools/dev-tools.md" target="_blank">Open a pull request <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
     </div>
   </article>
       </main>
@@ -396,6 +429,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

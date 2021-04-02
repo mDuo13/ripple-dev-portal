@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/consensus-network/invariant-checking.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/consensus-network/invariant-checking.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -212,21 +212,21 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="invariant-checking">Invariant Checking</h1>
+        <h1 id="invariant-checking">Invariant Checking<a aria-hidden="true" class="hover_anchor" href="#invariant-checking"><i class="fa fa-link"></i></a></h1>
 <p>Invariant checking is a safety feature of the XRP Ledger. It consists of a set of checks, separate from normal transaction processing, that guarantee that certain <em>invariants</em> hold true across all transactions.</p>
 <p>Like many safety features, we all hope that invariant checking never actually needs to do anything. However, it can be useful to understand the XRP Ledger's invariants because they define hard limits on the XRP Ledger's transaction processing, and to recognize the problem in the unlikely event that a transaction fails because it violated an invariant check.</p>
 <p>Invariants should not trigger, but they ensure the XRP Ledger's integrity from bugs yet to be discovered or even created.</p>
-<h2 id="why-it-exists">Why it Exists</h2>
+<h2 id="why-it-exists">Why it Exists<a aria-hidden="true" class="hover_anchor" href="#why-it-exists"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>The source code for the XRP Ledger is complicated and vast; there is a high potential for code to execute incorrectly.</li>
 <li>The cost of incorrectly executing a transaction is high and not acceptable by any standards.</li>
 </ul>
 <p>Specifically, incorrect transaction executions could create invalid or corrupt data that later consistently crashes servers in the network by sending them into an "impossible" state which could halt the entire network.</p>
 <p>The processing of incorrect transaction would undermine the value of trust in the XRP Ledger. Invariant checking provides value to the entire XRP Ledger because it adds the feature of reliability.</p>
-<h2 id="how-it-works">How it Works</h2>
+<h2 id="how-it-works">How it Works<a aria-hidden="true" class="hover_anchor" href="#how-it-works"><i class="fa fa-link"></i></a></h2>
 <p>The invariant checker is a second layer of code that runs automatically in real-time after each transaction. Before the transaction's results are committed to the ledger, the invariant checker examines those changes for correctness. If the transaction's results would break one of the XRP Ledger's strict rules, the invariant checker rejects the transaction. Transactions that are rejected this way have the result code <code>tecINVARIANT_FAILED</code> and are included in the ledger with no effects.</p>
 <p>To include the transaction in the ledger with a <code>tec</code>-class code, some minimal processing is necessary. If this minimal processing still breaks an invariant, the transaction fails with the code <code>tefINVARIANT_FAILED</code> instead, and is not included in the ledger at all.</p>
-<h2 id="active-invariants">Active Invariants</h2>
+<h2 id="active-invariants">Active Invariants<a aria-hidden="true" class="hover_anchor" href="#active-invariants"><i class="fa fa-link"></i></a></h2>
 <p>The XRP Ledger checks all the following invariants on each transaction:</p>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/023f5704d07d09e70091f38a0d4e5df213a3144b/src/ripple/app/tx/impl/InvariantCheck.h#L92" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <ul>
@@ -264,21 +264,21 @@
 <ul>
 <li><a href="#valid-new-account-root">Valid New Account Root</a></li>
 </ul>
-<h3 id="transaction-fee-check">Transaction Fee Check</h3>
+<h3 id="transaction-fee-check">Transaction Fee Check<a aria-hidden="true" class="hover_anchor" href="#transaction-fee-check"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><strong>Invariant Condition(s):</strong><ul>
 <li>The <a href="transaction-cost.html">transaction cost</a> amount must never be negative, nor larger than the cost specified in the transaction.</li>
 </ul>
 </li>
 </ul>
-<h3 id="xrp-not-created">XRP Not Created</h3>
+<h3 id="xrp-not-created">XRP Not Created<a aria-hidden="true" class="hover_anchor" href="#xrp-not-created"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><strong>Invariant Condition(s):</strong><ul>
 <li>A transaction must not create XRP and should only destroy the XRP <a href="transaction-cost.html">transaction cost</a>.</li>
 </ul>
 </li>
 </ul>
-<h3 id="account-roots-not-deleted">Account Roots Not Deleted</h3>
+<h3 id="account-roots-not-deleted">Account Roots Not Deleted<a aria-hidden="true" class="hover_anchor" href="#account-roots-not-deleted"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><strong>Invariant Condition(s):</strong><ul>
 <li>An <a href="accounts.html">account</a> cannot be deleted from the ledger except by an <a href="accountdelete.html">AccountDelete transaction</a>.</li>
@@ -286,42 +286,42 @@
 </ul>
 </li>
 </ul>
-<h3 id="xrp-balance-checks">XRP Balance Checks</h3>
+<h3 id="xrp-balance-checks">XRP Balance Checks<a aria-hidden="true" class="hover_anchor" href="#xrp-balance-checks"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><strong>Invariant Condition(s):</strong><ul>
 <li>An account's XRP balance must be of type XRP, and it cannot be less than 0 or more than 100 billion XRP exactly.</li>
 </ul>
 </li>
 </ul>
-<h3 id="ledger-entry-types-match">Ledger Entry Types Match</h3>
+<h3 id="ledger-entry-types-match">Ledger Entry Types Match<a aria-hidden="true" class="hover_anchor" href="#ledger-entry-types-match"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><strong>Invariant Condition(s):</strong><ul>
 <li>Corresponding modified ledger entries should match in type and added entries should be a <a href="ledger-object-types.html">valid type</a>.</li>
 </ul>
 </li>
 </ul>
-<h3 id="no-xrp-trust-lines">No XRP Trust Lines</h3>
+<h3 id="no-xrp-trust-lines">No XRP Trust Lines<a aria-hidden="true" class="hover_anchor" href="#no-xrp-trust-lines"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><strong>Invariant Condition(s):</strong><ul>
 <li><a href="trust-lines-and-issuing.html">Trust lines</a> using XRP are not allowed.</li>
 </ul>
 </li>
 </ul>
-<h3 id="no-bad-offers">No Bad Offers</h3>
+<h3 id="no-bad-offers">No Bad Offers<a aria-hidden="true" class="hover_anchor" href="#no-bad-offers"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><strong>Invariant Condition(s):</strong><ul>
 <li><a href="offer.html#offer">Offers</a> should be for non-negative amounts and must not be XRP to XRP.</li>
 </ul>
 </li>
 </ul>
-<h3 id="no-zero-escrow">No Zero Escrow</h3>
+<h3 id="no-zero-escrow">No Zero Escrow<a aria-hidden="true" class="hover_anchor" href="#no-zero-escrow"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><strong>Invariant Condition(s):</strong><ul>
 <li>An <a href="escrow-object.html">escrow</a> entry must hold more than 0 XRP and less than 100 billion XRP.</li>
 </ul>
 </li>
 </ul>
-<h3 id="valid-new-account-root">Valid New Account Root</h3>
+<h3 id="valid-new-account-root">Valid New Account Root<a aria-hidden="true" class="hover_anchor" href="#valid-new-account-root"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><strong>Invariant Condition(s):</strong><ul>
 <li>A new <a href="accountroot.html">account root</a> must be the consequence of a payment.</li>
@@ -330,7 +330,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="see-also">See Also</h2>
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>
 <p><strong>Blog:</strong></p>
@@ -714,6 +714,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

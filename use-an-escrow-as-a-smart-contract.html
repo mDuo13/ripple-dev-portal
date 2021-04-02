@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/tutorials/use-complex-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/tutorials/use-complex-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -208,7 +208,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="use-an-escrow-as-a-smart-contract">Use an Escrow as a Smart Contract</h1>
+        <h1 id="use-an-escrow-as-a-smart-contract">Use an Escrow as a Smart Contract<a aria-hidden="true" class="hover_anchor" href="#use-an-escrow-as-a-smart-contract"><i class="fa fa-link"></i></a></h1>
 <p>A smart contract is a blockchain-based program that encodes the conditions and fulfillment of an agreement between two or more parties and automatically fulfills the terms of the agreement once conditions are met. A smart contract can help you exchange anything of value in a transparent, traceable, tamper-resistant, and irreversible way.</p>
 <p>The benefit of encoding a smart contract into a blockchain is that it enables the contract to be securely performed without traditional third-parties, like financial or legal institutions. Instead, the contract is supervised by the distributed, decentralized network of computers that run the blockchain.</p>
 <p>You can use XRP Ledger escrows as smart contracts that release XRP after a certain time has passed or after a cryptographic condition has been fulfilled. In this case, we'll use an escrow as a smart contract that releases XRP after a cryptographic condition has been fulfilled.</p>
@@ -216,7 +216,7 @@
 <p>In this use case, the party host is the sender of the escrow, the party band is the receiver of the escrow, and the party planner is playing the role of an <em>oracle</em>. In the context of smart contracts, an oracle is a neutral third-party agent that can verify real-world events to either fulfill or invalidate a smart contract. This use case uses a human oracle for illustrative purposes, but in real-life, a software application would more likely play the role of the oracle.</p>
 <p>Using an XRP Ledger escrow to provide this smart contract is a great arrangement because the party planner, as the third-party oracle, never "holds" the funds as one might in a traditional escrow arrangement, and can't possibly take the funds for themselves.</p>
 <p>Here’s a roadmap to the high-level tasks that these participants need to complete to use an escrow as a smart contract.</p>
-<h2 id="meet-the-prerequisites">Meet the prerequisites</h2>
+<h2 id="meet-the-prerequisites">Meet the prerequisites<a aria-hidden="true" class="hover_anchor" href="#meet-the-prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>The party host (sender) must have:</p>
 <ul>
 <li>
@@ -250,7 +250,7 @@
 <p>The ability to recognize whether the party band has fulfilled their end of the contract (played at the party).</p>
 </li>
 </ul>
-<h2 id="define-the-terms-of-the-smart-contract">Define the terms of the smart contract</h2>
+<h2 id="define-the-terms-of-the-smart-contract">Define the terms of the smart contract<a aria-hidden="true" class="hover_anchor" href="#define-the-terms-of-the-smart-contract"><i class="fa fa-link"></i></a></h2>
 <p>To create the escrow as a smart contract, the participants must first define the terms of the contract. In this scenario, the participants need to agree on the following details.</p>
 <ul>
 <li>
@@ -275,29 +275,29 @@
 <p>The participants agree that the escrow should potentially pay XRP to the party band's XRP Ledger account.</p>
 </li>
 </ul>
-<h2 id="oracle-generate-a-condition-and-a-fulfillment">Oracle: Generate a condition and a fulfillment</h2>
+<h2 id="oracle-generate-a-condition-and-a-fulfillment">Oracle: Generate a condition and a fulfillment<a aria-hidden="true" class="hover_anchor" href="#oracle-generate-a-condition-and-a-fulfillment"><i class="fa fa-link"></i></a></h2>
 <p>Because participants want to create a conditionally-held escrow to provide the smart contract, they need a condition value and a fulfillment value. In this scenario, the participant that creates these values is the neutral party planner (oracle).</p>
 <p>The party planner generates the condition and fulfillment values. The party planner provides the condition value to the party host, who creates the escrow. The part planner also provides the condition to the party band so that they know that this is the right condition.</p>
 <p>The party planner must keep the fulfillment value a secret. Anyone can use the condition and fulfillment values to finish the escrow. Most often, the receiver finishes the escrow because they're the ones who are motivated to get paid.</p>
 <p><a class="button" href="send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment">Generate a condition and a fulfillment</a></p>
-<h2 id="sender-calculate-time-values-needed-for-the-escrow">Sender: Calculate time values needed for the escrow</h2>
+<h2 id="sender-calculate-time-values-needed-for-the-escrow">Sender: Calculate time values needed for the escrow<a aria-hidden="true" class="hover_anchor" href="#sender-calculate-time-values-needed-for-the-escrow"><i class="fa fa-link"></i></a></h2>
 <p>Because the participants want the escrow to be eligible for cancellation after 12 noon the day after the party, the party host (sender) must calculate a <code>CancelAfter</code> value to include in the escrow definition.</p>
 <p><a class="button" href="send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time">Calculate time values needed for the escrow</a></p>
-<h2 id="sender-create-the-escrow">Sender: Create the escrow</h2>
+<h2 id="sender-create-the-escrow">Sender: Create the escrow<a aria-hidden="true" class="hover_anchor" href="#sender-create-the-escrow"><i class="fa fa-link"></i></a></h2>
 <p>The party host (sender) creates the escrow that provides the smart contract. The party host must create the escrow because they are the only participant that can authorize the lock up and potential payout of XRP from their XRP Ledger account.</p>
 <p><a class="button" href="send-a-conditionally-held-escrow.html#3-submit-escrowcreate-transaction">Create the escrow</a></p>
-<h2 id="sender-and-receiver-wait-for-validation-and-confirm-escrow-creation">Sender and Receiver: Wait for validation and confirm escrow creation</h2>
+<h2 id="sender-and-receiver-wait-for-validation-and-confirm-escrow-creation">Sender and Receiver: Wait for validation and confirm escrow creation<a aria-hidden="true" class="hover_anchor" href="#sender-and-receiver-wait-for-validation-and-confirm-escrow-creation"><i class="fa fa-link"></i></a></h2>
 <p>The party host (sender) waits for validation of the ledger that contains the escrow creation transaction and then confirms that the escrow was created.</p>
 <p><a class="button" href="send-a-conditionally-held-escrow.html#4-wait-for-validation">Wait for validation</a></p>
 <p>The party host then provides the escrow transaction's <code>hash</code> value to the party band (receiver). The party band can use the <code>hash</code> value to look up the escrow transaction on the XRP Ledger to ensure that it was created according to the smart contract terms they agreed to. As part of this step, the party band should confirm that the condition matches the one the party planner (oracle) provided. If the condition is wrong, the fulfillment the party planner provides won't let the party band finish the escrow and get paid.</p>
 <p><a class="button" href="send-a-conditionally-held-escrow.html#5-confirm-that-the-escrow-was-created">confirm escrow creation</a></p>
-<h2 id="receiver-finish-the-escrow">Receiver: Finish the escrow</h2>
+<h2 id="receiver-finish-the-escrow">Receiver: Finish the escrow<a aria-hidden="true" class="hover_anchor" href="#receiver-finish-the-escrow"><i class="fa fa-link"></i></a></h2>
 <p>The party band (receiver) shows up and plays their set.</p>
 <p>The party planner (oracle) is present at the party to ensure that everything is going smoothly. The party planner confirms first-hand that the party band has fulfilled their contract and publishes the fulfillment publicly, or at least to the party band.</p>
 <p>The party band must finish the escrow before 12 noon. If they don't, the escrow expires and the party band doesn't get paid.</p>
 <p>If the party planner does not publish the fulfillment (the party band is a no show) or if the party planner publishes the fulfillment, but no one finishes the escrow; after 12 noon the next day, anyone can <a href="cancel-an-expired-escrow.html">cancel the escrow</a>. Cancelling the escrow returns the held XRP to the party host's account.</p>
 <p><a class="button" href="send-a-conditionally-held-escrow.html#6-submit-escrowfinish-transaction">Finish the escrow</a></p>
-<h2 id="receiver-and-sender-wait-for-validation-and-confirm-final-result">Receiver and Sender: Wait for validation and confirm final result</h2>
+<h2 id="receiver-and-sender-wait-for-validation-and-confirm-final-result">Receiver and Sender: Wait for validation and confirm final result<a aria-hidden="true" class="hover_anchor" href="#receiver-and-sender-wait-for-validation-and-confirm-final-result"><i class="fa fa-link"></i></a></h2>
 <p>The party band (receiver) waits for validation of the ledger that contains the escrow finish transaction and then confirms that the escrow was finished.</p>
 <p>At this time, the party band provides the transaction's <code>hash</code> value to the party host (sender). They can use the <code>hash</code> value to look up the escrow transaction on the XRP Ledger to ensure that it is been finished correctly.</p>
 <p>The party band can check their XRP Ledger account balance to ensure that their balance has increased by 2000 XRP. The party host's balance won't change at this step (unless the escrow was canceled) because the escrow creation already debited the locked-up XRP from their account.</p>
@@ -332,6 +332,7 @@
             <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-using-python.html">Get Started Using Python</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with XRP Ledger APIs</a></li>
                       <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">Get Started with RippleAPI for Node.js</a></li>
                       <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
@@ -345,15 +346,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_8">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_9">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a>
                 <!-- <a class="sidenav_cat_title" href="production-readiness.html">Production Readiness</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+            <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
@@ -362,21 +363,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse8 -->
+            </div><!-- /#sidenav_collapse9 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_13">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_13" aria-expanded="true" aria-controls="sidenav_collapse_13"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
                 <!-- <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_13" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_13">
+            <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
@@ -386,24 +387,25 @@
                       <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
                       <li><a class="nosubcat-page" href="require-destination-tags.html">Require Destination Tags</a></li>
                       <li><a class="nosubcat-page" href="offline-account-setup.html">Offline Account Setup Tutorial</a></li>
+                      <li><a class="nosubcat-page" href="use-tickets.html">Use Tickets</a></li>
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse13 -->
+            </div><!-- /#sidenav_collapse14 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card active">
-            <div class="card-header" role="tab" id="sidenav_cat_head_21">
-                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title active-parent" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
                 <!-- <a class="sidenav_cat_title" href="use-specialized-payment-types.html">Use Specialized Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_21" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+            <div id="sidenav_collapse_23" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title active-parent" href="use-escrows.html">Use Escrows</a></li>
@@ -430,21 +432,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse21 -->
+            </div><!-- /#sidenav_collapse23 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_40">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_40" aria-expanded="true" aria-controls="sidenav_collapse_40"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
                 <!-- <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_40" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_40">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
@@ -453,21 +455,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse40 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_44">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_44" aria-expanded="true" aria-controls="sidenav_collapse_44"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
                 <!-- <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_44" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_44">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
@@ -487,6 +489,7 @@
 
                           <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
                           <li><a class="subpage" href="run-rippled-as-a-wallet-server.html">Run rippled as a Wallet Server</a></li>
+                          <li><a class="subpage" href="configure-amendment-voting.html">Configure Amendment Voting</a></li>
                           <li><a class="subpage" href="configure-statsd.html">Configure StatsD</a></li>
                           <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a></li>
                           <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
@@ -525,7 +528,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse44 -->
 
           </div><!-- /.card -->
 
@@ -660,6 +663,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

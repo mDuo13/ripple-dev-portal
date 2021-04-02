@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/transaction-formats/transaction-common-fields.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/transaction-formats/transaction-common-fields.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -207,7 +207,7 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="transaction-common-fields">Transaction Common Fields</h1>
+        <h1 id="transaction-common-fields">Transaction Common Fields<a aria-hidden="true" class="hover_anchor" href="#transaction-common-fields"><i class="fa fa-link"></i></a></h1>
 <p>Every transaction has the same set of common fields, plus additional fields based on the <a href="transaction-types.html">transaction type</a>. Field names are case-sensitive. The common fields for all transactions are:</p>
 <table>
 <thead>
@@ -300,13 +300,13 @@
 </tbody>
 </table>
 <p><a class="external-link" href="https://github.com/ripple/rippled/releases/tag/0.28.0" target="_blank" title="Removed in: rippled 0.28.0"><img alt="Removed in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/Removed%20in-rippled%200.28.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>: The <code>PreviousTxnID</code> field of transactions was replaced by the <a href="#accounttxnid"><code>AccountTxnID</code></a> field. This String / Hash256 field is present in some historical transactions. This is unrelated to the field also named <code>PreviousTxnID</code> in some <a href="ledger-data-formats.html">ledger objects</a>.</p>
-<h2 id="accounttxnid">AccountTxnID</h2>
+<h2 id="accounttxnid">AccountTxnID<a aria-hidden="true" class="hover_anchor" href="#accounttxnid"><i class="fa fa-link"></i></a></h2>
 <!-- SPELLING_IGNORE: AccountTxnID -->
 <p>The <code>AccountTxnID</code> field lets you chain your transactions together, so that a current transaction is not valid unless the previous transaction sent from the same account has a specific <a href="transaction-basics.html#identifying-transactions">transaction hash</a>.</p>
 <p>Unlike the <code>PreviousTxnID</code> field, which tracks the last transaction to <em>modify</em> an account (regardless of sender), the <code>AccountTxnID</code> tracks the last transaction <em>sent by</em> an account. To use <code>AccountTxnID</code>, you must first enable the <a href="accountset.html#accountset-flags"><code>asfAccountTxnID</code></a> flag, so that the ledger keeps track of the ID for the account's previous transaction. (<code>PreviousTxnID</code>, by comparison, is always tracked.)</p>
 <p>One situation in which this is useful is if you have a primary system for submitting transactions and a passive backup system. If the passive backup system becomes disconnected from the primary, but the primary is not fully dead, and they both begin operating at the same time, you could potentially have serious problems like some transactions sending twice and others not at all. Chaining your transactions together with <code>AccountTxnID</code> ensures that, even if both systems are active, only one of them can submit valid transactions at a time.</p>
 <p>The <code>AccountTxnID</code> field cannot be used on transactions that use <a href="tickets.html">Tickets</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>. Transactions that use <code>AccountTxnID</code> cannot be placed in the <a href="transaction-queue.html">transaction queue</a>.</p>
-<h2 id="auto-fillable-fields">Auto-fillable Fields</h2>
+<h2 id="auto-fillable-fields">Auto-fillable Fields<a aria-hidden="true" class="hover_anchor" href="#auto-fillable-fields"><i class="fa fa-link"></i></a></h2>
 <p>Some fields can be automatically filled in before a transaction is signed, either by a <code>rippled</code> server or by a library used for signing such as <a class="external-link" href="https://github.com/ripple/ripple-lib" target="_blank">ripple-lib <i aria-hidden="true" class="fa fa-external-link"></i></a>. Auto-filling values requires an active connection to the XRP Ledger to get the latest state, so it cannot be done offline. Both <a class="external-link" href="https://github.com/ripple/ripple-lib" target="_blank">ripple-lib <i aria-hidden="true" class="fa fa-external-link"></i></a> and <code>rippled</code> can automatically provide the following values:</p>
 <ul>
 <li>
@@ -319,12 +319,12 @@
 </ul>
 <p>For a production system, we recommend <em>not</em> leaving these fields to be filled by the server. For example, if transaction costs become high due to a temporary spike in network load, you may want to wait for the cost to decrease before sending some transactions, instead of paying the temporarily-high cost.</p>
 <p>The <a href="payment.html#paths"><code>Paths</code> field</a> of the <a href="payment.html">Payment transaction</a> type can also be automatically filled in.</p>
-<h2 id="flags-field">Flags Field</h2>
+<h2 id="flags-field">Flags Field<a aria-hidden="true" class="hover_anchor" href="#flags-field"><i class="fa fa-link"></i></a></h2>
 <p>The <code>Flags</code> field can contain various options that affect how a transaction should behave. The options are represented as binary values that can be combined with bitwise-or operations to set multiple flags at once.</p>
 <p>To check whether a transaction has a given flag enabled, use the bitwise-and operator on the flag's value and the <code>Flags</code> field. A result of zero indicates the flag is disabled, and a result equal to the flag value indicates the flag is enabled. (Any other result indicates you performed the wrong operation.)</p>
 <p>Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the <code>TransactionType</code> field when setting and reading flags.</p>
 <p>Bits that are not defined as flags MUST be 0. (The <a href="known-amendments.html#fix1543">fix1543 amendment</a> enforces this rule on some transaction types. Most transaction types enforce this rule by default.)</p>
-<h3 id="global-flags">Global Flags</h3>
+<h3 id="global-flags">Global Flags<a aria-hidden="true" class="hover_anchor" href="#global-flags"><i class="fa fa-link"></i></a></h3>
 <p>The only flag that applies globally to all transactions is as follows:</p>
 <table>
 <thead>
@@ -346,7 +346,7 @@
 </table>
 <p>When using the <a href="sign.html">sign method</a> (or <a href="submit.html">submit method</a> in "sign-and-submit" mode), <code>rippled</code> adds a <code>Flags</code> field with <code>tfFullyCanonicalSig</code> enabled unless the <code>Flags</code> field is already present. The <code>tfFullyCanonicalSig</code> flag is not automatically enabled if <code>Flags</code> is explicitly specified. The flag is not automatically enabled when using the <a href="sign_for.html">sign_for method</a> to add a signature to a multi-signed transaction.</p>
 <p class="devportal-callout note"><strong>Note:</strong> The <code>tfFullyCanonicalSig</code> flag was used from 2014 until 2020 to protect against <a href="transaction-malleability.html">transaction malleability</a> while maintaining compatibility with legacy signing software. The <a href="known-amendments.html#requirefullycanonicalsig">RequireFullyCanonicalSig amendment</a> ended compatibility with such legacy software and made the protections the default for all transactions. If you are using a <a href="parallel-networks.html">parallel network</a> that does not have RequireFullyCanonicalSig enabled, you should always enable the <code>tfFullyCanonicalSig</code> flag to protect against transaction malleability.</p>
-<h3 id="flag-ranges">Flag Ranges</h3>
+<h3 id="flag-ranges">Flag Ranges<a aria-hidden="true" class="hover_anchor" href="#flag-ranges"><i class="fa fa-link"></i></a></h3>
 <p>A transaction's <code>Flags</code> field can contain flags that apply at different levels or contexts. Flags for each context are limited to the following ranges:</p>
 <table>
 <thead>
@@ -375,7 +375,7 @@
 </tbody>
 </table>
 <p class="devportal-callout note"><strong>Note:</strong> The <a href="accountset.html">AccountSet transaction</a> type has <a href="accountset.html#accountset-flags">its own non-bitwise flags</a>, which serve a similar purpose to type-based flags. <a href="ledger-object-types.html">Ledger objects</a> also have a <code>Flags</code> field with different bitwise flag definitions.</p>
-<h2 id="memos-field">Memos Field</h2>
+<h2 id="memos-field">Memos Field<a aria-hidden="true" class="hover_anchor" href="#memos-field"><i class="fa fa-link"></i></a></h2>
 <p>The <code>Memos</code> field includes arbitrary messaging data with the transaction. It is presented as an array of objects. Each object has only one field, <code>Memo</code>, which in turn contains another object with <em>one or more</em> of the following fields:</p>
 <table>
 <thead>
@@ -425,7 +425,7 @@
     <span class="nt">"Amount"</span><span class="p">:</span> <span class="s2">"1"</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="signers-field">Signers Field</h2>
+<h2 id="signers-field">Signers Field<a aria-hidden="true" class="hover_anchor" href="#signers-field"><i class="fa fa-link"></i></a></h2>
 <p>The <code>Signers</code> field contains a <a href="multi-signing.html">multi-signature</a>, which has signatures from up to 8 key pairs, that together should authorize the transaction. The <code>Signers</code> list is an array of objects, each with one field, <code>Signer</code>. The <code>Signer</code> field has the following nested fields:</p>
 <table>
 <thead>
@@ -571,6 +571,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -632,7 +633,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -672,7 +672,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -711,7 +711,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -904,6 +904,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

@@ -133,7 +133,7 @@
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/references/rippled-api/api-conventions/basic-data-types.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/references/rippled-api/api-conventions/basic-data-types.md" target="_blank" class="nav-link github-edit">Edit</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
@@ -160,7 +160,7 @@
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Eng
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -208,12 +208,12 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="basic-data-types">Basic Data Types</h1>
+        <h1 id="basic-data-types">Basic Data Types<a aria-hidden="true" class="hover_anchor" href="#basic-data-types"><i class="fa fa-link"></i></a></h1>
 <p>Different types of objects are uniquely identified in different ways:</p>
 <p><a href="accounts.html">Accounts</a> are identified by their <a href="basic-data-types.html#addresses">Address</a>, for example <code>"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</code>. Addresses always start with "r". Many <code>rippled</code> methods also accept a hexadecimal representation.</p>
 <p><a href="transaction-formats.html">Transactions</a> are identified by a <a href="basic-data-types.html#hashes">Hash</a> of the transaction's binary format. You can also identify a transaction by its sending account and <a href="basic-data-types.html#account-sequence">Sequence Number</a>.</p>
 <p>Each closed <a href="ledger-data-formats.html">Ledger</a> has a <a href="basic-data-types.html#ledger-index">Ledger Index</a> and a <a href="basic-data-types.html#hashes">Hash</a> value. When <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a> you can use either one.</p>
-<h2 id="addresses">Addresses</h2>
+<h2 id="addresses">Addresses<a aria-hidden="true" class="hover_anchor" href="#addresses"><i class="fa fa-link"></i></a></h2>
 <p>Accounts in the XRP Ledger are identified by an address in the XRP Ledger's <a href="base58-encodings.html">base58</a> format. The address is derived from the account's master <a class="external-link" href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank">public key <i aria-hidden="true" class="fa fa-external-link"></i></a>, which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:</p>
 <ul>
 <li>Between 25 and 35 characters in length</li>
@@ -228,7 +228,7 @@
 </blockquote>
 <p>For more information, see <a href="accounts.html">Accounts</a> and <a href="base58-encodings.html">base58 Encodings</a>.</p>
 <!-- -->
-<h2 id="hashes">Hashes</h2>
+<h2 id="hashes">Hashes<a aria-hidden="true" class="hover_anchor" href="#hashes"><i class="fa fa-link"></i></a></h2>
 <p>Many objects in the XRP Ledger, particularly transactions and ledgers, are uniquely identified by a 256-bit hash value. This value is typically calculated as a "SHA-512Half", which calculates a <a class="external-link" href="http://dx.doi.org/10.6028/NIST.FIPS.180-4" target="_blank">SHA-512 <i aria-hidden="true" class="fa fa-external-link"></i></a> hash from some contents, then takes the first half of the output. (That's 256 bits, which is 32 bytes, or 64 characters of the hexadecimal representation.) Since the hash of an object is derived from the contents in a way that is extremely unlikely to produce collisions, two objects with the same hash can be considered the same.</p>
 <p>An XRP Ledger hash value has the following characteristics:</p>
 <ul>
@@ -238,7 +238,7 @@
 </ul>
 <p class="devportal-callout note"><strong>Note:</strong> SHA-512Half has similar security to the officially-defined <em>SHA-512/256</em> hash function. However, the XRP Ledger's usage predates SHA-512/256 and is also easier to implement on top of an existing SHA-512 function. (As of this writing, SHA-512 support in cryptographic libraries is much more common than for SHA-512/256.)</p>
 <!-- -->
-<h3 id="hash-prefixes">Hash Prefixes</h3>
+<h3 id="hash-prefixes">Hash Prefixes<a aria-hidden="true" class="hover_anchor" href="#hash-prefixes"><i class="fa fa-link"></i></a></h3>
 <p><a class="external-link" href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if their binary formats are the same. The existing 4-byte codes are structured as three alphabetic characters, encoded as ASCII, followed by a zero byte.</p>
 <p>Some types of hash appear in API requests and responses. Others are only calculated as the first step of signing a certain type of data, or calculating a higher-level hash. The following table shows all 4-byte hash prefixes the XRP Ledger uses:</p>
@@ -327,7 +327,7 @@
 </tbody>
 </table>
 <p><a href="ledger-object-ids.html">Ledger objects IDs</a> are calculated in a similar way, but they use a 2-byte prefix called a "space key" instead of a prefix in the form described here.</p>
-<h2 id="account-sequence">Account Sequence</h2>
+<h2 id="account-sequence">Account Sequence<a aria-hidden="true" class="hover_anchor" href="#account-sequence"><i class="fa fa-link"></i></a></h2>
 <p>A sequence number is a 32-bit unsigned integer that is used to make sure transactions from a given sender execute only once each, and in the correct order.</p>
 <p>Every <a href="accounts.html">account in the XRP Ledger</a> has a sequence number in its <code>Sequence</code> field, which increases by 1 whenever that account sends a transaction and that transaction gets included in a <a href="ledgers.html">validated ledger</a>. Each <a href="transaction-basics.html">transaction</a> also has a sequence number in its <code>Sequence</code> field, which must match the account's current sequence number when the transaction executes. For each account, each sequence number can only be used once, in numerical order.</p>
 <p><a href="tickets.html">Tickets</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> make some exceptions from these rules so that it is possible to send transactions out of the normal order. Tickets represent sequence numbers reserved for later use; a transaction can use a Ticket instead of a normal sequence number.</p>
@@ -336,7 +336,7 @@
 <p>Within the ledger, an <a href="basic-data-types.html#addresses">Address</a> and a sequence number are sometimes used together to identify an object that was created by the validated transaction with that sender and sequence number. <a href="escrow.html">Escrows</a> and <a href="offers.html">Offers</a> are examples of objects identified this way.</p>
 <p>It is possible for multiple unconfirmed transactions to have the same sender and sequence number. Such transactions are mutually exclusive, and at most one of them can be included in a validated ledger. (Any others ultimately have no effect.)</p>
 <!-- -->
-<h2 id="ledger-index">Ledger Index</h2>
+<h2 id="ledger-index">Ledger Index<a aria-hidden="true" class="hover_anchor" href="#ledger-index"><i class="fa fa-link"></i></a></h2>
 <p>A ledger index is a 32-bit unsigned integer used to identify a ledger. The ledger index is sometimes known as the ledger's <em>sequence number</em>. (This is different from an <a href="basic-data-types.html#account-sequence">account sequence</a>.) The very first ledger was ledger index 1, and each new ledger has a ledger index that is 1 higher than the ledger index of the ledger immediately before it.</p>
 <p>The ledger index indicates the order of the ledgers; the <a href="basic-data-types.html#hashes">Hash</a> value identifies the exact contents of the ledger. Two ledgers with the same hash are always the same. For validated ledgers, hash values and ledger indexes are equally valid and correlate 1:1. However, this is not true for in-progress ledgers:</p>
 <ul>
@@ -345,43 +345,62 @@
 <li>The current open ledger's hash is not calculated. This is because a current ledger's contents change over time, which would cause its hash to change, even though its ledger index stays the same. The hash of a ledger is only calculated when the ledger is closed.</li>
 </ul>
 <!-- -->
-<h3 id="specifying-ledgers">Specifying Ledgers</h3>
+<h3 id="specifying-ledgers">Specifying Ledgers<a aria-hidden="true" class="hover_anchor" href="#specifying-ledgers"><i class="fa fa-link"></i></a></h3>
 <p>Many API methods require you to specify an instance of the ledger, with the data retrieved being considered up-to-date as of that particular version of the shared ledger. The commands that accept a ledger version all work the same way. There are three ways you can specify which ledger you want to use:</p>
 <ol>
-<li>Specify a ledger by its <a href="basic-data-types.html#ledger-index">Ledger Index</a> in the <code>ledger_index</code> parameter. Each closed ledger has a ledger index that is 1 higher than the previous ledger. (The very first ledger had ledger index 1.)</li>
-<li>Specify a ledger by its <a href="basic-data-types.html#hashes">Hash</a> value in the <code>ledger_hash</code> parameter.</li>
-<li>Specify a ledger by one of the following shortcuts, in the <code>ledger_index</code> parameter:<ul>
-<li><code>validated</code> for the most recent ledger that has been validated by the whole network</li>
-<li><code>closed</code> for the most recent ledger that has been closed for modifications and proposed for validation</li>
-<li><code>current</code> for the server's current working version of the ledger.</li>
+<li>
+<p>Specify a ledger by its <a href="basic-data-types.html#ledger-index">Ledger Index</a> in the <code>ledger_index</code> parameter. Each closed ledger has a ledger index that is 1 higher than the previous ledger. (The very first ledger had ledger index 1.)</p>
+<div class="codehilite"><pre><span></span><code>"ledger_index": 61546724
+</code></pre></div>
+</li>
+<li>
+<p>Specify a ledger by its <a href="basic-data-types.html#hashes">Hash</a> value in the <code>ledger_hash</code> parameter.</p>
+<div class="codehilite"><pre><span></span><code>"ledger_hash": "8BB204CE37CFA7A021A16B5F6143400831C4D1779E6FE538D9AC561ABBF4A929"
+</code></pre></div>
+</li>
+<li>
+<p>Specify a ledger by one of the following shortcuts, in the <code>ledger_index</code> parameter:</p>
+<ul>
+<li>
+<p><code>validated</code> for the most recent ledger that has been <a href="consensus.html#validation">validated by consensus</a></p>
+<div class="codehilite"><pre><span></span><code>"ledger_index": "validated"
+</code></pre></div>
+</li>
+<li>
+<p><code>closed</code> for the most recent ledger that has been closed for modifications and proposed for validation</p>
+</li>
+<li>
+<p><code>current</code> for the server's current working version of the ledger.</p>
+</li>
 </ul>
 </li>
 </ol>
 <p>There is also a deprecated <code>ledger</code> parameter which accepts any of the above three formats. <em>Do not</em> use this parameter; it may be removed without further notice.</p>
-<p>If you do not specify a ledger, the <code>current</code> (in-progress) ledger is chosen by default. If you provide more than one field specifying ledgers, the deprecated <code>ledger</code> field is used first if it exists, falling back to <code>ledger_hash</code>. The <code>ledger_index</code> field is ignored unless neither of the other two are present.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Do not rely on this default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.</p>
-<h2 id="specifying-currency-amounts">Specifying Currency Amounts</h2>
+<p>If you do not specify a ledger, the server decides which ledger to use to serve the request. By default, the server chooses the <code>current</code> (in-progress) ledger. In <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a>, the server uses the most recent validated ledger instead. Do not provide more than one field specifying ledgers.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Do not rely on the default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.</p>
+<p>Reporting Mode does not record ledger data until it has been validated. If you make a request to a Reporting Mode server for the <code>current</code> or <code>closed</code> ledger, the server forwards the request to a P2P Mode server. If you request a ledger index or hash that is not validated, a Reporting Mode server responds with a <code>lgrNotFound</code> error.</p>
+<h2 id="specifying-currency-amounts">Specifying Currency Amounts<a aria-hidden="true" class="hover_anchor" href="#specifying-currency-amounts"><i class="fa fa-link"></i></a></h2>
 <p>There are two kinds of currencies in the XRP Ledger: XRP, and issued currencies. These two types of currencies are specified in different formats, with different precision and rounding behavior.</p>
 <p>Some fields, such as the destination <code>Amount</code> of a <a href="payment.html">Payment transaction</a>, can be either type. Some fields only accept XRP specifically, such as the <code>Fee</code> field (<a href="transaction-cost.html">transaction cost</a>).</p>
 <p>XRP is specified as a string containing an integer number of "drops" of XRP, where 1 million drops equals 1 XRP. Issued currencies are instead specified as an object with fields for the decimal amount, currency code, and issuer. For example:</p>
 <ul>
 <li>
 <p><strong>XRP</strong> - To specify an <code>Amount</code> field with a value of 13.1 XRP:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">"Amount": "13100000"</span>
+<div class="codehilite"><pre><span></span><code>"Amount": "13100000"
 </code></pre></div>
 </li>
 <li>
 <p><strong>Issued Currency</strong> - To specify an <code>Amount</code> field with a value of 13.1 FOO issued by or to <code>rf1B...</code>:</p>
-<div class="codehilite"><pre><span></span><code><span class="err">"Amount": {</span>
-<span class="err">    "value": "13.1",</span>
-<span class="err">    "currency": "FOO",</span>
-<span class="err">    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span>
-<span class="err">}</span>
+<div class="codehilite"><pre><span></span><code>"Amount": {
+    "value": "13.1",
+    "currency": "FOO",
+    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+}
 </code></pre></div>
 </li>
 </ul>
 <p>For more information, see <a href="currency-formats.html">Currency Formats</a>.</p>
-<h2 id="specifying-time">Specifying Time</h2>
+<h2 id="specifying-time">Specifying Time<a aria-hidden="true" class="hover_anchor" href="#specifying-time"><i class="fa fa-link"></i></a></h2>
 <p>The <code>rippled</code> server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the "Ripple Epoch" of January 1, 2000 (00:00 UTC). This is like the way the <a class="external-link" href="http://en.wikipedia.org/wiki/Unix_time" target="_blank">Unix epoch <i aria-hidden="true" class="fa fa-external-link"></i></a> works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.</p>
 <p>Don't convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.</p>
 <!-- -->
@@ -496,6 +515,7 @@
                         <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
 
                             <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="server_info.html">server_info</a></li>
                             <li><a class="subpage" href="server_state.html">server_state</a></li>
 
@@ -557,7 +577,6 @@
                             <li><a class="subpage" href="feature.html">feature</a></li>
                             <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
                             <li><a class="subpage" href="get_counts.html">get_counts</a></li>
-                            <li><a class="subpage" href="manifest.html">manifest</a></li>
                             <li><a class="subpage" href="print.html">print</a></li>
                             <li><a class="subpage" href="validator_info.html">validator_info</a></li>
                             <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
@@ -597,7 +616,7 @@
                             <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
                             <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
                             <li><a class="subpage" href="signerlist.html">SignerList</a></li>
-                            <li><a class="subpage" href="ticket.html">Ticket</a></li>
+                            <li><a class="subpage" href="ticket.html">Ticket <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
 
 
                   </ul>
@@ -636,7 +655,7 @@
                             <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
                             <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
                             <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
-                            <li><a class="subpage" href="ticketcreate.html">TicketCreate</a></li>
+                            <li><a class="subpage" href="ticketcreate.html">TicketCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                             <li><a class="subpage" href="trustset.html">TrustSet</a></li>
 
                         <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
@@ -829,6 +848,30 @@ algoliaOptions: { 'facetFilters': ["lang:en"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});

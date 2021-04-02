@@ -3,9 +3,23 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width">
 
-    <title>XRP Ledgerの概要 - XRP Ledger Dev Portal (日本語)</title>
+    <title>XRP Ledgerの概要 - XRPL.org (日本語)</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="XRP Ledgerの概要 | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/xrp-ledger-overview.html" />
+    <meta property="og:description" content="XRP Ledgerの基本機能を簡単に紹介します。" />
+    <meta name="description" content="XRP Ledgerの基本機能を簡単に紹介します。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/xrp-ledger-overview.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/xrpl-dev-portal/ja/xrp-ledger-overview.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/xrp-ledger-overview.html" hreflang="x-default" /><!-- Default: US english -->
+
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
@@ -20,12 +34,12 @@
     <!-- jQuery -->
     <script src="/xrpl-dev-portal/ja/assets/vendor/jquery-1.11.1.min.js"></script>
 
-    <!-- Stylesheet -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-    <link href="/xrpl-dev-portal/ja/assets/css/devportal.css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -34,10 +48,15 @@
       gtag('config', 'UA-45576805-2');
       gtag('config', 'UA-157720658-3', { 'linker': {
         'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'blog.ripplex.io', 'forum.ripplex.io', 'ripplex.io',
                     'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
         } }
       );
     </script>
+
+    <!-- Stylesheet -->
+    <link href="/xrpl-dev-portal/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/xrpl-dev-portal/ja/assets/css/devportal2020.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
@@ -60,9 +79,14 @@
 
 <body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
 <div class="container-fluid">
 <nav class="top-nav navbar navbar-expand-lg navbar-dark row">
-  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+  <a href="/xrpl-dev-portal/ja/" class="navbar-brand"><img src="/xrpl-dev-portal/ja/assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="44" alt="XRPL.org (日本語)" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -73,10 +97,10 @@
         <a class="nav-link dropdown-toggle" href="#" id="topnav_overview.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">学ぶ</a>
         <div class="dropdown-menu" aria-labelledby="topnav_overview.html">
           <a class="dropdown-item top-level-1" href="overview.html">オーバービュー</a>
-          <a class="dropdown-item top-level-1" href="uses.html">Uses</a>
-          <a class="dropdown-item top-level-1" href="history.html">History</a>
-          <a class="dropdown-item top-level-1" href="impact.html">Impact</a>
-          <a class="dropdown-item top-level-1" href="carbon-calculator.html">Carbon Calculator</a>
+          <a class="dropdown-item top-level-1" href="uses.html">使用</a>
+          <a class="dropdown-item top-level-1" href="history.html">沿革</a>
+          <a class="dropdown-item top-level-1" href="impact.html">インパクト</a>
+          <a class="dropdown-item top-level-1" href="carbon-calculator.html">二酸化炭素電卓</a>
         </div>
       </li>
 
@@ -84,10 +108,10 @@
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="topnav_explore.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">探る</a>
         <div class="dropdown-menu" aria-labelledby="topnav_explore.html">
-          <a class="dropdown-item top-level-1" href="wallets.html">Wallets</a>
-          <a class="dropdown-item top-level-1" href="exchanges.html">Exchanges</a>
-          <a class="dropdown-item top-level-1" href="businesses.html">Businesses</a>
-          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">Ledger Explorer</a>
+          <a class="dropdown-item top-level-1" href="wallets.html">ウォレット</a>
+          <a class="dropdown-item top-level-1" href="exchanges.html">取引所</a>
+          <a class="dropdown-item top-level-1" href="businesses.html">企業</a>
+          <a class="dropdown-item top-level-1" href="https://livenet.xrpl.org/">XRP Ledger エクスプローラ</a>
         </div>
       </li>
 
@@ -100,20 +124,20 @@
           <a class="dropdown-item top-level-2" href="tutorials.html">チュートリアル</a>
           <a class="dropdown-item top-level-2" href="references.html">リファレンス</a>
           <a class="dropdown-item top-level-1" href="dev-tools.html">開発者用ツール</a>
-          <a class="dropdown-item top-level-1" href="/blog/">ブログ</a>
+          <a class="dropdown-item top-level-1" href="/blog/">開発者ブログ</a>
         </div>
       </li>
 
 
       <li class="nav-item">
-        <a class="nav-link" href="contribute.html">Contribute</a>
+        <a class="nav-link" href="contribute.html">貢献する</a>
       </li>
 
 <div class="nav-item github-edit-wrap">
-    <a href="https://github.com/ripple/xrpl-dev-portal/edit/2020refresh/content/concepts/introduction/xrp-ledger-overview.ja.md" target="_blank" class="nav-link github-edit">Edit</a>
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/introduction/xrp-ledger-overview.ja.md" target="_blank" class="nav-link github-edit">編集</a>
 </div><!-- /.github-edit -->
       <li class="nav-item dropdown" id="navbar-search">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">Open Search</span></a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="topnav-search-dropdown-toggle"><i class="fa fa-search"></i><span class="sr-only">検索を開く</span></a>
         <div class="dropdown-menu">
           <form class="navbar-form navbar-right" role="search">
             <div class="form-inline">
@@ -121,7 +145,7 @@
                 <label class="input-group-prepend" for="topsearchbar"><i class="fa fa-search input-group-text"></i><span class="sr-only">サイトを検索</span></label>
                 <input id="topsearchbox" name="q" type="text" class="form-control" placeholder="サイトを検索">
                 <div class="input-group-append d-none d-lg-flex">
-                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">Close Search</span></button>
+                  <button type="button" class="btn btn-default" data-toggle="dropdown" data-target="topnav-search-dropdown-toggle"><i class="fa fa-times"></i><span class="sr-only">検索を閉じる</span></button>
                 </div>
               </div><!--/.input-group-->
             </div>
@@ -130,14 +154,14 @@
       </li><!--/.dropdown-->
 
       <li class="nav-item wrap-button">
-        <a class="btn btn-outline-secondary nav-link" href="get-started.html">Get Started</a>
+        <a class="btn btn-outline-secondary nav-link" href="get-started.html">始める</a>
       </li>
 
     </ul><!-- /.navbar-nav -->
 
     <div class="nav navbar-nav language-selector">
       <div class="dropdown">
-        <a class="nav-link dropdown-toggle with-caret" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           日本語
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
@@ -184,9 +208,9 @@
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
     <div class="content">
-        <h1 id="xrp-ledgerの概要">XRP Ledgerの概要</h1>
+        <h1 id="xrp-ledgerの概要">XRP Ledgerの概要<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgerの概要"><i class="fa fa-link"></i></a></h1>
 <p><strong>XRP Ledger</strong>は、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。XRP Ledgerは<strong>XRP</strong>の土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために設計されたデジタル資産です。RippleはXRP Ledgerの開発を主導し、<em>「価値のインターネット」</em>（情報が移動するようにお金が移動する世界）の実現に向けて鍵となる役割を果たすと期待されるXRPを推進しています。</p>
-<h2 id="決済のためのデジタル資産">決済のためのデジタル資産</h2>
+<h2 id="決済のためのデジタル資産">決済のためのデジタル資産<a aria-hidden="true" class="hover_anchor" href="#決済のためのデジタル資産"><i class="fa fa-link"></i></a></h2>
 <p>XRPはXRP Ledger固有のデジタル資産です。暗号鍵を持ち、インターネットに接続できる人は誰でも、XRPを受け取り、保持し、任意の人に送ることができます。XRPは他の通貨での取引をも容易にできる魅力的なブリッジ通貨として開発されました。XRPには次のような多くの特性があり、これにより他の多くのユースケースでも魅力的な資産となっています。</p>
 <ul>
 <li><strong><a href="#耐検閲性のある取引処理">耐検閲性のある取引処理</a>:</strong> どの特定の個人もXRP取引の成功・不成功を勝手に決定することはできませんし、一度完了した取引を組み戻すこともできません。ネットワークに参加するユーザーは、ネットワークを健全に保っている限り、XRPを数秒で送受信できます。</li>
@@ -197,7 +221,7 @@
 <li><strong><a href="#スマートコントラクト用の最新機能">スマートコントラクト用の最新機能</a>:</strong> Escrow、ChecksおよびPayment Channelなどの機能は、<a class="external-link" href="https://interledger.org/" target="_blank">Interledgerプロトコル <i aria-hidden="true" class="fa fa-external-link"></i></a>を含む最新の金融アプリケーションをサポートしています。この拡張機能のツールボックスには、ネットワークの修正プロセスや、取引の不変性を担保するチェックを分けて行うなどの安全機能が備わっています。</li>
 <li><strong><a href="#台帳上の分散型取引所">台帳上の分散型取引所</a>:</strong> XRP Ledgerには、それ自体でXRPを便利に使うための機能すべてに加え、ユーザー任意の通貨建ての債務を追跡し取引するための多機能な会計システムや、プロトコルに組み込まれた両替機能などがあります。XRP Ledgerは、通貨間の長い支払いパスや、複数通貨の一元的決済を確実に処理し、XRPを活用することで分散型ネットワークに存在する信頼のギャップを解消しています。</li>
 </ul>
-<h2 id="耐検閲性のある取引処理">耐検閲性のある取引処理</h2>
+<h2 id="耐検閲性のある取引処理">耐検閲性のある取引処理<a aria-hidden="true" class="hover_anchor" href="#耐検閲性のある取引処理"><i class="fa fa-link"></i></a></h2>
 <p>XRPは、Bitcoinや他の暗号資産と同様に新しい通貨の一種です。</p>
 <ul>
 <li>これらの<strong>分散型デジタル資産</strong>はそれぞれのコンピューターシステム上に存在し、これを管理する中央管理者はいません。システムが十分に分散されている限り、取引を組み戻したり、残高を凍結したり、他のユーザーが分散型デジタル資産を使用することを阻止したりすることはできません。これらの資産はもともとデジタルであるため、離れた場所からもオンラインで使用できます。</li>
@@ -210,11 +234,11 @@
 <p class="devportal-callout 注記"><strong>注記:</strong> XRP Ledgerのユーザーは、XRP Ledgerで発行されたXRP以外の通貨であれば凍結 <em>できます</em> 。詳細は、<a href="freezes.html">凍結についての資料</a>を参照してください。</p>
 <p>信頼できるバリデータノードから構成されるXRP Ledgerのシステムでは、人手をほとんどかけることなく、他の分散型システムよりも優れた権限の分散が可能です。不特定多数の参加者間でのConsensusを完全に自動化しているシステムは、議決権の集中のリスクに晒されます。例えば、Bitcoinの採掘は、電気代が安い場所に偏って集中しています。Rippleは、様々な地域の異なる組織によって運営される別個のバリデータリストを管理しています。そのためXRP Ledgerは検閲などの外部の圧力に対してプルーフ・オブ・ワークによる採掘よりも高い耐性を持つことができます。推奨されるバリデータを分散させるためのRippleの対応策の詳細は、<a class="external-link" href="https://xrpl.org/blog/2017/decent-strategy-update.html" target="_blank">分散化戦略についてのアップデート <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。</p>
 <p>XRP Ledgerの検閲機能の詳細は、<a href="transaction-censorship-detection.html">取引検閲の検知</a>を参照してください。</p>
-<h2 id="高速で効率的なconsensusアルゴリズム">高速で効率的なConsensusアルゴリズム</h2>
+<h2 id="高速で効率的なconsensusアルゴリズム">高速で効率的なConsensusアルゴリズム<a aria-hidden="true" class="hover_anchor" href="#高速で効率的なconsensusアルゴリズム"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerが多くの暗号資産と最も異なっている点は、BitcoinやEthereumなど他のほとんどのシステムが行う「採掘」の時間と労力を必要とせず、独自のConsensusアルゴリズムを使用していることです。「プルーフ・オブ・ワーク」または「プルーフ・オブ・ステーク」の代わりに、XRP LedgerのConsensusアルゴリズムでは、すべての参加者が重複する「信頼されるバリデータ」のリストを持ち、どの取引がどの順序で発生したかについて効率的に合意するシステムとなっています。2018年の初めの時点で、Bitcoinネットワークが取引ごとに使用する電力量は、米国の一世帯の住宅で1日に使用される量よりも多く、さらに取引の承認には何時間もかかっています。1つのXRP取引で使用される電力量はごく少量であり、承認には4秒から5秒しかかかりません。</p>
 <p>さらに、XRP Ledgerのそれぞれの新しい「台帳バージョン」（「ブロック」と同義）には、すべての残高が完全かつ最新の状態で保持されているため、サーバーは、何時間もかけてすべての取引履歴をダウンロードして再処理する必要がなく、数分でネットワークと同期することができます。</p>
 <p>XRP LedgerのConsensusアルゴリズムの動作方法の詳細は、<a href="consensus.html">XRP Ledger Consensusプロセス</a>を参照してください。XRP LedgerがこのConsensusアルゴリズムを使用する理由の背景は、<a href="consensus-principles-and-rules.html">Consensusの原理とルール</a>を参照してください。</p>
-<h2 id="限定されたxrp供給量">限定されたXRP供給量</h2>
+<h2 id="限定されたxrp供給量">限定されたXRP供給量<a aria-hidden="true" class="hover_anchor" href="#限定されたxrp供給量"><i class="fa fa-link"></i></a></h2>
 <p>戦争および政変と並んで、超インフレは通貨が消滅する主な原因の1つです。バリデータが分散しているため、XRPは政治的要因に対してはある程度の耐性があります。一方、超インフレに対しては、XRP Ledgerのルールにより簡潔なソリューションで対応しています。つまりXRPのトータル供給量の限定です。発行量を増やすメカニズムがそもそもないため、XRPが超インフレに悩まされる可能性は非常に低くなります。</p>
 <p>市場に出回るXRPの供給量は、次のいくつかの要因によって変化 <em>します</em>。</p>
 <ul>
@@ -223,7 +247,7 @@
 <li>Ripple（会社）は、大量のXRPをEscrowに保有しています。毎月の初めに、Rippleで使用するために10億XRPがEscrowから引き出されます。（RippleはXRPを使用してXRP Ledgerエコシステムの成長を促し、また一部のXRPを機関投資家に売却しています。Rippleはまた、取引所での取引総量のうちのわずかな比率に限定して、プログラムに従って取引所でXRPを売却しています。Rippleは<a class="external-link" href="https://ripple.com/insights/q1-2018-xrp-markets-report/" target="_blank">XRP市場レポート <i aria-hidden="true" class="fa fa-external-link"></i></a>で四半期ごとに売上高を公開しています。）毎月の終わりに、Rippleが売却や譲渡をせずに残っているXRPがあればEscrowに戻し、54か月保管します。RippleのEscrowポリシーの詳細は、<a class="external-link" href="https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/" target="_blank">RippleはXRPの総供給量の確実性を確保するために550億XRPをエスクローに預託することを発表しました <i aria-hidden="true" class="fa fa-external-link"></i></a>を参照してください。Escrow機能の技術的詳細は、<a href="escrow.html">Escrow</a>を参照してください。</li>
 </ul>
 <p><a id="責任あるソフトウェア管理"><!-- Legacy anchor --></a></p>
-<h2 id="責任あるソフトウェアガバナンス">責任あるソフトウェアガバナンス</h2>
+<h2 id="責任あるソフトウェアガバナンス">責任あるソフトウェアガバナンス<a aria-hidden="true" class="hover_anchor" href="#責任あるソフトウェアガバナンス"><i class="fa fa-link"></i></a></h2>
 <p>ソフトウェアの水準は、そのソフトウェアを作成して管理する開発者によって決まります。Rippleは、XRP Ledgerソフトウェア、特にコアサーバーである<code>rippled</code>の保守および改良に専念する優秀な常勤エンジニアチームを雇用しています。<a class="external-link" href="https://github.com/ripple/rippled/" target="_blank"><code>rippled</code>のソースコード <i aria-hidden="true" class="fa fa-external-link"></i></a>は、XRP Ledgerエコシステムの他の多くの部分と同様に、一般利用が可能なオープンソースライセンスを有するソフトウェアとして公開されています。Rippleのエンジニアは、次のようなソフトウェアエンジニアリングのベストプラクティスに従っています。</p>
 <ul>
 <li>慎重で徹底的なコードレビュープロセス</li>
@@ -232,10 +256,10 @@
 <li>専門家組織による外部レビューヘの定期的な委託</li>
 </ul>
 <p>巨額のXRPを長期にわたって保持する義務がある組織として、Rippleは、XRPが法に準拠して持続的かつ建設的な方法で広く使用されるために努力する強い自発的なインセンティブを持っています。「価値のインターネット」というRippleの理想と同じ目標を持つ企業に対して、Rippleは技術的なサポートを提供します。Rippleはまた、世界中の立法当局や規制当局と協力し、デジタル資産および関連ビジネスを管理する合理的な法律の実施に向けて誘導しています。</p>
-<h2 id="安全で適応性のある暗号技術">安全で適応性のある暗号技術</h2>
+<h2 id="安全で適応性のある暗号技術">安全で適応性のある暗号技術<a aria-hidden="true" class="hover_anchor" href="#安全で適応性のある暗号技術"><i class="fa fa-link"></i></a></h2>
 <p>暗号技術は分散システムにおいて最も重要な部分の1つであり、小さな技術的問題が一瞬にして世界中の悪意あるハッカーによる盗難につながる危険性を秘めています。XRP Ledgerは、取引の署名および検証のための業界標準の技術と、何年もの間、数千億USドルにも相当する価値を保護することに成功してきたアルゴリズムを使用しています。また、XRP Ledgerにはマルチ署名機能が備わっているため、バックアップとして多要素認証や複数のユーザー間で分割キーを使用できます。さらに暗号技術の飛躍的な進歩によって古いアルゴリズムが時代遅れになり、新しいアルゴリズムが導入される場合でも、ユーザーはそのままキーを使い続けることができます。</p>
 <p>詳細は、<a href="cryptographic-keys.html">暗号鍵</a>および<a href="multi-signing.html">マルチ署名</a>を参照してください。</p>
-<h2 id="スマートコントラクト用の最新機能">スマートコントラクト用の最新機能</h2>
+<h2 id="スマートコントラクト用の最新機能">スマートコントラクト用の最新機能<a aria-hidden="true" class="hover_anchor" href="#スマートコントラクト用の最新機能"><i class="fa fa-link"></i></a></h2>
 <p><a href="direct-xrp-payments.html">XRP決済</a>による単純な価値の移動に加え、XRP Ledgerには「価値のインターネット」に特化した拡張機能があります。この拡張機能により、XRP上にビルドされたアプリケーションは、以前は実用的でなかったり実現不可能だったりしたサービスや機能を提供できるようになります。ネットワーク自体のなかで「スマートコントラクト」としてのアプリケーションを実行するのではなく、XRP Ledgerでは、コントラクトを処理するためのツールを提供しつつ、実行環境またはコンテナが適切であれば、すべての場所でアプリケーションを実行することができます。この「シンプルにする」というアプローチは、柔軟でスケーラブル、かつ強力です。</p>
 <p>XRP Ledgerの拡張機能として次のものがあります。</p>
 <ul>
@@ -246,7 +270,7 @@
 <li><a class="external-link" href="https://xrpl.org/blog/2017/invariant-checking.html" target="_blank">Invariant Checking <i aria-hidden="true" class="fa fa-external-link"></i></a>により、独立したレイヤーで取引実行時のバグから取引を保護することができます。</li>
 <li><a href="amendments.html">Amendment</a>により、現行機能にスムーズにアップグレードすることができ、移行に際してエコシステムに被害を及ぼしたり、不確定要素を発生させることなく、継続して技術を発展させることができます。</li>
 </ul>
-<h2 id="台帳上の分散型取引所">台帳上の分散型取引所</h2>
+<h2 id="台帳上の分散型取引所">台帳上の分散型取引所<a aria-hidden="true" class="hover_anchor" href="#台帳上の分散型取引所"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerを他の暗号資産ネットワークとは異なるものにしている最も大きな特徴は、XRP Ledger上に完全な取引機能が含まれている点です。このシステム内で、事業者（通常は「ゲートウェイ」と言います）は希望の通貨を顧客に自由に発行でき、その顧客はその特定ゲートウェイによってXRPに発行された通貨や他のゲートウェイによって発行された通貨を自由に取引できます。このようにXRP Ledgerでは、取引注文によって流動性を確保しつつ、複数通貨間の一元的な取引を実行することができます。</p>
 <p>分散型取引所がどのように機能するかの詳細は、<a href="decentralized-exchange.html">分散型取引所</a>を参照してください。ゲートウェイビジネスモデルの詳細は、<a href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a>を参照してください。</p>
     </div>
@@ -308,6 +332,7 @@
                           <li><a class="subpage" href="cryptographic-keys.html">暗号鍵</a></li>
                           <li><a class="subpage" href="multi-signing.html">マルチ署名</a></li>
                           <li><a class="subpage" href="reserves.html">準備金</a></li>
+                          <li><a class="subpage" href="tickets.html">Tickets <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                           <li><a class="subpage" href="depositauth.html">Deposit Authorization</a></li>
 
                       <li><a class="nosubcat-page" href="fees.html">手数料（曖昧さの回避）</a></li>
@@ -327,15 +352,15 @@
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_20">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_20" aria-expanded="true" aria-controls="sidenav_collapse_20"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_21">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_21" aria-expanded="true" aria-controls="sidenav_collapse_21"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="payment-types.html">支払いのタイプ</a>
                 <!-- <a class="sidenav_cat_title" href="payment-types.html">Payment Types</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_20" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_20">
+            <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="direct-xrp-payments.html">XRPによる直接支払</a></li>
@@ -347,21 +372,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse20 -->
+            </div><!-- /#sidenav_collapse21 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_28">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_28" aria-expanded="true" aria-controls="sidenav_collapse_28"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_29">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_29" aria-expanded="true" aria-controls="sidenav_collapse_29"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="issued-currencies.html">発行済み通貨</a>
                 <!-- <a class="sidenav_cat_title" href="issued-currencies.html">Issued Currencies</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_28" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_28">
+            <div id="sidenav_collapse_29" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_29">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="issued-currencies-overview.html">発行済み通貨の概要</a></li>
@@ -376,21 +401,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse28 -->
+            </div><!-- /#sidenav_collapse29 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_38">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_39">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_39" aria-expanded="true" aria-controls="sidenav_collapse_39"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="decentralized-exchange.html">分散型取引所</a>
                 <!-- <a class="sidenav_cat_title" href="decentralized-exchange.html">Decentralized Exchange</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+            <div id="sidenav_collapse_39" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_39">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="offers.html">オファー</a></li>
@@ -399,27 +424,28 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse38 -->
+            </div><!-- /#sidenav_collapse39 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_42">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_43">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_43" aria-expanded="true" aria-controls="sidenav_collapse_43"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="consensus-network.html">コンセンサスネットワーク</a>
                 <!-- <a class="sidenav_cat_title" href="consensus-network.html">Consensus Network</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_42" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+            <div id="sidenav_collapse_43" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_43">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="consensus.html">コンセンサス</a></li>
                       <li><a class="nosubcat-page" href="consensus-principles-and-rules.html">コンセンサスの原理とルール</a></li>
                       <li><a class="nosubcat-page" href="consensus-protections.html">攻撃および障害モードに対するコンセンサスの保護</a></li>
                       <li><a class="nosubcat-page" href="invariant-checking.html">Invariant Checking</a></li>
+                      <li><a class="nosubcat-page" href="negative-unl.html">Negative UNL <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
                       <li><a class="nosubcat-page" href="transaction-queue.html">トランザクションキュー</a></li>
                       <li><a class="nosubcat-page" href="about-canceling-a-transaction.html">トランザクションの取消しについて</a></li>
                       <li><a class="nosubcat-page" href="transaction-malleability.html">トランザクション展性</a></li>
@@ -433,21 +459,21 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse42 -->
+            </div><!-- /#sidenav_collapse43 -->
 
           </div><!-- /.card -->
 
         <!---->
           <div class="card">
-            <div class="card-header" role="tab" id="sidenav_cat_head_55">
-                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_55" aria-expanded="true" aria-controls="sidenav_collapse_55"></a>
+            <div class="card-header" role="tab" id="sidenav_cat_head_57">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_57" aria-expanded="true" aria-controls="sidenav_collapse_57"></a>
               <h5 class="card-title">
                   <a class="sidenav_cat_title" href="the-rippled-server.html">rippledサーバー</a>
                 <!-- <a class="sidenav_cat_title" href="the-rippled-server.html">The rippled Server</a> -->
               </h5>
             </div><!-- /.card-header -->
 
-            <div id="sidenav_collapse_55" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_55">
+            <div id="sidenav_collapse_57" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_57">
               <div class="card-body">
                 <ul class="sidebar_pagelist">
                       <li><a class="nosubcat-page" href="rippled-server-modes.html">rippledサーバーのモード</a></li>
@@ -462,7 +488,7 @@
 
                 </ul>
               </div><!-- /.card-body -->
-            </div><!-- /#sidenav_collapse55 -->
+            </div><!-- /#sidenav_collapse57 -->
 
           </div><!-- /.card -->
 
@@ -485,13 +511,13 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="uses.html">Uses</a></li>
+            <li class="level-1"><a href="uses.html">使用</a></li>
 
-        <li class="level-1"><a href="history.html">History</a></li>
+        <li class="level-1"><a href="history.html">沿革</a></li>
 
-        <li class="level-1"><a href="impact.html">Impact</a></li>
+        <li class="level-1"><a href="impact.html">インパクト</a></li>
 
-        <li class="level-1"><a href="carbon-calculator.html">Carbon Calculator</a></li>
+        <li class="level-1"><a href="carbon-calculator.html">二酸化炭素電卓</a></li>
 
 
 
@@ -511,11 +537,11 @@
 
 <div class="children-display">
   <ul>
-            <li class="level-1"><a href="wallets.html">Wallets</a></li>
+            <li class="level-1"><a href="wallets.html">ウォレット</a></li>
 
-        <li class="level-1"><a href="exchanges.html">Exchanges</a></li>
+        <li class="level-1"><a href="exchanges.html">取引所</a></li>
 
-        <li class="level-1"><a href="businesses.html">Businesses</a></li>
+        <li class="level-1"><a href="businesses.html">企業</a></li>
 
 
 
@@ -548,7 +574,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h5><a href="contribute.html">Contribute</a></h5>
+            <h5><a href="contribute.html">貢献する</a></h5>
           </div><!--/.card-header-->
           <div class="card-body">
 
@@ -597,6 +623,30 @@ algoliaOptions: { 'facetFilters': ["lang:ja"] },
 debug: false
 });
 </script>
+
+
+
+<!-- Feedback Widget -->
+<script src="assets/vendor/custom-widget.js"></script>
+<div id="feedback-content"></div>
+    <script>
+      const widget = new EmbeddableWidget.default({
+        theme: 'xrpl',
+        opened: false,
+        parentElement: '#feedback-content',
+        currentPath: window.location.pathname,
+        adapter: 'ga',
+        app:'Feedback Widget',
+        adapterConfig:{
+          containerId:"GTM-THHW334",
+          trackingId:"UA-45576805-2"
+        }
+      });
+      setTimeout(() => {
+        widget.open();
+        // EmbeddableWidget.default.unmount();
+      }, 2000);
+    </script>
 
 <script type="application/javascript">
   gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});
