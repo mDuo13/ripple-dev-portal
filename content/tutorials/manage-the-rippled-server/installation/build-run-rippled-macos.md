@@ -24,7 +24,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
         $ brew install git cmake pkg-config protobuf openssl ninja
 
-0. Install Boost 1.70.0 or higher. `rippled` 1.4.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually. (The following examples use Boost 1.71.0, which was the newest version at the time of writing.)
+0. Install a compatible version of Boost. `rippled` 1.7.0 is compatible with Boost 1.70.0 and higher. The latest version of Boost available in the Homebrew repositories isn't new enough, so you must install Boost manually. (The following examples use Boost 1.71.0, which was the newest version at the time of writing.)
 
       1. Download [Boost 1.71.0](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2).
 
@@ -32,21 +32,27 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
       3. In a terminal, run:
 
-            cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
-            ./bootstrap.sh
-            ./b2 cxxflags="-std=c++14"
+            $ cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
+            $ ./bootstrap.sh
+            $ ./b2 cxxflags="-std=c++14"
 
 0. Ensure that your `BOOST_ROOT` environment points to the directory created by the Boost installation:
 
       1. To find your Boost directory, use `pwd` if you installed the Boost manually or use `brew --prefix boost` if you installed the Boost with Homebrew.
 
-      2. Edit below code with your Boost directory location and run to add Boost environment variable to your `.bash_profile` file so it's automatically set when you log in.
+      2. Edit the code below with your Boost directory location and run it to add Boost environment variable to your `.zshrc` or `.bash_profile` file so it's automatically set when you log in.
 
+              # for zsh
+              $ echo "export BOOST_ROOT=/Users/my_user/boost_1_71_0" >> ~/.zshrc
+              # for bash
               $ echo "export BOOST_ROOT=/Users/my_user/boost_1_71_0" >> ~/.bash_profile
 
 0. If you updated your `.bash_profile` file in the previous step, be sure to source it in a new Terminal window. For example:
 
-        $ source .bash_profile
+        # zsh
+        $ source ~/.zshrc
+        # bash
+        $ source ~/.bash_profile
 
 0. Clone the `rippled` source code into your desired location and access the `rippled` directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see [Set up git](https://help.github.com/articles/set-up-git/).
 
@@ -68,6 +74,10 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
         $ git checkout develop
 
     Or, you can checkout one of the tagged releases listed on [GitHub](https://github.com/ripple/rippled/releases).
+
+0. Check the commit log to be sure you're compiling the right code. The most recent commit should be signed by a well-known Ripple developer and should set the version number to the latest released version. The [release announcements for `rippled`](https://xrpl.org/blog/label/rippled-release-notes.html) generally show the exact commit to expect for that release.
+
+        $ git log -1
 
 0. In the `rippled` directory you cloned, create your build directory and access it. For example:
 
@@ -109,7 +119,7 @@ For development purposes, run `rippled` as a non-admin user, not using `sudo`.
 
         $ cp cfg/validators-example.txt $HOME/.config/ripple/validators.txt
 
-      **Warning:** Ripple has designed a decentralization plan with maximum safety in mind. During the transition, you should not modify the `validators.txt` file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
+      **Warning:** The `validators.txt` file contains settings that determine how your server declares a ledger to be validated. If you are not careful, changes to this file could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.
 
 0. Access your build directory, `my_build` for example, and start the `rippled` service.
 

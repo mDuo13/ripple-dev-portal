@@ -26,7 +26,6 @@ filter_paths:
 
 default_filters:
     - multicode_tabs
-    - unicode_header_ids
     - buttonize
     - callouts
     - badges
@@ -61,15 +60,23 @@ languages:
         display_name: 日本語
         prefix: "/xrpl-dev-portal/ja/"
 
+default_keys: &defaults
+    # These github_ fields are used by the template's "Edit on GitHub" link.
+    #  Override them with --vars to change which fork/branch to edit.
+    github_forkurl: https://github.com/ripple/xrpl-dev-portal
+    github_branch: master
+    # Hover icon markup for permalinking headers
+    hover_anchors: <i class="fa fa-link"></i>
+    # Script tags used in a variety of tools & examples.
+    lodash_tag: '<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous"></script>'
+    ripple_lib_tag: '<script type="application/javascript" src="assets/js/ripple-lib-1.9.1.min.js"></script>'
+
 targets:
     # First member is the default that gets built when target not specified
     -   name: en
         lang: en
         display_name: XRPL.org
-        # These github_ fields are used by the template's "Edit on GitHub" link.
-        #  Override them with --vars to change which fork/branch to edit.
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: 2020refresh
+        <<: *defaults
         prefix: "/xrpl-dev-portal/"
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
@@ -80,8 +87,7 @@ targets:
     -   name: ja
         lang: ja
         display_name: XRPL.org (日本語)
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: 2020refresh
+        <<: *defaults
         prefix: "/xrpl-dev-portal/ja/"
         locale_file: locale/ja/LC_MESSAGES/messages.mo
         blurb: XRPとXRP Ledgerの全てに対してのコミュニティーリーソース
@@ -141,17 +147,30 @@ targets:
             "basic-data-types.html#account-sequence": "basic-data-types.html#アカウントシーケンス"
             "xrp.html#xrp-properties": "xrp.html#xrpの特性"
             # Fix links from untranslated health-check.html:
-            "rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
+            "rippled-server-modes.html#stand-alone-mode": "rippled-server-modes.html#rippledサーバーをスタンドアロンモードで実行する理由"
             "server-doesnt-sync.html#normal-syncing-behavior": "server-doesnt-sync.html#通常の同期動作"
             # Fix link from untranslated negativeunl.html:
             "consensus.html#validation": "consensus.html#検証"
+            # Fix link from untranslated tickets.html:
+            "consensus.html#calculate-and-share-validations": "consensus.html#検証の計算と共有"
+            # Fix link from untranslated manifest.html:
+            "rippled-server-modes.html#reporting-mode": "rippled-server-modes.html#レポーティングモード"
+            # Fix links for untranslated get-started-using-python.html:
+            "the-rippled-server.html#reasons-to-run-your-own-server": "rippled-server-modes.html#ストックサーバーを運用する理由"
+            "get-started-with-the-rippled-api.html#public-servers": "get-started-with-the-rippled-api.html#公開サーバー"
+            "cryptographic-keys.html#key-components": "cryptographic-keys.html#キーの生成"
+            "accounts.html#addresses": "accounts.html#アドレス"
+            "cryptographic-keys.html#private-key": "cryptographic-keys.html#キーの生成"
+            "basic-data-types.html#specifying-currency-amounts": "basic-data-types.html#通貨額の指定"
+            "transaction-cost.html#current-transaction-cost": "transaction-cost.html#現在のトランザクションコスト"
+            "ledgers.html#open-closed-and-validated-ledgers": "ledgers.html#ツリーの形式"
+            "account_info.html#response-format": "account_info.html#応答フォーマット"
 
 
     -   name: xrp-api-only
         lang: en
         display_name: XRP API Reference
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         no_cover: true
         link_subs:
             "./src/api-v3/paths/preparations/payments.ts": "https://github.com/xpring-eng/xrp-api/blob/master/src/api-v3/paths/preparations/payments.ts"
@@ -161,8 +180,7 @@ targets:
     -   name: data-api-only
         lang: en
         display_name: XRP Ledger Data API
-        github_forkurl: https://github.com/ripple/xrpl-dev-portal
-        github_branch: master
+        <<: *defaults
         no_cover: True
         link_re_subs:
            "([\\w-]+\\.html)": https://xrpl.org/\1
@@ -1381,13 +1399,7 @@ pages:
         targets:
             - ja
 
-    -   name: The rippled Server
-        html: the-rippled-server.html
-        funnel: Build
-        doc_type: Concepts
-        category: The rippled Server
-        template: template-landing-children.html
-        blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
+    -   md: concepts/the-rippled-server/the-rippled-server.md
         targets:
             - en
 
@@ -1578,6 +1590,11 @@ pages:
         targets:
             - ja
 
+    -   md: tutorials/get-started/get-started-using-python.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/get-started/get-started-with-the-rippled-api.md
         html: get-started-with-the-rippled-api.html
         funnel: Build
@@ -1617,48 +1634,18 @@ pages:
             - ja
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.md
-        html: send-xrp.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Learn how to send test payments right from your browser.
-        cta_text: Send XRP
-        filters:
-            - interactive_steps
         targets:
             - en
 
     -   md: tutorials/use-simple-xrp-payments/send-xrp.ja.md
-        html: send-xrp.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Test Netを使用してXRPの送金をテストします。
-        cta_text: XRPを送金しよう
-        filters:
-            - interactive_steps
         targets:
             - ja
 
     -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.md
-        html: monitor-incoming-payments-with-websocket.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
-        filters:
-            - interactive_steps
         targets:
             - en
 
     -   md: tutorials/get-started/monitor-incoming-payments-with-websocket.ja.md
-        html: monitor-incoming-payments-with-websocket.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Get Started
-        blurb: WebSocket APIを使用して、新しいXRPペイメントなどを積極的に監視します。
-        filters:
-            - interactive_steps
         targets:
             - ja
 
@@ -1859,11 +1846,6 @@ pages:
             - ja
 
     -   md: tutorials/manage-account-settings/require-destination-tags.md
-        html: require-destination-tags.html
-        funnel: Build
-        doc_type: Tutorials
-        category: Manage Account Settings
-        blurb: Require users to specify a destination tag when sending to your address.
         targets:
             - en
 
@@ -1892,6 +1874,11 @@ pages:
         category: Manage Account Settings
         blurb: 物理的に隔離されたオフラインのマシンを使用して暗号鍵を保管するXRP Ledgerアカウントを設定します。
         targets:
+            - ja
+
+    -   md: tutorials/manage-account-settings/use-tickets.md
+        targets:
+            - en
             - ja
 
     # TODO: "Use Deposit Authorization to Block Unwanted Payments" (DOC-1555)
@@ -2591,6 +2578,12 @@ pages:
         category: Manage the rippled Server
         subcategory: Configuration
         blurb: A multipurpose configuration for anyone integrating XRP.
+        targets:
+            - en
+            - ja
+
+    # TODO: translate this page & blurb
+    -   md: tutorials/manage-the-rippled-server/configuration/configure-amendment-voting.md
         targets:
             - en
             - ja
@@ -4239,6 +4232,18 @@ pages:
         targets:
             - ja
 
+    -   md: references/rippled-api/public-rippled-methods/server-info-methods/manifest.md
+        html: manifest.html
+        blurb: Look up the public information about a known validator.
+        funnel: Build
+        doc_type: References
+        supercategory: rippled API
+        category: Public rippled Methods
+        subcategory: Server Info Methods
+        targets:
+            - en
+            - ja
+
     -   md: references/rippled-api/public-rippled-methods/server-info-methods/server_info.md
         html: server_info.html
         funnel: Build
@@ -4954,18 +4959,6 @@ pages:
         targets:
             - ja
 
-    -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/manifest.md
-        html: manifest.html
-        blurb: Look up the public information about a known validator.
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Admin rippled Methods
-        subcategory: Status and Debugging Methods
-        targets:
-            - en
-            - ja
-
     -   md: references/rippled-api/admin-rippled-methods/status-and-debugging-methods/print.md
         html: print.html
         blurb: Get information about internal subsystems.
@@ -5581,24 +5574,10 @@ pages:
             - ja
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.md
-        html: paymentchannelfund.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Transaction Formats
-        subcategory: Transaction Types
-        blurb: Add more XRP to a payment channel.
         targets:
             - en
 
     -   md: references/rippled-api/transaction-formats/transaction-types/paymentchannelfund.ja.md
-        html: paymentchannelfund.html
-        funnel: Build
-        doc_type: References
-        supercategory: rippled API
-        category: Transaction Formats
-        subcategory: Transaction Types
-        blurb: オープンPayment ChannelにXRPを追加します。
         targets:
             - ja
 
@@ -6054,12 +6033,12 @@ pages:
     # --------------- end "XRP-API" section --------------------------------
 
     -   name: RippleAPI Reference # name is required for remote-sourced files
-        md: https://raw.githubusercontent.com/ripple/ripple-lib/1.7.1/docs/index.md
+        md: https://raw.githubusercontent.com/ripple/ripple-lib/32718d583b882b58f152511e152e9dae1da2d671/docs/index.md #TEMP: use commit instead of release tag since broken link fixes aren't in a release yet
         html: rippleapi-reference.html
         funnel: Build
         doc_type: References
         category: RippleAPI for JavaScript
-        blurb: Official client library to the XRP Ledger. Available for JavaScript only.
+        blurb: JavaScript/TypeScript client library to the XRP Ledger.
         skip_spell_checker: true
         # Japanese: XRP Ledgerに対する公式なクライアントライブラリです。JavaScriptのみで使用できます。
         curated_anchors:
@@ -6291,6 +6270,7 @@ pages:
         funnel: Build
         doc_type: Dev Tools
         html: xrp-ledger-toml-checker.html
+        embed_ripple_lib: true
         targets:
             - en
             - ja
@@ -6328,6 +6308,7 @@ pages:
         funnel: Build
         doc_type: Dev Tools
         html: tx-sender.html
+        embed_ripple_lib: true
         targets:
             - en
             - ja
