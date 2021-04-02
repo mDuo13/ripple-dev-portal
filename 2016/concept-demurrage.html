@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Demurrage - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="concept-freeze.html">Issued Currencies</a></li>
+              <li class="active crumb-current">Demurrage</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/concept-demurrage.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-xrp-ledger-intro.html">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a href="concept-cryptographic-keys.html">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a href="concept-reserves.html">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a href="concept-depositauth.html">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a class="active" href="#main_content_body">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a href="tutorial-checks-send.html">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a href="tutorial-build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">Demurrage</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#demurrage">Demurrage</a></li>
+<li class="level-2"><a href="#representing-demurraging-currency-amounts">Representing Demurraging Currency Amounts</a></li>
+<li class="level-3"><a href="#calculating-demurrage">Calculating Demurrage</a></li>
+<li class="level-2"><a href="#interest-bearing-currency-code-format">Interest-Bearing Currency Code Format</a></li>
+<li class="level-3"><a href="#calculating-e-folding-time">Calculating e-folding Time</a></li>
+<li class="level-2"><a href="#client-support">Client Support</a></li>
+<li class="level-3"><a href="#ripple-lib-support">ripple-lib Support</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="demurrage">Demurrage</h1>
+<p class="devportal-callout warning"><strong>Warning:</strong> Demurrage is a deprecated feature with no ongoing support. This page describes historical behavior of older versions of Ripple software.</p>
+<p><a href="http://en.wikipedia.org/wiki/Demurrage_%28currency%29">Demurrage</a> is a negative interest rate on assets held that represents the cost of holding those assets. To represent the demurrage on an issued currency in the XRP Ledger, you can track it using a custom <a href="reference-currency.html#currency-codes">currency code</a> that indicates the demurrage rate. This effectively creates separate versions of the currency for each varying amount of demurrage. Client applications can support this by representing the demurraging currency code with an annual percentage rate alongside the currency code. For example: "XAU (-0.5%pa)".</p>
+<h2 id="representing-demurraging-currency-amounts">Representing Demurraging Currency Amounts</h2>
+<p>Rather than continuously update all amounts in the XRP Ledger, this approach divides amounts of interest-bearing or demurraging currency into two types of amount: "ledger values" recorded in the XRP Ledger, and "display values" shown to people. The "ledger values" represent the value of the currency at a fixed point, namely the "Ripple Epoch" of midnight January 1, 2000. The "display values" represent the amount at a later point in time (usually the current time) after calculating continuous interest or demurrage from the Ripple Epoch until that time.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> You can think of demurrage as similar to inflation, where the value of all assets affected by it decreases over time, but the ledger always holds amounts in year-2000 values. This does not reflect actual real-world inflation; demurrage is more like hypothetical inflation at a constant rate.</p>
+<p>Thus, client software must apply two conversions:</p>
+<ul>
+<li>Taking display values at a given time and converting them to ledger values to be recorded.</li>
+<li>Taking ledger values and converting them to a display value at a given point in time.</li>
+</ul>
+<h3 id="calculating-demurrage">Calculating Demurrage</h3>
+<p>The full formula for calculating demurrage on a currency is as follows:</p>
+<div class="codehilite"><pre><span></span><code>D = A × ( e ^ (t ÷ τ) )
+</code></pre></div>
+<ul>
+<li><strong>D</strong> is the amount after demurrage</li>
+<li><strong>A</strong> is the pre-demurrage amount as recorded in the global ledger</li>
+<li><strong>e</strong> is Euler's number</li>
+<li><strong>t</strong> is the number of seconds since the Ripple Epoch (0:00 on January 1, 2000 UTC)</li>
+<li><strong>τ</strong> is the e-folding time in seconds. This value is <a href="#calculating-e-folding-time">calculated from the desired interest rate</a>.</li>
+</ul>
+<p>To convert between display amounts and ledger amounts, you can use the following steps:</p>
+<ol>
+<li>Calculate the value of <code>( e ^ (t ÷ τ) )</code>. We call this number the "demurrage coefficient". The demurrage coefficient is always relative to a specific time, such as the current time.</li>
+<li>Apply it to the amount to convert:<ul>
+<li>To convert ledger values to display values, multiply by the demurrage coefficient.</li>
+<li>To convert display values to ledger values, divide by the demurrage coefficient.</li>
+</ul>
+</li>
+<li>If necessary, adjust the resulting value so that it can be represented to the desired accuracy. Ledger values are limited to 15 decimal digits of precision, according to the XRP Ledger's <a href="reference-currency.html#issued-currency-precision">issued currency format</a>.</li>
+</ol>
+<h2 id="interest-bearing-currency-code-format">Interest-Bearing Currency Code Format</h2>
+<p>Rather than using the <a href="reference-currency.html#currency-codes">standard currency code format</a>, currencies that have positive interest or negative interest (demurrage) use a 160-bit currency code in the following format:</p>
+<p><img alt="Demurraging Currency Code Format" src="img/demurrage-currency-code-format.png"/></p>
+<ol>
+<li>The first 8 bits must be <code>0x01</code>.</li>
+<li>The next 24 bits represent 3 characters of ASCII.
+    This is expected to be an ISO 4217 code. It supports the same characters as the standard format's ASCII characters.</li>
+<li>The next 24 bits MUST be all <code>0</code>s.</li>
+<li>The next 64 bits are the interest rate of the currency, represented as "<a href="http://en.wikipedia.org/wiki/E-folding">e-folding time</a>" in an IEEE 754 double format.</li>
+<li>The next 24 bits are reserved and should be all <code>0</code>s.</li>
+</ol>
+<h3 id="calculating-e-folding-time">Calculating e-folding Time</h3>
+<p>To convert between ledger amounts and display amounts, or to calculate a currency code for an interest-bearing/demurraging currency, you need the interest rate as an "e-folding time". The e-folding time is the amount of time it takes a quantity to increase by a factor of <em>e</em> (Euler's number). By convention, e-folding time is written as the letter <strong>τ</strong> in formulas.</p>
+<p>To calculate an e-folding time for a given rate of annual percent interest:</p>
+<ol>
+<li>Add the interest rate to 100% to get the percentage of the initial amount present after applying annual interest. For demurrage, use a negative interest rate. For example, 0.5% demurrage would be an interest rate of -0.5%, resulting in <strong>99.5%</strong> remaining.</li>
+<li>Represent the percentage as a decimal. For example, 99.5% becomes <strong>0.995</strong>.</li>
+<li>Take the natural log of that number. For example, <strong>ln(0.995) = -0.005012541823544286</strong>. (This number is positive if the initial interest rate was positive, and negative if the interest rate was negative.)</li>
+<li>Take the number of seconds in one year (31536000) and divide by the natural log result from the previous step. For example, <strong>31536000 ÷ -0.005012541823544286 = -6291418827.045599</strong>. This result is the e-folding time in seconds.</li>
+</ol>
+<p class="devportal-callout note"><strong>Note:</strong> By convention, Ripple's interest/demurrage rules use a fixed number of seconds per year (31536000), which is not adjusted for leap days or leap seconds.</p>
+<h2 id="client-support">Client Support</h2>
+<p>To support interest-bearing and demurraging currencies, client applications must implement several features:</p>
+<ul>
+<li>
+<p>When displaying the amount of a demurraging currency retrieved from ledger or transaction data, the client must convert from the ledger value to the display value. (With demurrage, the display values are smaller than the ledger values.)</p>
+</li>
+<li>
+<p>When accepting input for a demurraging currency, the client must convert amounts from a display format to the ledger format. (With demurrage, the ledger values are are larger than the user input value.) The client must use the ledger value when creating payments, offers, and other types of transaction.</p>
+</li>
+<li>
+<p>Clients must distinguish between currencies that do and do not have interest or demurrage, and among currencies that have different rates of interest or demurrage. Clients should be able to parse the <a href="#interest-bearing-currency-code-format">Interest-Bearing Currency Code Format</a> into a display such as "XAU (-0.5% pa)".</p>
+</li>
+</ul>
+<h3 id="ripple-lib-support">ripple-lib Support</h3>
+<p>Demurrage was supported in ripple-lib versions <strong>0.7.37</strong> through <strong>0.12.9</strong>. Demurrage is <strong><em>not supported</em></strong> in <a href="reference-rippleapi.html">RippleAPI</a>.</p>
+<p>The following code samples demonstrate how to use compatible versions of ripple-lib to convert between ledger values and display values. Also see the <a href="https://ripple.github.io/ripple-demurrage-tool/">Ripple Demurrage Calculator</a>.</p>
+<p>To convert from a display value to a ledger value, use <code>Amount.from_human()</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// create an Amount object for the display amount of the demurring currency</span>
+<span class="c1">// and pass in a reference_date that represents the current date</span>
+<span class="c1">// (in this case, ledger value 10 XAU with 0.5% annual demurrage,</span>
+<span class="c1">//  at 2017-11-04T00:07:50Z.)</span>
+<span class="kd">var</span> <span class="nx">demAmount</span> <span class="o">=</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">Amount</span><span class="p">.</span><span class="nx">from_human</span><span class="p">(</span><span class="s1">'10 0158415500000000C1F76FF6ECB0BAC600000000'</span><span class="p">,</span>
+                                  <span class="p">{</span><span class="nx">reference_date</span><span class="o">:</span><span class="mf">563069270</span><span class="p">});</span>
+
+<span class="c1">// set the issuer</span>
+<span class="nx">demAmount</span><span class="p">.</span><span class="nx">set_issuer</span><span class="p">(</span><span class="s2">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">);</span>
+
+<span class="c1">// get the JSON format for the ledger amount</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">demAmount</span><span class="p">.</span><span class="nx">to_json</span><span class="p">());</span>
+
+<span class="c1">// { "value": "10.93625123082769",</span>
+<span class="c1">//   "currency": "0158415500000000C1F76FF6ECB0BAC600000000",</span>
+<span class="c1">//   "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }</span>
+</code></pre></div>
+<p>To convert from a ledger value to a display value:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// create an Amount object with the ledger value,</span>
+<span class="nx">ledgerAmount</span> <span class="o">=</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">Amount</span><span class="p">.</span><span class="nx">from_json</span><span class="p">({</span>
+  <span class="s2">"currency"</span><span class="o">:</span> <span class="s2">"015841551A748AD2C1F76FF6ECB0CCCD00000000"</span><span class="p">,</span>
+  <span class="s2">"issuer"</span><span class="o">:</span> <span class="s2">"rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh"</span><span class="p">,</span>
+  <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"10.93625123082769"</span><span class="p">})</span>
+
+<span class="c1">// apply interest up to the current time to get the display amount</span>
+<span class="kd">var</span> <span class="nx">displayAmount</span> <span class="o">=</span> <span class="nx">demAmount</span><span class="p">.</span><span class="nx">applyInterest</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">());</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">displayAmount</span><span class="p">.</span><span class="nx">to_json</span><span class="p">());</span>
+
+<span class="c1">// { "value": "9.999998874657716",</span>
+<span class="c1">//   "currency": "0158415500000000C1F76FF6ECB0BAC600000000",</span>
+<span class="c1">//   "issuer": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh" }</span>
+</code></pre></div>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>sign - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#1db4ff">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1db4ff">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <!-- <link href="assets/css/ripple.css" rel="stylesheet" /> -->
+    <link href="assets/vendor/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+    </script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarHolder">
+      <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+<div class="github-edit-wrap">
+  <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/references/rippled-api/public-rippled-methods/transaction-methods/sign.md" target="_blank" class="github-edit">Edit on GitHub</a>
+</div><!-- /.github-edit -->    </div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="page-toc-wrapper">
+    <p class="in-this-doc card-header">In this document:</p>
+    <ul class="dev_nav_sidebar card-body" id="dactyl_toc_sidebar">
+      <li class="level-1"><a href="#sign">sign</a></li>
+<li class="level-2"><a href="#request-format">Request Format</a></li>
+<li class="level-3"><a href="#auto-fillable-fields">Auto-Fillable Fields</a></li>
+<li class="level-2"><a href="#response-format">Response Format</a></li>
+<li class="level-2"><a href="#possible-errors">Possible Errors</a></li>
+
+    </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3 p-0 " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-3" aria-label="breacrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Docs</a></li>
+    <li class="active breadcrumb-item"><a href="references.html">References</a></li>
+    <li class="active breadcrumb-item"><a href="rippled-api.html">rippled API</a></li>
+    <li class="active breadcrumb-item"><a href="public-rippled-methods.html">Public rippled Methods</a></li>
+    <li class="active breadcrumb-item"><a href="transaction-methods.html">Transaction Methods</a></li>
+    <li class="active breadcrumb-item">sign</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="p-3">
+    <div class="content">
+        <h1 id="sign">sign</h1>
+<p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp" target="_blank" title="Source">[Source]<br/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The <code>sign</code> method takes a <a href="transaction-formats.html">transaction in JSON format</a> and a secret key, and returns a signed binary representation of the transaction. The result is always different, even when you provide the same transaction JSON and secret key. To contribute one signature to a multi-signed transaction, use the <a href="sign_for.html">sign_for method</a> instead.</p>
+<p><em>By default, this method is <a href="admin-rippled-methods.html">admin-only</a>. It can be used as a public method if the server has <a href="enable-public-signing.html">enabled public signing</a>.</em></p>
+<!--_ -->
+<p class="devportal-callout caution"><strong>Caution:</strong> Unless you run the <code>rippled</code> server yourself, you should do <a href="rippleapi-reference.html#sign">local signing with RippleAPI</a> instead of using this command. An untrustworthy server could change the transaction before signing it, or use your secret key to sign additional arbitrary transactions as if they came from you.</p>
+<h2 id="request-format">Request Format</h2>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "id": 2,
+  "command": "sign",
+  "tx_json" : {
+      "TransactionType" : "Payment",
+      "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "Amount" : {
+         "currency" : "USD",
+         "value" : "1",
+         "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+      }
+   },
+   "secret" : "s████████████████████████████",
+   "offline": false,
+   "fee_mult_max": 1000
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "method": "sign",
+    "params": [
+        {
+            "offline": false,
+            "secret": "s████████████████████████████",
+            "tx_json": {
+                "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "Amount": {
+                    "currency": "USD",
+                    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                    "value": "1"
+                },
+                "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+                "TransactionType": "Payment"
+            },
+            "fee_mult_max": 1000
+        }
+    ]
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-0-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="n">#Syntax</span><span class="err">:</span><span class="w"> </span><span class="nf">sign</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="n">tx_json</span><span class="w"> </span><span class="o">[</span><span class="n">offline</span><span class="o">]</span><span class="w"></span>
+<span class="n">rippled</span><span class="w"> </span><span class="nf">sign</span><span class="w"> </span><span class="n">s</span><span class="err">████████████████████████████</span><span class="w"> </span><span class="s1">'{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }, "Sequence": 360, "Fee": "10000"}'</span><span class="w"> </span><span class="n">offline</span><span class="w"></span>
+</code></pre></div></div>
+</div>
+<p><a class="button" href="websocket-api-tool.html#sign">Try it!</a></p>
+<p>To sign a transaction, you must provide a secret key that can <a href="transaction-basics.html#authorizing-transactions">authorize the transaction</a>. You can do this in a few ways:</p>
+<ul>
+<li>Provide a <code>secret</code> value and omit the <code>key_type</code> field. This value can be formatted as an XRP Ledger <a href="base58-encodings.html">base58</a> seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)</li>
+<li>Provide a <code>key_type</code> value and exactly one of <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>. Omit the <code>secret</code> field. (Not supported by the commandline syntax.)</li>
+</ul>
+<p>The request includes the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>tx_json</code></td>
+<td align="left">Object</td>
+<td align="left"><a href="transaction-formats.html">Transaction definition</a> in JSON format</td>
+</tr>
+<tr>
+<td align="left"><code>secret</code></td>
+<td align="left">String</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with <code>key_type</code>, <code>seed</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>seed</code></td>
+<td align="left">String</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's <a href="base58-encodings.html">base58</a> format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed_hex</code>, or <code>passphrase</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>seed_hex</code></td>
+<td align="left">String</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>passphrase</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>passphrase</code></td>
+<td align="left">String</td>
+<td align="left"><em>(Optional)</em> Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the <code>key_type</code>. Cannot be used with <code>secret</code>, <code>seed</code>, or <code>seed_hex</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>key_type</code></td>
+<td align="left">String</td>
+<td align="left"><em>(Optional)</em> Type of cryptographic key provided in this request. Valid types are <code>secp256k1</code> or <code>ed25519</code>. Defaults to <code>secp256k1</code>. Cannot be used with <code>secret</code>. <strong>Caution:</strong> Ed25519 support is experimental.</td>
+</tr>
+<tr>
+<td align="left"><code>offline</code></td>
+<td align="left">Boolean</td>
+<td align="left">(Optional, defaults to false) If true, when constructing the transaction, do not try to automatically fill in or validate values.</td>
+</tr>
+<tr>
+<td align="left"><code>build_path</code></td>
+<td align="left">Boolean</td>
+<td align="left"><em>(Optional)</em> If provided for a Payment-type transaction, automatically fill in the <code>Paths</code> field before signing. <strong>Caution:</strong> The server looks for the presence or absence of this field, not its value. This behavior may change.</td>
+</tr>
+<tr>
+<td align="left"><code>fee_mult_max</code></td>
+<td align="left">Integer</td>
+<td align="left">(Optional, defaults to 10; recommended value 1000) Limits how high the <a href="transaction-common-fields.html#auto-fillable-fields">automatically-provided <code>Fee</code> field</a> can be. Signing fails with the error <code>rpcHIGH_FEE</code> if the current <a href="transaction-cost.html#local-load-cost">load multiplier on the transaction cost</a> is greater than (<code>fee_mult_max</code> ÷ <code>fee_div_max</code>). Ignored if you specify the <code>Fee</code> field of the transaction (<a href="transaction-cost.html">transaction cost</a>).</td>
+</tr>
+<tr>
+<td align="left"><code>fee_div_max</code></td>
+<td align="left">Integer</td>
+<td align="left">(Optional, defaults to 1) Signing fails with the error <code>rpcHIGH_FEE</code> if the current <a href="transaction-cost.html#local-load-cost">load multiplier on the transaction cost</a> is greater than (<code>fee_mult_max</code> ÷ <code>fee_div_max</code>). Ignored if you specify the <code>Fee</code> field of the transaction (<a href="transaction-cost.html">transaction cost</a>). <a href="https://github.com/ripple/rippled/releases/tag/0.30.1" target="_blank" title="New in: rippled 0.30.1"><img alt="New in: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="auto-fillable-fields">Auto-Fillable Fields</h3>
+<p>The server automatically tries to fill in certain fields in <code>tx_json</code> (the <a href="transaction-formats.html">Transaction object</a>) automatically if you omit them. The server provides the following fields before signing, unless the request specified <code>offline</code> as <code>true</code>:</p>
+<ul>
+<li><code>Sequence</code> - The server automatically uses the next Sequence number from the sender's account information.<ul>
+<li class="devportal-callout caution"><strong>Caution:</strong> The next sequence number for the account is not incremented until this transaction is applied. If you sign multiple transactions without submitting and waiting for the response to each one, you must manually provide the correct sequence numbers for each transaction after the first.</li>
+</ul>
+</li>
+<li><code>Fee</code> - If you omit the <code>Fee</code> parameter, the server tries to fill in an appropriate transaction cost automatically. On the production XRP Ledger, this fails with <code>rpcHIGH_FEE</code> unless you provide an appropriate <code>fee_mult_max</code> value.<ul>
+<li>The <code>fee_mult_max</code> and <code>fee_div_max</code> parameters limit how high the automatically-provided transaction cost can be, in terms of the load-scaling multiplier that gets applied to the <a href="transaction-cost.html#reference-transaction-cost">reference transaction cost</a>. The default settings return an error if the automatically-provided value would use greater than a 10× multiplier. However, the production XRP Ledger <a href="transaction-cost.html#current-transaction-cost">typically has a 1000× load multiplier</a>.</li>
+<li>The commandline syntax does not support <code>fee_mult_max</code> and <code>fee_div_max</code>. For the production XRP Ledger, you must provide a <code>Fee</code> value.</li>
+<li class="devportal-callout caution"><strong>Caution:</strong> A malicious server can specify an excessively high transaction cost, ignoring the values of <code>fee_mult_max</code> and <code>fee_div_max</code>.</li>
+</ul>
+</li>
+<li><code>Paths</code> - For Payment-type transactions (excluding XRP-to-XRP transfers), the Paths field can be automatically filled, as if you used the <a href="ripple_path_find.html">ripple_path_find method</a>. Only filled if <code>build_path</code> is provided.</li>
+</ul>
+<h2 id="response-format">Response Format</h2>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "id": 2,
+  "status": "success",
+  "type": "response",
+  "result": {
+    "tx_blob": "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+    "tx_json": {
+      "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+      "Amount": {
+        "currency": "USD",
+        "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "value": "1"
+      },
+      "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+      "Fee": "10000",
+      "Flags": 2147483648,
+      "Sequence": 360,
+      "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+      "TransactionType": "Payment",
+      "TxnSignature": "304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580",
+      "hash": "4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"
+    }
+  }
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="mf">200</span> <span class="n">OK</span>
+<span class="err">{</span>
+    <span class="s">"result"</span><span class="p">:</span> <span class="err">{</span>
+        <span class="s">"status"</span><span class="p">:</span> <span class="s">"success"</span><span class="p">,</span>
+        <span class="s">"tx_blob"</span><span class="p">:</span> <span class="s">"1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F858081144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"</span><span class="p">,</span>
+        <span class="s">"tx_json"</span><span class="p">:</span> <span class="err">{</span>
+            <span class="s">"Account"</span><span class="p">:</span> <span class="s">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+            <span class="s">"Amount"</span><span class="p">:</span> <span class="err">{</span>
+                <span class="s">"currency"</span><span class="p">:</span> <span class="s">"USD"</span><span class="p">,</span>
+                <span class="s">"issuer"</span><span class="p">:</span> <span class="s">"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"</span><span class="p">,</span>
+                <span class="s">"value"</span><span class="p">:</span> <span class="s">"1"</span>
+            <span class="err">}</span><span class="p">,</span>
+            <span class="s">"Destination"</span><span class="p">:</span> <span class="s">"ra5nK24KXen9AHvsdFTKHSANinZseWnPcX"</span><span class="p">,</span>
+            <span class="s">"Fee"</span><span class="p">:</span> <span class="s">"10000"</span><span class="p">,</span>
+            <span class="s">"Flags"</span><span class="p">:</span> <span class="mf">2147483648</span><span class="p">,</span>
+            <span class="s">"Sequence"</span><span class="p">:</span> <span class="mf">360</span><span class="p">,</span>
+            <span class="s">"SigningPubKey"</span><span class="p">:</span> <span class="s">"03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB"</span><span class="p">,</span>
+            <span class="s">"TransactionType"</span><span class="p">:</span> <span class="s">"Payment"</span><span class="p">,</span>
+            <span class="s">"TxnSignature"</span><span class="p">:</span> <span class="s">"304402200E5C2DD81FDF0BE9AB2A8D797885ED49E804DBF28E806604D878756410CA98B102203349581946B0DDA06B36B35DBC20EDA27552C1F167BCF5C6ECFF49C6A46F8580"</span><span class="p">,</span>
+            <span class="s">"hash"</span><span class="p">:</span> <span class="s">"4D5D90890F8D49519E4151938601EF3D0B30B16CD6A519D9C99102C9FA77F7E0"</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code>Loading: "/etc/rippled.cfg"
+Connecting to 127.0.0.1:5005
+{
+   "result" : {
+      "status" : "success",
+      "tx_blob" : "1200002280000000240000016861D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA9684000000000002710732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210094D24C795CFFA8E46FE338AF63421DA5CE5E171ED56F8E4CE70FFABA15D3CFA2022063994C52BF0393C8157EBFFCDE6A7E7EDC7B16A462CA53214F64CC8FCBB5E54A81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754",
+      "tx_json" : {
+         "Account" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+         "Amount" : {
+            "currency" : "USD",
+            "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "value" : "1"
+         },
+         "Destination" : "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
+         "Fee" : "10000",
+         "Flags" : 2147483648,
+         "Sequence" : 360,
+         "SigningPubKey" : "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+         "TransactionType" : "Payment",
+         "TxnSignature" : "304502210094D24C795CFFA8E46FE338AF63421DA5CE5E171ED56F8E4CE70FFABA15D3CFA2022063994C52BF0393C8157EBFFCDE6A7E7EDC7B16A462CA53214F64CC8FCBB5E54A",
+         "hash" : "DE80DA6FF9F93FE4CE87C99441F403E0290E35867FF48382204CB89975BF343E"
+      }
+   }
+}
+</code></pre></div></div>
+</div>
+<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
+<table>
+<thead>
+<tr>
+<th align="left"><code>Field</code></th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>tx_blob</code></td>
+<td align="left">String</td>
+<td align="left">Binary representation of the fully-qualified, signed transaction, as hex</td>
+</tr>
+<tr>
+<td align="left"><code>tx_json</code></td>
+<td align="left">Object</td>
+<td align="left">JSON specification of the <a href="transaction-formats.html">complete transaction</a> as signed, including any fields that were automatically filled in</td>
+</tr>
+</tbody>
+</table>
+<p class="devportal-callout caution"><strong>Caution:</strong> If this command results in an error messages, the message can contain the secret key from the request. Make sure that these errors are not visible to others.</p>
+<ul>
+<li>Do not write this error to a log file that can be seen by multiple people.</li>
+<li>Do not paste this error to a public place for debugging.</li>
+<li>Do not display the error message on a website, even by accident.</li>
+</ul>
+<h2 id="possible-errors">Possible Errors</h2>
+<ul>
+<li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
+<li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
+<li><code>highFee</code> - The current load-based multiplier to the transaction cost exceeds the limit for an automatically-provided transaction cost. Either specify a higher <code>fee_mult_max</code> (at least 1000) in the request or manually provide a value in the <code>Fee</code> field of the <code>tx_json</code>.</li>
+<li><code>tooBusy</code> - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.</li>
+<li><code>noPath</code> - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.</li>
+</ul>
+<!-- rippled release notes links -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="rippled-api.html"><i class="fa fa-angle-double-left" aria-hidden="true"></i> rippled API</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_14">
+                <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_14" aria-expanded="true" aria-controls="sidenav_collapse_14">&nbsp;</a>
+                <a class="sidenav_cat_title" href="api-conventions.html">API Conventions</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_14" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_14">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                        <li><a class="nosubcat-page" href="basic-data-types.html">Basic Data Types</a></li>
+                        <li><a class="nosubcat-page" href="base58-encodings.html">base58 Encodings</a></li>
+                        <li><a class="nosubcat-page" href="currency-formats.html">Currency Formats</a></li>
+                        <li><a class="nosubcat-page" href="error-formatting.html">Error Formatting</a></li>
+                        <li><a class="nosubcat-page" href="markers-and-pagination.html">Markers and Pagination</a></li>
+                        <li><a class="nosubcat-page" href="modifying-the-ledger.html">Modifying the Ledger</a></li>
+                        <li><a class="nosubcat-page" href="request-formatting.html">Request Formatting</a></li>
+                        <li><a class="nosubcat-page" href="response-formatting.html">Response Formatting</a></li>
+                        <li><a class="nosubcat-page" href="rippled-server-states.html">rippled Server States</a></li>
+                        <li><a class="nosubcat-page" href="serialization.html">Serialization Format</a></li>
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse14 -->
+
+            </div><!-- /.panel -->
+            <div class="card active">
+              <div class="card-header" role="tab" id="sidenav_cat_head_15">
+                <h5 class="card-title">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_15" aria-expanded="true" aria-controls="sidenav_collapse_15">&nbsp;</a>
+                <a class="sidenav_cat_title active-parent" href="public-rippled-methods.html">Public rippled Methods</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_15" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_15">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                        <li><a class="subcat-title" href="account-methods.html">Account Methods</a></li>
+
+                            <li><a class="subpage" href="account_channels.html">account_channels</a></li>
+                            <li><a class="subpage" href="account_currencies.html">account_currencies</a></li>
+                            <li><a class="subpage" href="account_info.html">account_info</a></li>
+                            <li><a class="subpage" href="account_lines.html">account_lines</a></li>
+                            <li><a class="subpage" href="account_objects.html">account_objects</a></li>
+                            <li><a class="subpage" href="account_offers.html">account_offers</a></li>
+                            <li><a class="subpage" href="account_tx.html">account_tx</a></li>
+                            <li><a class="subpage" href="gateway_balances.html">gateway_balances</a></li>
+                            <li><a class="subpage" href="noripple_check.html">noripple_check</a></li>
+
+                        <li><a class="subcat-title" href="ledger-methods.html">Ledger Methods</a></li>
+
+                            <li><a class="subpage" href="ledger.html">ledger</a></li>
+                            <li><a class="subpage" href="ledger_closed.html">ledger_closed</a></li>
+                            <li><a class="subpage" href="ledger_current.html">ledger_current</a></li>
+                            <li><a class="subpage" href="ledger_data.html">ledger_data</a></li>
+                            <li><a class="subpage" href="ledger_entry.html">ledger_entry</a></li>
+
+                        <li><a class="subcat-title active-parent" href="transaction-methods.html">Transaction Methods</a></li>
+
+                            <li><a class="active subpage" href="#main_content_body">sign</a></li>
+                            <li><a class="subpage" href="sign_for.html">sign_for</a></li>
+                            <li><a class="subpage" href="submit.html">submit</a></li>
+                            <li><a class="subpage" href="submit_multisigned.html">submit_multisigned</a></li>
+                            <li><a class="subpage" href="transaction_entry.html">transaction_entry</a></li>
+                            <li><a class="subpage" href="tx.html">tx</a></li>
+                            <li><a class="subpage" href="tx_history.html">tx_history</a></li>
+
+                        <li><a class="subcat-title" href="path-and-order-book-methods.html">Path and Order Book Methods</a></li>
+
+                            <li><a class="subpage" href="book_offers.html">book_offers</a></li>
+                            <li><a class="subpage" href="deposit_authorized.html">deposit_authorized</a></li>
+                            <li><a class="subpage" href="path_find.html">path_find</a></li>
+                            <li><a class="subpage" href="ripple_path_find.html">ripple_path_find</a></li>
+
+                        <li><a class="subcat-title" href="payment-channel-methods.html">Payment Channel Methods</a></li>
+
+                            <li><a class="subpage" href="channel_authorize.html">channel_authorize</a></li>
+                            <li><a class="subpage" href="channel_verify.html">channel_verify</a></li>
+
+                        <li><a class="subcat-title" href="subscription-methods.html">Subscription Methods</a></li>
+
+                            <li><a class="subpage" href="subscribe.html">subscribe</a></li>
+                            <li><a class="subpage" href="unsubscribe.html">unsubscribe</a></li>
+
+                        <li><a class="subcat-title" href="server-info-methods.html">Server Info Methods</a></li>
+
+                            <li><a class="subpage" href="fee.html">fee</a></li>
+                            <li><a class="subpage" href="server_info.html">server_info</a></li>
+                            <li><a class="subpage" href="server_state.html">server_state</a></li>
+
+                        <li><a class="subcat-title" href="utility-methods.html">Utility Methods</a></li>
+
+                            <li><a class="subpage" href="json.html">json</a></li>
+                            <li><a class="subpage" href="ping.html">ping</a></li>
+                            <li><a class="subpage" href="random.html">random</a></li>
+
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse15 -->
+
+            </div><!-- /.panel -->
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_16">
+                <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_16" aria-expanded="true" aria-controls="sidenav_collapse_16">&nbsp;</a>
+                <a class="sidenav_cat_title" href="admin-rippled-methods.html">Admin rippled Methods</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_16" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_16">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                        <li><a class="subcat-title" href="key-generation-methods.html">Key Generation Methods</a></li>
+
+                            <li><a class="subpage" href="validation_create.html">validation_create</a></li>
+                            <li><a class="subpage" href="wallet_propose.html">wallet_propose</a></li>
+
+                        <li><a class="subcat-title" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a></li>
+
+                            <li><a class="subpage" href="can_delete.html">can_delete</a></li>
+                            <li><a class="subpage" href="crawl_shards.html">crawl_shards</a></li>
+                            <li><a class="subpage" href="download_shard.html">download_shard</a></li>
+                            <li><a class="subpage" href="ledger_cleaner.html">ledger_cleaner</a></li>
+                            <li><a class="subpage" href="ledger_request.html">ledger_request</a></li>
+                            <li><a class="subpage" href="log_level.html">log_level</a></li>
+                            <li><a class="subpage" href="logrotate.html">logrotate</a></li>
+
+                        <li><a class="subcat-title" href="server-control-methods.html">Server Control Methods</a></li>
+
+                            <li><a class="subpage" href="connect.html">connect</a></li>
+                            <li><a class="subpage" href="ledger_accept.html">ledger_accept</a></li>
+                            <li><a class="subpage" href="stop.html">stop</a></li>
+                            <li><a class="subpage" href="validation_seed.html">validation_seed</a></li>
+
+                        <li><a class="subcat-title" href="status-and-debugging-methods.html">Status and Debugging Methods</a></li>
+
+                            <li><a class="subpage" href="consensus_info.html">consensus_info</a></li>
+                            <li><a class="subpage" href="feature.html">feature</a></li>
+                            <li><a class="subpage" href="fetch_info.html">fetch_info</a></li>
+                            <li><a class="subpage" href="get_counts.html">get_counts</a></li>
+                            <li><a class="subpage" href="peers.html">peers</a></li>
+                            <li><a class="subpage" href="print.html">print</a></li>
+                            <li><a class="subpage" href="validator_list_sites.html">validator_list_sites</a></li>
+                            <li><a class="subpage" href="validators.html">validators</a></li>
+
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse16 -->
+
+            </div><!-- /.panel -->
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_17">
+                <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_17" aria-expanded="true" aria-controls="sidenav_collapse_17">&nbsp;</a>
+                <a class="sidenav_cat_title" href="ledger-data-formats.html">Ledger Data Formats</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_17" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_17">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                        <li><a class="nosubcat-page" href="ledger-header.html">Ledger Header</a></li>
+                        <li><a class="nosubcat-page" href="ledger-object-ids.html">Ledger Object IDs</a></li>
+                        <li><a class="subcat-title" href="ledger-object-types.html">Ledger Object Types</a></li>
+
+                            <li><a class="subpage" href="accountroot.html">AccountRoot</a></li>
+                            <li><a class="subpage" href="amendments-object.html">Amendments</a></li>
+                            <li><a class="subpage" href="check.html">Check <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                            <li><a class="subpage" href="depositpreauth-object.html">DepositPreauth</a></li>
+                            <li><a class="subpage" href="directorynode.html">DirectoryNode</a></li>
+                            <li><a class="subpage" href="escrow-object.html">Escrow</a></li>
+                            <li><a class="subpage" href="feesettings.html">FeeSettings</a></li>
+                            <li><a class="subpage" href="ledgerhashes.html">LedgerHashes</a></li>
+                            <li><a class="subpage" href="offer.html">Offer</a></li>
+                            <li><a class="subpage" href="paychannel.html">PayChannel</a></li>
+                            <li><a class="subpage" href="ripplestate.html">RippleState</a></li>
+                            <li><a class="subpage" href="signerlist.html">SignerList</a></li>
+
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse17 -->
+
+            </div><!-- /.panel -->
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_18">
+                <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_18" aria-expanded="true" aria-controls="sidenav_collapse_18">&nbsp;</a>
+                <a class="sidenav_cat_title" href="transaction-formats.html">Transaction Formats</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_18" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_18">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                        <li><a class="nosubcat-page" href="transaction-common-fields.html">Transaction Common Fields</a></li>
+                        <li><a class="subcat-title" href="transaction-types.html">Transaction Types</a></li>
+
+                            <li><a class="subpage" href="accountset.html">AccountSet</a></li>
+                            <li><a class="subpage" href="checkcancel.html">CheckCancel <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                            <li><a class="subpage" href="checkcash.html">CheckCash <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                            <li><a class="subpage" href="checkcreate.html">CheckCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                            <li><a class="subpage" href="depositpreauth.html">DepositPreauth</a></li>
+                            <li><a class="subpage" href="escrowcancel.html">EscrowCancel</a></li>
+                            <li><a class="subpage" href="escrowcreate.html">EscrowCreate</a></li>
+                            <li><a class="subpage" href="escrowfinish.html">EscrowFinish</a></li>
+                            <li><a class="subpage" href="offercancel.html">OfferCancel</a></li>
+                            <li><a class="subpage" href="offercreate.html">OfferCreate</a></li>
+                            <li><a class="subpage" href="payment.html">Payment</a></li>
+                            <li><a class="subpage" href="paymentchannelclaim.html">PaymentChannelClaim</a></li>
+                            <li><a class="subpage" href="paymentchannelcreate.html">PaymentChannelCreate</a></li>
+                            <li><a class="subpage" href="paymentchannelfund.html">PaymentChannelFund</a></li>
+                            <li><a class="subpage" href="setregularkey.html">SetRegularKey</a></li>
+                            <li><a class="subpage" href="signerlistset.html">SignerListSet</a></li>
+                            <li><a class="subpage" href="trustset.html">TrustSet</a></li>
+
+                        <li><a class="subcat-title" href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
+
+                            <li><a class="subpage" href="enableamendment.html">EnableAmendment</a></li>
+                            <li><a class="subpage" href="setfee.html">SetFee</a></li>
+
+                        <li><a class="subcat-title" href="transaction-results.html">Transaction Results</a></li>
+
+                            <li><a class="subpage" href="tec-codes.html">tec Codes</a></li>
+                            <li><a class="subpage" href="tef-codes.html">tef Codes</a></li>
+                            <li><a class="subpage" href="tel-codes.html">tel Codes</a></li>
+                            <li><a class="subpage" href="tem-codes.html">tem Codes</a></li>
+                            <li><a class="subpage" href="ter-codes.html">ter Codes</a></li>
+                            <li><a class="subpage" href="tes-success.html">tes Success</a></li>
+
+                        <li><a class="nosubcat-page" href="transaction-metadata.html">Transaction Metadata</a></li>
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse18 -->
+
+            </div><!-- /.panel -->
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_19">
+                <h5 class="card-title">
+                <a class="sidenav_cat_title" href="commandline-usage.html">Commandline Usage</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_19" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_19">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse19 -->
+
+            </div><!-- /.panel -->
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_20">
+                <h5 class="card-title">
+                <a class="sidenav_cat_title" href="peer-crawler.html">Peer Crawler</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_20" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_20">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse20 -->
+
+            </div><!-- /.panel -->
+    </div><!-- /#sidenav -->
+
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="ripple-footer" role="contentinfo">
+  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
+      <div class="row">
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="docs.html">Docs</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="concepts.html">Concepts</a></li>
+        <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+        <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="use-cases.html">Use Cases</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+      <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+      <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+      <li class="level-1"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="dev-tools.html">Dev Tools</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+      <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+      <li class="level-1"><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+
+      <li class="level-1"><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="news.html">News</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
+
+
+  <li class="level-1"><a href="/blog/">Ripple Dev Blog</a></li>
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
+              <div class="children-display">
+                <ul>
+                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/.foot-nav-col -->
+      </div><!--/.row-->
+  </section>
+
+  <section class="container-fluid pb-5 px-5">
+
+    <div class="build-disclaimer">
+      <p>
+        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
+      </p>
+      <p>
+        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
+      </p>
+    </div>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

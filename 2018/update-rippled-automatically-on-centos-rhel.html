@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Update Automatically on CentOS/Red Hat - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#1db4ff">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1db4ff">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <!-- <link href="assets/css/ripple.css" rel="stylesheet" /> -->
+    <link href="assets/vendor/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+    </script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarHolder">
+      <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+<div class="github-edit-wrap">
+  <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/installation/update-rippled-automatically-on-centos-rhel.md" target="_blank" class="github-edit">Edit on GitHub</a>
+</div><!-- /.github-edit -->    </div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="page-toc-wrapper">
+    <p class="in-this-doc card-header">In this document:</p>
+    <ul class="dev_nav_sidebar card-body" id="dactyl_toc_sidebar">
+      <li class="level-1"><a href="#update-automatically-on-centosred-hat">Update Automatically on CentOS/Red Hat</a></li>
+
+    </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3 p-0 " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-3" aria-label="breacrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Docs</a></li>
+    <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
+    <li class="active breadcrumb-item"><a href="manage-the-rippled-server.html">Manage the rippled Server</a></li>
+    <li class="active breadcrumb-item"><a href="install-rippled.html">Installation</a></li>
+    <li class="active breadcrumb-item">Update Automatically on CentOS/Red Hat</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="p-3">
+    <div class="content">
+        <h1 id="update-automatically-on-centosred-hat">Update Automatically on CentOS/Red Hat</h1>
+<p>On CentOS and Red Hat Enterprise Linux, you can set up <code>rippled</code> to automatically upgrade to the latest version with a one-time <code>cron</code> configuration. Ripple recommends enabling automatic updates if possible.</p>
+<p>These instructions assume you have already <a href="install-rippled-on-centos-rhel-with-yum.html">installed <code>rippled</code> from the <code>yum</code> repository</a>.</p>
+<p>To set up automatic updates, complete the following steps:</p>
+<ol>
+<li>
+<p>Check that <code>/opt/ripple/bin/update-rippled.sh</code> exists. If it does not, <a href="update-rippled-manually-on-centos-rhel.html">update manually</a>.</p>
+</li>
+<li>
+<p>Install <code>crond</code>:</p>
+<div class="codehilite"><pre><span></span><code>$ sudo yum install cronie
+</code></pre></div>
+</li>
+<li>
+<p>Open the crontab file for editing</p>
+<div class="codehilite"><pre><span></span><code>$ sudo crontab -e
+</code></pre></div>
+</li>
+<li>
+<p>Add the following to the crontab file. Be sure to add a blank line at the end of the file.</p>
+<div class="codehilite"><pre><span></span><code>RANDOM_DELAY=59
+0 * * * * /opt/ripple/bin/update-rippled.sh
+</code></pre></div>
+</li>
+</ol>
+<p>The script updates the installed <code>rippled</code> package within an hour of each new release. To reduce the chance of outages from all servers updating simultaneously, the script delays the update for a random number of minutes, up to 59.</p>
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="tutorials.html"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Tutorials</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_2">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">&nbsp;</a>
+                <a class="sidenav_cat_title" href="get-started.html">Get Started</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with the rippled API</a></li>
+                      <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
+                      <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">RippleAPI Beginners Guide</a></li>
+                      <li><a class="nosubcat-page" href="look-up-transaction-results.html">Look Up Transaction Results</a></li>
+                      <li><a class="nosubcat-page" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse2 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_8">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">&nbsp;</a>
+                <a class="sidenav_cat_title" href="use-simple-xrp-payments.html">Use Simple XRP Payments</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
+                      <li><a class="nosubcat-page" href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+                      <li><a class="nosubcat-page" href="cancel-or-skip-a-transaction.html">Cancel or Skip a Transaction</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse8 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_12">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_12" aria-expanded="true" aria-controls="sidenav_collapse_12">&nbsp;</a>
+                <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_12" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_12">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
+                      <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse12 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_17">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_17" aria-expanded="true" aria-controls="sidenav_collapse_17">&nbsp;</a>
+                <a class="sidenav_cat_title" href="use-complex-payment-types.html">Use Complex Payment Types</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_17" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_17">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
+
+                          <li><a class="subpage" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a></li>
+                          <li><a class="subpage" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a></li>
+                          <li><a class="subpage" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a></li>
+                          <li><a class="subpage" href="look-up-escrows.html">Look up escrows</a></li>
+
+                      <li><a class="nosubcat-page" href="use-payment-channels.html">Use Payment Channels</a></li>
+                      <li><a class="subcat-title" href="use-checks.html">Use Checks <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+
+                          <li><a class="subpage" href="send-a-check.html">Send a Check <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cancel-a-check.html">Cancel a Check <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="look-up-checks-by-sender.html">Look Up Checks by Sender <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse17 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_31">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_31" aria-expanded="true" aria-controls="sidenav_collapse_31">&nbsp;</a>
+                <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_31" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_31">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
+                      <li><a class="nosubcat-page" href="list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts</a></li>
+                      <li><a class="nosubcat-page" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse31 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card active">
+            <div class="card-header" role="tab" id="sidenav_cat_head_35">
+              <h5 class="card-title">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_35" aria-expanded="true" aria-controls="sidenav_collapse_35">&nbsp;</a>
+                <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">Manage the rippled Server</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_35" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_35">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title active-parent" href="install-rippled.html">Install rippled</a></li>
+
+                          <li><a class="subpage" href="system-requirements.html">System Requirements</a></li>
+                          <li><a class="subpage" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a></li>
+                          <li><a class="subpage" href="install-rippled-on-ubuntu-with-alien.html">Install on Ubuntu with Alien</a></li>
+                          <li><a class="active subpage" href="#main_content_body">Update Automatically on CentOS/Red Hat</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu</a></li>
+                          <li><a class="subpage" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+                          <li><a class="subpage" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a></li>
+                          <li><a class="subpage" href="capacity-planning.html">Capacity Planning</a></li>
+
+                      <li><a class="subcat-title" href="configure-rippled.html">Configure rippled</a></li>
+
+                          <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
+                          <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to the XRP Test Net</a></li>
+                          <li><a class="subpage" href="cluster-rippled-servers.html">Cluster rippled Servers</a></li>
+                          <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
+                          <li><a class="subpage" href="configure-advisory-deletion.html">Configure Advisory Deletion</a></li>
+                          <li><a class="subpage" href="configure-history-sharding.html">Configure History Sharding</a></li>
+                          <li><a class="subpage" href="configure-full-history.html">Configure Full History</a></li>
+                          <li><a class="subpage" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a></li>
+                          <li><a class="subpage" href="enable-public-signing.html">Enable Public Signing</a></li>
+
+                      <li><a class="subcat-title" href="use-stand-alone-mode.html">Use rippled in Stand-Alone Mode</a></li>
+
+                          <li><a class="subpage" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a></li>
+
+                      <li><a class="subcat-title" href="troubleshoot-the-rippled-server.html">Troubleshooting rippled</a></li>
+
+                          <li><a class="subpage" href="diagnosing-problems.html">Diagnosing Problems with rippled</a></li>
+                          <li><a class="subpage" href="understanding-log-messages.html">Understanding Log Messages</a></li>
+                          <li><a class="subpage" href="server-wont-start.html">rippled Server Won't Start</a></li>
+                          <li><a class="subpage" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue</a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse35 -->
+
+          </div><!-- /.card -->
+
+    </div><!-- /#sidenav -->
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="ripple-footer" role="contentinfo">
+  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
+      <div class="row">
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="docs.html">Docs</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="concepts.html">Concepts</a></li>
+        <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+        <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="use-cases.html">Use Cases</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+      <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+      <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+      <li class="level-1"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="dev-tools.html">Dev Tools</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+      <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+      <li class="level-1"><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+
+      <li class="level-1"><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="news.html">News</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
+
+
+  <li class="level-1"><a href="/blog/">Ripple Dev Blog</a></li>
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
+              <div class="children-display">
+                <ul>
+                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/.foot-nav-col -->
+      </div><!--/.row-->
+  </section>
+
+  <section class="container-fluid pb-5 px-5">
+
+    <div class="build-disclaimer">
+      <p>
+        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
+      </p>
+      <p>
+        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
+      </p>
+    </div>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

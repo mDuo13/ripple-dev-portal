@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Known Amendments - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#1db4ff">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1db4ff">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <!-- <link href="assets/css/ripple.css" rel="stylesheet" /> -->
+    <link href="assets/vendor/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+    </script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarHolder">
+      <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+<div class="github-edit-wrap">
+  <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/news/known-amendments.md" target="_blank" class="github-edit">Edit on GitHub</a>
+</div><!-- /.github-edit -->    </div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="page-toc-wrapper">
+    <p class="in-this-doc card-header">In this document:</p>
+    <ul class="dev_nav_sidebar card-body" id="dactyl_toc_sidebar">
+      <li class="level-1"><a href="#known-amendments">Known Amendments</a></li>
+<li class="level-2"><a href="#checks">Checks</a></li>
+<li class="level-2"><a href="#cryptoconditions">CryptoConditions</a></li>
+<li class="level-2"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></li>
+<li class="level-2"><a href="#depositauth">DepositAuth</a></li>
+<li class="level-2"><a href="#depositpreauth">DepositPreauth</a></li>
+<li class="level-2"><a href="#enforceinvariants">EnforceInvariants</a></li>
+<li class="level-2"><a href="#escrow">Escrow</a></li>
+<li class="level-2"><a href="#feeescalation">FeeEscalation</a></li>
+<li class="level-2"><a href="#fix1201">fix1201</a></li>
+<li class="level-2"><a href="#fix1368">fix1368</a></li>
+<li class="level-2"><a href="#fix1373">fix1373</a></li>
+<li class="level-2"><a href="#fix1512">fix1512</a></li>
+<li class="level-2"><a href="#fix1513">fix1513</a></li>
+<li class="level-2"><a href="#fix1515">fix1515</a></li>
+<li class="level-2"><a href="#fix1523">fix1523</a></li>
+<li class="level-2"><a href="#fix1528">fix1528</a></li>
+<li class="level-2"><a href="#fix1543">fix1543</a></li>
+<li class="level-2"><a href="#fix1571">fix1571</a></li>
+<li class="level-2"><a href="#fix1578">fix1578</a></li>
+<li class="level-2"><a href="#fix1623">fix1623</a></li>
+<li class="level-2"><a href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></li>
+<li class="level-2"><a href="#flow">Flow</a></li>
+<li class="level-2"><a href="#flowcross">FlowCross</a></li>
+<li class="level-2"><a href="#flowv2">FlowV2</a></li>
+<li class="level-2"><a href="#multisign">MultiSign</a></li>
+<li class="level-2"><a href="#multisignreserve">MultiSignReserve</a></li>
+<li class="level-2"><a href="#ownerpaysfee">OwnerPaysFee</a></li>
+<li class="level-2"><a href="#paychan">PayChan</a></li>
+<li class="level-2"><a href="#shamapv2">SHAMapV2</a></li>
+<li class="level-2"><a href="#sorteddirectories">SortedDirectories</a></li>
+<li class="level-2"><a href="#suspay">SusPay</a></li>
+<li class="level-2"><a href="#tickets">Tickets</a></li>
+<li class="level-2"><a href="#ticksize">TickSize</a></li>
+<li class="level-2"><a href="#trustsetauth">TrustSetAuth</a></li>
+
+    </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3 p-0 " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-3" aria-label="breacrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="news.html">News</a></li>
+    <li class="active breadcrumb-item">Known Amendments</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="p-3">
+    <div class="content">
+        <h1 id="known-amendments">Known Amendments</h1>
+<p><a href="https://github.com/ripple/rippled/blob/master/src/ripple/protocol/impl/Feature.cpp" target="_blank" title="Source">[Source]<br/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>The following is a comprehensive list of all known amendments and their status on the production XRP Ledger:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Name</th>
+<th align="left">Introduced</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="#cryptoconditionssuite">CryptoConditionsSuite</a></td>
+<td align="left">TBD</td>
+<td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
+<td align="left">TBD</td>
+<td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#shamapv2">SHAMapV2</a></td>
+<td align="left">TBD</td>
+<td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#tickets">Tickets</a></td>
+<td align="left">TBD</td>
+<td align="left"><a title="In Development: TBD"><img alt="In Development: TBD" class="dactyl_badge" src="https://img.shields.io/badge/In%20Development-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#checks">Checks</a></td>
+<td align="left">v0.90.0</td>
+<td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#flowcross">FlowCross</a></td>
+<td align="left">v0.70.0</td>
+<td align="left"><a title="Planned: TBD"><img alt="Planned: TBD" class="dactyl_badge" src="https://img.shields.io/badge/Planned-TBD-lightgrey.svg"/></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#multisignreserve">MultiSignReserve</a></td>
+<td align="left">v1.2.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB" target="_blank" title="Enabled: 2019-04-17"><img alt="Enabled: 2019-04-17" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--04--17-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fixtakerdryofferremoval">fixTakerDryOfferRemoval</a></td>
+<td align="left">v1.2.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF" target="_blank" title="Enabled: 2019-04-02"><img alt="Enabled: 2019-04-02" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--04--02-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1578">fix1578</a></td>
+<td align="left">v1.2.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D" target="_blank" title="Enabled: 2019-03-23"><img alt="Enabled: 2019-03-23" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2019--03--23-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="depositpreauth.html">DepositPreauth</a></td>
+<td align="left">v1.1.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927" target="_blank" title="Enabled: 2018-10-09"><img alt="Enabled: 2018-10-09" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--10--09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1515">fix1515</a></td>
+<td align="left">v1.1.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF" target="_blank" title="Enabled: 2018-10-09"><img alt="Enabled: 2018-10-09" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--10--09-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1543">fix1543</a></td>
+<td align="left">v1.0.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6" target="_blank" title="Enabled: 2018-06-21"><img alt="Enabled: 2018-06-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--06--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1623">fix1623</a></td>
+<td align="left">v1.0.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB" target="_blank" title="Enabled: 2018-06-20"><img alt="Enabled: 2018-06-20" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--06--20-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1571">fix1571</a></td>
+<td align="left">v1.0.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC" target="_blank" title="Enabled: 2018-06-19"><img alt="Enabled: 2018-06-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--06--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#depositauth">DepositAuth</a></td>
+<td align="left">v0.90.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25" target="_blank" title="Enabled: 2018-04-06"><img alt="Enabled: 2018-04-06" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--04--06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1513">fix1513</a></td>
+<td align="left">v0.90.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B" target="_blank" title="Enabled: 2018-04-06"><img alt="Enabled: 2018-04-06" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2018--04--06-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1201">fix1201</a></td>
+<td align="left">v0.80.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1512">fix1512</a></td>
+<td align="left">v0.80.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1523">fix1523</a></td>
+<td align="left">v0.80.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1528">fix1528</a></td>
+<td align="left">v0.80.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#sorteddirectories">SortedDirectories</a></td>
+<td align="left">v0.80.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29" target="_blank" title="Enabled: 2017-11-14"><img alt="Enabled: 2017-11-14" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--11--14-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#enforceinvariants">EnforceInvariants</a></td>
+<td align="left">v0.70.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6" target="_blank" title="Enabled: 2017-07-07"><img alt="Enabled: 2017-07-07" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--07--07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1373">fix1373</a></td>
+<td align="left">v0.70.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399" target="_blank" title="Enabled: 2017-07-07"><img alt="Enabled: 2017-07-07" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--07--07-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#escrow">Escrow</a></td>
+<td align="left">v0.60.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515" target="_blank" title="Enabled: 2017-03-31"><img alt="Enabled: 2017-03-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--03--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#fix1368">fix1368</a></td>
+<td align="left">v0.60.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F" target="_blank" title="Enabled: 2017-03-31"><img alt="Enabled: 2017-03-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--03--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#paychan">PayChan</a></td>
+<td align="left">v0.33.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E" target="_blank" title="Enabled: 2017-03-31"><img alt="Enabled: 2017-03-31" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--03--31-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#ticksize">TickSize</a></td>
+<td align="left">v0.50.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E" target="_blank" title="Enabled: 2017-02-21"><img alt="Enabled: 2017-02-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--02--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#cryptoconditions">CryptoConditions</a></td>
+<td align="left">v0.50.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15" target="_blank" title="Enabled: 2017-01-03"><img alt="Enabled: 2017-01-03" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2017--01--03-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#flow">Flow</a></td>
+<td align="left">v0.33.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC" target="_blank" title="Enabled: 2016-10-21"><img alt="Enabled: 2016-10-21" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--10--21-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#trustsetauth">TrustSetAuth</a></td>
+<td align="left">v0.30.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF" target="_blank" title="Enabled: 2016-07-19"><img alt="Enabled: 2016-07-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--07--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#multisign">MultiSign</a></td>
+<td align="left">v0.31.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7" target="_blank" title="Enabled: 2016-06-27"><img alt="Enabled: 2016-06-27" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--06--27-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#feeescalation">FeeEscalation</a></td>
+<td align="left">v0.31.0</td>
+<td align="left"><a href="https://xrpcharts.ripple.com/#/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" target="_blank" title="Enabled: 2016-05-19"><img alt="Enabled: 2016-05-19" class="dactyl_badge" src="https://img.shields.io/badge/Enabled-2016--05--19-green.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#flowv2">FlowV2</a></td>
+<td align="left">v0.32.1</td>
+<td align="left"><a href="https://developers.ripple.com/blog/2016/flowv2-vetoed.html" target="_blank" title="Vetoed: Removed in v0.33.0"><img alt="Vetoed: Removed in v0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.33.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td align="left"><a href="#suspay">SusPay</a></td>
+<td align="left">v0.31.0</td>
+<td align="left"><a href="https://developers.ripple.com/blog/2017/ticksize-voting.html#upcoming-features" target="_blank" title="Vetoed: Removed in v0.60.0"><img alt="Vetoed: Removed in v0.60.0" class="dactyl_badge" src="https://img.shields.io/badge/Vetoed-Removed%20in%20v0.60.0-red.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+</tbody>
+</table>
+<p class="devportal-callout note"><strong>Note:</strong> In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.</p>
+<h2 id="checks">Checks</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">157D2D480E006395B76F948E3E07A45A05FE10230D88A7993C71F97AE4B1F2D1</td>
+<td align="left">Planned</td>
+</tr>
+</tbody>
+</table>
+<p>Introduces "Checks" to the XRP Ledger. Checks work similarly to personal paper checks. The sender signs a transaction to create a Check for a specific maximum amount and destination. Later, the destination can cash the Check to receive up to the specified amount. The actual movement of money only occurs when the Check is cashed, so cashing the Check may fail depending on the sender's current balance and the available liquidity. If cashing the Check fails, the Check object remains in the ledger so it may be successfully cashed later.</p>
+<p>The sender or the receiver can cancel a Check at any time before it is cashed. A Check can also have an expiration time, after which it cannot be cashed, and anyone can cancel it.</p>
+<p>Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash, and a new ledger object type, Check. Adds a new transaction result code, <code>tecEXPIRED</code>, which occurs when trying to create a Check whose expiration time is in the past.</p>
+<p>This amendment also changes the OfferCreate transaction to return <code>tecEXPIRED</code> when trying to create an Offer whose expiration time is in the past. Without this amendment, an OfferCreate whose expiration time is in the past returns <code>tesSUCCESS</code> but does not create or execute an Offer.</p>
+<h2 id="cryptoconditions">CryptoConditions</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1562511F573A19AE9BD103B5D6B9E01B3B46805AEC5D3C4805C902B514399146</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Although this amendment is enabled, it has no effect unless the <a href="#suspay">SusPay</a> amendment is also enabled. Ripple does not expect SusPay to become enabled. Instead, Ripple plans to incorporate crypto-conditions in the <a href="#escrow">Escrow</a> amendment.</p>
+<h2 id="cryptoconditionssuite">CryptoConditionsSuite</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">86E83A7D2ECE3AD5FA87AB2195AE015C950469ABF0B72EAACED318F74886AE90</td>
+<td align="left">In Development</td>
+</tr>
+</tbody>
+</table>
+<p>Implements several types of crypto-conditions from the official <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-03" target="_blank">crypto-conditions specification <i aria-hidden="true" class="fa fa-external-link"></i></a> for use in <a href="escrowcreate.html">EscrowCreate</a> and <a href="escrowfinish.html">EscrowFinish</a> transactions. Without this amendment, only the PREIMAGE-SHA-256 type is supported.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> This amendment is still <a href="https://github.com/ripple/rippled/pull/2170" target="_blank">in development <i aria-hidden="true" class="fa fa-external-link"></i></a>. The version from <code>rippled</code> v0.60.0 to present does not implement the full functionality.</p>
+<h2 id="depositauth">DepositAuth</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Adds a new account flag, <code>DepositAuth</code>, which lets an account strictly reject any incoming money from transactions sent by other accounts. Businesses can use this flag to comply with strict regulations that require due diligence before receiving money from any source.</p>
+<p>When an account enables this flag, Payment transactions fail if the account is the destination, regardless of whether the Payment would have delivered XRP or an issued currency. EscrowFinish and PaymentChannelClaim transactions fail if the account is the destination unless the destination account itself sends those transactions. If the <a href="#checks">Checks</a> amendment is enabled, the account can receive XRP or issued currencies by sending CheckCash transactions.</p>
+<p>As an exception, accounts with <code>DepositAuth</code> enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum <a href="reserves.html">account reserve</a>) if their current XRP balance is below the account reserve.</p>
+<p>Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the DisallowXRP flag, which is meant to be a non-binding advisory flag. (By not enforcing DisallowXRP in the ledger itself an account can still receive the necessary XRP to meet its <a href="reserves.html">account reserve</a> and pay <a href="transaction-cost.html">transaction costs</a>.)</p>
+<h2 id="depositpreauth">DepositPreauth</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">3CBC5C4E630A1B82380295CDA84B32B49DD066602E74E39B85EF64137FA65194</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Provides users of <a href="depositauth.html">deposit authorization</a> with a way to preauthorize specific senders so those senders are allowed to send payments directly.</p>
+<p>Adds a new transaction type, DepositPreauth for adding or removing preauthorization, and a DepositPreauth ledger object type for tracking preauthorizations from one account to another. Adds a JSON-RPC command, <code>deposit_authorized</code>, to query whether an account is authorized to send payments directly to another.</p>
+<p>Also changes the behavior of cross-currency Payments from an account to itself when that account requires deposit authorization. Without this amendment, those payments always fail with the code tecNO_PERMISSION. With this amendment, those payments succeed as they would with Deposit Authorization disabled.</p>
+<h2 id="enforceinvariants">EnforceInvariants</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">DC9CA96AEA1DCF83E527D1AFC916EFAF5D27388ECA4060A88817C1238CAEE0BF</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Adds sanity checks to transaction processing to ensure that certain conditions are always met. This provides an extra, independent layer of protection against bugs in transaction processing that could otherwise cause exploits and vulnerabilities in the XRP Ledger. Ripple expects to add more invariant checks in future versions of <code>rippled</code> without additional amendments.</p>
+<p>Introduces two new transaction error codes, <code>tecINVARIANT_FAILED</code> and <code>tefINVARIANT_FAILED</code>. Changes transaction processing to add the new checks.</p>
+<p>Examples of invariant checks:</p>
+<ul>
+<li>The total amount of XRP destroyed by a transaction must match the <a href="transaction-cost.html">transaction cost</a> exactly.</li>
+<li>XRP cannot be created.</li>
+<li><a href="accountroot.html"><code>AccountRoot</code> objects in the ledger</a> cannot be deleted. (See also: <a href="accounts.html#permanence-of-accounts">Permanence of Accounts</a>.)</li>
+<li><a href="ledger-object-types.html">An object in the ledger</a> cannot change its type. (The <code>LedgerEntryType</code> field is immutable.)</li>
+<li>There cannot be a trust line for XRP.</li>
+</ul>
+<h2 id="escrow">Escrow</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">07D43DCE529B15A10827E5E04943B496762F9A88E3268269D69C44BE49E21104</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Replaces the <a href="#suspay">SusPay</a> and <a href="#cryptoconditions">CryptoConditions</a> amendments.</p>
+<p>Provides "suspended payments" for XRP for escrow within the XRP Ledger, including support for <a href="https://tools.ietf.org/html/draft-thomas-crypto-conditions-02" target="_blank">Interledger Protocol Crypto-Conditions <i aria-hidden="true" class="fa fa-external-link"></i></a>. Creates a new ledger object type for suspended payments and new transaction types to create, execute, and cancel suspended payments.</p>
+<h2 id="feeescalation">FeeEscalation</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">42426C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Changes the way the <a href="transaction-cost.html">transaction cost</a> applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize --></p>
+<p>This amendment introduces a fixed-size transaction queue for transactions that were not able to be included in the previous consensus round. If the <code>rippled</code> servers in the consensus network are under heavy load, they queue the transactions with the lowest transaction cost for later ledgers. Each consensus round prioritizes transactions from the queue with the largest transaction cost (<code>Fee</code> value), and includes as many transactions as the consensus network can process. If the transaction queue is full, transactions drop from the queue entirely, starting with the ones that have the lowest transaction cost.</p>
+<p>While the consensus network is under heavy load, legitimate users can pay a higher transaction cost to make sure their transactions get processed. The situation persists until the entire backlog of cheap transactions is processed or discarded.</p>
+<p>A transaction remains in the queue until one of the following happens:</p>
+<ul>
+<li>It gets applied to a validated ledger (regardless of success or failure)</li>
+<li>It becomes invalid (for example, the <a href="transaction-common-fields.html"><code>LastLedgerSequence</code></a> causes it to expire)</li>
+<li>It gets dropped because there are too many transactions in the queue with a higher transaction cost.</li>
+</ul>
+<h2 id="fix1201">fix1201</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">B4D44CC3111ADD964E846FC57760C8B50FFCD5A82C86A72756F6B058DDDF96AD</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Correctly implements a limit on <a href="transfer-fees.html">transfer fees</a> to a 100% fee, represented by a maximum <code>TransferRate</code> value of <code>2000000000</code>. (A 100% fee in this case means you must send 2 units of the issued currency for every 1 unit you want to deliver.) Without the amendment, the effective limit is a <code>TransferRate</code> value of 2<sup>32</sup>-1, for approximately a 329% fee.</p>
+<p>With this amendment enabled, an <a href="accountset.html">AccountSet</a> transaction that attempts to set <code>TransferRate</code> higher than <code>2000000000</code> fails with the result code <code>temBAD_TRANSFER_RATE</code>. Any existing <code>TransferRate</code> which was set to a higher value under the previous rules continues to apply at the higher rate.</p>
+<h2 id="fix1368">fix1368</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">E2E6F2866106419B88C50045ACE96368558C345566AC8F2BDF5A5B5587F0E6FA</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes a minor bug in transaction processing that causes some payments to fail when they should be valid. Specifically, during payment processing, some payment steps that are expected to produce a certain amount of currency may produce a microscopically different amount, due to a loss of precision related to floating-point number representation. When this occurs, those payments fail because they cannot deliver the exact amount intended. The fix1368 amendment corrects transaction processing so payments can no longer fail in this manner.</p>
+<h2 id="fix1373">fix1373</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">42EEA5E28A97824821D4EF97081FE36A54E9593C6E4F20CBAE098C69D2E072DC</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes a minor bug in transaction processing that causes failures when trying to prepare certain <a href="paths.html">payment paths</a> for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.</p>
+<p>The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose <a href="paths.html#path-specifications">steps</a> include conflicting fields and paths that loop through the same object more than once.</p>
+<h2 id="fix1512">fix1512</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">6C92211186613F9647A89DFFBAB8F94C99D4C7E956D495270789128569177DA1</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes a bug in transaction processing that causes some invalid <a href="paymentchannelclaim.html">PaymentChannelClaim</a> transactions to fail with the wrong error code. Without this amendment, the transactions have a <code>tec</code>-class result code despite not being included in a ledger and therefore not paying the <a href="transaction-cost.html">transaction cost</a>.</p>
+<p>With this amendment, the transactions fail with a more appropriate result code, <code>temBAD_AMOUNT</code>, instead.</p>
+<h2 id="fix1513">fix1513</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">67A34F2CF55BFC0F93AACD5B281413176FEE195269FA6D95219A2DF738671172</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes a bug that resulted in transaction processing not using new <code>STAmountCalcSwitchovers</code> code when the <code>FeeEscalation</code> amendment is enabled.</p>
+<p>With this amendment, the new <code>STAmountCalcSwitchovers</code> code applies, which may cause slight changes to transaction processing due to calculation differences. Amounts may be rounded differently and offers may be executed in a different order as a result.</p>
+<h2 id="fix1515">fix1515</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">5D08145F0A4983F23AFFFF514E83FAD355C5ABFBB6CAB76FB5BC8519FF5F33BE</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Changes how Payment transactions consume offers to remove a minor difference in how payment processing and offer processing consume liquidity. (Also affects how OfferCreate transactions are processed if <a href="#flowcross">FlowCross</a> is enabled.)</p>
+<p>Without the amendment, payment processing gives up on using particular order books if the transaction would consume over 2000 offers at the same exchange rate. In this case, the payment does not use the liquidity from those offers, and does not consider that order book's remaining liquidity when attempting to complete the payment.</p>
+<p>With this amendment, if any transaction processes over 1000 offers at the same exchange rate, the transaction consumes the liquidity from the first 1000 offers, then does not consider that order book's remaining liquidity when attempting to complete the payment.</p>
+<p>In both cases, transaction processing can still complete by using liquidity from other paths or exchange rates.</p>
+<h2 id="fix1523">fix1523</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">B9E739B8296B4A1BB29BE990B17D66E21B62A300A909F25AC55C22D6C72E1F9D</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Adds tracking by destination account to <a href="escrow.html">escrows</a>. Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the <a href="account_objects.html">account_objects method</a>, excluding any pending escrows that were created before this amendment became enabled. This amendment also makes <a href="escrowcreate.html">EscrowCreate transactions</a> appear in the destination's transaction history, as viewed with the <a href="account_tx.html">account_tx method</a>.</p>
+<p>With this amendment, new escrows are added to the <a href="directorynode.html">owner directories</a> of both the sender and receiver. This amendment also adds a new <code>DestinationNode</code> field to <a href="escrow-object.html">Escrow ledger objects</a>, indicating which page of the destination's owner directory contains the escrow.</p>
+<h2 id="fix1528">fix1528</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1D3463A5891F9E589C5AE839FFAC4A917CE96197098A1EF22304E1BC5B98A454</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes a bug where validators could build consensus ledgers with different timestamps, potentially delaying the process of declaring validated ledgers. The circumstances for this to occur require precise timing, so validators are unlikely to encounter this bug outside of controlled test conditions.</p>
+<p>This amendment changes how validators negotiate the close time of the consensus ledger so that they cannot reach a consensus on ledger contents but build ledger versions with different timestamps.</p>
+<h2 id="fix1543">fix1543</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CA7C02118BA27599528543DFE77BA6838D1B0F43B447D4D7F53523CE6A0E9AC2</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Enforces reserved flag ranges on some transaction types that did not correctly enforce them already. Transactions of the affected types are now considered invalid if they enable undefined or unknown flags, or flags from the reserved range. (Transactions unaffected by this change already correctly enforce the same rules.)</p>
+<p>Without this amendment, transactions of certain types are considered valid even when they have undefined or reserved flags enabled.</p>
+<p>The affected transaction types are:</p>
+<ul>
+<li>Escrow transactions: <a href="escrowcancel.html">EscrowCancel</a>, <a href="escrowcreate.html">EscrowCreate</a>, and <a href="escrowfinish.html">EscrowFinish</a></li>
+<li>Payment Channel transactions: <a href="paymentchannelclaim.html">PaymentChannelClaim</a>, <a href="paymentchannelcreate.html">PaymentChannelCreate</a>, and <a href="paymentchannelfund.html">PaymentChannelFund</a></li>
+</ul>
+<h2 id="fix1571">fix1571</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">7117E2EC2DBF119CA55181D69819F1999ECEE1A0225A7FD2B9ED47940968479C</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Changes Escrow to fix the following issues:</p>
+<ul>
+<li>Changes the <a href="escrowcreate.html">EscrowCreate transaction</a> to require the <code>Condition</code> or <code>FinishAfter</code> field (or both). Escrows with neither <code>Condition</code> nor <code>FinishAfter</code> that were created before this amendment can be finished by anyone at any time before their <code>CancelAfter</code> time.</li>
+<li>Fixes a flaw that incorrectly prevents time-based Escrows from being finished in some circumstances.</li>
+</ul>
+<h2 id="fix1578">fix1578</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">FBD513F1B893AC765B78F250E6FFA6A11B573209D1842ADC787C850696741288</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Changes the result codes returned by two transaction types:</p>
+<ul>
+<li>Changes the <a href="offercreate.html">OfferCreate transaction</a> to return a new result code, <code>tecKILLED</code>, if the offer used the <code>tfFillOrKill</code> flag and was killed. Without this amendment, the offer is killed but the transaction result is <code>tesSUCCESS</code>.</li>
+<li>Changes the <a href="trustset.html">TrustSet transaction</a> to fail with <code>tecNO_PERMISSION</code> if it tries to enable the <a href="rippling.html#the-noripple-flag">NoRipple flag</a> but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the NoRipple flag, but the transaction result is <code>tesSUCCESS</code> nonetheless.</li>
+</ul>
+<h2 id="fix1623">fix1623</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">58BE9B5968C4DA7C59BA900961828B113E5490699B21877DEF9A31E9D0FE5D5F</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Adds delivered amount to metadata for CheckCash transactions cashed for a flexible amount. (Has no effect unless the <a href="#checks">Checks</a> amendment is enabled.)</p>
+<p>With this amendment enabled, transaction processing adds a <code>DeliveredAmount</code> field to the metadata of <a href="checkcash.html">CheckCash transactions</a> for a variable amount (using the <code>DeliverMin</code> field). This change is written to the ledger data, resulting in a different ledger hash than would result from processing the transaction without this amendment. It does not affect the actual amounts delivered. Additionally, with this amendment enabled, the <a href="tx.html">tx method</a> and <a href="account_tx.html">account_tx method</a> return a <a href="transaction-metadata.html#delivered-amount"><code>delivered_amount</code> field</a> for CheckCash transactions. (The <code>delivered_amount</code> field is calculated when you look up a transaction, and is not part of the data that is written to the ledger.)</p>
+<p>The fix1623 amendment has no effect on <a href="checkcash.html">CheckCash transactions</a> for a fixed amount (using the <code>Amount</code> field) or any other transaction types.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> In <code>rippled</code> 1.0.0, if the Checks amendment is enabled before the fix1623 amendment, the <code>delivered_amount</code> may display as "0" for variable-amount CheckCash transactions from before this amendment was enabled, even if the transaction delivered a nonzero amount. Ripple plans to enable fix1623 at the same time as the <a href="#checks">Checks</a> amendment on the production network, but this situation may be possible on <a href="parallel-networks.html">parallel networks</a>.</p>
+<h2 id="fixtakerdryofferremoval">fixTakerDryOfferRemoval</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2CD5286D8D687E98B41102BDD797198E81EA41DF7BD104E6561FEB104EFF2561</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes a bug in <a href="autobridging.html">auto-bridging</a> that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.</p>
+<p>Without this fix, the dry offer remains on the ledger and counts toward its owner's <a href="reserves.html#owner-reserves">reserve requirement</a> without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.</p>
+<p>With this amendment enabled, the XRP Ledger removes these dry offers when they're matched in auto-bridging.</p>
+<h2 id="flow">Flow</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">740352F2412A9909880C23A559FCECEDA3BE2126FED62FC7660D628A06927F11</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new version of the payment processing engine is intended to follow the same rules as the old one, but occasionally produces different results due to floating point rounding. This Amendment supersedes the <a href="https://developers.ripple.com/blog/2016/flowv2-vetoed.html" target="_blank">FlowV2 <i aria-hidden="true" class="fa fa-external-link"></i></a> amendment.</p>
+<p>The Flow Engine also makes it easier to improve and expand the payment engine with further Amendments.</p>
+<h2 id="flowcross">FlowCross</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">3012E8230864E95A58C60FD61430D7E1B4D3353195F2981DC12B0C7C0950FFAC</td>
+<td align="left">Planned</td>
+</tr>
+</tbody>
+</table>
+<p>Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange. Uses the updated code from the <a href="#flow">Flow</a> amendment to power offer crossing, so <a href="offercreate.html">OfferCreate transactions</a> and <a href="payment.html">Payment transactions</a> share more code. This has subtle differences in how offers are processed:</p>
+<ul>
+<li>Rounding is slightly different in some cases.</li>
+<li>Due to differences in rounding, some combinations of offers may be ranked higher or lower than by the old logic, and taken preferentially.</li>
+<li>The new logic may delete more or fewer offers than the old logic. (This includes cases caused by differences in rounding and offers that were incorrectly removed as unfunded by the old logic.)</li>
+</ul>
+<h2 id="flowv2">FlowV2</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">5CC22CFF2864B020BD79E0E1F048F63EF3594F95E650E43B3F837EF1DF5F4B26</td>
+<td align="left">Vetoed</td>
+</tr>
+</tbody>
+</table>
+<p>This is a previous version of the <a href="#flow">Flow</a> amendment. It was <a href="https://developers.ripple.com/blog/2016/flowv2-vetoed.html" target="_blank">rejected due to a bug <i aria-hidden="true" class="fa fa-external-link"></i></a> and removed in version 0.33.0.</p>
+<h2 id="multisign">MultiSign</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Introduces <a href="multi-signing.html">multi-signing</a> as a way to authorize transactions. Creates the <a href="signerlist.html"><code>SignerList</code> ledger object type</a> and the <a href="signerlistset.html"><code>SignerListSet</code> transaction type</a>. Adds the optional <code>Signers</code> field to all transaction types. Modifies some transaction result codes.</p>
+<p>This amendment allows addresses to have a list of signers who can authorize transactions from that address in a multi-signature. The list has a quorum and 1 to 8 weighted signers. This allows various configurations, such as "any 3-of-5" or "signature from A plus any other two signatures."</p>
+<p>Signers can be funded or unfunded addresses. Funded addresses in a signer list can sign using a regular key (if defined) or master key (unless disabled). Unfunded addresses can sign with a master key. Multi-signed transactions have the same permissions as transactions signed with a regular key.</p>
+<p>An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. The <code>tecMASTER_DISABLED</code> transaction result code is renamed <code>tecNO_ALTERNATIVE_KEY</code>. The <code>tecNO_REGULAR_KEY</code> transaction result is retired and replaced with <code>tecNO_ALTERNATIVE_KEY</code>. Additionally, this amendment adds the following new <a href="transaction-results.html">transaction result codes</a>:</p>
+<ul>
+<li><code>temBAD_SIGNER</code></li>
+<li><code>temBAD_QUORUM</code></li>
+<li><code>temBAD_WEIGHT</code></li>
+<li><code>tefBAD_SIGNATURE</code></li>
+<li><code>tefBAD_QUORUM</code></li>
+<li><code>tefNOT_MULTI_SIGNING</code></li>
+<li><code>tefBAD_AUTH_MASTER</code></li>
+</ul>
+<h2 id="multisignreserve">MultiSignReserve</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">586480873651E106F1D6339B0C4A8945BA705A777F3F4524626FF1FC07EFE41D</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Reduces the <a href="reserves.html#owner-reserves">owner reserve</a> counted against your XRP Ledger account when it owns a <a href="multi-signing.html">multi-signing</a> SignerList.</p>
+<p>Without this amendment, the owner reserve for a SignerList ranges from 15 to 50 XRP, depending on the number of signers in the list.</p>
+<p>With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a <a href="signerlistset.html">SignerListSet transaction</a> to replace the SignerList after this amendment has been enabled. (The replacement can be identical to the previous version.)</p>
+<h2 id="ownerpaysfee">OwnerPaysFee</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">9178256A980A86CF3D70D0260A7DA6402AAFE43632FDBCB88037978404188871</td>
+<td align="left">In Development</td>
+</tr>
+</tbody>
+</table>
+<p>Fixes an inconsistency in the way <a href="transfer-fees.html">transfer fees</a> are calculated between <a href="offercreate.html">OfferCreate</a> and <a href="payment.html">Payment</a> transaction types. Without this amendment, the holder of the issuances pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the issuances always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.</p>
+<p>This Amendment requires the <a href="#flow">Flow Amendment</a> to be enabled.</p>
+<p class="devportal-callout note"><strong>Note:</strong> An incomplete version of this amendment was introduced in v0.33.0 and removed in v0.80.0. (It was never enabled.) Ripple plans to re-add the amendment when the code is stable enough.</p>
+<h2 id="paychan">PayChan</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">08DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. Ripple expects this feature to be useful for the <a href="https://interledger.org/" target="_blank">Interledger Protocol <i aria-hidden="true" class="fa fa-external-link"></i></a>. One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the batched content of many small Claims later, as long as it is within the expiration.</p>
+<p>Creates three new transaction types: <a href="paymentchannelcreate.html">PaymentChannelCreate</a>, <a href="paymentchannelclaim.html">PaymentChannelClaim</a>, and <a href="paymentchannelfund.html">PaymentChannelFund</a>. Creates a new ledger object type, <a href="paychannel.html">PayChannel</a>. Defines an off-ledger data structure called a <code>Claim</code>, used in the ChannelClaim transaction. Creates new <code>rippled</code> API methods: <a href="channel_authorize.html"><code>channel_authorize</code></a> (creates a signed Claim), <a href="channel_verify.html"><code>channel_verify</code></a> (verifies a signed Claim), and <a href="account_channels.html"><code>account_channels</code></a> (lists Channels associated with an account).</p>
+<p>For more information, see the <a href="use-payment-channels.html">Payment Channels Tutorial</a>.</p>
+<h2 id="shamapv2">SHAMapV2</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C6970A8B603D8778783B61C0D445C23D1633CCFAEF0D43E7DBCD1521D34BD7C3</td>
+<td align="left">In Development</td>
+</tr>
+</tbody>
+</table>
+<p>Changes the hash tree structure that <code>rippled</code> uses to represent a ledger. The new structure is more compact and efficient than the previous version. This affects how ledger hashes are calculated, but has no other user-facing consequences.</p>
+<p>When this amendment is activated, the XRP Ledger will undergo a brief scheduled unavailability while the network calculates the changes to the hash tree structure. <!-- STYLE_OVERRIDE: will --></p>
+<h2 id="sorteddirectories">SortedDirectories</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CC5ABAE4F3EC92E94A59B1908C2BE82D2228B6485C00AFF8F22DF930D89C194E</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Sorts the entries in <a href="directorynode.html">DirectoryNode ledger objects</a> and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> Older versions of <code>rippled</code> that do not know about this amendment may crash when they encounter a DirectoryNode sorted by the new rules. To avoid this problem, <a href="install-rippled.html">upgrade</a> to <code>rippled</code> version 0.80.0 or later.</p>
+<h2 id="suspay">SusPay</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">DA1BD556B42D85EA9C84066D028D355B52416734D3283F85E216EA5DA6DB7E13</td>
+<td align="left">Vetoed</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment is currently enabled on the <a href="https://ripple.com/build/ripple-test-net/" target="_blank">Ripple Test Net <i aria-hidden="true" class="fa fa-external-link"></i></a>. In production, Ripple expects to enable similar functionality with the <a href="escrow-object.html">Escrow</a> amendment instead.</p>
+<h2 id="tickets">Tickets</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C1B8D934087225F509BEB5A8EC24447854713EE447D277F69545ABFA0E0FD490</td>
+<td align="left">In Development</td>
+</tr>
+</tbody>
+</table>
+<p>Introduces Tickets as a way to reserve a transaction sequence number for later execution. Creates the <code>Ticket</code> ledger object type and the transaction types <code>TicketCreate</code> and <code>TicketCancel</code>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> This amendment is still in development.</p>
+<h2 id="ticksize">TickSize</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">532651B4FD58DF8922A49BA101AB3E996E5BFBF95A913B3E392504863E63B164</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Changes the way <a href="offers.html#lifecycle-of-an-offer">Offers</a> are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.</p>
+<p>Introduces a <code>TickSize</code> field to accounts, which can be set with the <a href="accountset.html">AccountSet transaction type</a>. If a currency issuer sets the <code>TickSize</code> field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a <code>TickSize</code> set, that number of significant digits applies. When trading two currencies that have different <code>TickSize</code> values, whichever <code>TickSize</code> indicates the fewest significant digits applies. XRP does not have a <code>TickSize</code>.</p>
+<h2 id="trustsetauth">TrustSetAuth</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Amendment ID</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</td>
+<td align="left">Enabled</td>
+</tr>
+</tbody>
+</table>
+<p>Allows pre-authorization of accounting relationships (zero-balance trust lines) when using <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
+<p>With this amendment enabled, a <code>TrustSet</code> transaction with <a href="trustset.html#trustset-flags"><code>tfSetfAuth</code> enabled</a> can create a new <a href="ripplestate.html"><code>RippleState</code> ledger object</a> even if it keeps all the other values of the <code>RippleState</code> node in their default state. The new <code>RippleState</code> node has the <a href="ripplestate.html#ripplestate-flags"><code>lsfLowAuth</code> or <code>lsfHighAuth</code> flag</a> enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled <a href="accountroot.html#accountroot-flags"><code>lsfRequireAuth</code></a> by sending an <a href="accountset.html">AccountSet transaction</a> with the <a href="accountset.html#accountset-flags">asfRequireAuth flag enabled</a>.</p>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="news.html"><i class="fa fa-angle-double-left" aria-hidden="true"></i> News</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" aria-multiselectable="true">
+      <div class="card active">
+        <div class="card-body">
+          <ul class="sidebar_pagelist">
+            <li><a class="active nosubcat-page" href="known-amendments.html">Known Amendments</a></li>
+          <li><a class="nosubcat-page" href="/blog/">Ripple Dev Blog</a></li>
+          </ul>
+        </div><!-- /.card-body -->
+      </div><!-- /.card -->
+    </div><!-- /#sidenav -->
+
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="ripple-footer" role="contentinfo">
+  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
+      <div class="row">
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="docs.html">Docs</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="concepts.html">Concepts</a></li>
+        <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+        <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="use-cases.html">Use Cases</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+      <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+      <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+      <li class="level-1"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="dev-tools.html">Dev Tools</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+      <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+      <li class="level-1"><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+
+      <li class="level-1"><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="news.html">News</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
+
+
+  <li class="level-1"><a href="/blog/">Ripple Dev Blog</a></li>
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
+              <div class="children-display">
+                <ul>
+                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/.foot-nav-col -->
+      </div><!--/.row-->
+  </section>
+
+  <section class="container-fluid pb-5 px-5">
+
+    <div class="build-disclaimer">
+      <p>
+        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
+      </p>
+      <p>
+        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
+      </p>
+    </div>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

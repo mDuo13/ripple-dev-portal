@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Authorized Trust Lines - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="concept-freeze.html">Issued Currencies</a></li>
+              <li class="active crumb-current">Authorized Trust Lines</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/concept-authorized-trust-lines.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-xrp-ledger-intro.html">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a href="concept-cryptographic-keys.html">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a href="concept-reserves.html">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a href="concept-depositauth.html">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a class="active" href="#main_content_body">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a href="concept-demurrage.html">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a href="tutorial-checks-send.html">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a href="tutorial-build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">Authorized Trust Lines</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#authorized-trust-lines">Authorized Trust Lines</a></li>
+<li class="level-2"><a href="#requireauth-setting">RequireAuth Setting</a></li>
+<li class="level-3"><a href="#enabling-requireauth">Enabling RequireAuth</a></li>
+<li class="level-2"><a href="#checking-whether-an-account-has-requireauth-enabled">Checking Whether an Account Has RequireAuth Enabled</a></li>
+<li class="level-2"><a href="#authorizing-trust-lines">Authorizing Trust Lines</a></li>
+<li class="level-2"><a href="#checking-whether-trust-lines-are-authorized">Checking Whether Trust Lines Are Authorized</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="authorized-trust-lines">Authorized Trust Lines</h1>
+<p>The XRP Ledger's Authorized Trust Lines feature enables a currency issuer to limit who can hold its issued (non-XRP) currencies, so that unknown XRP Ledger addresses cannot hold those currencies. The Authorized Trust Lines feature only applies to issued currencies and has no effect on XRP.</p>
+<p>To use the Authorized Trust Lines feature, enable the RequireAuth flag on your issuing address. After doing so, your issuing address can send <a href="reference-transaction-format.html#trustset">TrustSet transactions</a> to authorize trust lines from other addresses. While RequireAuth is enabled, other addresses can only hold funds issued by your address if the trust line to your issuing address has been authorized.</p>
+<p>The transaction to authorize a trust line must be signed by the issuing address, which unfortunately means an increased risk exposure for that address. The process for sending funds into the XRP Ledger with RequireAuth enabled looks like the following:</p>
+<ol>
+<li>An issuing gateway publishes its issuing address to customers.</li>
+<li>A customer sends a <a href="reference-transaction-format.html#trustset">TrustSet transaction</a> to create a trust line from her XRP Ledger address to the gateway's issuing address. This indicates that she is willing to hold a specific currency issued by the gateway, up to a specific numeric limit.</li>
+<li>The gateway's issuing address sends a TrustSet transaction authorizing the customer's trust line.</li>
+</ol>
+<p class="devportal-callout tip"><strong>Tip:</strong> An issuing gateway can authorize a trust line preemptively (step 3), before the customer has created it. This creates a trust line with zero limit, so that the customer's TrustSet transaction (step 2) sets the limit on the pre-authorized trust line. <em>(Requires the <a href="reference-amendments.html#trustsetauth">TrustSetAuth amendment</a>, which has been enabled in the production XRP Ledger since 2016-07-19.)</em></p>
+<h2 id="requireauth-setting">RequireAuth Setting</h2>
+<p>The <code>RequireAuth</code> setting (<code>requireAuthorization</code> in <a href="reference-rippleapi.html">RippleAPI</a>) prevents all counterparties from holding balances issued by an address unless the issuing address has specifically approved a trust line with that counterparty for the currency in question.</p>
+<p>As a precaution, Ripple recommends that issuing gateways always enable <code>RequireAuth</code> on <a href="concept-issuing-and-operational-addresses.html">operational addresses and standby addresses</a>, and then never approve any trust lines to those addresses. This prevents operational addresses and standby addresses from issuing currency in the XRP Ledger even by accident. This is a purely precautionary measure, and does not stop those addresses from transferring issued currency balances created by the issuing address, as they are intended to do.</p>
+<p>To use the Authorized Trust Lines feature, an issuer must also enable <code>RequireAuth</code> on its issuing address. After doing so, the issuing address must <a href="#authorizing-trust-lines">submit a <code>TrustSet</code> transaction to approve each trust line</a> from a customer.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> An account can only enable <code>RequireAuth</code> if it owns no trust lines and no offers in the XRP Ledger, so you must decide whether or not to use it before you start doing business in the XRP Ledger.</p>
+<h3 id="enabling-requireauth">Enabling RequireAuth</h3>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send an <a href="reference-transaction-format.html#accountset">AccountSet transaction</a> to enable the RequireAuth flag: (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)</p>
+<p>Request:</p>
+<div class="codehilite"><pre><span></span><code>POST http://localhost:5005/
+{
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "Fee": "15000",
+                "Flags": 0,
+                "SetFlag": 2,
+                "TransactionType": "AccountSet"
+            }
+        }
+    ]
+}
+</code></pre></div>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
+<h2 id="checking-whether-an-account-has-requireauth-enabled">Checking Whether an Account Has RequireAuth Enabled</h2>
+<p>To see whether an account has the RequireAuth setting enabled, use the <a href="reference-rippled.html#account-info"><code>account_info</code> command</a> to look up the account. Compare the value of the <code>Flags</code> field (in the <code>result.account_data</code> object) with the <a href="reference-ledger-format.html#accountroot-flags">bitwise flags defined for an AccountRoot ledger object</a>.</p>
+<p>If the result of the <code>Flags</code> value bitwise-AND the <code>lsfRequireAuth</code> flag value (0x00040000) is nonzero, then the account has RequireAuth enabled. If the result is zero, then the account has RequireAuth disabled.</p>
+<h2 id="authorizing-trust-lines">Authorizing Trust Lines</h2>
+<p>If you are using the Authorized Trust Lines feature, others cannot hold balances you issue unless you first authorize their trust lines to you. If you issue more than one currency, you must separately authorize trust lines for each currency.</p>
+<p>To authorize a trust line, submit a <a href="reference-transaction-format.html#trustset">TrustSet transaction</a> from your issuing address, with the user to trust as the <code>issuer</code> of the <code>LimitAmount</code>. Leave the <code>value</code> (the amount to trust them for) as <strong>0</strong>, and enable the <a href="reference-transaction-format.html#trustset-flags">tfSetfAuth</a> flag for the transaction.</p>
+<p>The following is an example of using a locally-hosted <code>rippled</code>'s <a href="reference-rippled.html#submit"><code>submit</code> command</a> to send a TrustSet transaction authorizing the customer address rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn to hold issuances of USD from the issuing address rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW:</p>
+<p>Request:</p>
+<div class="codehilite"><pre><span></span><code>POST http://localhost:8088/
+{
+    "method": "submit",
+    "params": [
+        {
+            "secret": "sn3nxiW7v8KXzPzAqzyHXbSSKNuN9",
+            "tx_json": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "Fee": "15000",
+                "TransactionType": "TrustSet",
+                "LimitAmount": {
+                    "currency": "USD",
+                    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                    "value": 0
+                },
+                "Flags": 65536
+            }
+        }
+    ]
+}
+</code></pre></div>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
+<h2 id="checking-whether-trust-lines-are-authorized">Checking Whether Trust Lines Are Authorized</h2>
+<p>To see whether a trust line has been authorized, use the <a href="reference-rippled.html#account-lines"><code>account_lines</code> command</a> to look up the trust line. In the request, provide the customer's address in the <code>account</code> field and the issuer's address in the <code>peer</code> field.</p>
+<p>In the response's <code>result.lines</code> array, find the object whose <code>currency</code> field indicates that it represents a trust line for the currency you want. If that object has a <code>peer_authorized</code> field with the value <code>true</code>, then the issuer (the address you used as the request's <code>peer</code> field) has authorized the trust line.</p>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

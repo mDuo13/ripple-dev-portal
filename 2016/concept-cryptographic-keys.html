@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Cryptographic Keys - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="concept-consensus.html">Technical Overview</a></li>
+              <li class="active crumb-current">Cryptographic Keys</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/concept-cryptographic-keys.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-xrp-ledger-intro.html">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a class="active" href="#main_content_body">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a href="concept-reserves.html">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a href="concept-depositauth.html">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a href="concept-demurrage.html">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a href="tutorial-checks-send.html">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a href="tutorial-build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">Cryptographic Keys</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#cryptographic-keys">Cryptographic Keys</a></li>
+<li class="level-2"><a href="#generating-keys">Generating Keys</a></li>
+<li class="level-2"><a href="#master-key-pair">Master Key Pair</a></li>
+<li class="level-2"><a href="#regular-key-pair">Regular Key Pair</a></li>
+<li class="level-2"><a href="#signing-algorithms">Signing Algorithms</a></li>
+<li class="level-3"><a href="#future-algorithms">Future Algorithms</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="cryptographic-keys">Cryptographic Keys</h1>
+<p>In the XRP Ledger, a digital signature proves that a transaction is authorized to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger. <!-- STYLE_OVERRIDE: is authorized to --></p>
+<p>Every digital signature is based on a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported <a href="#signing-algorithms">cryptographic signing algorithms</a>. A key pair can be used as <a href="#master-key-pair">master key pair</a>, <a href="#regular-key-pair">regular key pair</a> or a member of a <a href="reference-transaction-format.html#multi-signing">signer list</a>, regardless of what algorithm was used to generate it.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> It is important to maintain proper security over your private keys. Digital signatures are the only way of verifying to the XRP Ledger that you are authorized to send a transaction, and there is no privileged administrator who can undo or reverse any transaction that has been applied to the ledger. If someone else knows the private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.</p>
+<h2 id="generating-keys">Generating Keys</h2>
+<p>You generate a key pair using the <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code></a> method. Here's a sample <code>wallet_propose</code> response:</p>
+<div class="codehilite"><pre><span></span><code>{
+  "result": {
+    "account_id": "rDGnaDqJczDAjrKHKdhGRJh2G7zJfZhj5q",
+    "key_type": "secp256k1",
+    "master_key": "COON WARN AWE LUCK TILE WIRE ELI SNUG TO COVE SHAM NAT",
+    "master_seed": "sstV9YX8k7yTRzxkRFAHmX7EVqMfX",
+    "master_seed_hex": "559EDD35041D3C11F9BBCED912F4DE6A",
+    "public_key": "aBQXEw1vZD3guCX3rHL8qy8ooDomdFuxZcWrbRZKZjdDkUoUjGVS",
+    "public_key_hex": "0351BDFB30E7924993C625687AE6127034C4A5EBA78A01E9C58B0C46E04E3A4948"
+  },
+  "status": "success",
+  "type": "response"
+}
+</code></pre></div>
+<p>The response contains a key pair (a private key and a public key, in various formats) as well as an <code>account_id</code>.</p>
+<p><strong>Private Key</strong></p>
+<p>The <code>master_key</code>, <code>master_seed</code>, and <code>master_seed_hex</code> are the private key in various formats, all of which can be used to sign transactions. Despite being prefixed with <code>master_</code>, these keys are not necessarily the master keys for an account. In this context, the <code>master_</code> prefix refers more to the keys' role as private keys. The <code>master_seed</code> is the master seed from which all other information about this account is derived.</p>
+<p><strong>Public Key</strong></p>
+<p>The <code>public_key</code> and <code>public_key_hex</code> are the public key in various formats, with the <code>public_key_hex</code> being the public key corresponding to the private key that signed the transaction. Both the <code>public_key</code> and <code>public_key_hex</code> are directly derived from the <code>master_seed</code>.</p>
+<p><strong>account_id</strong></p>
+<p>The <code>account_id</code> is <a href="concept-accounts.html#address-encoding">derived from the public key</a> and designates the <em>potential</em> for an account to be created in the XRP Ledger. It is important to know that while an <code>account_id</code> exists, no actual account exists in the XRP Ledger until the <code>account_id</code> receives its first XRP payment. In addition, the <code>account_id</code> can't send any transactions until after it's received a transaction that funds and creates the account.</p>
+<p>The <code>account_id</code> (without a funded account) can, however, be used as a <a href="#regular-key-pair">regular key</a> or a <a href="reference-transaction-format.html#multi-signing">member of a signer list</a> to authorize transactions for another account that does exist.</p>
+<p>To create a funded account stored in the ledger, the <code>account_id</code> must <a href="reference-transaction-format.html#creating-accounts">receive a <code>Payment</code> transaction</a> that provides enough XRP to meet the <a href="concept-reserves.html">reserve requirement</a>.</p>
+<p>For more information about the <code>wallet_propose</code> response, see <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code></a>.</p>
+<p>You can use this generated key pair in one of three ways: as a <a href="#master-key-pair">master key pair</a>, <a href="#regular-key-pair">regular key pair</a>, or <a href="reference-transaction-format.html#multi-signing">signer list member</a>.</p>
+<p><strong>Key Type</strong></p>
+<p>The field <code>key_type</code> indicates what <a href="#signing-algorithms">cryptographic signing algorithm</a> was used to generate this key pair. You can specify the <code>key_type</code> when you make the request to generate a key pair using the <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code> command</a>.</p>
+<h2 id="master-key-pair">Master Key Pair</h2>
+<p>The master key pair is composed of a private key and a public key. In addition to being able to sign all transactions that a regular key pair can, the master key pair's private key is the only key that can be used to perform the following actions:</p>
+<ul>
+<li>
+<p><a href="reference-transaction-format.html#accountset-flags">Disable the master public key</a>.</p>
+</li>
+<li>
+<p>Permanently give up the ability to <a href="concept-freeze.html#no-freeze">freeze</a>.</p>
+</li>
+<li>
+<p>Send a cost-0 <a href="concept-transaction-cost.html#key-reset-transaction">key reset transaction</a>.</p>
+</li>
+</ul>
+<p>The master key pair for an account is generated in the same <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code></a> response as the <code>account_id</code> of the account the master key pair is authorized to sign transactions for. Because the master key pair is generated in the same response, it is <a href="concept-accounts.html#address-encoding">intrinsically related</a> to the <code>account_id</code>, which is derived from the <code>public_key_hex</code>.</p>
+<p>This is as opposed to a regular key pair, which is also generated using the <code>wallet_propose</code> method, but which must be explicitly assigned as a regular key pair to an account. Because a regular key pair is explicitly assigned, it is not intrinsically related to the <code>account_id</code> of the account it is authorized to sign transactions for. For more information, see <a href="#regular-key-pair">Regular Key Pair</a>.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> A master key pair cannot be changed, but it can be disabled. This means that if your master private key is compromised, rather than change it, you must <a href="reference-transaction-format.html#accountset-flags">disable it</a>.</p>
+<p>Because a master key pair cannot be changed and can only disabled in the event of a compromise, this is a compelling reason to keep your master key pair offline and set up a regular key pair to sign transactions from your account instead.</p>
+<p>Keeping your master key pair offline means not putting your master private key somewhere malicious actors can get access to it. For example, this can mean keeping it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or in general, not within reach of a computer program that interacts with the internet at large. Ideally, a master key pair is used only on the most trusted of devices and for emergencies only, such as to change a regular key pair in the event of a possible or actual compromise.</p>
+<h2 id="regular-key-pair">Regular Key Pair</h2>
+<p>The XRP Ledger allows an account to authorize a secondary key pair, called a <em>regular key pair</em>, to sign future transactions, while keeping your master key pair offline. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your account and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)</p>
+<p>You generate a key pair to use as a regular key pair using the <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code></a> method. However, unlike with a <a href="#master-key-pair">master key pair</a>, which is generated alongside and intrinsically related to the <code>account_id</code> of an account it supports, you must explicitly create the relationship between a regular key pair and the account you want it to sign transactions for. You use the <a href="reference-transaction-format.html#setregularkey"><code>SetRegularKey</code></a> method to assign a regular key pair to an account.</p>
+<p>For a tutorial on assigning a regular key pair, see <a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a>.</p>
+<p>After you assign a regular key pair to an account, the account has two key pairs associated with it:</p>
+<ul>
+<li>A master key pair that is intrinsically related to the account's <code>account_id</code> and which you keep offline.</li>
+<li>A regular key pair that you've explicitly assigned to the account and which you use to sign transactions for the account.</li>
+</ul>
+<p>You can assign one regular key pair to an account and use it to sign all transactions, except for the ones reserved for the <a href="#master-key-pair">master key pair</a>.</p>
+<p>You can remove or change a regular key pair at any time. This means that if a regular private key is compromised (but the master private key is not), you can regain control of your account by simply removing or changing the regular key pair.</p>
+<p>For a tutorial on changing or removing a regular key pair, see <a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a>.</p>
+<h2 id="signing-algorithms">Signing Algorithms</h2>
+<p>Cryptographic key pairs are always tied to a specific signing algorithm, which defines the mathematical relationships between the private key and the public key. Cryptographic signing algorithms have the property that, given the current state of cryptographic techniques, it is "easy" to use a private key to calculate a matching public key, but it is effectively impossible to compute a matching private key by starting from a public key.</p>
+<p>The XRP Ledger supports the following cryptographic signing algorithms:</p>
+<table>
+<thead>
+<tr>
+<th>Key Type</th>
+<th>Algorithm</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>secp256k1</code></td>
+<td><a href="https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Algorithm-Validation-Program/documents/dss2/ecdsa2vs.pdf">ECDSA</a> using the elliptic curve <a href="https://en.bitcoin.it/wiki/Secp256k1">secp256k1</a></td>
+<td>This is the scheme used in Bitcoin. The XRP Ledger uses these key types by default.</td>
+</tr>
+<tr>
+<td><code>ed25519</code></td>
+<td><a href="https://tools.ietf.org/html/rfc8032">EdDSA</a> using the elliptic curve <a href="https://ed25519.cr.yp.to/">Ed25519</a></td>
+<td>This is a newer algorithm which has better performance and other convenient properties. Since Ed25519 public keys are one byte shorter than secp256k1 keys, <code>rippled</code> prefixes Ed25519 public keys with the byte <code>0xED</code> so both types of public key are 33 bytes.</td>
+</tr>
+</tbody>
+</table>
+<p>When you generate a key pair with the <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code> command</a>, you can specify the <code>key_type</code> to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the <code>key_type</code> when signing transactions.</p>
+<p>The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of <a href="concept-accounts.html#address-encoding">deriving an address</a> is the same for secp256k1 and Ed25519 key pairs.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Currently, you cannot sign <a href="tutorial-paychan.html">payment channel claims</a> with Ed25519 keys. This is a bug.</p>
+<h3 id="future-algorithms">Future Algorithms</h3>
+<p>In the future, Ripple expects to add new cryptographic signing algorithms to the XRP Ledger to keep up with developments in cryptography. For example, if it seems that quantum computers using <a href="https://en.wikipedia.org/wiki/Shor's_algorithm">Shor's algorithm</a> (or something similar) will soon be practical enough to break elliptic curve cryptography, Ripple can add a cryptographic signing algorithm that isn't easily broken. As of early 2018, such "quantum-resistant" signing algorithms are relatively impractical and quantum computers are even more impractical, so Ripple has no immediate plans to add any specific algorithms.</p>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

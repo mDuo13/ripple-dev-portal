@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Home - XRP Ledger Dev Portal (日本語)</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link href="assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal lang-ja no-sidebar">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+      <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="docs.html">ドキュメント</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">ユースケース</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">開発者用ツール</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">ブログ</a>
+        </li>
+      </ul><!-- /.navbar-nav -->
+<div class="github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/tool/template-home.html" target="_blank" class="github-edit">Edit</a>
+</div><!-- /.github-edit -->      <form class="navbar-form navbar-right" id="navbar-search" role="search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">サイトを検索</label>
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="サイトを検索">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+      <div class="nav navbar-nav language-selector">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            日本語
+          </button>
+          <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
+            <a class="dropdown-item" href="/index.html">English</a>
+            <a class="dropdown-item" href="/ja/index.html">日本語</a>
+          </div><!--/.dropdown-menu-->
+        </div><!--/.dropdown-->
+      </div><!--/.language-selector-->
+    </div><!--/#navbarHolder-->
+    <div class="menu-overlay"></div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+
+      <!-- main column -->
+      <main class="main col-md-12 order-md-3  landing" role="main" id="main_content_body">
+  <section class="container-fluid card-grid card-grid-2x2">
+      <div class="section-hero card justify-content-end">
+        <div>
+          <h1 class="display-4">価値のインターネットの実現へ</h1>
+          <div class="blurb">
+            <p><a href="#xrp_ledger_intro">XRP Ledger</a>は誰でも自由に使えるオープン技術です。</p>
+            <p>このサイトで提供されているツールと情報を活用して、XRP Ledgerを開発に統合したり、オープンソース開発に参加しましょう。</p>
+            <h5>Want more?</h5>
+            <p>XRP Ledgerのウェビナー、リリース情報、資料についての最新情報を得る</p>
+          </div><!--/.blurb-->
+          <a class="btn btn-outline-secondary external-link" href="https://goo.gl/forms/sHMFxU8dKiTUaltE3" target="_blank">サインアップする <i class="fa fa-external-link" aria-hidden="true"></i></a>
+        </div>
+      </div><!--/.section-hero-->
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="get-started-with-the-rippled-api.html">XRP Ledger APIの使用開始</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <p>XRP Ledgerの操作に使用できるAPIとライブラリを使い始めましょう。</p>
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <a href="get-started-with-the-rippled-api.html" class="btn btn-outline-secondary">開始しよう</a>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">01</div>
+      </div><!--/.card-->
+
+      <div class="card pr-0">
+        <div class="card-header">
+          <h3 class="card-title"><a href="concepts.html">XRP Ledgerの仕組みを理解する</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <div class="curated-links">
+            <ul>
+              <li><a href="intro-to-consensus.html">コンセンサスについて</a></li>
+              <li><a href="xrp.html">XRPについて</a></li>
+              <li><a href="payment-system-basics.html">支払いシステムの基本</a></li>
+              <li><a href="decentralized-exchange.html">分散型取引所</a></li>
+            </ul>
+          </div><!--/.curated-links-->
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <a href="concepts.html" class="btn btn-outline-secondary">全てのコンセプト</a>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">02</div>
+      </div><!--/.card-->
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><a href="docs.html">ドキュメントを読む</a></h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <div class="curated-links">
+            <ul>
+              <li><a href="references.html">API リファレンス</a></li>
+              <li><a href="concepts.html">コンセプト</a></li>
+              <li><a href="tutorials.html">チュートリアル</a></li>
+              <li><a href="docs.html#full-doc-index">全ドキュメントの目次</a></li>
+            </ul>
+          </div><!--/.curated-links-->
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <a href="docs.html" class="btn btn-outline-secondary">全ドキュメント</a>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">03</div>
+      </div><!--/.card-->
+
+      <div class="card pr-0">
+        <div class="card-header">
+          <h3 class="card-title">XRP Ledgerの動きを観察する</h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <p>XRP Ledger エクスプローラを使って、レジャーの動きやバリデータのステータスを見ることができます。</p>
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <div class="readmore">
+            <a href="https://livenet.xrpl.org/" class="btn btn-outline-secondary">XRP Ledger エクスプローラへ</a>
+          </div>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">04</div>
+      </div><!--/.card-->
+
+  </section><!--/"Above the fold" .card-grid-2x2-->
+
+  <section class="container-fluid card-grid">
+    <div class="card pl-0">
+      <div class="card-header">
+        <h2><a href="/blog/">XRP Ledger Blog</a></h2>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <div class="blurb">
+          <p>Visit the blog for the latest XRP Ledger info, including <a href="/blog/label/rippled-release-notes.html">Release Notes</a>, <a href="/blog/label/amendments.html">Amendments</a> to the XRP Ledger protocol, <a href="/blog/label/features.html">Feature articles</a> from XRP experts, and more.</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="/blog/" class="btn btn-outline-secondary">View Blog</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-fluid card-grid card-grid-2x4" id="xrp_ledger_intro">
+    <div class="card section-hero pl-0">
+      <div class="card-header">
+        <h2><a href="xrp-ledger-overview.html">XRP Ledgerとは？</a></h2>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p>XRP Ledgerは、ピアツーピア・サーバーのネットワーク機能を備えた分散型の暗号台帳です。XRP LedgerはXRPの土台となるものであり、世界中で使用されている様々な通貨の橋渡しをするために設計されたデジタル資産です。</p>
+      </div>
+    </div><!--/.section-hero-->
+
+    <a href="xrp-ledger-overview.html#決済のためのデジタル資産" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-digital-asset.svg" alt="(デジタル資産アイコン)" /></div>
+      <div class="card-footer"><h3>決済のためのデジタル資産</h3></div>
+      <div class="flag-vertical">01</div>
+    </a><!--/.card-->
+
+    <a href="xrp-ledger-overview.html#耐検閲性のある取引処理" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-censorship-resistant.svg" alt="(耐検閲性アイコン)" /></div>
+      <div class="card-footer"><h3>耐検閲性のある取引処理</h3></div>
+      <div class="flag-vertical">02</div>
+    </a><!--/.card-->
+
+    <a href="xrp-ledger-overview.html#高速で効率的なconsensusアルゴリズム" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-fast-algorithm.svg" alt="(Consensusアルゴリズムアイコン)" /></div>
+      <div class="card-footer"><h3>高速で効率的なConsensusアルゴリズム</h3></div>
+      <div class="flag-vertical">03</div>
+    </a><!--/.card-->
+
+    <a href="xrp-ledger-overview.html#限定されたxrp供給量" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-finite.svg" alt="(XRP供給量アイコン)" /></div>
+      <div class="card-footer"><h3>限定されたXRP供給量</h3></div>
+      <div class="flag-vertical">04</div>
+    </a><!--/.card-->
+
+    <a href="xrp-ledger-overview.html#責任あるソフトウェアガバナンス" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-responsible.svg" alt="(管理アイコン)" /></div>
+      <div class="card-footer"><h3>責任あるソフトウェアガバナンス</h3></div>
+      <div class="flag-vertical">05</div>
+    </a><!--/.card-->
+
+    <a href="xrp-ledger-overview.html#安全で適応性のある暗号技術" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-secure.svg" alt="(暗号技術アイコン)" /></div>
+      <div class="card-footer"><h3>安全で適応性のある暗号技術</h3></div>
+      <div class="flag-vertical">06</div>
+    </a><!--/.card-->
+
+    <a href="xrp-ledger-overview.html#スマートコントラクト用の最新機能" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-modern-smart-contracts.svg" alt="(スマートコントラクトのアイコン)" /></div>
+      <div class="card-footer"><h3>スマートコントラクト用の最新機能</h3></div>
+      <div class="flag-vertical">07</div>
+    </a><!--/.card-->
+
+    <a href="xrp-ledger-overview.html#台帳上の分散型取引所" class="card">
+      <div class="card-header"><img class="card-img-top" src="assets/img/icon-xrp-on-ledger-decentralized.svg" alt="(分散型取引所アイコン)" /></div>
+      <div class="card-footer"><h3>台帳上の分散型取引所</h3></div>
+      <div class="flag-vertical">08</div>
+    </a><!--/.card-->
+
+  </section><!--/#xrp_ledger_intro-->
+
+
+  <section class="container-fluid card-grid card-grid-2x2">
+    <div class="section-hero card pl-0">
+      <h2>XPR Ledgerを活用する</h2>
+      <div class="blurb">
+        <p>これらのチュートリアルを通して、XRP Ledgerの一般的な活用方法についてステップバイステップで理解することができます。</p>
+      </div>
+    </div><!--/.section-hero-->
+
+    <div class="card">
+      <div class="card-header">
+          <a href="list-xrp-in-your-exchange.html" class="header-link">
+            <img class="image-icon" src="assets/img/icon-xrp-list-xrp.svg" alt="「XRPを取引所にリスティングする」アイコン">
+            <h3 class="card-title">取引所でのXRPの上場</h3>
+        </a>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p>デジタルアセット取引所でXRPを上場するために必要な手順の概要を説明します。</p>
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <div class="readmore">
+          <a href="list-xrp-in-your-exchange.html" class="btn btn-outline-secondary">XRPを上場しよう</a>
+        </div>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">01</div>
+    </div><!--/.card-->
+
+    <div class="card">
+      <div class="card-header">
+        <a href="send-xrp.html" class="header-link">
+          <img class="image-icon" src="assets/img/icon-xrp-send-xrp.svg" alt="「XRPを送金する」アイコン">
+          <h3 class="card-title">XRPの送金</h3>
+        </a>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p>Test Netを使用してXRPの送金をテストします。</p>
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <div class="readmore">
+          <a href="send-xrp.html" class="btn btn-outline-secondary">XRPを送金しよう</a>
+        </div>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">02</div>
+    </div><!--/.card-->
+
+    <div class="card">
+      <div class="card-header">
+        <a href="manage-the-rippled-server.html" class="header-link">
+          <img class="image-icon" src="assets/img/icon-xrp-run-rippled.svg" alt="「rippledを実行する」アイコン">
+          <h3 class="card-title">rippledサーバの利用</h3>
+        </a>
+        </div><!--/.card-header-->
+      <div class="card-body">
+        <p>XRP Ledgerをパワーするサーバーをインストール、設定、管理しよう。</p>
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <div class="readmore">
+          <a href="manage-the-rippled-server.html" class="btn btn-outline-secondary">インストールしよう</a>
+        </div>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">03</div>
+    </div><!--/.card-->
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><a href="tutorials.html">他のチュートリアル</a></h3>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <div class="curated-links">
+          <ul>
+            <li><a href="assign-a-regular-key-pair.html">rippledサーバの利用</a></li>
+            <li><a href="set-up-multi-signing.html">マルチ署名の設定</a></li>
+            <li><a href="use-escrows.html">Escrowの使用</a></li>
+            <li><a href="use-payment-channels.html">Payment Channelの使用</a></li>
+          </ul>
+        </div><!--/.curated-links-->
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <a href="tutorials.html" class="btn btn-outline-secondary">全チュートリアル</a>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">04</div>
+    </div><!--/.card-->
+
+  </section>
+
+  <section class="container-fluid related-projects card-grid card-grid-2x1">
+    <div class="section-hero card pl-0">
+      <h2>関連プロジェクト</h2>
+      <div class="blurb">
+        <p>価値のインターネットの構築に取り組んでいるプロジェクトは多数存在します。これらのプロジェクトは、今日情報が自由に行き来できるようにお金も動く世界の実現のために、XRP Ledgerを活用しています。</p>
+      </div>
+    </div><!--/.section-hero-->
+
+
+    <div class="card interledger-link">
+      <div class="card-header">
+          <img class="project-icon" src="assets/img/ilp_logo.svg" alt="インターレジャーロゴ" />
+          <h3 class="card-title">インターレジャー</h3>
+      </div><!--/.card-header-->
+      <div class="card-body">
+        <p class="project-summary">インターレジャーは異なるレジャー（台帳）間で送金するためのオープンプロトコル・スイートです。</p>
+      </div><!--/.card-body-->
+      <div class="card-footer">
+        <a class="btn btn-outline-secondary external-link" href="https://interledger.org/" target="_blank">もっと知る <i class="fa fa-external-link" aria-hidden="true"></i></a>
+      </div><!--/.card-footer-->
+      <div class="flag-vertical">01</div>
+    </div><!--/.card-->
+
+    <div class="card xpring-link">
+        <div class="card-header">
+            <img class="project-icon" src="assets/img/xpring-logo.svg" alt="Xpringロゴ" />
+            <h3 class="card-title">Xpring</h3>
+        </div><!--/.card-header-->
+        <div class="card-body">
+          <p class="project-summary">Xpring（スプリング)は開発者向けのお金のオープンプラットフォームを構築するためのRippleのイニシアチブです。</p>
+        </div><!--/.card-body-->
+        <div class="card-footer">
+          <a class="btn btn-outline-secondary external-link" href="https://xpring.io/" target="_blank">もっと知る <i class="fa fa-external-link" aria-hidden="true"></i></a>
+        </div><!--/.card-footer-->
+        <div class="flag-vertical">02</div>
+      </div><!--/.card-->
+
+  </section><!-- / Related Projects -->
+      </main>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid card-grid card-grid-Nx1">
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="docs.html">ドキュメント</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+              <li class="level-1"><a href="concepts.html">コンセプト</a></li>
+          <li class="level-1"><a href="tutorials.html">チュートリアル</a></li>
+          <li class="level-1"><a href="references.html">リファレンス</a></li>
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">01</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="use-cases.html">ユースケース</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="run-a-rippled-validator.html">rippledバリデータの実行</a></li>
+
+        <li class="level-1"><a href="list-xrp-in-your-exchange.html">取引所でのXRPの上場</a></li>
+
+        <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-rippled.html">rippledへのコードの提供</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-ripple-lib.html">ripple-libへのコードの提供</a></li>
+
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">02</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="dev-tools.html">開発者用ツール</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+        <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+        <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+        <li class="level-1"><a href="xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a></li>
+
+        <li class="level-1"><a href="validator-domain-verifier.html">Domain Verification Checker</a></li>
+
+
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">03</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="https://ripple.com/" target="_blank">Ripple<i class="fa fa-external-link"></i></a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="children-display">
+              <ul>
+                <li class="level-1"><a href="https://ripple.com/company/careers/" target="_blank">Ripple 採用情報 <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://github.com/ripple/" target="_blank">GitHubでRipple <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP リソース <i class="fa fa-external-link"></i></a></li>
+              </ul>
+            </div>
+          </div><!--/.card-body-->
+          <div class="flag-vertical">04</div>
+        </div><!--/.card -->
+  </section>
+
+  <section class="container-fluid p-5 pl-sm-0">
+
+    <nav role="navigation" class="d-flex mb-3 language-selector">
+      <img class="language_selector_icon" src="assets/img/icon-language-selector.svg" width="32" height="40" alt="language selection icon" />
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/index.html">English</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/ja/index.html"><i class="fa fa-check-circle"></i> 日本語</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2019</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">ライセンス</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="このページの先頭へ">先頭へ</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbar',
+algoliaOptions: { 'facetFilters': ["lang:ja"] },
+debug: false
+});
+</script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Hub Pages'});
+</script>
+</body>
+</html>

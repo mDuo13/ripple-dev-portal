@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Build and Run rippled on macOS - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#1db4ff">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1db4ff">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <!-- <link href="assets/css/ripple.css" rel="stylesheet" /> -->
+    <link href="assets/vendor/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+    </script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarHolder">
+      <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+<div class="github-edit-wrap">
+  <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md" target="_blank" class="github-edit">Edit on GitHub</a>
+</div><!-- /.github-edit -->    </div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="page-toc-wrapper">
+    <p class="in-this-doc card-header">In this document:</p>
+    <ul class="dev_nav_sidebar card-body" id="dactyl_toc_sidebar">
+      <li class="level-1"><a href="#build-and-run-rippled-on-macos">Build and Run rippled on macOS</a></li>
+<li class="level-2"><a href="#next-steps">Next Steps</a></li>
+<li class="level-3"><a href="#additional-configuration">Additional Configuration</a></li>
+<li class="level-3"><a href="#updates">Updates</a></li>
+<li class="level-2"><a href="#see-also">See Also</a></li>
+
+    </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3 p-0 " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-3" aria-label="breacrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Docs</a></li>
+    <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
+    <li class="active breadcrumb-item"><a href="manage-the-rippled-server.html">Manage the rippled Server</a></li>
+    <li class="active breadcrumb-item"><a href="install-rippled.html">Installation</a></li>
+    <li class="active breadcrumb-item">Build and Run rippled on macOS</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="p-3">
+    <div class="content">
+        <h1 id="build-and-run-rippled-on-macos">Build and Run rippled on macOS</h1>
+<p>At this time, Ripple doesn't recommend using the macOS platform for <code>rippled</code> production use. For production, consider using the <a href="install-rippled-on-ubuntu-with-alien.html">Ubuntu platform</a>, which has received the highest level of quality assurance and testing.</p>
+<p>That said, macOS is suitable for many development and testing tasks. <code>rippled</code> has been tested for use with macOS up to 10.13 High Sierra.</p>
+<p>For development purposes Ripple recommends running <code>rippled</code> as your own user, not using <code>sudo</code>.</p>
+<ol>
+<li>
+<p>Install <a href="https://developer.apple.com/download/" target="_blank">Xcode <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+</li>
+<li>
+<p>Install Xcode command line tools.</p>
+<div class="codehilite"><pre><span></span><code>$ xcode-select --install
+</code></pre></div>
+</li>
+<li>
+<p>Install <a href="https://brew.sh/" target="_blank">Homebrew <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<div class="codehilite"><pre><span></span><code>$ ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
+</code></pre></div>
+</li>
+<li>
+<p>Update Homebrew.</p>
+<div class="codehilite"><pre><span></span><code>$ brew update
+</code></pre></div>
+</li>
+<li>
+<p>Use Homebrew to install dependencies.</p>
+<div class="codehilite"><pre><span></span><code>$ brew install git cmake pkg-config protobuf openssl ninja
+</code></pre></div>
+</li>
+<li>
+<p>Install Boost 1.67.0. <code>rippled</code> 1.2.0 is compatible with Boost 1.67. <!--#{ no boost@1.67 formula, so must manually compile and install. will eventually upgrade to boost 1.68, but needs testing first }# --></p>
+<ol>
+<li>
+<p>Download <a href="https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.bz2" target="_blank">Boost 1.67.0 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+</li>
+<li>
+<p>Extract it to a folder. Be sure to note the location.</p>
+</li>
+<li>
+<p>In a terminal, run:</p>
+<div class="codehilite"><pre><span></span><code>cd /LOCATION/OF/YOUR/BOOST/DIRECTORY
+./bootstrap.sh
+./b2 cxxflags="-std=c++14"
+</code></pre></div>
+</li>
+</ol>
+</li>
+<li>
+<p>Ensure that your <code>BOOST_ROOT</code> environment variable points to the directory created by the Boost installation. To find your Boost install directory, use <code>brew info boost</code>. Put this environment variable in your <code>.bash_profile</code> file so it's automatically set when you log in. For example:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">export</span> <span class="n">BOOST_ROOT</span><span class="o">=/</span><span class="n">Users</span><span class="o">/</span><span class="n">my_user</span><span class="o">/</span><span class="n">boost_1_67_0</span>
+</code></pre></div>
+</li>
+<li>
+<p>If you updated your <code>.bash_profile</code> file in the previous step, be sure to source it. For example:</p>
+<div class="codehilite"><pre><span></span><code>$ <span class="nb">source</span> .bash_profile
+</code></pre></div>
+</li>
+<li>
+<p>Clone the <code>rippled</code> source code into your desired location and access the <code>rippled</code> directory. To do this, you'll need to set up Git (installed earlier using Homebrew) and GitHub. For example, you'll need to create a GitHub account and set up your SSH key. For more information, see <a href="https://help.github.com/articles/set-up-git/" target="_blank">Set up git <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<div class="codehilite"><pre><span></span><code>$ git clone git@github.com:ripple/rippled.git
+$ <span class="nb">cd</span> rippled
+</code></pre></div>
+</li>
+<li>
+<p>By default, cloning puts you on the <code>develop</code> branch. Use this branch if you are doing development work and want the latest set of untested features.</p>
+<p>If you want the latest stable release, checkout the <code>master</code> branch.</p>
+<div class="codehilite"><pre><span></span><code>$ git checkout master
+</code></pre></div>
+<p>If you want to test out the latest release candidate, checkout the <code>release</code> branch:</p>
+<div class="codehilite"><pre><span></span><code>$ git checkout release
+</code></pre></div>
+<p>Or, you can checkout one of the tagged releases listed on <a href="https://github.com/ripple/rippled/releases" target="_blank">GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+</li>
+<li>
+<p>In the <code>rippled</code> directory you just cloned, create your build directory and access it. For example:</p>
+<div class="codehilite"><pre><span></span><code>$ mkdir my_build
+$ <span class="nb">cd</span> my_build
+</code></pre></div>
+</li>
+<li>
+<p>Build <code>rippled</code>. This could take about 5 minutes, depending on your hardware specs.</p>
+<div class="codehilite"><pre><span></span><code>$ cmake -G <span class="s2">"Unix Makefiles"</span> -DCMAKE_BUILD_TYPE<span class="o">=</span>Debug ..
+</code></pre></div>
+<p>You can set <code>CMAKE_BUILD_TYPE</code> to the <code>Debug</code> or <code>Release</code> build type. All four standard <a href="https://cmake.org/cmake/help/v3.0/variable/CMAKE_BUILD_TYPE.html" target="_blank"><code>CMAKE_BUILD_TYPE</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> values are supported.</p>
+</li>
+<li>
+<p>Run the build using CMake. This could take about 10 minutes, depending on your hardware specs.</p>
+<div class="codehilite"><pre><span></span><code>$ cmake --build . -- -j <span class="m">4</span>
+</code></pre></div>
+<p class="devportal-callout tip"><strong>Tip:</strong> This example uses a <code>-j</code> parameter set to <code>4</code>, which uses four processes to build in parallel. The best number of processes to use depends on how many CPU cores your hardware has available. Use <code>sysctl -n hw.ncpu</code> to get your CPU core count.</p>
+</li>
+<li>
+<p>Run unit tests built into the server executable. This could take about 5 minutes, depending on your hardware specs. (optional, but recommended) <!-- --></p>
+<div class="codehilite"><pre><span></span><code>$ ./rippled --unittest
+</code></pre></div>
+</li>
+<li>
+<p><code>rippled</code> requires the <code>rippled.cfg</code> configuration file to run. You can find an example config file, <code>rippled-example.cfg</code> in <code>rippled/cfg</code>. Make a copy and save it as <code>rippled.cfg</code> in a location that enables you to run <code>rippled</code> as a non-root user. Access the <code>rippled</code> directory and run:</p>
+<div class="codehilite"><pre><span></span><code>$ mkdir -p <span class="nv">$HOME</span>/.config/ripple
+$ cp cfg/rippled-example.cfg <span class="nv">$HOME</span>/.config/ripple/rippled.cfg
+</code></pre></div>
+</li>
+<li>
+<p>Edit <code>rippled.cfg</code> to set necessary file paths. The user you plan to run <code>rippled</code> as must have write permissions to all of the paths you specify here.</p>
+<ul>
+<li>
+<p>Set the <code>[node_db]</code> path to the location where you want to store the ledger database.</p>
+</li>
+<li>
+<p>Set the <code>[database_path]</code> to the location where you want to store other database data. (This includes an SQLite database with configuration data, and is typically one level above the <code>[node_db]</code> path field.)</p>
+</li>
+<li>
+<p>Set the <code>[debug_logfile]</code> to a path where <code>rippled</code> can write logging information.</p>
+</li>
+</ul>
+<p>These are the only configurations required for <code>rippled</code> to start up successfully. All other configuration is optional and can be tweaked after you have a working server. For more information, see <a href="#additional-configuration">Additional Configurations</a>.</p>
+</li>
+<li>
+<p><code>rippled</code> requires the <code>validators.txt</code> file to run. You can find an example validators file, <code>validators-example.txt</code>, in <code>rippled/cfg/</code>. Make a copy and save it as <code>validators.txt</code> in the same folder as your <code>rippled.cfg</code> file. Access the <code>rippled</code> directory and run:</p>
+<div class="codehilite"><pre><span></span><code>$ cp cfg/validators-example.txt <span class="nv">$HOME</span>/.config/ripple/validators.txt
+</code></pre></div>
+<p class="devportal-callout warning"><strong>Warning:</strong> Ripple has designed a decentralization plan with maximum safety in mind. During the transition, you should not modify the <code>validators.txt</code> file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.</p>
+</li>
+<li>
+<p>Access your build directory, <code>my_build</code> for example, and start the <code>rippled</code> service.</p>
+<div class="codehilite"><pre><span></span><code>$ ./rippled
+</code></pre></div>
+<p>Here's an excerpt of what you can expect to see in your terminal:</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">593738</span> <span class="nv">JobQueue</span>:<span class="nv">NFO</span> <span class="nv">Auto</span><span class="o">-</span><span class="nv">tuning</span> <span class="nv">to</span> <span class="mi">6</span> <span class="nv">validation</span><span class="o">/</span><span class="nv">transaction</span><span class="o">/</span><span class="nv">proposal</span> <span class="nv">threads</span>.
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">599634</span> <span class="nv">Amendments</span>:<span class="nv">DBG</span> <span class="nv">Amendment</span> <span class="mi">4</span><span class="nv">C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373</span> <span class="nv">is</span> <span class="nv">supported</span>.
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">599874</span> <span class="nv">Amendments</span>:<span class="nv">DBG</span> <span class="nv">Amendment</span> <span class="mi">6781</span><span class="nv">F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC</span> <span class="nv">is</span> <span class="nv">supported</span>.
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">599965</span> <span class="nv">Amendments</span>:<span class="nv">DBG</span> <span class="nv">Amendment</span> <span class="mi">42426</span><span class="nv">C4D4F1009EE67080A9B7965B44656D7714D104A72F9B4369F97ABF044EE</span> <span class="nv">is</span> <span class="nv">supported</span>.
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">600024</span> <span class="nv">Amendments</span>:<span class="nv">DBG</span> <span class="nv">Amendment</span> <span class="mi">08</span><span class="nv">DE7D96082187F6E6578530258C77FAABABE4C20474BDB82F04B021F1A68647</span> <span class="nv">is</span> <span class="nv">supported</span>.
+      ...
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">603201</span> <span class="nv">OrderBookDB</span>:<span class="nv">DBG</span> <span class="nv">Advancing</span> <span class="nv">from</span> <span class="mi">0</span> <span class="nv">to</span> <span class="mi">3</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">603291</span> <span class="nv">OrderBookDB</span>:<span class="nv">DBG</span> <span class="nv">OrderBookDB</span>::<span class="nv">update</span><span class="o">&gt;</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">603480</span> <span class="nv">OrderBookDB</span>:<span class="nv">DBG</span> <span class="nv">OrderBookDB</span>::<span class="nv">update</span><span class="o">&lt;</span> <span class="mi">0</span> <span class="nv">books</span> <span class="nv">found</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">649617</span> <span class="nv">ValidatorList</span>:<span class="nv">DBG</span> <span class="nv">Loading</span> <span class="nv">configured</span> <span class="nv">trusted</span> <span class="nv">validator</span> <span class="nv">list</span> <span class="nv">publisher</span> <span class="nv">keys</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">649709</span> <span class="nv">ValidatorList</span>:<span class="nv">DBG</span> <span class="nv">Loaded</span> <span class="mi">0</span> <span class="nv">keys</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">649798</span> <span class="nv">ValidatorList</span>:<span class="nv">DBG</span> <span class="nv">Loading</span> <span class="nv">configured</span> <span class="nv">validator</span> <span class="nv">keys</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">650213</span> <span class="nv">ValidatorList</span>:<span class="nv">DBG</span> <span class="nv">Loaded</span> <span class="mi">5</span> <span class="nv">entries</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">650266</span> <span class="nv">ValidatorSite</span>:<span class="nv">DBG</span> <span class="nv">Loading</span> <span class="nv">configured</span> <span class="nv">validator</span> <span class="nv">list</span> <span class="nv">sites</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">650319</span> <span class="nv">ValidatorSite</span>:<span class="nv">DBG</span> <span class="nv">Loaded</span> <span class="mi">0</span> <span class="nv">sites</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">650829</span> <span class="nv">NodeObject</span>:<span class="nv">DBG</span> <span class="nv">NodeStore</span>.<span class="nv">main</span> <span class="nv">target</span> <span class="nv">size</span> <span class="nv">set</span> <span class="nv">to</span> <span class="mi">131072</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">650876</span> <span class="nv">NodeObject</span>:<span class="nv">DBG</span> <span class="nv">NodeStore</span>.<span class="nv">main</span> <span class="nv">target</span> <span class="nv">age</span> <span class="nv">set</span> <span class="nv">to</span> <span class="mi">120000000000</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">650931</span> <span class="nv">TaggedCache</span>:<span class="nv">DBG</span> <span class="nv">LedgerCache</span> <span class="nv">target</span> <span class="nv">size</span> <span class="nv">set</span> <span class="nv">to</span> <span class="mi">256</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">650981</span> <span class="nv">TaggedCache</span>:<span class="nv">DBG</span> <span class="nv">LedgerCache</span> <span class="nv">target</span> <span class="nv">age</span> <span class="nv">set</span> <span class="nv">to</span> <span class="mi">180000000000</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">654252</span> <span class="nv">TaggedCache</span>:<span class="nv">DBG</span> <span class="nv">TreeNodeCache</span> <span class="nv">target</span> <span class="nv">size</span> <span class="nv">set</span> <span class="nv">to</span> <span class="mi">512000</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">654336</span> <span class="nv">TaggedCache</span>:<span class="nv">DBG</span> <span class="nv">TreeNodeCache</span> <span class="nv">target</span> <span class="nv">age</span> <span class="nv">set</span> <span class="nv">to</span> <span class="mi">90000000000</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">674131</span> <span class="nv">NetworkOPs</span>:<span class="nv">NFO</span> <span class="nv">Consensus</span> <span class="nv">time</span> <span class="k">for</span> <span class="sc">#3</span> <span class="nv">with</span> <span class="nv">LCL</span> <span class="nv">AF8D8984A226AE7099D8A9749B09CE1D84360D5AF9FB86CE2F37500FE1009F9D</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">674271</span> <span class="nv">ValidatorList</span>:<span class="nv">DBG</span> <span class="mi">5</span>  <span class="nv">of</span> <span class="mi">5</span> <span class="nv">listed</span> <span class="nv">validators</span> <span class="nv">eligible</span> <span class="k">for</span> <span class="nv">inclusion</span> <span class="nv">in</span> <span class="nv">the</span> <span class="nv">trusted</span> <span class="nv">set</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">674334</span> <span class="nv">ValidatorList</span>:<span class="nv">DBG</span> <span class="nv">Using</span> <span class="nv">quorum</span> <span class="nv">of</span> <span class="mi">4</span> <span class="k">for</span> <span class="nv">new</span> <span class="nv">set</span> <span class="nv">of</span> <span class="mi">5</span> <span class="nv">trusted</span> <span class="nv">validators</span> <span class="ss">(</span><span class="mi">5</span> <span class="nv">added</span>, <span class="mi">0</span> <span class="nv">removed</span><span class="ss">)</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">674400</span> <span class="nv">LedgerConsensus</span>:<span class="nv">NFO</span> <span class="nv">Entering</span> <span class="nv">consensus</span> <span class="nv">process</span>, <span class="nv">watching</span>, <span class="nv">synced</span><span class="o">=</span><span class="nv">no</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">674475</span> <span class="nv">LedgerConsensus</span>:<span class="nv">NFO</span> <span class="nv">Consensus</span> <span class="nv">mode</span> <span class="nv">change</span> <span class="nv">before</span><span class="o">=</span><span class="nv">observing</span>, <span class="nv">after</span><span class="o">=</span><span class="nv">observing</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">674539</span> <span class="nv">NetworkOPs</span>:<span class="nv">DBG</span> <span class="nv">Initiating</span> <span class="nv">consensus</span> <span class="nv">engine</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">751225</span> <span class="nv">Server</span>:<span class="nv">NFO</span> <span class="nv">Opened</span> <span class="s1">'</span><span class="s">port_rpc_admin_local</span><span class="s1">'</span> <span class="ss">(</span><span class="nv">ip</span><span class="o">=</span><span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">1</span>:<span class="mi">5005</span>, <span class="nv">admin</span> <span class="nv">IPs</span>:<span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">1</span>, <span class="nv">http</span><span class="ss">)</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">751515</span> <span class="nv">Server</span>:<span class="nv">NFO</span> <span class="nv">Opened</span> <span class="s1">'</span><span class="s">port_peer</span><span class="s1">'</span> <span class="ss">(</span><span class="nv">ip</span><span class="o">=</span><span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>:<span class="mi">51235</span>, <span class="nv">peer</span><span class="ss">)</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">751689</span> <span class="nv">Server</span>:<span class="nv">NFO</span> <span class="nv">Opened</span> <span class="s1">'</span><span class="s">port_ws_admin_local</span><span class="s1">'</span> <span class="ss">(</span><span class="nv">ip</span><span class="o">=</span><span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">1</span>:<span class="mi">6006</span>, <span class="nv">admin</span> <span class="nv">IPs</span>:<span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">1</span>, <span class="nv">ws</span><span class="ss">)</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">751915</span> <span class="nv">Application</span>:<span class="nv">FTL</span> <span class="nv">Startup</span> <span class="nv">RPC</span>:
+      {
+        <span class="s2">"</span><span class="s">command</span><span class="s2">"</span> : <span class="s2">"</span><span class="s">log_level</span><span class="s2">"</span>,
+        <span class="s2">"</span><span class="s">severity</span><span class="s2">"</span> : <span class="s2">"</span><span class="s">warning</span><span class="s2">"</span>
+      }
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">21</span>:<span class="mi">39</span>.<span class="mi">752079</span> <span class="nv">Application</span>:<span class="nv">FTL</span> <span class="nb">Result</span>: {}
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">22</span>:<span class="mi">33</span>.<span class="mi">013409</span> <span class="nv">NetworkOPs</span>:<span class="nv">WRN</span> <span class="nv">We</span> <span class="nv">are</span> <span class="nv">not</span> <span class="nv">running</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">consensus</span> <span class="nv">ledger</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">22</span>:<span class="mi">33</span>.<span class="mi">013875</span> <span class="nv">LedgerConsensus</span>:<span class="nv">WRN</span> <span class="nv">Need</span> <span class="nv">consensus</span> <span class="nv">ledger</span> <span class="mi">81804</span><span class="nv">C95ADE119CC874572BAF24DB0C0D240AC58168597951B0CB64C4DA2C628</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">22</span>:<span class="mi">33</span>.<span class="mi">883648</span> <span class="nv">LedgerConsensus</span>:<span class="nv">WRN</span> <span class="nv">View</span> <span class="nv">of</span> <span class="nv">consensus</span> <span class="nv">changed</span> <span class="nv">during</span> <span class="nv">open</span> <span class="nv">status</span><span class="o">=</span><span class="nv">open</span>,  <span class="nv">mode</span><span class="o">=</span><span class="nv">wrongLedger</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">22</span>:<span class="mi">33</span>.<span class="mi">883815</span> <span class="nv">LedgerConsensus</span>:<span class="nv">WRN</span> <span class="mi">81804</span><span class="nv">C95ADE119CC874572BAF24DB0C0D240AC58168597951B0CB64C4DA2C628</span> <span class="nv">to</span> <span class="mi">9250</span><span class="nv">C6C8326A48C339E6F99167F4E6BFD0DB00C35518027724D7B376340D21A1</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">22</span>:<span class="mi">33</span>.<span class="mi">884068</span> <span class="nv">LedgerConsensus</span>:<span class="nv">WRN</span> {<span class="s2">"</span><span class="s">accepted</span><span class="s2">"</span>:<span class="nv">true</span>,<span class="s2">"</span><span class="s">account_hash</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">BBA0E7273005D42E5548DD6456E5AD1F7C89B6EDCB01881E1EECD393E8545947</span><span class="s2">"</span>,<span class="s2">"</span><span class="s">close_flags</span><span class="s2">"</span>:<span class="mi">0</span>,<span class="s2">"</span><span class="s">close_time</span><span class="s2">"</span>:<span class="mi">593893350</span>,<span class="s2">"</span><span class="s">close_time_human</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">2018-Oct-26 18:22:30.000000</span><span class="s2">"</span>,<span class="s2">"</span><span class="s">close_time_resolution</span><span class="s2">"</span>:<span class="mi">30</span>,<span class="s2">"</span><span class="s">closed</span><span class="s2">"</span>:<span class="nv">true</span>,<span class="s2">"</span><span class="s">hash</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">9250C6C8326A48C339E6F99167F4E6BFD0DB00C35518027724D7B376340D21A1</span><span class="s2">"</span>,<span class="s2">"</span><span class="s">ledger_hash</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">9250C6C8326A48C339E6F99167F4E6BFD0DB00C35518027724D7B376340D21A1</span><span class="s2">"</span>,<span class="s2">"</span><span class="s">ledger_index</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">3</span><span class="s2">"</span>,<span class="s2">"</span><span class="s">parent_close_time</span><span class="s2">"</span>:<span class="mi">593893290</span>,<span class="s2">"</span><span class="s">parent_hash</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">AF8D8984A226AE7099D8A9749B09CE1D84360D5AF9FB86CE2F37500FE1009F9D</span><span class="s2">"</span>,<span class="s2">"</span><span class="s">seqNum</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">3</span><span class="s2">"</span>,<span class="s2">"</span><span class="s">totalCoins</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">100000000000000000</span><span class="s2">"</span>,<span class="s2">"</span><span class="s">total_coins</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">100000000000000000</span><span class="s2">"</span>,<span class="s2">"</span><span class="s">transaction_hash</span><span class="s2">"</span>:<span class="s2">"</span><span class="s">0000000000000000000000000000000000000000000000000000000000000000</span><span class="s2">"</span>}
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">23</span>:<span class="mi">03</span>.<span class="mi">034119</span> <span class="nv">InboundLedger</span>:<span class="nv">WRN</span> <span class="nv">Want</span>: <span class="nv">D901E53926E68EFDA33172DDAC74E8C767D280B68EE68E3010AB0E3179D07B1C</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">23</span>:<span class="mi">03</span>.<span class="mi">034334</span> <span class="nv">InboundLedger</span>:<span class="nv">WRN</span> <span class="nv">Want</span>: <span class="mi">1</span><span class="nv">C01EE79083DE5CE76F3634519D6364C589C4D48631CB9CD10FC2408F87684E2</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">23</span>:<span class="mi">03</span>.<span class="mi">034560</span> <span class="nv">InboundLedger</span>:<span class="nv">WRN</span> <span class="nv">Want</span>: <span class="mi">8</span><span class="nv">CFE3912001BDC5B2C4B2691F3C7811B9F3F193E835D293459D80FBF1C4E684E</span>
+      <span class="mi">2018</span><span class="o">-</span><span class="nv">Oct</span><span class="o">-</span><span class="mi">26</span> <span class="mi">18</span>:<span class="mi">23</span>:<span class="mi">03</span>.<span class="mi">034750</span> <span class="nv">InboundLedger</span>:<span class="nv">WRN</span> <span class="nv">Want</span>: <span class="mi">8</span><span class="nv">DFAD21AD3090DE5D6F7592B3821C3DA77A72287705B4CF98DC0F84D5DD2BDF8</span>
+</code></pre></div>
+<p>For information about <code>rippled</code> log messages, see <a href="understanding-log-messages.html">Understanding Log Messages</a>.</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>It can take several minutes for <code>rippled</code> to sync with the rest of the network, during which time it outputs warnings about missing ledgers.</p>
+<p>For information about <code>rippled</code> log messages, see <a href="understanding-log-messages.html">Understanding Log Messages</a>.</p>
+<p>After your <code>rippled</code> has synchronized with the rest of the network, you have a fully functional stock <code>rippled</code> server that you can use for local signing and API access to the XRP Ledger. Use <a href="rippled-server-states.html"><code>rippled</code> server states</a> to tell whether your <code>rippled</code> server has synchronized with the network. You can use the <a href="get-started-with-the-rippled-api.html#commandline"><code>rippled</code> commandline interface</a> to test this quickly:</p>
+<div class="codehilite"><pre><span></span><code>$ ./rippled server_info
+</code></pre></div>
+<p>For more information about communicating with your <code>rippled</code> server using the rippled APIs, see the <a href="rippled-api.html">rippled API reference</a>.</p>
+<p>Once you have your stock <code>rippled</code> server running, you may want to consider running it as a validating server. For information about validating servers and why you might want to run one, see <a href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>.</p>
+<p>Having trouble getting your <code>rippled</code> server started? See <a href="server-wont-start.html">rippled Server Won't Start</a>.</p>
+<h3 id="additional-configuration">Additional Configuration</h3>
+<p><code>rippled</code> should connect to the XRP Ledger with the default configuration. However, you can change your settings by editing the <code>rippled.cfg</code> file. For recommendations about configuration settings, see <a href="capacity-planning.html">Capacity Planning</a>.</p>
+<p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.<!--_ --></p>
+<p>See <a href="https://github.com/ripple/rippled/blob/master/cfg/rippled-example.cfg" target="_blank">the <code>rippled</code> GitHub repository <i aria-hidden="true" class="fa fa-external-link"></i></a> for a description of all configuration options.</p>
+<p>You must restart <code>rippled</code> for any configuration changes to take effect:</p>
+<ul>
+<li>Use Ctrl-C to stop <code>rippled</code>, then start it again:<div class="codehilite"><pre><span></span><code>$ ./rippled
+</code></pre></div>
+</li>
+</ul>
+<p>If you change the <code>[debug_logfile]</code> or <code>[database_path]</code> sections, you may need to grant ownership of the new configured path to the user you run <code>rippled</code> as.</p>
+<h3 id="updates">Updates</h3>
+<p>You must update <code>rippled</code> regularly to remain synced with the rest of the XRP Ledger network. You can subscribe to the <a href="https://groups.google.com/forum/#!forum/ripple-server" target="_blank">rippled Google Group <i aria-hidden="true" class="fa fa-external-link"></i></a> to receive notifications of new <code>rippled</code> releases.</p>
+<p>The <code>rippled</code> package for Red Hat Enterprise Linux and CentOS includes a script you can use to <a href="update-rippled-automatically-on-centos-rhel.html">enable automatic updates</a> on those platforms. On other platforms, you must update manually.<!--_ --></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="install-rippled-on-ubuntu-with-alien.html">Install rippled on Ubuntu Linux</a> (Pre-built binary on Ubuntu for production use)</li>
+<li><a href="build-run-rippled-ubuntu.html">Build and Run <code>rippled</code> on Ubuntu</a> (Compile <code>rippled</code> yourself on Ubuntu)</li>
+<li><a href="https://github.com/ripple/rippled/tree/develop/Builds" target="_blank">Compilation instructions for other platforms <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+</ul>
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="tutorials.html"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Tutorials</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_2">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">&nbsp;</a>
+                <a class="sidenav_cat_title" href="get-started.html">Get Started</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with the rippled API</a></li>
+                      <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
+                      <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">RippleAPI Beginners Guide</a></li>
+                      <li><a class="nosubcat-page" href="look-up-transaction-results.html">Look Up Transaction Results</a></li>
+                      <li><a class="nosubcat-page" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse2 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_8">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">&nbsp;</a>
+                <a class="sidenav_cat_title" href="use-simple-xrp-payments.html">Use Simple XRP Payments</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
+                      <li><a class="nosubcat-page" href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+                      <li><a class="nosubcat-page" href="cancel-or-skip-a-transaction.html">Cancel or Skip a Transaction</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse8 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_12">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_12" aria-expanded="true" aria-controls="sidenav_collapse_12">&nbsp;</a>
+                <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_12" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_12">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
+                      <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse12 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_17">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_17" aria-expanded="true" aria-controls="sidenav_collapse_17">&nbsp;</a>
+                <a class="sidenav_cat_title" href="use-complex-payment-types.html">Use Complex Payment Types</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_17" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_17">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
+
+                          <li><a class="subpage" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a></li>
+                          <li><a class="subpage" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a></li>
+                          <li><a class="subpage" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a></li>
+                          <li><a class="subpage" href="look-up-escrows.html">Look up escrows</a></li>
+
+                      <li><a class="nosubcat-page" href="use-payment-channels.html">Use Payment Channels</a></li>
+                      <li><a class="subcat-title" href="use-checks.html">Use Checks <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+
+                          <li><a class="subpage" href="send-a-check.html">Send a Check <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cancel-a-check.html">Cancel a Check <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="look-up-checks-by-sender.html">Look Up Checks by Sender <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse17 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_31">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_31" aria-expanded="true" aria-controls="sidenav_collapse_31">&nbsp;</a>
+                <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_31" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_31">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
+                      <li><a class="nosubcat-page" href="list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts</a></li>
+                      <li><a class="nosubcat-page" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse31 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card active">
+            <div class="card-header" role="tab" id="sidenav_cat_head_35">
+              <h5 class="card-title">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_35" aria-expanded="true" aria-controls="sidenav_collapse_35">&nbsp;</a>
+                <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">Manage the rippled Server</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_35" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_35">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title active-parent" href="install-rippled.html">Install rippled</a></li>
+
+                          <li><a class="subpage" href="system-requirements.html">System Requirements</a></li>
+                          <li><a class="subpage" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a></li>
+                          <li><a class="subpage" href="install-rippled-on-ubuntu-with-alien.html">Install on Ubuntu with Alien</a></li>
+                          <li><a class="subpage" href="update-rippled-automatically-on-centos-rhel.html">Update Automatically on CentOS/Red Hat</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu</a></li>
+                          <li><a class="subpage" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+                          <li><a class="active subpage" href="#main_content_body">Build and Run rippled on macOS</a></li>
+                          <li><a class="subpage" href="capacity-planning.html">Capacity Planning</a></li>
+
+                      <li><a class="subcat-title" href="configure-rippled.html">Configure rippled</a></li>
+
+                          <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
+                          <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to the XRP Test Net</a></li>
+                          <li><a class="subpage" href="cluster-rippled-servers.html">Cluster rippled Servers</a></li>
+                          <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
+                          <li><a class="subpage" href="configure-advisory-deletion.html">Configure Advisory Deletion</a></li>
+                          <li><a class="subpage" href="configure-history-sharding.html">Configure History Sharding</a></li>
+                          <li><a class="subpage" href="configure-full-history.html">Configure Full History</a></li>
+                          <li><a class="subpage" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a></li>
+                          <li><a class="subpage" href="enable-public-signing.html">Enable Public Signing</a></li>
+
+                      <li><a class="subcat-title" href="use-stand-alone-mode.html">Use rippled in Stand-Alone Mode</a></li>
+
+                          <li><a class="subpage" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a></li>
+
+                      <li><a class="subcat-title" href="troubleshoot-the-rippled-server.html">Troubleshooting rippled</a></li>
+
+                          <li><a class="subpage" href="diagnosing-problems.html">Diagnosing Problems with rippled</a></li>
+                          <li><a class="subpage" href="understanding-log-messages.html">Understanding Log Messages</a></li>
+                          <li><a class="subpage" href="server-wont-start.html">rippled Server Won't Start</a></li>
+                          <li><a class="subpage" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue</a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse35 -->
+
+          </div><!-- /.card -->
+
+    </div><!-- /#sidenav -->
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="ripple-footer" role="contentinfo">
+  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
+      <div class="row">
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="docs.html">Docs</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="concepts.html">Concepts</a></li>
+        <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+        <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="use-cases.html">Use Cases</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+      <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+      <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+      <li class="level-1"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="dev-tools.html">Dev Tools</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+      <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+      <li class="level-1"><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+
+      <li class="level-1"><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="news.html">News</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
+
+
+  <li class="level-1"><a href="/blog/">Ripple Dev Blog</a></li>
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
+              <div class="children-display">
+                <ul>
+                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/.foot-nav-col -->
+      </div><!--/.row-->
+  </section>
+
+  <section class="container-fluid pb-5 px-5">
+
+    <div class="build-disclaimer">
+      <p>
+        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
+      </p>
+      <p>
+        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
+      </p>
+    </div>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

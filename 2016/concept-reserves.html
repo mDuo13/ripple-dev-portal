@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Reserves - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="concept-money.html">About XRP</a></li>
+              <li class="active crumb-current">Reserves</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/concept-reserves.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-xrp-ledger-intro.html">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a href="concept-cryptographic-keys.html">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a class="active" href="#main_content_body">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a href="concept-depositauth.html">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a href="concept-demurrage.html">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a href="tutorial-checks-send.html">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a href="tutorial-build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">Reserves</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#reserves">Reserves</a></li>
+<li class="level-2"><a href="#base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</a></li>
+<li class="level-3"><a href="#owner-reserves">Owner Reserves</a></li>
+<li class="level-2"><a href="#going-below-the-reserve-requirement">Going Below the Reserve Requirement</a></li>
+<li class="level-2"><a href="#changing-the-reserve-requirements">Changing the Reserve Requirements</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="reserves">Reserves</h1>
+<p>The XRP Ledger applies <em>reserve requirements</em>, in XRP, to protect the shared global ledger from growing excessively large as the result of spam or malicious usage. The goal is to constrain the growth of the ledger to match improvements in technology so that a current commodity-level machine can always fit the current ledger in RAM and the full ledger history on disk.</p>
+<p>To submit transactions, an address must hold a minimum amount of XRP in the shared global ledger. You cannot send this XRP to other addresses. To fund a new address, you must send enough XRP to meet the reserve requirement.</p>
+<p>The current minimum reserve requirement is <strong>20 XRP</strong>. (This is the cost of an address that owns no other objects in the ledger.)</p>
+<h2 id="base-reserve-and-owner-reserve">Base Reserve and Owner Reserve</h2>
+<p>The reserve requirement is divided into two parts:</p>
+<ul>
+<li>The <strong>Base Reserve</strong> is a minimum amount of XRP that is required for every address in the ledger. Currently, this is 20 XRP (<code>20000000</code> drops).</li>
+<li>The <strong>Owner Reserve</strong> is an increase to the reserve requirement for each object that the address owns in the ledger. Currently, this is 5 XRP (<code>5000000</code> drops) per item.</li>
+</ul>
+<h3 id="owner-reserves">Owner Reserves</h3>
+<p>Many objects in the ledger are owned by a particular address, and count toward the reserve requirement of that address. When objects are removed from the ledger, they no longer count against their owner's reserve requirement.</p>
+<ul>
+<li><a href="reference-ledger-format.html#offer">Offers</a> are owned by the address that placed them. Transaction processing automatically removes Offers that are fully consumed or found to be unfunded. Alternatively, the owner can cancel an Offer by sending an <a href="reference-transaction-format.html#offercancel">OfferCancel transaction</a>, or by sending an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> that contains an <code>OfferSequence</code> parameter.</li>
+<li><a href="reference-ledger-format.html#ripplestate">Trust lines</a> are shared between two addresses. The owner reserve can apply to one or both of the addresses, depending on whether the fields that address controls are in their default state. See <a href="reference-ledger-format.html#contributing-to-the-owner-reserve">Contributing to the Owner Reserve</a> for details.</li>
+<li>A single <a href="reference-ledger-format.html#signerlist">SignerList</a> counts as 3 to 10 objects for purposes of the owner reserve, depending on how many members it has. See also: <a href="reference-ledger-format.html#signerlists-and-reserves">SignerLists and Reserves</a>.</li>
+<li><a href="reference-ledger-format.html#escrow">Held Payments (Escrow)</a> are owned by the address that placed them.</li>
+<li><a href="tutorial-paychan.html">Payment Channels</a> are owned by the address that created them.</li>
+<li><a href="reference-ledger-format.html#directorynode">Owner directories</a> list all the ledger objects that contribute to an address's owner reserve. However, the owner directory itself does not count towards the reserve.</li>
+<li><a href="concept-checks.html">Checks</a> are owned by the address that created them (the sender, not the destination).</li>
+</ul>
+<h4 id="owner-reserve-edge-cases">Owner Reserve Edge Cases</h4>
+<p>The XRP Ledger considers an <a href="reference-transaction-format.html#offercreate">OfferCreate transaction</a> to be an explicit statement of willingness to hold an asset. Consuming the offer automatically creates a trust line (with limit 0, and a balance above that limit) for the <code>taker_pays</code> currency if such a trust line does not exist. However, if the offer's owner does not hold enough XRP to also meet the owner reserve requirement of the new trust line, the offer is considered unfunded. See also: <a href="reference-transaction-format.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>.</p>
+<h2 id="going-below-the-reserve-requirement">Going Below the Reserve Requirement</h2>
+<p>During transaction processing, the <a href="concept-transaction-cost.html">transaction cost</a> destroys some of the sending address's XRP balance. This can cause an address's XRP to go below the reserve requirement.</p>
+<p>When an address holds less XRP than its current reserve requirement, it cannot send new transactions that would transfer XRP to others, or increase its own reserve. Even so, the address continues to exist in the ledger and can send other transactions as long as it has enough XRP to pay the transaction cost. The address can become able to send all types of transactions again if it receives enough XRP to meet its reserve requirement again, or if the <a href="#changing-the-reserve-requirements">reserve requirement decreases</a> to less than the address's XRP holdings.</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> When an address is below the reserve requirement, it can send new <a href="reference-transaction-format.html#offercreate">OfferCreate transactions</a> to acquire more XRP, or other currencies on its existing trust lines. These transactions cannot create new <a href="reference-ledger-format.html#ripplestate">trust lines</a>, or <a href="reference-ledger-format.html#offer">Offer nodes in the ledger</a>, so they can only execute trades that consume Offers that are already in the order books.</p>
+<h2 id="changing-the-reserve-requirements">Changing the Reserve Requirements</h2>
+<p>The XRP Ledger has a mechanism to adjust the reserve requirements for long-term changes in the value of XRP. Any changes have to be approved by the consensus process. See <a href="concept-fee-voting.html">Fee Voting</a> for more information.</p>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

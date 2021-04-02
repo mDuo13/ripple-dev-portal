@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>XRP Ledger Introduction - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="concept-xrp-ledger-intro.html">Introduction</a></li>
+              <li class="active crumb-current">XRP Ledger Introduction</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/concept-xrp-ledger-intro.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a class="active" href="#main_content_body">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a href="concept-cryptographic-keys.html">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a href="concept-reserves.html">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a href="concept-depositauth.html">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a href="concept-demurrage.html">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a href="tutorial-checks-send.html">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a href="tutorial-build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">XRP Ledger Introduction</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#xrp-ledger-introduction">XRP Ledger Introduction</a></li>
+<li class="level-2"><a href="#the-best-digital-asset">The Best Digital Asset</a></li>
+<li class="level-2"><a href="#censorship-resistant-transaction-processing">Censorship-Resistant Transaction Processing</a></li>
+<li class="level-2"><a href="#fast-efficient-consensus-algorithm">Fast, Efficient Consensus Algorithm</a></li>
+<li class="level-2"><a href="#finite-xrp-supply">Finite XRP Supply</a></li>
+<li class="level-2"><a href="#responsible-software-governance">Responsible Software Governance</a></li>
+<li class="level-2"><a href="#secure-adaptable-cryptography">Secure, Adaptable Cryptography</a></li>
+<li class="level-2"><a href="#modern-features-for-smart-contracts">Modern Features for Smart Contracts</a></li>
+<li class="level-2"><a href="#on-ledger-decentralized-exchange">On-Ledger Decentralized Exchange</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="xrp-ledger-introduction">XRP Ledger Introduction</h1>
+<p>The <strong>XRP Ledger</strong> is a decentralized cryptographic ledger powered by a network of peer-to-peer servers. The XRP Ledger is the home of <strong>XRP</strong>, a digital asset designed to bridge the many different currencies in use worldwide. Ripple stewards the development of the XRP Ledger, and advances XRP as a key contribution to the <em>Internet of Value</em>: a world in which money moves the way information does today.</p>
+<h2 id="the-best-digital-asset">The Best Digital Asset</h2>
+<p>XRP is a digital asset native to the XRP Ledger. Anyone with a cryptographic key and an internet connection can receive, hold, and send XRP to anyone else. XRP's creators have developed it to be a desirable bridge currency that can facilitate trades in any other currency. XRP has many properties which make it an appealing asset for many other use cases, too:</p>
+<ul>
+<li><strong><a href="#censorship-resistant-transaction-processing">Censorship-Resistant Transaction Processing</a>:</strong> No single party decides which XRP transactions succeed or fail, and no one can "roll back" a transaction after it completes. As long as those who choose to participate in the network keep it healthy, they can send and receive XRP in seconds.</li>
+<li><strong><a href="#fast-efficient-consensus-algorithm">Fast, Efficient Consensus Algorithm</a>:</strong> The XRP Ledger's consensus algorithm settles transactions in 4 to 5 seconds, processing at a throughput of up to 1500 transactions per second. These properties put XRP at least an order of magnitude ahead of other top digital assets.</li>
+<li><strong><a href="#finite-xrp-supply">Finite XRP Supply</a>:</strong> When the XRP Ledger began, 100 billion XRP were created, and no more XRP will ever be created. (Each XRP is subdivisible down to 6 decimal places, for a grand total of 100 quintillion <em>drops</em> of XRP.) The available supply of XRP decreases slowly over time as small amounts are destroyed to pay transaction costs.</li>
+<li><strong><a href="#responsible-software-governance">Responsible Software Governance</a>:</strong> A team of full-time, world-class developers at Ripple maintain and continually improve the XRP Ledger's underlying software. Ripple acts as a steward for the technology and an advocate for its interests, and builds constructive relationships with governments and financial institutions worldwide.</li>
+<li><strong><a href="#secure-adaptable-cryptography">Secure, Adaptable Cryptography</a>:</strong> The XRP Ledger relies on industry standard digital signature systems like ECDSA (the same scheme used by Bitcoin) but also supports modern, efficient algorithms like Ed25519. The extensible nature of the XRP Ledger's software makes it possible to add and disable algorithms as the state of the art in cryptography advances.</li>
+<li><strong><a href="#modern-features-for-smart-contracts">Modern Features for Smart Contracts</a>:</strong> Features like Escrow, Checks, and Payment Channels support cutting-edge financial applications including the <a href="https://interledger.org/">Interledger Protocol</a>. This toolbox of advanced features comes with safety features like a process for amending the network and separate checks against invariant constraints.</li>
+<li><strong><a href="#on-ledger-decentralized-exchange">On-Ledger Decentralized Exchange</a>:</strong> In addition to all the features that make XRP useful on its own, the XRP Ledger also has a fully-functional accounting system for tracking and trading obligations denominated in any way users want, and an exchange built into the protocol. The XRP Ledger can settle long, cross-currency payment paths and exchanges of multiple currencies in atomic transactions, bridging gaps of trust with XRP.</li>
+</ul>
+<h2 id="censorship-resistant-transaction-processing">Censorship-Resistant Transaction Processing</h2>
+<p>XRP is part of a new class of money which includes Bitcoin and other cryptocurrencies:</p>
+<ul>
+<li>These <strong>Decentralized digital assets</strong> exist in computer systems without a central administrator. As long as the system is sufficiently decentralized, no one can roll back transactions, freeze balances, or block someone from using a decentralized digital asset. These assets are natively digital, so they can be used online across any distance.</li>
+</ul>
+<p>This combines qualities of physical and centralized digital money. Prior to the invention of Bitcoin in 2009, all currencies could be divided into those two categories:</p>
+<ul>
+<li><strong>Physical coins and paper money</strong>, which individuals can use to do business without going through a central party. As physical objects, they cannot be used online, and doing business long-distance is slow and inconvenient.</li>
+<li><strong>Centralized digital currencies</strong>, which need an administrator to confirm transactions. The administrator also has the power to censor or roll back transactions, or disallow some individuals from using the digital currency. If the operator of a digital currency decides someone has violated its terms of service, it can freeze or even confiscate that person's money. However, as digital balances, these currencies can be used online and are convenient across long distances.</li>
+</ul>
+<p class="devportal-callout note"><strong>Note:</strong> Users of the XRP Ledger <em>can</em> freeze non-XRP currencies issued in the XRP Ledger. For more information, see the <a href="concept-freeze.html">Freeze documentation</a>.</p>
+<p>The XRP Ledger's system of trusted validators uses a small amount of human interaction to achieve better distribution of authority than other decentralized systems. Fully-automated systems for reaching consensus from an unknown set of participants are vulnerable to concentrations of voting power. For example, Bitcoin mining is disproportionately concentrated in places with cheap electricity. As Ripple curates a list of distinct validators operated by different entities in different jurisdictions, the XRP Ledger can become more resistant to censorship and outside pressures than proof-of-work mining. For more information on Ripple's plan to decentralize the recommended set of validators, see the  <a href="https://ripple.com/dev-blog/decentralization-strategy-update/">Decentralization Strategy Update</a>.</p>
+<h2 id="fast-efficient-consensus-algorithm">Fast, Efficient Consensus Algorithm</h2>
+<p>The XRP Ledger's biggest difference from most cryptocurrencies is that it uses a unique consensus algorithm that does not require the time and energy of "mining", the way Bitcoin, Ethereum, and almost all other such systems do. Instead of "proof of work" or even "proof of stake", The XRP Ledger's consensus algorithm uses a system where every participant has an overlapping set of "trusted validators" and those trusted validators efficiently agree on which transactions happen in what order. As of early 2018, the amount of electricity the Bitcoin network uses per transaction is more than a family home in the USA uses in an entire day, and confirming the transaction takes hours. A single XRP transaction uses a negligible amount of electricity, and takes 4 or 5 seconds to confirm.</p>
+<p>Furthermore, each new "ledger version" in the XRP Ledger (the equivalent of a "block") contains the full current state of all balances, so a server can synchronize with the network in minutes instead of spending hours downloading and re-processing the full transaction history.</p>
+<p>For more information on how the XRP Ledger's consensus algorithm works, see <a href="concept-consensus.html">The XRP Ledger Consensus Process</a>. For background on why the XRP Ledger uses this consensus algorithm, see <a href="concept-reaching-consensus.html">Reaching Consensus In the XRP Ledger</a>.</p>
+<h2 id="finite-xrp-supply">Finite XRP Supply</h2>
+<p>Alongside war and political turmoil, hyperinflation is one of the leading causes of death for currencies. While the decentralized system of validators provides XRP with some resistance to political factors, the rules of the XRP Ledger provide a simpler solution to hyperinflation: the total supply of XRP is finite. Without a mechanism to create more, it becomes much less likely that XRP could suffer hyperinflation.</p>
+<p>The supply of XRP available to the general public <em>does</em> change due to a few factors:</p>
+<ul>
+<li>Sending transactions in the XRP Ledger destroys a small amount of XRP. Senders choose how much to destroy, with certain minimums based on the expected work of processing the transaction and how busy the network is. If the network is busy, potential transactions that promise to destroy more XRP can cut in front of the transaction queue. This is an anti-spam measure to make it prohibitively expensive to <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack">DDoS</a> the XRP Ledger network. For more information, see <a href="concept-transaction-cost.html">Transaction Cost</a>.</li>
+<li>Each account in the XRP Ledger must hold a small amount of XRP in reserve. This is an anti-spam measure to disincentivize making the ledger data occupy too much space. XRP Ledger validators can vote to change the amount of XRP required as a reserve, to compensate for changes in XRP's real-world value. (The last time this happened was in December 2013, when <a href="https://ripple.com/insights/proposed-change-to-ripple-reserve-requirement-2/">the reserve requirement decreased from 50 XRP to 20 XRP</a>.) If the reserve requirement decreases, XRP that was previously locked up by the reserve becomes available again.</li>
+<li>Ripple (the company) holds a large reserve of XRP in escrow. At the start of each month, 1 billion XRP is released from escrow for Ripple to use. (Ripple uses XRP to incentivize growth in the XRP Ledger ecosystem and sells XRP to institutional investors.) At the end of each month, any remaining XRP the company does not sell or give away is stored into escrow for a 54-month period. For more information on Ripple's escrow policy, see <a href="https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/">Ripple Escrows 55 Billion XRP for Supply Predictability</a>. For more information on the technical capabilities of the Escrow feature, see <a href="concept-escrow.html">Escrow</a>.</li>
+</ul>
+<h2 id="responsible-software-governance">Responsible Software Governance</h2>
+<p>Any piece of software can only be as good as the developers who code and manage it. Ripple employs a team of world-class engineers dedicated full-time to maintaining and improving the XRP Ledger software, especially the core server, <code>rippled</code>. The <a href="https://github.com/ripple/rippled/">source code for <code>rippled</code></a> is available to the public with a permissive open-source license, as are many other parts of the XRP Ledger ecosystem. Ripple engineers follow best practices for software engineering, including:</p>
+<ul>
+<li>A famously strict and thorough code review process</li>
+<li>Comprehensive code coverage and unit tests</li>
+<li>Regularly running automated checks for potential vulnerabilities and memory leaks</li>
+<li>Regularly commissioning external reviews by professional organizations</li>
+</ul>
+<p>As an entity that is obligated to hold large amounts of XRP for the long term, Ripple has a strong incentive to ensure that XRP is widely used in ways that are legal, sustainable, and constructive. Ripple provides technical support to businesses whose goals align with Ripple's ideal of an Internet of Value. Ripple also cooperates with legislators and regulators worldwide to guide the implementation of sensible laws governing digital assets and associated businesses.</p>
+<h2 id="secure-adaptable-cryptography">Secure, Adaptable Cryptography</h2>
+<p>Cryptography is one of the hardest parts of any distributed system, and a mistake can lead to money stolen by malicious actors anywhere in the world. The XRP Ledger uses industry-standard schemes for signing and verifying transactions, algorithms that have successfully protected hundreds of billions of US dollars' worth of value for many years. The XRP Ledger also layers multi-signing functionality so you can use multi-factor authorization or split keys across multiple people as a backup, and provides new algorithms with a path to migrate the keys you use if a breakthrough in cryptography makes the old algorithms obsolete.</p>
+<p>For more information, see <a href="concept-cryptographic-keys.html">Cryptographic Keys</a> and <a href="reference-transaction-format.html#multi-signing">Multi-signing</a>.</p>
+<h2 id="modern-features-for-smart-contracts">Modern Features for Smart Contracts</h2>
+<p>Besides simple value transfer with XRP payments, the XRP Ledger has several advanced features that provide useful functions for building applications that use the Internet of Value to serve previously unknown or impractical needs. Rather than running applications as "smart contracts" in the network itself, the XRP Ledger provides tools for settling contracts, while letting the applications themselves run anywhere, in whatever environment or container is appropriate. This "keep it simple" approach is flexible, scalable, and powerful.</p>
+<p>A sample of advanced features in the XRP Ledger:</p>
+<ul>
+<li><a href="tutorial-paychan.html">Payment Channels</a> allow asynchronous balance changes as fast as you can create and validate signatures.</li>
+<li><a href="concept-escrow.html">Escrow</a> locks up XRP until a declared time passes or cryptographic condition is met.</li>
+<li><a href="concept-depositauth.html">DepositAuth</a> lets users decide who can send them money and who can't.</li>
+<li>A <a href="#on-ledger-decentralized-exchange">Decentralized Exchange</a> lets users trade obligations and XRP on-ledger.</li>
+<li><a href="https://ripple.com/dev-blog/protecting-ledger-invariant-checking/">Invariant Checking</a> provides an independent layer of protections against bugs in transaction execution.</li>
+<li><a href="concept-amendments.html">Amendments</a> provide smooth upgrades to the existing feature set, so the technology can continue to evolve without fracturing the ecosystem or causing uncertainty around times of transition.</li>
+</ul>
+<h2 id="on-ledger-decentralized-exchange">On-Ledger Decentralized Exchange</h2>
+<p>One of the biggest features that sets the XRP Ledger apart from other cryptocurrency networks is that it also contains a full currency exchange that runs on the XRP Ledger. Within this system, businesses (typically called "gateways") can freely issue any currency they want to customers, and those customers can freely trade issued currencies for XRP or other issued currencies issued by any gateway. The XRP Ledger can execute atomic cross-currency transactions this way, using orders in the exchange to provide liquidity.</p>
+<p>For more information on how the decentralized exchange works, see <a href="concept-money.html">Money in the XRP Ledger</a> and <a href="reference-transaction-format.html#lifecycle-of-an-offer">Lifecycle of an Offer</a>. For more information on the gateway business model, see the <a href="tutorial-gateway-guide.html">Gateway Guide</a>.</p>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

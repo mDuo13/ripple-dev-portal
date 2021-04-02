@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Working with a Regular Key Pair - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="tutorial-rippleapi-beginners-guide.html">XRP Tasks</a></li>
+              <li class="active crumb-current">Working with a Regular Key Pair</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/tutorial-regular-keys.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-xrp-ledger-intro.html">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a href="concept-cryptographic-keys.html">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a href="concept-reserves.html">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a href="concept-depositauth.html">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a class="active" href="#main_content_body">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a href="concept-demurrage.html">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a href="tutorial-checks-send.html">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a href="tutorial-build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">Working with a Regular Key Pair</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#working-with-a-regular-key-pair">Working with a Regular Key Pair</a></li>
+<li class="level-2"><a href="#assigning-a-regular-key-pair">Assigning a Regular Key Pair</a></li>
+<li class="level-3"><a href="#1-generate-a-key-pair">1. Generate a Key Pair</a></li>
+<li class="level-3"><a href="#2-assign-the-key-pair-to-your-account-as-a-regular-key-pair">2. Assign the Key Pair to Your Account as a Regular Key Pair</a></li>
+<li class="level-3"><a href="#3-verify-the-regular-key-pair">3. Verify the Regular Key Pair</a></li>
+<li class="level-3"><a href="#4-explore-next-steps">4. Explore Next Steps</a></li>
+<li class="level-2"><a href="#changing-or-removing-a-regular-key-pair">Changing or Removing a Regular Key Pair</a></li>
+<li class="level-3"><a href="#changing-a-regular-key-pair">Changing a Regular Key Pair</a></li>
+<li class="level-3"><a href="#removing-a-regular-key-pair">Removing a Regular Key Pair</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="working-with-a-regular-key-pair">Working with a Regular Key Pair</h1>
+<p>The XRP Ledger allows an account to authorize a secondary key pair, called a <em>regular key pair</em>, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your account and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)</p>
+<p>For more information about master and regular key pairs, see <a href="concept-cryptographic-keys.html">Cryptographic Keys</a>.</p>
+<p>This article provides the following tutorials:</p>
+<ul>
+<li><a href="#assigning-a-regular-key-pair">Assigning a regular key pair</a></li>
+<li><a href="#changing-or-removing-a-regular-key-pair">Changing or removing a regular key pair</a></li>
+</ul>
+<h2 id="assigning-a-regular-key-pair">Assigning a Regular Key Pair</h2>
+<p>This tutorial walks you through the steps required to assign a regular key pair to your account:</p>
+<ol>
+<li><a href="#1-generate-a-key-pair">Generate a key pair</a></li>
+<li><a href="#2-assign-the-key-pair-to-your-account-as-a-regular-key-pair">Assign the key pair to your account as a regular key pair</a></li>
+<li><a href="#3-verify-the-regular-key-pair">Verify the regular key pair</a></li>
+<li><a href="#4-explore-next-steps">Explore next steps</a></li>
+</ol>
+<h3 id="1-generate-a-key-pair">1. Generate a Key Pair</h3>
+<p>Use the <a href="reference-rippled.html#wallet-propose"><code>wallet_propose</code></a> method to generate the key pair that you'll assign to your account as a regular key pair.</p>
+<h4 id="request-format">Request Format</h4>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">WebSocket</a></li><li><a href="#code-0-1">JSON-RPC</a></li><li><a href="#code-0-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "command": "wallet_propose"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "method": "wallet_propose"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-0-2" style="position: static;"><div class="codehilite"><pre><span></span><code>#Syntax: wallet_propose
+rippled wallet_propose
+</code></pre></div></div>
+</div>
+<h4 id="response-format">Response Format</h4>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">WebSocket</a></li><li><a href="#code-1-1">JSON-RPC</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "result": {
+    "account_id": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
+    "key_type": "secp256k1",
+    "master_key": "KNEW BENT LYNN LED GAD BEN KENT SHAM HOBO RINK WALT ALLY",
+    "master_seed": "sh8i92YRnEjJy3fpFkL8txQSCVo79",
+    "master_seed_hex": "966C0F68643EFBA50D58D191D4CA8AA7",
+    "public_key": "aBRNH5wUurfhZcoyR6nRwDSa95gMBkovBJ8V4cp1C1pM28H7EPL1",
+    "public_key_hex": "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E"
+  },
+  "status": "success",
+  "type": "response"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "result": {
+        "account_id": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
+        "key_type": "secp256k1",
+        "master_key": "KNEW BENT LYNN LED GAD BEN KENT SHAM HOBO RINK WALT ALLY",
+        "master_seed": "sh8i92YRnEjJy3fpFkL8txQSCVo79",
+        "master_seed_hex": "966C0F68643EFBA50D58D191D4CA8AA7",
+        "public_key": "aBRNH5wUurfhZcoyR6nRwDSa95gMBkovBJ8V4cp1C1pM28H7EPL1",
+        "public_key_hex": "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E"
+        "status": "success"
+    }
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "result" : {
+      "account_id" : "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
+      "key_type" : "secp256k1",
+      "master_key" : "KNEW BENT LYNN LED GAD BEN KENT SHAM HOBO RINK WALT ALLY",
+      "master_seed" : "sh8i92YRnEjJy3fpFkL8txQSCVo79",
+      "master_seed_hex" : "966C0F68643EFBA50D58D191D4CA8AA7",
+      "public_key" : "aBRNH5wUurfhZcoyR6nRwDSa95gMBkovBJ8V4cp1C1pM28H7EPL1",
+      "public_key_hex" : "03AEEFE1E8ED4BBC009DE996AC03A8C6B5713B1554794056C66E5B8D1753C7DD0E",
+      "status" : "success"
+   }
+}
+</code></pre></div></div>
+</div>
+<p>In the next step, you'll use the <code>account_id</code> from this response to assign the key pair as a regular key pair to your account. Also, save the <code>master_seed</code> value somewhere securely. (Everything else, you can forget about.)</p>
+<h3 id="2-assign-the-key-pair-to-your-account-as-a-regular-key-pair">2. Assign the Key Pair to Your Account as a Regular Key Pair</h3>
+<p>Use the <a href="reference-transaction-format.html#setregularkey"><code>SetRegularKey</code></a> method to assign the key pair you generated in step 1 to your account as a regular key pair.</p>
+<p>When assigning a regular key pair to your account for the first time, the <code>SetRegularKey</code> method requires signing by your account's master private key (secret). Transmitting your master private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.</p>
+<p>When you make subsequent <code>SetRegularKey</code> requests, you can sign using the existing regular private key to replace or <a href="#changing-or-removing-a-regular-key-pair">remove itself</a>. Note that you should still not submit your regular private key across the network.</p>
+<h4 id="sign-your-transaction">Sign Your Transaction</h4>
+<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="reference-rippleapi.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="reference-rippled.html#sign"><code>sign</code></a> command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>In all cases, note the signed transaction's identifying hash for later.</p>
+<p>Populate the request fields with the following values:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Request Field</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Account</code></td>
+<td align="left">The address of your account.</td>
+</tr>
+<tr>
+<td align="left"><code>RegularKey</code></td>
+<td align="left"><code>account_id</code> generated in step 1.</td>
+</tr>
+<tr>
+<td align="left"><code>secret</code></td>
+<td align="left"><code>master_key</code>, <code>master_seed</code>, or <code>master_seed_hex</code> (master private key) for your account.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="request-format-1">Request Format</h5>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">WebSocket</a></li><li><a href="#code-2-1">JSON-RPC</a></li><li><a href="#code-2-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-2-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "command": "sign",
+  "tx_json": {
+      "TransactionType": "SetRegularKey",
+      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+      "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"
+      },
+   "secret": "ssCATR7CBvn4GLd1UuU2bqqQffHki"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-2-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "method": "sign",
+   "params": [
+      {
+         "tx_json": {
+            "TransactionType": "SetRegularKey",
+            "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+            "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"
+         },
+         "secret": "ssCATR7CBvn4GLd1UuU2bqqQffHki"
+      }
+   ]
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-2-2" style="position: static;"><div class="codehilite"><pre><span></span><code>#Syntax: sign secret tx_json
+rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki '{"TransactionType": "SetRegularKey", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93", "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"}'
+</code></pre></div></div>
+</div>
+<h5 id="response-format-1">Response Format</h5>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">WebSocket</a></li><li><a href="#code-3-1">JSON-RPC</a></li><li><a href="#code-3-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-3-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "result": {
+    "tx_blob": "1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540",
+    "tx_json": {
+      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
+      "Sequence": 4,
+      "SigningPubKey": "0384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A",
+      "TransactionType": "SetRegularKey",
+      "TxnSignature": "304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C26",
+      "hash": "AB73BBF7C99061678B59FB48D72CA0F5FC6DD2815B6736C6E9EB94439EC236CE"
+    }
+  },
+  "status": "success",
+  "type": "response"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-3-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "result": {
+        "status": "success",
+        "tx_blob": "1200052280000000240000000768400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402201453CA3D4D17F0EE3828B9E3D6ACF65327F5D4FC2BA30953CACF6CBCB4145E3502202F2154BED1D7462CAC1E3DBB31864E48C3BA0B3133ACA5E37EC54F0D0C339E2D8114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540",
+        "tx_json": {
+            "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
+            "Sequence": 4,
+            "SigningPubKey": "0384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A",
+            "TransactionType": "SetRegularKey",
+            "TxnSignature": "304402201453CA3D4D17F0EE3828B9E3D6ACF65327F5D4FC2BA30953CACF6CBCB4145E3502202F2154BED1D7462CAC1E3DBB31864E48C3BA0B3133ACA5E37EC54F0D0C339E2D",
+            "hash": "AB73BBF7C99061678B59FB48D72CA0F5FC6DD2815B6736C6E9EB94439EC236CE"
+        }
+    }
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-3-2" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "result" : {
+      "status" : "success",
+      "tx_blob" : "1200052280000000240000000768400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402201453CA3D4D17F0EE3828B9E3D6ACF65327F5D4FC2BA30953CACF6CBCB4145E3502202F2154BED1D7462CAC1E3DBB31864E48C3BA0B3133ACA5E37EC54F0D0C339E2D8114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540",
+      "tx_json" : {
+         "Account" : "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+         "Fee" : "10",
+         "Flags" : 2147483648,
+         "RegularKey" : "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
+         "Sequence" : 4,
+         "SigningPubKey" : "0384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A",
+         "TransactionType" : "SetRegularKey",
+         "TxnSignature" : "304402201453CA3D4D17F0EE3828B9E3D6ACF65327F5D4FC2BA30953CACF6CBCB4145E3502202F2154BED1D7462CAC1E3DBB31864E48C3BA0B3133ACA5E37EC54F0D0C339E2D",
+         "hash" : "AB73BBF7C99061678B59FB48D72CA0F5FC6DD2815B6736C6E9EB94439EC236CE"
+      }
+   }
+}
+</code></pre></div></div>
+</div>
+<p>The <code>sign</code> command response contains a <code>tx_blob</code> value, as shown above. The offline signing response contains a <code>signedTransaction</code> value. Both are signed binary representations (blobs) of the transaction.</p>
+<p>Next, use the <code>submit</code> command to transmit the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
+<h4 id="submit-your-transaction">Submit Your Transaction</h4>
+<p>Take the <code>signedTransaction</code> value from the offline signing response or the <code>tx_blob</code> value from the <code>sign</code> command response and submit it as the <code>tx_blob</code> value using the <a href="reference-rippled.html#submit"><code>submit</code></a> command.</p>
+<h5 id="request-format-2">Request Format</h5>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">WebSocket</a></li><li><a href="#code-4-1">JSON-RPC</a></li><li><a href="#code-4-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-4-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "command": "submit",
+    "tx_blob": "1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-4-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "method":"submit",
+   "params": [
+      {
+         "tx_blob": "1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540"
+      }
+   ]
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-4-2" style="position: static;"><div class="codehilite"><pre><span></span><code>#Syntax: submit tx_blob
+rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540
+</code></pre></div></div>
+</div>
+<h5 id="response-format-2">Response Format</h5>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">WebSocket</a></li><li><a href="#code-5-1">JSON-RPC</a></li><li><a href="#code-5-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-5-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "result": {
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "tx_blob": "1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540",
+    "tx_json": {
+      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
+      "Sequence": 4,
+      "SigningPubKey": "0384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A",
+      "TransactionType": "SetRegularKey",
+      "TxnSignature": "304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C26",
+      "hash": "AB73BBF7C99061678B59FB48D72CA0F5FC6DD2815B6736C6E9EB94439EC236CE"
+    }
+  },
+  "status": "success",
+  "type": "response"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-5-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "result": {
+       "engine_result": "tesSUCCESS",
+       "engine_result_code": 0,
+       "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540",
+        "tx_json": {
+            "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
+            "Sequence": 4,
+            "SigningPubKey": "0384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A",
+            "TransactionType": "SetRegularKey",
+            "TxnSignature": "304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C26",
+            "hash": "AB73BBF7C99061678B59FB48D72CA0F5FC6DD2815B6736C6E9EB94439EC236CE"
+        }
+    }
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-5-2" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "result" : {
+      "engine_result" : "tesSUCCESS",
+      "engine_result_code" : 0,
+      "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
+      "status" : "success",
+      "tx_blob" : "1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540",
+      "tx_json" : {
+         "Account" : "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+         "Fee" : "10",
+         "Flags" : 2147483648,
+         "RegularKey" : "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7",
+         "Sequence" : 4,
+         "SigningPubKey" : "0384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A",
+         "TransactionType" : "SetRegularKey",
+         "TxnSignature" : "304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C26",
+         "hash" : "AB73BBF7C99061678B59FB48D72CA0F5FC6DD2815B6736C6E9EB94439EC236CE"
+      }
+   }
+}
+</code></pre></div></div>
+</div>
+<p>Note that the response contains a <code>hash</code> of the transaction, which you can use to <a href="reference-rippled.html#tx">look up the transaction's final outcome</a>.</p>
+<h3 id="3-verify-the-regular-key-pair">3. Verify the Regular Key Pair</h3>
+<p>To verify that your account has the regular key pair set correctly, submit an <a href="reference-transaction-format.html#accountset"><code>AccountSet</code></a> transaction from your account, signing it with the regular private key you assigned to your account in step 2.</p>
+<p>As discussed in step 2, transmitting your master private key is dangerous. It is equally risky to transmit your regular private key, though the consequences of being comprised might be less severe. Therefore, we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.</p>
+<h4 id="sign-your-transaction-1">Sign Your Transaction</h4>
+<p>The most secure way to sign a transaction is to do it offline with a signing library, such as <a href="reference-rippleapi.html#offline-functionality">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="reference-rippled.html#sign"><code>sign</code></a> command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>Populate the request fields with the following values:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Request Field</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Account</code></td>
+<td align="left">The address of your account.</td>
+</tr>
+<tr>
+<td align="left"><code>secret</code></td>
+<td align="left"><code>master_key</code>, <code>master_seed</code>, or <code>master_seed_hex</code> (regular private key) generated in step 1 and assigned to your account in step 2.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="request-format-3">Request Format</h5>
+<p>Here's an example of the request format. Note that the request does not include any <code>AccountSet</code> options. This means that a successful transaction has no effect other than to confirm that the regular key pair is set correctly for your account (and to destroy the transaction cost).</p>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">WebSocket</a></li><li><a href="#code-6-1">JSON-RPC</a></li><li><a href="#code-6-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-6-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "command": "sign",
+  "tx_json": {
+      "TransactionType": "AccountSet",
+      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"
+      },
+   "secret": "sh8i92YRnEjJy3fpFkL8txQSCVo79"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-6-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "method": "sign",
+   "params": [
+      {
+         "tx_json": {
+            "TransactionType": "AccountSet",
+            "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"
+         },
+         "secret": "sh8i92YRnEjJy3fpFkL8txQSCVo79"
+      }
+   ]
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-6-2" style="position: static;"><div class="codehilite"><pre><span></span><code>#Syntax: sign secret tx_json
+rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 '{"TransactionType": "AccountSet", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
+</code></pre></div></div>
+</div>
+<h5 id="response-format-3">Response Format</h5>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a href="#code-7-0">WebSocket</a></li><li><a href="#code-7-1">JSON-RPC</a></li><li><a href="#code-7-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-7-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "result": {
+    "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+    "tx_json": {
+      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 4,
+      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+      "TransactionType": "AccountSet",
+      "TxnSignature": "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+      "hash": "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
+    }
+  },
+  "status": "success",
+  "type": "response"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-7-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "result": {
+        "status": "success",
+        "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+        "tx_json": {
+            "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "Sequence": 4,
+            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+            "TransactionType": "AccountSet",
+            "TxnSignature": "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+            "hash": "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
+        }
+    }
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-7-2" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "result" : {
+      "status" : "success",
+      "tx_blob" : "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+      "tx_json" : {
+         "Account" : "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+         "Fee" : "10",
+         "Flags" : 2147483648,
+         "Sequence" : 4,
+         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+         "TransactionType" : "AccountSet",
+         "TxnSignature" : "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+         "hash" : "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
+      }
+   }
+}
+</code></pre></div></div>
+</div>
+<p>The <code>sign</code> command response contains a <code>tx_blob</code> value, as shown above. The offline signing response contains a <code>signedTransaction</code> value. Both are signed binary representations (blobs) of the transaction.</p>
+<p>Next, use the <code>submit</code> command to transmit the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
+<h4 id="submit-your-transaction-1">Submit Your Transaction</h4>
+<p>Take the <code>signedTransaction</code> value from the offline signing response or the <code>tx_blob</code> value from the <code>sign</code> command response and submit it as the <code>tx_blob</code> value using the <a href="reference-rippled.html#submit"><code>submit</code></a> command.</p>
+<h5 id="request-format-4">Request Format</h5>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-8"><ul class="codetabs"><li><a href="#code-8-0">WebSocket</a></li><li><a href="#code-8-1">JSON-RPC</a></li><li><a href="#code-8-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-8-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "command": "submit",
+    "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-8-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "method":"submit",
+   "params": [
+      {
+         "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
+      }
+   ]
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-8-2" style="position: static;"><div class="codehilite"><pre><span></span><code>#Syntax: submit tx_blob
+rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E
+</code></pre></div></div>
+</div>
+<h5 id="response-format-4">Response Format</h5>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-9"><ul class="codetabs"><li><a href="#code-9-0">WebSocket</a></li><li><a href="#code-9-1">JSON-RPC</a></li><li><a href="#code-9-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-9-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "result": {
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+    "tx_json": {
+      "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 4,
+      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+      "TransactionType": "AccountSet",
+      "TxnSignature": "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+      "hash": "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
+    }
+  },
+  "status": "success",
+  "type": "response"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-9-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+        "tx_json": {
+            "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "Sequence": 4,
+            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+            "TransactionType": "AccountSet",
+            "TxnSignature": "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+            "hash": "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
+        }
+    }
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-9-2" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "result" : {
+      "engine_result" : "tesSUCCESS",
+      "engine_result_code" : 0,
+      "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
+      "status" : "success",
+      "tx_blob" : "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+      "tx_json" : {
+         "Account" : "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93",
+         "Fee" : "10",
+         "Flags" : 2147483648,
+         "Sequence" : 4,
+         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+         "TransactionType" : "AccountSet",
+         "TxnSignature" : "3045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB8",
+         "hash" : "D9B305CB6E861D0994A5CDD4726129D91AC4277111DC444DE4CEE44AD4674A9F"
+      }
+   }
+}
+</code></pre></div></div>
+</div>
+<h3 id="4-explore-next-steps">4. Explore Next Steps</h3>
+<p>Now that you're familiar with the benefits of assigning a regular key pair to an account, consider taking a look at these related topics and tutorials:</p>
+<ul>
+<li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+<li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+<li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+</ul>
+<h2 id="changing-or-removing-a-regular-key-pair">Changing or Removing a Regular Key Pair</h2>
+<p>If your account's regular key pair is compromised, or if you just want to periodically change the regular key pair as a security measure, use the <a href="reference-transaction-format.html#setregularkey"><code>SetRegularKey</code></a> method to remove or change the regular key pair for your account.</p>
+<h3 id="changing-a-regular-key-pair">Changing a Regular Key Pair</h3>
+<p>The steps to change your existing regular key pair are almost the same as the steps to <a href="#assigning-a-regular-key-pair">assign a regular key</a> for the first time. You generate the key pair and assign it to your account as a regular key pair, overwriting the existing regular key pair. However, the main difference is that when changing the existing regular key pair, you can use the existing regular private key to replace itself, whereas when assigning a regular key pair to an account for the first time, you have to use the account's master private key to do it.</p>
+<p>For more information about master and regular key pairs, see <a href="concept-cryptographic-keys.html">Cryptographic Keys</a>.</p>
+<h3 id="removing-a-regular-key-pair">Removing a Regular Key Pair</h3>
+<p>If you want to simply remove a compromised regular key pair from your account, you don't need to generate a key pair first. Just use the <a href="reference-transaction-format.html#setregularkey"><code>SetRegularKey</code></a> method, omitting the <code>RegularKey</code> value in the request. Note that the method fails if you don't have another way of signing for your account currently enabled (either the master key pair or a <a href="reference-transaction-format.html#multi-signing">signer list</a>).</p>
+<p>When removing a regular key pair to your account, the <code>SetRegularKey</code> method requires signing by your account's master private key (secret) or existing regular key pair. Transmitting your master or regular private key is dangerous, so we'll complete this transaction in two steps to keep transaction signing separate from transaction submission to the network.</p>
+<h4 id="sign-your-transaction-2">Sign Your Transaction</h4>
+<p>The most secure way to sign a transaction is to do it offline with a signing library, such as <a href="reference-rippleapi.html#offline-functionality">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="reference-rippled.html#sign"><code>sign</code></a> command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>Populate the request fields with the following values:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Request Field</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Account</code></td>
+<td align="left">The address of your account.</td>
+</tr>
+<tr>
+<td align="left"><code>secret</code></td>
+<td align="left"><code>master_key</code>, <code>master_seed</code>, or <code>master_seed_hex</code> (master or regular private key) for your account.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="request-format-5">Request Format</h5>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-10"><ul class="codetabs"><li><a href="#code-10-0">WebSocket</a></li><li><a href="#code-10-1">JSON-RPC</a></li><li><a href="#code-10-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-10-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "command": "sign",
+  "tx_json": {
+      "TransactionType": "SetRegularKey",
+      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
+      },
+   "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-10-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "method": "sign",
+    "params": [
+        {
+        "secret" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+        "tx_json" : {
+            "TransactionType" : "SetRegularKey",
+            "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
+            }
+        }
+    ]
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-10-2" style="position: static;"><div class="codehilite"><pre><span></span><code>#Syntax: sign secret tx_json
+rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType": "SetRegularKey", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
+</code></pre></div></div>
+</div>
+<h5 id="response-format-5">Response Format</h5>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-11"><ul class="codetabs"><li><a href="#code-11-0">WebSocket</a></li><li><a href="#code-11-1">JSON-RPC</a></li><li><a href="#code-11-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-11-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "result": {
+    "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+    "tx_json": {
+      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 2,
+      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+      "TransactionType": "SetRegularKey",
+      "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+      "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
+    }
+  },
+  "status": "success",
+  "type": "response"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-11-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{NEWWWWWWWWWWWW
+    "result": {
+        "status": "success",
+        "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+        "tx_json": {
+            "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "Sequence": 2,
+            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+            "TransactionType": "SetRegularKey",
+            "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+            "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
+        }
+    }
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-11-2" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "result" : {
+      "status" : "success",
+      "tx_blob" : "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+      "tx_json" : {
+         "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+         "Fee" : "10",
+         "Flags" : 2147483648,
+         "Sequence" : 2,
+         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+         "TransactionType" : "SetRegularKey",
+         "TxnSignature" : "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+         "hash" : "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
+      }
+   }
+}
+</code></pre></div></div>
+</div>
+<p>The <code>sign</code> command response contains a <code>tx_blob</code> value, as shown above. The offline signing response contains a <code>signedTransaction</code> value. Both are signed binary representations (blobs) of the transaction.</p>
+<p>Next, use the <code>submit</code> command to transmit the transaction blob (<code>tx_blob</code> or <code>signedTransaction</code>) to the network.</p>
+<h4 id="submit-your-transaction-2">Submit Your Transaction</h4>
+<p>Take the <code>signedTransaction</code> value from the offline signing response or the <code>tx_blob</code> value from the <code>sign</code> command response and submit it as the <code>tx_blob</code> value using the <a href="reference-rippled.html#submit"><code>submit</code></a> command.</p>
+<h5 id="request-format-6">Request Format</h5>
+<p>An example of the request format:</p>
+<div class="multicode" id="code-12"><ul class="codetabs"><li><a href="#code-12-0">WebSocket</a></li><li><a href="#code-12-1">JSON-RPC</a></li><li><a href="#code-12-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-12-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "command": "submit",
+    "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-12-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "method":"submit",
+   "params":[
+      {
+         "tx_blob":"1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
+      }
+   ]
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-12-2" style="position: static;"><div class="codehilite"><pre><span></span><code>#Syntax: submit tx_blob
+rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E
+</code></pre></div></div>
+</div>
+<h5 id="response-format-6">Response Format</h5>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-13"><ul class="codetabs"><li><a href="#code-13-0">WebSocket</a></li><li><a href="#code-13-1">JSON-RPC</a></li><li><a href="#code-13-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-13-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "result": {
+    "engine_result": "tesSUCCESS",
+    "engine_result_code": 0,
+    "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+    "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+    "tx_json": {
+      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+      "Fee": "10",
+      "Flags": 2147483648,
+      "Sequence": 2,
+      "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+      "TransactionType": "SetRegularKey",
+      "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+      "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
+    }
+  },
+  "status": "success",
+  "type": "response"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-13-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+        "tx_json": {
+            "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "Sequence": 2,
+            "SigningPubKey": "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+            "TransactionType": "SetRegularKey",
+            "TxnSignature": "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+            "hash": "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
+        }
+    }
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-13-2" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "result" : {
+      "engine_result" : "tesSUCCESS",
+      "engine_result_code" : 0,
+      "engine_result_message" : "The transaction was applied. Only final in a validated ledger.",
+      "status" : "success",
+      "tx_blob" : "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E",
+      "tx_json" : {
+         "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+         "Fee" : "10",
+         "Flags" : 2147483648,
+         "Sequence" : 2,
+         "SigningPubKey" : "0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020",
+         "TransactionType" : "SetRegularKey",
+         "TxnSignature" : "3045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E83",
+         "hash" : "59BCAB8E5B9D4597D6A7BFF22F6C555D0F41420599A2E126035B6AF19261AD97"
+      }
+   }
+}
+</code></pre></div></div>
+</div>
+<p>The way to verify that regular key pair removal succeeded is to confirm that you can't send a transaction using the removed regular private key.</p>
+<p>Here's an example error response for an <a href="reference-transaction-format.html#accountset"><code>AccountSet</code></a> transaction signed using the regular private key removed by the <code>SetRegularKey</code> transaction above.</p>
+<h4 id="response-format-7">Response Format</h4>
+<p>An example of a successful response:</p>
+<div class="multicode" id="code-14"><ul class="codetabs"><li><a href="#code-14-0">WebSocket</a></li><li><a href="#code-14-1">JSON-RPC</a></li><li><a href="#code-14-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-14-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "error": "badSecret",
+  "error_code": 41,
+  "error_message": "Secret does not match account.",
+  "request": {
+    "command": "submit",
+    "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+    "tx_json": {
+      "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+      "TransactionType": "AccountSet"
+    }
+  },
+  "status": "error",
+  "type": "response"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-14-1" style="position: static;"><div class="codehilite"><pre><span></span><code>{NEWWWWWWWWWWWW
+    "result": {
+        "error": "badSecret",
+        "error_code": 41,
+        "error_message": "Secret does not match account.",
+        "request": {
+            "command": "submit",
+            "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+            "tx_json": {
+                "Account": "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+                "TransactionType": "AccountSet"
+            }
+        },
+        "status": "error"
+    }
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-14-2" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+   "result" : {
+      "error" : "badSecret",
+      "error_code" : 41,
+      "error_message" : "Secret does not match account.",
+      "request" : {
+         "command" : "submit",
+         "secret" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+         "tx_json" : {
+            "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8",
+            "TransactionType" : "AccountSet"
+         }
+      },
+      "status" : "error"
+   }
+}
+</code></pre></div></div>
+</div>
+<p>In some cases, you can even use the <code>SetRegularKey</code> method to send a <a href="concept-transaction-cost.html#key-reset-transaction">key reset transaction</a> without paying the <a href="reference-transaction-format.html#transaction-cost">transaction cost</a>. With the enablement of the FeeEscalation amendment, <code>rippled</code> prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.</p>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

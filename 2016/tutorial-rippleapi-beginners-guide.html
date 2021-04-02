@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>RippleAPI Beginners Guide - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="tutorial-rippleapi-beginners-guide.html">XRP Tasks</a></li>
+              <li class="active crumb-current">RippleAPI Beginners Guide</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/tutorial-rippleapi-beginners-guide.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-xrp-ledger-intro.html">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a href="concept-cryptographic-keys.html">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a href="concept-reserves.html">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a href="concept-depositauth.html">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a class="active" href="#main_content_body">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a href="concept-demurrage.html">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a href="tutorial-checks-send.html">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a href="tutorial-build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">RippleAPI Beginners Guide</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#rippleapi-beginners-guide">RippleAPI Beginners Guide</a></li>
+<li class="level-1"><a href="#environment-setup">Environment Setup</a></li>
+<li class="level-2"><a href="#install-nodejs-and-npm">Install Node.js and npm</a></li>
+<li class="level-2"><a href="#use-npm-to-install-rippleapi-and-dependencies">Use NPM to install RippleAPI and dependencies</a></li>
+<li class="level-1"><a href="#first-rippleapi-script">First RippleAPI Script</a></li>
+<li class="level-2"><a href="#running-the-script">Running the script</a></li>
+<li class="level-2"><a href="#understanding-the-script">Understanding the script</a></li>
+<li class="level-3"><a href="#script-opening">Script opening</a></li>
+<li class="level-3"><a href="#instantiating-the-api">Instantiating the API</a></li>
+<li class="level-3"><a href="#connecting-and-promises">Connecting and Promises</a></li>
+<li class="level-3"><a href="#custom-code">Custom code</a></li>
+<li class="level-3"><a href="#cleanup">Cleanup</a></li>
+<li class="level-1"><a href="#waiting-for-validation">Waiting for Validation</a></li>
+<li class="level-1"><a href="#rippleapi-in-web-browsers">RippleAPI in Web Browsers</a></li>
+<li class="level-2"><a href="#build-instructions">Build Instructions</a></li>
+<li class="level-2"><a href="#example-browser-usage">Example Browser Usage</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="rippleapi-beginners-guide">RippleAPI Beginners Guide</h1>
+<p>This tutorial guides you through the basics of building an XRP Ledger-connected application using <a href="http://nodejs.org/">Node.js</a> and <a href="reference-rippleapi.html">RippleAPI</a>, a JavaScript API for accessing the XRP Ledger.</p>
+<p>The scripts and configuration files used in this guide are <a href="https://github.com/ripple/ripple-dev-portal/tree/master/content/code_samples/rippleapi_quickstart">available in the Ripple Dev Portal GitHub Repository</a>.</p>
+<h1 id="environment-setup">Environment Setup</h1>
+<p>The first step to using RippleAPI is setting up your development environment.</p>
+<h2 id="install-nodejs-and-npm">Install Node.js and npm</h2>
+<p>RippleAPI is built as an application for the Node.js runtime environment, so the first step is getting Node.js installed. RippleAPI requires Node.js version 0.12, version 4.x, or higher.</p>
+<p>This step depends on your operating system. We recommend <a href="https://nodejs.org/en/download/package-manager/">the official instructions for installing Node.js using a package manager</a> for your operating system. If the packages for Node.js and <code>npm</code> (Node Package Manager) are separate, install both. (This applies to Arch Linux, CentOS, Fedora, and RHEL.)</p>
+<p>After you have installed Node.js, you can check the version of the <code>node</code> binary from a command line:</p>
+<div class="codehilite"><pre><span></span><code>node --version
+</code></pre></div>
+<p>On some platforms, the binary is named <code>nodejs</code> instead:</p>
+<div class="codehilite"><pre><span></span><code>nodejs --version
+</code></pre></div>
+<h2 id="use-npm-to-install-rippleapi-and-dependencies">Use NPM to install RippleAPI and dependencies</h2>
+<p>RippleAPI uses the newest version of JavaScript, ECMAScript 6 (also known as ES2015). To use the new features of ECMAScript 6, RippleAPI depends on <a href="https://babeljs.io">Babel-Node</a> and its ES2015 presets. You can use <code>npm</code> to install RippleAPI and these dependencies together.</p>
+<h4 id="1-create-a-new-directory-for-your-project">1. Create a new directory for your project</h4>
+<p>Create a folder called (for example) <code>my_ripple_experiment</code>:</p>
+<div class="codehilite"><pre><span></span><code>mkdir my_ripple_experiment &amp;&amp; cd my_ripple_experiment
+</code></pre></div>
+<p>Optionally, start a <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a> repository in that directory so you can track changes to your code.</p>
+<div class="codehilite"><pre><span></span><code>git init
+</code></pre></div>
+<p>Alternatively, you can <a href="https://help.github.com/articles/create-a-repo/">create a repo on GitHub</a> to version and share your work. After setting it up, <a href="https://help.github.com/articles/cloning-a-repository/">clone the repo</a> to your local machine and <code>cd</code> into that directory.</p>
+<h4 id="2-create-a-new-packagejson-file-for-your-project">2. Create a new <code>package.json</code> file for your project.</h4>
+<p>Use the following template, which includes:</p>
+<ul>
+<li>RippleAPI itself (<code>ripple-lib</code>)</li>
+<li>Babel (<code>babel-cli</code>)</li>
+<li>The ECMAScript 6 presets for Babel (<code>babel-preset-es2015</code>)</li>
+<li>(Optional) <a href="http://eslint.org/">ESLint</a> (<code>eslint</code>) for checking code quality.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>{
+  <span class="s2">"</span><span class="s">name</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">my_ripple_experiment</span><span class="s2">"</span>,
+  <span class="s2">"</span><span class="s">version</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">0.0.1</span><span class="s2">"</span>,
+  <span class="s2">"</span><span class="s">license</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">MIT</span><span class="s2">"</span>,
+  <span class="s2">"</span><span class="s">private</span><span class="s2">"</span>: <span class="nv">true</span>,
+  <span class="s2">"</span><span class="s">//</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">Change the license to something appropriate. You may want to use 'UNLICENSED' if you are just starting out.</span><span class="s2">"</span>,
+  <span class="s2">"</span><span class="s">dependencies</span><span class="s2">"</span>: {
+    <span class="s2">"</span><span class="s">ripple-lib</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">*</span><span class="s2">"</span>,
+    <span class="s2">"</span><span class="s">babel-cli</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">^6.0.0</span><span class="s2">"</span>,
+    <span class="s2">"</span><span class="s">babel-preset-es2015</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">*</span><span class="s2">"</span>
+  },
+  <span class="s2">"</span><span class="s">babel</span><span class="s2">"</span>: {
+    <span class="s2">"</span><span class="s">presets</span><span class="s2">"</span>: [<span class="s2">"</span><span class="s">es2015</span><span class="s2">"</span>]
+  },
+  <span class="s2">"</span><span class="s">devDependencies</span><span class="s2">"</span>: {
+    <span class="s2">"</span><span class="s">eslint</span><span class="s2">"</span>: <span class="s2">"</span><span class="s">*</span><span class="s2">"</span>
+  }
+}
+</code></pre></div>
+<h4 id="3-use-npm-to-install-the-dependencies">3. Use NPM to install the dependencies.</h4>
+<div class="codehilite"><pre><span></span><code>npm install
+</code></pre></div>
+<p>This automatically installs all the dependencies defined in the <code>package.json</code> into the local folder <code>node_modules/</code>. (We recommend <em>not</em> using <code>npm -g</code> to install the dependencies globally.)</p>
+<p>The install process may take a while and end with a few warnings. You may safely ignore the following warnings:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">npm</span> <span class="n">WARN</span> <span class="n">optional</span> <span class="n">Skipping</span> <span class="n">failed</span> <span class="n">optional</span> <span class="n">dependency</span> <span class="o">/</span><span class="n">chokidar</span><span class="o">/</span><span class="nl">fsevents</span><span class="p">:</span>
+<span class="n">npm</span> <span class="n">WARN</span> <span class="n">notsup</span> <span class="n">Not</span> <span class="n">compatible</span> <span class="n">with</span> <span class="n">your</span> <span class="n">operating</span> <span class="n">system</span> <span class="n">or</span> <span class="nl">architecture</span><span class="p">:</span> <span class="n">fsevents</span><span class="mf">@1.0.6</span>
+<span class="n">npm</span> <span class="n">WARN</span> <span class="n">ajv</span><span class="mf">@1.4.10</span> <span class="n">requires</span> <span class="n">a</span> <span class="n">peer</span> <span class="n">of</span> <span class="n">ajv</span><span class="o">-</span><span class="n">i18n</span><span class="mf">@0.1</span><span class="p">.</span><span class="n">x</span> <span class="n">but</span> <span class="n">none</span> <span class="n">was</span> <span class="n">installed</span><span class="p">.</span>
+</code></pre></div>
+<h1 id="first-rippleapi-script">First RippleAPI Script</h1>
+<p>This script, <code>get-account-info.js</code>, fetches information about a hard-coded account. Use it to test that RippleAPI works:</p>
+<div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">RippleAPI</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span><span class="o">.</span><span class="n">RippleAPI</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="n">api</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RippleAPI</span><span class="p">({</span>
+  <span class="n">server</span><span class="p">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="o">//</span> <span class="n">Public</span> <span class="n">rippled</span> <span class="n">server</span>
+<span class="p">});</span>
+<span class="n">api</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="o">/*</span> <span class="n">begin</span> <span class="n">custom</span> <span class="n">code</span> <span class="o">------------------------------------</span> <span class="o">*/</span>
+  <span class="k">const</span> <span class="n">myAddress</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
+
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'getting account info for'</span><span class="p">,</span> <span class="n">myAddress</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">getAccountInfo</span><span class="p">(</span><span class="n">myAddress</span><span class="p">);</span>
+
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">info</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'getAccountInfo done'</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">end</span> <span class="n">custom</span> <span class="n">code</span> <span class="o">--------------------------------------</span> <span class="o">*/</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">disconnect</span><span class="p">();</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'done and disconnected.'</span><span class="p">);</span>
+<span class="p">})</span><span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">error</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="running-the-script">Running the script</h2>
+<p>RippleAPI and the script both use the ECMAScript 6 version of JavaScript. That's why we installed Babel earlier. The easiest way to run ECMAScript 6 is to use the <code>babel-node</code> binary, which NPM installs in the <code>node_modules/.bin/</code> directory of your project. Thus, running the script looks like this:</p>
+<div class="codehilite"><pre><span></span><code>./node_modules/.bin/babel-node get-account-info.js
+</code></pre></div>
+<p>Output:</p>
+<div class="codehilite"><pre><span></span><code><span class="nv">getting</span> <span class="nv">account</span> <span class="nv">info</span> <span class="k">for</span> <span class="nv">rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</span>
+{ <span class="nv">sequence</span>: <span class="mi">359</span>,
+  <span class="nv">xrpBalance</span>: <span class="s1">'</span><span class="s">75.181663</span><span class="s1">'</span>,
+  <span class="nv">ownerCount</span>: <span class="mi">4</span>,
+  <span class="nv">previousInitiatedTransactionID</span>: <span class="s1">'</span><span class="s">E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9</span><span class="s1">'</span>,
+  <span class="nv">previousAffectingTransactionID</span>: <span class="s1">'</span><span class="s">E5C6DD25B2DCF534056D98A2EFE3B7CFAE4EBC624854DE3FA436F733A56D8BD9</span><span class="s1">'</span>,
+  <span class="nv">previousAffectingTransactionLedgerVersion</span>: <span class="mi">18489336</span> }
+<span class="nv">getAccountInfo</span> <span class="nv">done</span>
+<span class="nv">done</span> <span class="nv">and</span> <span class="nv">disconnected</span>.
+</code></pre></div>
+<h2 id="understanding-the-script">Understanding the script</h2>
+<p>In addition to RippleAPI-specific code, this script uses syntax and conventions that are recent developments in JavaScript. Let's divide the sample code into smaller chunks to explain each one.</p>
+<h3 id="script-opening">Script opening</h3>
+<div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">RippleAPI</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span><span class="o">.</span><span class="n">RippleAPI</span><span class="p">;</span>
+</code></pre></div>
+<p>The opening line enables <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode">strict mode</a>. This is purely optional, but it helps you avoid some common pitfalls of JavaScript. See also: <a href="https://msdn.microsoft.com/library/br230269%28v=vs.94%29.aspx#Anchor_1">Restrictions on Code in Strict Mode</a>.</p>
+<p>The second line imports RippleAPI into the current scope using Node.js's require function. RippleAPI is one of <a href="https://github.com/ripple/ripple-lib/blob/develop/src/index.ts">the modules <code>ripple-lib</code> exports</a>.</p>
+<h3 id="instantiating-the-api">Instantiating the API</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">const</span> <span class="n">api</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RippleAPI</span><span class="p">({</span>
+  <span class="n">server</span><span class="p">:</span> <span class="s1">'wss://s1.ripple.com'</span> <span class="o">//</span> <span class="n">Public</span> <span class="n">rippled</span> <span class="n">server</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>This section creates a new instance of the RippleAPI class, assigning it to the variable <code>api</code>. (The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const"><code>const</code> keyword</a> means you can't reassign the value <code>api</code> to some other value. The internal state of the object can still change, though.)</p>
+<p>The one argument to the constructor is an options object, which has <a href="reference-rippleapi.html#parameters">a variety of options</a>. The <code>server</code> parameter tells it where it should connect to a <code>rippled</code> server.</p>
+<ul>
+<li>The example <code>server</code> setting uses a secure WebSocket connection to connect to one of the public servers that Ripple (the company) operates.</li>
+<li>If you don't include the <code>server</code> option, RippleAPI runs in <a href="reference-rippleapi.html#offline-functionality">offline mode</a> instead, which only provides methods that don't need network connectivity.</li>
+<li>You can specify a <a href="https://ripple.com/build/ripple-test-net/">Ripple Test Net</a> server instead to connect to the parallel-world Test Network instead of the production XRP Ledger.</li>
+<li>If you <a href="tutorial-rippled-setup.html">run your own <code>rippled</code></a>, you can instruct it to connect to your local server. For example, you might say <code>server: 'ws://localhost:5005'</code> instead.</li>
+</ul>
+<h3 id="connecting-and-promises">Connecting and Promises</h3>
+<div class="codehilite"><pre><span></span><code><span class="nv">api</span>.<span class="k">connect</span><span class="ss">()</span>.<span class="k">then</span><span class="ss">(()</span> <span class="o">=&gt;</span> {
+</code></pre></div>
+<p>The <a href="reference-rippleapi.html#connect">connect() method</a> is one of many RippleAPI methods that returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, which is a special kind of JavaScript object. A Promise is designed to do an asynchronous operation that returns a value later, such as querying the XRP Ledger.</p>
+<p>When you get a Promise back from some expression (like <code>api.connect()</code>), you call the Promise's <code>then</code> method and pass in a callback function. Passing a function as an argument is conventional in JavaScript, taking advantage of how JavaScript functions are <a href="https://en.wikipedia.org/wiki/First-class_function">first-class objects</a>.</p>
+<p>When a Promise finishes with its asynchronous operations, the Promise runs the callback function you passed it. The return value from the <code>then</code> method is another Promise object, so you can "chain" that into another <code>then</code> method, or the Promise's <code>catch</code> method, which also takes a callback. The callback you pass to <code>catch</code> gets called if something goes wrong.</p>
+<p>Finally, we have more new ECMAScript 6 syntax - an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow function</a>. Arrow functions are a shorter way of defining anonymous functions. This is convenient for defining lots of one-off functions as callbacks. The syntax <code>()=&gt; {...}</code> is mostly equivalent to <code>function() {...}</code>. If you want an anonymous function with one parameter, you can use a syntax like <code>info =&gt; {...}</code> instead, which is almost the same as <code>function(info) {...}</code> syntax.</p>
+<h3 id="custom-code">Custom code</h3>
+<div class="codehilite"><pre><span></span><code>  <span class="o">/*</span> <span class="n">begin</span> <span class="n">custom</span> <span class="n">code</span> <span class="o">------------------------------------</span> <span class="o">*/</span>
+  <span class="k">const</span> <span class="n">myAddress</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
+
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'getting account info for'</span><span class="p">,</span> <span class="n">myAddress</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">getAccountInfo</span><span class="p">(</span><span class="n">myAddress</span><span class="p">);</span>
+
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">info</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'getAccountInfo done'</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">end</span> <span class="n">custom</span> <span class="n">code</span> <span class="o">--------------------------------------</span> <span class="o">*/</span>
+</code></pre></div>
+<p>This is the part that you change to do whatever you want the script to do.</p>
+<p>The example code looks up an XRP Ledger account by its address. Try running the code with different addresses to see different results.</p>
+<p>The <code>console.log()</code> function is built into both Node.js and web browsers, and writes out to the console. This example includes lots of console output to make it easier to understand what the code is doing.</p>
+<p>Keep in mind that the example code starts in the middle of a callback function (called when RippleAPI finishes connecting). That function calls RippleAPI's <a href="reference-rippleapi.html#getaccountinfo"><code>getAccountInfo</code></a> method, and returns the results.</p>
+<p>The <code>getAccountInfo</code> API method returns another Promise, so the line <code>}).then( info =&gt; {</code> defines another anonymous callback function to run when this Promise's asynchronous work is done. Unlike the previous case, this callback function takes one argument, called <code>info</code>, which holds the asynchronous return value from the <code>getAccountInfo</code> API method. The rest of this callback function outputs that return value to the console.</p>
+<h3 id="cleanup">Cleanup</h3>
+<div class="codehilite"><pre><span></span><code>}<span class="ss">)</span>.<span class="k">then</span><span class="ss">(()</span> <span class="o">=&gt;</span> {
+  <span class="k">return</span> <span class="nv">api</span>.<span class="k">disconnect</span><span class="ss">()</span><span class="c1">;</span>
+}<span class="ss">)</span>.<span class="k">then</span><span class="ss">(()</span> <span class="o">=&gt;</span> {
+  <span class="nv">console</span>.<span class="nv">log</span><span class="ss">(</span><span class="s1">'</span><span class="s">done and disconnected.</span><span class="s1">'</span><span class="ss">)</span><span class="c1">;</span>
+}<span class="ss">)</span>.<span class="nv">catch</span><span class="ss">(</span><span class="nv">console</span>.<span class="nv">error</span><span class="ss">)</span><span class="c1">;</span>
+</code></pre></div>
+<p>The rest of the sample code is mostly more <a href="reference-rippleapi.html#boilerplate">boilerplate code</a>. The first line ends the previous callback function, then chains to another callback to run when it ends. That method disconnects cleanly from the XRP Ledger, and has yet another callback which writes to the console when it finishes. If your script waits on <a href="reference-rippleapi.html#api-events">RippleAPI events</a>, do not disconnect until you are done waiting for events.</p>
+<p>The <code>catch</code> method ends this Promise chain. The callback provided here runs if any of the Promises or their callback functions encounters an error. In this case, we pass the standard <code>console.error</code> function, which writes to the console, instead of defining a custom callback. You could define a smarter callback function here to intelligently catch certain error types.</p>
+<h1 id="waiting-for-validation">Waiting for Validation</h1>
+<p>One of the biggest challenges in using the XRP Ledger (or any decentralized system) is knowing the final, immutable transaction results. Even if you <a href="tutorial-reliable-transaction-submission.html">follow the best practices</a> you still have to wait for the <a href="https://ripple.com/build/ripple-ledger-consensus-process/">consensus process</a> to finally accept or reject your transaction. The following example code demonstrates how to wait for the final outcome of a transaction:</p>
+<div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span><span class="p">;</span>
+<span class="o">/*</span> <span class="kn">import</span> <span class="nn">RippleAPI</span> <span class="ow">and</span> <span class="n">support</span> <span class="n">libraries</span> <span class="o">*/</span>
+<span class="n">const</span> <span class="n">RippleAPI</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span><span class="o">.</span><span class="n">RippleAPI</span><span class="p">;</span>
+<span class="n">const</span> <span class="k">assert</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">'assert'</span><span class="p">);</span>
+
+<span class="o">/*</span> <span class="n">Credentials</span> <span class="n">of</span> <span class="n">the</span> <span class="n">account</span> <span class="n">placing</span> <span class="n">the</span> <span class="n">order</span> <span class="o">*/</span>
+<span class="n">const</span> <span class="n">myAddr</span> <span class="o">=</span> <span class="s1">'rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn'</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">mySecret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span><span class="p">;</span>
+
+<span class="o">/*</span> <span class="n">Define</span> <span class="n">the</span> <span class="n">order</span> <span class="n">to</span> <span class="n">place</span> <span class="n">here</span> <span class="o">*/</span>
+<span class="n">const</span> <span class="n">myOrder</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'direction'</span><span class="p">:</span> <span class="s1">'buy'</span><span class="p">,</span>
+  <span class="s1">'quantity'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'currency'</span><span class="p">:</span> <span class="s1">'FOO'</span><span class="p">,</span>
+    <span class="s1">'counterparty'</span><span class="p">:</span> <span class="s1">'rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v'</span><span class="p">,</span>
+    <span class="s1">'value'</span><span class="p">:</span> <span class="s1">'100'</span>
+  <span class="p">},</span>
+  <span class="s1">'totalPrice'</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'currency'</span><span class="p">:</span> <span class="s1">'XRP'</span><span class="p">,</span>
+    <span class="s1">'value'</span><span class="p">:</span> <span class="s1">'1000'</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="o">/*</span> <span class="n">Milliseconds</span> <span class="n">to</span> <span class="n">wait</span> <span class="n">between</span> <span class="n">checks</span> <span class="k">for</span> <span class="n">a</span> <span class="n">new</span> <span class="n">ledger</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">const</span> <span class="n">INTERVAL</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="o">/*</span> <span class="n">Instantiate</span> <span class="n">RippleAPI</span><span class="o">.</span> <span class="n">Uses</span> <span class="n">s2</span> <span class="p">(</span><span class="n">full</span> <span class="n">history</span> <span class="n">server</span><span class="p">)</span> <span class="o">*/</span>
+<span class="n">const</span> <span class="n">api</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RippleAPI</span><span class="p">({</span><span class="n">server</span><span class="p">:</span> <span class="s1">'wss://s2.ripple.com'</span><span class="p">});</span>
+<span class="o">/*</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">ledgers</span> <span class="n">to</span> <span class="n">check</span> <span class="k">for</span> <span class="n">valid</span> <span class="n">transaction</span> <span class="n">before</span> <span class="n">failing</span> <span class="o">*/</span>
+<span class="n">const</span> <span class="n">ledgerOffset</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">myInstructions</span> <span class="o">=</span> <span class="p">{</span><span class="n">maxLedgerVersionOffset</span><span class="p">:</span> <span class="n">ledgerOffset</span><span class="p">};</span>
+
+
+<span class="o">/*</span> <span class="n">Verify</span> <span class="n">a</span> <span class="n">transaction</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">validated</span> <span class="n">XRP</span> <span class="n">Ledger</span> <span class="n">version</span> <span class="o">*/</span>
+<span class="n">function</span> <span class="n">verifyTransaction</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Verifing Transaction'</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">getTransaction</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Final Result: '</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">outcome</span><span class="o">.</span><span class="n">result</span><span class="p">);</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Validated in Ledger: '</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">outcome</span><span class="o">.</span><span class="n">ledgerVersion</span><span class="p">);</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Sequence: '</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">sequence</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">outcome</span><span class="o">.</span><span class="n">result</span> <span class="o">===</span> <span class="s1">'tesSUCCESS'</span><span class="p">;</span>
+  <span class="p">})</span><span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="o">/*</span> <span class="n">If</span> <span class="n">transaction</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">latest</span> <span class="n">validated</span> <span class="n">ledger</span><span class="p">,</span>
+       <span class="k">try</span> <span class="n">again</span> <span class="n">until</span> <span class="nb">max</span> <span class="n">ledger</span> <span class="n">hit</span> <span class="o">*/</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="n">instanceof</span> <span class="n">api</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">PendingLedgerVersionError</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="n">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="n">verifyTransaction</span><span class="p">(</span><span class="nb">hash</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">),</span> <span class="n">INTERVAL</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">error</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+
+<span class="o">/*</span> <span class="n">Function</span> <span class="n">to</span> <span class="n">prepare</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="ow">and</span> <span class="n">submit</span> <span class="n">a</span> <span class="n">transaction</span> <span class="n">to</span> <span class="n">the</span> <span class="n">XRP</span> <span class="n">Ledger</span><span class="o">.</span> <span class="o">*/</span>
+<span class="n">function</span> <span class="n">submitTransaction</span><span class="p">(</span><span class="n">lastClosedLedgerVersion</span><span class="p">,</span> <span class="n">prepared</span><span class="p">,</span> <span class="n">secret</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">const</span> <span class="n">signedData</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">prepared</span><span class="o">.</span><span class="n">txJSON</span><span class="p">,</span> <span class="n">secret</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">signedData</span><span class="o">.</span><span class="n">signedTransaction</span><span class="p">)</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Tentative Result: '</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">resultCode</span><span class="p">);</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Tentative Message: '</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">resultMessage</span><span class="p">);</span>
+    <span class="o">/*</span> <span class="n">If</span> <span class="n">transaction</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">successfully</span> <span class="n">submitted</span> <span class="n">throw</span> <span class="n">error</span> <span class="o">*/</span>
+    <span class="k">assert</span><span class="o">.</span><span class="n">strictEqual</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">resultCode</span><span class="p">,</span> <span class="s1">'tesSUCCESS'</span><span class="p">);</span>
+    <span class="o">/*</span> <span class="s1">'tesSUCCESS'</span> <span class="n">means</span> <span class="n">the</span> <span class="n">transaction</span> <span class="ow">is</span> <span class="n">being</span> <span class="n">considered</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">ledger</span><span class="p">,</span> <span class="ow">and</span> <span class="n">requires</span> <span class="n">validation</span><span class="o">.</span> <span class="o">*/</span>
+
+    <span class="o">/*</span> <span class="n">If</span> <span class="n">successfully</span> <span class="n">submitted</span><span class="p">,</span> <span class="n">begin</span> <span class="n">validation</span> <span class="n">workflow</span> <span class="o">*/</span>
+    <span class="n">const</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">minLedgerVersion</span><span class="p">:</span> <span class="n">lastClosedLedgerVersion</span><span class="p">,</span>
+      <span class="n">maxLedgerVersion</span><span class="p">:</span> <span class="n">prepared</span><span class="o">.</span><span class="n">instructions</span><span class="o">.</span><span class="n">maxLedgerVersion</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="n">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="n">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="n">verifyTransaction</span><span class="p">(</span><span class="n">signedData</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">),</span> <span class="n">INTERVAL</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+
+<span class="n">api</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">prepareOrder</span><span class="p">(</span><span class="n">myAddr</span><span class="p">,</span> <span class="n">myOrder</span><span class="p">,</span> <span class="n">myInstructions</span><span class="p">);</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">prepared</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Order Prepared'</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">getLedger</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">ledger</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Current Ledger'</span><span class="p">,</span> <span class="n">ledger</span><span class="o">.</span><span class="n">ledgerVersion</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">submitTransaction</span><span class="p">(</span><span class="n">ledger</span><span class="o">.</span><span class="n">ledgerVersion</span><span class="p">,</span> <span class="n">prepared</span><span class="p">,</span> <span class="n">mySecret</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">api</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'api disconnected'</span><span class="p">);</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">exit</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">})</span><span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">error</span><span class="p">);</span>
+</code></pre></div>
+<p>This code creates and submits an order transaction, although the same principles apply to other types of transactions as well. After submitting the transaction, the code uses a new Promise, which queries the ledger again after using setTimeout to wait a fixed amount of time, to see if the transaction has been verified. If it hasn't been verified, the process repeats until either the transaction is found in a validated ledger or the returned ledger is higher than the LastLedgerSequence parameter.</p>
+<p>In rare cases (particularly with a large delay or a loss of power), the <code>rippled</code> server may be missing a ledger version between when you submitted the transaction and when you determined that the network has passed the <code>maxLedgerVersion</code>. In this case, you cannot be definitively sure whether the transaction has failed, or has been included in one of the missing ledger versions. RippleAPI returns <code>MissingLedgerHistoryError</code> in this case.</p>
+<p>If you are the administrator of the <code>rippled</code> server, you can <a href="reference-rippled.html#ledger-request">manually request the missing ledger(s)</a>. Otherwise, you can try checking the ledger history using a different server. (Ripple runs a public full-history server at <code>s2.ripple.com</code> for this purpose.)</p>
+<p>See <a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a> for a more thorough explanation.</p>
+<h1 id="rippleapi-in-web-browsers">RippleAPI in Web Browsers</h1>
+<p>RippleAPI can also be used in a web browser if you compile a browser-compatible version and include <a href="https://www.npmjs.com/package/lodash">lodash</a> as a dependency before the RippleAPI script.</p>
+<h2 id="build-instructions">Build Instructions</h2>
+<p>To use RippleAPI in a browser, you need to build a browser-compatible version. The following process compiles RippleAPI into a single JavaScript file you can include in a webpage.</p>
+<h4 id="1-download-a-copy-of-the-rippleapi-git-repository">1. Download a copy of the RippleAPI git repository.</h4>
+<p>If you have <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a> installed, you can clone the repository and check out the <strong>master</strong> branch, which always has the latest official release:</p>
+<div class="codehilite"><pre><span></span><code>git clone https://github.com/ripple/ripple-lib.git
+cd ripple-lib
+git checkout master
+</code></pre></div>
+<p>Alternatively, you can download an archive (.zip or .tar.gz) of a specific release from the <a href="https://github.com/ripple/ripple-lib/releases">RippleAPI releases page</a> and extract it.</p>
+<h4 id="2-install-dependencies-using-npm">2. Install dependencies using NPM</h4>
+<p>You need to have <a href="#install-nodejs-and-npm">NPM (Node.js Package Manager) installed</a> first.</p>
+<p>Then, from within the <code>ripple-lib</code> directory, you can use NPM to install all the necessary dependencies:</p>
+<div class="codehilite"><pre><span></span><code>npm install
+</code></pre></div>
+<p>(We recommend <em>not</em> using <code>npm -g</code> to install dependencies globally.)</p>
+<p>This can take a while, and may include some warnings. The following warnings are benign and do not indicate a problem:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">npm</span> <span class="n">WARN</span> <span class="n">optional</span> <span class="n">Skipping</span> <span class="n">failed</span> <span class="n">optional</span> <span class="n">dependency</span> <span class="o">/</span><span class="n">chokidar</span><span class="o">/</span><span class="nl">fsevents</span><span class="p">:</span>
+<span class="n">npm</span> <span class="n">WARN</span> <span class="n">notsup</span> <span class="n">Not</span> <span class="n">compatible</span> <span class="n">with</span> <span class="n">your</span> <span class="n">operating</span> <span class="n">system</span> <span class="n">or</span> <span class="nl">architecture</span><span class="p">:</span> <span class="n">fsevents</span><span class="mf">@1.0.6</span>
+</code></pre></div>
+<h4 id="3-use-gulp-to-build-a-single-javascript-output">3. Use Gulp to build a single JavaScript output</h4>
+<p>RippleAPI comes with code to use the <a href="http://gulpjs.com/">gulp</a> package to compile all its source code into browser-compatible JavaScript files. Gulp is automatically installed as one of the dependencies, so all you have to do is run it. RippleAPI's configuration makes this easy:</p>
+<div class="codehilite"><pre><span></span><code>npm run build
+</code></pre></div>
+<p>Output:</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&gt;</span> <span class="n">ripple</span><span class="o">-</span><span class="n">lib</span><span class="mf">@0.16.5</span> <span class="n">build</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">ripple</span><span class="o">-</span><span class="n">lib</span>
+<span class="o">&gt;</span> <span class="n">gulp</span>
+
+<span class="p">[</span><span class="mi">15</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">Using</span> <span class="n">gulpfile</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">ripple</span><span class="o">-</span><span class="n">lib</span><span class="o">/</span><span class="n">Gulpfile</span><span class="p">.</span><span class="n">js</span>
+<span class="p">[</span><span class="mi">15</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">Starting</span> <span class="err">'</span><span class="n">build</span><span class="err">'</span><span class="p">...</span>
+<span class="p">[</span><span class="mi">15</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">Starting</span> <span class="err">'</span><span class="n">build</span><span class="o">-</span><span class="n">debug</span><span class="err">'</span><span class="p">...</span>
+<span class="p">[</span><span class="mi">15</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">42</span><span class="p">]</span> <span class="n">Finished</span> <span class="err">'</span><span class="n">build</span><span class="err">'</span> <span class="n">after</span> <span class="mi">12</span> <span class="n">s</span>
+<span class="p">[</span><span class="mi">15</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">42</span><span class="p">]</span> <span class="n">Starting</span> <span class="err">'</span><span class="n">build</span><span class="o">-</span><span class="n">min</span><span class="err">'</span><span class="p">...</span>
+<span class="p">[</span><span class="mi">15</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">42</span><span class="p">]</span> <span class="n">Finished</span> <span class="err">'</span><span class="n">build</span><span class="o">-</span><span class="n">debug</span><span class="err">'</span> <span class="n">after</span> <span class="mi">12</span> <span class="n">s</span>
+<span class="p">[</span><span class="mi">15</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">51</span><span class="p">]</span> <span class="n">Finished</span> <span class="err">'</span><span class="n">build</span><span class="o">-</span><span class="n">min</span><span class="err">'</span> <span class="n">after</span> <span class="mf">9.83</span> <span class="n">s</span>
+<span class="p">[</span><span class="mi">15</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">51</span><span class="p">]</span> <span class="n">Starting</span> <span class="err">'</span><span class="k">default</span><span class="err">'</span><span class="p">...</span>
+<span class="p">[</span><span class="mi">15</span><span class="o">:</span><span class="mi">22</span><span class="o">:</span><span class="mi">51</span><span class="p">]</span> <span class="n">Finished</span> <span class="err">'</span><span class="k">default</span><span class="err">'</span> <span class="n">after</span> <span class="mf">4.58</span> <span class="err">μ</span><span class="n">s</span>
+</code></pre></div>
+<p>This may take a while. At the end, the build process creates a new <code>build/</code> folder, which contains the files you want.</p>
+<p>The file <code>build/ripple-&lt;VERSION NUMBER&gt;.js</code> is a straight export of RippleAPI (whatever version you built) ready to be used in browsers. The file ending in <code>-min.js</code> is the same thing, but with the content <a href="https://en.wikipedia.org/wiki/Minification_%28programming%29">minified</a> for faster loading.</p>
+<h2 id="example-browser-usage">Example Browser Usage</h2>
+<p>The following HTML file demonstrates basic usage of the browser version of RippleAPI to connect to a public <code>rippled</code> server and report information about that server. Instead of using Node.js's "require" syntax, the browser version creates a global variable named <code>ripple</code>, which contains the <code>RippleAPI</code> class.</p>
+<p>To use this example, you must first <a href="#build-instructions">build RippleAPI</a> and then copy one of the resulting output files to the same folder as this HTML file. (You can use either the minified or full-size version.) Change the first <code>&lt;script&gt;</code> tag in this example to use the correct file name for the version of RippleAPI you built.</p>
+<p><a href="https://github.com/ripple/ripple-dev-portal/blob/master/content/code_samples/rippleapi_quickstart/browser-demo.html" title="Source on GitHub"><strong>browser-demo.html:</strong></a></p>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"ripple-0.17.7-min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ripple</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ripple</span><span class="p">.</span><span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span><span class="s1">'wss://s1.ripple.com/'</span><span class="p">});</span>
+    <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">getServerInfo</span><span class="p">();</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">server_info</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">+=</span> <span class="s2">"&lt;p&gt;Connected to rippled server!&lt;/p&gt;"</span> <span class="o">+</span>
+<span class="s2">"      &lt;table&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Version&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">buildVersion</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Ledgers available&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">completeLedgers</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;hostID&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">hostID</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Seq.&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">validatedLedger</span><span class="p">.</span><span class="nx">ledgerVersion</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Most Recent Validated Ledger Hash&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">validatedLedger</span><span class="p">.</span><span class="nx">hash</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"        &lt;tr&gt;&lt;th&gt;Seconds since last ledger validated&lt;/th&gt;"</span> <span class="o">+</span>
+<span class="s2">"          &lt;td&gt;"</span> <span class="o">+</span> <span class="nx">server_info</span><span class="p">.</span><span class="nx">validatedLedger</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="s2">"&lt;/td&gt;&lt;/tr&gt;"</span> <span class="o">+</span>
+<span class="s2">"      &lt;/table&gt;"</span><span class="p">;</span>
+    <span class="p">});</span>
+  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">"text/css"</span><span class="p">&gt;</span>
+    <span class="nt">td</span><span class="o">,</span> <span class="nt">th</span> <span class="p">{</span> <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">black</span><span class="p">;</span> <span class="k">padding</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nt">table</span> <span class="p">{</span> <span class="k">border-collapse</span><span class="p">:</span> <span class="kc">collapse</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

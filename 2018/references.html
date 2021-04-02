@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>References - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#1db4ff">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1db4ff">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <!-- <link href="assets/css/ripple.css" rel="stylesheet" /> -->
+    <link href="assets/vendor/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarHolder">
+      <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+<div class="github-edit-wrap">
+  <a href="https://github.com/ripple/ripple-dev-portal/edit/master/tool/template-landing-references.html" target="_blank" class="github-edit">Edit on GitHub</a>
+</div><!-- /.github-edit -->    </div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+
+      <!-- main column -->
+      <main class="main col-md-12 order-md-3 p-0 landing" role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-3 px-sm-4" aria-label="breacrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Docs</a></li>
+    <li class="active breadcrumb-item">References</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <section class="container-fluid bg-white p-3 px-sm-4 pb-sm-4">
+    <h1 class="main-page-header">References</h1>
+    <p class="blurb">Look up the ins-and-outs of XRP Ledger APIs, including sample requests and responses.</p>
+  </section>
+
+  <section class="container-fluid bg-light p-3 px-sm-4 pb-sm-4">
+    <h2><a href="rippled-api.html">rippled API Reference</a></h2>
+    <p class="blurb">Use the <code>rippled</code> API to communicate with a <code>rippled</code> server, the core peer-to-peer server that manages the XRP Ledger.</p>
+      <div class="card-deck pt-3 pt-sm-4">
+          <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="card-title">API Conventions</h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Common conventions used across the rippled API.</p>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="basic-data-types.html">Basic Data Types</a></li>
+
+      <li class="level-1"><a href="base58-encodings.html">base58 Encodings</a></li>
+
+      <li class="level-1"><a href="currency-formats.html">Currency Formats</a></li>
+
+      <li class="level-1"><a href="error-formatting.html">Error Formatting</a></li>
+
+      <li class="level-1"><a href="markers-and-pagination.html">Markers and Pagination</a></li>
+
+      <li class="level-1"><a href="modifying-the-ledger.html">Modifying the Ledger</a></li>
+
+      <li class="level-1"><a href="request-formatting.html">Request Formatting</a></li>
+
+      <li class="level-1"><a href="response-formatting.html">Response Formatting</a></li>
+
+      <li class="level-1"><a href="rippled-server-states.html">rippled Server States</a></li>
+
+      <li class="level-1"><a href="serialization.html">Serialization Format</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.card-body-->
+            <div class="card-footer">
+              <div class="readmore">
+                <a class="btn btn-secondary" href="api-conventions.html">View All API Conventions <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div><!--/.card-footer-->
+          </div><!--/.card-->
+
+          <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="card-title">Public rippled Methods</h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Get data from the XRP Ledger and submit transactions using these public API methods.</p>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="account-methods.html">Account Methods</a></li>
+        <li class="level-1"><a href="ledger-methods.html">Ledger Methods</a></li>
+        <li class="level-1"><a href="transaction-methods.html">Transaction Methods</a></li>
+        <li class="level-1"><a href="path-and-order-book-methods.html">Path and Order Book Methods</a></li>
+        <li class="level-1"><a href="payment-channel-methods.html">Payment Channel Methods</a></li>
+        <li class="level-1"><a href="subscription-methods.html">Subscription Methods</a></li>
+        <li class="level-1"><a href="server-info-methods.html">Server Info Methods</a></li>
+        <li class="level-1"><a href="utility-methods.html">Utility Methods</a></li>
+
+
+  </ul>
+</div>            </div><!--/.card-body-->
+            <div class="card-footer">
+              <div class="readmore">
+                <a class="btn btn-secondary" href="public-rippled-methods.html">View All Public rippled Methods <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div><!--/.card-footer-->
+          </div><!--/.card-->
+
+          <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="card-title">Admin rippled Methods</h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Administer a rippled server with these admin API methods.</p>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="key-generation-methods.html">Key Generation Methods</a></li>
+        <li class="level-1"><a href="logging-and-data-management-methods.html">Logging and Data Management Methods</a></li>
+        <li class="level-1"><a href="server-control-methods.html">Server Control Methods</a></li>
+        <li class="level-1"><a href="status-and-debugging-methods.html">Status and Debugging Methods</a></li>
+
+
+  </ul>
+</div>            </div><!--/.card-body-->
+            <div class="card-footer">
+              <div class="readmore">
+                <a class="btn btn-secondary" href="admin-rippled-methods.html">View All Admin rippled Methods <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div><!--/.card-footer-->
+          </div><!--/.card-->
+
+      </div><!--/.card-deck-->
+      <div class="card-deck pt-3 pt-sm-4">
+          <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="card-title">Ledger Data Formats</h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Learn about individual data objects that comprise the XRP Ledger's shared state.</p>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="ledger-header.html">Ledger Header</a></li>
+
+      <li class="level-1"><a href="ledger-object-ids.html">Ledger Object IDs</a></li>
+
+        <li class="level-1"><a href="ledger-object-types.html">Ledger Object Types</a></li>
+
+
+  </ul>
+</div>            </div><!--/.card-body-->
+            <div class="card-footer">
+              <div class="readmore">
+                <a class="btn btn-secondary" href="ledger-data-formats.html">View All Ledger Data Formats <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div><!--/.card-footer-->
+          </div><!--/.card-->
+
+          <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="card-title">Transaction Formats</h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Transactions are the only way to modify the XRP Ledger. Get details about their required format.</p>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="transaction-common-fields.html">Transaction Common Fields</a></li>
+
+        <li class="level-1"><a href="transaction-types.html">Transaction Types</a></li>
+        <li class="level-1"><a href="pseudo-transaction-types.html">Pseudo-Transactions</a></li>
+        <li class="level-1"><a href="transaction-results.html">Transaction Results</a></li>
+      <li class="level-1"><a href="transaction-metadata.html">Transaction Metadata</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.card-body-->
+            <div class="card-footer">
+              <div class="readmore">
+                <a class="btn btn-secondary" href="transaction-formats.html">View All Transaction Formats <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div><!--/.card-footer-->
+          </div><!--/.card-->
+
+          <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="card-title">rippled Commandline Usage Reference</h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Commandline usage options for the rippled server.</p>
+                <div class="curated-links">
+                  <ul>
+                    <li class="level-1"><a href="commandline-usage.html#available-modes">Available Modes</a></li>
+                    <li class="level-1"><a href="commandline-usage.html#daemon-mode-options">Daemon Mode Options</a></li>
+                    <li class="level-1"><a href="commandline-usage.html#stand-alone-mode-options">Stand-Alone Mode Options</a></li>
+                    <li class="level-1"><a href="commandline-usage.html#client-mode-options">Client Mode Options</a></li>
+                    <li class="level-1"><a href="commandline-usage.html#unit-tests">Unit Tests</a></li>
+                  </ul>
+                </div><!--/.curated-links-->
+            </div><!--/.card-body-->
+            <div class="card-footer">
+              <div class="readmore">
+                <a class="btn btn-secondary" href="commandline-usage.html">View All rippled Commandline Usage Reference <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div><!--/.card-footer-->
+          </div><!--/.card-->
+
+          <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="card-title">Peer Crawler</h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Special API method for sharing network topology and status metrics.</p>
+
+
+
+
+<div class="children-display">
+  <ul>
+    
+
+  </ul>
+</div>            </div><!--/.card-body-->
+            <div class="card-footer">
+              <div class="readmore">
+                <a class="btn btn-secondary" href="peer-crawler.html">View All Peer Crawler <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div><!--/.card-footer-->
+          </div><!--/.card-->
+
+
+      </div><!--/.card-deck-->
+
+  </section>
+
+  <section class="container-fluid bg-white p-3 px-sm-4 pb-sm-4">
+
+    <h2>Other XRP Ledger Interfaces</h2>
+    <p class="blurb">Here are a few other ways to interact with the XRP Ledger.</p>
+    <div class="card-deck pt-3 pt-sm-4">
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><a href="rippleapi-reference.html">RippleAPI Reference</a></h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Official client library to the XRP Ledger. Available for JavaScript only.</p>
+                <div class="curated-links">
+                  <ul>
+                    <li class="level-1"><a href="rippleapi-reference.html#transaction-overview">Transactions</a></li>
+                    <li class="level-1"><a href="rippleapi-reference.html#basic-types">Basic Types</a></li>
+                    <li class="level-1"><a href="rippleapi-reference.html#api-methods">Methods</a></li>
+                  </ul>
+                </div><!--/.curated-links-->
+
+
+
+
+
+<div class="children-display">
+  <ul>
+    
+
+  </ul>
+</div>            </div><!--/.card-body-->
+          </div><!--/.card-->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><a href="data-api.html">Ripple Data API v2</a></h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Access more XRP Ledger data, including transaction history and analytics.</p>
+                <div class="curated-links">
+                  <ul>
+                    <li class="level-1"><a href="data-api.html#api-method-reference">Methods</a></li>
+                    <li class="level-1"><a href="data-api.html#api-conventions">API Conventions</a></li>
+                  </ul>
+                </div><!--/.curated-links-->
+
+
+
+
+
+<div class="children-display">
+  <ul>
+    
+
+  </ul>
+</div>            </div><!--/.card-body-->
+          </div><!--/.card-->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><a href="xrp-ledger-toml.html">xrp-ledger.toml File</a></h3>
+            </div><!--/.card-header-->
+            <div class="card-body">
+              <p class="blurb">Provide machine-readable information about yourself to other XRP Ledger users.</p>
+                <div class="curated-links">
+                  <ul>
+                    <li class="level-1"><a href="xrp-ledger-toml.html#serving-the-file">Serving the File</a></li>
+                    <li class="level-1"><a href="xrp-ledger-toml.html#contents">Contents</a></li>
+                    <li class="level-1"><a href="xrp-ledger-toml.html#cors-setup">CORS Setup</a></li>
+                    <li class="level-1"><a href="xrp-ledger-toml.html#domain-verification">Domain Verification</a></li>
+                    <li class="level-1"><a href="xrp-ledger-toml.html#account-verification">Account Verification</a></li>
+                  </ul>
+                </div><!--/.curated-links-->
+
+
+
+
+
+<div class="children-display">
+  <ul>
+    
+
+  </ul>
+</div>            </div><!--/.card-body-->
+          </div><!--/.card-->
+
+    </div><!--/.card-deck-->
+
+  </section>
+
+      </main>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="ripple-footer" role="contentinfo">
+  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
+      <div class="row">
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="docs.html">Docs</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="concepts.html">Concepts</a></li>
+        <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+        <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="use-cases.html">Use Cases</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+      <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+      <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+      <li class="level-1"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="dev-tools.html">Dev Tools</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+      <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+      <li class="level-1"><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+
+      <li class="level-1"><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="news.html">News</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
+
+
+  <li class="level-1"><a href="/blog/">Ripple Dev Blog</a></li>
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
+              <div class="children-display">
+                <ul>
+                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/.foot-nav-col -->
+      </div><!--/.row-->
+  </section>
+
+  <section class="container-fluid pb-5 px-5">
+
+    <div class="build-disclaimer">
+      <p>
+        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
+      </p>
+      <p>
+        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
+      </p>
+    </div>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

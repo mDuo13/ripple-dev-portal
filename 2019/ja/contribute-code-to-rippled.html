@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+
+    <title>rippledへのコードの提供 - XRP Ledger Dev Portal (日本語)</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link href="assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal (日本語)" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+      <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="docs.html">ドキュメント</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">ユースケース</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">開発者用ツール</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">ブログ</a>
+        </li>
+      </ul><!-- /.navbar-nav -->
+<div class="github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/use-cases/contribute-code-to-rippled.ja.md" target="_blank" class="github-edit">Edit</a>
+</div><!-- /.github-edit -->      <form class="navbar-form navbar-right" id="navbar-search" role="search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">サイトを検索</label>
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="サイトを検索">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+      <div class="nav navbar-nav language-selector">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            日本語
+          </button>
+          <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
+            <a class="dropdown-item" href="/contribute-code-to-rippled.html">English</a>
+            <a class="dropdown-item" href="/ja/contribute-code-to-rippled.html">日本語</a>
+          </div><!--/.dropdown-menu-->
+        </div><!--/.dropdown-->
+      </div><!--/.language-selector-->
+    </div><!--/#navbarHolder-->
+    <div class="menu-overlay"></div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="use-case-related">
+    <div class="card-header">
+      <h4>Useful Background</h4>
+    </div>
+    <div class="card-body">
+      <div class="curated-links">
+        <ul>
+            <li><a href="consensus.html">コンセンサス</a></li>
+            <li><a href="amendments.html">Amendment</a></li>
+        </ul>
+      </div><!--/.curated-links-->
+    </div><!--/.card-body-->
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">ホーム</a></li>
+    <li class="active breadcrumb-item"><a href="use-cases.html">ユースケース</a></li>
+    <li class="active breadcrumb-item">rippledへのコードの提供</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="use-case pt-3 p-md-3">
+    <div class="content">
+        <h1 id="rippledへのコードの提供">rippledへのコードの提供</h1>
+<p>XRP Ledgerを管理するピアツーピアのコアサーバーである<code>rippled</code>の機能向上のために、コードまたはバグレポートを提供いただけますか? 以下は、コードと機能性の迅速なレビューの実現に向けたロードマップです。</p>
+<div class="use-case-steps">
+<p><span class="use-case-step-num">1</span></p>
+<h2 id="rippledリポジトリにアクセスする"><a class="external-link" href="https://github.com/ripple/rippled" target="_blank"><code>rippled</code>リポジトリにアクセスする <i aria-hidden="true" class="fa fa-external-link"></i></a></h2>
+<p><code>rippled</code> はオープンソースプロジェクトです。<code>rippled</code>のコードを参照するには、<code>rippled</code> GitHubリポジトリにアクセスします。バグの報告またはご協力いただく前に、以下の作業を行いコードと開発者の作業を理解することをお勧めします。</p>
+<p><span class="use-case-step-num">2</span></p>
+<h2 id="rippledサーバーを設定実行する"><a href="manage-the-rippled-server.html"><code>rippled</code>サーバーを設定、実行する</a></h2>
+<p><code>rippled</code>サーバーを設定および実行して、XRP Ledgerを管理するこのピアツーピアのコアサーバーの開発者の作業と機能を理解します。誰もが自身の<code>rippled</code>サーバーを運用して、ネットワークをフォローし、XRP Ledgerの完全なコピーを保持できます。</p>
+<p><span class="use-case-step-num">3</span></p>
+<h2 id="xrp-ledger統合ツールを試す"><a href="get-started-with-the-rippled-api.html">XRP Ledger統合ツールを試す</a></h2>
+<p>XRP Ledgerとの統合を支援するさまざまなツールがあります。WebSocketおよびJSON-RPC APIエンドポイントから<code>ripple-lib</code> JavaScriptライブラリまで、開発者コミュニティに提供されているさまざまな統合ツールを試してみてください。</p>
+<p><span class="use-case-step-num">4</span></p>
+<h2 id="サンドボックスxrp-ledgerアカウントを取得する"><a href="xrp-test-net-faucet.html">サンドボックスXRP Ledgerアカウントを取得する</a></h2>
+<p>XRP Ledger Test Netを使用してサンドボックスアカウントを取得します。<code>rippled server</code>をTest Netに接続し、テストコールを実行してXRP Ledgerに慣れましょう。</p>
+<p><span class="use-case-step-num">5</span></p>
+<h2 id="開発環境を設定する">開発環境を設定する</h2>
+<p><code>rippled</code>開発環境は、C++コンパイラー、<code>rippled</code>のコンパイルに必要なライブラリ（Boostなど）へのアクセス、ソースファイルを変更するためのエディターを提供します。<a class="external-link" href="https://github.com/ripple/rippled" target="_blank"><code>rippled</code>リポジトリ <i aria-hidden="true" class="fa fa-external-link"></i></a>で、最新の推奨ツールを確認してください。また、各自でGitHubの<code>rippled</code>リポジトリの専用フォークを作成してください。これにより、公式リポジトリへプルリクエストを発行できるようになります。 <!-- for future, awaiting links to a few rippled repo md files - Nik --></p>
+<p><span class="use-case-step-num">6</span></p>
+<h2 id="rippledのコーディングスタイルを理解する"><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/docs/CodingStyle.md" target="_blank"><code>rippled</code>のコーディングスタイルを理解する <i aria-hidden="true" class="fa fa-external-link"></i></a></h2>
+<p><code>rippled</code>にコードを提供する前に、<code>rippled</code>リポジトリで使用されているコーディング基準を理解しておいてください。コーディング基準は徐々に進化しており、コードレビューを通じて伝達されます。いくつかの点については、他よりも厳しく適用されます。</p>
+<p><span class="use-case-step-num">7</span></p>
+<h2 id="コードを提供する"><a class="external-link" href="https://github.com/ripple/rippled/pulls" target="_blank">コードを提供する <i aria-hidden="true" class="fa fa-external-link"></i></a></h2>
+<p><code>rippled</code>を理解できたので、rippledの改善に関するアイデアが浮かんでくることもあるかと思います。XRP Ledgerで開発作業を行っていて、ご使用のアプリケーションに必要な機能をXRP Ledgerが提供できるようにするコードの提供を希望されているかもしれません。<code>rippled</code>リポジトリにアクセスして課題やプルリクエストを登録します。</p>
+<p><span class="use-case-step-num">8</span></p>
+<h2 id="バグを報告する"><a class="external-link" href="https://github.com/ripple/rippled/issues" target="_blank">バグを報告する <i aria-hidden="true" class="fa fa-external-link"></i></a></h2>
+<p><code>rippled</code>を検証する過程で、意図したとおりに機能していないと思われるコードが見つかることがあります。バグを報告するには、<code>rippled</code>リポジトリで<a class="external-link" href="https://github.com/ripple/rippled/issues" target="_blank">課題を登録 <i aria-hidden="true" class="fa fa-external-link"></i></a>します。</p>
+<p>セキュリティ関連のバグの報告については、Rippleの<a class="external-link" href="https://ripple.com/bug-bounty/" target="_blank">Bug Bountyプログラム <i aria-hidden="true" class="fa fa-external-link"></i></a>を通じて責任を持ってぜひ公開いただけるようお願い致します。</p>
+</div><!--/.use-case-steps-->
+
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="use-cases.html"> ユースケース</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" aria-multiselectable="true">
+      <div class="card active">
+        <div class="card-body card-body-single">
+          <ul class="sidebar_pagelist">
+            <li><a class="nosubcat-page" href="run-a-rippled-validator.html">rippledバリデータの実行</a></li>
+            <li><a class="nosubcat-page" href="list-xrp-in-your-exchange.html">取引所でのXRPの上場</a></li>
+            <li><a class="nosubcat-page" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+            <li><a class="active nosubcat-page" href="contribute-code-to-rippled.html">rippledへのコードの提供</a></li>
+            <li><a class="nosubcat-page" href="contribute-code-to-ripple-lib.html">ripple-libへのコードの提供</a></li>
+            <li><a class="nosubcat-page" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+          </ul>
+        </div><!-- /.card-body -->
+      </div><!-- /.card -->
+    </div><!-- /#sidenav -->
+
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid card-grid card-grid-Nx1">
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="docs.html">ドキュメント</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+              <li class="level-1"><a href="concepts.html">コンセプト</a></li>
+          <li class="level-1"><a href="tutorials.html">チュートリアル</a></li>
+          <li class="level-1"><a href="references.html">リファレンス</a></li>
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">01</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="use-cases.html">ユースケース</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="run-a-rippled-validator.html">rippledバリデータの実行</a></li>
+
+        <li class="level-1"><a href="list-xrp-in-your-exchange.html">取引所でのXRPの上場</a></li>
+
+        <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-rippled.html">rippledへのコードの提供</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-ripple-lib.html">ripple-libへのコードの提供</a></li>
+
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">02</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="dev-tools.html">開発者用ツール</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+        <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+        <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+        <li class="level-1"><a href="xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a></li>
+
+        <li class="level-1"><a href="validator-domain-verifier.html">Domain Verification Checker</a></li>
+
+
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">03</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="https://ripple.com/" target="_blank">Ripple<i class="fa fa-external-link"></i></a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="children-display">
+              <ul>
+                <li class="level-1"><a href="https://ripple.com/company/careers/" target="_blank">Ripple 採用情報 <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://github.com/ripple/" target="_blank">GitHubでRipple <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP リソース <i class="fa fa-external-link"></i></a></li>
+              </ul>
+            </div>
+          </div><!--/.card-body-->
+          <div class="flag-vertical">04</div>
+        </div><!--/.card -->
+  </section>
+
+  <section class="container-fluid p-5 pl-sm-0">
+
+    <nav role="navigation" class="d-flex mb-3 language-selector">
+      <img class="language_selector_icon" src="assets/img/icon-language-selector.svg" width="32" height="40" alt="language selection icon" />
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/contribute-code-to-rippled.html">English</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/ja/contribute-code-to-rippled.html"><i class="fa fa-check-circle"></i> 日本語</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2019</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">ライセンス</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="このページの先頭へ">先頭へ</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbar',
+algoliaOptions: { 'facetFilters': ["lang:ja"] },
+debug: false
+});
+</script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Use Cases'});
+</script>
+</body>
+</html>

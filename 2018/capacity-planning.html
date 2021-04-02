@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Capacity Planning - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#1db4ff">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1db4ff">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <!-- <link href="assets/css/ripple.css" rel="stylesheet" /> -->
+    <link href="assets/vendor/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+    </script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarHolder">
+      <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+<div class="github-edit-wrap">
+  <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/tutorials/manage-the-rippled-server/installation/capacity-planning.md" target="_blank" class="github-edit">Edit on GitHub</a>
+</div><!-- /.github-edit -->    </div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="page-toc-wrapper">
+    <p class="in-this-doc card-header">In this document:</p>
+    <ul class="dev_nav_sidebar card-body" id="dactyl_toc_sidebar">
+      <li class="level-1"><a href="#capacity-planning">Capacity Planning</a></li>
+<li class="level-2"><a href="#configuration-settings">Configuration Settings</a></li>
+<li class="level-3"><a href="#node-size">Node Size</a></li>
+<li class="level-3"><a href="#node-db-type">Node DB Type</a></li>
+<li class="level-3"><a href="#log-level">Log Level</a></li>
+<li class="level-2"><a href="#network-and-hardware">Network and Hardware</a></li>
+<li class="level-3"><a href="#recommendation-1">Recommendation</a></li>
+
+    </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3 p-0 " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-3" aria-label="breacrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Docs</a></li>
+    <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
+    <li class="active breadcrumb-item"><a href="manage-the-rippled-server.html">Manage the rippled Server</a></li>
+    <li class="active breadcrumb-item"><a href="install-rippled.html">Installation</a></li>
+    <li class="active breadcrumb-item">Capacity Planning</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="p-3">
+    <div class="content">
+        <h1 id="capacity-planning">Capacity Planning</h1>
+<p>This section describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of your <code>rippled</code> server. Being aware of these considerations can help you ensure that your <code>rippled</code> server is ready to handle XRP Ledger network capacity today and in the near future.</p>
+<h2 id="configuration-settings">Configuration Settings</h2>
+<p>Ripple recommends using these configuration guidelines to optimize resource utilization and performance of your <code>rippled</code> server.</p>
+<p>You can set the following parameters in the <code>rippled.cfg</code> file used for your <code>rippled</code> server. You can access an example configuration file, <code>rippled-example.cfg</code>, in the <a href="https://github.com/ripple/rippled/blob/develop/cfg/rippled-example.cfg" target="_blank"><code>cfg</code> directory <i aria-hidden="true" class="fa fa-external-link"></i></a> in the <code>rippled</code> GitHub repo.</p>
+<h3 id="node-size">Node Size</h3>
+<p>Set the <code>node_size</code> based on your server's expected load and the amount of memory you can make available to <code>rippled</code>.</p>
+<p>Ripple recommends you always use the largest node size your available RAM can support. See the following table for recommended settings.</p>
+<h4 id="recommendation">Recommendation</h4>
+<p>Each <code>node_size</code> has a corresponding requirement for available RAM. For example, if you set <code>node_size</code> to <code>huge</code>, you should have at least 32GB of available RAM to help ensure that <code>rippled</code> can run smoothly.</p>
+<p>To tune your server, it may be useful to start with <code>tiny</code> and increase the size to <code>small</code>, <code>medium</code>, and so on as you refine the requirements for your use case.</p>
+<table>
+<thead>
+<tr>
+<th align="left">RAM available for <code>rippled</code></th>
+<th align="left"><code>node_size</code> value</th>
+<th align="left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">&lt; 8GB</td>
+<td align="left"><code>tiny</code></td>
+<td align="left">Not recommended for testing or production servers. This is the default value if you don't specify a value in <code>rippled.cfg</code>.</td>
+</tr>
+<tr>
+<td align="left">8GB</td>
+<td align="left"><code>small</code></td>
+<td align="left">Recommended for test servers.</td>
+</tr>
+<tr>
+<td align="left">16GB</td>
+<td align="left"><code>medium</code></td>
+<td align="left">The <code>rippled-example.cfg</code> file uses this value.</td>
+</tr>
+<tr>
+<td align="left">32GB</td>
+<td align="left"><code>huge</code></td>
+<td align="left">Recommended for production servers.</td>
+</tr>
+</tbody>
+</table>
+<p>Although <code>large</code> is also a legal value for <code>[node_size]</code>, in practice it performs worse than <code>huge</code> in most circumstances. Ripple recommends always using <code>huge</code> instead of <code>large</code>.</p>
+<p>If you set the <code>node_size</code> parameter to an invalid value, the <a href="server-wont-start.html#bad-node-size-value">server fails to start</a>.</p>
+<h3 id="node-db-type">Node DB Type</h3>
+<p>The <code>type</code> field in the <code>[node_db]</code> stanza of the <code>rippled.cfg</code> file sets the type of key-value store that <code>rippled</code> uses to hold the ledger store.</p>
+<p>This setting does not directly configure RAM settings, but the choice of key-value store has important implications for RAM usage because of the different ways these technologies cache and index data for fast lookup.</p>
+<p>You can set the value to either <code>RocksDB</code> or <code>NuDB</code>.</p>
+<ul>
+<li>
+<p>If your server is a validator, it only needs a small amount of history, so use <code>RocksDB</code> for best performance. <a href="#more-about-using-rocksdb">Learn more</a></p>
+</li>
+<li>
+<p>For most cases, use <code>NuDB</code> because its performance is constant even with large amounts of data on disk. A fast SSD is required. <a href="#more-about-using-nudb">Learn more</a></p>
+</li>
+<li>
+<p>If you are using rotational disks (not recommended) or even just a slow SSD, use <code>RocksDB</code>. <a href="#more-about-using-rocksdb">Learn more</a></p>
+</li>
+</ul>
+<p>The example <code>rippled-example.cfg</code> file has the <code>type</code> field in the <code>[node_db]</code> stanza set to <code>RocksDB</code>.</p>
+<h4 id="more-about-using-rocksdb">More About Using RocksDB</h4>
+<p><a href="https://rocksdb.org/docs/getting-started.html" target="_blank">RocksDB <i aria-hidden="true" class="fa fa-external-link"></i></a> is an embeddable persistent key-value store.</p>
+<p>RocksDB works well on solid-state disks. RocksDB performs better than NuDB when used with rotational disks, but you may still encounter performance problems unless you use solid-state disks.</p>
+<p>RocksDB requires approximately one-third less <a href="#disk-space">disk storage</a> than NuDB and provides better I/O latency. However, the better I/O latency comes as result of the large amount of RAM RocksDB requires to store data indexes.</p>
+<p>Validators should be configured to use RocksDB and to store no more than about 300,000 ledgers (approximately two weeks' worth of <a href="#disk-space">historical data</a>) in the ledger store.</p>
+<p>RocksDB has performance-related configuration options that you can set in <code>rippled.cfg</code> to achieve maximum transaction processing throughput. Here is the recommended configuration for a <code>rippled</code> server using RocksDB:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[node_db]</span>
+<span class="na">type</span><span class="o">=</span><span class="s">RocksDB</span>
+<span class="na">path</span><span class="o">=</span><span class="s">/var/lib/rippled/db/rocksdb</span>
+<span class="na">open_files</span><span class="o">=</span><span class="s">512</span>
+<span class="na">filter_bits</span><span class="o">=</span><span class="s">12</span>
+<span class="na">cache_mb</span><span class="o">=</span><span class="s">512</span>
+<span class="na">file_size_mb</span><span class="o">=</span><span class="s">64</span>
+<span class="na">file_size_mult</span><span class="o">=</span><span class="s">2</span>
+<span class="na">online_delete</span><span class="o">=</span><span class="s">2000</span>
+<span class="na">advisory_delete</span><span class="o">=</span><span class="s">0</span>
+</code></pre></div>
+<p>(Adjust the <code>path</code> to the directory where you want to keep the ledger store on disk. Adjust the <code>online_delete</code> and <code>advisory_delete</code> settings as desired for your configuration.)</p>
+<h4 id="more-about-using-nudb">More About Using NuDb</h4>
+<p><a href="https://github.com/vinniefalco/nudb#introduction" target="_blank">NuDB <i aria-hidden="true" class="fa fa-external-link"></i></a> is an append-only key-value store that is optimized for SSD drives.</p>
+<p>NuDB has nearly constant performance and memory footprints regardless of the <a href="#disk-space">amount of data being stored</a>. NuDB <em>requires</em> a solid-state drive, but uses much less RAM than RocksDB to access a large database.</p>
+<p>Non-validator production servers should be configured to use NuDB and to store the amount of historical data required for the use case.</p>
+<p>NuDB does not have performance-related configuration options available in <code>rippled.cfg</code>. Here is the recommended configuration for a <code>rippled</code> server using NuDB:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[node_db]</span>
+<span class="na">type</span><span class="o">=</span><span class="s">NuDB</span>
+<span class="na">path</span><span class="o">=</span><span class="s">/var/lib/rippled/db/nudb</span>
+<span class="na">online_delete</span><span class="o">=</span><span class="s">2000</span>
+<span class="na">advisory_delete</span><span class="o">=</span><span class="s">0</span>
+</code></pre></div>
+<p>(Adjust the <code>path</code> to the directory where you want to keep the ledger store on disk. Adjust the <code>online_delete</code> and <code>advisory_delete</code> settings as desired for your configuration.)</p>
+<h3 id="log-level">Log Level</h3>
+<p>The example <code>rippled-example.cfg</code> file sets the logging verbosity to <code>warning</code> in the <code>[rpc_startup]</code> stanza. This setting greatly reduces disk space and I/O requirements over more verbose logging. However, more verbose logging provides increased visibility for troubleshooting.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> If you omit the <code>log_level</code> command from the <code>[rpc_startup]</code> stanza, <code>rippled</code> writes logs to disk at the <code>debug</code> level and outputs <code>warning</code> level logs to the console. <code>debug</code> level logging requires several more GB of disk space per day than <code>warning</code> level, depending on transaction volumes and client activity.</p>
+<h2 id="network-and-hardware">Network and Hardware</h2>
+<p>Each <code>rippled</code> server in the XRP Ledger network performs all of the transaction processing work of the network. Therefore, the baseline hardware for production <code>rippled</code> servers should be similar to that used in Ripple's <a href="https://developers.ripple.com/blog/2017/high-scalability-xrp-ledger.html" target="_blank">performance testing <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>Ensuring that your <code>rippled</code> server meets these network and hardware requirements helps achieve consistent, good performance across the XRP Ledger network.</p>
+<h3 id="recommendation-1">Recommendation</h3>
+<p>For best performance in enterprise production environments, Ripple recommends running <code>rippled</code> on bare metal with the following characteristics:</p>
+<ul>
+<li>Operating System: Ubuntu 16.04+</li>
+<li>CPU: Intel Xeon 3+ GHz processor with 4 cores and hyperthreading enabled</li>
+<li>Disk speed: SSD (7000+ writes/second, 10,000+ reads/second)</li>
+<li>Disk space: Varies. At least 50 GB recommended.</li>
+<li>RAM: 32GB</li>
+<li>Network: Enterprise data center network with a gigabit network interface on the host</li>
+</ul>
+<h4 id="cpu-utilization-and-virtualization">CPU Utilization and Virtualization</h4>
+<p>You'll get the best performance on bare metal, but virtual machines can perform nearly as well as long as the host hardware has high enough specs.</p>
+<h4 id="disk-speed">Disk Speed</h4>
+<p>Ripple <em>strongly recommends</em> using a high-grade solid state disk drive (SSD) with low-latency random reads and high throughput. Ripple engineers have observed the following maximum reads and writes per second:</p>
+<ul>
+<li>Over 10,000 reads per second (in heavily-used public server clusters)</li>
+<li>Over 7,000 writes per second (in dedicated performance testing)</li>
+</ul>
+<h4 id="disk-space">Disk Space</h4>
+<p>The amount of disk space <code>rippled</code> requires depend on how much <a href="ledger-history.html">ledger history</a> you plan to keep available locally. A <code>rippled</code> server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally.</p>
+<p>You can control how much data you keep with <a href="online-deletion.html">online deletion</a>; the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.</p>
+<p>The following table approximates the requirements for different amounts of history, at the time of writing (2018-12-13):</p>
+<table>
+<thead>
+<tr>
+<th align="left">Real Time Amount</th>
+<th align="left">Number of Ledger Versions</th>
+<th align="left">Disk Space Required (RocksDB)</th>
+<th align="left">Disk Space Required (NuDB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">2 hours</td>
+<td align="left">2,000</td>
+<td align="left">250 MB</td>
+<td align="left">450 MB</td>
+</tr>
+<tr>
+<td align="left">1 day</td>
+<td align="left">25,000</td>
+<td align="left">8 GB</td>
+<td align="left">12 GB</td>
+</tr>
+<tr>
+<td align="left">14 days</td>
+<td align="left">350,000</td>
+<td align="left">112 GB</td>
+<td align="left">168 GB</td>
+</tr>
+<tr>
+<td align="left">30 days</td>
+<td align="left">750,000</td>
+<td align="left">240 GB</td>
+<td align="left">360 GB</td>
+</tr>
+<tr>
+<td align="left">90 days</td>
+<td align="left">2,250,000</td>
+<td align="left">720 GB</td>
+<td align="left">1 TB</td>
+</tr>
+<tr>
+<td align="left">1 year</td>
+<td align="left">10,000,000</td>
+<td align="left">3 TB</td>
+<td align="left">4.5 TB</td>
+</tr>
+<tr>
+<td align="left">2 years</td>
+<td align="left">20,000,000</td>
+<td align="left">6 TB</td>
+<td align="left">9 TB</td>
+</tr>
+<tr>
+<td align="left">Full history (through 2018)</td>
+<td align="left">43,000,000+</td>
+<td align="left">(Not recommended)</td>
+<td align="left">~9 TB</td>
+</tr>
+</tbody>
+</table>
+<p>These numbers are estimates. They depend on several factors, most importantly the volume of transactions in the network. As transaction volume increases, each ledger version stores more unique data. You should provision extra storage capacity to prepare for future growth.</p>
+<p>The <code>online_delete</code> setting tells the server how many ledger versions to keep after deleting old history. You should plan for enough disk space to store twice that many ledger versions at maximum (right before online deletion runs).</p>
+<p>For instructions on how to change the amount of history you keep, see <a href="configure-online-deletion.html">Configure Online Deletion</a>.</p>
+<p>If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the <a href="history-sharding.html">History Sharding</a> feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the <code>[shard_db]</code> stanza, and it can use a different type of key-value store than the one you defined for the ledger store using the <code>[node_db]</code> stanza.</p>
+<h5 id="amazon-web-services">Amazon Web Services</h5>
+<p>Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run <code>rippled</code> in AWS, but Ripple does not recommend using Elastic Block Storage (EBS). Elastic Block Storage's maximum number of IOPS (5,000) is insufficient for <code>rippled</code>'s heaviest loads, despite being very expensive.</p>
+<p>AWS instance stores (<code>ephemeral</code> storage) do not have these constraints. Therefore, Ripple recommends deploying <code>rippled</code> servers with host types such as <code>M3</code> that have instance storage. The <code>database_path</code> and <code>node_db</code> path should each reside on instance storage.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> AWS instance storage is not guaranteed to provide durability in the event of hard drive failure. You also lose data when you stop/start or reboot the instance. The latter type of data loss can be acceptable for a <code>rippled</code> server because an individual server can usually re-acquire the lost data from its peer servers.</p>
+<h4 id="rammemory">RAM/Memory</h4>
+<p>Memory requirements are mainly a function of the <code>node_size</code> configuration setting and the amount of client traffic retrieving historical data. For more information about memory requirements, see <a href="#node-size">Node Size</a>.</p>
+<h4 id="network">Network</h4>
+<p>Any enterprise or carrier-class data center should have substantial network bandwidth to support running <code>rippled</code> servers.</p>
+<p>Here are examples of observed network bandwidth use for common <code>rippled</code> tasks:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Task</th>
+<th align="left">Transmit/Receive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Process current transaction volumes</td>
+<td align="left">2Mbps transmit, 2 Mbps receive</td>
+</tr>
+<tr>
+<td align="left">Serve historical ledger and transaction reports</td>
+<td align="left">100Mbps transmit</td>
+</tr>
+<tr>
+<td align="left">Start up <code>rippled</code></td>
+<td align="left">20Mbps receive</td>
+</tr>
+</tbody>
+</table>
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="tutorials.html"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Tutorials</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_2">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">&nbsp;</a>
+                <a class="sidenav_cat_title" href="get-started.html">Get Started</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with the rippled API</a></li>
+                      <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
+                      <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">RippleAPI Beginners Guide</a></li>
+                      <li><a class="nosubcat-page" href="look-up-transaction-results.html">Look Up Transaction Results</a></li>
+                      <li><a class="nosubcat-page" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse2 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_8">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">&nbsp;</a>
+                <a class="sidenav_cat_title" href="use-simple-xrp-payments.html">Use Simple XRP Payments</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
+                      <li><a class="nosubcat-page" href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+                      <li><a class="nosubcat-page" href="cancel-or-skip-a-transaction.html">Cancel or Skip a Transaction</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse8 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_12">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_12" aria-expanded="true" aria-controls="sidenav_collapse_12">&nbsp;</a>
+                <a class="sidenav_cat_title" href="manage-account-settings.html">Manage Account Settings</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_12" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_12">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
+                      <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse12 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_17">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_17" aria-expanded="true" aria-controls="sidenav_collapse_17">&nbsp;</a>
+                <a class="sidenav_cat_title" href="use-complex-payment-types.html">Use Complex Payment Types</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_17" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_17">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
+
+                          <li><a class="subpage" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a></li>
+                          <li><a class="subpage" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a></li>
+                          <li><a class="subpage" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a></li>
+                          <li><a class="subpage" href="look-up-escrows.html">Look up escrows</a></li>
+
+                      <li><a class="nosubcat-page" href="use-payment-channels.html">Use Payment Channels</a></li>
+                      <li><a class="subcat-title" href="use-checks.html">Use Checks <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+
+                          <li><a class="subpage" href="send-a-check.html">Send a Check <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cancel-a-check.html">Cancel a Check <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="look-up-checks-by-sender.html">Look Up Checks by Sender <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse17 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_31">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_31" aria-expanded="true" aria-controls="sidenav_collapse_31">&nbsp;</a>
+                <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_31" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_31">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
+                      <li><a class="nosubcat-page" href="list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts</a></li>
+                      <li><a class="nosubcat-page" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse31 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card active">
+            <div class="card-header" role="tab" id="sidenav_cat_head_35">
+              <h5 class="card-title">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_35" aria-expanded="true" aria-controls="sidenav_collapse_35">&nbsp;</a>
+                <a class="sidenav_cat_title active-parent" href="manage-the-rippled-server.html">Manage the rippled Server</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_35" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_35">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title active-parent" href="install-rippled.html">Install rippled</a></li>
+
+                          <li><a class="subpage" href="system-requirements.html">System Requirements</a></li>
+                          <li><a class="subpage" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a></li>
+                          <li><a class="subpage" href="install-rippled-on-ubuntu-with-alien.html">Install on Ubuntu with Alien</a></li>
+                          <li><a class="subpage" href="update-rippled-automatically-on-centos-rhel.html">Update Automatically on CentOS/Red Hat</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu</a></li>
+                          <li><a class="subpage" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+                          <li><a class="subpage" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a></li>
+                          <li><a class="active subpage" href="#main_content_body">Capacity Planning</a></li>
+
+                      <li><a class="subcat-title" href="configure-rippled.html">Configure rippled</a></li>
+
+                          <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
+                          <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to the XRP Test Net</a></li>
+                          <li><a class="subpage" href="cluster-rippled-servers.html">Cluster rippled Servers</a></li>
+                          <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
+                          <li><a class="subpage" href="configure-advisory-deletion.html">Configure Advisory Deletion</a></li>
+                          <li><a class="subpage" href="configure-history-sharding.html">Configure History Sharding</a></li>
+                          <li><a class="subpage" href="configure-full-history.html">Configure Full History</a></li>
+                          <li><a class="subpage" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a></li>
+                          <li><a class="subpage" href="enable-public-signing.html">Enable Public Signing</a></li>
+
+                      <li><a class="subcat-title" href="use-stand-alone-mode.html">Use rippled in Stand-Alone Mode</a></li>
+
+                          <li><a class="subpage" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a></li>
+
+                      <li><a class="subcat-title" href="troubleshoot-the-rippled-server.html">Troubleshooting rippled</a></li>
+
+                          <li><a class="subpage" href="diagnosing-problems.html">Diagnosing Problems with rippled</a></li>
+                          <li><a class="subpage" href="understanding-log-messages.html">Understanding Log Messages</a></li>
+                          <li><a class="subpage" href="server-wont-start.html">rippled Server Won't Start</a></li>
+                          <li><a class="subpage" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue</a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse35 -->
+
+          </div><!-- /.card -->
+
+    </div><!-- /#sidenav -->
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="ripple-footer" role="contentinfo">
+  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
+      <div class="row">
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="docs.html">Docs</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="concepts.html">Concepts</a></li>
+        <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+        <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="use-cases.html">Use Cases</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+      <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+      <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+      <li class="level-1"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="dev-tools.html">Dev Tools</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+      <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+      <li class="level-1"><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+
+      <li class="level-1"><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="news.html">News</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
+
+
+  <li class="level-1"><a href="/blog/">Ripple Dev Blog</a></li>
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
+              <div class="children-display">
+                <ul>
+                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/.foot-nav-col -->
+      </div><!--/.row-->
+  </section>
+
+  <section class="container-fluid pb-5 px-5">
+
+    <div class="build-disclaimer">
+      <p>
+        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
+      </p>
+      <p>
+        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
+      </p>
+    </div>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

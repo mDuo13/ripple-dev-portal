@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Get Server Info - XRP Ledger Dev Portal</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+      <ul class="nav navbar-nav">
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+      </ul><!-- /.navbar-nav -->
+<div class="github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal" target="_blank" class="github-edit">Edit</a>
+</div><!-- /.github-edit -->      <form class="navbar-form navbar-right" id="navbar-search" role="search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search site...</label>
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+      <div class="nav navbar-nav language-selector">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            English
+          </button>
+          <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
+            <a class="dropdown-item" href="/xrp-api-getServerInfo.html">English</a>
+            <a class="dropdown-item" href="/ja/xrp-api-getServerInfo.html">日本語</a>
+          </div><!--/.dropdown-menu-->
+        </div><!--/.dropdown-->
+      </div><!--/.language-selector-->
+    </div><!--/#navbarHolder-->
+    <div class="menu-overlay"></div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="page-toc-wrapper">
+    <div class="card-header">
+      <h4>In this document</h4>
+    </div>
+    <ul class="card-body">
+      <li class="level-1"><a href="#get-server-info">Get Server Info</a></li>
+<li class="level-2"><a href="#request-format">Request Format</a></li>
+<li class="level-2"><a href="#response-formats">Response Formats</a></li>
+<li class="level-3"><a href="#200-ok">200 OK</a></li>
+
+    </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Docs</a></li>
+    <li class="active breadcrumb-item"><a href="references.html">References</a></li>
+    <li class="active breadcrumb-item"><a href="xrp-api.html">XRP-API</a></li>
+    <li class="active breadcrumb-item"><a href="xrp-api-Meta-methods.html">Meta Methods</a></li>
+    <li class="active breadcrumb-item">Get Server Info</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="content">
+        <h1 id="get-server-info">Get Server Info</h1>
+<p>Retrieve information about the current status of the XRP-API Server and the rippled server(s) it is connected to.</p>
+<p class="devportal-callout warning"><strong>Warning:</strong> XRP-API is early alpha software. API methods and data formats are likely to change often in ways that break backwards compatibility.</p>
+<h2 id="request-format">Request Format</h2>
+<div class="codehilite"><pre><span></span><code><span class="err">GET /servers/info</span>
+</code></pre></div>
+<h2 id="response-formats">Response Formats</h2>
+<h3 id="200-ok">200 OK</h3>
+<p>The status of the XRP-API server and an array of statuses from the <code>rippled</code> server(s) it is connected to.</p>
+<p><strong>Media type:</strong> application/json</p>
+<p>Formatted as a <a href="xrp-api-data-types-serverinfo.html">ServerInfo</a></p>
+<p>The response uses the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>server_version</code></td>
+<td>String</td>
+<td>May be omitted</td>
+<td>The version number of this XRP-API server, in <a class="external-link" href="https://semver.org/" target="_blank">SemVer format <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
+</tr>
+<tr>
+<td><code>rippled_servers</code></td>
+<td>Array of <a href="xrp-api-data-types-rippledserverinfo.html">RippledServerInfo</a></td>
+<td>May be omitted</td>
+<td>Server information from each <code>rippled</code> server this XRP-API server is connected to.</td>
+</tr>
+</tbody>
+</table>
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="xrp-api.html"> XRP-API</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_21">
+                <h5 class="card-title">
+                    <a class="sidenav_cat_title" href="xrp-api-methods.html">All XRP-API Methods</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_21" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_21">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse21 -->
+
+            </div><!-- /.panel -->
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_22">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_22" aria-expanded="true" aria-controls="sidenav_collapse_22"></a>
+                <h5 class="card-title">
+                    <a class="sidenav_cat_title" href="xrp-api-Query-methods.html">Query Methods</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_22" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_22">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                        <li><a class="nosubcat-page" href="xrp-api-getAccountInfo.html">Get Account Info</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-getAccountSettings.html">Get Account Settings</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-getAccountTransactions.html">Get Account Transactions</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-getTransaction.html">Get Transaction</a></li>
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse22 -->
+
+            </div><!-- /.panel -->
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_23">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_23" aria-expanded="true" aria-controls="sidenav_collapse_23"></a>
+                <h5 class="card-title">
+                    <a class="sidenav_cat_title" href="xrp-api-Transact-methods.html">Transact Methods</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_23" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_23">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                        <li><a class="nosubcat-page" href="xrp-api-preparePayment.html">Prepare a Payment</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-signSubmitPayment.html">Sign and/or submit a payment</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-createSignSubmitPayment.html">Create, sign, and submit a payment</a></li>
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse23 -->
+
+            </div><!-- /.panel -->
+            <div class="card active">
+              <div class="card-header" role="tab" id="sidenav_cat_head_24">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_24" aria-expanded="true" aria-controls="sidenav_collapse_24"></a>
+                <h5 class="card-title">
+                    <a class="sidenav_cat_title active-parent" href="xrp-api-Meta-methods.html">Meta Methods</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_24" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_24">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                          <li><a class="active nosubcat-page" href="xrp-api-getServerInfo.html">Get Server Info</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-getApiDoc.html">Get API Docs</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-getPing.html">Ping</a></li>
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse24 -->
+
+            </div><!-- /.panel -->
+            <div class="card">
+              <div class="card-header" role="tab" id="sidenav_cat_head_25">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_25" aria-expanded="true" aria-controls="sidenav_collapse_25"></a>
+                <h5 class="card-title">
+                    <a class="sidenav_cat_title" href="xrp-api-data-types.html">XRP-API Data Types</a>
+                </h5>
+              </div><!-- /.card-header -->
+
+              <div id="sidenav_collapse_25" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_25">
+                <div class="card-body">
+                  <ul class="sidebar_pagelist">
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-rippleapierror.html">RippleAPIError</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-erroritem.html">ErrorItem</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-serverinfo.html">ServerInfo</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-rippledserverinfo.html">RippledServerInfo</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-load.html">Load</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-lastclose.html">LastClose</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-serverstate.html">ServerState</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-validatedledger.html">ValidatedLedger</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-address.html">Address</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-transactionid.html">TransactionID</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-preparedpaymenttransaction.html">PreparedPaymentTransaction</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-appliedtransaction.html">AppliedTransaction</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-accountinfo.html">AccountInfo</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-accountsettings.html">AccountSettings</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-accounttransactions.html">AccountTransactions</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-accountdata.html">AccountData</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-ledgerindex.html">LedgerIndex</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-payment_object_and_instructions.html">Payment object and instructions</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-payment_object.html">Payment Object</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-amount.html">Amount</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-currency.html">Currency</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-transaction_instructions.html">Transaction Instructions</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-transactionstatus.html">TransactionStatus</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-transaction_common_fields.html">Transaction Common Fields</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-paymenttransaction.html">PaymentTransaction</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-signed_transaction.html">Signed Transaction</a></li>
+                        <li><a class="nosubcat-page" href="xrp-api-data-types-apidoc.html">ApiDoc</a></li>
+
+                  </ul>
+                </div><!-- /.card-body -->
+              </div><!-- /#sidenav_collapse25 -->
+
+            </div><!-- /.panel -->
+    </div><!-- /#sidenav -->
+
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid card-grid card-grid-Nx1">
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="docs.html">Docs</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+              <li class="level-1"><a href="concepts.html">Concepts</a></li>
+          <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+          <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">01</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="use-cases.html">Use Cases</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+        <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+        <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">02</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="dev-tools.html">Dev Tools</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+        <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+        <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+        <li class="level-1"><a href="xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a></li>
+
+        <li class="level-1"><a href="validator-domain-verifier.html">Domain Verification Checker</a></li>
+
+
+
+
+  <li class="level-1"><a target="_blank" href="https://livenet.xrpl.org/">XRP Ledger Explorer</a> <i class="fa fa-external-link"></i></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">03</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="https://ripple.com/" target="_blank">Ripple<i class="fa fa-external-link"></i></a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="children-display">
+              <ul>
+                <li class="level-1"><a href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://github.com/ripple/" target="_blank">Ripple on GitHub <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+              </ul>
+            </div>
+          </div><!--/.card-body-->
+          <div class="flag-vertical">04</div>
+        </div><!--/.card -->
+  </section>
+
+  <section class="container-fluid p-5 pl-sm-0">
+
+    <nav role="navigation" class="d-flex mb-3 language-selector">
+      <img class="language_selector_icon" src="assets/img/icon-language-selector.svg" width="32" height="40" alt="language selection icon" />
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/xrp-api-getServerInfo.html"><i class="fa fa-check-circle"></i> English</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ja/xrp-api-getServerInfo.html">日本語</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2019</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbar',
+algoliaOptions: { 'facetFilters': ["lang:en"] },
+debug: false
+});
+</script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});
+</script>
+</body>
+</html>

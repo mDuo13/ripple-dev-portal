@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Data API v2 Tool - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="xrp-ledger-rpc-tool.html">API Tools</a></li>
+              <li class="active crumb-current">Data API v2 Tool</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/tool/template-rest-api-tool.html" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+    <ul id='command_list'>
+    </ul>
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <div id='wrapper'>
+        <div style="clear:both;"></div>
+        <div id='command_wrapper'>
+            <div id='command_table'>
+                <div id='io_wrapper'>
+                    <div id='input' class='io'>
+                        <h2>REST Request</h2>
+                        <div id='test_warning' class='alert alert-danger' style='display:none;'>
+                            <h4>Test accounts only!</h4>
+                            <p>Never submit account secrets to a server you do not control, unless you are prepared to lose ownership of the account!</p>
+                        </div>
+                        <div style="clear:both;"></div>
+                        <h3 id='selected_command' title='Reference information'></h3>
+                        <p id='description'></p>
+                        <div id='invalid'>Invalid JSON</div>
+                        <div id='rest_url_wrapper'>
+                            <p><span id='rest_host'>https://data.ripple.com</span><span id='rest_url'></span></p>
+                        </div>
+                        <div id='request_body'></div>
+                        <div id='request_options'>
+                            <a class="button btn btn-primary api" id='request_button'>Send request</a>
+                        </div>
+                    </div>
+                    <div id='output' class='io'>
+                        <h2>Response</h2>
+                        <div>
+                            <img class="loader" src="assets/img/rippleThrobber.png" style="vertical-align: middle; display:none;"/>
+                            <span id='rest_responsecode'></span>
+                        </div>
+                        <div id='response_body'></div>
+                        <div id='tooltip'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript'>
+    // Set some constants for the REST tool script
+    var URL_BASE = 'https://data.ripple.com';
+    var DOC_BASE = 'reference-data-api.html';
+    </script>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+    <link rel='stylesheet' type='text/css' href='assets/css/api-tools.css'/>
+    <link rel='stylesheet' type='text/css' href='assets/vendor/codemirror.css'/>
+    <script type='text/javascript' src='assets/js/es5-shim.js'></script>
+    <script type='text/javascript' src='assets/vendor/codemirror.min.js'></script>
+    <script type='text/javascript' src='assets/vendor/cm-javascript.min.js'></script>
+    <script type='text/javascript' src='assets/js/jquery.autosize.input.min.js'></script>
+    <script type='text/javascript' src='assets/js/apitool-rest.js'></script>
+    <script type='text/javascript' src='assets/js/apitool-methods-data_v2.js'></script>
+
+</body>
+</html>

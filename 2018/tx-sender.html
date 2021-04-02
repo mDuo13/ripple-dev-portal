@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Transaction Sender - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#1db4ff">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1db4ff">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <!-- <link href="assets/css/ripple.css" rel="stylesheet" /> -->
+    <link href="assets/vendor/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary page-tx-sender">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarHolder">
+      <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+<div class="github-edit-wrap">
+  <a href="https://github.com/ripple/ripple-dev-portal/edit/master/tool/template-tx-sender.html" target="_blank" class="github-edit">Edit on GitHub</a>
+</div><!-- /.github-edit -->    </div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+<div id="connection-status" class="card">
+  <div class="card-header bg-dark">
+    <h3 class="card-title">Status</h3>
+  </div><!--/.card-header-->
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" id="connection-status-label">XRP Test Net:</li>
+      <li class="list-group-item disabled" id="connection-status-item">Not Connected</li>
+      <li class="list-group-item" id="sending-address-label">Sending Address:</li>
+      <li class="list-group-item disabled sending-address-item">(None)</li>
+      <li class="list-group-item" id="balance-label">Test XRP Available:</li>
+      <li class="list-group-item disabled" id="balance-item">(None)</li>
+    </ul>
+    <div id="tx-sender-history">
+      <h5 class="m-3">Transaction History</h5>
+      <ul class="list-group list-group-flush">
+      </ul>
+    </div>
+  </div>
+</div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3 p-0 " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-3" aria-label="breacrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="dev-tools.html">Dev Tools</a></li>
+    <li class="active breadcrumb-item">Transaction Sender</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap--><section class="container-fluid p-3">
+  <h1>Transaction Sender</h1>
+
+  <div class="content">
+    <p>This tool sends transactions to the <a href="xrp-test-net-faucet.html">XRP Test Net</a> address of your choice so you can test how you monitor and respond to incoming transactions.</p>
+
+    <form>
+      <div class="form-group">
+        <label for="destination_address">Destination Address</label>
+        <input type="text" class="form-control" id="destination_address" aria-describedby="destination_address_help" value="rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM" />
+        <small id="destination_address_help" class="form-text text-muted">Send transactions to this XRP Test Net address</small>
+      </div>
+
+      <h3>Send Transaction</h3>
+
+      <div class="form-group" id="send_xrp_payment">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
+          </div>
+          <button class="btn btn-primary form-control" type="button" id="send_xrp_payment_btn">Send XRP Payment</button>
+          <input id="send_xrp_payment_amount" class="form-control" type="number" aria-describedby="send_xrp_payment_amount_help" value="100000" min="1" max="10000000000" />
+          <div class="input-group-append">
+            <span class="input-group-text" id="send_xrp_payment_amount_help">drops of XRP</span>
+          </div>
+          <!-- Future feature: Optional custom destination tag -->
+        </div>
+        <small class="form-text text-muted">Send a <a href="send-xrp.html">simple XRP-to-XRP payment</a>.</small>
+      </div><!-- /#send_xrp_payment -->
+
+      <hr />
+
+      <div class="form-group" id="send_partial_payment">
+        <div class="progress mb-1" id="pp_progress">
+          <div class="progress-bar progress-bar-striped w-0">&nbsp;</div>
+          <small class="justify-content-center d-flex position-absolute w-100">(Getting ready to send partial payments)</small>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
+          </div>
+          <button class="btn btn-primary form-control" type="button" id="send_partial_payment_btn" disabled="disabled" autocomplete="off" title="(Please wait for partial payments setup to finish)">Send Partial Payment</button>
+        </div>
+        <small class="form-text text-muted">Delivers a small amount of XRP with a large <code>Amount</code> value, to test your handling of <a href="partial-payments.html">partial payments</a>.</small>
+      </div><!-- /.form group for partial payment -->
+
+      <hr />
+
+      <div class="form-group" id="create_escrow">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
+          </div>
+          <button class="btn btn-primary form-control" type="button" id="create_escrow_btn">Create Escrow</button>
+          <input class="form-control" type="number" value="60" min="5" max="10000" id="create_escrow_duration_seconds" />
+          <div class="input-group-append">
+            <span class="input-group-text">seconds</span>
+          </div>
+          <span class="input-group-text">
+            (
+            <input type="checkbox" id="create_escrow_release_automatically" value="1" />
+            <label class="form-check-label" for="create_escrow_release_automatically">Finish automatically</label>)
+          </span>
+        </div>
+        <small class="form-text text-muted">Create a <a href="escrow.html">time-based escrow</a> of 1 XRP for the specified number of seconds.</small>
+        <div class="progress mb-1" style="display:none" id="escrow_progress">
+          <div class="progress-bar progress-bar-striped w-0">&nbsp;</div>
+          <small class="justify-content-center d-flex position-absolute w-100">(Waiting to release Escrow when it's ready)</small>
+        </div>
+      </div><!-- /.form group for create escrow -->
+
+      <hr />
+
+      <div class="form-group" id="create_payment_channel">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
+          </div>
+          <button class="btn btn-primary form-control" type="button" id="create_payment_channel_btn">Create Payment Channel</button>
+          <input id="create_payment_channel_amount" class="form-control" type="number" aria-describedby="create_payment_channel_amount_help" value="100000" min="1" max="10000000000" />
+          <div class="input-group-append">
+            <span class="input-group-text" id="create_payment_channel_amount_help">drops of XRP</span>
+          </div>
+        </div>
+        <small class="form-text text-muted">Create a <a href="payment-channels.html">payment channel</a> and fund it with the specified amount of XRP.</small>
+      </div><!-- /.form group for create paychan -->
+
+      <hr />
+
+      <div class="form-group" id="send_issued_currency">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
+          </div>
+          <button class="btn btn-primary form-control" type="button" id="send_issued_currency_btn">Send Issued Currency</button>
+          <input id="send_issued_currency_amount" class="form-control" type="text" value="100" /><!-- Note: HTML limits "number" inputs to IEEE 764 double precision, which isn't enough for the full range of issued currency amounts -->
+          <div class="input-group-append">
+            <span class="input-group-text" id="send_issued_currency_code">FOO</span><!-- TODO: custom currency codes -->
+          </div>
+        </div>
+        <small class="form-text text-muted">Your destination address needs a <a href="trust-lines-and-issuing.html">trust line</a> to <span class="sending-address-item">(the test sender)</span> for the currency in question. Otherwise, you'll get tecPATH_DRY.</small>
+      </div><!-- /.form group for issued currency payment -->
+
+      <hr />
+
+      <div class="form-group" id="trust_for">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text loader" style="display: none"><img class="throbber" src="assets/img/rippleThrobber.png" /></span>
+          </div>
+          <button class="btn btn-primary form-control" type="button" id="trust_for_btn">Trust for</button>
+          <input id="trust_for_amount" class="form-control disabled" type="number" value="100000" />
+          <div class="input-group-append">
+            <span class="input-group-text" id="trust_for_currency_code">FOO</span>
+          </div>
+        </div>
+        <small class="form-text text-muted">The test sender creates a <a href="trust-lines-and-issuing.html">trust line</a> to your account for the given currency.</small>
+      </div><!-- /.form group for create trust line -->
+
+    </form>
+  </div>
+</section>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="dev-tools.html"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Dev Tools</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" aria-multiselectable="true">
+      <div class="card active">
+        <div class="card-body">
+          <ul class="sidebar_pagelist">
+            <li><a class="nosubcat-page" href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+            <li><a class="nosubcat-page" href="websocket-api-tool.html">WebSocket API Tool</a></li>
+            <li><a class="nosubcat-page" href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+            <li><a class="nosubcat-page" href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+            <li><a class="nosubcat-page" href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+            <li><a class="active nosubcat-page" href="tx-sender.html">Transaction Sender</a></li>
+          </ul>
+        </div><!-- /.card-body -->
+      </div><!-- /.card -->
+    </div><!-- /#sidenav -->
+
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="ripple-footer" role="contentinfo">
+  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
+      <div class="row">
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="docs.html">Docs</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="concepts.html">Concepts</a></li>
+        <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+        <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="use-cases.html">Use Cases</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+      <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+      <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+      <li class="level-1"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="dev-tools.html">Dev Tools</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+      <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+      <li class="level-1"><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+
+      <li class="level-1"><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="news.html">News</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
+
+
+  <li class="level-1"><a href="/blog/">Ripple Dev Blog</a></li>
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
+              <div class="children-display">
+                <ul>
+                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/.foot-nav-col -->
+      </div><!--/.row-->
+  </section>
+
+  <section class="container-fluid pb-5 px-5">
+
+    <div class="build-disclaimer">
+      <p>
+        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
+      </p>
+      <p>
+        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
+      </p>
+    </div>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+  <script type="application/javascript" src="assets/js/ripple-lib-1.1.2-min.js"></script>
+  <script type="application/javascript" src="assets/vendor/bootstrap-growl.jquery.js"></script>
+  <script type='application/javascript' src='assets/js/tx-sender.js'></script>
+</body>
+</html>

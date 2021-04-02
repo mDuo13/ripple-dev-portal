@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Set Up Multi-Signing - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#1db4ff">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1db4ff">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <!-- <link href="assets/css/ripple.css" rel="stylesheet" /> -->
+    <link href="assets/vendor/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+    </script>
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarHolder">
+      <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+<div class="github-edit-wrap">
+  <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/tutorials/manage-account-settings/set-up-multi-signing.md" target="_blank" class="github-edit">Edit on GitHub</a>
+</div><!-- /.github-edit -->    </div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="page-toc-wrapper">
+    <p class="in-this-doc card-header">In this document:</p>
+    <ul class="dev_nav_sidebar card-body" id="dactyl_toc_sidebar">
+      <li class="level-1"><a href="#set-up-multi-signing">Set Up Multi-Signing</a></li>
+<li class="level-2"><a href="#prerequisites">Prerequisites</a></li>
+<li class="level-2"><a href="#1-prepare-a-funded-address">1. Prepare a funded address</a></li>
+<li class="level-2"><a href="#2-prepare-member-keys">2. Prepare member keys</a></li>
+<li class="level-2"><a href="#3-send-signerlistset-transaction">3. Send SignerListSet transaction</a></li>
+<li class="level-2"><a href="#4-close-the-ledger">4. Close the ledger</a></li>
+<li class="level-2"><a href="#5-confirm-the-new-signer-list">5. Confirm the new signer list</a></li>
+<li class="level-2"><a href="#6-further-steps">6. Further steps</a></li>
+
+    </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3 p-0 " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-3" aria-label="breacrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Docs</a></li>
+    <li class="active breadcrumb-item"><a href="tutorials.html">Tutorials</a></li>
+    <li class="active breadcrumb-item"><a href="manage-account-settings.html">Manage Account Settings</a></li>
+    <li class="active breadcrumb-item">Set Up Multi-Signing</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="p-3">
+    <div class="content">
+        <h1 id="set-up-multi-signing">Set Up Multi-Signing</h1>
+<p>Multi-signing is one of three ways to authorize transactions for the XRP Ledger, alongside signing with <a href="cryptographic-keys.html">regular keys and master keys</a>. You can configure your address to allow any combination of the three methods to authorize transactions.</p>
+<p>This tutorial demonstrates how to enable multi-signing for an address.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>
+<p>You must have a funded XRP Ledger address.</p>
+</li>
+<li>
+<p>You must have access to a tool that can generate key pairs in the XRP Ledger format. If you are using a <code>rippled</code> server for this, you must have admin access because the <a href="wallet_propose.html">wallet_propose method</a> is admin-only.</p>
+</li>
+<li>
+<p>Multi-signing must be available. Multi-signing has been enabled by an <a href="amendments.html"><strong>Amendment</strong></a> to the XRP Ledger Consensus Protocol since 2016-06-27.</p>
+</li>
+</ul>
+<h2 id="1-prepare-a-funded-address">1. Prepare a funded address</h2>
+<p>You need an XRP Ledger address that can send transactions, and has enough XRP available.</p>
+<p>Without the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a>, multi-signing requires more than the usual amount of XRP for the <a href="reserves.html">account reserve</a> and <a href="transaction-cost.html">transaction cost</a>, increasing with the number of signers and signatures you use.</p>
+<p>With the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a> enabled, multi-signing requires 5 XRP for the account reserve, regardless of the number of signers and signatures you use. The <a href="transaction-cost.html">transaction cost</a> of a multi-signed transaction is unaffected by this amendment and still increases with the number of signers and signatures you use.</p>
+<p>If you started <code>rippled</code> in <a href="rippled-server-modes.html#reasons-to-run-a-rippled-server-in-stand-alone-mode">stand-alone mode</a> with a new genesis ledger, you must:</p>
+<ol>
+<li>Generate keys for a new address, or reuse keys you already have.</li>
+<li>Submit a Payment transaction to fund the new address from the genesis account. (Send at least 100,000,000 <a href="basic-data-types.html#specifying-currency-amounts">drops of XRP</a>.)</li>
+<li>Manually close the ledger.</li>
+</ol>
+<h2 id="2-prepare-member-keys">2. Prepare member keys</h2>
+<p>You need several sets of XRP Ledger keys (address and secret) to include as members of your SignerList. These can be funded addresses that exist in the ledger, or you can generate new addresses using the <a href="wallet_propose.html">wallet_propose method</a>. For example:</p>
+<div class="codehilite"><pre><span></span><code>$ rippled wallet_propose
+Loading: <span class="s2">"/home/mduo13/.config/ripple/rippled.cfg"</span>
+Connecting to <span class="m">127</span>.0.0.1:5005
+<span class="o">{</span>
+    <span class="s2">"result"</span> : <span class="o">{</span>
+        <span class="s2">"account_id"</span> : <span class="s2">"rnRJ4dpSBKDR2M1itf4Ah6tZZm5xuNZFPH"</span>,
+        <span class="s2">"key_type"</span> : <span class="s2">"secp256k1"</span>,
+        <span class="s2">"master_key"</span> : <span class="s2">"FLOG SEND GOES CUFF GAGE FAT ANTI DEL GUM TIRE ISLE BEAR"</span>,
+        <span class="s2">"master_seed"</span> : <span class="s2">"snheH5UUjU4CWqiNVLny2k21TyKPC"</span>,
+        <span class="s2">"master_seed_hex"</span> : <span class="s2">"A9F859765EB8614D26809836382AFB82"</span>,
+        <span class="s2">"public_key"</span> : <span class="s2">"aBR4hxFXcDNHnGYvTiqb2KU8TTTV1cYV9wXTAuz2DjBm7S8TYEBU"</span>,
+        <span class="s2">"public_key_hex"</span> : <span class="s2">"03C09A5D112B393D531E4F092E3A5769A5752129F0A9C55C61B3A226BB9B567B9B"</span>,
+        <span class="s2">"status"</span> : <span class="s2">"success"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Take note of the <code>account_id</code> (XRP Ledger Address) and <code>master_seed</code> (secret key) for each one you generate.</p>
+<h2 id="3-send-signerlistset-transaction">3. Send SignerListSet transaction</h2>
+<p><a href="transaction-basics.html#signing-and-submitting-transactions">Sign and submit</a> a <a href="signerlistset.html">SignerListSet transaction</a> in the normal (single-signature) way. This associates a SignerList with your XRP Ledger address, so that a combination of signatures from the members of that SignerList can multi-sign later transactions on your behalf.</p>
+<p>In this example, the SignerList has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW plus at least one signature from the other two members of the list.</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.</p>
+<!-- -->
+<div class="codehilite"><pre><span></span><code>$ rippled submit shqZZy2Rzs9ZqWTCQAdqc3bKgxnYq <span class="s1">'{</span>
+<span class="s1">&gt;     "Flags": 0,</span>
+<span class="s1">&gt;     "TransactionType": "SignerListSet",</span>
+<span class="s1">&gt;     "Account": "rnBFvgZphmN39GWzUJeUitaP22Fr9be75H",</span>
+<span class="s1">&gt;     "Fee": "10000",</span>
+<span class="s1">&gt;     "SignerQuorum": 3,</span>
+<span class="s1">&gt;     "SignerEntries": [</span>
+<span class="s1">&gt;         {</span>
+<span class="s1">&gt;             "SignerEntry": {</span>
+<span class="s1">&gt;                 "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",</span>
+<span class="s1">&gt;                 "SignerWeight": 2</span>
+<span class="s1">&gt;             }</span>
+<span class="s1">&gt;         },</span>
+<span class="s1">&gt;         {</span>
+<span class="s1">&gt;             "SignerEntry": {</span>
+<span class="s1">&gt;                 "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",</span>
+<span class="s1">&gt;                 "SignerWeight": 1</span>
+<span class="s1">&gt;             }</span>
+<span class="s1">&gt;         },</span>
+<span class="s1">&gt;         {</span>
+<span class="s1">&gt;             "SignerEntry": {</span>
+<span class="s1">&gt;                 "Account": "raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n",</span>
+<span class="s1">&gt;                 "SignerWeight": 1</span>
+<span class="s1">&gt;             }</span>
+<span class="s1">&gt;         }</span>
+<span class="s1">&gt;     ]</span>
+<span class="s1">&gt; }'</span>
+Loading: <span class="s2">"/home/mduo13/.config/ripple/rippled.cfg"</span>
+Connecting to <span class="m">127</span>.0.0.1:5005
+<span class="o">{</span>
+   <span class="s2">"result"</span> : <span class="o">{</span>
+      <span class="s2">"engine_result"</span> : <span class="s2">"tesSUCCESS"</span>,
+      <span class="s2">"engine_result_code"</span> : <span class="m">0</span>,
+      <span class="s2">"engine_result_message"</span> : <span class="s2">"The transaction was applied. Only final in a validated ledger."</span>,
+      <span class="s2">"status"</span> : <span class="s2">"success"</span>,
+      <span class="s2">"tx_blob"</span> : <span class="s2">"12000C2200000000240000000120230000000368400000000000271073210303E20EC6B4A39A629815AE02C0A1393B9225E3B890CAE45B59F42FA29BE9668D74473045022100BEDFA12502C66DDCB64521972E5356F4DB965F553853D53D4C69B4897F11B4780220595202D1E080345B65BAF8EBD6CA161C227F1B62C7E72EA5CA282B9434A6F04281142DECAB42CA805119A9BA2FF305C9AFA12F0B86A1F4EB1300028114204288D2E47F8EF6C99BCC457966320D12409711E1EB13000181147908A7F0EDD48EA896C3580A399F0EE78611C8E3E1EB13000181143A4C02EA95AD6AC3BED92FA036E0BBFB712C030CE1F1"</span>,
+      <span class="s2">"tx_json"</span> : <span class="o">{</span>
+         <span class="s2">"Account"</span> : <span class="s2">"rnBFvgZphmN39GWzUJeUitaP22Fr9be75H"</span>,
+         <span class="s2">"Fee"</span> : <span class="s2">"10000"</span>,
+         <span class="s2">"Flags"</span> : <span class="m">0</span>,
+         <span class="s2">"Sequence"</span> : <span class="m">1</span>,
+         <span class="s2">"SignerEntries"</span> : <span class="o">[</span>
+            <span class="o">{</span>
+               <span class="s2">"SignerEntry"</span> : <span class="o">{</span>
+                  <span class="s2">"Account"</span> : <span class="s2">"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"</span>,
+                  <span class="s2">"SignerWeight"</span> : <span class="m">2</span>
+               <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="o">{</span>
+               <span class="s2">"SignerEntry"</span> : <span class="o">{</span>
+                  <span class="s2">"Account"</span> : <span class="s2">"rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"</span>,
+                  <span class="s2">"SignerWeight"</span> : <span class="m">1</span>
+               <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="o">{</span>
+               <span class="s2">"SignerEntry"</span> : <span class="o">{</span>
+                  <span class="s2">"Account"</span> : <span class="s2">"raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n"</span>,
+                  <span class="s2">"SignerWeight"</span> : <span class="m">1</span>
+               <span class="o">}</span>
+            <span class="o">}</span>
+         <span class="o">]</span>,
+         <span class="s2">"SignerQuorum"</span> : <span class="m">3</span>,
+         <span class="s2">"SigningPubKey"</span> : <span class="s2">"0303E20EC6B4A39A629815AE02C0A1393B9225E3B890CAE45B59F42FA29BE9668D"</span>,
+         <span class="s2">"TransactionType"</span> : <span class="s2">"SignerListSet"</span>,
+         <span class="s2">"TxnSignature"</span> : <span class="s2">"3045022100BEDFA12502C66DDCB64521972E5356F4DB965F553853D53D4C69B4897F11B4780220595202D1E080345B65BAF8EBD6CA161C227F1B62C7E72EA5CA282B9434A6F042"</span>,
+         <span class="s2">"hash"</span> : <span class="s2">"3950D98AD20DA52EBB1F3937EF32F382D74092A4C8DF9A0B1A06ED25200B5756"</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Make sure that the <a href="transaction-results.html">Transaction Result</a> is <a href="tes-success.html"><strong>tesSUCCESS</strong></a>. Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that <a href="start-a-new-genesis-ledger-in-stand-alone-mode.html#settings-in-new-genesis-ledgers">multi-sign is enabled</a>.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Without the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a>, the more members in the SignerList, the more XRP your address must have for purposes of the <a href="reserves.html#owner-reserves">owner reserve</a>. If your address does not have enough XRP, the transaction fails with <a href="tec-codes.html">tecINSUFFICIENT_RESERVE</a>. With the <a href="known-amendments.html#multisignreserve">MultiSignReserve amendment</a> enabled, the XRP your address must have for purposes of the <a href="reserves.html#owner-reserves">owner reserve</a> is 5 XRP, regardless of the number of members in the SignerList. See also: <a href="signerlist.html#signerlists-and-reserves">SignerLists and Reserves</a>.</p>
+<h2 id="4-close-the-ledger">4. Close the ledger</h2>
+<p>On the live network, you can wait 4-7 seconds for the ledger to close automatically.</p>
+<p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="ledger_accept.html">ledger_accept method</a> to manually close the ledger:</p>
+<div class="codehilite"><pre><span></span><code>$ rippled ledger_accept
+Loading: <span class="s2">"/home/mduo13/.config/ripple/rippled.cfg"</span>
+Connecting to <span class="m">127</span>.0.0.1:5005
+<span class="o">{</span>
+   <span class="s2">"result"</span> : <span class="o">{</span>
+      <span class="s2">"ledger_current_index"</span> : <span class="m">6</span>,
+      <span class="s2">"status"</span> : <span class="s2">"success"</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<h2 id="5-confirm-the-new-signer-list">5. Confirm the new signer list</h2>
+<p>Use the <a href="account_objects.html">account_objects method</a> to confirm that the SignerList is associated with the address in the latest validated ledger.</p>
+<p>Normally, an account can own many objects of different types (such as trust lines and offers). If you funded a new address for this tutorial, the SignerList is the only object in the response.</p>
+<div class="codehilite"><pre><span></span><code>$ rippled account_objects rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC validated
+Loading: <span class="s2">"/home/mduo13/.config/ripple/rippled.cfg"</span>
+Connecting to <span class="m">127</span>.0.0.1:5005
+<span class="o">{</span>
+   <span class="s2">"result"</span> : <span class="o">{</span>
+      <span class="s2">"account"</span> : <span class="s2">"rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC"</span>,
+      <span class="s2">"account_objects"</span> : <span class="o">[</span>
+         <span class="o">{</span>
+            <span class="s2">"Flags"</span> : <span class="m">0</span>,
+            <span class="s2">"LedgerEntryType"</span> : <span class="s2">"SignerList"</span>,
+            <span class="s2">"OwnerNode"</span> : <span class="s2">"0000000000000000"</span>,
+            <span class="s2">"PreviousTxnID"</span> : <span class="s2">"8FDC18960455C196A8C4DE0D24799209A21F4A17E32102B5162BD79466B90222"</span>,
+            <span class="s2">"PreviousTxnLgrSeq"</span> : <span class="m">5</span>,
+            <span class="s2">"SignerEntries"</span> : <span class="o">[</span>
+               <span class="o">{</span>
+                  <span class="s2">"SignerEntry"</span> : <span class="o">{</span>
+                     <span class="s2">"Account"</span> : <span class="s2">"rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"</span>,
+                     <span class="s2">"SignerWeight"</span> : <span class="m">2</span>
+                  <span class="o">}</span>
+               <span class="o">}</span>,
+               <span class="o">{</span>
+                  <span class="s2">"SignerEntry"</span> : <span class="o">{</span>
+                     <span class="s2">"Account"</span> : <span class="s2">"raKEEVSGnKSD9Zyvxu4z6Pqpm4ABH8FS6n"</span>,
+                     <span class="s2">"SignerWeight"</span> : <span class="m">1</span>
+                  <span class="o">}</span>
+               <span class="o">}</span>,
+               <span class="o">{</span>
+                  <span class="s2">"SignerEntry"</span> : <span class="o">{</span>
+                     <span class="s2">"Account"</span> : <span class="s2">"rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v"</span>,
+                     <span class="s2">"SignerWeight"</span> : <span class="m">1</span>
+                  <span class="o">}</span>
+               <span class="o">}</span>
+            <span class="o">]</span>,
+            <span class="s2">"SignerListID"</span> : <span class="m">0</span>,
+            <span class="s2">"SignerQuorum"</span> : <span class="m">3</span>,
+            <span class="s2">"index"</span> : <span class="s2">"79FD203E4DDDF2EA78B798C963487120C048C78652A28682425E47C96D016F92"</span>
+         <span class="o">}</span>
+      <span class="o">]</span>,
+      <span class="s2">"ledger_hash"</span> : <span class="s2">"56E81069F06492FB410A70218C08169BE3AB3CFD5AEA20E999662D81DC361D9F"</span>,
+      <span class="s2">"ledger_index"</span> : <span class="m">5</span>,
+      <span class="s2">"status"</span> : <span class="s2">"success"</span>,
+      <span class="s2">"validated"</span> : <span class="nb">true</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>If the SignerList is present with the expected contents, then your address is ready to multi-sign.</p>
+<h2 id="6-further-steps">6. Further steps</h2>
+<p>At this point, your address is ready to <a href="send-a-multi-signed-transaction.html">send a multi-signed transaction</a>. You may also want to:</p>
+<ul>
+<li>Disable the address's master key pair by sending an <a href="accountset.html">AccountSet transaction</a> using the <code>asfDisableMaster</code> flag.</li>
+<li>Remove the address's regular key pair (if you previously set one) by sending a <a href="setregularkey.html">SetRegularKey transaction</a>.</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="tutorials.html"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Tutorials</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_2">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">&nbsp;</a>
+                <a class="sidenav_cat_title" href="get-started.html">Get Started</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="get-started-with-the-rippled-api.html">Get Started with the rippled API</a></li>
+                      <li><a class="nosubcat-page" href="set-up-secure-signing.html">Set Up Secure Signing</a></li>
+                      <li><a class="nosubcat-page" href="get-started-with-rippleapi-for-javascript.html">RippleAPI Beginners Guide</a></li>
+                      <li><a class="nosubcat-page" href="look-up-transaction-results.html">Look Up Transaction Results</a></li>
+                      <li><a class="nosubcat-page" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse2 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_8">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">&nbsp;</a>
+                <a class="sidenav_cat_title" href="use-simple-xrp-payments.html">Use Simple XRP Payments</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="send-xrp.html">Send XRP</a></li>
+                      <li><a class="nosubcat-page" href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+                      <li><a class="nosubcat-page" href="cancel-or-skip-a-transaction.html">Cancel or Skip a Transaction</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse8 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card active">
+            <div class="card-header" role="tab" id="sidenav_cat_head_12">
+              <h5 class="card-title">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_12" aria-expanded="true" aria-controls="sidenav_collapse_12">&nbsp;</a>
+                <a class="sidenav_cat_title active-parent" href="manage-account-settings.html">Manage Account Settings</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_12" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_12">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a></li>
+                      <li><a class="nosubcat-page" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a></li>
+                      <li><a class="active nosubcat-page" href="set-up-multi-signing.html">Set Up Multi-Signing</a></li>
+                      <li><a class="nosubcat-page" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse12 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_17">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_17" aria-expanded="true" aria-controls="sidenav_collapse_17">&nbsp;</a>
+                <a class="sidenav_cat_title" href="use-complex-payment-types.html">Use Complex Payment Types</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_17" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_17">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title" href="use-escrows.html">Use Escrows</a></li>
+
+                          <li><a class="subpage" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a></li>
+                          <li><a class="subpage" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a></li>
+                          <li><a class="subpage" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a></li>
+                          <li><a class="subpage" href="look-up-escrows.html">Look up escrows</a></li>
+
+                      <li><a class="nosubcat-page" href="use-payment-channels.html">Use Payment Channels</a></li>
+                      <li><a class="subcat-title" href="use-checks.html">Use Checks <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+
+                          <li><a class="subpage" href="send-a-check.html">Send a Check <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="cancel-a-check.html">Cancel a Check <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="look-up-checks-by-sender.html">Look Up Checks by Sender <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+                          <li><a class="subpage" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse17 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_31">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_31" aria-expanded="true" aria-controls="sidenav_collapse_31">&nbsp;</a>
+                <a class="sidenav_cat_title" href="xrp-ledger-businesses.html">XRP Ledger Businesses</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_31" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_31">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a></li>
+                      <li><a class="nosubcat-page" href="list-your-exchange-on-xrp-charts.html">List Your Exchange on XRP Charts</a></li>
+                      <li><a class="nosubcat-page" href="become-an-xrp-ledger-gateway.html">Become an XRP Ledger Gateway</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse31 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_35">
+              <h5 class="card-title">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_35" aria-expanded="true" aria-controls="sidenav_collapse_35">&nbsp;</a>
+                <a class="sidenav_cat_title" href="manage-the-rippled-server.html">Manage the rippled Server</a>
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_35" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_35">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title" href="install-rippled.html">Install rippled</a></li>
+
+                          <li><a class="subpage" href="system-requirements.html">System Requirements</a></li>
+                          <li><a class="subpage" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a></li>
+                          <li><a class="subpage" href="install-rippled-on-ubuntu-with-alien.html">Install on Ubuntu with Alien</a></li>
+                          <li><a class="subpage" href="update-rippled-automatically-on-centos-rhel.html">Update Automatically on CentOS/Red Hat</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a></li>
+                          <li><a class="subpage" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu</a></li>
+                          <li><a class="subpage" href="build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+                          <li><a class="subpage" href="build-run-rippled-macos.html">Build and Run rippled on macOS</a></li>
+                          <li><a class="subpage" href="capacity-planning.html">Capacity Planning</a></li>
+
+                      <li><a class="subcat-title" href="configure-rippled.html">Configure rippled</a></li>
+
+                          <li><a class="subpage" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a></li>
+                          <li><a class="subpage" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to the XRP Test Net</a></li>
+                          <li><a class="subpage" href="cluster-rippled-servers.html">Cluster rippled Servers</a></li>
+                          <li><a class="subpage" href="configure-online-deletion.html">Configure Online Deletion</a></li>
+                          <li><a class="subpage" href="configure-advisory-deletion.html">Configure Advisory Deletion</a></li>
+                          <li><a class="subpage" href="configure-history-sharding.html">Configure History Sharding</a></li>
+                          <li><a class="subpage" href="configure-full-history.html">Configure Full History</a></li>
+                          <li><a class="subpage" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a></li>
+                          <li><a class="subpage" href="enable-public-signing.html">Enable Public Signing</a></li>
+
+                      <li><a class="subcat-title" href="use-stand-alone-mode.html">Use rippled in Stand-Alone Mode</a></li>
+
+                          <li><a class="subpage" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a></li>
+                          <li><a class="subpage" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a></li>
+
+                      <li><a class="subcat-title" href="troubleshoot-the-rippled-server.html">Troubleshooting rippled</a></li>
+
+                          <li><a class="subpage" href="diagnosing-problems.html">Diagnosing Problems with rippled</a></li>
+                          <li><a class="subpage" href="understanding-log-messages.html">Understanding Log Messages</a></li>
+                          <li><a class="subpage" href="server-wont-start.html">rippled Server Won't Start</a></li>
+                          <li><a class="subpage" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue</a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse35 -->
+
+          </div><!-- /.card -->
+
+    </div><!-- /#sidenav -->
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="ripple-footer" role="contentinfo">
+  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
+      <div class="row">
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="docs.html">Docs</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="concepts.html">Concepts</a></li>
+        <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+        <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="use-cases.html">Use Cases</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+      <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+      <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+      <li class="level-1"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="dev-tools.html">Dev Tools</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+      <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+      <li class="level-1"><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+
+      <li class="level-1"><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="news.html">News</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
+
+
+  <li class="level-1"><a href="/blog/">Ripple Dev Blog</a></li>
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
+              <div class="children-display">
+                <ul>
+                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/.foot-nav-col -->
+      </div><!--/.row-->
+  </section>
+
+  <section class="container-fluid pb-5 px-5">
+
+    <div class="build-disclaimer">
+      <p>
+        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
+      </p>
+      <p>
+        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
+      </p>
+    </div>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

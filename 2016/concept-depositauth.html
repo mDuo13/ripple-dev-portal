@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Deposit Authorization - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="concept-money.html">About XRP</a></li>
+              <li class="active crumb-current">Deposit Authorization</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/concept-depositauth.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-xrp-ledger-intro.html">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a href="concept-cryptographic-keys.html">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a href="concept-reserves.html">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a class="active" href="#main_content_body">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a href="concept-demurrage.html">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a href="tutorial-checks-send.html">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a href="tutorial-build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">Deposit Authorization</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#deposit-authorization">Deposit Authorization</a></li>
+<li class="level-2"><a href="#background">Background</a></li>
+<li class="level-2"><a href="#recommended-usage">Recommended Usage</a></li>
+<li class="level-2"><a href="#precise-semantics">Precise Semantics</a></li>
+<li class="level-2"><a href="#enabling-or-disabling-deposit-authorization">Enabling or Disabling Deposit Authorization</a></li>
+<li class="level-2"><a href="#checking-whether-an-account-has-depositauth-enabled">Checking Whether an Account Has DepositAuth Enabled</a></li>
+<li class="level-2"><a href="#see-also">See Also</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="deposit-authorization">Deposit Authorization</h1>
+<p><em>(Requires the <a href="reference-amendments.html#depositauth">DepositAuth amendment</a>.)</em></p>
+<p>Deposit Authorization is an optional feature of an <a href="concept-accounts.html">account</a> in the XRP Ledger. With Deposit Authorization enabled, transactions cannot send value of any kind to the account unless the sender of those transactions is the account itself. This includes transfers of XRP and issued currencies.</p>
+<p>By default, new accounts have DepositAuth disabled.</p>
+<h2 id="background">Background</h2>
+<p>Financial services regulations and licenses may require that a business or entity must know the sender of all transactions it receives. This presents a challenge on a decentralized system like the XRP Ledger where participants are identified by pseudonyms which can be freely generated and the default behavior is for any address to be able to pay any other.</p>
+<p>The Deposit Authorization flag introduces an option for those using the XRP Ledger to comply with such regulations without changing the fundamental nature of the decentralized ledger. With Deposit Authorization enabled, an account can only receive funds it explicitly approves by sending a transaction. The owner of an account using Deposit Authorization can perform the due diligence necessary to identify the sender of any funds <em>before</em> sending the transaction that causes the account to receive the money.</p>
+<p>Deposit Authorization is intended to be used with <a href="reference-amendments.html#checks">Checks</a>, <a href="concept-escrow.html">Escrow</a>, and <a href="reference-amendments.html#paychan">Payment Channels</a>. In this "two-step" model, first the source sends a transaction to authorize sending funds, then the destination sends a transaction to authorize receiving those funds. Deposit Authorization cannot be used with <a href="reference-transaction-format.html#payment">Payment transactions</a>.</p>
+<h2 id="recommended-usage">Recommended Usage</h2>
+<p>To get the full effect of Deposit Authorization, Ripple recommends also doing the following:</p>
+<ul>
+<li>Always maintain an XRP balance higher than the minimum <a href="concept-reserves.html">reserve requirement</a>.</li>
+<li>Keep the DefaultRipple flag in its default (disabled) state. Do not enable <a href="concept-noripple.html">rippling</a> on any trust lines. When sending TrustSet transactions, always use the <a href="reference-transaction-format.html#trustset-flags"><code>tfSetNoRipple</code> flag</a>.</li>
+<li>Do not place <a href="reference-transaction-format.html#offercreate">Offers</a>. It is impossible to know in advance which matching offers will be consumed to execute such a trade.</li>
+</ul>
+<h2 id="precise-semantics">Precise Semantics</h2>
+<p>An account with Deposit Authorization enabled:</p>
+<ul>
+<li><strong>Cannot</strong> be the destination of <a href="reference-transaction-format.html#payment">Payment transactions</a>, with <strong>one exception</strong>:<ul>
+<li>If the account's XRP balance is equal to or below the minimum account <a href="concept-reserves.html">reserve requirement</a>, it can be the destination of an XRP Payment whose <code>Amount</code> is equal or less than the minimum account reserve (currently 20 XRP). This is to prevent an account from becoming "stuck" by being unable to send transactions but also unable to receive XRP. The account's owner reserve does not matter for this case.</li>
+</ul>
+</li>
+<li>Can receive XRP from <a href="reference-transaction-format.html#paymentchannelclaim">PaymentChannelClaim transactions</a> <strong>only if</strong> the sender of the PaymentChannelClaim transaction is the destination of the payment channel.</li>
+<li>Can receive XRP from <a href="reference-transaction-format.html#escrowfinish">EscrowFinish transactions</a> <strong>only if</strong> the sender of the EscrowFinish transaction is the destination of the escrow.</li>
+<li><strong>Can</strong> receive XRP or issued currencies by sending a <a href="reference-transaction-format.html#checkcash">CheckCash</a> transaction. <em>(Requires the <a href="reference-amendments.html#checks">Checks amendment</a>.)</em></li>
+<li><strong>Can</strong> receive XRP or issued currencies by sending <a href="reference-transaction-format.html#offercreate">OfferCreate transactions</a>.<ul>
+<li>If the account sends an OfferCreate transaction that is not fully executed immediately, it <strong>can</strong> receive the remainder of the ordered XRP or issued currency later when the offer is consumed by other accounts' <a href="reference-transaction-format.html#payment">Payment</a> and <a href="reference-transaction-format.html#offercreate">OfferCreate</a> transactions.</li>
+</ul>
+</li>
+<li>If the account has created any trust lines without the <a href="concept-noripple.html">NoRipple flag</a> enabled, or has enabled the DefaultRipple flag and issued any currency, the account <strong>can</strong> receive the issued currencies of those trust lines in <a href="reference-transaction-format.html#payment">Payment transactions</a> as a result of rippling. It cannot be the destination of those transactions.</li>
+<li>In general, an account in the XRP Ledger <strong>cannot</strong> receive any non-XRP currencies in the XRP Ledger as long as all of the following are true. (This rule is not specific to the DepositAuth flag.)<ul>
+<li>The account has not created any trust lines with a nonzero limit.</li>
+<li>The account has not issued currency on trust lines created by others</li>
+<li>The account has not placed any offers.</li>
+</ul>
+</li>
+</ul>
+<p>The following table summarizes whether a transaction type can deposit money with DepositAuth enabled or disabled:</p>
+<table class="depauth">
+<thead>
+<tr>
+<th> </th>
+<th class="depauth-status" colspan="2">DepositAuth Disabled</th>
+<th class="depauth-spacer"> </th>
+<th class="depauth-status" colspan="2">DepositAuth Enabled</th>
+</tr>
+<tr>
+<th>Transaction Type</th>
+<th>Sent by Destination</th><th>Sent by Others</th>
+<th class="depauth-spacer"> </th>
+<th>Sent by Destination</th><th>Sent by Others</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="depauth-txtype">AccountSet</td>
+<td class="depauth-na" colspan="5">(This transaction type never sends money.)</td>
+</tr>
+<tr>
+<td class="depauth-txtype">CheckCancel</td>
+<td class="depauth-na" colspan="5">(This transaction type never sends money.)</td>
+</tr>
+<tr>
+<td class="depauth-txtype">CheckCash</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-no">No Permission</td>
+<td class="depauth-spacer"> </td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-no">No Permission</td>
+</tr>
+<tr>
+<td class="depauth-txtype">CheckCreate</td>
+<td class="depauth-na" colspan="5">(This transaction type never sends money.)</td>
+</tr>
+<tr>
+<td class="depauth-txtype">EscrowCancel</td>
+<td class="depauth-maybe" colspan="5">Can return XRP from an expired escrow</td>
+</tr>
+<tr>
+<td class="depauth-txtype">EscrowCreate</td>
+<td class="depauth-na" colspan="5">(This transaction type can only debit XRP, not credit it.)</td>
+</tr>
+<tr>
+<td class="depauth-txtype">EscrowFinish</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-spacer"> </td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-no">No Permission</td>
+</tr>
+<tr>
+<td class="depauth-txtype">OfferCancel</td>
+<td class="depauth-na" colspan="5">This transaction type never sends money.</td>
+</tr>
+<tr>
+<td class="depauth-txtype">OfferCreate</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-maybe">Only if account previously created a matching offer</td>
+<td class="depauth-spacer"> </td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-maybe">Only if account previously created a matching offer</td>
+</tr>
+<tr>
+<td class="depauth-txtype">Payment <div class="depauth-subtype">(If account has more than the minimum XRP reserve, enables NoRipple on all trust lines, and places no offers)</div></td>
+<td class="depauth-maybe">Cross-currency only</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-spacer"> </td>
+<td class="depauth-no">No Permission</td>
+<td class="depauth-no">No Permission</td>
+</tr>
+<tr>
+<td class="depauth-txtype">Payment <div class="depauth-subtype">(If account XRP balance is below the minimum XRP reserve)</div></td>
+<td class="depauth-maybe">Cross-currency only</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-spacer"> </td>
+<td class="depauth-no">No Permission</td>
+<td class="depauth-maybe">XRP payments up to the minimum reserve</td>
+</tr>
+<tr>
+<td class="depauth-txtype">Payment <div class="depauth-subtype">(If account has any trust lines with NoRipple disabled)</div></td>
+<td class="depauth-maybe">Cross-currency only</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-spacer"> </td>
+<td class="depauth-no">No Permission</td>
+<td class="depauth-maybe">Balance changes from rippling</td>
+</tr>
+<tr>
+<td class="depauth-txtype">Payment <div class="depauth-subtype">(If account has placed offers)</div></td>
+<td class="depauth-maybe">Cross-currency only</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-spacer"> </td>
+<td class="depauth-no">No Permission</td>
+<td class="depauth-maybe">Balance changes from executing offers</td>
+</tr>
+<tr>
+<td class="depauth-txtype">PaymentChannelClaim</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-spacer"> </td>
+<td class="depauth-ok">OK</td>
+<td class="depauth-no">No Permission</td>
+</tr>
+<tr>
+<td class="depauth-txtype">PaymentChannelCreate</td>
+<td class="depauth-na" colspan="5">(This transaction type can only debit XRP, not credit it.)</td>
+</tr>
+<tr>
+<td class="depauth-txtype">PaymentChannelFund</td>
+<td class="depauth-maybe" colspan="5">Can return XRP when closing a channel created by self</td>
+</tr>
+<tr>
+<td class="depauth-txtype">SetRegularKey</td>
+<td class="depauth-na" colspan="5">(This transaction type never sends money.)</td>
+</tr>
+<tr>
+<td class="depauth-txtype">SignerListSet</td>
+<td class="depauth-na" colspan="5">(This transaction type never sends money.)</td>
+</tr>
+<tr>
+<td class="depauth-txtype">TrustSet</td>
+<td class="depauth-na" colspan="5">(This transaction type never sends money.)</td>
+</tr>
+</tbody></table>
+<style type="text/css">
+.depauth-txtype {
+  font-weight: bold;
+}
+.depauth-status {
+  text-align: center;
+}
+.depauth-na {
+  background-color: #999;
+}
+.depauth-ok {
+  background-color: #afa;
+}
+.depauth-no {
+  background-color: #faa;
+}
+.depauth-maybe {
+  background-color: #ffa;
+}
+.depauth-subtype {
+  font-weight: normal;
+  font-size: 8pt;
+}
+.depauth-spacer {
+  background-color: black;
+  padding: 2px !important;
+  font-size: 2px;
+}
+th.depauth-spacer {
+  border: 1px solid #dbdde2;
+  border-bottom-color: black;
+}
+</style>
+<h2 id="enabling-or-disabling-deposit-authorization">Enabling or Disabling Deposit Authorization</h2>
+<p>An account can enable deposit authorization by sending an <a href="reference-transaction-format.html#accountset">AccountSet transaction</a> with the <code>SetFlag</code> field set to the <code>asfDepositAuth</code> value (9). The account can disable deposit authorization by sending an <a href="reference-transaction-format.html#accountset">AccountSet transaction</a> with the <code>ClearFlag</code> field set to the <code>asfDepositAuth</code> value (9). For more information on AccountSet flags, see <a href="reference-transaction-format.html#accountset-flags">AccountSet flags</a>.</p>
+<h2 id="checking-whether-an-account-has-depositauth-enabled">Checking Whether an Account Has DepositAuth Enabled</h2>
+<p>To see whether an account has Deposit Authorization enabled, use the <a href="reference-rippled.html#account-info"><code>account_info</code> command</a> to look up the account. Compare the value of the <code>Flags</code> field (in the <code>result.account_data</code> object) with the <a href="reference-ledger-format.html#accountroot-flags">bitwise flags defined for an AccountRoot ledger object</a>.</p>
+<p>If the result of the <code>Flags</code> value bitwise-AND the <code>lsfDepositAuth</code> flag value (0x01000000) is nonzero, then the account has DepositAuth enabled. If the result is zero, then the account has DepositAuth disabled.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li>The <a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a> feature (<code>RequireAuth</code> flag) limits which counterparties can hold non-XRP currencies issued by an account.</li>
+<li>The <code>DisallowXRP</code> flag indicates that an account should not receive XRP. This is a softer protection than Deposit Authorization, and is not enforced by the XRP Ledger. (Client applications should honor this flag or at least warn about it.)</li>
+<li>The <code>RequireDest</code> flag indicates that an account can only receive currency amounts if the sending transaction specifies a <a href="tutorial-gateway-guide.html#source-and-destination-tags">Destination Tag</a>. This protects users from forgetting to indicate the purpose of a payment, but does not protect recipients from unknown senders, who can make up arbitrary destination tags.</li>
+<li><a href="concept-partial-payments.html">Partial Payments</a> provide a way for accounts to return unwanted payments while subtracting <a href="concept-transfer-fees.html">transfer fees</a> and exchange rates from the amount delivered instead of adding them to the amount sent.</li>
+</ul>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

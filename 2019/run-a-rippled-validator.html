@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Run a rippled Validator - XRP Ledger Dev Portal</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+      <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+      </ul><!-- /.navbar-nav -->
+<div class="github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/use-cases/run-a-rippled-validator.md" target="_blank" class="github-edit">Edit</a>
+</div><!-- /.github-edit -->      <form class="navbar-form navbar-right" id="navbar-search" role="search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search site...</label>
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+      <div class="nav navbar-nav language-selector">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            English
+          </button>
+          <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
+            <a class="dropdown-item" href="/run-a-rippled-validator.html">English</a>
+            <a class="dropdown-item" href="/ja/run-a-rippled-validator.html">日本語</a>
+          </div><!--/.dropdown-menu-->
+        </div><!--/.dropdown-->
+      </div><!--/.language-selector-->
+    </div><!--/#navbarHolder-->
+    <div class="menu-overlay"></div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="use-case-related">
+    <div class="card-header">
+      <h4>Useful Background</h4>
+    </div>
+    <div class="card-body">
+      <div class="curated-links">
+        <ul>
+            <li><a href="amendments.html">Amendments</a></li>
+            <li><a href="the-rippled-server.html">The rippled Server</a></li>
+            <li><a href="fee-voting.html">Fee Voting</a></li>
+            <li><a href="consensus-principles-and-rules.html">Consensus Principles and Rules</a></li>
+        </ul>
+      </div><!--/.curated-links-->
+    </div><!--/.card-body-->
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="use-cases.html">Use Cases</a></li>
+    <li class="active breadcrumb-item">Run a rippled Validator</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="use-case pt-3 p-md-3">
+    <div class="content">
+        <h1 id="run-a-rippled-validator">Run a rippled Validator</h1>
+<p>Each <code>rippled</code> server (not running in stand-alone mode) connects to a network of peers, relays cryptographically signed transactions, and maintains a local copy of the complete shared global ledger. A <code>rippled</code> server running in validator mode additionally participates in the consensus process and is a part of an interconnected web of validators who each trust a specific set of validators not to collude. Here’s a roadmap to the high-level tasks you’ll need to perform to run a <code>rippled</code> validator.</p>
+<div class="use-case-steps">
+<p><span class="use-case-step-num">1</span></p>
+<!-- <span class="use-case-step-length">(1 hour)</span> -->
+<h2 id="understand-what-it-means-to-run-a-validator">Understand what it means to run a validator</h2>
+<p>If you or your organization relies on the XRP Ledger, it is in your interest to run a validator to participate in the consensus process and provide a trusted validator that supports the ongoing decentralization of the XRP Ledger.</p>
+<p>If you are an independent developer, you may want to run a validator as a way to participate in and dive into the technology that supports the XRP Ledger network.</p>
+<p>While validator diversity is important, not every validator is likely to be widely trusted and validator list publishers may require validators to meet stringent criteria before they list them on validator lists.</p>
+<p>Despite that, it is important to note that every validator contributes to the long-term health and decentralization of the XRP Ledger.</p>
+<p><a class="button" href="rippled-server-modes.html#reasons-to-run-a-validator">Understand what it means to run a validator</a></p>
+<p><span class="use-case-step-num">2</span></p>
+<!-- <span class="use-case-step-length">(1 hour)</span> -->
+<h2 id="set-up-and-run-a-rippled-server">Set up and run a <code>rippled</code> server</h2>
+<p>Install and run a <code>rippled</code> server. Anyone can run their own <code>rippled</code> server that follows the network and keeps a complete copy of the XRP Ledger.</p>
+<p>For configuration guidance and network and hardware requirements, see <a href="capacity-planning.html">Capacity Planning</a>.</p>
+<p><a class="button" href="manage-the-rippled-server.html">Set up and run a rippled server</a></p>
+<p><span class="use-case-step-num">3</span></p>
+<!-- <span class="use-case-step-length">(1 hour)</span> -->
+<h2 id="enable-validation-on-your-rippled-server">Enable validation on your rippled server</h2>
+<p>To configure your <code>rippled</code> server to run in validator mode, generate a validator key pair and add it to your <code>rippled.cfg</code> file.</p>
+<p><a class="button" href="run-rippled-as-a-validator.html">Learn more about validation</a></p>
+<p><span class="use-case-step-num">4</span></p>
+<!-- <span class="use-case-step-length">(1 hour)</span> -->
+<h2 id="set-up-a-stock-rippled-server-as-a-proxy">Set up a stock rippled server as a proxy</h2>
+<p>To protect a production validator from DDoS attacks, you can use a stock <code>rippled</code> server as a proxy between the validator and the outside network.</p>
+<p><a class="button" href="run-rippled-as-a-validator.html#connect-using-proxies">Set up a proxy</a></p>
+<p><span class="use-case-step-num">5</span></p>
+<!-- <span class="use-case-step-length">(1 hour)</span> -->
+<h2 id="associate-your-validator-with-a-web-domain-you-control">Associate your validator with a web domain you control</h2>
+<p>Network participants are unlikely to trust a validator without knowing who is operating it. To address this concern, associate your validator with a web domain you control.
+You may also wish to have your validator listed with one or more validator tracking services, such as the <a class="external-link" href="https://xrpcharts.ripple.com/#/validators" target="_blank">XRP Charts Validator Registry <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><a class="button" href="run-rippled-as-a-validator.html#6-provide-domain-verification">Associate your validator</a></p>
+<h3 id="related-tasks">Related Tasks</h3>
+<div class="related-tasks-links">
+
+- [Contribute Code to `rippled`](contribute-code-to-rippled.html)
+
+</div>
+</div><!--/.use-case-steps-->
+
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="use-cases.html"> Use Cases</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" aria-multiselectable="true">
+      <div class="card active">
+        <div class="card-body card-body-single">
+          <ul class="sidebar_pagelist">
+            <li><a class="active nosubcat-page" href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+            <li><a class="nosubcat-page" href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+            <li><a class="nosubcat-page" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+            <li><a class="nosubcat-page" href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+            <li><a class="nosubcat-page" href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+            <li><a class="nosubcat-page" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+          </ul>
+        </div><!-- /.card-body -->
+      </div><!-- /.card -->
+    </div><!-- /#sidenav -->
+
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid card-grid card-grid-Nx1">
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="docs.html">Docs</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+              <li class="level-1"><a href="concepts.html">Concepts</a></li>
+          <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+          <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">01</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="use-cases.html">Use Cases</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+        <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+        <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">02</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="dev-tools.html">Dev Tools</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+        <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+        <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+        <li class="level-1"><a href="xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a></li>
+
+        <li class="level-1"><a href="validator-domain-verifier.html">Domain Verification Checker</a></li>
+
+
+
+
+  <li class="level-1"><a target="_blank" href="https://livenet.xrpl.org/">XRP Ledger Explorer</a> <i class="fa fa-external-link"></i></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">03</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="https://ripple.com/" target="_blank">Ripple<i class="fa fa-external-link"></i></a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="children-display">
+              <ul>
+                <li class="level-1"><a href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://github.com/ripple/" target="_blank">Ripple on GitHub <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+              </ul>
+            </div>
+          </div><!--/.card-body-->
+          <div class="flag-vertical">04</div>
+        </div><!--/.card -->
+  </section>
+
+  <section class="container-fluid p-5 pl-sm-0">
+
+    <nav role="navigation" class="d-flex mb-3 language-selector">
+      <img class="language_selector_icon" src="assets/img/icon-language-selector.svg" width="32" height="40" alt="language selection icon" />
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/run-a-rippled-validator.html"><i class="fa fa-check-circle"></i> English</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ja/run-a-rippled-validator.html">日本語</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2019</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbar',
+algoliaOptions: { 'facetFilters': ["lang:en"] },
+debug: false
+});
+</script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Use Cases'});
+</script>
+</body>
+</html>

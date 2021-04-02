@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Contribute Code to rippled - XRP Ledger Dev Portal</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+      <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+      </ul><!-- /.navbar-nav -->
+<div class="github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/use-cases/contribute-code-to-rippled.md" target="_blank" class="github-edit">Edit</a>
+</div><!-- /.github-edit -->      <form class="navbar-form navbar-right" id="navbar-search" role="search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search site...</label>
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+      <div class="nav navbar-nav language-selector">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            English
+          </button>
+          <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
+            <a class="dropdown-item" href="/contribute-code-to-rippled.html">English</a>
+            <a class="dropdown-item" href="/ja/contribute-code-to-rippled.html">日本語</a>
+          </div><!--/.dropdown-menu-->
+        </div><!--/.dropdown-->
+      </div><!--/.language-selector-->
+    </div><!--/#navbarHolder-->
+    <div class="menu-overlay"></div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="use-case-related">
+    <div class="card-header">
+      <h4>Useful Background</h4>
+    </div>
+    <div class="card-body">
+      <div class="curated-links">
+        <ul>
+            <li><a href="consensus.html">Consensus</a></li>
+            <li><a href="amendments.html">Amendments</a></li>
+        </ul>
+      </div><!--/.curated-links-->
+    </div><!--/.card-body-->
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="use-cases.html">Use Cases</a></li>
+    <li class="active breadcrumb-item">Contribute Code to rippled</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="use-case pt-3 p-md-3">
+    <div class="content">
+        <h1 id="contribute-code-to-rippled">Contribute Code to rippled</h1>
+<p>Want to contribute code or a bug report to help improve <code>rippled</code>, the core peer-to-peer server that manages the XRP Ledger? Here’s a roadmap to the high-level tasks that’ll have you reviewing code and functionality in no time.</p>
+<div class="use-case-steps">
+<p><span class="use-case-step-num">1</span></p>
+<h2 id="access-the-rippled-repo">Access the <code>rippled</code> repo</h2>
+<p><code>rippled</code> is an open-source project. You can take a look at <code>rippled</code> code by accessing the <code>rippled</code> GitHub repo. Before contributing or reporting bugs, we recommend that you get to know the code and developer experience by performing the following tasks.</p>
+<p><span class="use-case-external-link btn btn-outline-secondary external-link"><a class="external-link" href="https://github.com/ripple/rippled" target="_blank">Access the repo <i aria-hidden="true" class="fa fa-external-link"></i></a></span></p>
+<p><span class="use-case-step-num">2</span></p>
+<h2 id="set-up-and-run-a-rippled-server">Set up and run a <code>rippled</code> server</h2>
+<p>Set up and run a <code>rippled</code> server to understand the developer experience and functionality of the core peer-to-peer server that manages the XRP Ledger. Anyone can run their own <code>rippled</code> server that follows the network and keeps a complete copy of the XRP Ledger.</p>
+<p><a class="button" href="manage-the-rippled-server.html">Set up and run a server</a></p>
+<p><span class="use-case-step-num">3</span></p>
+<h2 id="try-out-xrp-ledger-integration-tools">Try out XRP Ledger integration tools</h2>
+<p>Take a look at the various tools provided to help developers integrate with the XRP Ledger. From WebSocket and JSON-RPC API endpoints to the <code>ripple-lib</code> JavaScript library, take a look at the modes of integration offered to the developer community.</p>
+<p><a class="button" href="get-started-with-the-rippled-api.html">Try out XRP Ledger integration tools</a></p>
+<p><span class="use-case-step-num">4</span></p>
+<h2 id="get-a-sandbox-xrp-ledger-account">Get a sandbox XRP Ledger account</h2>
+<p>Use the XRP Ledger Test Net to get a sandbox account. Connect your <code>rippled server</code> to the Test Net to make test calls and get to know the XRP Ledger.</p>
+<p><a class="button" href="xrp-test-net-faucet.html">Get a sandbox XRP Ledger account</a></p>
+<p><span class="use-case-step-num">5</span></p>
+<h2 id="set-up-your-development-environment">Set up your development environment</h2>
+<p>A <code>rippled</code> development environment has a C++ compiler, access to the necessary libraries to compile <code>rippled</code> (such as Boost), and an editor for making changes to the source files. See the <a class="external-link" href="https://github.com/ripple/rippled" target="_blank"><code>rippled</code> repository <i aria-hidden="true" class="fa fa-external-link"></i></a> for the latest recommendations of each. You should also create your own fork of the <code>rippled</code> repository on GitHub so you can contribute pull requests to the official repo. <!-- for future, awaiting links to a few rippled repo md files - Nik --></p>
+<p><span class="use-case-step-num">6</span></p>
+<h2 id="familiarize-yourself-with-rippleds-coding-style">Familiarize yourself with <code>rippled</code>'s coding style</h2>
+<p>Before you start contributing code to <code>rippled,</code> take some time to familiarize yourself with the coding standards used in the <code>rippled</code> repo. These standards gradually evolve and propagate through code reviews. Some aspects are enforced more strictly than others.</p>
+<p><span class="use-case-external-link btn btn-outline-secondary external-link"><a class="external-link" href="https://github.com/ripple/rippled/blob/develop/docs/CodingStyle.md" target="_blank">Familiarize yourself with <code>rippled</code>'s coding style <i aria-hidden="true" class="fa fa-external-link"></i></a></span></p>
+<p><span class="use-case-step-num">7</span></p>
+<h2 id="contribute-code">Contribute code</h2>
+<p>Now that you have a handle on <code>rippled</code>, you may have ideas for how to improve it. Perhaps you’re developing on the XRP Ledger and want to contribute some code that enables the XRP Ledger to provide a feature your application needs. Access the <code>rippled</code> repo and open an issue or pull request.</p>
+<p><span class="use-case-external-link btn btn-outline-secondary external-link"><a class="external-link" href="https://github.com/ripple/rippled/pulls" target="_blank">Contribute code <i aria-hidden="true" class="fa fa-external-link"></i></a></span></p>
+<p><span class="use-case-step-num">8</span></p>
+<h2 id="report-bugs">Report bugs</h2>
+<p>As you explore <code>rippled</code>, you may find code that you don’t think is working as intended. To report a bug, <a class="external-link" href="https://github.com/ripple/rippled/issues" target="_blank">open an issue <i aria-hidden="true" class="fa fa-external-link"></i></a> in the <code>rippled</code> repo.</p>
+<p>If the bug you wish to report is security-related, we urge you to disclose it responsibly through Ripple's <a class="external-link" href="https://ripple.com/bug-bounty/" target="_blank">Bug Bounty program <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><span class="use-case-external-link btn btn-outline-secondary external-link"><a class="external-link" href="https://github.com/ripple/rippled/issues" target="_blank">Report bugs <i aria-hidden="true" class="fa fa-external-link"></i></a></span></p>
+</div><!--/.use-case-steps-->
+
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="use-cases.html"> Use Cases</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" aria-multiselectable="true">
+      <div class="card active">
+        <div class="card-body card-body-single">
+          <ul class="sidebar_pagelist">
+            <li><a class="nosubcat-page" href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+            <li><a class="nosubcat-page" href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+            <li><a class="nosubcat-page" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+            <li><a class="active nosubcat-page" href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+            <li><a class="nosubcat-page" href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+            <li><a class="nosubcat-page" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+          </ul>
+        </div><!-- /.card-body -->
+      </div><!-- /.card -->
+    </div><!-- /#sidenav -->
+
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid card-grid card-grid-Nx1">
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="docs.html">Docs</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+              <li class="level-1"><a href="concepts.html">Concepts</a></li>
+          <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+          <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">01</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="use-cases.html">Use Cases</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+        <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+        <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">02</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="dev-tools.html">Dev Tools</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+        <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+        <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+        <li class="level-1"><a href="xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a></li>
+
+        <li class="level-1"><a href="validator-domain-verifier.html">Domain Verification Checker</a></li>
+
+
+
+
+  <li class="level-1"><a target="_blank" href="https://livenet.xrpl.org/">XRP Ledger Explorer</a> <i class="fa fa-external-link"></i></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">03</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="https://ripple.com/" target="_blank">Ripple<i class="fa fa-external-link"></i></a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="children-display">
+              <ul>
+                <li class="level-1"><a href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://github.com/ripple/" target="_blank">Ripple on GitHub <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+              </ul>
+            </div>
+          </div><!--/.card-body-->
+          <div class="flag-vertical">04</div>
+        </div><!--/.card -->
+  </section>
+
+  <section class="container-fluid p-5 pl-sm-0">
+
+    <nav role="navigation" class="d-flex mb-3 language-selector">
+      <img class="language_selector_icon" src="assets/img/icon-language-selector.svg" width="32" height="40" alt="language selection icon" />
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/contribute-code-to-rippled.html"><i class="fa fa-check-circle"></i> English</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ja/contribute-code-to-rippled.html">日本語</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2019</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbar',
+algoliaOptions: { 'facetFilters': ["lang:en"] },
+debug: false
+});
+</script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Use Cases'});
+</script>
+</body>
+</html>

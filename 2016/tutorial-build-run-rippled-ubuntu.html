@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Build and Run rippled on Ubuntu - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="tutorial-rippled-setup.html">The rippled Server</a></li>
+              <li class="active crumb-current">Build and Run rippled on Ubuntu</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/tutorial-build-run-rippled-ubuntu.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-xrp-ledger-intro.html">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a href="concept-cryptographic-keys.html">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a href="concept-reserves.html">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a href="concept-depositauth.html">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a href="concept-demurrage.html">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a href="tutorial-checks-send.html">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a class="active" href="#main_content_body">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">Build and Run rippled on Ubuntu</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#build-and-run-rippled-on-ubuntu">Build and Run rippled on Ubuntu</a></li>
+<li class="level-2"><a href="#system-requirements">System Requirements</a></li>
+<li class="level-2"><a href="#1-build-rippled">1. Build rippled</a></li>
+<li class="level-2"><a href="#2-configure-rippled">2. Configure rippled</a></li>
+<li class="level-2"><a href="#3-run-rippled">3. Run rippled</a></li>
+<li class="level-3"><a href="#what-to-expect">What to Expect</a></li>
+<li class="level-2"><a href="#explore-next-steps">Explore Next Steps</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="build-and-run-rippled-on-ubuntu">Build and Run <code>rippled</code> on Ubuntu</h1>
+<p><code>rippled</code> is the core peer-to-peer server that manages the XRP Ledger. A <code>rippled</code> server can connect to a network of peers, relay cryptographically signed transactions, and maintain a local copy of the complete shared global ledger.</p>
+<p>For an overview of <code>rippled</code>, see <a href="tutorial-rippled-setup.html">Operating rippled Servers</a>.</p>
+<p>Use these instructions to build a <code>rippled</code> executable from source version 0.90.0 or higher on Ubuntu Linux 16.04 or higher. These instructions were tested on Ubuntu 16.04 LTS.</p>
+<p>For information about building <code>rippled</code> for other platforms, see <a href="https://github.com/ripple/rippled/tree/develop/Builds">Builds</a> in the <code>rippled</code> GitHub repository.</p>
+<h2 id="system-requirements">System Requirements</h2>
+<p><strong><em>To build <code>rippled</code>:</em></strong></p>
+<p>You need a <strong>minimum</strong> of 8GB of RAM.</p>
+<p><strong><em>To run <code>rippled</code>:</em></strong></p>
+<p>Meet these <a href="tutorial-rippled-setup.html#minimum-system-requirements">system requirements</a>.</p>
+<h2 id="1-build-rippled">1. Build <code>rippled</code></h2>
+<p>These instructions use Ubuntu's APT (Advanced Packaging Tool) to install the software prerequisites you need to build and run <code>rippled</code>.</p>
+<ol>
+<li>
+<p>Update the list of packages that are available for <code>apt-get</code> to install or upgrade.</p>
+<div class="codehilite"><pre><span></span><code>sudo apt-get update
+</code></pre></div>
+</li>
+<li>
+<p>Upgrade currently installed packages.</p>
+<div class="codehilite"><pre><span></span><code>sudo apt-get -y upgrade
+</code></pre></div>
+</li>
+<li>
+<p>Install Git.</p>
+<div class="codehilite"><pre><span></span><code>sudo apt-get -y install git
+</code></pre></div>
+</li>
+<li>
+<p>Install SCons.</p>
+<div class="codehilite"><pre><span></span><code>sudo apt-get -y install scons
+</code></pre></div>
+</li>
+<li>
+<p>Install <code>pkg-config</code>.</p>
+<div class="codehilite"><pre><span></span><code>sudo apt-get -y install pkg-config
+</code></pre></div>
+</li>
+<li>
+<p>Install Protocol Buffers.</p>
+<div class="codehilite"><pre><span></span><code>sudo apt-get -y install protobuf-compiler
+sudo apt-get -y install libprotobuf-dev
+</code></pre></div>
+</li>
+<li>
+<p>Install Secure Socket Layer (SSL) toolkit development files.</p>
+<div class="codehilite"><pre><span></span><code>sudo apt-get -y install libssl-dev
+</code></pre></div>
+</li>
+<li>
+<p>Install <code>wget</code> to be able to download Boost in the next step.</p>
+<div class="codehilite"><pre><span></span><code>sudo apt-get -y install wget
+</code></pre></div>
+</li>
+<li>
+<p>Compile Boost.</p>
+<p>Starting in <code>rippled</code> 0.90.0, the recommended Boost version is 1.64.0. Because Boost version 1.64.0 isn't available in the Ubuntu 16.04 repos, you must compile it yourself.</p>
+<p>a. Download Boost 1.64.0.</p>
+<div class="codehilite"><pre><span></span><code>  wget https://dl.bintray.com/boostorg/release/1.64.0/source/boost_1_64_0.tar.gz
+</code></pre></div>
+<p>b. Untar <code>boost_1_64_0.tar.gz</code>.</p>
+<div class="codehilite"><pre><span></span><code>  tar xvzf boost_1_64_0.tar.gz
+</code></pre></div>
+<p>c. Access the new <code>boost_1_64_0</code> directory:</p>
+<div class="codehilite"><pre><span></span><code>  cd boost_1_64_0
+</code></pre></div>
+<p>d. To prepare the Boost.Build system for use, run:</p>
+<div class="codehilite"><pre><span></span><code>  ./bootstrap.sh
+</code></pre></div>
+<p>e. To invoke Boost.Build to build the separately-compiled Boost libraries, run the following command. Replace <code>&lt;number of jobs&gt;</code> with the number of job, or commands, to run in parallel. This may take about 15 minutes, depending on your hardware specs.</p>
+<div class="codehilite"><pre><span></span><code>  ./b2 -j &lt;number of jobs&gt;
+</code></pre></div>
+<p>f. Set the environment variable <code>BOOST_ROOT</code> to point to the new <code>boost_1_64_0</code> directory. It's best to put this environment variable in your <code>.profile</code>, or equivalent, file for your shell so it's automatically set when you log in. Add the following line to the file:</p>
+<div class="codehilite"><pre><span></span><code>  <span class="k">export</span> <span class="n">BOOST_ROOT</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">boost_1_64_0</span>
+</code></pre></div>
+<p>g. Source your updated <code>.profile</code> file. For example:</p>
+<div class="codehilite"><pre><span></span><code>  source ~/.profile
+</code></pre></div>
+</li>
+<li>
+<p>Get <code>rippled</code> source code.</p>
+<div class="codehilite"><pre><span></span><code>git clone https://github.com/ripple/rippled.git
+cd rippled
+git checkout master
+</code></pre></div>
+</li>
+<li>
+<p>If you previously built, or (more importantly) tried and failed to build <code>rippled</code>, you should delete the <code>build/</code> directory to start clean before moving on to the next step. Otherwise, you may get unexpected behavior, like a <code>rippled</code> executable that crashes due to a segmentation fault (segfault).</p>
+<p>If this is your first time building <code>rippled,</code> you won't have a <code>build/</code> directory and can move on to the next step.</p>
+</li>
+<li>
+<p>Build a <code>rippled</code> binary executable from source code. This may take about 20 minutes, depending on your hardware specs.</p>
+<div class="codehilite"><pre><span></span><code>scons
+</code></pre></div>
+<p>SCons saves the built executable in <code>rippled/build</code>.</p>
+</li>
+<li>
+<p><em>(Optional)</em> Run <code>rippled</code> unit tests. If there are no test failures, you can be fairly certain that your <code>rippled</code> executable compiled correctly.</p>
+<div class="codehilite"><pre><span></span><code>./rippled -u
+</code></pre></div>
+</li>
+</ol>
+<h2 id="2-configure-rippled">2. Configure <code>rippled</code></h2>
+<p>Complete the following configurations that are required for <code>rippled</code> to start up successfully. All other configuration is optional and can be tweaked after you have a working server.</p>
+<ol>
+<li>
+<p>Create a copy of the example config file (assumes you're in the <code>rippled</code> folder already). Saving the config file to this location enables you to run <code>rippled</code> as a non-root user (recommended).</p>
+<div class="codehilite"><pre><span></span><code>mkdir -p ~/.config/ripple
+cp doc/rippled-example.cfg ~/.config/ripple/rippled.cfg
+</code></pre></div>
+</li>
+<li>
+<p>Edit the config file to set necessary file paths. The user you plan to run <code>rippled</code> as must have write permissions to all of the paths you specify here.</p>
+<ol>
+<li>
+<p>Set the <code>[node_db]</code>'s path to the location where you want to store the ledger database.</p>
+</li>
+<li>
+<p>Set the <code>[database_path]</code> to the location where you want to store other database data. (This includes an SQLite database with configuration data, and is typically one level above the <code>[node_db]</code> path field.)</p>
+</li>
+<li>
+<p>Set the <code>[debug_logfile]</code> to a path where <code>rippled</code> can write logging information.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Copy the example <code>validators.txt</code> file to the same folder as <code>rippled.cfg</code>:</p>
+<div class="codehilite"><pre><span></span><code>cp doc/validators-example.txt ~/.config/ripple/validators.txt
+</code></pre></div>
+<p class="devportal-callout warning"><strong>Warning:</strong> Ripple has designed a <a href="https://ripple.com/dev-blog/decentralization-strategy-update/">decentralization plan</a> with maximum safety in mind. During the transition, you <em>should not</em> modify the <code>validators.txt</code> file except as recommended by Ripple. Even minor modifications to your validator settings could cause your server to diverge from the rest of the network and report out of date, incomplete, or inaccurate data. Acting on such data can cause you to lose money.</p>
+</li>
+</ol>
+<h2 id="3-run-rippled">3. Run <code>rippled</code></h2>
+<p>To run your stock <code>rippled</code> server from the executable you built, using the configurations you defined:</p>
+<div class="codehilite"><pre><span></span><code>cd build
+./rippled
+</code></pre></div>
+<h3 id="what-to-expect">What to Expect</h3>
+<p>Once you've run <code>rippled</code>, here are excerpts of what you can expect to see in your terminal.</p>
+<div class="codehilite"><pre><span></span><code>Loading: "/home/ubuntu/.config/ripple/rippled.cfg"
+Watchdog: Launching child 1
+2018-Jan-31 20:19:40 JobQueue:NFO Auto-tuning to 4 validation/transaction/proposal threads.
+2018-Jan-31 20:19:40 Amendments:DBG Amendment 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 is supported.
+2018-Jan-31 20:19:40 Amendments:DBG Amendment 6781F8368C4771B83E8B821D88F580202BCB4228075297B19E4FDC5233F1EFDC is supported.
+...
+2018-Jan-31 20:19:40 OrderBookDB:DBG Advancing from 0 to 3
+2018-Jan-31 20:19:40 OrderBookDB:DBG OrderBookDB::update&gt;
+2018-Jan-31 20:19:40 OrderBookDB:DBG OrderBookDB::update&lt; 0 books found
+2018-Jan-31 20:19:40 ValidatorList:DBG Loading configured trusted validator list publisher keys
+2018-Jan-31 20:19:40 ValidatorList:DBG Loaded 1 keys
+2018-Jan-31 20:19:40 ValidatorList:DBG Loading configured validator keys
+...
+2018-Jan-31 20:19:40 LedgerConsensus:NFO Entering consensus process, watching, synced=no
+2018-Jan-31 20:19:40 LedgerConsensus:NFO Consensus mode change before=observing, after=observing
+...
+2018-Jan-31 20:19:40 Application:FTL Startup RPC:
+{
+    "command" : "log_level",
+    "severity" : "warning"
+}
+...
+2018-Jan-31 20:20:32 NetworkOPs:WRN We are not running on the consensus ledger
+2018-Jan-31 20:20:32 LedgerConsensus:WRN Need consensus ledger 17F251A5AD7120BD0D3ED9EB1B45598AACA1D76EA67C7FFC3384E629C25E198B
+2018-Jan-31 20:20:35 NetworkOPs:WRN We are not running on the consensus ledger
+2018-Jan-31 20:20:35 LedgerConsensus:WRN Need consensus ledger 0EAEFBC6C63DE7CEA32415336C7524D50E2531781704CE86895EAF84A63477D7
+...
+2018-Jan-31 20:20:53 LedgerConsensus:WRN View of consensus changed during establish status=establish,  mode=wrongLedger
+2018-Jan-31 20:20:53 LedgerConsensus:WRN E5C6EF6AB5C1DB0EA5EF1C43C2EDC1179459FBAC5ABDF6523F488DEE276FA9E6 to 7F0E5EE15F8FC41776BA230094C364DE045C35A15073C9E057407506A9E53892
+2018-Jan-31 20:20:53 LedgerConsensus:WRN {"accepted":true,"account_hash":"8EE80E7E8ADCE2AB550611752BC4EC748D9DFEBB4B4B98F05BD5F6147CF61ED5","close_flags":0,"close_time":570745240,"close_time_human":"2018-Jan-31 20:20:40","close_time_resolution":20,"closed":true,"hash":"9FA1BAF2A4F6A908B10303E6624E175CCD53D1E87E6B44D09FC28E8FCC63D3C3","ledger_hash":"9FA1BAF2A4F6A908B10303E6624E175CCD53D1E87E6B44D09FC28E8FCC63D3C3","ledger_index":"8","parent_close_time":570745234,"parent_hash":"9AF26062D241A16EDD8436EB1A9B533281D43949A7DA2E4F35A50110537BD596","seqNum":"8","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}
+</code></pre></div>
+<h2 id="explore-next-steps">Explore Next Steps</h2>
+<ul>
+<li>
+<p>Now that you have a stock <code>rippled</code> server running, you may want to consider running it as a validating server. For information about validating servers and why you might want to run one, see the <a href="tutorial-rippled-setup.html">rippled Setup Tutorial</a>.</p>
+</li>
+<li>
+<p>For information about communicating with your <code>rippled</code> server using the <code>rippled</code> API, see the <a href="reference-rippled.html"><code>rippled</code> API reference</a>.</p>
+</li>
+<li>
+<p>As a development best practice, you may want to build a <code>rippled</code> <code>.deb</code> file. For more information, see <em>Ubuntu Packaging Guide</em>: <a href="http://packaging.ubuntu.com/html/packaging-new-software.html">Packaging New Software</a>.</p>
+</li>
+<li>
+<p>You may also want to install a <code>systemd</code> unit. For more information, see <a href="https://wiki.ubuntu.com/SystemdForUpstartUsers">systemd for Upstart Users</a>. You can use the <a href="https://github.com/ripple/rippled-package-builder/blob/staging/rpm-builder/rippled.service">official <code>rippled</code> system unit file</a> or modify it to suit your needs.</p>
+</li>
+</ul>
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

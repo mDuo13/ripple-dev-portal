@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Use an Escrow as a Smart Contract - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#1db4ff">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#1db4ff">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <!-- <link href="assets/css/ripple.css" rel="stylesheet" /> -->
+    <link href="assets/vendor/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal_Gray.svg" class="logo" width="120" height="35" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarHolder">
+      <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+      </ul><!-- /.navbar-nav -->
+      <form class="navbar-form navbar-right" id="navbar-search" role="search" method="get" action="https://www.google.com/search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search this site</label>
+          <input name="q" value="site:developers.ripple.com" type="hidden">
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search this site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+<div class="github-edit-wrap">
+  <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/use-cases/use-an-escrow-as-a-smart-contract.md" target="_blank" class="github-edit">Edit on GitHub</a>
+</div><!-- /.github-edit -->    </div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="use-case-related">
+    <p class="in-this-doc card-header">Useful Background:</p>
+    <div class="card-body">
+      <div class="curated-links">
+        <ul>
+            <li><a href="xrp-ledger-overview.html">XRP Ledger Overview</a></li>
+            <li><a href="escrow.html">Escrow</a></li>
+        </ol>
+      </div><!--/.curated-links-->
+    </div><!--/.card-body-->
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3 p-0 " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-3" aria-label="breacrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="use-cases.html">Use Cases</a></li>
+    <li class="active breadcrumb-item">Use an Escrow as a Smart Contract</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="use-case p-3">
+    <div class="content">
+        <h1 id="use-an-escrow-as-a-smart-contract">Use an Escrow as a Smart Contract</h1>
+<p>A smart contract is a blockchain-based program that encodes the conditions and fulfillment of an agreement between two or more parties and automatically fulfills the terms of the agreement once conditions are met. A smart contract can help you exchange anything of value in a transparent, traceable, tamper-resistant, and irreversible way.</p>
+<p>The benefit of encoding a smart contract into a blockchain is that it enables the contract to be securely performed without traditional third-parties, like financial or legal institutions. Instead, the contract is supervised by the distributed, decentralized network of computers that run the blockchain.</p>
+<p>You can use XRP Ledger escrows as smart contracts that release XRP after a certain time has passed or after a cryptographic condition has been fulfilled. In this case, we'll use an escrow as a smart contract that releases XRP after a cryptographic condition has been fulfilled.</p>
+<p>Let's use this scenario to help illustrate this use case: A party planner uses smart contracts to manage payments from party hosts to party vendors. Specifically, the party planner wants to use a smart contract to have the party host pay the party band 2000 XRP once they are done with their set.</p>
+<p>In this use case, the party host is the sender of the escrow, the party band is the receiver of the escrow, and the party planner is playing the role of an <em>oracle</em>. In the context of smart contracts, an oracle is a neutral third-party agent that can verify real-world events to either fulfill or invalidate a smart contract. This use case uses a human oracle for illustrative purposes, but in real-life, a software application would more likely play the role of the oracle.</p>
+<p>Using an XRP Ledger escrow to provide this smart contract is a great arrangement because the party planner, as the third-party oracle, never "holds" the funds as one might in a traditional escrow arrangement, and can't possibly take the funds for themselves.</p>
+<p>Here’s a roadmap to the high-level tasks that these participants need to complete to use an escrow as a smart contract.</p>
+<div class="use-case-steps">
+<p><span class="use-case-step-num">1</span></p>
+<h2 id="meet-the-prerequisites">Meet the prerequisites</h2>
+<p>The party host (sender) must have:</p>
+<ul>
+<li>
+<p>An XRP Ledger <a href="accounts.html#creating-accounts">account</a> that holds enough XRP to pay for escrow and any fees incurred.</p>
+</li>
+<li>
+<p>Access to a secure signing environment, which includes having a network connection to a <a href="install-rippled.html"><code>rippled</code> server</a> (any server) that they can submit signed transactions to. <!--#{ once set up secure signing tutorial is available, link to it from here }# --></p>
+</li>
+</ul>
+<p>The party band (receiver) must have:</p>
+<ul>
+<li>
+<p>An XRP Ledger <a href="accounts.html#creating-accounts">account</a> that can receive the XRP paid by the escrow.</p>
+</li>
+<li>
+<p>Access to a <a href="install-rippled.html"><code>rippled</code> server</a> that they can use to look up the details of an XRP Ledger transaction hash and submit the fulfillment value to finish the escrow.</p>
+</li>
+</ul>
+<p>The party planner (oracle) must have:</p>
+<ul>
+<li>
+<p>The ability to generate a condition and a fulfillment.</p>
+</li>
+<li>
+<p>To be able to keep a secret (the fulfillment) until the time is right.</p>
+</li>
+<li>
+<p>A way to communicate the fulfillment publicly or at least to the party band when the time is right.</p>
+</li>
+<li>
+<p>The ability to recognize whether the party band has fulfilled their end of the contract (played at the party).</p>
+</li>
+</ul>
+<p><span class="use-case-step-num">2</span></p>
+<h2 id="define-the-terms-of-the-smart-contract">Define the terms of the smart contract</h2>
+<p>To create the escrow as a smart contract, the participants must first define the terms of the contract. In this scenario, the participants need to agree on the following details.</p>
+<ul>
+<li>
+<p><strong>Should the escrow disallow fulfillment until a specific time?</strong></p>
+<p>While this is an option, the participants agree that it is unnecessary for their escrow. For conditionally-held escrows, enabling this option doesn't provide any additional security, since whether the escrow can be finished still depends entirely on whether the party planner (oracle) publishes the fulfillment before the expiration.</p>
+</li>
+<li>
+<p><strong>Should the escrow expire?</strong></p>
+<p>Absolutely yes. The participants agree that the escrow should expire after 12 noon the day after the party. This gives the party band (receiver) enough time to finish the escrow, after the party planner verifies that they fulfilled their end of the contract and publishes the cryptographic fulfillment. After expiration, the locked XRP returns to the party host's (sender's) account.</p>
+<p>If the participants don't allow the escrow to expire and the party planner doesn't release the condition, the XRP stays locked in the escrow forever.</p>
+</li>
+<li>
+<p><strong>How much XRP should the escrow lock up and potentially pay?</strong></p>
+<p>The participants agree that the escrow should lock up and potentially pay 2000 XRP, which is the party band's fee.</p>
+</li>
+<li>
+<p><strong>From which XRP Ledger account should the escrow lock up XRP for potential payment to the party band?</strong></p>
+<p>The participants agree that the escrow should lock up and potentially pay XRP out of the party host's XRP Ledger account.</p>
+</li>
+<li>
+<p><strong>Which XRP Ledger account should the escrow potentially pay XRP to?</strong></p>
+<p>The participants agree that the escrow should potentially pay XRP to the party band's XRP Ledger account.</p>
+</li>
+</ul>
+<p><span class="use-case-step-num">3</span></p>
+<h2 id="oracle-generate-a-condition-and-a-fulfillment">Oracle: <a href="send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment">Generate a condition and a fulfillment</a></h2>
+<p>Because participants want to create a conditionally-held escrow to provide the smart contract, they need a condition value and a fulfillment value. In this scenario, the participant that creates these values is the neutral party planner (oracle).</p>
+<p>The party planner generates the condition and fulfillment values. The party planner provides the condition value to the party host, who creates the escrow. The part planner also provides the condition to the party band so that they know that this is the right condition.</p>
+<p>The party planner must keep the fulfillment value a secret. Anyone can use the condition and fulfillment values to finish the escrow. Most often, the receiver finishes the escrow because they're the ones who are motivated to get paid.</p>
+<p><span class="use-case-step-num">4</span></p>
+<h2 id="sender-calculate-time-values-needed-for-the-escrow">Sender: <a href="send-a-conditionally-held-escrow.html#2-calculate-release-or-cancel-time">Calculate time values needed for the escrow</a></h2>
+<p>Because the participants want the escrow to be eligible for cancellation after 12 noon the day after the party, the party host (sender) must calculate a <code>CancelAfter</code> value to include in the escrow definition.</p>
+<p><span class="use-case-step-num">5</span></p>
+<h2 id="sender-create-the-escrow">Sender: <a href="send-a-conditionally-held-escrow.html#3-submit-escrowcreate-transaction">Create the escrow</a></h2>
+<p>The party host (sender) creates the escrow that provides the smart contract. The party host must create the escrow because they are the only participant that can authorize the lock up and potential payout of XRP from their XRP Ledger account.</p>
+<p><span class="use-case-step-num">6</span></p>
+<h2 id="sender-and-receiver-wait-for-validation-and-confirm-escrow-creation">Sender and Receiver: <a href="send-a-conditionally-held-escrow.html#4-wait-for-validation">Wait for validation</a> and <a href="send-a-conditionally-held-escrow.html#5-confirm-that-the-escrow-was-created">confirm escrow creation</a></h2>
+<p>The party host (sender) waits for validation of the ledger that contains the escrow creation transaction and then confirms that the escrow was created.</p>
+<p>The party host then provides the escrow transaction's <code>hash</code> value to the party band (receiver). The party band can use the <code>hash</code> value to look up the escrow transaction on the XRP Ledger to ensure that it was created according to the smart contract terms they agreed to. As part of this step, the party band should confirm that the condition matches the one the party planner (oracle) provided. If the condition is wrong, the fulfillment the party planner provides won't let the party band finish the escrow and get paid.</p>
+<p><span class="use-case-step-num">7</span></p>
+<h2 id="receiver-finish-the-escrow">Receiver: <a href="send-a-conditionally-held-escrow.html#6-submit-escrowfinish-transaction">Finish the escrow</a></h2>
+<p>The party band (receiver) shows up and plays their set.</p>
+<p>The party planner (oracle) is present at the party to ensure that everything is going smoothly. The party planner confirms first-hand that the party band has fulfilled their contract and publishes the fulfillment publicly, or at least to the party band.</p>
+<p>The party band must finish the escrow before 12 noon. If they don't, the escrow expires and the party band doesn't get paid.</p>
+<p>If the party planner does not publish the fulfillment (the party band is a no show) or if the party planner publishes the fulfillment, but no one finishes the escrow; after 12 noon the next day, anyone can <a href="cancel-an-expired-escrow.html">cancel the escrow</a>. Cancelling the escrow returns the held XRP to the party host's account.</p>
+<p><span class="use-case-step-num">8</span></p>
+<h2 id="receiver-and-sender-wait-for-validation-and-confirm-final-result">Receiver and Sender: <a href="send-a-conditionally-held-escrow.html#7-wait-for-validation">Wait for validation</a> and <a href="send-a-conditionally-held-escrow.html#8-confirm-final-result">confirm final result</a></h2>
+<p>The party band (receiver) waits for validation of the ledger that contains the escrow finish transaction and then confirms that the escrow was finished.</p>
+<p>At this time, the party band provides the transaction's <code>hash</code> value to the party host (sender). They can use the <code>hash</code> value to look up the escrow transaction on the XRP Ledger to ensure that it is been finished correctly.</p>
+<p>The party band can check their XRP Ledger account balance to ensure that their balance has increased by 2000 XRP. The party host's balance won't change at this step (unless the escrow was canceled) because the escrow creation already debited the locked-up XRP from their account.</p>
+<h3 id="related-tasks">Related Tasks</h3>
+<ul>
+<li><a href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a></li>
+<li><a href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a></li>
+<li><a href="look-up-escrows.html">Look Up Escrows</a></li>
+</ul></div>
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="use-cases.html"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Use Cases</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" aria-multiselectable="true">
+      <div class="card active">
+        <div class="card-body">
+          <ul class="sidebar_pagelist">
+            <li><a class="nosubcat-page" href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+            <li><a class="nosubcat-page" href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+            <li><a class="nosubcat-page" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+            <li><a class="nosubcat-page" href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+            <li><a class="nosubcat-page" href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+            <li><a class="active nosubcat-page" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+          </ul>
+        </div><!-- /.card-body -->
+      </div><!-- /.card -->
+    </div><!-- /#sidenav -->
+
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="ripple-footer" role="contentinfo">
+  <section class="container-fluid px-1 px-sm-5 pt-3 pb-0">
+      <div class="row">
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="docs.html">Docs</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="concepts.html">Concepts</a></li>
+        <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+        <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="use-cases.html">Use Cases</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+      <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+      <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+      <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+      <li class="level-1"><a href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="dev-tools.html">Dev Tools</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+      <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+      <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+      <li class="level-1"><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+
+      <li class="level-1"><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+
+      <li class="level-1"><a href="tx-sender.html">Transaction Sender</a></li>
+
+
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="news.html">News</a><hr /></h5>
+
+
+
+
+<div class="children-display">
+  <ul>
+          <li class="level-1"><a href="known-amendments.html">Known Amendments</a></li>
+
+
+  <li class="level-1"><a href="/blog/">Ripple Dev Blog</a></li>
+
+  </ul>
+</div>            </div><!--/.foot-nav-col -->
+
+
+            <div class="col mx-xl-5 my-3 foot-nav-col">
+              <h5><a class="foot-nav-link" href="https://ripple.com/" target="_blank">Ripple <i class="fa fa-external-link"></i></a><hr /></h5>
+              <div class="children-display">
+                <ul>
+                  <li class="level-1"><a class="foot-nav-link" href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                  <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/.foot-nav-col -->
+      </div><!--/.row-->
+  </section>
+
+  <section class="container-fluid pb-5 px-5">
+
+    <div class="build-disclaimer">
+      <p>
+        These resources are provided for informational purposes only, as illustrative references for your independent development of products or services designed to interface with Ripple’s open-source technologies. These resources are not intended to direct or influence how you or any other person interacts with Ripple’s open-source technologies. Ripple <strong><em>does not</em></strong> endorse any specific resource and makes no representations or warranties with respect to the resources listed.
+      </p>
+      <p>
+        Note that anti-money laundering and counter-terrorism financing laws and regulations, such as the U.S. Bank Secrecy Act and regulations issued by the Financial Crimes Enforcement Network (FinCEN), require certain parties to take certain precautions against financial crime. In particular, you may be interested in the <a href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering">2013 guidance issued by FinCEN</a> in response to questions concerning the regulatory treatment of persons who use or make a business of exchanging, accepting, or transmitting certain virtual currencies. Additional FinCEN references are available at <a href="https://www.fincen.gov">https://www.fincen.gov</a>.
+      </p>
+    </div>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+      <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+      <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

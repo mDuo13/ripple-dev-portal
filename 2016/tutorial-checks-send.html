@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>How to Send a Check - XRP Ledger Dev Portal</title>
+
+    <!--[if lt IE 9]>
+      <script src="/dist/js/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/dist/js/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Custom Stylesheets. ripple.css includes bootstrap, font stuff -->
+    <link href="assets/css/ripple.css" rel="stylesheet" />
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Bootstrap JS -->
+    <script src="assets/vendor/bootstrap.min.js"></script>
+
+    <!-- fontawesome icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary">
+  <header role="banner" class="banner navbar navbar-default navbar-fixed-top initial_header">
+    <div class="container">
+      <div class="navbar-header">
+          <a href="index.html" class="navbar-brand"><img src="assets/img/dev-logo.png" class="logo" width="36" height="36" /><span class="brand-text">XRP Ledger Dev Portal</span></a>
+      </div><!-- /.navbar-header -->
+      <div class="nav">
+            <ul class="breadcrumb">
+              <li class="crumb-top"><a href="index.html" style="display: none;">&nbsp;</a></li>
+              <li class="active crumb-category"><a href="concept-checks.html">Checks</a></li>
+              <li class="active crumb-current">How to Send a Check</li>
+            </ul>
+        <div class="draft-warning">DRAFT PAGE</div>
+        <div class="github-edit-wrap">
+          <a href="https://github.com/ripple/ripple-dev-portal/edit/master/content/tutorial-checks-send.md" target="_blank" class="github-edit">Edit on GitHub</a>
+        </div><!-- /.github-edit -->
+      </div><!-- /.nav -->
+
+    </div><!-- /.container -->
+
+  </header>
+
+
+  <div class="wrap container" role="document" id="main_content_wrapper">
+      <aside class="sidebar" role="complementary">
+
+<div class="guide_toc">
+  <div id="sidenav_accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_1">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_1" aria-expanded="true" aria-controls="sidenav_collapse_1">
+            Introduction
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_1" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_1">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-xrp-ledger-intro.html">XRP Ledger Introduction</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse1 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_2">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2">
+            Technical Overview
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-consensus.html">The XRP Ledger Consensus Process</a></li>
+              <li><a href="concept-reaching-consensus.html">Reaching Consensus in the XRP Ledger</a></li>
+              <li><a href="concept-accounts.html">XRP Ledger Accounts</a></li>
+              <li><a href="concept-cryptographic-keys.html">Cryptographic Keys</a></li>
+              <li><a href="concept-fees.html">Fees (Disambiguation)</a></li>
+              <li><a href="concept-fee-voting.html">Fee Voting</a></li>
+              <li><a href="concept-amendments.html">Amendments</a></li>
+              <li><a href="reference-amendments.html">Known Amendments</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse2 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_3">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_3" aria-expanded="true" aria-controls="sidenav_collapse_3">
+            About XRP
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_3" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_3">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-money.html">Money in the XRP Ledger</a></li>
+              <li><a href="concept-reserves.html">Reserves</a></li>
+              <li><a href="concept-transaction-cost.html">Transaction Cost</a></li>
+              <li><a href="concept-partial-payments.html">Partial Payments</a></li>
+              <li><a href="concept-escrow.html">Escrow</a></li>
+              <li><a href="concept-depositauth.html">Deposit Authorization</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse3 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_4">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_4" aria-expanded="true" aria-controls="sidenav_collapse_4">
+            XRP Tasks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_4" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_4">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippleapi-beginners-guide.html">RippleAPI Beginners Guide</a></li>
+              <li><a href="tutorial-reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+              <li><a href="tutorial-multisign.html">How to Multi-Sign</a></li>
+              <li><a href="tutorial-escrow.html">Escrow Tutorials</a></li>
+              <li><a href="tutorial-paychan.html">Payment Channels Tutorial</a></li>
+              <li><a href="tutorial-regular-keys.html">Working with a Regular Key Pair</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse4 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_5">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_5" aria-expanded="true" aria-controls="sidenav_collapse_5">
+            Issued Currencies
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_5" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_5">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-freeze.html">Freezing Issued Currencies</a></li>
+              <li><a href="concept-transfer-fees.html">Transfer Fees</a></li>
+              <li><a href="concept-noripple.html">Understanding the NoRipple Flag</a></li>
+              <li><a href="concept-authorized-trust-lines.html">Authorized Trust Lines</a></li>
+              <li><a href="concept-paths.html">Paths</a></li>
+              <li><a href="concept-demurrage.html">Demurrage</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse5 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default active">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_6">
+        <h5 class="panel-title">
+          <a  role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_6" aria-expanded="true" aria-controls="sidenav_collapse_6">
+            Checks
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_6" class="collapse in" role="tabpanel" aria-labelledby="sidenav_cat_head_6">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-checks.html">Checks</a></li>
+              <li><a class="active" href="#main_content_body">How to Send a Check</a></li>
+              <li><a href="tutorial-checks-lookup-by-sender.html">Look up Checks by sender address</a></li>
+              <li><a href="tutorial-checks-lookup-by-recipient.html">Look up Checks by recipient address</a></li>
+              <li><a href="tutorial-checks-cancel.html">Cancel a Check</a></li>
+              <li><a href="tutorial-checks-cash-exact.html">Cash a Check for an exact amount</a></li>
+              <li><a href="tutorial-checks-cash-flex.html">Cash a Check for a flexible amount</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse6 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_7">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_7" aria-expanded="true" aria-controls="sidenav_collapse_7">
+            The rippled Server
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_7" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_7">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-rippled-setup.html">Operating rippled Servers</a></li>
+              <li><a href="concept-stand-alone-mode.html">Stand-Alone Mode</a></li>
+              <li><a href="concept-history-sharding.html">History Sharding</a></li>
+              <li><a href="tutorial-build-run-rippled-ubuntu.html">Build and Run rippled on Ubuntu</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse7 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_8">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8">
+            The Exchange Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="tutorial-listing-xrp.html">Listing XRP as an Exchange</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse8 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_9">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_9" aria-expanded="true" aria-controls="sidenav_collapse_9">
+            The Gateway Business Model
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_9" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_9">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="concept-issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+              <li><a href="tutorial-gateway-guide.html">Becoming an XRP Ledger Gateway</a></li>
+              <li><a href="gb-2015-06.html">GB-2015-06: Corrections to Autobridging</a></li>
+              <li><a href="gb-2015-05.html">GB-2015-05: Historical Ledger Query Migration</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse9 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_10">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_10" aria-expanded="true" aria-controls="sidenav_collapse_10">
+            Reference Material
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_10" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_10">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="reference-rippled.html">rippled</a></li>
+              <li><a href="reference-currency.html">Currency Formats</a></li>
+              <li><a href="reference-transaction-format.html">Transactions Overview</a></li>
+              <li><a href="reference-ledger-format.html">XRP Ledger Data Format</a></li>
+              <li><a href="reference-rippleapi.html">RippleAPI Reference</a></li>
+              <li><a href="reference-data-api.html">Ripple Data API v2</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse10 -->
+
+    </div><!-- /.panel -->
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_11">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_11" aria-expanded="true" aria-controls="sidenav_collapse_11">
+            API Tools
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_11" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_11">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+              <li><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+              <li><a href="ripple-api-tool.html">WebSocket API Tool</a></li>
+              <li><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+              <li><a href="ripple-txt-validator.html">ripple.txt Validator</a></li>
+              <li><a href="xrp-test-net-faucet.html">XRP Test Net Faucet</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapse11 -->
+
+    </div><!-- /.panel -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="sidenav_cat_head_ripple_resources">
+        <h5 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#sidenav_accordion" href="#sidenav_collapse_ripple_resources" aria-expanded="true" aria-controls="sidenav_collapse_ripple_resources">
+            Ripple Resources
+          </a>
+        </h5>
+      </div><!-- /.panel-heading -->
+
+      <div id="sidenav_collapse_ripple_resources" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_ripple_resources">
+        <div class="panel-body">
+          <ul class="sidebar_cat_pagelist">
+            <li><a href="https://ripple.com/category/dev-blog/">Dev Blog</a></li>
+            <li><a href="https://github.com/ripple/">Open Source on GitHub</a></li>
+            <li><a href="https://ripple.com/">Corporate Website</a></li>
+          </ul>
+        </div><!-- /.panel-body -->
+      </div><!-- /#sidenav_collapseripple_resources -->
+
+    </div><!-- /.panel -->
+
+  </div><!-- /#sidenav_accordion -->
+</div><!-- /.guide_toc -->
+      </aside>
+      <main class="main" role="main" id="main_content_body">
+    <h1 class="main-page-header">How to Send a Check</h1>
+
+    <aside id="page-toc-wrapper" class="panel panel-default">
+      <p class="in-this-doc panel-heading">In this document:</p>
+      <ul class="dev_nav_sidebar panel-body" id="dactyl_toc_sidebar">
+        <li class="level-1"><a href="#how-to-send-a-check">How to Send a Check</a></li>
+<li class="level-2"><a href="#prerequisites">Prerequisites</a></li>
+<li class="level-2"><a href="#1-prepare-the-checkcreate-transaction">1. Prepare the CheckCreate transaction</a></li>
+<li class="level-3"><a href="#example-checkcreate-preparation">Example CheckCreate Preparation</a></li>
+<li class="level-2"><a href="#2-sign-the-checkcreate-transaction">2. Sign the CheckCreate transaction</a></li>
+<li class="level-3"><a href="#example-request">Example Request</a></li>
+<li class="level-2"><a href="#3-submit-the-signed-transaction">3. Submit the signed transaction</a></li>
+<li class="level-3"><a href="#example-request-1">Example Request</a></li>
+<li class="level-3"><a href="#example-response-1">Example Response</a></li>
+<li class="level-2"><a href="#4-wait-for-validation">4. Wait for validation</a></li>
+<li class="level-2"><a href="#5-confirm-final-result">5. Confirm final result</a></li>
+<li class="level-3"><a href="#example-request-2">Example Request</a></li>
+<li class="level-3"><a href="#example-response-2">Example Response</a></li>
+
+      </ul>
+    </aside>
+    <div class='content no-1st-head'>
+        <h1 id="how-to-send-a-check">How to Send a Check</h1>
+<p>Sending a Check is like writing permission for an intended recipient to pull a payment from you. The outcome of this process is a <a href="reference-ledger-format.html#check">Check object in the ledger</a> which the recipient can cash later.</p>
+<p>In many cases, you want to send a <a href="reference-transaction-format.html#payment">Payment</a> instead of a Check, since that delivers the money directly to the recipient in one step. However, if your intended recipient uses <a href="concept-depositauth.html">DepositAuth</a>, you cannot send them Payments directly, so a Check is a good alternative.</p>
+<p>This tutorial uses the example of a fictitious company, BoxSend SG (whose XRP Ledger address is rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za) paying a fictitious cryptocurrency consulting company named Grand Payments (with XRP Ledger address rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis) for some consulting work. Grand Payments prefers be paid in XRP, but to simplify their taxes and regulation, only accepts payments they've explicitly approved.</p>
+<p>Outside of the XRP Ledger, Grand Payments sends an invoice to BoxSend SG with the ID <code>46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291</code>, and requests a Check for 100 XRP be sent to Grand Payments' XRP Ledger address of rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To send a Check with this tutorial, you need the following:</p>
+<ul>
+<li>The <strong>address</strong> and <strong>secret key</strong> of a funded account to send the Check from.<ul>
+<li>You can use the <a href="https://ripple.com/build/xrp-test-net/">XRP Ledger Test Net Faucet</a> to get a funded address and secret with 10,000 Test Net XRP.</li>
+</ul>
+</li>
+<li>The <strong>address</strong> of a funded account to receive the Check.</li>
+<li>A secure way to sign transactions, such as <a href="reference-rippleapi.html">RippleAPI</a> or your own <a href="tutorial-rippled-setup.html"><code>rippled</code> server</a>.</li>
+<li>A client library that can connect to a <code>rippled</code> server, such as <a href="reference-rippleapi.html">RippleAPI</a> or any HTTP or WebSocket library.<ul>
+<li>For more information, see <a href="reference-rippled.html#connecting-to-rippled">Connecting to <code>rippled</code></a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-prepare-the-checkcreate-transaction">1. Prepare the CheckCreate transaction</h2>
+<p>Decide how much money the Check is for and who can cash it. Figure out the values of the <a href="reference-transaction-format.html#checkcreate">CheckCreate transaction</a> fields. The following fields are the bare minimum; everything else is either optional or can be <a href="reference-transaction-format.html#auto-fillable-fields">auto-filled</a> when signing:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>TransactionType</code></td>
+<td align="left">String</td>
+<td align="left">Use the string <code>CheckCreate</code> here.</td>
+</tr>
+<tr>
+<td align="left"><code>Account</code></td>
+<td align="left">String (Address)</td>
+<td align="left">The address of the sender who is creating the Check. (In other words, your address.)</td>
+</tr>
+<tr>
+<td align="left"><code>Destination</code></td>
+<td align="left">String (Address)</td>
+<td align="left">The address of the intended recipient who can cash the Check.</td>
+</tr>
+<tr>
+<td align="left"><code>SendMax</code></td>
+<td align="left">String or Object (Amount)</td>
+<td align="left">The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For issued currencies, use an object with <code>currency</code>, <code>issuer</code>, and <code>value</code> fields. See <a href="reference-rippled.html#specifying-currency-amounts">Specifying Currency Amounts</a> for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a <a href="concept-transfer-fees.html">transfer fee</a>, remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the <code>SendMax</code> to 102 CAD from that issuer.)</td>
+</tr>
+</tbody>
+</table>
+<p>If you are using <a href="reference-rippleapi.html">RippleAPI</a>, you can use the <code>prepareCheckCreate()</code> helper method.</p>
+<p class="devportal-callout note"><strong>Note:</strong> RippleAPI supports Checks in versions 0.19.0 and up.</p>
+<h3 id="example-checkcreate-preparation">Example CheckCreate Preparation</h3>
+<p>The following example shows a prepared Check from BoxSend SG (rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za) to Grand Payments (rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis) for 100 XRP. As additional (optional) metadata, BoxSend SG adds the ID of the invoice from Grand Payments so Grand Payments knows which invoice this Check is intended to pay.</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a href="#code-0-0">JSON-RPC, WebSocket, or Commandline</a></li><li><a href="#code-0-1">RippleAPI</a></li></ul>
+
+<div class="code_sample" id="code-0-0" style="position: static;"><div class="codehilite"><pre><span></span><code>{
+  "TransactionType": "CheckCreate",
+  "Account": "rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
+  "Destination": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
+  "SendMax": "100000000",
+  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"
+}
+</code></pre></div></div>
+
+<div class="code_sample" id="code-0-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span>
+<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+
+<span class="c1">// This example connects to a public Test Net server</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
+
+  <span class="kd">const</span> <span class="nx">sender</span> <span class="o">=</span> <span class="s1">'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za'</span>
+  <span class="kd">const</span> <span class="nx">receiver</span> <span class="o">=</span> <span class="s1">'rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis'</span>
+  <span class="kd">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// Allow up to 60 ledger versions (~5 min) instead of the default 3 versions</span>
+    <span class="c1">// before this transaction fails permanently.</span>
+    <span class="s2">"maxLedgerVersionOffset"</span><span class="o">:</span> <span class="mf">60</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">prepareCheckCreate</span><span class="p">(</span><span class="nx">sender</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s2">"destination"</span><span class="o">:</span> <span class="nx">receiver</span><span class="p">,</span>
+    <span class="s2">"sendMax"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"currency"</span><span class="o">:</span> <span class="s2">"XRP"</span><span class="p">,</span>
+      <span class="s2">"value"</span><span class="o">:</span> <span class="s2">"100"</span> <span class="c1">// RippleAPI uses decimal XRP, not integer drops</span>
+    <span class="p">}</span>
+    <span class="s2">"invoiceID"</span><span class="o">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span>
+  <span class="p">},</span> <span class="nx">options</span><span class="p">)</span>
+
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">prepared</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"txJSON:"</span><span class="p">,</span> <span class="nx">prepared</span><span class="p">.</span><span class="nx">txJSON</span><span class="p">);</span>
+
+<span class="c1">// Disconnect and return</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+  <span class="p">})</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+
+
+<span class="c1">// Example output:</span>
+<span class="c1">//</span>
+<span class="c1">// Connected</span>
+<span class="c1">// txJSON: {"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",</span>
+<span class="c1">//  "TransactionType":"CheckCreate",</span>
+<span class="c1">//  "Destination":"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",</span>
+<span class="c1">//  "SendMax":"100000000",</span>
+<span class="c1">//  "Flags":2147483648,</span>
+<span class="c1">//  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",</span>
+<span class="c1">//  "LastLedgerSequence":7835917,"Fee":"12","Sequence":2}</span>
+<span class="c1">// Disconnected</span>
+</code></pre></div></div>
+</div>
+<h2 id="2-sign-the-checkcreate-transaction">2. Sign the CheckCreate transaction</h2>
+<p>The most secure way to sign a transaction is to do it locally with a signing library, such as <a href="reference-rippleapi.html">RippleAPI</a>. Alternatively, you can sign the transaction using the <a href="reference-rippled.html#sign"><code>sign</code></a> command, but this must be done through a trusted and encrypted connection, or through a local connection, and only to a server you control.</p>
+<p>In all cases, note the signed transaction's identifying hash for later.</p>
+<h3 id="example-request">Example Request</h3>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a href="#code-1-0">RippleAPI</a></li><li><a href="#code-1-1">WebSocket</a></li><li><a href="#code-1-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-1-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span>
+<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+
+<span class="c1">// Can sign offline if the txJSON has all required fields</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">()</span>
+
+<span class="kd">const</span> <span class="nx">txJSON</span> <span class="o">=</span> <span class="s1">'{"Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za", \</span>
+<span class="s1">  "TransactionType":"CheckCreate", \</span>
+<span class="s1">  "Destination":"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis", \</span>
+<span class="s1">  "SendMax":"100000000", \</span>
+<span class="s1">  "Flags":2147483648, \</span>
+<span class="s1">  "LastLedgerSequence":7835923, \</span>
+<span class="s1">  "Fee":"12", \</span>
+<span class="s1">  "Sequence":2}'</span>
+
+<span class="c1">// Be careful where you store your real secret.</span>
+<span class="kd">const</span> <span class="nx">secret</span> <span class="o">=</span> <span class="s1">'s████████████████████████████'</span>
+
+<span class="kd">const</span> <span class="nx">signed</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">txJSON</span><span class="p">,</span> <span class="nx">secret</span><span class="p">)</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx_blob is:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">signedTransaction</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"tx hash is:"</span><span class="p">,</span> <span class="nx">signed</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"sign_req_1"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"sign"</span><span class="p">,</span>
+  <span class="nt">"tx_json"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"CheckCreate"</span><span class="p">,</span>
+    <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+    <span class="nt">"Destination"</span><span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+    <span class="nt">"SendMax"</span><span class="p">:</span> <span class="s2">"100000000"</span><span class="p">,</span>
+    <span class="nt">"InvoiceID"</span><span class="p">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="p">,</span>
+    <span class="nt">"DestinationTag"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">"Fee"</span><span class="p">:</span> <span class="s2">"12"</span>
+  <span class="p">},</span>
+   <span class="nt">"secret"</span> <span class="p">:</span> <span class="s2">"s████████████████████████████"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-1-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled sign s████████████████████████████ <span class="s1">'{</span>
+<span class="s1">  "TransactionType": "CheckCreate",</span>
+<span class="s1">  "Account": "rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",</span>
+<span class="s1">  "Destination": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",</span>
+<span class="s1">  "SendMax": "100000000",</span>
+<span class="s1">  "Expiration": 570113521,</span>
+<span class="s1">  "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291",</span>
+<span class="s1">  "DestinationTag": 1,</span>
+<span class="s1">  "Fee": "12"</span>
+<span class="s1">}'</span>
+</code></pre></div></div>
+</div>
+<h4 id="example-response">Example Response</h4>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a href="#code-2-0">RippleAPI</a></li><li><a href="#code-2-1">WebSocket</a></li><li><a href="#code-2-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-2-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="nx">tx_blob</span> <span class="nx">is</span><span class="o">:</span> <span class="mf">12001022800000002400000002201</span><span class="nx">B0077911368400000000000000C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400744630440220181FE2F945EBEE632966D5FB03114611E3047ACD155AA1BDB9DF8545C7A2431502201E873A4B0D177AB250AF790CE80621E16F141506CF507586038FC4A8E95887358114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39</span>
+<span class="nx">tx</span> <span class="nx">hash</span> <span class="nx">is</span><span class="o">:</span> <span class="nx">C0B27D20669BAB837B3CDF4B8148B988F17CE1EF8EDF48C806AE9BF69E16F441</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-2-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"sign_req_1"</span><span class="p">,</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"tx_blob"</span><span class="p">:</span> <span class="s2">"120010228000000024000000042E00000001501146060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE29168400000000000000C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB40074463044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C408114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39"</span><span class="p">,</span>
+    <span class="nt">"tx_json"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+      <span class="nt">"Destination"</span><span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+      <span class="nt">"DestinationTag"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">"Fee"</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+      <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">2147483648</span><span class="p">,</span>
+      <span class="nt">"InvoiceID"</span><span class="p">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="p">,</span>
+      <span class="nt">"SendMax"</span><span class="p">:</span> <span class="s2">"100000000"</span><span class="p">,</span>
+      <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="nt">"SigningPubKey"</span><span class="p">:</span> <span class="s2">"03B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400"</span><span class="p">,</span>
+      <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"CheckCreate"</span><span class="p">,</span>
+      <span class="nt">"TxnSignature"</span><span class="p">:</span> <span class="s2">"3044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C40"</span><span class="p">,</span>
+      <span class="nt">"hash"</span><span class="p">:</span> <span class="s2">"09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+  <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"response"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-2-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/home/mduo13/.config/ripple/rippled.cfg"</span>
+<span class="mi">2018-</span><span class="err">Mar</span><span class="mi">-21</span> <span class="mi">21</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">05</span> <span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span> <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
+
+<span class="p">{</span>
+   <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"status"</span> <span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+      <span class="nt">"tx_blob"</span> <span class="p">:</span> <span class="s2">"120010228000000024000000012A21FB3DF12E00000001501146060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE29168400000000000000C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB40074473045022100EB5A9001E14FC7304C4C2DF66507F9FC59D17FDCF98B43A4E30356658AB2A7CF02207127187EE0F287665D9552D15BEE6B00D3C6691C6773CE416E8A714B853F44FC8114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39"</span><span class="p">,</span>
+      <span class="nt">"tx_json"</span> <span class="p">:</span> <span class="p">{</span>
+         <span class="nt">"Account"</span> <span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+         <span class="nt">"Destination"</span> <span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+         <span class="nt">"DestinationTag"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+         <span class="nt">"Expiration"</span> <span class="p">:</span> <span class="mi">570113521</span><span class="p">,</span>
+         <span class="nt">"Fee"</span> <span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+         <span class="nt">"Flags"</span> <span class="p">:</span> <span class="mi">2147483648</span><span class="p">,</span>
+         <span class="nt">"InvoiceID"</span> <span class="p">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="p">,</span>
+         <span class="nt">"SendMax"</span> <span class="p">:</span> <span class="s2">"100000000"</span><span class="p">,</span>
+         <span class="nt">"Sequence"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+         <span class="nt">"SigningPubKey"</span> <span class="p">:</span> <span class="s2">"03B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400"</span><span class="p">,</span>
+         <span class="nt">"TransactionType"</span> <span class="p">:</span> <span class="s2">"CheckCreate"</span><span class="p">,</span>
+         <span class="nt">"TxnSignature"</span> <span class="p">:</span> <span class="s2">"3045022100EB5A9001E14FC7304C4C2DF66507F9FC59D17FDCF98B43A4E30356658AB2A7CF02207127187EE0F287665D9552D15BEE6B00D3C6691C6773CE416E8A714B853F44FC"</span><span class="p">,</span>
+         <span class="nt">"hash"</span> <span class="p">:</span> <span class="s2">"07C3B2878B6941FED97BA647244531B7E2203268B05C71C3A1A014045ADDF408"</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+<h2 id="3-submit-the-signed-transaction">3. Submit the signed transaction</h2>
+<p>Take the signed transaction blob from the previous step and submit it to a <code>rippled</code> server. You can do this safely even if you do not operate the <code>rippled</code> server. The response contains a provisional result, which should be <code>tesSUCCESS</code>, but this result is <a href="reference-transaction-format.html#finality-of-results">usually not final</a>. A provisional response of <code>terQUEUED</code> is also OK, since <a href="concept-transaction-cost.html#queued-transactions">queued transactions</a> are generally included in the next open ledger version (usually about 10 seconds after submission).</p>
+<p class="devportal-callout tip"><strong>Tip:</strong> If the preliminary result is <code>tefMAX_LEDGER</code>, the transaction has failed permanently because its <code>LastLedgerSequence</code> parameter is lower than the current ledger. This happens when you take longer than the expected number of ledger versions between preparing and submitting the transaction. If this occurs, <a href="#1-prepare-the-checkcreate-transaction">start over from step 1</a> with a higher <code>LastLedgerSequence</code> value.</p>
+<h3 id="example-request-1">Example Request</h3>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a href="#code-3-0">RippleAPI</a></li><li><a href="#code-3-1">WebSocket</a></li><li><a href="#code-3-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-3-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span>
+<span class="kd">const</span> <span class="nx">RippleAPI</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">).</span><span class="nx">RippleAPI</span>
+
+<span class="c1">// This example connects to a public Test Net server</span>
+<span class="kd">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RippleAPI</span><span class="p">({</span><span class="nx">server</span><span class="o">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
+
+  <span class="kd">const</span> <span class="nx">tx_blob</span> <span class="o">=</span> <span class="s2">"12001022800000002400000002201B0077911368400000000000000"</span><span class="o">+</span>
+    <span class="s2">"C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6"</span><span class="o">+</span>
+    <span class="s2">"CFCF2E359045FF4BB400744630440220181FE2F945EBEE632966D5FB03114611E3047"</span><span class="o">+</span>
+    <span class="s2">"ACD155AA1BDB9DF8545C7A2431502201E873A4B0D177AB250AF790CE80621E16F1415"</span><span class="o">+</span>
+    <span class="s2">"06CF507586038FC4A8E95887358114735FF88E5269C80CD7F7AF10530DAB840BBF6FD"</span><span class="o">+</span>
+    <span class="s2">"F8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39"</span>
+
+  <span class="k">return</span> <span class="nx">api</span><span class="p">.</span><span class="nx">submit</span><span class="p">(</span><span class="nx">tx_blob</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Preliminary transaction result:"</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">resultCode</span><span class="p">)</span>
+
+<span class="c1">// Disconnect and return</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">api</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+  <span class="p">})</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-3-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"submit_req_1"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"submit"</span><span class="p">,</span>
+  <span class="nt">"tx_blob"</span><span class="p">:</span> <span class="s2">"120010228000000024000000042E00000001501146060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE29168400000000000000C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB40074463044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C408114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-3-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled submit 120010228000000024000000042E00000001501146060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE29168400000000000000C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB40074463044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C408114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39
+</code></pre></div></div>
+</div>
+<h3 id="example-response-1">Example Response</h3>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a href="#code-4-0">RippleAPI</a></li><li><a href="#code-4-1">WebSocket</a></li><li><a href="#code-4-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-4-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="nx">Connected</span>
+<span class="nx">Preliminary</span> <span class="nx">transaction</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">tesSUCCESS</span>
+<span class="nx">Disconnected</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-4-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"submit_req_1"</span><span class="p">,</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"engine_result"</span><span class="p">:</span> <span class="s2">"terQUEUED"</span><span class="p">,</span>
+    <span class="nt">"engine_result_code"</span><span class="p">:</span> <span class="mi">-89</span><span class="p">,</span>
+    <span class="nt">"engine_result_message"</span><span class="p">:</span> <span class="s2">"Held until escalated fee drops."</span><span class="p">,</span>
+    <span class="nt">"tx_blob"</span><span class="p">:</span> <span class="s2">"120010228000000024000000042E00000001501146060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE29168400000000000000C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB40074463044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C408114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39"</span><span class="p">,</span>
+    <span class="nt">"tx_json"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+      <span class="nt">"Destination"</span><span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+      <span class="nt">"DestinationTag"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">"Fee"</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+      <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">2147483648</span><span class="p">,</span>
+      <span class="nt">"InvoiceID"</span><span class="p">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="p">,</span>
+      <span class="nt">"SendMax"</span><span class="p">:</span> <span class="s2">"100000000"</span><span class="p">,</span>
+      <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="nt">"SigningPubKey"</span><span class="p">:</span> <span class="s2">"03B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400"</span><span class="p">,</span>
+      <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"CheckCreate"</span><span class="p">,</span>
+      <span class="nt">"TxnSignature"</span><span class="p">:</span> <span class="s2">"3044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C40"</span><span class="p">,</span>
+      <span class="nt">"hash"</span><span class="p">:</span> <span class="s2">"09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+  <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"response"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-4-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/home/mduo13/.config/ripple/rippled.cfg"</span>
+<span class="mi">2018-</span><span class="err">Mar</span><span class="mi">-28</span> <span class="mi">01</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">49</span> <span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span> <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
+
+<span class="p">{</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"engine_result"</span><span class="p">:</span> <span class="s2">"terQUEUED"</span><span class="p">,</span>
+    <span class="nt">"engine_result_code"</span><span class="p">:</span> <span class="mi">-89</span><span class="p">,</span>
+    <span class="nt">"engine_result_message"</span><span class="p">:</span> <span class="s2">"Held until escalated fee drops."</span><span class="p">,</span>
+    <span class="nt">"status"</span> <span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+    <span class="nt">"tx_blob"</span><span class="p">:</span> <span class="s2">"120010228000000024000000042E00000001501146060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE29168400000000000000C694000000005F5E100732103B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB40074463044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C408114735FF88E5269C80CD7F7AF10530DAB840BBF6FDF8314A8B6B9FF3246856CADC4A0106198C066EA1F9C39"</span><span class="p">,</span>
+    <span class="nt">"tx_json"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+      <span class="nt">"Destination"</span><span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+      <span class="nt">"DestinationTag"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">"Fee"</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+      <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">2147483648</span><span class="p">,</span>
+      <span class="nt">"InvoiceID"</span><span class="p">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="p">,</span>
+      <span class="nt">"SendMax"</span><span class="p">:</span> <span class="s2">"100000000"</span><span class="p">,</span>
+      <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="nt">"SigningPubKey"</span><span class="p">:</span> <span class="s2">"03B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400"</span><span class="p">,</span>
+      <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"CheckCreate"</span><span class="p">,</span>
+      <span class="nt">"TxnSignature"</span><span class="p">:</span> <span class="s2">"3044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C40"</span><span class="p">,</span>
+      <span class="nt">"hash"</span><span class="p">:</span> <span class="s2">"09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB"</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+<h2 id="4-wait-for-validation">4. Wait for validation</h2>
+<p>On the live network or the Ripple Test Net, you can wait 4-7 seconds for the ledger to close automatically.</p>
+<p>If you're running <code>rippled</code> in stand-alone mode, use the <a href="reference-rippled.html#ledger-accept"><code>ledger_accept</code> command</a> to manually close the ledger.</p>
+<h2 id="5-confirm-final-result">5. Confirm final result</h2>
+<p>Use the <a href="reference-rippled.html#tx"><code>tx</code> method</a> with the CheckCreate transaction's identifying hash to check its status. Look for a <code>"TransactionResult": "tesSUCCESS"</code> field in the transaction's metadata, indicating that the transaction succeeded, and the field <code>"validated": true</code> in the result, indicating that this result is final.</p>
+<p>Look for a <code>CreatedNode</code> object in the transaction metadata to indicate that the transaction created a <a href="reference-ledger-format.html#check">Check ledger object</a>. The <code>LedgerIndex</code> of this object is the ID of the Check. In the following example, the Check's ID is <code>49647F0D748DC3FE26BDACBC57F251AADEFFF391403EC9BF87C97F67E9977FB0</code>.</p>
+<p class="devportal-callout note"><strong>Note:</strong> RippleAPI does not report the Check's ID when you look up a CheckCreate transaction. You can work around this by calculating the Check's ID from the <a href="reference-ledger-format.html#check-id-format">Check ID format</a>, as in the example RippleAPI code below. <!-- --></p>
+<h3 id="example-request-2">Example Request</h3>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a href="#code-5-0">RippleAPI</a></li><li><a href="#code-5-1">WebSocket</a></li><li><a href="#code-5-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-5-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="s1">'use strict'</span>
+<span class="k">const</span> <span class="n">RippleAPI</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">'ripple-lib'</span><span class="p">)</span><span class="o">.</span><span class="n">RippleAPI</span>
+<span class="k">const</span> <span class="n">decodeAddress</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">'ripple-address-codec'</span><span class="p">)</span><span class="o">.</span><span class="n">decodeAddress</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">createHash</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">'crypto'</span><span class="p">)</span><span class="o">.</span><span class="n">createHash</span><span class="p">;</span>
+
+<span class="o">//</span> <span class="n">This</span> <span class="n">example</span> <span class="n">connects</span> <span class="n">to</span> <span class="n">a</span> <span class="n">public</span> <span class="n">Test</span> <span class="n">Net</span> <span class="n">server</span>
+<span class="k">const</span> <span class="n">api</span> <span class="o">=</span> <span class="n">new</span> <span class="n">RippleAPI</span><span class="p">({</span><span class="n">server</span><span class="p">:</span> <span class="s1">'wss://s.altnet.rippletest.net:51233'</span><span class="p">})</span>
+<span class="n">api</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Connected'</span><span class="p">)</span>
+
+  <span class="k">const</span> <span class="n">tx_hash</span> <span class="o">=</span> <span class="s2">"C0B27D20669BAB837B3CDF4B8148B988F17CE1EF8EDF48C806AE9BF69E16F441"</span>
+
+  <span class="k">return</span> <span class="n">api</span><span class="o">.</span><span class="n">getTransaction</span><span class="p">(</span><span class="n">tx_hash</span><span class="p">)</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"Final transaction result:"</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+
+  <span class="o">//</span> <span class="n">Re</span><span class="o">-</span><span class="n">calculate</span> <span class="n">checkID</span> <span class="n">to</span> <span class="n">work</span> <span class="n">around</span> <span class="n">issue</span> <span class="n">ripple</span><span class="o">-</span><span class="n">lib</span><span class="c1">#876</span>
+  <span class="k">const</span> <span class="n">checkIDhasher</span> <span class="o">=</span> <span class="n">createHash</span><span class="p">(</span><span class="s1">'sha512'</span><span class="p">)</span>
+  <span class="n">checkIDhasher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Buffer</span><span class="o">.</span><span class="n">from</span><span class="p">(</span><span class="s1">'0043'</span><span class="p">,</span> <span class="s1">'hex'</span><span class="p">))</span>
+  <span class="n">checkIDhasher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">new</span> <span class="n">Buffer</span><span class="p">(</span><span class="n">decodeAddress</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">address</span><span class="p">)))</span>
+  <span class="k">const</span> <span class="n">seqBuf</span> <span class="o">=</span> <span class="n">Buffer</span><span class="o">.</span><span class="n">alloc</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+  <span class="n">seqBuf</span><span class="o">.</span><span class="n">writeUInt32BE</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">sequence</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="n">checkIDhasher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">seqBuf</span><span class="p">)</span>
+  <span class="k">const</span> <span class="n">checkID</span> <span class="o">=</span> <span class="n">checkIDhasher</span><span class="o">.</span><span class="n">digest</span><span class="p">(</span><span class="s1">'hex'</span><span class="p">)</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">64</span><span class="p">)</span><span class="o">.</span><span class="n">toUpperCase</span><span class="p">()</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"Calculated checkID:"</span><span class="p">,</span> <span class="n">checkID</span><span class="p">)</span>
+
+<span class="o">//</span> <span class="n">Disconnect</span> <span class="ow">and</span> <span class="k">return</span>
+<span class="p">})</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">api</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'Disconnected'</span><span class="p">)</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+  <span class="p">})</span>
+<span class="p">})</span><span class="o">.</span><span class="n">catch</span><span class="p">(</span><span class="n">console</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-5-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"tx_req_1"</span><span class="p">,</span>
+  <span class="nt">"command"</span><span class="p">:</span> <span class="s2">"tx"</span><span class="p">,</span>
+  <span class="nt">"transaction"</span><span class="p">:</span> <span class="s2">"09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-5-2" style="position: static;"><div class="codehilite"><pre><span></span><code>rippled tx 09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB
+</code></pre></div></div>
+</div>
+<h3 id="example-response-2">Example Response</h3>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a href="#code-6-0">RippleAPI</a></li><li><a href="#code-6-1">WebSocket</a></li><li><a href="#code-6-2">Commandline</a></li></ul>
+
+<div class="code_sample" id="code-6-0" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="n">Connected</span><span class="w"></span>
+<span class="n">Final</span><span class="w"> </span><span class="k">transaction</span><span class="w"> </span><span class="k">result</span><span class="err">:</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="nl">type</span><span class="p">:</span><span class="w"> </span><span class="s1">'checkCreate'</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nl">address</span><span class="p">:</span><span class="w"> </span><span class="s1">'rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za'</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="k">sequence</span><span class="err">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nl">id</span><span class="p">:</span><span class="w"> </span><span class="s1">'C0B27D20669BAB837B3CDF4B8148B988F17CE1EF8EDF48C806AE9BF69E16F441'</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nl">specification</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="err">{</span><span class="w"> </span><span class="nl">destination</span><span class="p">:</span><span class="w"> </span><span class="s1">'rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis'</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nl">sendMax</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="nl">currency</span><span class="p">:</span><span class="w"> </span><span class="s1">'XRP'</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="err">:</span><span class="w"> </span><span class="s1">'100'</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nl">outcome</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="err">{</span><span class="w"> </span><span class="k">result</span><span class="err">:</span><span class="w"> </span><span class="s1">'tesSUCCESS'</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nc">timestamp</span><span class="err">:</span><span class="w"> </span><span class="s1">'2018-03-27T20:47:40.000Z'</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nl">fee</span><span class="p">:</span><span class="w"> </span><span class="s1">'0.000012'</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nl">balanceChanges</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="nl">rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="n">Array</span><span class="o">]</span><span class="w"> </span><span class="err">}</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nl">orderbookChanges</span><span class="p">:</span><span class="w"> </span><span class="err">{}</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nl">ledgerVersion</span><span class="p">:</span><span class="w"> </span><span class="mi">7835887</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="nl">indexInLedger</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="err">}</span><span class="w"></span>
+<span class="n">Calculated</span><span class="w"> </span><span class="nl">checkID</span><span class="p">:</span><span class="w"> </span><span class="n">CEA5F0BD7B2B5C85A70AE735E4CE722C43C86410A79AB87C11938AA13A11DBF9</span><span class="w"></span>
+<span class="n">Disconnected</span><span class="w"></span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-6-1" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"tx_req_1"</span><span class="p">,</span>
+  <span class="nt">"result"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+    <span class="nt">"Destination"</span><span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+    <span class="nt">"DestinationTag"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">"Fee"</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+    <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">2147483648</span><span class="p">,</span>
+    <span class="nt">"InvoiceID"</span><span class="p">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="p">,</span>
+    <span class="nt">"SendMax"</span><span class="p">:</span> <span class="s2">"100000000"</span><span class="p">,</span>
+    <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">"SigningPubKey"</span><span class="p">:</span> <span class="s2">"03B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400"</span><span class="p">,</span>
+    <span class="nt">"TransactionType"</span><span class="p">:</span> <span class="s2">"CheckCreate"</span><span class="p">,</span>
+    <span class="nt">"TxnSignature"</span><span class="p">:</span> <span class="s2">"3044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C40"</span><span class="p">,</span>
+    <span class="nt">"date"</span><span class="p">:</span> <span class="mi">575516100</span><span class="p">,</span>
+    <span class="nt">"hash"</span><span class="p">:</span> <span class="s2">"09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB"</span><span class="p">,</span>
+    <span class="nt">"inLedger"</span><span class="p">:</span> <span class="mi">7841263</span><span class="p">,</span>
+    <span class="nt">"ledger_index"</span><span class="p">:</span> <span class="mi">7841263</span><span class="p">,</span>
+    <span class="nt">"meta"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"AffectedNodes"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">"ModifiedNode"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"FinalFields"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="nt">"Owner"</span><span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+              <span class="nt">"RootIndex"</span><span class="p">:</span> <span class="s2">"3F248A0715ECCAFC3BEE0C63C8F429ACE54ABC403AAF5F2885C2B65D62D1FAC1"</span>
+            <span class="p">},</span>
+            <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"DirectoryNode"</span><span class="p">,</span>
+            <span class="nt">"LedgerIndex"</span><span class="p">:</span> <span class="s2">"3F248A0715ECCAFC3BEE0C63C8F429ACE54ABC403AAF5F2885C2B65D62D1FAC1"</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">"CreatedNode"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"Check"</span><span class="p">,</span>
+            <span class="nt">"LedgerIndex"</span><span class="p">:</span> <span class="s2">"84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9"</span><span class="p">,</span>
+            <span class="nt">"NewFields"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+              <span class="nt">"Destination"</span><span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+              <span class="nt">"DestinationTag"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="nt">"InvoiceID"</span><span class="p">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="p">,</span>
+              <span class="nt">"SendMax"</span><span class="p">:</span> <span class="s2">"100000000"</span><span class="p">,</span>
+              <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">4</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">"ModifiedNode"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"FinalFields"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"Account"</span><span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+              <span class="nt">"Balance"</span><span class="p">:</span> <span class="s2">"9999999952"</span><span class="p">,</span>
+              <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="nt">"OwnerCount"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+              <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">5</span>
+            <span class="p">},</span>
+            <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"AccountRoot"</span><span class="p">,</span>
+            <span class="nt">"LedgerIndex"</span><span class="p">:</span> <span class="s2">"A9A591BA661F69433D5BEAA49F10BA2B8DEA5183EF414B9130BFE5E0328FE875"</span><span class="p">,</span>
+            <span class="nt">"PreviousFields"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"Balance"</span><span class="p">:</span> <span class="s2">"9999999964"</span><span class="p">,</span>
+              <span class="nt">"OwnerCount"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="nt">"Sequence"</span><span class="p">:</span> <span class="mi">4</span>
+            <span class="p">},</span>
+            <span class="nt">"PreviousTxnID"</span><span class="p">:</span> <span class="s2">"45AF36CF7A810D0054C38C82C898EFC7E4898DF94FA7A3AAF80CB868708F7CE0"</span><span class="p">,</span>
+            <span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span> <span class="mi">7841237</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">"ModifiedNode"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"FinalFields"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"Flags"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="nt">"Owner"</span><span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+              <span class="nt">"RootIndex"</span><span class="p">:</span> <span class="s2">"C6A30AD85346718C7148D161663F84A96A4F0CE7F4D68C3C74D176A6C50BA6B9"</span>
+            <span class="p">},</span>
+            <span class="nt">"LedgerEntryType"</span><span class="p">:</span> <span class="s2">"DirectoryNode"</span><span class="p">,</span>
+            <span class="nt">"LedgerIndex"</span><span class="p">:</span> <span class="s2">"C6A30AD85346718C7148D161663F84A96A4F0CE7F4D68C3C74D176A6C50BA6B9"</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">"TransactionIndex"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">"TransactionResult"</span><span class="p">:</span> <span class="s2">"tesSUCCESS"</span>
+    <span class="p">},</span>
+    <span class="nt">"validated"</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+  <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"response"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample" id="code-6-2" style="position: static;"><div class="codehilite"><pre><span></span><code><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span> <span class="s2">"/home/mduo13/.config/ripple/rippled.cfg"</span>
+<span class="mi">2018-</span><span class="err">Mar</span><span class="mi">-28</span> <span class="mi">02</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">55</span> <span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span> <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span> <span class="kc">t</span><span class="err">o</span> <span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
+
+<span class="p">{</span>
+   <span class="nt">"result"</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">"Account"</span> <span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+      <span class="nt">"Destination"</span> <span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+      <span class="nt">"DestinationTag"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nt">"Fee"</span> <span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+      <span class="nt">"Flags"</span> <span class="p">:</span> <span class="mi">2147483648</span><span class="p">,</span>
+      <span class="nt">"InvoiceID"</span> <span class="p">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="p">,</span>
+      <span class="nt">"SendMax"</span> <span class="p">:</span> <span class="s2">"100000000"</span><span class="p">,</span>
+      <span class="nt">"Sequence"</span> <span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="nt">"SigningPubKey"</span> <span class="p">:</span> <span class="s2">"03B6FCD7FAC4F665FE92415DD6E8450AD90F7D6B3D45A6CFCF2E359045FF4BB400"</span><span class="p">,</span>
+      <span class="nt">"TransactionType"</span> <span class="p">:</span> <span class="s2">"CheckCreate"</span><span class="p">,</span>
+      <span class="nt">"TxnSignature"</span> <span class="p">:</span> <span class="s2">"3044022071A341F911A8EF3B68399487CAF5BA3B59C6FE476B626698AEF044B8183721BC0220166053A859BD907251DFCCF34DD71202180EBABAE7098BB5903D16EBFC993C40"</span><span class="p">,</span>
+      <span class="nt">"date"</span> <span class="p">:</span> <span class="mi">575516100</span><span class="p">,</span>
+      <span class="nt">"hash"</span> <span class="p">:</span> <span class="s2">"09D992D4C89E2A24D4BA9BB57ED81C7003815940F39B7C87ADBF2E49034380BB"</span><span class="p">,</span>
+      <span class="nt">"inLedger"</span> <span class="p">:</span> <span class="mi">7841263</span><span class="p">,</span>
+      <span class="nt">"ledger_index"</span> <span class="p">:</span> <span class="mi">7841263</span><span class="p">,</span>
+      <span class="nt">"meta"</span> <span class="p">:</span> <span class="p">{</span>
+         <span class="nt">"AffectedNodes"</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+               <span class="nt">"ModifiedNode"</span> <span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">"FinalFields"</span> <span class="p">:</span> <span class="p">{</span>
+                     <span class="nt">"Flags"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                     <span class="nt">"Owner"</span> <span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+                     <span class="nt">"RootIndex"</span> <span class="p">:</span> <span class="s2">"3F248A0715ECCAFC3BEE0C63C8F429ACE54ABC403AAF5F2885C2B65D62D1FAC1"</span>
+                  <span class="p">},</span>
+                  <span class="nt">"LedgerEntryType"</span> <span class="p">:</span> <span class="s2">"DirectoryNode"</span><span class="p">,</span>
+                  <span class="nt">"LedgerIndex"</span> <span class="p">:</span> <span class="s2">"3F248A0715ECCAFC3BEE0C63C8F429ACE54ABC403AAF5F2885C2B65D62D1FAC1"</span>
+               <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+               <span class="nt">"CreatedNode"</span> <span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">"LedgerEntryType"</span> <span class="p">:</span> <span class="s2">"Check"</span><span class="p">,</span>
+                  <span class="nt">"LedgerIndex"</span> <span class="p">:</span> <span class="s2">"84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9"</span><span class="p">,</span>
+                  <span class="nt">"NewFields"</span> <span class="p">:</span> <span class="p">{</span>
+                     <span class="nt">"Account"</span> <span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+                     <span class="nt">"Destination"</span> <span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+                     <span class="nt">"DestinationTag"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                     <span class="nt">"InvoiceID"</span> <span class="p">:</span> <span class="s2">"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"</span><span class="p">,</span>
+                     <span class="nt">"SendMax"</span> <span class="p">:</span> <span class="s2">"100000000"</span><span class="p">,</span>
+                     <span class="nt">"Sequence"</span> <span class="p">:</span> <span class="mi">4</span>
+                  <span class="p">}</span>
+               <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+               <span class="nt">"ModifiedNode"</span> <span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">"FinalFields"</span> <span class="p">:</span> <span class="p">{</span>
+                     <span class="nt">"Account"</span> <span class="p">:</span> <span class="s2">"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za"</span><span class="p">,</span>
+                     <span class="nt">"Balance"</span> <span class="p">:</span> <span class="s2">"9999999952"</span><span class="p">,</span>
+                     <span class="nt">"Flags"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                     <span class="nt">"OwnerCount"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="nt">"Sequence"</span> <span class="p">:</span> <span class="mi">5</span>
+                  <span class="p">},</span>
+                  <span class="nt">"LedgerEntryType"</span> <span class="p">:</span> <span class="s2">"AccountRoot"</span><span class="p">,</span>
+                  <span class="nt">"LedgerIndex"</span> <span class="p">:</span> <span class="s2">"A9A591BA661F69433D5BEAA49F10BA2B8DEA5183EF414B9130BFE5E0328FE875"</span><span class="p">,</span>
+                  <span class="nt">"PreviousFields"</span> <span class="p">:</span> <span class="p">{</span>
+                     <span class="nt">"Balance"</span> <span class="p">:</span> <span class="s2">"9999999964"</span><span class="p">,</span>
+                     <span class="nt">"OwnerCount"</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                     <span class="nt">"Sequence"</span> <span class="p">:</span> <span class="mi">4</span>
+                  <span class="p">},</span>
+                  <span class="nt">"PreviousTxnID"</span> <span class="p">:</span> <span class="s2">"45AF36CF7A810D0054C38C82C898EFC7E4898DF94FA7A3AAF80CB868708F7CE0"</span><span class="p">,</span>
+                  <span class="nt">"PreviousTxnLgrSeq"</span> <span class="p">:</span> <span class="mi">7841237</span>
+               <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+               <span class="nt">"ModifiedNode"</span> <span class="p">:</span> <span class="p">{</span>
+                  <span class="nt">"FinalFields"</span> <span class="p">:</span> <span class="p">{</span>
+                     <span class="nt">"Flags"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                     <span class="nt">"Owner"</span> <span class="p">:</span> <span class="s2">"rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis"</span><span class="p">,</span>
+                     <span class="nt">"RootIndex"</span> <span class="p">:</span> <span class="s2">"C6A30AD85346718C7148D161663F84A96A4F0CE7F4D68C3C74D176A6C50BA6B9"</span>
+                  <span class="p">},</span>
+                  <span class="nt">"LedgerEntryType"</span> <span class="p">:</span> <span class="s2">"DirectoryNode"</span><span class="p">,</span>
+                  <span class="nt">"LedgerIndex"</span> <span class="p">:</span> <span class="s2">"C6A30AD85346718C7148D161663F84A96A4F0CE7F4D68C3C74D176A6C50BA6B9"</span>
+               <span class="p">}</span>
+            <span class="p">}</span>
+         <span class="p">],</span>
+         <span class="nt">"TransactionIndex"</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nt">"TransactionResult"</span> <span class="p">:</span> <span class="s2">"tesSUCCESS"</span>
+      <span class="p">},</span>
+      <span class="nt">"status"</span> <span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+      <span class="nt">"validated"</span> <span class="p">:</span> <span class="kc">true</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</div>
+<!-- -->
+    </div>
+      </main>
+  </div>
+
+<footer class="content-info" role="contentinfo">
+    <div class="container">
+        <div class="row">
+       		<div class="col-sm-12 absolute_bottom_footer">
+       			<div class="col-sm-8">
+                    <span>&copy; 2013 - 2018 Ripple. All Rights Reserved.</span>
+                    <span><a href="https://ripple.com/terms-of-use/">Terms</a></span>
+                    <span><a href="https://ripple.com/privacy-policy/">Privacy</a></span>
+                    <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+                </div>
+            </div><!-- /.absolute_bottom_footer -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</span></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+</body>
+</html>

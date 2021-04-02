@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Consensus - XRP Ledger Dev Portal</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-1.11.1.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal.css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45576805-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-45576805-2');
+      gtag('config', 'UA-157720658-3', { 'linker': {
+        'domains': ['blog.xpring.io', 'forum.xpring.io', 'xpring.io',
+                    'xrpl.org', 'explorer.xrpl.org', 'testnet.xrpl.org']
+        } }
+      );
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+
+    <!-- syntax highlighting -->
+    <link rel="stylesheet" href="assets/vendor/docco.min.css" />
+    <script src="assets/vendor/highlight.min.js"></script>
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            hljs.initHighlighting();
+            make_code_expandable();
+        });
+    </script>
+
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en ">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <a href="index.html" class="navbar-brand"><img src="assets/img/XRPLedger_DevPortal-black.svg" class="logo"  height="44" alt="XRP Ledger Dev Portal" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarHolder" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarHolder">
+      <ul class="nav navbar-nav">
+            <li class="nav-item active-parent">
+              <a class="nav-link" href="docs.html">Docs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="use-cases.html">Use Cases</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dev-tools.html">Dev Tools</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/">Blog</a>
+        </li>
+      </ul><!-- /.navbar-nav -->
+<div class="github-edit-wrap">
+    <a href="https://github.com/ripple/xrpl-dev-portal/edit/master/content/concepts/consensus-network/consensus.md" target="_blank" class="github-edit">Edit</a>
+</div><!-- /.github-edit -->      <form class="navbar-form navbar-right" id="navbar-search" role="search">
+        <div class="form-inline">
+          <label class="sr-only" for="topsearchbar">Search site...</label>
+          <input id="topsearchbar" name="q" type="text" class="form-control" class="top-search" placeholder="Search site...">
+          <button type="submit" class="btn btn-default fa fa-search">&nbsp;</button>
+        </div>
+      </form>
+      <div class="nav navbar-nav language-selector">
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="language_selector_header_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            English
+          </button>
+          <div class="dropdown-menu" aria-labelledby="language_selector_header_btn">
+            <a class="dropdown-item" href="/consensus.html">English</a>
+            <a class="dropdown-item" href="/ja/consensus.html">日本語</a>
+          </div><!--/.dropdown-menu-->
+        </div><!--/.dropdown-->
+      </div><!--/.language-selector-->
+    </div><!--/#navbarHolder-->
+    <div class="menu-overlay"></div>
+  </nav>
+
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4 p-0" role="complementary">
+  <div class="card" id="page-toc-wrapper">
+    <div class="card-header">
+      <h4>In this document</h4>
+    </div>
+    <ul class="card-body">
+      <li class="level-1"><a href="#consensus">Consensus</a></li>
+<li class="level-2"><a href="#introduction">Introduction</a></li>
+<li class="level-2"><a href="#the-xrp-ledger-protocol-consensus-and-validation">The XRP Ledger Protocol – Consensus and Validation</a></li>
+<li class="level-3"><a href="#consensus-1">Consensus</a></li>
+<li class="level-3"><a href="#validation">Validation</a></li>
+<li class="level-2"><a href="#key-takeaways">Key Takeaways</a></li>
+<li class="level-2"><a href="#see-also">See Also</a></li>
+<li class="level-2"><a href="#footnotes">Footnotes</a></li>
+
+    </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap p-0 p-md-3" aria-label="breadcrumb">
+  <ul class="breadcrumb bg-white">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Docs</a></li>
+    <li class="active breadcrumb-item"><a href="concepts.html">Concepts</a></li>
+    <li class="active breadcrumb-item"><a href="consensus-network.html">Consensus Network</a></li>
+    <li class="active breadcrumb-item">Consensus</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article class="pt-3 p-md-3">
+    <div class="content">
+        <h1 id="consensus">Consensus</h1>
+<p><em>Written by Dave Cohen, David Schwartz, and Arthur Britto.</em></p>
+<p>This article provides a high level overview of the XRP Ledger, the information it stores, and how <a href="transaction-formats.html">transactions</a> result in changes to the ledger.</p>
+<p>When building applications on the XRP Ledger, it is important to understand this process, so as not to be surprised by the behavior of XRP Ledger APIs and their effects.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The peer-to-peer XRP Ledger network provides a worldwide, shared ledger, which gives applications authoritative information about the state of its contents. This state information includes:</p>
+<ul>
+<li>settings for each <a href="accounts.html">account</a></li>
+<li>balances of XRP and <a href="issued-currencies.html">issued currencies</a></li>
+<li>offers in the distributed exchange</li>
+<li>network settings, such as <a href="transaction-cost.html">transaction costs</a> and <a href="reserves.html">reserve</a> amounts</li>
+<li>a timestamp</li>
+</ul>
+<p>For a full, technical description of which data is included in a ledger version, see the <a href="ledger-data-formats.html">Ledger Format Reference</a>.</p>
+<p><a href="img/anatomy-of-a-ledger-complete.png"><img alt="Figure 1: XRP Ledger Elements" src="img/anatomy-of-a-ledger-complete.png"/></a></p>
+<p><em>Figure 1: XRP Ledger Elements</em></p>
+<p>The XRP Ledger has a new ledger version every several seconds. When the network agrees on the contents of a ledger version, that ledger version is <em>validated</em>, and its contents can never change. The validated ledger versions that preceded it form the ledger history. Even the most recent validated ledger is part of history, as it represents the state of the network as of a short time ago. In the present, the network is evaluating transactions which may be applied and finalized in the next ledger version. While this evaluation is happening, the network has candidate ledger versions that are not yet validated.</p>
+<p><a href="img/ledger-history.png"><img alt="Figure 2: XRP Ledger History" src="img/ledger-history.png"/></a></p>
+<p><em>Figure 2: XRP Ledger History</em></p>
+<p>A ledger version has two identifiers. One identifier is its <em>ledger index</em>. Ledger versions are numbered incrementally. For example, if the current ledger version has ledger index of 100, the previous has ledger index 99 and the next has ledger index 101. The other identifier is a <em>ledger hash</em>, which is a digital fingerprint of the ledger's contents.</p>
+<p>As servers propose transactions to apply to the ledger, they may create several candidate ledger versions with slightly different contents. These candidate ledger versions have the same ledger index but different ledger hashes. Of the many candidates, only one can become validated. All the other candidate ledger versions are discarded. Thus, there is exactly one validated ledger hash for each ledger index in history.</p>
+<p>User level changes to the ledger are the results of transactions. Examples of <a href="transaction-formats.html">transactions</a> include payments, changes to account settings or trust lines, and offers to trade. Each transaction authorizes one or more changes to the ledger, and is cryptographically signed by an account owner. Transactions are the only way to authorize changes to an account, or to change anything else in the ledger.</p>
+<p>Each ledger version also contains a set of transactions and metadata about those transactions. The transactions it includes are only the ones that have been applied to the previous ledger version to create the new ledger version. The metadata records the exact effects of the transaction on the ledger's state data.</p>
+<p><a href="img/ledger-changes.png"><img alt="Figure 3: Transactions Applied to Ledger Version" src="img/ledger-changes.png"/></a></p>
+<p><em>Figure 3: Transactions Applied to Ledger Version</em></p>
+<p>The set of transactions included in a ledger instance are recorded in that ledger and allow audits of the XRP Ledger history. If an account balance is different in ledger N+1 than it was in ledger N, then ledger N+1 contains the transaction(s) responsible for the change.</p>
+<p>Transactions that appear in a validated ledger may have succeeded in changing the ledger, or may have been processed without doing the requested action. Successful transactions have the <strong><code>tesSUCCESS</code></strong> <a href="transaction-results.html">result code</a> which indicates the requested changes are applied to the ledger. Failed transactions in the ledger have <strong><code>tec</code></strong> class result codes.<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a></p>
+<p>All transactions included in a ledger destroy some XRP as a <a href="transaction-cost.html">transaction cost</a>, regardless of whether they had a <strong><code>tes</code></strong> or <strong><code>tec</code></strong> code. The exact amount of XRP to destroy is defined by the signed transaction instructions.</p>
+<p>In addition to the <strong><code>tes</code></strong> and <strong><code>tec</code></strong> class result codes, there are <strong><code>ter</code></strong>, <strong><code>tef</code></strong> and <strong><code>tem</code></strong> class codes. The latter three indicate provisional failures returned by API calls. Only <strong><code>tes</code></strong> and <strong><code>tec</code></strong> codes appear in ledgers. Transactions that are not included in ledgers cannot have any effect on the ledger state (including XRP balances), but transitions that provisionally failed may still end up succeeding.</p>
+<p>When working with <a href="rippled-api.html"><code>rippled</code> APIs</a>, applications must distinguish between candidate transactions proposed for inclusion in a ledger versus validated transactions which are included in a validated ledger. Only transaction results found in a validated ledger are immutable. A candidate transaction may or may not ever be included in a validated ledger.</p>
+<p>Important: Some <a href="rippled-api.html"><code>rippled</code> APIs</a> provide provisional results, based on candidate transactions <a href="#footnote_2" id="from_footnote_2"><sup>2</sup></a>. Applications should never rely on provisional results to determine the final outcome of a transaction. The only way to know with certainty that a transaction finally succeeded is to check the status of the transaction until it is both in a validated ledger and has result code <code>tesSUCCESS</code>. If the transaction is in a validated ledger with any other result code, it has failed. If the ledger specified in a transaction’s <a href="transaction-common-fields.html"><code>LastLedgerSequence</code></a> has been validated, yet the transaction does not appear in that ledger or any before it, then that transaction has failed and can never appear in any ledger. An outcome is final only for transactions that appear in a validated ledger or can never appear because of <code>LastLedgerSequence</code> restrictions as explained later in this document.</p>
+<h2 id="the-xrp-ledger-protocol-consensus-and-validation">The XRP Ledger Protocol – Consensus and Validation</h2>
+<p>The peer-to-peer XRP Ledger network consists of many independent XRP Ledger servers (typically running <a href="the-rippled-server.html"><code>rippled</code></a>) that accept and process transactions. Client applications sign and send transactions to XRP Ledger servers, which relay these candidate transactions throughout the network for processing. Examples of client applications include mobile and web wallets, gateways to financial institutions, and electronic trading platforms.</p>
+<p><a href="img/xrp-ledger-network.png"><img alt="Figure 4: Participants in the XRP Ledger Protocol" src="img/xrp-ledger-network.png"/></a></p>
+<p><em>Figure 4: Participants in the XRP Ledger Protocol</em></p>
+<p>The servers that receive, relay and process transactions may be either tracking servers or validators. The major functions of tracking servers include distributing transactions from clients and responding to queries about the ledger. Validating servers perform the same functions as tracking servers and also contribute to advancing the ledger history. <a href="#footnote_3" id="from_footnote_3"><sup>3</sup></a>.</p>
+<p>While accepting transactions submitted by client applications, each tracking server uses the last validated ledger as a starting point. The accepted transactions are candidates. The servers relay their candidate transactions to their peers, allowing the candidate transactions to propagate throughout the network. Ideally, each candidate transaction would be known to all servers, allowing each to consider the same set of transactions to apply to the last validated ledger. As transactions take time to propagate however, the servers do not work with the same set of candidate transactions at all times. To account for this, the XRP Ledger uses a process called consensus to ensure that the same transactions are processed and validated ledgers are consistent across the peer-to-peer XRP Ledger network.</p>
+<h3 id="consensus-1">Consensus</h3>
+<p>The servers on the network share information about candidate transactions. Through the consensus process, validators agree on a specific subset of the candidate transactions to be considered for the next ledger. Consensus is an iterative process in which servers relay proposals, or sets of candidate transactions. Servers communicate and update proposals until a supermajority <a href="#footnote_4" id="from_footnote_4"><sup>4</sup></a> of chosen validators agree on the same set of candidate transactions.</p>
+<p>During consensus, each server evaluates proposals from a specific set of servers, known as that server's trusted validators, or <em>Unique Node List (UNL)</em>.<a href="#footnote_5" id="from_footnote_5"><sup>5</sup></a> Trusted validators represent a subset of the network which, when taken collectively, is "trusted" not to collude in an attempt to defraud the server evaluating the proposals. This definition of "trust" does not require that each individual chosen validator is trusted. Rather, validators are chosen based on the expectation they will not collude in a coordinated effort to falsify data relayed to the network <a href="#footnote_6" id="from_footnote_6"><sup>6</sup></a>. <!-- STYLE_OVERRIDE: will --></p>
+<p><a href="img/consensus-rounds.png"><img alt="Figure 5: Validators Propose and Revise Transaction Sets" src="img/consensus-rounds.png"/></a></p>
+<p><em>Figure 5: Validators Propose and Revise Transaction Sets — At the start of consensus, validators may have different sets of transactions. In later rounds, servers modify their proposals to match what their trusted validators proposed. This process determines which transactions they should apply to the ledger version currently being discussed, and which they should postpone for later ledger versions.</em></p>
+<p>Candidate transactions that are not included in the agreed-upon proposal remain candidate transactions. They may be considered again in for the next ledger version. Typically, a transaction which is omitted from one ledger version is included in the next ledger version.</p>
+<p>In some circumstances, a transaction could fail to achieve consensus indefinitely. One such circumstance is if the network increases the required <a href="transaction-cost.html">transaction cost</a> to a value higher than the transaction provides. The transaction could potentially succeed if the fees are lowered at some point in the future. To ensure that a transaction either succeeds or fails within a limited amount of time, transactions can be set to expire if they are not processed by a certain ledger index. For more information, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
+<h3 id="validation">Validation</h3>
+<p>Validation is the second stage of the overall consensus process, which verifies that the servers got the same results and declares a ledger version final. In rare cases, the first stage of <a href="consensus-principles-and-rules.html#consensus-can-fail">consensus can fail</a>; validation provides a confirmation afterward so that servers can recognize this and act accordingly.</p>
+<p>Validation can be broken up into roughly two parts:</p>
+<ul>
+<li>Calculating the resulting ledger version from an agreed-upon transaction set.</li>
+<li>Comparing results and declaring the ledger version validated if enough trusted validators agree.</li>
+</ul>
+<h4 id="calculate-and-share-validations">Calculate and Share Validations</h4>
+<p>When the consensus process completes, each server independently computes a new ledger from the agreed-upon set of transactions. Each server calculates the results by following the same rules, which can be summarized as follows:</p>
+<ol>
+<li>
+<p>Start with the previous validated ledger.</p>
+</li>
+<li>
+<p>Place the agreed-upon transaction set in <em>canonical order</em> so that every server processes them the same way.</p>
+<p><a class="external-link" href="https://github.com/ripple/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/src/ripple/app/misc/CanonicalTXSet.cpp#L25-L36" target="_blank">Canonical order <i aria-hidden="true" class="fa fa-external-link"></i></a> is not the order the transactions were received, because servers may receive the same transactions in different order. To prevent participants from competing over transaction ordering, canonical order is hard to manipulate.</p>
+</li>
+<li>
+<p>Process each transaction according to its instructions, in order. Update the ledger's state data accordingly.</p>
+<p>If the transaction cannot be successfully executed, include the transaction with a <a href="tec-codes.html"><code>tec</code>-class result code</a>.<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a></p>
+<p>For certain "retriable" transaction failures, instead move the transaction to the end of the canonical order to be retried after other transactions in the same ledger version have executed.</p>
+</li>
+<li>
+<p>Update the ledger header with the appropriate metadata.</p>
+<p>This includes data such as the ledger index, the identifying hash of the previous validated ledger (this one's "parent"), this ledger version's approximate close time, and the cryptographic hashes of this ledger's contents.</p>
+</li>
+<li>
+<p>Calculate the identifying hash of the new ledger version.</p>
+</li>
+</ol>
+<p><a href="img/consensus-calculate-validation.png"><img alt="Figure 7: An XRP Ledger Server Calculates a Ledger Validation" src="img/consensus-calculate-validation.png"/></a></p>
+<p><em>Figure 7: An XRP Ledger Server Calculates a Ledger Validation — Each server applies agreed-upon transactions to the previous validated ledger. Validators send their results to the entire network.</em></p>
+<h4 id="compare-results">Compare Results</h4>
+<p>Validators each relay their results in the form of a signed message containing the hash of the ledger version they calculated. These messages, called <em>validations</em>, allow each server to compare the ledger it computed with those of its peers.</p>
+<p><a href="img/consensus-declare-validation.png"><img alt="Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result Result" src="img/consensus-declare-validation.png"/></a></p>
+<p><em>Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result — Each server compares its calculated ledger with the hashes received from its chosen validators. If not in agreement, the server must recalculate or retrieve the correct ledger.</em></p>
+<p>Servers in the network recognize a ledger instance as validated when a supermajority of the peers have signed and broadcast the same validation hash <a href="#footnote_7" id="from_footnote_7"><sup>7</sup></a>. Going forward, transactions are applied to this updated and now validated ledger with ledger index N+1.</p>
+<p>In cases where a server is in the minority, having computed a ledger that differs from its peers, the server disregards the ledger it computed <a href="#footnote_8" id="from_footnote_8"><sup>8</sup></a>. It recomputes the correct ledger, or retrieves the correct ledger as needed.</p>
+<p>If the network fails to achieve supermajority agreement on validations, this implies that transaction volume was too high or network latency too great for the consensus process to produce consistent proposals. In this case, the servers repeat the consensus process. As time passes since consensus began, it becomes increasingly likely that a majority of the servers have received the same set of candidate transactions, as each consensus round reduces disagreement. The XRP Ledger dynamically adjusts <a href="transaction-cost.html">transaction costs</a> and the time to wait for consensus in response to these conditions.</p>
+<p>Once they reach supermajority agreement on validations, the servers work with the new validated ledger, ledger index N+1. The consensus and validation process repeats <a href="#footnote_9" id="from_footnote_9"><sup>9</sup></a>, considering candidate transactions that were not included in the last round along with new transactions submitted in the meantime.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<p>Transactions submitted to the XRP Ledger are not processed instantaneously. For a period of time, each transaction remains a candidate.</p>
+<p>The lifecycle of a single transaction is as follows:</p>
+<ul>
+<li>A transaction is created and signed by an account owner.</li>
+<li>The transaction is submitted to the network.<ul>
+<li>Badly formed transactions may be rejected immediately.</li>
+<li>Well formed transactions may provisionally succeed, then later fail.</li>
+<li>Well formed transactions may provisionally fail, then later succeed.</li>
+</ul>
+</li>
+<li>During consensus, the transaction is included in the ledger.<ul>
+<li>The result of a successful consensus round is a validated ledger.</li>
+<li>If a consensus round fails, the consensus process repeats until it succeeds.</li>
+</ul>
+</li>
+<li>The validated ledger includes the transaction and its effects on the ledger state.</li>
+</ul>
+<p>Applications should only rely on information in validated ledgers, not on the provisional results of candidate transactions. Some <a href="rippled-api.html"><code>rippled</code> APIs</a> initially return provisional results for transactions. The results of a transaction become immutable only when that transaction is included in a validated ledger, or the transaction includes <code>LastLedgerSequence</code> and does not appear in any validated ledger with that ledger index or lower.</p>
+<p>Best practices for applications submitting transactions include:</p>
+<ul>
+<li>Use the <code>LastLedgerSequence</code> parameter to ensure that transactions validate or fail in a deterministic and prompt fashion.</li>
+<li>Check the results of transactions in validated ledgers.<ul>
+<li>Until a ledger containing the transaction is validated, or <code>LastLedgerSequence</code> has passed, results are provisional.</li>
+<li>Transactions with result code <strong><code>tesSUCCESS</code></strong> and <code>"validated": true</code> have immutably succeeded.</li>
+<li>Transactions with other result codes and <code>"validated": true</code> have immutably failed.</li>
+<li>Transactions that fail to appear in any validated ledger up to and including the validated ledger identified by the transaction’s <code>LastLedgerSequence</code> have immutably failed.<ul>
+<li>Take care to use a server with a continuous ledger history to detect this case <a href="#footnote_10" id="from_footnote_10"><sup>10</sup></a>.</li>
+</ul>
+</li>
+<li>It may be necessary to check the status of a transaction repeatedly until the ledger identified by <code>LastLedgerSequence</code> is validated.</li>
+</ul>
+</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><strong>Concepts:</strong><ul>
+<li><a href="intro-to-consensus.html">Introduction to Consensus</a></li>
+<li><a href="consensus-research.html">Consensus Research</a></li>
+<li><a class="external-link" href="https://www.youtube.com/watch?v=pj1QVb1vlC0" target="_blank">Ripple Consensus Video <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+</ul>
+</li>
+<li><strong>Tutorials:</strong><ul>
+<li><a href="reliable-transaction-submission.html">Reliable Transaction Submission</a></li>
+<li><a href="run-rippled-as-a-validator.html">Run <code>rippled</code> as a Validator</a></li>
+</ul>
+</li>
+<li><strong>References:</strong><ul>
+<li><a href="ledger-data-formats.html">Ledger Format Reference</a></li>
+<li><a href="transaction-formats.html">Transaction Format Reference</a></li>
+<li><a href="consensus_info.html">consensus_info method</a></li>
+<li><a href="validator_list_sites.html">validator_list_sites method</a></li>
+<li><a href="validators.html">validators method</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="footnotes">Footnotes</h2>
+<p><a href="#from_footnote_1" id="footnote_1"><sup>1</sup></a> – Transactions with <a href="tec-codes.html"><strong>tec</strong> result codes</a> do not perform the requested action, but do have effects on the ledger. To prevent abuse of the network and to pay for the cost of distributing the transaction, they destroy the XRP <a href="transaction-cost.html">transaction cost</a>. To not block other transactions submitted by the same sender around the same time, they increment the sending account's <a href="basic-data-types.html#account-sequence">sequence number</a>. Transactions with <code>tec</code>-class results sometimes also perform maintenance such as deleting expired objects or unfunded trade offers.</p>
+<p><a href="#from_footnote_2" id="footnote_2"><sup>2</sup></a> – For example, consider a scenario where Alice has $100, and sends all of it to Bob. If an application first submits that payment transaction, then immediately after checks Alice’s balance, the API returns $0. This value is based on the provisional result of a candidate transaction. There are circumstances in which the payment fails and Alice’s balance remains $100 (or, due to other transactions, become some other amount). The only way to know with certainty that Alice’s payment to Bob succeeded is to check the status of the transaction until it is both in a validated ledger and has result code <strong><code>tesSUCCESS</code></strong>. If the transaction is in a validated ledger with any other result code, the payment has failed.</p>
+<p><a href="#from_footnote_3" id="footnote_3"><sup>3</sup></a> – Strictly speaking, validators are a subset of tracking servers. They provide the same features and additionally send "validation" messages. Tracking servers may be further categorized by whether they keep full vs. partial ledger history.</p>
+<p><a href="#from_footnote_4" id="footnote_4"><sup>4</sup></a> – Transactions fail to pass a round of consensus when the percentage of peers recognizing the transaction falls below a threshold. Each round is an iterative process. At the start of the first round, at least 50% of peers must agree. The final threshold for a consensus round is 80% agreement. These specific values are subject to change</p>
+<p><a href="#from_footnote_5" id="footnote_5"><sup>5</sup></a> – Each server defines its own trusted validators, but the consistency of the network depends on different servers choosing lists that have a high degree of overlap. For this reason, Ripple publishes a list of recommended validators.</p>
+<p><a href="#from_footnote_6" id="footnote_6"><sup>6</sup></a> – If proposals from all validators were evaluated, instead of exclusively from the validators chosen not to collude, a malicious attacker could run more validators to gain disproportionate power over the validation process, so they could introduce invalid transactions or omit valid transactions from proposals. The chosen validator list <a href="consensus-protections.html#sybil-attacks">defends against Sybil attacks</a>.</p>
+<p><a href="#from_footnote_7" id="footnote_7"><sup>7</sup></a> – The supermajority threshold, as of November 2014, requires that at least 80% of peers must agree for a ledger to be validated. This happens to be the same percentage required by a round of consensus. Both thresholds are subject to change and need not be equal.</p>
+<p><a href="#from_footnote_8" id="footnote_8"><sup>8</sup></a> – In practice, the server detects that it is in the minority before receiving validations from all peers. It knows when it receives non-matching validations from over 20% of peers that its validation cannot meet the 80% threshold. At that point, it can begin to recalculate a ledger.</p>
+<p><a href="#from_footnote_9" id="footnote_9"><sup>9</sup></a> – In practice, the XRP Ledger runs more efficiently by starting a new round of consensus concurrently, before validation has completed.</p>
+<p><a href="#from_footnote_10" id="footnote_10"><sup>10</sup></a> – A <code>rippled</code> server can respond to API requests even without a complete ledger history. Interruptions in service or network connectivity can lead to missing ledgers, or gaps, in the server’s ledger history. Over time, if configured to, <code>rippled</code> fills in gaps in its history. When testing for missing transactions, it is important to verify against a server with continuous complete ledgers from the time the transaction was submitted until its <code>LastLedgerSequence</code>. Use the <a href="server_info.html">server_info method</a> to determine which ledgers are available to a particular server.</p>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="sidebar col-md-5 col-lg-3 p-0 order-md-1" role="complementary">
+<div class="tree_nav">
+
+  <!---->
+    <div class="sidenav_parent">
+      <a href="concepts.html"> Concepts</a>
+    </div>
+
+  <!---->
+
+    <!---->
+    <div id="sidenav" role="tablist" aria-multiselectable="true">
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_2">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_2" aria-expanded="true" aria-controls="sidenav_collapse_2"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="introduction.html">Introduction</a>
+                <!-- <a class="sidenav_cat_title" href="introduction.html">Introduction</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_2" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_2">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="xrp-ledger-overview.html">XRP Ledger Overview</a></li>
+                      <li><a class="nosubcat-page" href="intro-to-consensus.html">Introduction to Consensus</a></li>
+                      <li><a class="nosubcat-page" href="xrp.html">XRP</a></li>
+                      <li><a class="nosubcat-page" href="software-ecosystem.html">Software Ecosystem</a></li>
+                      <li><a class="nosubcat-page" href="technical-faq.html">Technical FAQ</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse2 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_8">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_8" aria-expanded="true" aria-controls="sidenav_collapse_8"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="payment-system-basics.html">Payment System Basics</a>
+                <!-- <a class="sidenav_cat_title" href="payment-system-basics.html">Payment System Basics</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_8" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_8">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="subcat-title" href="accounts.html">Accounts</a></li>
+
+                          <li><a class="subpage" href="cryptographic-keys.html">Cryptographic Keys</a></li>
+                          <li><a class="subpage" href="multi-signing.html">Multi-Signing</a></li>
+                          <li><a class="subpage" href="reserves.html">Reserves</a></li>
+                          <li><a class="subpage" href="depositauth.html">Deposit Authorization</a></li>
+
+                      <li><a class="nosubcat-page" href="fees.html">Fees (Disambiguation)</a></li>
+                      <li><a class="nosubcat-page" href="ledgers.html">Ledgers</a></li>
+                      <li><a class="subcat-title" href="transaction-basics.html">Transaction Basics</a></li>
+
+                          <li><a class="subpage" href="transaction-cost.html">Transaction Cost</a></li>
+                          <li><a class="subpage" href="finality-of-results.html">Finality of Results</a></li>
+                          <li><a class="subpage" href="source-and-destination-tags.html">Source and Destination Tags</a></li>
+
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse8 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_20">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_20" aria-expanded="true" aria-controls="sidenav_collapse_20"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="payment-types.html">Payment Types</a>
+                <!-- <a class="sidenav_cat_title" href="payment-types.html">Payment Types</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_20" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_20">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="direct-xrp-payments.html">Direct XRP Payments</a></li>
+                      <li><a class="nosubcat-page" href="cross-currency-payments.html">Cross-Currency Payments</a></li>
+                      <li><a class="nosubcat-page" href="checks.html">Checks</a></li>
+                      <li><a class="nosubcat-page" href="escrow.html">Escrow</a></li>
+                      <li><a class="nosubcat-page" href="partial-payments.html">Partial Payments</a></li>
+                      <li><a class="nosubcat-page" href="payment-channels.html">Payment Channels</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse20 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_28">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_28" aria-expanded="true" aria-controls="sidenav_collapse_28"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="issued-currencies.html">Issued Currencies</a>
+                <!-- <a class="sidenav_cat_title" href="issued-currencies.html">Issued Currencies</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_28" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_28">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="issued-currencies-overview.html">Issued Currencies Overview</a></li>
+                      <li><a class="nosubcat-page" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a></li>
+                      <li><a class="nosubcat-page" href="authorized-trust-lines.html">Authorized Trust Lines</a></li>
+                      <li><a class="nosubcat-page" href="freezes.html">Freezing Issued Currencies</a></li>
+                      <li><a class="nosubcat-page" href="rippling.html">Rippling</a></li>
+                      <li><a class="nosubcat-page" href="transfer-fees.html">Transfer Fees</a></li>
+                      <li><a class="nosubcat-page" href="issuing-and-operational-addresses.html">Issuing and Operational Addresses</a></li>
+                      <li><a class="nosubcat-page" href="paths.html">Paths</a></li>
+                      <li><a class="nosubcat-page" href="demurrage.html">Demurrage</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse28 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_38">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_38" aria-expanded="true" aria-controls="sidenav_collapse_38"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="decentralized-exchange.html">Decentralized Exchange</a>
+                <!-- <a class="sidenav_cat_title" href="decentralized-exchange.html">Decentralized Exchange</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_38" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_38">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="offers.html">Offers</a></li>
+                      <li><a class="nosubcat-page" href="autobridging.html">Auto-Bridging</a></li>
+                      <li><a class="nosubcat-page" href="ticksize.html">Tick Size</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse38 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card active">
+            <div class="card-header" role="tab" id="sidenav_cat_head_42">
+                <a class="sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_42" aria-expanded="true" aria-controls="sidenav_collapse_42"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title active-parent" href="consensus-network.html">Consensus Network</a>
+                <!-- <a class="sidenav_cat_title" href="consensus-network.html">Consensus Network</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_42" class="collapse show" role="tabpanel" aria-labelledby="sidenav_cat_head_42">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="active nosubcat-page" href="consensus.html">Consensus</a></li>
+                      <li><a class="nosubcat-page" href="consensus-principles-and-rules.html">Consensus Principles and Rules</a></li>
+                      <li><a class="nosubcat-page" href="consensus-protections.html">Consensus Protections Against Attacks and Failure Modes</a></li>
+                      <li><a class="nosubcat-page" href="invariant-checking.html">Invariant Checking</a></li>
+                      <li><a class="nosubcat-page" href="transaction-queue.html">Transaction Queue</a></li>
+                      <li><a class="nosubcat-page" href="about-canceling-a-transaction.html">About Canceling a Transaction</a></li>
+                      <li><a class="nosubcat-page" href="transaction-malleability.html">Transaction Malleability</a></li>
+                      <li><a class="subcat-title" href="amendments.html">Amendments</a></li>
+
+                          <li><a class="subpage" href="known-amendments.html">Known Amendments</a></li>
+
+                      <li><a class="nosubcat-page" href="fee-voting.html">Fee Voting</a></li>
+                      <li><a class="nosubcat-page" href="consensus-research.html">Consensus Research</a></li>
+                      <li><a class="nosubcat-page" href="parallel-networks.html">Parallel Networks</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse42 -->
+
+          </div><!-- /.card -->
+
+        <!---->
+          <div class="card">
+            <div class="card-header" role="tab" id="sidenav_cat_head_55">
+                <a class="collapsed sidenav_cat_toggler" role="button" data-toggle="collapse" href="#sidenav_collapse_55" aria-expanded="true" aria-controls="sidenav_collapse_55"></a>
+              <h5 class="card-title">
+                  <a class="sidenav_cat_title" href="the-rippled-server.html">The rippled Server</a>
+                <!-- <a class="sidenav_cat_title" href="the-rippled-server.html">The rippled Server</a> -->
+              </h5>
+            </div><!-- /.card-header -->
+
+            <div id="sidenav_collapse_55" class="collapse" role="tabpanel" aria-labelledby="sidenav_cat_head_55">
+              <div class="card-body">
+                <ul class="sidebar_pagelist">
+                      <li><a class="nosubcat-page" href="rippled-server-modes.html">rippled Server Modes</a></li>
+                      <li><a class="nosubcat-page" href="clustering.html">Clustering</a></li>
+                      <li><a class="subcat-title" href="ledger-history.html">Ledger History</a></li>
+
+                          <li><a class="subpage" href="online-deletion.html">Online Deletion</a></li>
+                          <li><a class="subpage" href="history-sharding.html">History Sharding</a></li>
+
+                      <li><a class="nosubcat-page" href="peer-protocol.html">Peer Protocol</a></li>
+                      <li><a class="nosubcat-page" href="transaction-censorship-detection.html">Transaction Censorship Detection</a></li>
+
+                </ul>
+              </div><!-- /.card-body -->
+            </div><!-- /#sidenav_collapse55 -->
+
+          </div><!-- /.card -->
+
+    </div><!-- /#sidenav -->
+</div><!-- /.tree_nav -->      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid card-grid card-grid-Nx1">
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="docs.html">Docs</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+              <li class="level-1"><a href="concepts.html">Concepts</a></li>
+          <li class="level-1"><a href="tutorials.html">Tutorials</a></li>
+          <li class="level-1"><a href="references.html">References</a></li>
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">01</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="use-cases.html">Use Cases</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="run-a-rippled-validator.html">Run a rippled Validator</a></li>
+
+        <li class="level-1"><a href="list-xrp-in-your-exchange.html">List XRP in Your Exchange</a></li>
+
+        <li class="level-1"><a href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-rippled.html">Contribute Code to rippled</a></li>
+
+        <li class="level-1"><a href="contribute-code-to-ripple-lib.html">Contribute Code to ripple-lib</a></li>
+
+
+
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">02</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="dev-tools.html">Dev Tools</a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+
+
+
+
+<div class="children-display">
+  <ul>
+            <li class="level-1"><a href="xrp-ledger-rpc-tool.html">RPC Tool</a></li>
+
+        <li class="level-1"><a href="websocket-api-tool.html">WebSocket API Tool</a></li>
+
+        <li class="level-1"><a href="data-api-v2-tool.html">Data API v2 Tool</a></li>
+
+        <li class="level-1"><a href="xrp-ledger-toml-checker.html">xrp-ledger.toml Checker</a></li>
+
+        <li class="level-1"><a href="validator-domain-verifier.html">Domain Verification Checker</a></li>
+
+
+
+
+  <li class="level-1"><a target="_blank" href="https://livenet.xrpl.org/">XRP Ledger Explorer</a> <i class="fa fa-external-link"></i></li>
+
+  </ul>
+</div>          </div><!--/.card-body-->
+          <div class="flag-vertical">03</div>
+        </div><!--/.card -->
+
+
+        <div class="card">
+          <div class="card-header">
+            <h5><a href="https://ripple.com/" target="_blank">Ripple<i class="fa fa-external-link"></i></a></h5>
+          </div><!--/.card-header-->
+          <div class="card-body">
+            <div class="children-display">
+              <ul>
+                <li class="level-1"><a href="https://ripple.com/company/careers/" target="_blank">Ripple Careers <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://github.com/ripple/" target="_blank">Ripple on GitHub <i class="fa fa-external-link"></i></a></li>
+                <li class="level-1"><a href="https://ripple.com/collateral/#xrp" target="_blank">XRP Resources <i class="fa fa-external-link"></i></a></li>
+              </ul>
+            </div>
+          </div><!--/.card-body-->
+          <div class="flag-vertical">04</div>
+        </div><!--/.card -->
+  </section>
+
+  <section class="container-fluid p-5 pl-sm-0">
+
+    <nav role="navigation" class="d-flex mb-3 language-selector">
+      <img class="language_selector_icon" src="assets/img/icon-language-selector.svg" width="32" height="40" alt="language selection icon" />
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="/consensus.html"><i class="fa fa-check-circle"></i> English</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ja/consensus.html">日本語</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="absolute_bottom_footer">
+      <span>&copy; XRP Ledger Project 2019</span>
+      <span><a href="https://raw.githubusercontent.com/ripple/ripple-dev-portal/master/LICENSE">License</a></span>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary btn-lg" role="button" title="Jump to top of page">Top</a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '70de5b9b8ef95460f3c6e04054b325b2',
+indexName: 'xrpl',
+inputSelector: '#topsearchbar',
+algoliaOptions: { 'facetFilters': ["lang:en"] },
+debug: false
+});
+</script>
+
+<script type="application/javascript">
+  gtag('config', 'UA-157720658-3', {'content_group1': 'Content Docs'});
+</script>
+</body>
+</html>
